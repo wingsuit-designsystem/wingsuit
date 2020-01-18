@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Generates full css file (Useful for debugging).
+
+cd ${PROJECT_ROOT}/${DOCROOT}/${PATTERNLAB_PATH}
+yarn run build:pl

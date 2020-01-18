@@ -1,0 +1,32 @@
+# Basic LAMP stack
+version: "2.1"
+services:
+  # Web
+  web:
+    #image: ${COMPOSE_PROJECT_NAME_SAFE}_web
+    #build: services/web
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: web
+    depends_on:
+      - cli
+
+  # DB
+  db:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: mysql
+
+  # CLI
+  cli:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: cli
+    labels:
+      - io.docksal.virtual-host=patternlab.${VIRTUAL_HOST}
+    expose:
+      - 80
+    environment:
+      - DOCKSAL=1
+      - PATTERNLAB_PATH=${PATTERNLAB_PATH}
+    #image: docksal/cli:2.0-php7.1

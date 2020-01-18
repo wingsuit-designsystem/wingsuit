@@ -1,0 +1,32 @@
+name: Wingsuit
+type: theme
+description: A Theme with Pattern Lab and Tailwind
+base theme: stable
+core: 8.x
+libraries:
+  - wingsuit/core
+regions:
+  primary_menu: Primary menu
+  secondary_menu: Secondary menu
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  page_top: Page top
+  content: Content
+  page_bottom: Page bottom
+  footer: Footer
+component-libraries:
+  protons:
+    paths: []
+  atoms:
+    paths:
+      - ../../dist/app-drupal/assets/atomic/_patterns/01-atoms
+  molecules:
+    paths:
+      - ../../dist/app-drupal/assets/atomic/_patterns/02-molecules
+  organisms:
+    paths:
+      - ../../dist/app-drupal/assets/atomic/_patterns/03-organisms
+  templates:
+    paths: []
+  pages:
+    paths: []

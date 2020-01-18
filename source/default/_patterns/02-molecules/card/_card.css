@@ -1,0 +1,39 @@
+
+/*.card {
+  position: relative;
+  flex-direction: column;
+
+  .card__gradient {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 120px;
+    width: 100%;
+    display: none;
+  }
+
+  &__title {
+    @apply font-serif;
+  }
+
+  &__label {
+    @apply text-xxs;
+    @apply bg-white;
+    @apply pt-1;
+    @apply pb-1;
+    @apply pr-2;
+    @apply pl-2;
+    @apply mb-1;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  &__pre-title {
+    @apply text-xs;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+*/

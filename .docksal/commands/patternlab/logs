@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+## Shows patternlab logs
+
+fin logs -f --tail="500" cli

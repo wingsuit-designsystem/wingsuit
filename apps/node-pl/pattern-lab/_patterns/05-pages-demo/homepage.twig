@@ -1,0 +1,70 @@
+{% extends '@templates/site-container.twig' %}
+
+   {% block content %}
+
+     {% set image %}
+       {% include '@atoms/image/_image.twig' with {
+         image: card_image,
+         image_classes: ['card-img-top'],
+       } %}
+     {% endset %}
+     {% set card_horizontal = card_horizontal|merge({'image': image}) %}
+     {% set card_medium_horizontal = card_medium_horizontal|merge({'image': image}) %}
+     {% set card_hero = card_hero|merge({'image': image, 'medium_variant': 'hero-center'}) %}
+     {% set card_default = card_default|merge({'image': image}) %}
+
+
+     {% embed '@organisms/grid/_grid.twig' with {
+       "columns": "3",
+       "config_3": "featured",
+       "wrapper": true,
+     } %}
+       {% block column_1 %}
+         <aside>
+           <div class="grid-c small-grid-c-1 grid-c--border grid-c--self-start">
+             {% include '@molecules/card/_card.twig' with  card_medium_horizontal  only %}
+             {% include '@molecules/card/_card.twig' with  card_medium_horizontal  only %}
+           </div>
+         </aside>
+       {% endblock %}
+       {% block column_2 %}
+           {% include '@molecules/card/_card.twig' with  card_hero  only %}
+       {% endblock %}
+       {% block column_3 %}
+         <aside>
+           <div class="grid-c small-grid-c-1 grid-c--border">
+             {% include '@molecules/card/_card.twig' with  card_horizontal  only %}
+             {% include '@molecules/card/_card.twig' with  card_horizontal  only %}
+           </div>
+         </aside>
+       {% endblock %}
+     {% endembed %}
+
+       {% embed '@organisms/grid/_grid.twig' with {
+         "columns": "4",
+         "config_4": "border",
+         "wrapper": true,
+       } %}
+         {% block columns %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+           {% include '@molecules/card/_card.twig' with  card_default  only %}
+         {% endblock %}
+       {% endembed %}
+       {% embed '@organisms/grid/_grid.twig' with {
+         "columns": "4",
+         "config_4": "border",
+         "wrapper": true,
+       } %}
+       {% block columns %}
+       {% include '@molecules/card/_card.twig' with  card_default  only %}
+         {% include '@molecules/card/_card.twig' with  card_default  only %}
+         {% include '@molecules/card/_card.twig' with  card_default  only %}
+         {% include '@molecules/card/_card.twig' with  card_default  only %}
+       {% endblock %}
+       {% endembed %}
+   {% endblock %}
+

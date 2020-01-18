@@ -1,0 +1,11 @@
+{% import "@demo/_macros.twig" as macros %}
+
+{% embed '@demo/_demo-block.twig' with
+  {
+    "title": "Welcome",
+    "intro": "Tailwind meets Patternlab meets Drupal!",
+  } %}
+  {% block content %}
+
+  {% endblock %}
+{% endembed %}

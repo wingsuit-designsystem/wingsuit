@@ -1,0 +1,5 @@
+button: ''
+
+button_demo_block:
+  title: 'button Component'
+  button_color: secondary

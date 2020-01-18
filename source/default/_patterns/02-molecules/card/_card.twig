@@ -1,0 +1,73 @@
+{#
+  Card!
+  element: String (optional): Element tag that defaults to article.
+  image: Object:
+  Headline_element: String: String (optional): Headline element tag that defaults to div.
+  headline: String: The headline on the card.
+  preheadline: String: The preheadline on the card.
+  content: String: The content on the card.
+  alignment: center
+#}
+{% set classes = classes|default([])|merge([
+  alignment == 'center'?'text-center',
+  'group hover:no-underline'
+]) | sort | join(' ') | trim  %}
+
+{# Preheadline Classes #}
+{% set preheadline_classes = [
+  'text-base',
+  'mb-1',
+  'uppercase',
+  'text-gray-light',
+  'font-sans',
+] | sort | join(' ') | trim %}
+
+{# headline Classes #}
+{% set headline_classes = [
+  'font-serif',
+  'text-4xl',
+  'text-blue',
+  'group-hover:underline',
+] | sort | join(' ') | trim %}
+
+{# Content Classes #}
+{% set content_classes = [
+  'text-base',
+  'mb-10',
+  'text-gray-light',
+  'font-sans',
+] | sort | join(' ') | trim %}
+{# Defaults: #}
+{% set element = element|default('div') %}
+{% set headline__element = headline__element|default('h2') %}
+{% if url is not empty %}
+  {% set attributes = attributes.setAttribute('href', url) %}
+  {% set element = 'a' %}
+{% endif %}
+{% set attributes = attributes|default(attributes_object()).addClass(classes) %}
+{# Component #}
+<{{element}} {{ attributes }}>
+  <div class="">
+    {% block image %}
+      {{ image }}
+    {% endblock %}
+   </div>
+  <div>
+  {% if preheadline is not empty  %}
+    <div class="{{ preheadline_classes }}">
+      {% block preheadline %}
+        {{ preheadline }}
+      {% endblock %}
+    </div>
+  {% endif %}
+  <{{headline__element}} class="{{ headline_classes }}">
+    {{ headline }}
+  </{{headline__element}}>
+  {% if content is not empty %}
+    <div class="{{ content_classes }}">
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+    </div>
+  {% endif %}
+</{{element}}>

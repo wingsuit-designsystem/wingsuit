@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+cd /var/www
+set -e
+sudo apt-get install libcap2-bin -y;
+sudo setcap cap_net_bind_service=+ep $(which node);
+yarn install;
+yarn start;

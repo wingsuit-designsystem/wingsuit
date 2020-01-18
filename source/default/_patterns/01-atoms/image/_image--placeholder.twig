@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * image--placeholder
+ *   Implements holder.js for placeholder images.
+ *
+ * Available variables for image:
+ *  - Inherit variables from @atoms/_image.twig
+ */
+#}
+{% macro get_placeholder_src(placeholderStyle) %}
+{% if not placeholderStyle.height %}
+  {% set height = random(range(placeholderStyle.width * 0.75, placeholderStyle.width * 1.25, 10)) %}
+  {% set placeholderStyle = placeholderStyle|merge({height: height}) %}
+  {% set placeholderText = placeholderStyle.width ~ 'wide, height varies' %}
+{% endif %}
+{% set placeholderStyleName =  placeholderStyle.label is not empty ? placeholderStyle.label : placeholderStyleKey %}
+{% set placeholderText = placeholderStyle.width ~ 'x' ~ placeholderStyle.height %}
+{% set options = {
+  text: placeholderStyleName ~ ' \n (' ~ placeholderText ~ ')',
+} %}
+{% set imgSrc = 'https://via.placeholder.com/' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
+{{- imgSrc -}}
+{% endmacro %}
+
+{% macro get_holderjs_src(placeholderStyle) %}
+{# if there's no height, let's randomly get one somewhere between .75 and 1.25 times the width, in increments of 10 #}
+{% if not placeholderStyle.height %}
+  {% set height = random(range(placeholderStyle.width * 0.75, placeholderStyle.width * 1.25, 10)) %}
+  {% set placeholderStyle = placeholderStyle|merge({height: height}) %}
+  {% set placeholderText = placeholderStyle.width ~ 'wide, height varies' %}
+{% endif %}
+{% set placeholderStyleName =  placeholderStyle.label is not empty ? placeholderStyle.label : placeholderStyleKey %}
+{% set placeholderText = placeholderStyle.width ~ 'x' ~ placeholderStyle.height %}
+{# holder.js options #}
+{% set options = {
+  theme: 'gray',
+  auto: 'yes',
+  size: '8',
+  lineWrap: '.9',
+  text: placeholderStyleName ~ ' \n (' ~ placeholderText ~ ')',
+} %}
+{% set imgSrc = 'holder.js/' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
+{{- imgSrc -}}
+{% endmacro %}
+{% set placeholderStyleKey = style|default('small_16x9_scale_and_crop') %}
+{% set isResponsiveImage = false %}
+{# `imageStyles` defined in `_data/imageStyles.yaml` #}
+{% set placeholderStyle = imageStyles[placeholderStyleKey] %}
+{% if placeholderStyle is empty %}
+  {% set placeholderStyle = imageStylesResponsive[placeholderStyleKey] %}
+  {% set isResponsiveImage = placeholderStyle != null ? true : false %}
+{% endif %}
+
+
+{% if placeholderStyle is empty %}
+No image style {{ placeholderStyle }} found!
+{% else %}
+  {% if isResponsiveImage == false %}
+    {% set imgSrc = _self.get_holderjs_src(placeholderStyle) %}
+    {% if variant == 'primary' %}
+      <img data-src="{{- imgSrc|trim -}}" class="holderjs" alt="A placeholder image">
+    {% elseif variant == 'bg' %}
+      <div data-background-src="?{{- imgSrc -}}" class="bg-img holderjs {{ image_classes }}"></div>
+    {% endif %}
+
+  {% else %}
+    {% set baseImageStyle = imageStyles[placeholderStyle.style] %}
+    <picture>
+      {% for breakpointName, imageStyleName in placeholderStyle.breakpoints %}
+        {% set breakpoint = imageBreakpoints[breakpointName] %}
+        {% set imageStyle = imageStyles[imageStyleName] %}
+        <source srcset="{{- _self.get_placeholder_src(imageStyle) -}}" media="{{ breakpoint.mediaQuery }}">
+      {% endfor %}
+      <img data-src="{{- _self.get_holderjs_src(baseImageStyle) -}}" alt="MDN">
+    </picture>
+  {% endif %}
+{% endif %}

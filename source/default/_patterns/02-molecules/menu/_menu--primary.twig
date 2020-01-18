@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * menu
+ *
+ * Available variables for menu:
+ *  - menu.variable_name [variable_type]: Description of the variable. Example below.
+ *  - menu.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+
+{# Classes: #}
+{% set classes = classes|default([])|merge([
+  variant == 'primary',
+  'flex flex-col md:flex-row md:items-center',
+]) | sort | join(' ') | trim  %}
+{# Defaults: #}
+{% set attributes = attributes|default(attributes_object()).addClass(classes) %}
+
+<nav class="flex flex-col" role="navigation">
+  <ul {{ attributes }} >
+    {% for item in items %}
+      <li class="font-sans px-4 py-1 text-center border-b md:border-b-0 md:p-2 lg:px-4 uppercase border-b-0 font-sans text-gray-light">
+        <a class="hover:border-b text-xs" href="{{ item.link }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

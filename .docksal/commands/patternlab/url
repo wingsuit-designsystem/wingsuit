@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Patternlab Url
+
+echo
+echo "###########################################"
+echo
+echo "Patternlab is now running:"
+echo "http://patternlab.wingsuit.docksal/app-node-pl/pl"
+echo
+echo "To access log files run:"
+echo "'fin logs -f cli'"
+echo
+echo "###########################################"
+echo

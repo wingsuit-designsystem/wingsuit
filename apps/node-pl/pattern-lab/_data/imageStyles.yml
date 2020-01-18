@@ -1,0 +1,49 @@
+imageStyles:
+  xsmall_1x1_scale_and_crop:
+    label: Small 1x1
+    width: 80
+    height: 80
+  xsmall_16x9_scale_and_crop:
+    label: XSmall 16x9
+    width: 460
+    height: 258
+  small_16x9_scale_and_crop:
+    label: Small 16x9
+    width: 640
+    height: 359
+  medium_16x9_scale_and_crop:
+    label: Medium 16x9
+    width: 1024
+    height: 576
+  large_16x9_scale_and_crop:
+    label: Large 16x9
+    width: 1200
+    height: 675
+  xlarge_16x9_scale_and_crop:
+    label: XLarge 16x9
+    width: 1440
+    height: 810
+  xxlarge_16x9_scale_and_crop:
+    label: XXLarge 16x9
+    width: 1900
+    height: 1068
+
+imageStylesResponsive:
+  featured:
+    style: medium_16x9_scale_and_crop
+    breakpoints:
+      xsmall: xsmall_16x9_scale_and_crop
+
+imageBreakpoints:
+  xsmall:
+    mediaQuery: '(min-width: 0px) and (max-width: 459px)'
+  small:
+    mediaQuery: '(min-width: 460px) and (max-width: 639px)'
+  medium:
+    mediaQuery: 'all and (min-width: 640px) and (max-width: 1023px)'
+  large:
+    mediaQuery: 'all and (min-width: 1024px) and (max-width: 1199px)'
+  xlarge:
+    mediaQuery: 'all and (min-width: 1200px) and (max-width: 1439px)'
+  xxlarge:
+    mediaQuery: 'all and (min-width: 1440px)'
