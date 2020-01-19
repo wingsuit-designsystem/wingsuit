@@ -1,0 +1,24 @@
+{
+  "name": "@wingsuit-designsystem/starterkit-wingsuit",
+  "version": "0.0.3",
+  "description": "Wingsuit Templates for Pattern Lab.",
+  "main": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/starterkit-wingsuit.git"
+  },
+  "keywords": [
+    "Pattern Lab",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/starterkit-wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/starterkit-wingsuit#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

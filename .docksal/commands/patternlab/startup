@@ -5,5 +5,7 @@ cd /var/www
 set -e
 sudo apt-get install libcap2-bin -y;
 sudo setcap cap_net_bind_service=+ep $(which node);
+cd wingsuit
+
 yarn install;
 yarn start;

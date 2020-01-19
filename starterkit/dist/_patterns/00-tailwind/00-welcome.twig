@@ -1,0 +1,48 @@
+  <div class="text-center small-6 cell">
+
+    {# Spinner styles are hardcoded in 00-head.twig #}
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+
+    <h1 class="mb-4">Welcome to KEY-TEC Base Theme</h1>
+
+    {% set welcome_image = {
+      variant: 'primary',
+      src: paths.images ~ '/astrogoat.png',
+      alt: 'A friendly goat wearing a space helmet. The Astrogoat!',
+    } %}
+
+    {% include "@atoms/image/_image.twig" with {
+      image: welcome_image
+    } %}
+
+  </div>
+  <div>
+    <h2>Pattern Naming convention:</h2>
+    <h3>Pattern variables:</h3>
+    <p>Pattern variables are not prefixed. To configure sub elements use "__". E.g:
+      "subcomponentname__variable_name" </p>
+    <p><code><span>{</span>% set headline__element = headline__element|default('h2') %<span>}</span></code></p>
+    <h3>SASS variables for components:</h3>
+    <p>See <a href="http://getbem.com/introduction">BEM documentation</a></p>
+    <p><code>$tape__fonts: (c-green: #b8d096, c-beige: #e7c689);</code></p>
+    <h3>Components structure</h3>
+    <h4>Classes: </h4>
+    <p><code><span>{</span># Classes: <span>#</span>}<br>
+        <span>{</span>% set classes = classes|default([])|merge([<br>
+        &nbsp;&nbsp;'teaser',<br>
+        &nbsp;&nbsp;text_alignment,<br>
+        ]) | sort | join(' ') | trim %<span>}</span></code></p>
+    <p>Define here the base class of the component and all possible modifiers. </p>
+    <h4>Defaults: </h4>
+    <p><code><span>{</span># Defaults: <span>#</span>}<br>
+        <span>{</span>% set element = element|default('div') %<span>}</span></code></p>
+    <p>Define here the default behavior of your component. For example the base tag etc.</p>
+    <h4>Define your component:</h4>
+    <p>The markup of your component.</p>
+    {# Todo: Need better way to escape markup in twig files. #}
+    <h3>Pattern empty handline?</h3>
+    <p>Needs discussion.</p>
+  </div>

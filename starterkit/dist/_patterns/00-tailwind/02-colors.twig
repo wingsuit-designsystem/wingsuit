@@ -1,0 +1,94 @@
+{#
+/**
+ * @file Sizing!
+ * Documenting Colors from Tailwind.
+ *
+ * @see https://tailwindcss.com/docs/customizing-colors/
+ */
+#}
+
+{% embed '@demo/_demo-block.twig' with {
+    "title": "Colors",
+    "doc_link": "https://tailwindcss.com/docs/customizing-colors/"
+  } %}
+  {% block content %}
+
+    <section class="pl-section">
+    <h2 class="pl-h2">Background Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>
+          Class
+        </th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0 border-b border-gray-300"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      {% for colorName, colorValue in tailwind.theme.backgroundColor %}
+
+        {% if colorValue is not iterable %}
+          <tr>
+            <td> bg-{{ colorName }}</td>
+            <td>background-color: {{ colorValue }}</td>
+            <td>
+              <div class="flex rounded-lg bg-{{ colorName }}">{{ colorValue }}</div>
+            </td>
+          </tr>
+        {% else %}
+          {% for i, subColorValue in colorValue %}
+            <tr>
+              <td>bg-{{ colorName }}-{{ i }}</td>
+              <td>background-color: {{ subColorValue }}</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-{{ colorName }}-{{ i }}">{{ subColorValue }}</div>
+              </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+    <h2 class="pl-h2">Text Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      {% for colorName, colorValue in tailwind.theme.colors %}
+
+        {% if colorValue is not iterable %}
+          <tr>
+            <td class="text-{{ colorName }}">text-{{ colorName }}</td>
+            <td>color: {{ colorValue }}</td>
+            <td>
+              <div class="flex rounded-lg text-{{ colorName }}">{{ colorValue }}</div>
+            </td>
+          </tr>
+        {% else %}
+          {% for i, subColorValue in colorValue %}
+            <tr>
+              <td class="text-{{ colorName }}-{{ i }}">text-{{ colorName }}-{{ i }}</td>
+              <td>color: {{ subColorValue }}</td>
+              <td>
+                <div class="text-{{ colorName }}-{{ i }}">{{ subColorValue }}</div>
+              </td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </table>
+    </section>
+  {% endblock %}
+{% endembed %}
