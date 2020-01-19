@@ -6,12 +6,10 @@
 const path = require('path');
 
 const { DefinePlugin } = require('webpack');
-
 // Plugins
 const RunScriptOnFiletypeChange = require('../../tools/webpack/run-script-on-filetype-change');
-const Tailwind2JsonPlugin = require('../../tools/tailwind/tailwind2json');
+const Tailwind2JsonPlugin = require('@wingsuit-designsystem/tools/tailwind2json');
 const wingsuit = require('../../wingsuit');
-
 // Constants: environment
 const { NODE_ENV, PARTICLE_PL_HOST = '' } = process.env;
 // Constants: root
@@ -20,7 +18,6 @@ const { PATH_DIST } = require('../../wingsuit.root.config');
 const appConfig = require('./wingsuit.app.config');
 
 const { APP_NAME, APP_PATH, APP_DIST, APP_DIST_PUBLIC } = appConfig;
-
 
 const shared = {
   entry: {
@@ -43,7 +40,7 @@ const shared = {
     ],
   },
   plugins: [
-    new Tailwind2JsonPlugin('apps/node-pl/pattern-lab/_data/tailwind-variables.json'),
+    new Tailwind2JsonPlugin(path.normalize(__dirname + '/../../tailwind.config'), path.normalize('apps/node-pl/pattern-lab/_data/tailwind-variables.json')),
     new DefinePlugin({
       BUILD_TARGET: JSON.stringify(APP_NAME),
     }),

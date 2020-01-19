@@ -162,10 +162,10 @@
           ]
         },
         {
-          "id": "demo",
+          "id": "wingsuit",
           "recursive": true,
           "paths": [
-            "./apps/node-pl/pattern-lab/_patterns/00-tailwind"
+            "./apps/node-pl/pattern-lab/_patterns/000-wingsuit"
           ]
         },
         {

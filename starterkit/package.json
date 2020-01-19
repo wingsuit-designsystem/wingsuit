@@ -1,11 +1,11 @@
 {
   "name": "@wingsuit-designsystem/starterkit-wingsuit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Wingsuit Templates for Pattern Lab.",
   "main": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wingsuit-designsystem/starterkit-wingsuit.git"
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
   "keywords": [
     "Pattern Lab",
@@ -15,10 +15,14 @@
   "author": "Christian Wiedemann",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wingsuit-designsystem/starterkit-wingsuit/issues"
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
   },
-  "homepage": "https://github.com/wingsuit-designsystem/starterkit-wingsuit#readme",
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/starterkit#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "fs-extra": "^8.1.0",
+    "holderjs": "^2.9.6"
   }
 }

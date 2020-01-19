@@ -1,0 +1,106 @@
+var fs = require('fs'),
+	uglify = require('uglify-js'),
+
+	packageData = require('./package.json')
+
+
+function buildMinifiedJs (string) {
+
+	var ast,
+		compressor = uglify.Compressor()
+
+	ast = uglify.parse(string)
+
+	ast.figure_out_scope()
+	ast.transform(compressor)
+	ast.figure_out_scope()
+	ast.compute_char_frequency()
+	ast.mangle_names()
+
+	return ast.print_to_string({"comments": /Shaven/})
+}
+
+
+desc('Default build process')
+task(
+	'default',
+	[
+		'shaven.js',
+		'shaven.min.js',
+		'index.html'
+	],
+	function () {
+	}
+)
+
+
+desc('Compile shaven.js')
+file('shaven.js', ['src/shaven.js', 'package.json'], {async: true}, function () {
+
+	var jsString = fs.readFileSync('src/shaven.js').toString(),
+		file = fs.openSync('shaven.js', 'w+')
+
+	jsString = jsString.replace('{{ VERSION }}', packageData.version)
+
+	fs.write(file, jsString, undefined, undefined, function () {
+		console.log('Building shaven.js succeeded')
+	})
+
+	complete()
+})
+
+
+desc('Compile shaven.min.js')
+file('shaven.min.js', ['src/shaven.js', 'package.json'], {async: true}, function () {
+
+	var jsString = fs.readFileSync('src/shaven.js').toString(),
+		file = fs.openSync('shaven.min.js', 'w+')
+
+	jsString = buildMinifiedJs(jsString.replace('{{ VERSION }}', packageData.version))
+
+	fs.write(file, jsString, undefined, undefined, function () {
+		console.log('Building shaven.min.js succeeded')
+	})
+
+	complete()
+})
+
+
+desc('Compile index.html')
+file('index.html', ['package.json'], {async: true}, function () {
+
+	var fileName = this.name,
+		data
+
+	data = fs.readFileSync(fileName, {encoding: 'utf8'})
+
+	data = data.replace(/Version [\.0-9]+/g, 'Version ' + packageData.version)
+
+	fs.writeFileSync(fileName, data)
+
+	console.log('Building ' + fileName + ' succeeded')
+
+	complete()
+})
+
+
+desc('Remove compiled files')
+task('clean', [], {async: true}, function () {
+
+	var files = [
+		'shaven.js',
+		'shaven.min.js'
+	]
+
+	files.forEach(function (file) {
+		fs.exists(file, function (exists) {
+
+			if (exists)
+				fs.unlink(file, function (err) {
+					if (err) console.log(err)
+				})
+		})
+	})
+
+	complete()
+})

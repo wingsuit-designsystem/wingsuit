@@ -10,7 +10,6 @@ const { ProgressPlugin, ProvidePlugin } = require('webpack');
 // const sass = require('sass');
 
 // Plugins
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -136,8 +135,6 @@ module.exports = {
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
     }),
-    // Yell at us while writing Sass
-    new StyleLintPlugin(),
     // Handle .vue files
     new VueLoaderPlugin(),
 

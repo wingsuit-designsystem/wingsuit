@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Links startkit into patternlab for local development
+
+cd /var/www/wingsuit/apps/node-pl/pattern-lab/_patterns
+ln -s ../../../../../starterkit/dist/_patterns/000-wingsuit 000-wingsuit
+# cd /var/www/wingsuit/apps/node-pl/pattern-lab
+# ln -s ../../../../starterkit/dist/tools tools

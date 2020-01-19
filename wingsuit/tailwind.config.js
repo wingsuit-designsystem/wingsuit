@@ -2,7 +2,7 @@ module.exports = {
   important: false,
   theme: {
     maxWidth: {
-      'container': '1280px'
+      'container': '1230px'
     },
   },
   variants: {

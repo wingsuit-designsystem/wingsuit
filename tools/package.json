@@ -1,0 +1,29 @@
+{
+  "name": "@wingsuit-designsystem/tools",
+  "version": "0.0.3",
+  "description": "Wingsuit Tools.",
+  "main": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "keywords": [
+    "Pattern Lab",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1",
+    "jsondiffpatch": "^0.3",
+    "tailwindcss": "~1.2.0-canary.5"
+  }
+}

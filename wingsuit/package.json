@@ -1,6 +1,6 @@
 {
-  "name": "wingsuit",
-  "version": "10.5.0",
+  "name": "@wingsuit-designsystem/wingsuit",
+  "version": "0.0.0",
   "description": "A starterkit to build a design system with Pattern Lab Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -47,6 +47,7 @@
     "@pattern-lab/core": "^5.4.0",
     "@pattern-lab/engine-twig-php": "^5.4.0",
     "@pattern-lab/uikit-workshop": "^5.5.0",
+    "@wingsuit-designsystem/tools": "^0.0.3",
     "core-js": "^3.4.1",
     "enquire.js": "^2.1.6",
     "generate-json-webpack-plugin": "^0.3.1",
@@ -59,7 +60,6 @@
     "prismjs": "^1.17.1",
     "regenerator-runtime": "^0.13.3",
     "svg4everybody": "^2.1.9",
-
     "tailwindcss": "^1.2.0-canary.5",
     "vue": "^2.6.10",
     "vuex": "^3.1.2"

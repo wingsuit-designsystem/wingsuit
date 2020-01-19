@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Shaven SVG example</title>
+	<script src="../shaven.min.js"></script>
+</head>
+<body>
+
+<h1>Shaven</h1>
+
+<h2>SVG Example</h2>
+
+<script>
+
+	var svgArray,
+		renderer,
+		svg1,
+		svg2
+
+	svgArray = [document.body,
+		['svg', {height: 100, width: 100},
+			['circle.top', {cx: 10, cy: 10, r: 5, style: 'fill:green'}],
+			['circle$test', {cx: 20, cy: 20, r: 5, style: 'fill:red'}]
+		]
+	]
+
+	/*
+	renderer = shaven({
+		namespace: 'http://www.w3.org/2000/svg'
+	})
+
+	svg1 = renderer(svgArray)
+	*/
+
+	svg2 = shaven(svgArray, 'http://www.w3.org/2000/svg')
+
+
+	//console.log(svg1.test instanceof Element)
+	console.log(svg2.test instanceof Element)
+	//console.log(svg2.innerHTML)
+
+</script>
+
+</body>
+</html>

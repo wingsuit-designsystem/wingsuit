@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Shaven Static Example</title>
+    <script src='../shaven.min.js'></script>
+</head>
+<body>
+
+<h1>Shaven</h1>
+
+<h2>Static Example</h2>
+
+<script>
+
+    shaven(
+        [document.body,
+            ['h3', 'Content Test'], // element with content
+            ['p', 'Id test sentence.', {id: 'first'}], // syntax-sugar id
+            ['p', {class: 'important'}, // syntax-sugar class
+                ['em', 'Class'],
+                ['br'],
+                ['b', 'test sentence.']
+            ],
+            ['p', 'Attributes test sentence.', {
+                class: 'test',
+                style: 'color:#3d5; font-size:20px',
+                'data-name': 'hello' // attributes with dash need to be enclosed by quotation marks
+            }]
+        ]
+    );
+
+</script>
+
+</body>
+</html>
