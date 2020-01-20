@@ -7,17 +7,12 @@ import svg4everybody from 'svg4everybody';
 
 // Module dependencies
 import 'protons';
-// import fontawesome from './fontawesome';
 
-// Module styles
-// import './_svg.scss';
+import './_icons.css';
 
 // Module template
 import './_svg.twig';
 import './_svg--icon.twig';
-
-// Enable Fontawesome immediately
-//fontawesome();
 
 export const name = 'svg';
 

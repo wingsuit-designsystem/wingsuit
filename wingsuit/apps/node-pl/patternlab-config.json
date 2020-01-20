@@ -1,7 +1,7 @@
 {
   "cacheBust": true,
   "cleanPublic": true,
-  "defaultPattern": "protons-demo-welcome",
+  "defaultPattern": "wingsuit-welcome",
   "defaultShowPatternInfo": false,
   "ishControlsHide": {
     "s": false,

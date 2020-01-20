@@ -19,7 +19,7 @@ module.exports = {
       styles: {
         filename: path.resolve(
           namespaces.atoms,
-          'svg/_icons-generated.scss'
+          'svg/_icons.css'
         ),
       },
       output: {
