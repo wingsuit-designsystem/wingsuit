@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/tools",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Wingsuit Tools.",
   "main": "README.md",
   "repository": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "fs-extra": "^8.1",
     "jsondiffpatch": "^0.3",
-    "tailwindcss": "~1.2.0-canary.5"
+    "tailwindcss": "~1",
+    "yo": "^3.1.1"
   }
 }

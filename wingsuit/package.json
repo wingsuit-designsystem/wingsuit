@@ -19,6 +19,7 @@
   "scripts": {
     "patternlab": "patternlab --config ./apps/node-pl/patternlab-config.json",
     "start": "npm run dev:pl-node",
+    "yo": "yo",
     "pl-node": "node ./apps/node-pl/pl-app.js",
     "setup": "patternlab install --config ./apps/node-pl/patternlab-config.json && patternlab build --config ./apps/node-pl/patternlab-config.json",
     "export:pl": "patternlab export --config ./apps/node-pl/patternlab-config.json",
@@ -40,14 +41,15 @@
     "test:unit": "npm run test:unit:default",
     "test": "npm run test:unit",
     "ci": "npm run lint && npm run test && npm run build:pl && npm run build:drupal",
-    "new": "yo ./tools/new-component/index.js && patternlab build --config ./apps/node-pl/patternlab-config.json"
+    "new": "yo @wingsuit-designsystem/generator-new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
   },
   "dependencies": {
     "@pattern-lab/cli": "^5.4.0",
     "@pattern-lab/core": "^5.4.0",
     "@pattern-lab/engine-twig-php": "^5.4.0",
     "@pattern-lab/uikit-workshop": "^5.5.0",
-    "@wingsuit-designsystem/tools": "^0.0.3",
+    "@wingsuit-designsystem/tools": "^0.0.4",
+    "@wingsuit-designsystem/generator-new-component": "^0.0.2",
     "core-js": "^3.4.1",
     "enquire.js": "^2.1.6",
     "generate-json-webpack-plugin": "^0.3.1",

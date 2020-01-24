@@ -3,7 +3,7 @@
 /**
  * @file
  *
- * Enforce some of the business logic within Wingsuit around components and
+ * Enforce some of the business logic within Particle around components and
  * where they live.
  */
 
@@ -18,7 +18,7 @@ const { PATH_APPS } = require('../../../../../wingsuit.root.config');
 
 // The name of a file that indicates a Pattern Lab application
 const PL_APP_CONFIG_FILE = 'patternlab-config.json';
-// All Wingsuit apps have a config file
+// All Particle apps have a config file
 const PARTICLE_APP_CONFIG_FILE = 'wingsuit.app.config.js';
 // _patterns is sacred
 const PATTERNS_FOLDER = '_patterns';
