@@ -32,15 +32,43 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
 1. Simply run:
 
    ```bash
-   npm create @wingsuitdesignsystem/wingsuit wingsuit
+   npm create @wingsuit-designsystem/wingsuit wingsuit
    ```
 
 1. Then `cd wingsuit/` and run:
 
    ```bash
-   npm|yarn start
+   npm start
    ```
 
+### Quickstart B
+1. Clone repository:
+
+   ```bash
+   git clone git@github.com:wingsuit-designsystem/wingsuit.git
+   ```
+
+1. Then `cd wingsuit/wingsuit` and run:
+
+   ```bash
+   npm install
+   npm run setup
+   npm start
+   ```
+
+## Develop Wingsuit
+1. Clone repository:
+
+   ```bash
+   git clone git@github.com:wingsuit-designsystem/wingsuit.git
+   ```
+
+1. Then `cd wingsuit` and run:
+
+   ```bash
+   fin up
+   fin wingsuit/startup
+   ```
 ## Wingsuit is heavenly inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 ### Differences to Particle
 1.  Wingsuit uses Tailwind instead of Bootstrap
