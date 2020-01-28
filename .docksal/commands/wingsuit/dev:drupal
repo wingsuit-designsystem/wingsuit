@@ -5,5 +5,5 @@
 ## Start patternlab drupal dev mode.
 ## Generates css twig templates on the fly.
 
-cd ${PROJECT_ROOT}/${DOCROOT}/${PATTERNLAB_PATH}
+cd ${WINGSUIT_PATH}
 yarn run dev:drupal

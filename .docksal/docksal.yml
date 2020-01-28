@@ -23,10 +23,10 @@ services:
       file: ${HOME}/.docksal/stacks/services.yml
       service: cli
     labels:
-      - io.docksal.virtual-host=patternlab.${VIRTUAL_HOST}
+      - io.docksal.virtual-host={WINGSUIT_VIRTUAL_HOST}
     expose:
       - 80
     environment:
       - DOCKSAL=1
-      - PATTERNLAB_PATH=${PATTERNLAB_PATH}
+      - WINGSUIT_PATH=${WINGSUIT_PATH}
     #image: docksal/cli:2.0-php7.1

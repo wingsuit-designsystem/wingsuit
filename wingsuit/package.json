@@ -41,7 +41,7 @@
     "test:unit": "npm run test:unit:default",
     "test": "npm run test:unit",
     "ci": "npm run lint && npm run test && npm run build:pl && npm run build:drupal",
-    "new": "yo @wingsuit-designsystem/generator-new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
+    "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
   },
   "dependencies": {
     "@pattern-lab/cli": "^5.4.0",

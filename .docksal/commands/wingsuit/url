@@ -6,7 +6,7 @@ echo
 echo "###########################################"
 echo
 echo "Patternlab is now running:"
-echo "http://patternlab.wingsuit.docksal/app-node-pl/pl"
+echo "http://${WINGSUIT_VIRTUAL_HOST}/app-node-pl/pl"
 echo
 echo "To access log files run:"
 echo "'fin logs -f cli'"
