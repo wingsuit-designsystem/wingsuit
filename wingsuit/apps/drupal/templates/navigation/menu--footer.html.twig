@@ -24,32 +24,25 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-
 {{ menus.menu_links(items, attributes, 0) }}
 
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
-    {% if items %}
-
-    {# Add wrapper_classes array to style our unordered list below. #}
-    {% set wrapper_classes = [
-      "navbar-nav",
-      "mr-auto",
-      "w-full",
-    ] | sort | join(' ') | trim %}
-
+  {% if items %}
     {% if menu_level == 0 %}
-    <ul{{ attributes.addClass(wrapper_classes) }}>
+      {# These Classes are added from Particle theme #}
+    <ul{{ attributes.addClass('nav', 'pr-2', 'justify-content-end') }}>
       {% else %}
-      <ul class="{{ wrapper_classes }}">
-        {% endif %}
-        {% set menu_items = [] %}
-        {% for item in items %}
-          {% if item not in menu_items %}
-            {% set menu_items = menu_items|merge({(loop.index): {"title": item.title, "link": item.url.toString()}}) %}
-          {% endif %}
-        {% endfor %}
-        {% include "@molecules/menu/_menu.twig" with {"variant": "primary", "items": menu_items} %}
-      </ul>
+      {# These Classes are added from Particle theme #}
+    <ul class="nav pr-2 justify-content-end">
       {% endif %}
+      {% set menu_items = [] %}
+      {% for item in items %}
+        {% if item not in menu_items %}
+          {% set menu_items = menu_items|merge({(loop.index): {'title': item.title, 'link': item.url.toString()}}) %}
+        {% endif %}
+      {% endfor %}
+      {% include '@molecules/menu/_menu.twig' with {variant: 'footer', items: menu_items} %}
+    </ul>
+  {% endif %}
 {% endmacro %}

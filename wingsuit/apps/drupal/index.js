@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 
 import { enableAllComponents } from '../../source/default';
 
-require('./scss/_drupal-styles.scss');
+require('./css/_drupal-styles.css');
 
 console.log('Wingsuit Drupal behaviors ran.');
 

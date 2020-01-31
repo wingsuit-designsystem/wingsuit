@@ -47,27 +47,33 @@
 #}
 {{ page.tabs }}
 <header class="content-header clearfix">
-  {% embed "@organisms/header/_header.twig" with {
-    "phone_img": "/themes/custom/wingsuit/dest/images/icons/icon_phone.png",
-    'img': "/themes/custom/wingsuit/dest/images/kt-logo.svg",
-    "tabs": page.tabs}
-  %}
+  {% embed "@organisms/header/_header.twig" %}
     {% block menu %}
-      {{ page.header }}
+      {{ page.primary_menu }}
+    {% endblock %}
+    {% block logo %}
+      {% include "@atoms/image/_image.twig" with {
+        variant: 'primary',
+        src: '/themes/custom/wingsuit/apps/drupal/logo.svg'
+      } %}
     {% endblock %}
   {% endembed %}
 </header>
 <main>
   {{ page.content }}
 </main>
-  {% embed "@organisms/footer/_footer.twig" with {"primary":page.first_menu, "secondary":page.second_menu, "address":page.footer_text, "copyright":copyright} %}
-
-    {% block logo %}
-      <div class="small-3 columns medium-3">
-        {% include "@atoms/image/_image.twig" with{"modifier":"footer","src": "/themes/custom/wingsuit/dest/images/association_badge_bw.png"} only %}
-      </div>
-    {% endblock logo %}
-    {% block copyright %}
-    {% endblock copyright %}
-
-  {% endembed %}
+{% embed "@organisms/footer/_footer.twig" with {"menu": page.footer} %}
+  {% block contact %}
+    <p>KEY-TEC GmbH &amp; Co. KG<br>Blutenburgstr. 68<br>80636 München<br>
+      <a class="hover:border-b" href="tel:089200056600">+49 (0) 89 / 2000 566 - 00</a>
+      <br>
+      <a class="hover:border-b" href="mailto:patrick.konstantin@key-tec.de">patrick.konstantin@key-tec.de</a>
+    </p>
+  {% endblock%}
+  {% block media %}
+    {% include "@atoms/image/_image.twig" with {
+      variant: 'primary',
+      src: '/themes/custom/wingsuit/apps/drupal/logo.svg'
+    } %}
+  {% endblock %}
+{% endembed %}

@@ -6,4 +6,4 @@
 ## Generates css twig templates on the fly.
 
 cd ${WINGSUIT_PATH}
-yarn run dev:drupal
+yarn run build:drupal

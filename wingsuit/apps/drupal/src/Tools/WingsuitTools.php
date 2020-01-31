@@ -2,12 +2,12 @@
 
 namespace Drupal\wingsuit\Tools;
 
-use Drupal\wingsuit\WingsuitZf;
+use Drupal\wingsuit\Wingsuit;
 
 /**
  * Provides utility functions for all preprocessors.
  */
-class Wingsuit {
+class WingsuitTools {
 
   /**
    * Return the theme path relative to the Drupal root.
@@ -16,7 +16,7 @@ class Wingsuit {
    *   The theme path.
    */
   public static function getThemePath() {
-    return drupal_get_path('theme', Wingsuit::THEME_NAME);
+    return drupal_get_path('theme', WingsuitTools::THEME_NAME);
   }
 
   /**

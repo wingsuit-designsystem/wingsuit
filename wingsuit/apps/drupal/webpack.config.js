@@ -3,11 +3,11 @@
  */
 
 const path = require('path');
-const glob = require('glob')
 const { DefinePlugin } = require('webpack');
 
 // Plugins
 const RunScriptAfterEmit = require('../../tools/webpack/run-script-after-emit');
+
 const wingsuit = require('../../wingsuit');
 // Constants: environment
 const { NODE_ENV } = process.env;
@@ -20,21 +20,10 @@ const { APP_NAME, APP_DESIGN_SYSTEM, APP_DIST, APP_DIST_PUBLIC } = appConfig;
 
 const patterDirName = appConfig.APP_DESIGN_SYSTEM + '/_patterns';
 
-const dynamicEntries = glob.sync(patterDirName + '/**/index.js').reduce((acc, path) => {
-  const entry = path.replace('/index.js', '');
-  if (path.indexOf('/demo/') === -1) {
-    var name = entry.match(/([^\/]*)\/*$/)[1];
-    acc[name] = path;
-  }
-  return acc;
-}, {});
 const shared = {
-  //entry: {
-  //  'drupal-jquery': [path.resolve(__dirname, 'drupal-jquery.js')],
-  //  app: [path.resolve(patterDirName + '/00-protons', 'index.js')],
-  //  footer: [path.resolve(patterDirName + '/03-organisms/footer', 'index.js')]
-  //},
-  entry: dynamicEntries,
+  entry: {
+    app: [path.resolve(__dirname, 'index.js')],
+  },
   output: {
     path: APP_DIST,
     publicPath: APP_DIST_PUBLIC,
@@ -64,6 +53,7 @@ const dev = {
   stats: {
     children: false,
     entrypoints: false,
+    chunks: true,
   },
   plugins: [
     new RunScriptAfterEmit({
@@ -84,7 +74,7 @@ const prod = {
   stats: {
     children: false,
     entrypoints: false,
-    chunks: false,
+    chunks: true,
   },
 };
 
