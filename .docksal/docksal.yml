@@ -23,7 +23,7 @@ services:
       file: ${HOME}/.docksal/stacks/services.yml
       service: cli
     labels:
-      - io.docksal.virtual-host={WINGSUIT_VIRTUAL_HOST}
+      - io.docksal.virtual-host=${WINGSUIT_VIRTUAL_HOST}
     expose:
       - 80
     environment:
