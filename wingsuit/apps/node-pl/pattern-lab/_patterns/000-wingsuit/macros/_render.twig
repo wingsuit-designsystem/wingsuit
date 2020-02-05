@@ -1,22 +1,30 @@
 {% macro renderDemo(pattern, patterns) %}
+    {% import "@wingsuit/macros/_render.twig" as self %}
+
     {% if patterns[pattern] is not empty %}
         {% set current_pattern = patterns[pattern] %}
         {% set include_path =  current_pattern.use %}
-        {#{% include include_path with { button_content: "text" }%}#}
-        {% set fields = array|merge([{ title: item.title, ... }]) %}
+
+        {% set fields = [] %}
+        {% set variants = [] %}
+
         {% for key, field in current_pattern.fields %}
             {% set preview = field.preview %}
-            {{ dump("Preview: " ~ preview) }}
-            {{ dump("Key: " ~ key) }}
-            {% include include_path with {key: preview } %}
+            {% set fields = fields|merge({(key): preview}) %}
         {% endfor %}
-        {% if variants is not empty %}
-            {% for key, variant in variants %}
+        <h2>Default {{ current_pattern.label }}</h2>
+        {% include include_path with fields %}
 
-                {% if settings is not empty %}
-                    {% for key, setting in settings %}
+        {% if current_pattern.variants is not empty %}
+            {% for key, variant in current_pattern.variants %}
+                {# Merges variant with fields array #}
+                {% set variants = variants|merge(fields)|merge({variant: key}) %}
+                <h2>{{ variant.label }} {{ current_pattern.label }}</h2>
+                {% include include_path with variants %}
 
-                    {% endfor %}
+                {% if current_pattern.settings is not empty %}
+
+                    {{ self.settings(current_pattern.settings, fields, include_path) }}
                 {% endif %}
             {% endfor %}
         {% endif %}
@@ -28,3 +36,41 @@
     {% endif %}
 {% endmacro %}
 
+{% macro settings(settings, output, include_path) %}
+    {% set default_values = [] %}
+    {% for setting_key, setting in settings %}
+        {% if setting.type == "select" and setting.required == true %}
+            {% if setting.preview is not empty %}
+                {% set default_values = default_values|merge({(setting_key): setting.preview }) %}
+            {% elseif setting.default_value is not empty %}
+                {% set default_values = default_values|merge({(setting_key): setting.default_value }) %}
+            {% else %}
+                {% set default_values = default_values|merge({(setting_key): setting.options|first }) %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% for setting_key, setting in settings %}
+        <h2>{{ setting.label }}</h2>
+        {#<details>#}
+        {% if setting.type == "select" %}
+            {% for option_key, option in setting.options %}
+                {% set output = output|merge(default_values)|merge({(setting_key): option_key}) %}
+                <strong>{{ dump(default_values) }}</strong>
+                {{ dump({(setting_key): option_key}) }}
+                <h2>{{ option }} {{ current_pattern.label }}</h2>
+                {% include include_path with output %}
+            {% endfor %}
+        {% endif %}
+        {#</details>#}
+    {% endfor %}
+{% endmacro %}
+
+
+
+{#Settings typen:#}
+ {#- select/checkboxes#}
+ {#- text/token#}
+ {#- bool#}
+
+bg-blue-300
+bg-orange-500

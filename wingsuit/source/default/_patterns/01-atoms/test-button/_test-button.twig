@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * button
+ *
+ * Available variables for button:
+ *  - button.variable_name [variable_type]: Description of the variable. Example below.
+ *  - button.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+{% set button_element = button_element | default ('div') %}
+
+{% set background_color = bg_color ~ "-" ~ bg_intensity %}
+
+{% if txt_intensity != "" %}
+  {% set text_color = txt_color ~ "-" ~ txt_intensity %}
+{% else %}
+  {% set text_color = txt_color %}
+{% endif %}
+
+{% set background_hover = bg_color ~ "-" ~ bg_hover_intensity %}
+
+{% set button_classes = [
+  'cursor-pointer',
+  'shadow-xl',
+  'px-5',
+  'py-2',
+  'inline-block',
+  'hover:text-white',
+  'rounded',
+  variant == '' ? "bg-" ~ background_color, "text-" ~ text_color, 'hover:bg-' ~ background_hover,
+  variant == 'invert' ? "text-" ~ background_color, "bg-" ~ text_color, 'hover:bg-' ~ background_hover,
+  variant == 'outline' ? "border-2", "border-" ~ txt_color ~ "-" ~ txt_intensity, "text- " ~ txt_color ~ "-" ~ txt_intensity, 'hover:bg-' . background_hover
+
+] | sort | join(' ') | trim %}
+
+<{{ button_element }} class="{{ button_classes }}" {{ button_attributes }}>
+{{ button_content }}
+</{{ button_element }}>
