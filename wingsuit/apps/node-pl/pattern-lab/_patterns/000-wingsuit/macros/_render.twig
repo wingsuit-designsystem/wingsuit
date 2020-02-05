@@ -1,0 +1,30 @@
+{% macro renderDemo(pattern, patterns) %}
+    {% if patterns[pattern] is not empty %}
+        {% set current_pattern = patterns[pattern] %}
+        {% set include_path =  current_pattern.use %}
+        {#{% include include_path with { button_content: "text" }%}#}
+        {% set fields = array|merge([{ title: item.title, ... }]) %}
+        {% for key, field in current_pattern.fields %}
+            {% set preview = field.preview %}
+            {{ dump("Preview: " ~ preview) }}
+            {{ dump("Key: " ~ key) }}
+            {% include include_path with {key: preview } %}
+        {% endfor %}
+        {% if variants is not empty %}
+            {% for key, variant in variants %}
+
+                {% if settings is not empty %}
+                    {% for key, setting in settings %}
+
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        No Pattern "{{ pattern }}" found. Available patterns are:
+        {% for key in patterns|keys %}
+            {{ key }},
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+

@@ -1,0 +1,32 @@
+patterns:
+  button:
+    use: "@atoms/button/_button.twig"
+    label: Button
+    description: Pattern for Buttons.
+    fields:
+      button_content:
+        type: text
+        label: Content
+        preview: Demo Button
+    variants:
+      invert:
+        label: Invert
+        description: Buttons without background but border.
+    settings:
+      bg_color:
+        type: select
+        label: Background color
+        options:
+          blue: blue
+          red: red
+          orange: orange
+          green: green
+      bg_intensity:
+        type: select
+        label: Background intensity
+        options:
+          100: 100
+          300: 300
+          500: 500
+          700: 700
+          900: 900
