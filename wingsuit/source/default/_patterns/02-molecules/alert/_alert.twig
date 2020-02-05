@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * alert
+ *
+ * Available variables for alert:
+ *  - alert.variable_name [variable_type]: Description of the variable. Example below.
+ *  - alert.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+{% set alert_element = alert_element | default ('div') %}
+{% if attributes is empty %}
+  {% set attributes = attributes_object() %}
+{% endif %}
+{% set alert_classes = [
+  'inline-flex',
+  'items-center',
+  'bg-white',
+  'leading-none',
+  'p-2',
+  'rounded-sm',
+  'shadow',
+  'text-sm',
+  variant == '' ? 'text-blue-600',
+  variant == 'warning' ? 'text-yellow-600',
+  variant == 'error' ? 'text-red-600',
+] | sort | join(' ') | trim %}
+{% set alert_state_classes = [
+  'p-2',
+  'px-3',
+  'inline-flex',
+  'items-center',
+  'justify-center',
+  'rounded-sm',
+  'text-white',
+  variant == '' ? 'bg-blue-600',
+  variant == 'warning' ? 'bg-yellow-600',
+  variant == 'error' ? 'bg-red-600',
+] | sort | join(' ') | trim %}
+<div class="p-2">
+  <div class="{{ alert_classes }}">
+    <span class="{{ alert_state_classes }}">{{ alert_state }}</span>
+    <span class="px-2">{{ alert_content }}</span>
+  </div>
+</div>

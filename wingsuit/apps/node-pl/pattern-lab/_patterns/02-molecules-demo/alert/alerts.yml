@@ -1,0 +1,8 @@
+alert_content: Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+alert_state: Alert
+
+alert_demo_block:
+  title: alert Component
+  text:
+    lead: Add a quick description here.
+    summary: Add code examples here using <code>html code syntax</code>
