@@ -9,6 +9,7 @@ const { DefinePlugin } = require('webpack');
 // Plugins
 const RunScriptOnFiletypeChange = require('../../tools/webpack/run-script-on-filetype-change');
 const Tailwind2JsonPlugin = require('@wingsuit-designsystem/tools/tailwind2json');
+const Patterns2JsonPlugin = require('@wingsuit-designsystem/tools/patterns2json');
 const Svg2JsonPlugin = require('@wingsuit-designsystem/tools/svg2json');
 
 const wingsuit = require('../../wingsuit');
@@ -44,6 +45,7 @@ const shared = {
   plugins: [
     new Tailwind2JsonPlugin(path.normalize(__dirname + '/../../tailwind.config'), path.normalize('apps/node-pl/pattern-lab/_data/tailwind-variables.json')),
     new Svg2JsonPlugin('source/default/_patterns/01-atoms/svg/svg', 'apps/node-pl/pattern-lab/_data/svgs.json'),
+    new Patterns2JsonPlugin('source/default/_patterns/', 'apps/node-pl/pattern-lab/_data/patterns.json'),
     new DefinePlugin({
       BUILD_TARGET: JSON.stringify(APP_NAME),
     }),

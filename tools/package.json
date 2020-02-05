@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/tools",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Wingsuit Tools.",
   "main": "README.md",
   "repository": {
@@ -17,14 +17,20 @@
   "bugs": {
     "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
     "fs-extra": "^8.1",
+    "glob": "^7.1.6",
+    "js-yaml": "^3.13.1",
     "jsondiffpatch": "^0.3",
     "tailwindcss": "~1",
     "yo": "^3.1.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }

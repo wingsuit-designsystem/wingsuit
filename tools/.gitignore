@@ -1,5 +1,6 @@
 # Compiled files
 dist/
+pattern2yml/dist
 _icons-generated.scss
 dependencyGraph.json
 patterns.zip
