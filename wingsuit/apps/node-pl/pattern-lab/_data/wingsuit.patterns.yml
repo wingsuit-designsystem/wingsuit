@@ -42,7 +42,7 @@ patterns:
         type: select
         label: Text color
         required: true
-        default_value: blue
+        default_value: orange
         options:
           blue: blue
           red: red

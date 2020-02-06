@@ -8,7 +8,7 @@
  *  - button.invert [bool]: When set, colors will be inverted for light display on dark background.
  */
 #}
-{% set button_element = button_element | default ('div') %}
+{% set button_element = button_element|default ('div') %}
 
 {% set background_color = bg_color ~ "-" ~ bg_intensity %}
 
@@ -28,12 +28,13 @@
   'inline-block',
   'hover:text-white',
   'rounded',
-  variant == '' ? "bg-" ~ background_color, "text-" ~ text_color, 'hover:bg-' ~ background_hover,
-  variant == 'invert' ? "text-" ~ background_color, "bg-" ~ text_color, 'hover:bg-' ~ background_hover,
-  variant == 'outline' ? "border-2", "border-" ~ txt_color ~ "-" ~ txt_intensity, "text- " ~ txt_color ~ "-" ~ txt_intensity, 'hover:bg-' . background_hover
-
+  variant == '' ? 'bg-' ~ background_color ~ ' text-' ~ text_color ~ ' hover:bg-' ~ background_hover,
+  variant == 'invert' ? 'text-' ~ background_color ~ ' bg-' ~ text_color ~ ' hover:bg-' ~ background_hover,
 ] | sort | join(' ') | trim %}
+{% if button_attributes is empty %}
+  {% set button_attributes = attributes_object() %}
+{% endif %}
 
-<{{ button_element }} class="{{ button_classes }}" {{ button_attributes }}>
+<{{ button_element }} {{ button_attributes.addClass(button_classes) }}>
 {{ button_content }}
 </{{ button_element }}>
