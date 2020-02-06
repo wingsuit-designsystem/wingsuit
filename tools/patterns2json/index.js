@@ -10,10 +10,11 @@ function Pattern2YamlPlugin(sourceFolder, targetFilePath) {
   this.plugin = { name: 'Pattern2YamlPlugin' };
 }
 
-Pattern2YamlPlugin.prototype.generate = function generate() {
-  const filePattern = this.sourceFolder + '/**/*.wingsuit.yml';
-  const patternsObj = {'patterns': []};
-  glob.sync(filePattern).forEach(function(path) {
+Pattern2YamlPlugin.prototype.generate = function generate(callback) {
+  const filePattern = `${this.sourceFolder}/**/*.wingsuit.yml`;
+  const patternsObj = { patterns: [] };
+  // eslint-disable-next-line no-shadow
+  glob.sync(filePattern).forEach((path) => {
     const file = fs.readFileSync(path, 'utf8');
     const parsedFiled = yaml.safeLoad(file);
     patternsObj.patterns.push(parsedFiled);
@@ -23,17 +24,17 @@ Pattern2YamlPlugin.prototype.generate = function generate() {
     if (readerr) console.error(readerr, `Creating ${path.basename(this.targetFilePath)}!`);
     // Only write output if there is a difference or non-existent target file
     if (jsondiff.diff(existingPatternJson, patternsObj)) {
-      fs.outputJson(this.targetFilePath, patternsObj, writeerr => {
+      fs.outputJson(this.targetFilePath, patternsObj, (writeerr) => {
         if (writeerr) console.error(writeerr);
+        callback(null);
       });
     }
   });
-}
+};
 
 Pattern2YamlPlugin.prototype.apply = function apply(compiler) {
   const emit = (compilation, callback) => {
-    this.generate();
-    callback(null);
+    this.generate(callback);
   };
 
   if (compiler.hooks) {

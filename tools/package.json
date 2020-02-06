@@ -20,6 +20,7 @@
   "type": "module",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
+    "eslint-auto-fix": "^1.0.1",
     "fs-extra": "^8.1",
     "glob": "^7.1.6",
     "js-yaml": "^3.13.1",
@@ -28,6 +29,9 @@
     "yo": "^3.1.1"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
     "jest": "^24.9.0"
   },
   "scripts": {
