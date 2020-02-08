@@ -1,87 +1,31 @@
 {# TODO: Implement pattern-twig.php to use settings method. #}
 {# TODO: Check why patttern macro is not used. #}
+{% import "@wingsuit/macros/_render.twig" as self %}
+{#
+  Renders pattern demo page.
 
-{% macro patternDemo(pattern, patterns) %}
-  {% import "@wingsuit/macros/_render.twig" as self %}
+  @param string id
+    The pattern id.
+  @param string patterns
+    All available patterns
+#}
+{% macro pattern_demo(id, patterns, paths) %}
 
-  {% if patterns[pattern] is not empty %}
-    {% set current_pattern = patterns[pattern] %}
-    {% set include_path =  current_pattern.use %}
+  {% if patterns[id] is not empty %}
+    {% set current_pattern = patterns[id] %}
 
-    <h2>Default {{ current_pattern.label }}</h2>
-    {{ self.patternPreview(current_pattern, current_pattern.variants) }}
-    {# With settings: #}
-{#    {% if current_pattern.settings is not empty %}#}
-{#      {{ self.getSettings(current_pattern.settings, fields, include_path) }}#}
-{#    {% endif %}#}
+    <h2 class="pl-h2">Default {{ current_pattern.label }}</h2>
+    {% if current_pattern.variants is not empty %}
+      {% for variant, variant_config in current_pattern.variants %}
+        {{ pattern_preview(id, variant) }}
+      {% endfor %}
+    {% else %}
+      {{ pattern_preview(id,'') }}
+    {% endif %}
   {% else %}
-    No Pattern "{{ pattern }}" found. Available patterns are:
+    No Pattern "{{ id }}" found. Available patterns are:
     {% for key in patterns|keys %}
       {{ key }},
     {% endfor %}
   {% endif %}
-{% endmacro %}
-
-{#
-  Renders pattern with preview data defined in wingsuit.pattern.yml.
-
-  @param string pattern
-    Current pattern name.
-  @param string variant
-    Renders a custom variant of the given pattern.
-  @param array settings
-    Uses settings like specific color etc.
-#}
-{% macro patternPreview(pattern, variants) %}
-  {% import "@wingsuit/macros/_render.twig" as self %}
-  {# Defines fields from preview data. #}
-  {% set fields = [] %}
-  {% set given_variants = [] %}
-  {% for key, field in pattern.fields %}
-    {% set fields = fields|merge({(key): field.preview}) %}
-  {% endfor %}
-
-  {# Configures variant from given variant. #}
-  {% if variant is not empty %}
-    {% if pattern.variants is not empty %}
-      {% for key, variant in variants %}
-        {# Merges variant with fields array #}
-        {% set given_variants = given_variants|merge(fields)|merge({variant: key}) %}
-        <h2>{{ variant.label }} {{ pattern.label }}</h2>
-
-
-        {{ self.pattern(pattern, fields, given_variants) }}
-
-
-        {# Variants with settings: #}
-{#        {% if pattern.settings is not empty %}#}
-{#          {{ self.getSettings(current_pattern.settings, variants, include_path) }}#}
-{#        {% endif %}#}
-      {% endfor %}
-    {% endif %}
-  {% endif %}
-{#  {{ self.pattern(pattern, fields) }}#}
-
-{% endmacro %}
-
-{#
-  Renders pattern with given configuration.
-
-  @param string pattern
-    Current pattern name.
-  @param array fields
-    Fields content.
-  @param string variants
-    Renders a custom variant of the given pattern.
-  @param array settings
-    Uses settings like specific color etc.
-#}
-{% macro pattern(pattern, fields, variant) %}
-  {{ dump(path) }}
-  {% set path = pattern.use %}
-  {% set configuration = configuration|merge(fields)|merge({'variant': variant}) %}
-  {#|merge(settings)#}
-
-
-  {% include path with configuration %}
 {% endmacro %}

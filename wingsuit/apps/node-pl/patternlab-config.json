@@ -120,6 +120,13 @@
           ]
         },
         {
+          "id": "wingsuit_engine",
+          "recursive": true,
+          "paths": [
+            "./../tools/render_engine"
+          ]
+        },
+        {
           "id": "protons",
           "recursive": true,
           "paths": [
@@ -184,6 +191,12 @@
             "addFilters",
             "addFunctions",
             "addDebug"
+          ]
+        },
+        {
+          "file": "./../tools/render_engine/engine.php",
+          "functions": [
+            "addEngineFunctions"
           ]
         }
       ]

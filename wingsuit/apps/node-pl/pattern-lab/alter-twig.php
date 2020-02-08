@@ -277,46 +277,6 @@ function addFunctions(\Twig_Environment &$env, $config) {
       array()
   );
   $env->addFunction($modifier_function);
-
-  $pattern_demo = new Twig_SimpleFunction(
-    function (Twig_Environment $env, $pattern, $patterns) {
-      if (!empty($patterns[$pattern])) {
-        $current_pattern = $patterns[$pattern];
-        $include_path = $current_pattern['use'];
-
-        $fields = [];
-        $variants = [];
-        $env->pattern_preview();
-        // Fields:
-        foreach ($current_pattern['fields'] as $key => $field) {
-          $preview = [$key => $field['preview']];
-        }
-
-      }
-      return implode(' ', 'ff');
-    }, ['needs_environment' => true]
-  );
-  $env->addFunction($pattern_demo);
-
-  $pattern_preview = new Twig_SimpleFunction(
-    function (Twig_Environment $env, $pattern, $patterns) {
-      if (!empty($patterns[$pattern])) {
-        $current_pattern = $patterns[$pattern];
-        $include_path = $current_pattern['use'];
-
-        $fields = [];
-        $variants = [];
-
-        // Fields:
-        foreach ($current_pattern['fields'] as $key => $field) {
-          $preview = [$key => $field['preview']];
-        }
-
-      }
-      return implode(' ', 'ff');
-    }, ['needs_environment' => true]
-  );
-  $env->addFunction($pattern_preview);
 }
 
 /**
