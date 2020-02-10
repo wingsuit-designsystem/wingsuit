@@ -216,6 +216,26 @@ class Pattern
     }
 
     /**
+     * Returns all possible changeable options.
+     *
+     * @return array
+     */
+    public function getOptionSet()
+    {
+        $optionSet = [];
+        $definition = $this->definition;
+        $variant_definition = isset($definition['variants'][$this->variant]) ? $definition['variants'][$this->variant] : null;
+        if (isset($definition['settings'])) {
+            foreach ($definition['settings'] as $setting_name => $setting) {
+                if (isset($setting['options']) && !isset($variant_definition['settings'][$setting_name])) {
+                    $optionSet[$setting_name] = $setting;
+                }
+            }
+        }
+        return $optionSet;
+    }
+
+    /**
      * @return array
      */
     public function getSettings()

@@ -11,14 +11,14 @@
     "random": false,
     "disco": false,
     "hay": true,
-    "mqs": false,
+    "mqs": true,
     "find": false,
-    "views-all": false,
-    "views-annotations": false,
-    "views-code": false,
-    "views-new": false,
-    "tools-all": false,
-    "tools-docs": false
+    "views-all": true,
+    "views-annotations": true,
+    "views-code": true,
+    "views-new": true,
+    "tools-all": true,
+    "tools-docs": true
   },
   "ishViewportRange": {
     "s": [
@@ -120,10 +120,10 @@
           ]
         },
         {
-          "id": "wingsuit_engine",
+          "id": "ws-demo",
           "recursive": true,
           "paths": [
-            "./../tools/render_engine"
+            "./../tools/render-demo"
           ]
         },
         {
@@ -194,7 +194,7 @@
           ]
         },
         {
-          "file": "./../tools/render_engine/engine.php",
+          "file": "./../tools/render-engine/engine.php",
           "functions": [
             "addEngineFunctions"
           ]

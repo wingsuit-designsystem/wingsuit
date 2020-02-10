@@ -12,6 +12,15 @@
           "options": {
             "close": "Close"
           }
+        },
+        "size": {
+          "type": "select",
+          "label": "Size",
+          "required": true,
+          "default_value": "max-w-xs",
+          "options": {
+            "max-w-xs": "Small"
+          }
         }
       }
     },
@@ -39,6 +48,9 @@
         }
       },
       "variants": {
+        "default" : {
+          "label": "Default"
+        },
         "invert": {
           "label": "Invert",
           "description": "Buttons without background but border."

@@ -28,7 +28,7 @@
   'inline-block',
   'hover:text-white',
   'rounded',
-  variant == '' ? 'bg-' ~ background_color ~ ' text-' ~ text_color ~ ' hover:bg-' ~ background_hover,
+  variant == 'default' ? 'bg-' ~ background_color ~ ' text-' ~ text_color ~ ' hover:bg-' ~ background_hover,
   variant == 'invert' ? 'text-' ~ background_color ~ ' bg-' ~ text_color ~ ' hover:bg-' ~ background_hover,
 ] | sort | join(' ') | trim %}
 {% if button_attributes is empty %}

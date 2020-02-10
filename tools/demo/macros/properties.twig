@@ -1,0 +1,40 @@
+{#
+  Renders tailwind properties as a table.
+
+  @param string title
+    The property title.
+  @param string doc_link
+    Link to the tailwind documentation.
+  @param string column_name
+    The name of the property column name.
+  @param string prefix
+    The prefix of the property. E.g. bg or text.
+#}
+{% macro table(title, doc_link, column_name, prefix, items) %}
+
+    <h2 class="pl-h2 ">{{ title }}{% if doc_link is not empty %}
+            <a class="pl-link pl-text-sm" href="{{ doc_link }}">(Tailwind documentation)</a>
+        {% endif %}</h2>
+    <div
+            class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+            style="max-height: 400px">
+        <table class="pl-table">
+            <thead>
+            <tr>
+                <th>Class</th>
+                <th>{{ column_name }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for name, value in items %}
+                <tr>
+                    <td class="pl-text-blue">.{{ prefix }}-{{ name }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endmacro %}
+
+

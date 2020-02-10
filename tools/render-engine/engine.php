@@ -41,4 +41,20 @@ function addEngineFunctions(\Twig_Environment &$env, $config)
         }, ['needs_context' => true, 'needs_environment' => true]
     );
     $env->addFunction($pattern);
+
+    $pattern_settings = new Twig_SimpleFunction (
+        'pattern_option_set',
+        function ($env, $context, $id, $variant = null) {
+            try {
+                $storage = PatternStorage::create($context['patterns']);
+                $pattern = $storage->load($id, $variant);
+                $optinoSet = $pattern->getOptionSet();
+                return $optinoSet;
+            } catch (\Throwable $e) {
+                return 'CRITICAL: ' . $e->getMessage();
+            }
+
+        }, ['needs_context' => true, 'needs_environment' => true]
+    );
+    $env->addFunction($pattern_settings);
 }

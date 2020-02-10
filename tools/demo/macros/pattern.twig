@@ -1,0 +1,101 @@
+{#
+  Renders patterns option set.
+
+  @param string id
+    The pattern id.
+  @param string variant
+    The pattern variant.
+  @param array patterns
+    All available patterns
+  @param array paths
+    Paths configuration
+#}
+{% macro _option_set(id, variant, patterns, paths) %}
+
+  {% set option_sets = pattern_option_set(id, variant) %}
+  <div><h2 class="pl-h2">Settings:</h2>
+    {% for set_name, option_set in option_sets %}
+
+      <section x-data="{ tab: 'foo' }" class="pl-mb-s">
+        <div class="pl-mb-s">
+          <h3 class="pl-h3">{{ option_set.label }}</h3>
+          {% for option_name, display in option_set['options'] %}
+            {% set tab_name = variant|default('n') ~ '-' ~ set_name ~ '-' ~ option_name %}
+            <button
+              x-on:click="tab = '{{ tab_name }}'"
+              x-bind:class="{ 'pl-tab-active': tab === '{{ tab_name }}' }"
+              class="pl-tab"
+            >{{ display }}</button>
+          {% endfor %}
+        </div>
+        <ul>
+          {% for option_name, display in option_set['options'] %}
+            {% set tab_name = variant|default('n') ~ '-' ~ set_name ~ '-' ~ option_name %}
+            {% set settings = {} %}
+            {% set settings = settings|merge({(set_name):(option_name)}) %}
+            <li x-show="tab === '{{ tab_name }}'">
+              {{ pattern_preview(id, variant, {}, settings) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+
+{#
+  Renders the pattern demo page.
+
+  @param string id
+    The pattern id.
+  @param array patterns
+    All available patterns
+  @param array paths
+    Paths configuration
+#}
+{% macro demo(id, patterns, paths) %}
+
+  {% if patterns[id] is not empty %}
+    {% set current_pattern = patterns[id] %}
+    <div class="pl-container">
+      <h1 class="pl-h1">Pattern: {{ current_pattern.label }}</h1>
+      {% if current_pattern.description %}
+        <p>{{ current_pattern.description }}</p>
+      {% endif %}
+    </div>
+    <hr class="pl-hr">
+    {% if current_pattern.variants|length != 0 %}
+
+      {% for variant, variant_config in current_pattern.variants %}
+        <section class="pl-container">
+          <h2 class="pl-h2">Variant: {{ variant_config.label }}</h2>
+          {% if variant_config.description %}
+            <p class="pl-mb-mb">{{ variant_config.description }}</p>
+          {% endif %}
+          <div class="pl-mb-s">
+            {{ pattern_preview(id, variant) }}
+          </div>
+          <div>
+            {{ _self._option_set(id, variant, patterns, paths) }}
+          </div>
+        </section>
+        <hr class="pl-hr">
+      {% endfor %}
+    {% else %}
+      <section class="pl-container">
+        <div class="pl-mb-s">
+          {{ pattern_preview(id, '') }}
+        </div>
+        {{ _self._option_set(id, variant, patterns, paths) }}
+      </section>
+    {% endif %}
+
+  {% else %}
+    No Pattern "{{ id }}" found. Available patterns are:
+    {% for key in patterns|keys %}
+      {{ key }},
+    {% endfor %}
+  {% endif %}
+  </div>
+{% endmacro %}

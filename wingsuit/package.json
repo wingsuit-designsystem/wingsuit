@@ -21,6 +21,7 @@
     "start": "npm run dev:pl-node",
     "yo": "yo",
     "pl-node": "node ./apps/node-pl/pl-app.js",
+    "ws-server": "node ../tools/render_engine/ws-render-server.js",
     "setup": "patternlab install --config ./apps/node-pl/patternlab-config.json && patternlab build --config ./apps/node-pl/patternlab-config.json",
     "export:pl": "patternlab export --config ./apps/node-pl/patternlab-config.json",
     "dev:pl-node": "cross-env-shell NODE_ENV=development \"npm run pl-node & webpack-dev-server --config ./apps/node-pl/webpack.config.js --hot\"",
