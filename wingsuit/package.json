@@ -48,7 +48,7 @@
     "@pattern-lab/core": "^5.4.0",
     "@pattern-lab/engine-twig-php": "^5.4.0",
     "@pattern-lab/uikit-workshop": "^5.5.0",
-    "@wingsuit-designsystem/tools": "^0.0.4",
+    "@wingsuit-designsystem/tools": "^0.0.6",
     "@wingsuit-designsystem/generator-new-component": "^0.0.2",
     "core-js": "^3.4.1",
     "enquire.js": "^2.1.6",

@@ -1,4 +1,4 @@
-grid:
+molecule1:
   use: "@organisms/grid/_grid.twig"
   label: Grid
   description: Grid pattern.
