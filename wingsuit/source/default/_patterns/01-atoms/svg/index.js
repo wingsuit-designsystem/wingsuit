@@ -2,7 +2,6 @@
  * svg
  */
 
-import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 
 // Module dependencies
@@ -38,21 +37,9 @@ export function disable($context, settings) {}
  * @param {jQuery} $context - A piece of DOM
  * @param {Object} settings - Settings object
  */
-export function enable($context, { svg = {} }) {
-  // Find our component within the DOM
-  const $svg = $('.svg', $context);
-  // Bail if component does not exist
-  if (!$svg.length) {
-    return;
-  }
-
+export function enable() {
   // Enable svg4everybody.
   svg4everybody();
-
-  // Merge defaults with incoming settings
-  const settings = Object.assign(defaults, svg);
-  // An example of what could be done with this component
-  $svg.addClass(settings.dummyClass);
 }
 
 export default enable;

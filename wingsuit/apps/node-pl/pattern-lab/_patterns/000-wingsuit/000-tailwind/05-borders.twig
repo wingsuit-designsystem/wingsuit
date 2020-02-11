@@ -5,9 +5,9 @@
  *
  */
 #}
-{% import "@wingsuit/_macros.twig" as macros %}
+{% import "@ws-demo/macros/properties.twig" as properties %}
 
-{% embed '@wingsuit/_demo-block.twig' with
+{% embed '@ws-demo/page.twig' with
   {
     "title": "Borders",
     "intro": "The <code>theme.border</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.",
@@ -55,7 +55,7 @@
     </section>
     <hr class="pl-hr">
     <section class="pl-section">
-      {{ macros.properties("Border Width", "https://tailwindcss.com/docs/border-width", "Properties", "border", tailwind.theme.borderWidth) }}
+      {{ properties.table("Border Width", "https://tailwindcss.com/docs/border-width", "Properties", "border", tailwind.theme.borderWidth) }}
       <h3 class="pt-10">Samples</h3>
       <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">
         {% for name, value in tailwind.theme.borderWidth %}
@@ -65,7 +65,7 @@
     </section>
     <hr class="pl-hr">
     <section class="pl-section">
-      {{ macros.properties("Border Radius", "https://tailwindcss.com/docs/border-radius", "Properties", "rounded", tailwind.theme.borderRadius) }}
+      {{ properties.table("Border Radius", "https://tailwindcss.com/docs/border-radius", "Properties", "rounded", tailwind.theme.borderRadius) }}
 
       <h3 class="pt-10">Samples</h3>
       <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">

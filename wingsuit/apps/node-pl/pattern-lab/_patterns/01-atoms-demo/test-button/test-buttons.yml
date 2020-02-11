@@ -1,8 +1,0 @@
-test_button:
-  example_var: This is an example var
-
-test_button_demo_block:
-  title: test-button Component
-  text:
-    lead: Add a quick description here.
-    summary: Add code examples here using <code>html code syntax</code>

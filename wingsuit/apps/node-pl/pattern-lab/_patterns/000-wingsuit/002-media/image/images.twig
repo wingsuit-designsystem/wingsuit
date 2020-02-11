@@ -1,9 +1,11 @@
-{% import "@wingsuit/_macros.twig" as macros %}
-{% embed '@wingsuit/_demo-block.twig' with
+{% import "@ws-demo/macros/code.twig" as code %}
+
+{% embed '@ws-demo/page.twig' with
   {
     "title": "Images",
     "intro": "Check <code>_data/imageStyles.yml</code> ",
   } %}
+
   {% block content %}
     <h2 class="pl-h2">Image styles</h2>
     {% for imageStyleName, imageStyleSetting in imageStyles %}
@@ -18,7 +20,7 @@
         } %}
         </div>
         <div class="pl-mt-s">
-        {{ macros.display_code(
+        {{ code.block(
           '{% include "@atoms/image/_image.twig" with {
     style: ' ~ imageStyleName ~ ',
     placeholder: true
@@ -42,7 +44,7 @@
           } %}
           </div>
           <div class="pl-mt-s">
-          {{ macros.display_code(
+          {{ code.block(
             '{% include "@atoms/image/_image.twig" with {
     style: ' ~ imageStyleName ~ ',
     placeholder: true
@@ -62,7 +64,7 @@
       } %}
     </div>
 <div class="pl-mt-s">
-    {{ macros.display_code(
+    {{ code.block(
       '{% include "@atoms/image/_image.twig" with {
     variant: \'primary\',
     src: paths.images ~\'/astrogoat.png\'
@@ -80,7 +82,7 @@
       image_classes: "image--bg"
     } %}
 <div class="pl-mt-s pl-mb-s">
-    {{ macros.display_code(
+    {{ code.block (
       '{% include "@atoms/image/_image.twig" with {
     variant: \'bg\',
     src: paths.images ~\'/ogo.svg\',
@@ -97,7 +99,7 @@
       image_classes: "image--bg"
     } %}
 <div class="pl-mt-s">
-    {{ macros.display_code(
+    {{ code.block(
       '{% include "@atoms/image/_image.twig" with {
     variant: \'bg\',
     src: paths.images ~\'/astrogoat.png\',

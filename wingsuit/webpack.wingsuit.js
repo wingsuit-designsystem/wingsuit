@@ -129,11 +129,6 @@ module.exports = {
     // Provides "global" vars mapped to an actual dependency. Allows e.g. jQuery
     // plugins to assume that `window.jquery` is available
     new ProvidePlugin({
-      // Bootstrap is dependant on jQuery and Popper
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
     }),
     // Handle .vue files
     new VueLoaderPlugin(),

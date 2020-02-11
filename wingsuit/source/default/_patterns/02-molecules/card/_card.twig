@@ -47,7 +47,7 @@
 {% set attributes = attributes|default(attributes_object()).addClass(classes) %}
 {# Component #}
 <{{element}} {{ attributes }}>
-  <div class="">
+  <div>
     {% block image %}
       {{ image }}
     {% endblock %}
@@ -64,6 +64,7 @@
       {% block preheadline %}
         {{ preheadline }}
       {% endblock %}
+
     </div>
   {% endif %}
   <{{headline__element}} class="{{ headline_classes }}">

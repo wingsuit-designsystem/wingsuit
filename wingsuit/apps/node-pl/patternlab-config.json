@@ -123,7 +123,7 @@
           "id": "ws-demo",
           "recursive": true,
           "paths": [
-            "./../tools/render-demo"
+            "./node_modules/@wingsuit-designsystem/tools/demo"
           ]
         },
         {
@@ -194,7 +194,7 @@
           ]
         },
         {
-          "file": "./../tools/render-engine/engine.php",
+          "file": "./node_modules/@wingsuit-designsystem/tools/render-engine/engine.php",
           "functions": [
             "addEngineFunctions"
           ]

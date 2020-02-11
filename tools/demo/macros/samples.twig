@@ -1,9 +1,0 @@
-{% macro display(title, text, prefix, items) %}
-    <h3 class="pl-h3 pl-mt">{{ title }}</h3>
-    <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
-        {% for name, value in items %}
-            <div class="mb-6"><p class="text-sm text-gray-600">.{{ prefix }}-{{ name }}</p>
-                <p class="{{ prefix }}-{{ name }} text-gray-800">{{ text }}</p></div>
-        {% endfor %}
-    </div>
-{% endmacro %}

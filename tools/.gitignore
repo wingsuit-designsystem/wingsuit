@@ -14,7 +14,7 @@ patterns.zip
 
 # Dependencies
 node_modules
-vendor
+
 
 # Generated files
 *.sass-cache/

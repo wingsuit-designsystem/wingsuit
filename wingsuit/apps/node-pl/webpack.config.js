@@ -34,7 +34,7 @@ const shared = {
     rules: [
       // Non-standard assets on the dependency chain
       {
-        test: /\.(yml|md)$/,
+        test: /\.(yml|md|yaml)$/,
         loader: 'file-loader',
         options: {
           emitFile: false,

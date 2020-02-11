@@ -1,5 +1,0 @@
-menu_demo_block:
-  title: 'menu Component'
-  text:
-    lead: 'Show all menu components.'
-    summary: 'Add code examples here using <code>html code syntax</code>'

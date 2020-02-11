@@ -19,5 +19,4 @@ import './astrogoat.png';
 
 // Import demo assets
 import './images.twig';
-import './images.yml';
 import './images.md';

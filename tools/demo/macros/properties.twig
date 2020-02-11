@@ -9,6 +9,8 @@
     The name of the property column name.
   @param string prefix
     The prefix of the property. E.g. bg or text.
+  @param array items
+    tailwind property items.
 #}
 {% macro table(title, doc_link, column_name, prefix, items) %}
 
@@ -37,4 +39,24 @@
     </div>
 {% endmacro %}
 
+{#
+  Renders tailwind properties as a list.
 
+  @param string title
+    The property title.
+  @param string text
+    The printed text.
+  @param string prefix
+    The prefix of the property. E.g. bg or text.
+  @param array items
+    tailwind property items.
+#}
+{% macro list(title, text, prefix, items) %}
+    <h3 class="pl-h3 pl-mt">{{ title }}</h3>
+    <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
+        {% for name, value in items %}
+            <div class="mb-6"><p class="text-sm text-gray-600">.{{ prefix }}-{{ name }}</p>
+                <p class="{{ prefix }}-{{ name }} text-gray-800">{{ text }}</p></div>
+        {% endfor %}
+    </div>
+{% endmacro %}

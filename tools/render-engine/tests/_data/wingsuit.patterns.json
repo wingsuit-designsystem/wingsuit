@@ -39,8 +39,10 @@
         "button_faker": {
           "type": "text",
           "label": "Content",
-          "faker": true,
-          "formatter": "text"
+          "preview": {
+            "faker": true,
+            "property": "text"
+          }
         }
       },
       "variants": {
@@ -50,14 +52,18 @@
           "settings": {
             "bg_color": "red",
             "txt_color": {
-              "faker": true,
-              "formatter": "text"
+              "preview": {
+                "faker": true,
+                "property": "text"
+              }
             }
           },
           "fields": {
             "button_content": {
-              "faker": true,
-              "formatter": "text"
+              "preview": {
+                "faker": true,
+                "property": "text"
+              }
             },
             "button_svg": "svg"
           }
