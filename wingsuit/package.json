@@ -49,7 +49,7 @@
     "@pattern-lab/core": "^5.4.0",
     "@pattern-lab/engine-twig-php": "^5.4.0",
     "@pattern-lab/uikit-workshop": "^5.6.0",
-    "@wingsuit-designsystem/generator-new-component": "^0.0.5",
+    "@wingsuit-designsystem/generator-new-component": "^0.0.6",
     "@wingsuit-designsystem/tools": "^0.0.16",
     "alpinejs": "^1.10.1",
     "core-js": "^3.4.1",
