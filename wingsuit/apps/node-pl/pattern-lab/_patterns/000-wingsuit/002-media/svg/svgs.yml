@@ -1,4 +1,0 @@
-svg_demo_block:
-  title: 'SVG Component'
-  intro: 'Store your SVG files in the SVG subdirectory to have them
-      made available via the <code>_svg--icon.twig</code> partial or using a Css Class.'

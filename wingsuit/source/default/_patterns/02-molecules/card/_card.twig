@@ -47,17 +47,24 @@
 {% set attributes = attributes|default(attributes_object()).addClass(classes) %}
 {# Component #}
 <{{element}} {{ attributes }}>
-  <div class="">
+  <div>
     {% block image %}
       {{ image }}
     {% endblock %}
    </div>
   <div>
   {% if preheadline is not empty  %}
-    <div class="{{ preheadline_classes }}">
+    <div {{ attributes|default(attributes_object()).addClass([
+      'text-base',
+      'mb-1',
+      'uppercase',
+      'text-gray-light',
+      'font-sans',
+    ] | sort | join(' ') | trim) }}>
       {% block preheadline %}
         {{ preheadline }}
       {% endblock %}
+
     </div>
   {% endif %}
   <{{headline__element}} class="{{ headline_classes }}">

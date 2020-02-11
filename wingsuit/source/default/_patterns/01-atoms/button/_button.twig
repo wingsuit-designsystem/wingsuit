@@ -3,21 +3,13 @@
  * @file
  * button
  *
- * Available variables for button:
- *  - button.variable_name [variable_type]: Description of the variable. Example below.
- *  - button.invert [bool]: When set, colors will be inverted for light display on dark background.
+ * See button.wingsuit.yaml for documentation.
  */
 #}
-{% set button_element = button_element | default ('div') %}
 
-
-{% set button_classes = [
-  'button',
-  'bg-keytec',
-  button_color
-] | sort | join(' ') | trim %}
-
-<{{ button_element }} class="{{ button_classes }}" {{ button_attributes }}>
-{{ button_text }}
-  {% block right %}{% endblock right %}
-</{{ button_element }}>
+<div>
+  <h1>button</h1>
+  <div>Wingsuit component!</div>
+  <div>Field variable: <code>{{ field_1 }}</code></div>
+  <div>Setting variable: <code>{{ setting_1 }}</code></div>
+</div>

@@ -11,14 +11,14 @@
     "random": false,
     "disco": false,
     "hay": true,
-    "mqs": false,
+    "mqs": true,
     "find": false,
-    "views-all": false,
-    "views-annotations": false,
-    "views-code": false,
-    "views-new": false,
-    "tools-all": false,
-    "tools-docs": false
+    "views-all": true,
+    "views-annotations": true,
+    "views-code": true,
+    "views-new": true,
+    "tools-all": true,
+    "tools-docs": true
   },
   "ishViewportRange": {
     "s": [
@@ -120,6 +120,13 @@
           ]
         },
         {
+          "id": "ws-demo",
+          "recursive": true,
+          "paths": [
+            "./node_modules/@wingsuit-designsystem/tools/demo"
+          ]
+        },
+        {
           "id": "protons",
           "recursive": true,
           "paths": [
@@ -175,6 +182,7 @@
             "./source/default/_macros"
           ]
         }
+
       ],
       "alterTwigEnv": [
         {
@@ -183,6 +191,12 @@
             "addFilters",
             "addFunctions",
             "addDebug"
+          ]
+        },
+        {
+          "file": "./node_modules/@wingsuit-designsystem/tools/render-engine/engine.php",
+          "functions": [
+            "addEngineFunctions"
           ]
         }
       ]

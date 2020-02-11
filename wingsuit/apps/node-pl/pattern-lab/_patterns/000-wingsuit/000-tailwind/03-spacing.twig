@@ -6,9 +6,10 @@
  * @see https://tailwindcss.com/docs/customizing-spacing
  */
 #}
-{% import "@wingsuit/_macros.twig" as macros %}
+{% import "@ws-demo/macros/properties.twig" as properties %}
+{% import "@ws-demo/macros/config.twig" as config %}
 
-{% embed '@wingsuit/_demo-block.twig' with
+{% embed '@ws-demo/page.twig' with
   {
     "title": "Customizing Spacing",
     "intro": "The <code>theme.spacing</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.",
@@ -16,13 +17,13 @@
   } %}
   {% block content %}
     <section class="pl-section">
-      {{ macros.properties("Padding", "https://tailwindcss.com/docs/padding", "Padding", "p", tailwind.theme.padding) }}
+      {{ properties.table("Padding", "https://tailwindcss.com/docs/padding", "Padding", "p", tailwind.theme.padding) }}
 
-      {{ macros.display_config('padding', tailwind.theme.padding) }}
+      {{ config.dipslay('padding', tailwind.theme.padding) }}
     </section>
     <hr class="pl-hr">
     <section class="pl-section">
-      {{ macros.properties("Margin", "https://tailwindcss.com/docs/margin", "Margin", "m", tailwind.theme.margin) }}
+      {{ properties.table("Margin", "https://tailwindcss.com/docs/margin", "Margin", "m", tailwind.theme.margin) }}
     </section>
   {% endblock %}
 

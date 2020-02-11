@@ -29,4 +29,7 @@ services:
     environment:
       - DOCKSAL=1
       - WINGSUIT_PATH=${WINGSUIT_PATH}
+      - PHP_IDE_CONFIG=serverName=${VIRTUAL_HOST}
+      - XDEBUG_CONFIG=remote_enable=1 remote_mode=req remote_port=9000 remote_host=wingsuit.docksal remote_connect_back=0
+
     #image: docksal/cli:2.0-php7.1

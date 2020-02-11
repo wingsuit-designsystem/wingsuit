@@ -1,14 +1,9 @@
-const purgecss =
-
 module.exports = {
   plugins: [
 
     require('tailwindcss'),
     require('postcss-nested'),
     require('autoprefixer'),
-    require('postcss-pxtorem')({
-      rootValue: 17,
-    }),
     process.env.NODE_ENV === 'production'
       ? require('@fullhuman/postcss-purgecss')({
 

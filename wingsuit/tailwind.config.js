@@ -1,10 +1,5 @@
 module.exports = {
   important: false,
-  theme: {
-    maxWidth: {
-      'container': '1230px'
-    },
-  },
   variants: {
     opacity: ['responsive'],
     borderWidth: ['responsive', 'hover', 'group-hover'],

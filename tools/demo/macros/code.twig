@@ -1,0 +1,11 @@
+{#
+  Renders demo code.
+
+  @param string code
+    The demo code.
+#}
+{% macro block(code) %}
+    <div class="pl-code rounded-lg text-white bg-black">
+        <pre>{{ code }}</pre>
+    </div>
+{% endmacro %}

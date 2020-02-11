@@ -11,14 +11,16 @@ function Pattern2YamlPlugin(sourceFolder, targetFilePath) {
 }
 
 Pattern2YamlPlugin.prototype.generate = function generate(callback) {
-  const filePattern = `${this.sourceFolder}/**/*.wingsuit.yml`;
-  const patternsObj = { patterns: [] };
+  const filePattern = `${this.sourceFolder}/**/*.wingsuit.yaml`;
+  const patternsObj = { patterns: {} };
+  let mergedPatters = {};
   // eslint-disable-next-line no-shadow
   glob.sync(filePattern).forEach((path) => {
     const file = fs.readFileSync(path, 'utf8');
     const parsedFiled = yaml.safeLoad(file);
-    patternsObj.patterns.push(parsedFiled);
+    mergedPatters = Object.assign(mergedPatters, parsedFiled);
   });
+  patternsObj.patterns = mergedPatters;
 
   fs.readJson(this.targetFilePath, (readerr, existingPatternJson) => {
     if (readerr) console.error(readerr, `Creating ${path.basename(this.targetFilePath)}!`);
@@ -28,6 +30,8 @@ Pattern2YamlPlugin.prototype.generate = function generate(callback) {
         if (writeerr) console.error(writeerr);
         callback(null);
       });
+    } else {
+      callback(null);
     }
   });
 };

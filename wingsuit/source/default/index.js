@@ -82,6 +82,8 @@ export const componentNames = () =>
  * Enable all components against a piece of DOM with some settings
  */
 export const enableAllComponents = ($dom, settings) =>
-  Object.values(components).forEach(({ enable }) => enable($dom, settings));
+  Object.values(components).forEach(({ enable }) =>
+    enable !== null ? enable($dom, settings) : null
+  );
 
 export default components;

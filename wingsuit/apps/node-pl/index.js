@@ -6,8 +6,6 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import $ from 'jquery';
-
 import 'alpinejs';
 
 // Prism highlighting in PL.
@@ -26,13 +24,14 @@ import { APP_NAME } from './wingsuit.app.config';
 import { enableAllComponents } from '../../source/default';
 
 // Adds PL-only styles, ie color swatches.
+import '@wingsuit-designsystem/tools/demo';
 import './css/_styleguide.css';
 
 // Watch the big pieces of PL like demos, _meta, data
 import demoSystem from './glob';
 
-// Send each component the $(document) as its context
-const $context = $(document);
+// Send each component the document as its context
+const $context = document;
 
 // Configure PL-specific settings here
 const settings = {
@@ -53,6 +52,3 @@ Object.values(demoSystem).forEach(component => {
     component.enable($context, settings);
   }
 });
-
-// Remove a pl-only helper class to hide the pre-load spinner on the welcome page
-$('body').removeClass('pl-loading');

@@ -10,6 +10,3 @@ import 'atoms/button';
 
 // Import demo assets
 import './buttons.twig';
-import './buttons.yml';
-import './buttons.md';
-

@@ -1,8 +1,0 @@
-button:
-  use: "@atoms/button/_button.twig"
-  label: Button
-  description: Button pattern.
-  fields:
-    content:
-      type: text
-      label: Content

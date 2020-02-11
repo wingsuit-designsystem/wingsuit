@@ -277,7 +277,6 @@ function addFunctions(\Twig_Environment &$env, $config) {
       array()
   );
   $env->addFunction($modifier_function);
-
 }
 
 /**

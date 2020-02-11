@@ -3,14 +3,13 @@
  * @file
  * <%= name %>
  *
- * Available variables for <%= name %>:
- *  - <%= underscoreName %>.variable_name [variable_type]: Description of the variable. Example below.
- *  - <%= underscoreName %>.invert [bool]: When set, colors will be inverted for light display on dark background.
+ * See <%= name %>.wingsuit.yaml for documentation.
  */
 #}
 
-<div class="<%= name %>">
+<div>
   <h1><%= name %></h1>
-  <div>Do good work!</div>
-  <div>Example scoped variable: <code>{{ <%= underscoreName %>.example_var }}</code></div>
+  <div>Wingsuit component!</div>
+  <div>Field variable: <code>{{ field_1 }}</code></div>
+  <div>Setting variable: <code>{{ setting_1 }}</code></div>
 </div>

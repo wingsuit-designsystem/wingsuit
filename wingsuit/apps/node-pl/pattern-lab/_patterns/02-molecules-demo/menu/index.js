@@ -10,6 +10,4 @@ import 'molecules/menu';
 
 // Import demo assets
 import './menus.twig';
-import './menus.yml';
-import './menus.md';
 
