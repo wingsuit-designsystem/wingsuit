@@ -43,9 +43,14 @@
 {% set imgSrc = 'holder.js/' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
 {{- imgSrc -}}
 {% endmacro %}
+
 {% set placeholderStyleKey = style|default('small_16x9_scale_and_crop') %}
 {% set isResponsiveImage = false %}
-{# `imageStyles` defined in `_data/imageStyles.yaml` #}
+
+{% set imageStyles = imageConfig.styles %}
+{% set imageStylesResponsive = imageConfig.stylesResponsive %}
+{% set imageBreakpoints = imageConfig.breakpoints %}
+
 {% set placeholderStyle = imageStyles[placeholderStyleKey] %}
 {% if placeholderStyle is empty %}
   {% set placeholderStyle = imageStylesResponsive[placeholderStyleKey] %}

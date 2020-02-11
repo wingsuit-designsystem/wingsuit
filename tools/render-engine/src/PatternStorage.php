@@ -52,7 +52,7 @@ class PatternStorage implements PatternStorageInterface
     {
         if (!isset(self::$patterns[$id])) {
             $keys = join(',', array_keys(self::$patterns));
-            throw new \Exception("Pattern $id not found. Available patterns are: $keys");
+            //throw new \Exception("Pattern $id not   . Available patterns are: '$keys'");
         }
         $pattern = new Pattern($id, self::$patterns[$id], $variant, $fields, $settings);
         $pattern->addSettingProvider('default', new BaseSettingPreviewProvider(self::$faker));

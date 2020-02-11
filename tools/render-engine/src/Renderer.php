@@ -26,7 +26,6 @@ class Renderer
         $variables = array_merge($variables, $fields);
         $variables = array_merge($variables, $settings);
         $template = $env->load($use);
-        $output = $template->render($variables);
-        return $output;
+        return $template->render($variables);
     }
 }

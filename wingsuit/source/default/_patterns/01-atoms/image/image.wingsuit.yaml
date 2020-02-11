@@ -16,4 +16,4 @@ image:
       default_value: true
     style:
       type: text
-      preview: small_16x9_scale_and_crop
+      preview: featured
