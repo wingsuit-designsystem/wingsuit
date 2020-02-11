@@ -43,9 +43,9 @@ const shared = {
     ],
   },
   plugins: [
-    new Tailwind2JsonPlugin(path.normalize(__dirname + '/../../tailwind.config'), path.normalize('apps/node-pl/pattern-lab/_data/tailwind-variables.json')),
-    new Svg2JsonPlugin('source/default/_patterns/01-atoms/svg/svg', 'apps/node-pl/pattern-lab/_data/svgs.json'),
-    new Patterns2JsonPlugin('source/default/_patterns/', 'apps/node-pl/pattern-lab/_data/patterns.json'),
+    new Tailwind2JsonPlugin(path.normalize(__dirname + '/../../tailwind.config'), path.normalize('apps/node-pl/pattern-lab/_data/tailwind.generated.json')),
+    new Svg2JsonPlugin('source/default/_patterns/01-atoms/svg/svg', 'apps/node-pl/pattern-lab/_data/svgs.generated.json'),
+    new Patterns2JsonPlugin('source/default/_patterns/', 'apps/node-pl/pattern-lab/_data/patterns.generated.json'),
     new DefinePlugin({
       BUILD_TARGET: JSON.stringify(APP_NAME),
     }),
@@ -106,7 +106,7 @@ const dev = {
   plugins: [
     // Recompile PL on any globbed PL file (see glob.js)
     new RunScriptOnFiletypeChange({
-      test: /\.(twig|yml|md|json)$/,
+      test: /\.(twig|yaml|md|json)$/,
       exec: [`npm run pl-node`],
     }),
   ],

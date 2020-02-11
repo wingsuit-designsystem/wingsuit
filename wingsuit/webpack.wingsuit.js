@@ -13,8 +13,6 @@ const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-
-
 // Constants: environment
 // NODE_ENV is set within all NPM scripts before running Webpack, eg:
 //

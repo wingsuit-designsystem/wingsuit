@@ -19,6 +19,8 @@ vendor
 *.sass-cache/
 .eslintcache
 *unison.*
+*.generated.json
+*.generated.css
 
 #IDE plugins
 .idea

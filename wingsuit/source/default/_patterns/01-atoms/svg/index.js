@@ -7,7 +7,7 @@ import svg4everybody from 'svg4everybody';
 // Module dependencies
 import 'protons';
 
-import './_icons.css';
+import './_icons.generated.css';
 
 // Module template
 import './_svg.twig';
