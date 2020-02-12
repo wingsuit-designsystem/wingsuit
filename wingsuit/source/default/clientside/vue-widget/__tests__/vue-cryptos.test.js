@@ -8,11 +8,6 @@ afterEach(cleanup);
 describe('vue-cryptos.vue', () => {
   fetch.mockResponse(JSON.stringify(mockData));
 
-  it('renders the component title', () => {
-    const { getByText } = render(FacetTable);
-    getByText('Cryptos');
-  });
-
   it('renders the default component filter', () => {
     const { getByText } = render(FacetTable);
     const filterElement = getByText('Filter:', { exact: false });

@@ -7,10 +7,10 @@ const path = require('path');
 
 const { DefinePlugin } = require('webpack');
 // Plugins
-const RunScriptOnFiletypeChange = require('../../tools/webpack/run-script-on-filetype-change');
 const Tailwind2JsonPlugin = require('@wingsuit-designsystem/tools/tailwind2json');
 const Patterns2JsonPlugin = require('@wingsuit-designsystem/tools/patterns2json');
 const Svg2JsonPlugin = require('@wingsuit-designsystem/tools/svg2json');
+const RunScriptOnFiletypeChange = require('../../tools/webpack/run-script-on-filetype-change');
 
 const wingsuit = require('../../wingsuit');
 // Constants: environment
@@ -20,6 +20,7 @@ const { PATH_DIST } = require('../../wingsuit.root.config');
 // Constants: app
 const appConfig = require('./wingsuit.app.config');
 
+// eslint-disable-next-line no-unused-vars
 const { APP_NAME, APP_PATH, APP_DIST, APP_DIST_PUBLIC } = appConfig;
 
 const shared = {
@@ -43,9 +44,18 @@ const shared = {
     ],
   },
   plugins: [
-    new Tailwind2JsonPlugin(path.normalize(__dirname + '/../../tailwind.config'), path.normalize('apps/node-pl/pattern-lab/_data/tailwind.generated.json')),
-    new Svg2JsonPlugin('source/default/_patterns/01-atoms/svg/svg', 'apps/node-pl/pattern-lab/_data/svgs.generated.json'),
-    new Patterns2JsonPlugin('source/default/_patterns/', 'apps/node-pl/pattern-lab/_data/patterns.generated.json'),
+    new Tailwind2JsonPlugin(
+      path.normalize(`${__dirname}/../../tailwind.config`),
+      path.normalize('apps/node-pl/pattern-lab/_data/tailwind.generated.json')
+    ),
+    new Svg2JsonPlugin(
+      'source/default/_patterns/01-atoms/svg/svg',
+      'apps/node-pl/pattern-lab/_data/svgs.generated.json'
+    ),
+    new Patterns2JsonPlugin(
+      'source/default/_patterns/',
+      'apps/node-pl/pattern-lab/_data/patterns.generated.json'
+    ),
     new DefinePlugin({
       BUILD_TARGET: JSON.stringify(APP_NAME),
     }),
@@ -106,7 +116,7 @@ const dev = {
   plugins: [
     // Recompile PL on any globbed PL file (see glob.js)
     new RunScriptOnFiletypeChange({
-      test: /\.(twig|yaml|md|json)$/,
+      test: /\.(twig|yml|yaml|md|json)$/,
       exec: [`npm run pl-node`],
     }),
   ],

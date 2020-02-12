@@ -3,6 +3,7 @@ dist/
 _icons-generated.scss
 dependencyGraph.json
 patterns.zip
+yarn-error.log
 
 # OS generated files
 *.swp

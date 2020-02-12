@@ -126,11 +126,9 @@ module.exports = {
     new ProgressPlugin({ profile: false }),
     // Provides "global" vars mapped to an actual dependency. Allows e.g. jQuery
     // plugins to assume that `window.jquery` is available
-    new ProvidePlugin({
-    }),
+    new ProvidePlugin({}),
     // Handle .vue files
     new VueLoaderPlugin(),
-
   ],
   resolve: {
     alias: {

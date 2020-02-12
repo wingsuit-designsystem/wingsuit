@@ -11,7 +11,7 @@ function Pattern2YamlPlugin(sourceFolder, targetFilePath) {
 }
 
 Pattern2YamlPlugin.prototype.generate = function generate(callback) {
-  const filePattern = `${this.sourceFolder}/**/*.wingsuit.yaml`;
+  const filePattern = `${this.sourceFolder}/**/*.wingsuit.{yml,yaml}`;
   const patternsObj = { patterns: {} };
   let mergedPatters = {};
   // eslint-disable-next-line no-shadow

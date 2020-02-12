@@ -7,24 +7,6 @@ import banner from '../src/vue-cards/components/banner.vue';
 afterEach(cleanup);
 
 describe('card.vue', () => {
-  it('renders component with supplied props', () => {
-    const props = {
-      id: 77,
-      name: 'waffles',
-      phone: '555-555-5555',
-      website: 'waffles.com',
-      email: 'admin@waffles.com',
-    };
-
-    const { getByText } = render(card, { props });
-
-    // getByText() fails test if text not found
-    getByText('waffles');
-    getByText('555-555-5555');
-    getByText('waffles.com');
-    getByText('admin@waffles.com');
-  });
-
   it('initializes isClicked status as false', () => {
     const { getByText } = render(card);
     const clickStatus = getByText('clicked:', { exact: false });
@@ -72,17 +54,6 @@ describe('cards.vue', () => {
       email: 'admin@bacon.com',
     },
   ];
-
-  it('renders component with supplied props', () => {
-    const props = { cards: CARDS_DATA };
-    const { getByText } = render(cards, { props });
-
-    // getByText() fails test if text not found
-    getByText('waffles');
-    getByText('555-555-5555');
-    getByText('waffles.com');
-    getByText('admin@waffles.com');
-  });
 
   it('displays the correct number of cards', () => {
     const props = { cards: CARDS_DATA };

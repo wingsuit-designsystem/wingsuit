@@ -29,8 +29,6 @@
  * since JavaScript imports are handled by Webpack.
  */
 
-import 'atoms/grid';
-
 // Import the card component
 import card from './card.vue';
 
@@ -59,14 +57,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-// All Sass tokens (variables, functions, and mixins) are provided by Webpack
-// to all Sass files. It is also possible to import manually, if need be.
-.card-hover:hover {
-  background-color: $light;
-}
-.scoped-background {
-  background-color: $white;
-}
-</style>

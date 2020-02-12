@@ -18,8 +18,6 @@ const appConfig = require('./wingsuit.app.config');
 
 const { APP_NAME, APP_DESIGN_SYSTEM, APP_DIST, APP_DIST_PUBLIC } = appConfig;
 
-const patterDirName = appConfig.APP_DESIGN_SYSTEM + '/_patterns';
-
 const shared = {
   entry: {
     app: [path.resolve(__dirname, 'index.js')],
@@ -30,6 +28,13 @@ const shared = {
   },
   module: {
     rules: [
+      {
+        test: /\.(yml|md|yaml)$/,
+        loader: 'file-loader',
+        options: {
+          emitFile: false,
+        },
+      },
       {
         test: /\.twig$/,
         loader: 'file-loader',

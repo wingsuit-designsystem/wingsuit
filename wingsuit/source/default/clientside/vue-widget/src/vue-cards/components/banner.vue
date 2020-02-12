@@ -24,8 +24,6 @@
  * - Utility functions used within methods()
  */
 
-import { randRGB } from 'tokens/js/utils';
-
 export default {
   name: 'Banner',
   props: {
@@ -54,25 +52,8 @@ export default {
   },
   methods: {
     randomColor() {
-      return `rgba(${randRGB()},${randRGB()},${randRGB()},1)`;
+      return `dummy`;
     },
   },
 };
 </script>
-
-<style lang="scss">
-// sass variables are provided by Webpack, but it is also possible to import.
-
-// This is mainly here to show that all variables and mixins are available to
-// Sass here.
-.vue-banner {
-  margin: map-get($spacers, 5);
-  padding: map-get($spacers, 4);
-  font-size: $font-size-lg;
-  background-color: map-get($theme-colors, 'new');
-
-  h3 {
-    color: map-get($theme-colors, 'light');
-  }
-}
-</style>

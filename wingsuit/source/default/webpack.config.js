@@ -9,18 +9,13 @@ const namespaces = require('./namespaces');
 
 module.exports = {
   module: {
-    rules: [
-
-    ],
+    rules: [],
   },
   plugins: [
     // Sprite system options
     new SVGSpritemapPlugin(path.resolve(namespaces.atoms, 'svg/svg/**/*.svg'), {
       styles: {
-        filename: path.resolve(
-          namespaces.atoms,
-          'svg/_icons.generated.css'
-        ),
+        filename: path.resolve(namespaces.atoms, 'svg/_icons.generated.css'),
       },
       output: {
         filename: 'images/spritemap.svg',
