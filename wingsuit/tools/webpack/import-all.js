@@ -18,7 +18,10 @@ function importAll(context) {
     // Add a key to the components object that is the component's name, and a
     // value that is full component.
     // WARNING: this presumes unique component names *across the design system*
-    return Object.assign(accumulator, { [component.name]: component });
+    if (component.name !== undefined) {
+      return Object.assign(accumulator, { [component.name]: component });
+    }
+    return Object.assign(accumulator, {});
   }, {});
 }
 

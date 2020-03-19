@@ -10,19 +10,19 @@
     {% set imageStyles = imageConfig.styles %}
     {% set imageStylesResponsive = imageConfig.stylesResponsive %}
 
-    <h2 class="pl-h2">Image styles</h2>
+    <div class="ws-doc-block"><h2>Image styles</h2></div>
     {% for imageStyleName, imageStyleSetting in imageStyles %}
       <div>
         {% set imageStyleTitle = imageStyleSetting.label is not empty ? imageStyleSetting.label : imageStyleName %}
-        <h3 class="pl-h3">{{ imageStyleTitle }} <span class="pl-text-sm ">({{ imageStyleName }})</span></h3>
-        <div class="pl-mt-s">
+        <div class="ws-doc-block"><h3>{{ imageStyleTitle }} <span class="ws-text-sm">({{ imageStyleName }})</span></h3></div>
+        <div class="ws-mt-s">
         {% include "@atoms/image/_image.twig" with {
           variant: 'primary',
           style: imageStyleName,
           placeholder: true,
         } %}
         </div>
-        <div class="pl-mt-s">
+        <div class="ws-mt-s">
         {{ code.block(
           '{% include "@atoms/image/_image.twig" with {
     style: ' ~ imageStyleName ~ ',
@@ -30,23 +30,24 @@
   } %}'
         ) }}
         </div>
-        <hr class="pl-hr-s">
+        <hr class="ws-doc-block-seperator">
       </div>
     {% endfor %}
     {% if imageStylesResponsive is not empty %}
-      <hr class="pl-hr">
-      <h2 class="pl-h2">Responsive Image styles</h2>
+      <hr class="ws-doc-block-seperator">
+      <div class="ws-doc-block">
+      <h2 class="ws-h2">Responsive Image styles</h2></div>
       {% for imageStyleName, imageStyleSetting in imageStylesResponsive %}
         <div>
           {% set imageStyleTitle = imageStyleSetting.label is not empty ? imageStyleSetting.label : imageStyleName %}
-          <h3 class="pl-h3">{{ imageStyleTitle }} <span class="pl-text-sm ">({{ imageStyleName }})</span></h3>
-          <div class="pl-mt-s">
+        <div class="ws-doc-block"><h3 class="ws-h3">{{ imageStyleTitle }} <span class="ws-text-sm ">({{ imageStyleName }})</span></h3></div>
+          <div class="ws-mt-4">
           {% include "@atoms/image/_image.twig" with {
             style: imageStyleName,
             placeholder: true,
           } %}
           </div>
-          <div class="pl-mt-s">
+          <div class="ws-mt-s">
           {{ code.block(
             '{% include "@atoms/image/_image.twig" with {
     style: ' ~ imageStyleName ~ ',
@@ -54,19 +55,19 @@
   } %}'
           ) }}
           </div>
-          <hr class="pl-hr-s">
+          <hr class="ws-doc-block-seperator-s">
         </div>
       {% endfor %}
     {% endif %}
-    <hr class="pl-hr">
-    <h2 class="pl-h2">Image using paths.images path</h2>
+    <hr class="ws-doc-block-seperator">
+    <div class="ws-doc-block"><h2>Image using paths.images path</h2></div>
     <div>
       {% include '@atoms/image/_image.twig' with {
         variant: 'primary',
         src: paths.images ~'/astrogoat.png'
       } %}
     </div>
-<div class="pl-mt-s">
+<div class="ws-mt-s">
     {{ code.block(
       '{% include "@atoms/image/_image.twig" with {
     variant: \'primary\',
@@ -74,9 +75,9 @@
   } %}'
     ) }}
 </div>
-    <hr class="pl-hr">
-    <h2 class="pl-h2">Background Images</h2>
-    <h3 class="pl-h3">SVG</h3>
+    <hr class="ws-doc-block-seperator">
+    <h2 class="ws-h2">Background Images</h2>
+    <h3 class="ws-h3">SVG</h3>
     {% include '@atoms/image/_image.twig' with {
       variant: 'bg',
       placeholder: false,
@@ -84,7 +85,7 @@
       alt: 'A friendly goat wearing a space helmet. The Astrogoat!',
       image_classes: "image--bg"
     } %}
-<div class="pl-mt-s pl-mb-s">
+<div class="ws-mt-s ws-mb-s">
     {{ code.block (
       '{% include "@atoms/image/_image.twig" with {
     variant: \'bg\',
@@ -94,14 +95,14 @@
   } %}'
     ) }}
 </div>
-    <h3 class="pl-h3">PNG</h3>
+    <h3 class="ws-h3">PNG</h3>
     {% include '@atoms/image/_image.twig' with {
       variant: 'bg',
       src: paths.images ~ '/astrogoat.png',
       alt: 'A friendly goat wearing a space helmet. The Astrogoat!',
       image_classes: "image--bg"
     } %}
-<div class="pl-mt-s">
+<div class="ws-mt-s">
     {{ code.block(
       '{% include "@atoms/image/_image.twig" with {
     variant: \'bg\',

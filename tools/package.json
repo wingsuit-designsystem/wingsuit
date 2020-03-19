@@ -20,11 +20,13 @@
   "type": "module",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
+    "alpinejs": "^2.0.1",
     "eslint-auto-fix": "^1.0.1",
     "fs-extra": "^8.1",
     "glob": "^7.1.6",
     "js-yaml": "^3.13.1",
     "jsondiffpatch": "^0.3",
+    "prismjs": "^1.19.0",
     "tailwindcss": "~1",
     "yo": "^3.1.1"
   },

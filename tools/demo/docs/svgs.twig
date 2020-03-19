@@ -8,9 +8,9 @@
   } %}
 
   {% block content %}
-    <section class="pl-section">
-      <h2 class="pl-h2">Icons</h2>
-      <table  class="pl-table">
+    <section class="ws-section">
+      <h2 class="ws-h2">Icons</h2>
+      <table  class="ws-table">
         <thead>
         <tr>
           <th>Icon Name</th>
@@ -28,7 +28,7 @@
             <td>
               {% include "@atoms/svg/_svg--icon.twig" with {
                 icon: svgIcon,
-                size: 'pl-w-4'
+                size: 'ws-w-4'
               } %}
               {{ code.block(
                 '{% include "@atoms/svg/_svg--icon.twig" with {
@@ -40,7 +40,7 @@
             <td>
             <div class="sprite-{{ svgIcon }} w-4 h-4"></div>
               {{ code.block(
-                '&lt;i class="sprite-' ~ svgIcon ~ ' pl-w-4 pl-h-4">&lt;/i>'
+                '&lt;i class="sprite-' ~ svgIcon ~ ' ws-w-4 ws-h-4">&lt;/i>'
               ) }}
             </td>
 

@@ -146,17 +146,18 @@ class Pattern
 
         // Overwrite fields.
         foreach ($overwrittenFields as $name => $value) {
-            $this->definition['fields'][$name] = $value;
+            $this->definition['fields'][$name]['preview'] = $value;
             if ($variant != null) {
-                $this->definition['variants'][$variant]['fields'][$name] = $value;
+                $this->definition['variants'][$variant]['fields'][$name]['preview'] = $value;
             }
         }
 
         // Overwrite settings.
         foreach ($overwrittenSettings as $name => $value) {
-            $this->definition['settings'][$name] = $value;
+            $this->definition['settings'][$name]['preview'] = $value;
             if ($variant != null) {
-                $this->definition['variants'][$variant]['settings'][$name] = $value;
+                $this->definition['variants'][$variant]['settings'][$name]['preview']  = $value;
+                $this->definition['variants'][$variant]['settings'][$name]['overwritten'] = true;
             }
         }
     }
@@ -274,7 +275,7 @@ class Pattern
             foreach ($definition['fields'] as $field_name => $field) {
                 $result_pattern = null;
                 if (isset($variant_definition['fields'][$field_name])) {
-                    $result_pattern = $this->getPattern($variant_definition['settings'][$field_name]);
+                    $result_pattern = $this->getPattern($variant_definition['fields'][$field_name]);
                 }
                 if (empty($result_pattern)) {
                     $result_pattern = $this->getPattern($field);
@@ -287,6 +288,60 @@ class Pattern
         return $data;
     }
 
+    public function getVariables() {
+        $variables = [];
+        $fields = $this->getFields();
+        $settings = $this->getSettings();
+        $variant = $this->variant();
+        if (!empty($variant)) {
+            $variables['variant'] = $variant;
+        }
+        $variables = array_merge($variables, $fields);
+        $variables = array_merge($variables, $settings);
+        return $variables;
+    }
+
+    public function hasSettingDefinitions()
+    {
+        $defs = $this->getSettingDefinitions();
+        return count($defs) === 0 ? false : true;
+    }
+    /**
+     * @return array
+     */
+    public function getSettingDefinitions()
+    {
+        $data = [];
+        $definition = $this->definition;
+        if (isset($definition['settings'])) {
+            $variant_definition = isset($definition['variants'][$this->variant]) ? $definition['variants'][$this->variant] : null;
+            foreach ($definition['settings'] as $setting_name => $setting) {
+                if (!isset($variant_definition['settings'][$setting_name])
+                || (isset($variant_definition['settings'][$setting_name]['overwritten']) &&
+                        $variant_definition['settings'][$setting_name]['overwritten'] == true
+                    )
+                ) {
+                    $data[$setting_name] = $setting;
+                }
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldDefinitions()
+    {
+        $data = [];
+        $definition = $this->definition;
+        if (isset($definition['fields'])) {
+            foreach ($definition['fields'] as $field_name => $field) {
+                $data[$field_name] = $field;
+            }
+        }
+        return $data;
+    }
     /**
      * @return array
      */

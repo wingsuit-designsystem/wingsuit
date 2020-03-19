@@ -4,8 +4,7 @@
   @param string code
     The demo code.
 #}
-{% macro block(code) %}
-    <div class="pl-code rounded-lg text-white bg-black">
-        <pre>{{ code }}</pre>
-    </div>
+{% macro block(code, language) %}
+
+ <div class="ws-code ws-rounded-lg ws-mt-4 ws-font-sm ws-text-white ws-p-4 ws-bg-gray-800 ws-font-mono "><pre><code class="language-{{language|default('twig')}}">{{ code }}</code></pre></div>
 {% endmacro %}

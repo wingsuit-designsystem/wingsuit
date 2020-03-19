@@ -38,6 +38,22 @@ function addEngineFunctions(\Twig_Environment &$env, $config)
     $env->addFunction($pattern);
 
     $pattern = new Twig_SimpleFunction (
+        'get_pattern',
+        function ($env, $context, $id, $variant = null, $fields = [], $settings = []) {
+            try {
+                $context = engine_process_context($context);
+                $storage = PatternStorage::create($context['patterns']);
+                $pattern = $storage->load($id, $variant, $fields, $settings);
+                return $pattern;
+            } catch (\Throwable $e) {
+                return 'CRITICAL: ' . $e->getMessage();
+            }
+
+        }, ['needs_context' => true, 'needs_environment' => true]
+    );
+    $env->addFunction($pattern);
+
+    $pattern = new Twig_SimpleFunction (
         'pattern_preview',
         function ($env, $context, $id, $variant = null, $fields = [], $settings = []) {
             try {

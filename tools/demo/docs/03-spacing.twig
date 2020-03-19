@@ -16,13 +16,13 @@
     "doc_link": "https://tailwindcss.com/docs/customizing-spacing"
   } %}
   {% block content %}
-    <section class="pl-section">
+    <section class="ws-section">
       {{ properties.table("Padding", "https://tailwindcss.com/docs/padding", "Padding", "p", tailwind.theme.padding) }}
 
       {{ config.dipslay('padding', tailwind.theme.padding) }}
     </section>
-    <hr class="pl-hr">
-    <section class="pl-section">
+    <hr class="ws-doc-block-seperator">
+    <section class="ws-section">
       {{ properties.table("Margin", "https://tailwindcss.com/docs/margin", "Margin", "m", tailwind.theme.margin) }}
     </section>
   {% endblock %}

@@ -59,6 +59,9 @@ module.exports = {
             options: {
               sourceMap: true,
               ident: 'postcss',
+              config: {
+                path: 'postcss.config.js',
+              },
             },
           },
           {

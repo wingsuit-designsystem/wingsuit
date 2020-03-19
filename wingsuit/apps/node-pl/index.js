@@ -8,16 +8,6 @@ import 'regenerator-runtime/runtime';
 
 import 'alpinejs';
 
-// Prism highlighting in PL.
-// Prism is kind of dumb and just operates globally.
-import 'prismjs/components/prism-core.min';
-import 'prismjs/components/prism-clike.min';
-import 'prismjs/components/prism-javascript.min';
-import 'prismjs/components/prism-twig.min';
-import 'prismjs/components/prism-css.min';
-import 'prismjs/components/prism-scss.min';
-import 'prismjs/components/prism-markup.min';
-
 // Local config
 import { APP_NAME } from './wingsuit.app.config';
 // Full design system. May dupe the above, but Webpack don't care.
