@@ -14,7 +14,7 @@ import 'prismjs/components/prism-scss.min';
 import 'prismjs/components/prism-markup.min';
 import 'alpinejs';
 
-import './dist/tailwind.css';
+// import './dist/tailwind.css';
 import './00-welcome.twig';
 import './docs/index';
 import './macros/index';

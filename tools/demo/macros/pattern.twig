@@ -22,7 +22,7 @@
             </div>
             {% for option_name, option_display in pattern_setting['options'] %}
                 <div>
-                    {{ tabs.radio(setting_name ~ "-" ~ option_name, option_display, "x-on:click=\"pattern_set = '" ~ setting_name ~ "-" ~ option_name ~ "'\"", "x-bind:class=\"{ 'bg-purple-600 transform translate-x-full': pattern_set === '" ~ setting_name ~ "-" ~ option_name ~ "' }\"") }}
+                    {{ tabs.radio(setting_name ~ "-" ~ option_name, option_display, "x-init=\"$watch('pattern_set', value => $dispatch('pattern-setting-changed', {setting:'xx',value:value}))\" x-on:click=\"pattern_set = '" ~ setting_name ~ "-" ~ option_name ~ "'\"", "x-bind:class=\"{ 'bg-purple-600 transform translate-x-full': pattern_set === '" ~ setting_name ~ "-" ~ option_name ~ "' }\"") }}
                 </div>
             {% endfor %}
         {% endset %}
@@ -111,7 +111,11 @@
 {% macro variant(pattern_id, variant_id, envContext) %}
     {% set pattern = envContext['patterns'][pattern_id] %}
     <div class="ws-flex ws-flex-col ws-flex-grow"
-         x-data="{pane_is_open: false,  pattern_set: '', settings_pane: '', addition_infos: '' }">
+         x-data="{pane_is_open: false,  pattern_set: '', settings_pane: '', addition_infos: '', rendered_pattern: '' }"
+         x-init="$watch('pattern_set', value => fetch('http://127.0.0.1:8081?setting='+pattern_set+'&pattern=01-atoms/button/_button.twig')
+                    .then(response => response.text())
+                    .then(html => rendered_pattern = html))"
+    >
         <main class="ws-flex ws-flex-col ws-flex-grow">
             <div class="ws-flex-grow ws-flex ws-flex-row">
                 <div class="ws-flex-grow">
@@ -119,6 +123,12 @@
                         <h1 class="ws-doc-h1 ws-text-center">{{ pattern.label }}</h1>
                         <hr class="ws-doc-seperator ws-mb-8">
                     </header>
+
+                    -------------------------------------- DYNAMIC --------------------------------------
+                    <div x-html="rendered_pattern">
+
+                    </div>
+                    -------------------------------------- DYNAMIC --------------------------------------
 
                     <div x-show="pattern_set === ''">
                         {{ _self.variant_setting(pattern_id, variant_id, {}, envContext) }}

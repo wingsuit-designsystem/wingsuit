@@ -1,13 +1,35 @@
-var http = require("http");
+const http = require("http");
+const url = require("url");
+const TwigRenderer = require('@basalt/twig-renderer');
 
-http.createServer(function (request, response) {
-    // Send the HTTP header
-    // HTTP Status: 200 : OK
-    // Content Type: text/plain
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+http.createServer((request, response) => {
 
-    // Send the response body as "Hello World"
-    response.end('Hello World\n');
+    const queryData = url.parse(request.url, true).query;
+
+    const renderer = new TwigRenderer({
+        src: {
+            roots: [__dirname+'/../../wingsuit/source/default/_patterns']
+        }
+    });
+
+    const settings = queryData.setting.split('-');
+    const data = {[settings[0]]: settings[1]};
+
+    console.log("rendering pattern "+queryData.pattern, data)
+
+    renderer.render(queryData.pattern, data).then((results) => {
+        if(results.ok){
+            response.writeHead(200, {'Content-Type': 'text/plain', 'Access-Control-Allow-Origin':'*'});
+            response.end(results.html);
+
+        }else{
+            response.writeHead(500, {'Content-Type': 'text/plain', 'Access-Control-Allow-Origin':'*'});
+            response.end(results.message);
+        }
+
+    });
+
+
 }).listen(8081);
 
 // Console will print the message
