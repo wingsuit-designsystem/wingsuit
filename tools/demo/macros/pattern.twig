@@ -112,9 +112,9 @@
     {% set pattern = envContext['patterns'][pattern_id] %}
     <div class="ws-flex ws-flex-col ws-flex-grow"
          x-data="{pane_is_open: false,  pattern_set: '', settings_pane: '', addition_infos: '', rendered_pattern: '' }"
-         x-init="$watch('pattern_set', value => fetch('http://127.0.0.1:8081?setting='+pattern_set+'&pattern=01-atoms/button/_button.twig')
-                    .then(response => response.text())
-                    .then(html => rendered_pattern = html))"
+         x-init="$watch('pattern_set', value => fetch('/dynamic-pattern-renderer?setting='+pattern_set+'&pattern=01-atoms/button/_button.twig')
+                    .then(response => response.json())
+                    .then(json => rendered_pattern = json.html))"
     >
         <main class="ws-flex ws-flex-col ws-flex-grow">
             <div class="ws-flex-grow ws-flex ws-flex-row">

@@ -20,3 +20,5 @@ import './docs/index';
 import './macros/index';
 import './patterns/index';
 import './page.twig';
+// import './dynamic-pattern-server';
+

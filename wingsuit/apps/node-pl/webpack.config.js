@@ -91,6 +91,33 @@ const dev = {
     historyApiFallback: true,
     // Injects all the webpack dev server code right in the page
     inline: true,
+    before: function(app, server, compiler) {
+      app.get('/dynamic-pattern-renderer', function(req, res) {
+        const url = require("url");
+        const TwigRenderer = require('@basalt/twig-renderer');
+        const queryData = url.parse(req.url, true).query;
+        const renderer = new TwigRenderer({
+          src: {
+            roots: [__dirname+'/../../source/default/_patterns']
+          }
+        });
+        const settings = queryData.setting.split('-');
+        const data = {[settings[0]]: settings[1]};
+
+        console.log("rendering pattern "+queryData.pattern, data)
+
+        let html;
+        renderer.render(queryData.pattern, data).then((results) => {
+          if(results.ok){
+            html = results.html;
+
+          }else{
+            html = results.message;
+          }
+          res.json({ html: html });
+        });
+      });
+    },
     // All stats available here: https://webpack.js.org/configuration/stats/
     stats: {
       depth: false,
