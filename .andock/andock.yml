@@ -1,0 +1,33 @@
+# andock.yml (version: 1.1.1)
+
+## The display name and the id of the project.
+project_name: "wingsuit"
+project_id: "yp5w5mz"
+
+## The git checkout repository.
+git_repository_path: https://github.com/wingsuit-designsystem/wingsuit.git
+
+## The virtual host configuration pattern.
+virtual_hosts:
+  default:
+    virtual_host: "{{ branch }}.wingsuit.dev.key-tec.de"
+    container: web
+
+## Mounts describe writeable persistent volumes in the docker container.
+# mounts:
+#   files:
+#     path: 'docroot/files'
+
+## Let's encrypt.
+## Uncomment to enable let's encrypt certificate generation.
+# letsencrypt_enable: true
+
+## ansible build hooks.
+## The hooks that will be triggered when the environment is built/initialized/updated.
+hook_build_tasks: "{{project_path}}/.andock/hooks/build_tasks.yml"
+hook_build_test_tasks: "{{project_path}}/.andock/hooks/build_test_tasks.yml"
+hook_init_tasks: "{{project_path}}/.andock/hooks/init_tasks.yml"
+hook_update_tasks: "{{project_path}}/.andock/hooks/update_tasks.yml"
+hook_test_tasks: "{{project_path}}/.andock/hooks/test_tasks.yml"
+
+
