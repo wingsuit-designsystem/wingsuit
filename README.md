@@ -78,13 +78,15 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
 
 
 ## Development
-
+```
 cd PROJECT/tools
 npm link
 cd PROJECT/wingsuit
 npm link @wingsuit-designsystem/tools
-
+```
+```
 cd PROJECT/pattern-loader
 npm link
 cd PROJECT/wingsuit
 npm link pattern-loader
+```
