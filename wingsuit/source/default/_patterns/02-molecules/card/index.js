@@ -8,4 +8,4 @@ import './_card.twig';
 // Module styles
 import './_card.css';
 
-import './card.wingsuit.yaml';
+import './card.wingsuit.yml';

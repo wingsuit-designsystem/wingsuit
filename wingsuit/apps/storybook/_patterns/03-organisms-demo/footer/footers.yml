@@ -1,0 +1,42 @@
+footer:
+  contact: 'KEY-TEC GmbH &amp; Co. KG<br>Blutenburgstr. 68<br>80636 München<br><a href="tel:089200056600">+49 (0) 89 / 2000 566 - 00</a><br><a href="mailto:patrick.konstantin@key-tec.de">patrick.konstantin@key-tec.de</a>'
+  media: '<img src="https://picsum.photos/140/109" alt="">'
+  footer_copyright:
+    copyright: '© 2019 KEY-TEC GmbH & Co. KG'
+  menu:
+    items:
+      link1:
+        title: 'Leistungen'
+        url: '#'
+      link2:
+        title: 'Referenzen'
+        url: '#'
+      link3:
+        title: 'CTI'
+        url: '#'
+      link4:
+        title: 'Leistungen'
+        url: '#'
+      link5:
+        title: 'Referenzen'
+        url: '#'
+      link6:
+        title: 'CTI'
+        url: '#'
+  menu_privacy:
+    items:
+      link1:
+        title: 'Leistungen'
+        url: '#'
+      link2:
+        title: 'Referenzen'
+        url: '#'
+      link3:
+        title: 'CTI'
+        url: '#'
+
+footer_demo_block:
+  title: 'footer Component'
+  text:
+    lead: 'Add a quick description here.'
+    summary: 'Add code examples here using <code>html code syntax</code>'

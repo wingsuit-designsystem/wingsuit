@@ -1,0 +1,35 @@
+grid_1:
+  columns: 1
+  margin_x: true
+  spacing_top: large
+  config_1: equal
+  wrapper: false
+  column_1: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+
+grid_lined:
+  columns: 1
+  margin_y: true
+  spacing_top: large
+  config_1: border
+  wrapper: false
+
+
+grid_2:
+  columns: 2
+  margin_x: true
+  config_2: equal
+  spacing_top: medium
+  wrapper: false
+  column_1: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+  column_2: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+
+grid_4:
+  columns: 4
+  margin_x: true
+  spacing_top: small
+  config_4: equal
+  wrapper: true
+  column_1: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+  column_2: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+  column_3: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'
+  column_4: 'These callouts are a useful way to call attention to pieces of content you want to highlight. The type is altered in the component match for Foundation. For example, this is a status message that gets success styling!'

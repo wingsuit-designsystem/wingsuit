@@ -107,15 +107,7 @@ module.exports = {
             },
           },
         ],
-      },
-      // Non-standard assets on the dependency chain
-      {
-        test: /\.twig$/,
-        loader: 'file-loader',
-        options: {
-          emitFile: false,
-        },
-      },
+      }
     ],
   },
   optimization: {

@@ -4,7 +4,7 @@
 
 ## Links startkit into patternlab for local development
 
-cd /var/www/wingsuit/apps/node-pl/pattern-lab/_patterns
-ln -s ../../../../../starterkit/dist/_patterns/000-wingsuit 000-wingsuit
-# cd /var/www/wingsuit/apps/node-pl/pattern-lab
-# ln -s ../../../../starterkit/dist/tools tools
+cd /var/www/tools
+npm link
+cd /var/www/wingsuit
+npm link @wingsuit-designsystem/tools

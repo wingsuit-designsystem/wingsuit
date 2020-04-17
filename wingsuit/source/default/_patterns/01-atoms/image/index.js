@@ -2,9 +2,6 @@
  * image
  */
 
-// Module dependencies
-import 'protons';
-
 // Module styles
 import './_image.css';
 

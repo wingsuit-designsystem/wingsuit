@@ -1,6 +1,6 @@
 button:
   use: "@atoms/button/_button.twig"
-  label: button
+  label: Button
   description: Example description
   fields:
     field_1:

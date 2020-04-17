@@ -1,0 +1,5 @@
+header_demo_block:
+  title: 'header Component'
+  text:
+    lead: 'Add a quick description here.'
+

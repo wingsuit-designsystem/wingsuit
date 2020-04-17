@@ -14,9 +14,9 @@ virtual_hosts:
     container: web
 
 ## Mounts describe writeable persistent volumes in the docker container.
-# mounts:
-#   files:
-#     path: 'docroot/files'
+mounts:
+  files:
+    path: 'wingsuit/dist'
 
 ## Let's encrypt.
 ## Uncomment to enable let's encrypt certificate generation.
@@ -30,4 +30,5 @@ hook_init_tasks: "{{project_path}}/.andock/hooks/init_tasks.yml"
 hook_update_tasks: "{{project_path}}/.andock/hooks/update_tasks.yml"
 hook_test_tasks: "{{project_path}}/.andock/hooks/test_tasks.yml"
 
-
+docksal_env:
+  WINGSUIT_VIRTUAL_HOST: "patternlab.{{ branch }}.wingsuit.dev.key-tec.de"

@@ -17,6 +17,7 @@
     "prototyping"
   ],
   "scripts": {
+    "storybook": "start-storybook --config-dir apps/storybook",
     "patternlab": "patternlab --config ./apps/node-pl/patternlab-config.json",
     "start": "npm run dev:pl-node",
     "yo": "yo",
@@ -45,28 +46,39 @@
     "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
   },
   "dependencies": {
-    "@pattern-lab/cli": "^5.4.0",
-    "@pattern-lab/core": "^5.4.0",
-    "@pattern-lab/engine-twig-php": "^5.4.0",
-    "@pattern-lab/uikit-workshop": "^5.6.0",
+    "vue": "^2.6.10",
+    "alpinejs": "^1.10.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^5.3.17",
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-backgrounds": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/addon-links": "^5.3.17",
+    "@storybook/addon-notes": "^5.3.17",
+    "@storybook/addon-storysource": "^5.3.17",
+    "@storybook/addon-viewport": "^5.3.17",
+    "@storybook/html": "^5.3.17",
     "@wingsuit-designsystem/generator-new-component": "^0.0.6",
     "@wingsuit-designsystem/tools": "^0.0.16",
-    "alpinejs": "^1.10.1",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
+    "drupal-attribute": "^1.0.2",
     "enquire.js": "^2.1.6",
     "generate-json-webpack-plugin": "^0.3.1",
     "holderjs": "^2.9.6",
     "lodash": "^4.17.15",
     "postcss-nested": "^4.2.1",
     "prismjs": "^1.17.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.3",
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^1.2.0",
-    "vue": "^2.6.10",
-    "vuex": "^3.1.2"
-  },
-  "devDependencies": {
+    "twig-drupal-filters": "^2.0.0",
+    "twing": "3.1.1",
+    "vuex": "^3.1.2",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@fullhuman/postcss-purgecss": "^1.3.0",
@@ -115,8 +127,8 @@
     "vue-testing-library": "^0.17.0",
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
-    "yo": "^3.1.1"
+    "yo": "^3.1.1",
+    "twing-loader": "^3.0.1"
   }
 }

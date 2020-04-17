@@ -3,7 +3,3 @@
   args:
     chdir: "{{ build_path }}/wingsuit"
 
-- name: "Build Patternlab"
-  command: "fin rc -T  --image=docksal/cli:2.7-php7.3 yarn run build:pl"
-  args:
-    chdir: "{{ build_path }}/wingsuit"

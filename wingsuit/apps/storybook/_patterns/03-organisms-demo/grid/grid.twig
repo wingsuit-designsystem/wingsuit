@@ -1,0 +1,16 @@
+<h1>CSS Grid 1</h1>
+<h2>Grid 1 column</h2>
+{% include '@organisms/grid/_grid.twig' with grid_1 %}
+<h2 class="small-pt-l">Grid 2 column</h2>
+{% include '@organisms/grid/_grid.twig' with grid_2 %}
+<h2 class="small-pt-l">Grid 4 column</h2>
+{% include '@organisms/grid/_grid.twig' with grid_4 %}
+
+<h2 class="small-pt-l">Grid 1 column Lined</h2>
+{% embed '@organisms/grid/_grid.twig' with grid_lined %}
+  {% block column %}
+    <div class="{{- cell_classes -}}">Lorem</div>
+    <div class="{{- cell_classes -}}">Ipsum</div>
+    <div class="{{- cell_classes -}}">Ipsum</div>
+  {% endblock %}
+{% endembed %}

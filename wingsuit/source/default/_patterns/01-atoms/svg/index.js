@@ -4,9 +4,6 @@
 
 import svg4everybody from 'svg4everybody';
 
-// Module dependencies
-import 'protons';
-
 import './_icons.generated.css';
 
 // Module template

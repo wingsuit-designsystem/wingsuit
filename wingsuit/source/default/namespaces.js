@@ -8,7 +8,6 @@ const patterns = path.resolve(__dirname, '_patterns');
 
 module.exports = {
   // Outside of atomic concepts
-  patterns,
   tokens: path.resolve(__dirname, 'tokens'),
   clientside: path.resolve(__dirname, 'clientside'),
   // Atomic concepts

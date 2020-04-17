@@ -11,7 +11,7 @@
  *
  * @param context
  */
-function importAll(context) {
+export default function importAll(context) {
   return context.keys().reduce((accumulator, componentPath) => {
     // "require" the component
     const component = context(componentPath);
@@ -24,5 +24,3 @@ function importAll(context) {
     return Object.assign(accumulator, {});
   }, {});
 }
-
-module.exports = importAll;
