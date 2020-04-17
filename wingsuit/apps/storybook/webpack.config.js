@@ -43,6 +43,7 @@ const shared = {
         use: [
           {
             loader: 'pattern-loader',
+
           },
         ],
       },
@@ -52,7 +53,7 @@ const shared = {
           {
             loader: 'twing-loader',
             options: {
-              environmentModulePath: require.resolve('./environment.js'),
+              environmentModulePath: require.resolve('./environment.js')
             }
           },
         ],

@@ -5,8 +5,8 @@ export default {
   title: 'Atoms/Buttons',
   decorators: [withKnobs]
 };
+debugger;
+export const button_primary = () => (
 
-
-
-const x = require('atoms/button/button.wingsuit.yml');
-console.log(x);
+  require('./buttons.twig')()
+);

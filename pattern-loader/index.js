@@ -4,5 +4,5 @@ class Pattern {
   }
 }
 module.exports = function(content) {
-  return new Pattern(content);
+  return 'X';
 };
