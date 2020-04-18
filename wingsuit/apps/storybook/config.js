@@ -2,6 +2,15 @@ import {
   configure
 } from '@storybook/html';
 
+const Twig = require('twig');
+const twigDrupal = require('twig-drupal-filters');
+// const twigAddAttributes = require('add-attributes-twig-extension');
+
+Twig.cache();
+
+twigDrupal(Twig);
+// twigAddAttributes(Twig);
+
 require.context(
   // From patterns folder
   '../../source/default/_patterns',

@@ -77,7 +77,6 @@
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^1.2.0",
     "twig-drupal-filters": "^2.0.0",
-    "twing": "3.1.1",
     "vuex": "^3.1.2",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
@@ -129,6 +128,7 @@
     "webpack-cli": "^3.3.10",
     "webpack-merge": "^4.2.2",
     "yo": "^3.1.1",
-    "twing-loader": "^3.0.1"
+    "twig": "~1.13.3",
+    "twig-loader": "https://github.com/AmazeeLabs/twig-loader"
   }
 }

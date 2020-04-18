@@ -4,6 +4,7 @@
 
 // Library Imports
 const path = require('path');
+const namespaces = require('../../source/default/namespaces');
 
 const {DefinePlugin} = require('webpack');
 // Plugins
@@ -33,34 +34,25 @@ const shared = {
     path: APP_DIST,
     publicPath: APP_DIST_PUBLIC,
   },
-  resolveLoader: {
-    modules: ['node_modules', path.resolve(__dirname, 'loaders')]
-  },
+
   module: {
     rules: [
-      {
-        test: /\.wingsuit\.yml/,
-        use: [
-          {
-            loader: 'pattern-loader',
-
-          },
-        ],
-      },
       {
         test: /\.twig$/,
         use: [
           {
-            loader: 'twing-loader',
+            loader: 'twig-loader',
             options: {
-              environmentModulePath: require.resolve('./environment.js')
+              twigOptions: {
+                namespaces: namespaces
+              }
             }
           },
         ],
       },
       // Non-standard assets on the dependency chain
       {
-        test: /\.(md)$/,
+        test: /\.(yml|yaml|md)$/,
         loader: 'file-loader',
         options: {
           emitFile: false,
