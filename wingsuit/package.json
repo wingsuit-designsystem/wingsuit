@@ -46,8 +46,9 @@
     "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
   },
   "dependencies": {
-    "vue": "^2.6.10",
-    "alpinejs": "^1.10.1"
+    "@wingsuit-designsystem/storybook": "0.0.1",
+    "alpinejs": "^1.10.1",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.3.17",
@@ -62,6 +63,7 @@
     "@storybook/html": "^5.3.17",
     "@wingsuit-designsystem/generator-new-component": "^0.0.6",
     "@wingsuit-designsystem/tools": "^0.0.16",
+    "@wingsuit-designsystem/pattern": "0.0.1",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "drupal-attribute": "^1.0.2",

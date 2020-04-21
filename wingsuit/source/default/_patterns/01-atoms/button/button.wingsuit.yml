@@ -3,22 +3,15 @@ button:
   label: Button
   description: Example description
   fields:
-    field_1:
+    label:
       type: text
-      label: Content
+      label: Label
       preview: Text
   settings:
-    setting_1:
+    color:
       type: select
-      label: Setting 1
+      label: Color
       options:
-        option_1: Setting 1 Value 1
-        option_2: Setting 1 Value 2
+        blue: Blue
+        grey: Grey
       preview: value_1
-    setting_2:
-      type: select
-      label: Setting 2
-      options:
-        option_1: Setting 2 Value 1
-        option_2: Setting 2 Value 2
-      preview: value_2

@@ -1,37 +1,5 @@
 {
   "patterns": {
-    "button": {
-      "use": "@atoms/button/_button.twig",
-      "label": "Button",
-      "description": "Example description",
-      "fields": {
-        "field_1": {
-          "type": "text",
-          "label": "Content",
-          "preview": "Text"
-        }
-      },
-      "settings": {
-        "setting_1": {
-          "type": "select",
-          "label": "Setting 1",
-          "options": {
-            "option_1": "Setting 1 Value 1",
-            "option_2": "Setting 1 Value 2"
-          },
-          "preview": "value_1"
-        },
-        "setting_2": {
-          "type": "select",
-          "label": "Setting 2",
-          "options": {
-            "option_1": "Setting 2 Value 1",
-            "option_2": "Setting 2 Value 2"
-          },
-          "preview": "value_2"
-        }
-      }
-    },
     "image": {
       "use": "@atoms/image/_image.twig",
       "label": "Image",
@@ -89,17 +57,21 @@
             "faker": true,
             "property": "text"
           }
-        },
-        "content": {
-          "type": "text",
-          "label": "Headline",
-          "faker": true,
-          "formatter": "text"
         }
       },
       "variants": {
-        "primary": {
-          "label": "Primary"
+        "default": {
+          "label": "Default",
+          "settings": {
+            "alignment": "left"
+          }
+        },
+        "horizontal": {
+          "label": "Horizontal",
+          "settings": {
+            "alignment": "left",
+            "size": "large"
+          }
         }
       },
       "settings": {
@@ -107,7 +79,16 @@
           "type": "select",
           "label": "Alignment",
           "options": {
+            "left": "Left",
             "center": "Center"
+          }
+        },
+        "size": {
+          "type": "select",
+          "label": "Size",
+          "options": {
+            "large": "Large",
+            "medium": "Medium"
           }
         }
       }

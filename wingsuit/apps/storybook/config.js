@@ -1,31 +1,27 @@
-import {
-  configure
-} from '@storybook/html';
+import { configure } from '@storybook/html';
+import { storage, twigRenderEngine } from '@wingsuit-designsystem/pattern';
 
 const Twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
-// const twigAddAttributes = require('add-attributes-twig-extension');
+const patternDefinitions = require('./_silo/patterns.json');
+const namespaces = require('../../source/default/namespaces');
 
 Twig.cache();
+storage.createDefinitions(patternDefinitions);
+twigRenderEngine.setNamespaces(namespaces);
+twigRenderEngine.setTwig(Twig)
+twigRenderEngine.twigFunctions();
 
 twigDrupal(Twig);
 // twigAddAttributes(Twig);
 
 require.context(
-  // From patterns folder
   '../../source/default/_patterns',
-  // Deep dive all directories below
   true,
-  // Get the first folders after atoms|molecules|organisms
   /^\.\/(01-atoms|02-molecules|03-organisms)\/[\w-]+$/
 );
 
 require.context(
-  // From patterns folder
-  './_silo',
-  // Deep dive all directories below
-  false,
-  // Get the first folders after atoms|molecules|organisms
-  /\.json$/
+  './_silo', false, /\.json$/
 );
 configure(require.context('./_patterns', true, /\.stories\.js$/), module);

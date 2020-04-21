@@ -21,7 +21,6 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/core#readme",
   "dependencies": {
     "twing": "3.1.1",
-    "@storybook/html": "^5.3.17",
     "jsondiffpatch": "^0.3",
     "alpinejs": "^2.2.1",
     "eslint-auto-fix": "^1.0.1",

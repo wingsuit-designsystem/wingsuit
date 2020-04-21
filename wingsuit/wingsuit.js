@@ -5,7 +5,7 @@ const path = require('path');
 
 // Library Imports
 const merge = require('webpack-merge');
-
+merge.multiple()
 // Plugins:production
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');

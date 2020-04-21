@@ -1,6 +1,6 @@
 image:
   use: "@atoms/image/_image.twig"
-  label: Image
+  label: Image2
   description: Example description
   fields:
     field_1:

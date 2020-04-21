@@ -4,21 +4,22 @@
 
 // Library Imports
 const path = require('path');
-const namespaces = require('../../source/default/namespaces');
-
-const {DefinePlugin} = require('webpack');
+const { DefinePlugin } = require('webpack');
 // Plugins
 const Tailwind2JsonPlugin = require('@wingsuit-designsystem/tools/tailwind2json');
 const Patterns2JsonPlugin = require('@wingsuit-designsystem/tools/patterns2json');
 const Svg2JsonPlugin = require('@wingsuit-designsystem/tools/svg2json');
-
+const namespaces = require('../../source/default/namespaces');
+const Pattern = require('@wingsuit-designsystem/pattern');
+Pattern.twigRenderEngine.addGlobal('YO', 'GO');
 const wingsuit = require('../../wingsuit');
 // Constants: environment
 const {NODE_ENV, PARTICLE_PL_HOST = ''} = process.env;
 // Constants: root
-const {PATH_DIST} = require('../../wingsuit.root.config');
+const { PATH_DIST } = require('../../wingsuit.root.config');
 // Constants: app
 const appConfig = require('./wingsuit.app.config');
+Pattern.storage.createDefinitions(require('./_silo/patterns'));
 
 // eslint-disable-next-line no-unused-vars
 const {APP_NAME, APP_PATH, APP_DIST, APP_DIST_PUBLIC} = appConfig;
@@ -34,14 +35,21 @@ const shared = {
     path: APP_DIST,
     publicPath: APP_DIST_PUBLIC,
   },
-
+  resolve: {
+    // JavaScript can import other components via shorthand, eg:
+    //   `import thing from 'atoms/thing';`
+    // Sass can import other components via shorthand:
+    //   `@import ~atoms/thing/thing`
+    // Note: Use the tilde (~), do not include trailing ".scss"
+    alias: namespaces,
+  },
   module: {
     rules: [
       {
         test: /\.twig$/,
         use: [
           {
-            loader: 'twig-loader',
+            loader: '@wingsuit-designsystem/twig-loader',
             options: {
               twigOptions: {
                 namespaces: namespaces

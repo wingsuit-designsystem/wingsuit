@@ -1,7 +1,7 @@
 {
-  "name": "@wingsuit-designsystem/pattern",
+  "name": "@wingsuit-designsystem/storybook",
   "version": "0.0.1",
-  "description": "Wingsuit Patterns.",
+  "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
@@ -19,6 +19,11 @@
   },
   "type": "module",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/html": "^5.3.17",
+    "@wingsuit-designsystem/pattern": "0.0.1"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.0",
@@ -29,7 +34,11 @@
     "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.8.3",
-    "twig": "~1.13.3"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "babel-jest": "^25.3.0",
+    "reflect-metadata": "^0.1.13"
   },
   "scripts": {
     "start": "webpack --watch",
@@ -39,12 +48,5 @@
     "test": "jest",
     "lint:ts": "tslint -e **/definitions/**/* -e **/*.d.ts  src/**/*.ts || true",
     "lint:fix": "tslint --fix 'src/**/*{.ts,.tsx}'"
-  },
-  "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-typescript": "^7.9.0",
-    "babel-jest": "^25.3.0",
-    "reflect-metadata": "^0.1.13"
   }
 }

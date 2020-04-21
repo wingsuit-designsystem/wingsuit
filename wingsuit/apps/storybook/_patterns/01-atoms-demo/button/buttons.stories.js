@@ -1,12 +1,7 @@
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import 'tokens/tokens.css';
-import button from './buttons.twig';
 
-export default {
-  title: 'Atoms/Buttons',
-  decorators: [withKnobs]
-};
+import { tellStories } from "@wingsuit-designsystem/storybook";
 
-export const buttonPrimary = () => (
-  button({'foo': 'bar'})
-);
+tellStories("button", module, (variables, variant) => {
+  return require('atoms/button/_button.twig')(variables);
+});
