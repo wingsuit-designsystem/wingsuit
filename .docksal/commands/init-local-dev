@@ -1,10 +1,3 @@
 #!/usr/bin/env bash
 
-#: exec_target = cli
-
-## Links startkit into patternlab for local development
-
-cd /var/www/tools
-npm link
-cd /var/www/wingsuit
-npm link @wingsuit-designsystem/tools
+npx lerna link

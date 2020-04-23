@@ -61,16 +61,18 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
 
    ```bash
    git clone git@github.com:wingsuit-designsystem/wingsuit.git
+   npx lerna link
    ```
 
-1. Then `cd wingsuit` and run:
+1. Then `cd packages/wingsuit` and run:
 
    ```bash
-   fin up
-   fin wingsuit/startup
+   npm run storybook
    ```
+   
 ## Wingsuit is heavenly inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 ### Differences to Particle
+1.  Wingsuit uses Storybook instead of Patternlab
 1.  Wingsuit uses Tailwind instead of Bootstrap
 1.  Uses Postcss instead of Sass
 1.  Uses alpinejs instead of jQuery

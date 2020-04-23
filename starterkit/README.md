@@ -1,1 +1,0 @@
-# Wingsuit Starter Kit for Pattern Lab

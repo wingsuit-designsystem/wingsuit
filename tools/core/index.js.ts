@@ -1,5 +1,0 @@
-class BasePreviewProvider {
-    getPreview(definition: {}) {
-
-    }
-}

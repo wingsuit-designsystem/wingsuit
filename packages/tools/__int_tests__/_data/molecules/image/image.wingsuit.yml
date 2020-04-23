@@ -1,0 +1,4 @@
+image:
+  use: "@molecules/image/_image.twig"
+  label: Image
+  description: Example description
