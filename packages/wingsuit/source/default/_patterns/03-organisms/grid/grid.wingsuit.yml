@@ -8,31 +8,31 @@ grid:
       label: Column 1
       preview:
         faker:
-          property: text
+          property: lorem.text
     column_2:
       type: text
       label: Column 2
       preview:
         faker:
-          property: text
+          property: lorem.text
     column_3:
       type: text
-      label: Column 3
+      label: Column 3K
       preview:
         faker:
-          property: text
+          property: lorem.text
     column_4:
       type: text
-      label: Column 4
+      label: Column 4s
       preview:
         faker:
-          property: text
+          property: lorem.text
     column_5:
       type: text
       label: Column 5
       preview:
         faker:
-          property: text
+          property: lorem.text
   settings:
     columns:
       type: select
@@ -136,7 +136,7 @@ grid:
         right: Right
   variants:
     1_column:
-      label: 1 column
+      label: 1 column Jo
       settings:
         columns: 1
         config_2: "equal"

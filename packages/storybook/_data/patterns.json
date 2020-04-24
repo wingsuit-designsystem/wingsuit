@@ -1,0 +1,97 @@
+{
+  "patterns": {
+    "image": {
+      "use": "@atoms/image/_image.twig",
+      "label": "Image",
+      "description": "Example description",
+      "fields": {
+        "field_1": {
+          "type": "text",
+          "label": "Content"
+        }
+      },
+      "variants": {
+        "primary": {
+          "label": "Primary",
+          "bg": "Background"
+        }
+      },
+      "settings": {
+        "placeholder": {
+          "type": "Boolean",
+          "default_value": true
+        },
+        "style": {
+          "type": "text",
+          "preview": "featured"
+        }
+      }
+    },
+    "card": {
+      "use": "@molecules/card/_card.twig",
+      "label": "Card",
+      "description": "Use Cards for your teasers",
+      "fields": {
+        "image": {
+          "type": "pattern",
+          "preview": {
+            "id": "image",
+            "variant": "primary",
+            "settings": {
+              "placeholder": true
+            }
+          }
+        },
+        "preheadline": {
+          "type": "text",
+          "label": "Preheadline",
+          "preview": {
+            "faker": true,
+            "property": "name"
+          }
+        },
+        "headline": {
+          "type": "text",
+          "label": "Headline",
+          "preview": {
+            "faker": true,
+            "property": "text"
+          }
+        }
+      },
+      "variants": {
+        "default": {
+          "label": "Default",
+          "settings": {
+            "alignment": "left"
+          }
+        },
+        "horizontal": {
+          "label": "Horizontal",
+          "settings": {
+            "alignment": "left",
+            "size": "large"
+          }
+        }
+      },
+      "settings": {
+        "alignment": {
+          "type": "select",
+          "label": "Alignment",
+          "options": {
+            "left": "Left",
+            "center": "Center"
+          }
+        },
+        "size": {
+          "type": "select",
+          "label": "Size",
+          "options": {
+            "large": "Large",
+            "medium": "Medium"
+          }
+        }
+      }
+    }
+  }
+}

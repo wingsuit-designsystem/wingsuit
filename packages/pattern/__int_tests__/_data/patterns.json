@@ -67,6 +67,11 @@
       "label": "No properties",
       "description": "Example description"
     },
+    "render": {
+      "use": "@molecules/render/render.twig",
+      "label": "No properties",
+      "description": "Example description"
+    },
     "pattern_variant": {
       "use": "@molecules/tests/check.twig",
       "label": "Pattern",

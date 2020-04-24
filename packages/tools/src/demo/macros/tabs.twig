@@ -1,0 +1,66 @@
+{#
+  Renders demo code.
+
+  @param string code
+    The demo code.
+#}
+{% macro tabs(app, tabs, active_tab) %}
+    {% set first_tab = "" %}
+    {% for tab_key, tab in tabs|slice(0, 1) %}
+        {% set first_tab = tab_key %}
+    {% endfor %}
+    <section x-dataxxx="{ {{ app }}: '{{ active_tab|default(first_tab) }}' }" class="ws-mb-10">
+        <div class="flex flex-col sm:flex-row">
+            {% for tab_key, tab in tabs %}
+                <button
+                        x-on:click="{{ app }} = '{{ tab_key }}'"
+                        x-bind:class="{ 'ws-text-blue-500 ws-border-b-2 ws-font-medium ws-border-purple-500': {{ app }} === '{{ tab_key }}' }"
+                        class="ws-text-gray-600 ws-py-4 ws-px-6 ws-block ws-hover:text-blue-500 ws-focus:outline-none"
+                >{{ tab.label }}</button>
+            {% endfor %}
+        </div>
+        <ul>
+            {% for tab_key, tab in tabs %}
+                <li x-show="{{ app }} === '{{ tab_key }}'">
+                    {{ tab.content }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endmacro %}
+
+{% macro accordion(app, accordions, active_accordion) %}
+    {% set first_accordion = "" %}
+    {% for accordion_key, tab in accordions|slice(0, 1) %}
+        {% set first_accordion = accordion_key %}
+    {% endfor %}
+    <section  class="ws-mb-10 w-full ws-doc-rich-text">
+        <div class="flex flex-col">
+            {% for accordion_key, accordion in accordions %}
+                <button
+                        x-on:click="{{ app }} = '{{ accordion_key }}'"
+                        x-bind:class="{ 'ws-text-blue-500 ws-border-b ws-border-t ws-font-medium ws-border-purple-500': {{ app }} === '{{ accordion_key }}' }"
+                        class="ws-text-left ws-text-gray-200 ws-py-3 ws-px-4 ws-hover:text-blue-500 ws-focus:outline-none"
+                >{{ accordion.label }}</button>
+                <div x-show="{{ app }} === '{{ accordion_key }}'" class="ws-bg-white ws-py-3 ws-px-4">
+                    {{ accordion.content }}
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro radio(id, text, click, bind) %}
+    <label for="{{id}}" class="mt-3 inline-flex items-center cursor-pointer" {{ click }}>
+    <span class="relative">
+      <span class="block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
+      <span class="absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out"
+            {{ bind }}
+      >
+        <input id="{{id}}" type="checkbox" class="absolute opacity-0 w-0 h-0"/>
+      </span>
+    </span>
+        <span class="ws-ml-3 ws-text-sm">{{ text }}</span>
+    </label>
+{% endmacro %}

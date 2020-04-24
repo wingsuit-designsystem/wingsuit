@@ -9,7 +9,7 @@
  */
 #}
 {% set button_element = button_element|default('div') %}
-{% set button_attributes = button_attributes|default(attributes_object()) %}
+{% set button_attributes = attributes_object() %}
 
 {% if url is not empty %}
   {% set button_attributes = button_attributes.setAttribute('href', url) %}
@@ -18,7 +18,9 @@
 {%- set button_content -%}
   {{- button_content -}}
 {% endset %}
-
+OK
+{{ button_attributes }}
+START
 <{{ button_element }} {{ button_attributes.addClass([
   'px-10',
   'py-8',
@@ -32,6 +34,7 @@
   variant == 'outline' ? 'text-red',
 
 ] | sort | join(' ') | trim) }}>
+STOP
 {{ button_content|striptags }}
   {% if button_svg is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
