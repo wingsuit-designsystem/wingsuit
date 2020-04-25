@@ -1,15 +1,16 @@
+import * as fs from 'fs';
 import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
-import * as fs from 'fs';
 import PatternVariant from './PatternVariant';
+import { IPatternDefinition, IPatternDefinitions } from './definition';
 
 export default class PatternStorage implements IPatternStorage {
-  private definitions = {};
+  private definitions: IPatternDefinitions = {} as IPatternDefinitions;
 
   loadPattern(patternId: string): Pattern {
-    const definition: {} = this.definitions['patterns'][patternId];
+    const definition: IPatternDefinition = this.definitions.patterns[patternId];
     if (definition == null) {
-      return null;
+      throw new Error(`Pattern ${patternId} not loaded.`);
     }
     return new Pattern(patternId, definition);
   }
@@ -19,15 +20,14 @@ export default class PatternStorage implements IPatternStorage {
     if (pattern != null) {
       return pattern.getVariant(variantId);
     }
-    return null;
+    throw new Error(`Variant ${patternId}.${variantId}  not loaded.`);
   }
 
   createDefinitionsFromFile(path: string): void {
     this.definitions = JSON.parse(fs.readFileSync(path, 'utf8'));
   }
 
-  createDefinitions(definition: {}): void {
-    this.definitions = definition;
+  createDefinitions(definitions: IPatternDefinitions): void {
+    this.definitions = definitions;
   }
-
 }

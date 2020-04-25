@@ -1,7 +1,21 @@
 {
-  "name": "root",
+  "name": "@wingsuit-designsystem/root",
   "private": true,
+  "scripts": {
+    "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
+    "fix:js": "cross-env NODE_ENV=production eslint --fix --cache --cache-location=.cache/eslint --ext .json,.html,.ts,.tsx,.mjs --report-unused-disable-directives"
+  },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "@babel/preset-typescript": "^7.3.3",
+    "lerna": "^3.20.2",
+    "eslint": "^6.5.1",
+    "cross-env": "^7.0.0",
+    "@storybook/eslint-config-storybook": "^2.2.0",
+    "@storybook/linter-config": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "typescript": "^3.4.0",
+    "eslint-plugin-react": "^7.15.1",
+    "prettier": "^2.0.2"
   }
 }

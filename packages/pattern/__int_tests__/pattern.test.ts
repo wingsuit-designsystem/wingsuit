@@ -12,13 +12,13 @@ describe("Pattern parsing", () => {
         "pattern %p should have %p variants, %p fields and %p settings.",
         (pattern_id: string, variantsCount: number, fieldsCount: number, settingsCount: number) => {
             const pattern: Pattern = storage.loadPattern(pattern_id);
-            expect(pattern.label).not.toBeNull();
-            expect(pattern.id).not.toBeNull();
-            expect(Object.keys(pattern.patternVariants).length).toEqual(variantsCount);
-            const defaultVariant: PatternVariant = pattern.defaultVariant;
-            expect(defaultVariant.label).not.toBeNull();
-            expect(settingsCount).toEqual(Object.keys(defaultVariant.settings).length);
-            expect(fieldsCount).toEqual(Object.keys(defaultVariant.fields).length);
+            expect(pattern.getLabel()).not.toBeNull();
+            expect(pattern.getId()).not.toBeNull();
+            expect(Object.keys(pattern.getPatternVariants()).length).toEqual(variantsCount);
+            const defaultVariant: PatternVariant = pattern.getDefaultVariant();
+            expect(defaultVariant.getLabel()).not.toBeNull();
+            expect(settingsCount).toEqual(Object.keys(defaultVariant.getSettings()).length);
+            expect(fieldsCount).toEqual(Object.keys(defaultVariant.getFields()).length);
         }
     )
 });

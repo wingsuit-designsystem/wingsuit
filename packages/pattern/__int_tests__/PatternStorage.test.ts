@@ -4,7 +4,7 @@ import Pattern from '../src/Pattern';
 import PatternVariant from '../src/PatternVariant';
 
 describe('PatternStorage', () => {
-  let storage: PatternStorage = null;
+  let storage: PatternStorage = new PatternStorage();
 
   beforeEach(() => {
     storage = new PatternStorage();

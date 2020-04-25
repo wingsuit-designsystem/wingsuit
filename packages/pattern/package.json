@@ -21,13 +21,8 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.0",
+    "@types/node": "^13.13.2",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^25.3.0",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.0",
@@ -38,15 +33,12 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "prepack": "npm run build",
-    "test": "jest",
-    "lint:ts": "tslint -e **/definitions/**/* -e **/*.d.ts  src/**/*.ts || true",
-    "lint:fix": "tslint --fix 'src/**/*{.ts,.tsx}'"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
     "babel-jest": "^25.3.0",
     "faker": "^4.1.0",
     "reflect-metadata": "^0.1.13",

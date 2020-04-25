@@ -1,67 +1,66 @@
-import Field from "./Field";
-import Setting from "./Setting";
-import Pattern from "./Pattern";
+import Field from './Field';
+import Setting from './Setting';
+import Pattern from './Pattern';
 
 export default class PatternVariant {
-  get use(): string {
-    return this._use;
+  public getUse(): string {
+    return this.use;
   }
 
-  get label(): string {
-    return this._label;
+  public getLabel(): string {
+    return this.label;
   }
 
-  get description(): string {
-    return this._description;
+  public getDescription(): string {
+    return this.description;
   }
 
-  get pattern(): Pattern {
-    return this._pattern;
+  public getPattern(): Pattern {
+    return this.pattern;
   }
 
-  set pattern(pattern: Pattern) {
-    this._pattern = pattern;
+  public setPattern(pattern: Pattern) {
+    this.pattern = pattern;
   }
 
-  get variant(): string {
-    return this._variant;
+  public getVariant(): string {
+    return this.variant;
   }
 
-  set variant(value: string) {
-    this._variant = value;
+  public setVariant(value: string) {
+    this.variant = value;
   }
 
-  get fields(): Field[] {
-    return this._fields;
+  public getFields(): Field[] {
+    return this.fields;
   }
 
   public addField(field: Field) {
-    this._fields[field.name] = field;
+    this.fields[field.getName()] = field;
   }
 
   public getField(name: string) {
-    return this._fields[name];
+    return this.fields[name];
   }
 
-  set fields(fields: Field[]) {
-    this._fields = fields;
+  public setFields(fields: Field[]) {
+    this.fields = fields;
   }
 
-  get settings(): Setting[] {
-    return this._settings;
+  public getSettings(): Setting[] {
+    return this.settings;
   }
 
-  set settings(value: Setting[]) {
-    this._settings = value;
+  public setSettings(value: Setting[]) {
+    this.settings = value;
   }
 
   public getSetting(name: string) {
-    return this._settings[name];
+    return this.settings[name];
   }
 
   public addSetting(setting: Setting) {
-    const name = setting.name;
-    this._settings[name] = setting;
+    this.settings[setting.getName()] = setting;
   }
 
   public getVariables() {
@@ -71,28 +70,35 @@ export default class PatternVariant {
     });
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
-      values[key] = field.preview;
+      values[key] = field.getPreview();
     });
 
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
+      // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
     return values;
   }
 
-  private _pattern: Pattern;
-  private _use: string;
-  private _variant: string;
-  private _label: string;
-  private _description: string;
-  private _fields: Field[] = [];
-  private _settings: Setting[] = [];
+  private pattern: Pattern;
+
+  private use: string;
+
+  private variant: string;
+
+  private label: string;
+
+  private description: string;
+
+  private fields: Field[] = [];
+
+  private settings: Setting[] = [];
 
   constructor(pattern: Pattern, variant: string, use: string, label: string, description: string) {
-    this._pattern = pattern;
-    this._variant = variant;
-    this._label = label;
-    this._use = use;
-    this._description = description;
+    this.pattern = pattern;
+    this.variant = variant;
+    this.label = label;
+    this.use = use;
+    this.description = description;
   }
 }

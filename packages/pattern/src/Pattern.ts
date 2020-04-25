@@ -1,127 +1,147 @@
-import PatternVariant from "./PatternVariant";
-import Setting from "./Setting";
-import Field from "./Field";
+import PatternVariant from './PatternVariant';
+import Setting from './Setting';
+import Field from './Field';
+import { IPatternDefinition } from './definition';
 
 export default class Pattern {
-  public static DEFAULT_VARIANT_NAME:string = '__default';
+  public static DEFAULT_VARIANT_NAME = '__default';
 
-  get use(): string {
-    return this._use;
+  public getUse(): string {
+    return this.use;
   }
 
-  get label(): string {
-    return this._label;
+  public getLabel(): string {
+    return this.label;
   }
 
-  set label(value: string) {
-    this._label = value;
+  public getDescription(): string {
+    return this.description;
   }
 
-  get description(): string {
-    return this._description;
+  public getId(): string {
+    return this.id;
   }
 
-  set description(value: string) {
-    this._description = value;
+  public getDefaultVariant(): PatternVariant {
+    return this.defaultVariant;
   }
 
-  get id(): string {
-    return this._id;
-  }
+  private id: string;
 
-  get defaultVariant(): PatternVariant {
-    return this._defaultVariant;
-  }
+  private label: string;
 
-  private _id: string;
-  private _label: string;
-  private _description: string;
-  private _use: string;
-  private _definition: {} = {};
-  private _patternVariants: PatternVariant[] = [];
-  private _defaultVariant: PatternVariant;
+  private description: string;
 
-  constructor(id: string, definition: {}) {
-    this._id = id;
-    this._label = definition['label'];
-    this._description = definition['description'];
-    this._use = definition['use'];
-    this._definition = definition;
+  private use: string;
+
+  private definition: IPatternDefinition;
+
+  private patternVariants: PatternVariant[] = [];
+
+  private defaultVariant: PatternVariant;
+
+  constructor(id: string, definition: IPatternDefinition) {
+    this.id = id;
+    this.label = definition.label;
+    this.description = definition.description;
+    this.use = definition.use;
+    this.definition = definition;
+    this.defaultVariant = new PatternVariant(
+      this,
+      Pattern.DEFAULT_VARIANT_NAME,
+      this.use,
+      this.label,
+      this.description
+    );
     this.initializeVariants();
   }
 
-  get patternVariants() {
-    return this._patternVariants;
+  getPatternVariants() {
+    return this.patternVariants;
   }
 
   public getVariant(id: string = Pattern.DEFAULT_VARIANT_NAME) {
-    if (id == '') {
-      id = Pattern.DEFAULT_VARIANT_NAME;
-    }
-    return this._patternVariants[id];
+    const variantId = id === '' ? Pattern.DEFAULT_VARIANT_NAME : id;
+    return this.patternVariants[variantId];
   }
 
   private initializeVariants() {
     const variantKeys: string[] = [];
-    const settings: {} = this._definition['settings'] != null ? this._definition['settings'] : {};
-    const fields: {} = this._definition['fields'] != null ? this._definition['fields'] : {};
-    const variantsDefinitions: {} = this._definition['variants'] != null ? this._definition['variants'] : {};
+    const settings: {} = this.definition.settings != null ? this.definition.settings : {};
+    const fields: {} = this.definition.fields != null ? this.definition.fields : {};
+    const variantsDefinitions: {} =
+      this.definition.variants != null ? this.definition.variants : {};
 
-    Object.keys(variantsDefinitions).forEach(function (key: string) {
+    Object.keys(variantsDefinitions).forEach((key: string) => {
       variantKeys.push(key);
     });
 
-    if (variantKeys.length == 0) {
+    if (variantKeys.length === 0) {
       variantKeys.push(Pattern.DEFAULT_VARIANT_NAME);
     }
-    for (let i: number = 0; i < variantKeys.length; i++) {
-      const variantKey = variantKeys[i];
-      const variantDefinition = variantsDefinitions[variantKey] != null ? variantsDefinitions[variantKey] : {};
-      const label = variantDefinition != null ? this.label + ': ' + variantDefinition['label'] : this.label;
-      const use = variantDefinition['use'] != null ? variantDefinition['use'] : this.use;
-      const description = variantDefinition != null ? variantDefinition['description'] : this.description;
+    let isFirst = true;
+    variantKeys.forEach((variantKey: string) => {
+      const variantDefinition =
+        variantsDefinitions[variantKey] != null ? variantsDefinitions[variantKey] : {};
+      const label =
+        variantDefinition != null ? `${this.label}: ${variantDefinition.label}` : this.label;
+      const use = variantDefinition.use != null ? variantDefinition.use : this.use;
+      const description =
+        variantDefinition != null ? variantDefinition.description : this.description;
 
       const variant = new PatternVariant(this, variantKey, use, label, description);
 
-      if (i == 0) {
-        this._defaultVariant = variant;
+      if (isFirst === true) {
+        this.defaultVariant = variant;
       }
+      isFirst = false;
 
-      Object.keys(settings).forEach(function (key: string) {
-        const setting = new Setting(key, settings[key]['type'], settings[key]['label'], settings[key]['description'], settings[key]['preview']);
-        setting.options = settings[key]['options'];
-        if (settings[key]['default_value'] != null) {
-          setting.preview = settings[key]['default_value'];
+      Object.keys(settings).forEach((key: string) => {
+        const setting = new Setting(
+          key,
+          settings[key].type,
+          settings[key].label,
+          settings[key].description,
+          settings[key].preview
+        );
+        setting.setOptions(settings[key].options);
+        if (settings[key].default_value != null) {
+          setting.setPreview(settings[key].default_value);
         }
-        if (settings[key]['value'] != null) {
-          setting.preview = settings[key]['value'];
+        if (settings[key].value != null) {
+          setting.setPreview(settings[key].value);
         }
 
         variant.addSetting(setting);
       });
 
-      Object.keys(fields).forEach(function (key: string) {
-        const field = new Field(key, fields[key]['type'], fields[key]['label'], fields[key]['description'], fields[key]['preview']);
+      Object.keys(fields).forEach((key: string) => {
+        const field = new Field(
+          key,
+          fields[key].type,
+          fields[key].label,
+          fields[key].description,
+          fields[key].preview
+        );
         variant.addField(field);
       });
 
       if (variantDefinition != null) {
-        if (variantDefinition['settings'] != null) {
-          Object.keys(variantDefinition['settings']).forEach(function (key: string) {
-            const setting: Setting = variant.getSetting(key)
-            setting.preview = variantDefinition['settings'][key];
-            setting.enable = false;
+        if (variantDefinition.settings != null) {
+          Object.keys(variantDefinition.settings).forEach((key: string) => {
+            const setting: Setting = variant.getSetting(key);
+            setting.setPreview(variantDefinition.settings[key]);
+            setting.setEnable(false);
           });
         }
-        if (variantDefinition['fields'] != null) {
-          Object.keys(variantDefinition['fields']).forEach(function (key: string) {
-            const field: Field = variant.getField(key)
-            field.preview = variantDefinition['fields'][key];
+        if (variantDefinition.fields != null) {
+          Object.keys(variantDefinition.fields).forEach((key: string) => {
+            const field: Field = variant.getField(key);
+            field.setPreview(variantDefinition.fields[key]);
           });
         }
-
       }
-      this._patternVariants[variantKey] = variant;
-    }
+      this.patternVariants[variantKey] = variant;
+    });
   }
 }

@@ -5,7 +5,7 @@ var PatternStorage_1 = require("../src/PatternStorage");
 var Pattern_1 = require("../src/Pattern");
 var PatternVariant_1 = require("../src/PatternVariant");
 describe('PatternStorage', function () {
-    var storage = null;
+    var storage = new PatternStorage_1.default();
     beforeEach(function () {
         storage = new PatternStorage_1.default();
     });

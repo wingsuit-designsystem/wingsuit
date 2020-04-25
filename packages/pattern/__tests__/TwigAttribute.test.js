@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var TwigAttribute_1 = require("../src/TwigAttribute");
 describe("TwigAttribute test", function () {
-    var twigAttribute = null;
+    var twigAttribute = new TwigAttribute_1.default();
     beforeEach(function () {
         twigAttribute = new TwigAttribute_1.default();
     });

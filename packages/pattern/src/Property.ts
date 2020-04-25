@@ -1,83 +1,87 @@
-var faker = require('faker');
+import { Preview } from './definition';
 
-export default class  Property {
-  get description(): string {
-    return this._description;
+const faker = require('faker');
+
+export default class Property {
+  public getDescription(): string {
+    return this.description;
   }
 
-  set description(value: string) {
-    this._description = value;
+  public setDescription(value: string) {
+    this.description = value;
   }
 
   private generateFake(_preview) {
-    let token:string = 'lorem.word';
-    if (_preview['token'] == null && _preview['property'] != null) {
-      token =  '{{' + _preview['property'] + '}}';
+    let token = 'lorem.word';
+    if (_preview.token == null && _preview.property != null) {
+      token = `{{${_preview.property}}}`;
     }
-    if (_preview['token'] != null) {
-      token = _preview['token'];
+    if (_preview.token != null) {
+      token = _preview.token;
     }
     try {
       return faker.fake(token);
     } catch (e) {
-      return `Invalid faker configuration "${token}". ${e.Message}`;
+      return `Invalid faker configuration "${token}". ${e.message}`;
     }
-
   }
 
-  get preview(): any {
-    if (typeof this._preview == 'object') {
-      if (this._preview['faker'] != null) {
-        return this.generateFake(this._preview['faker']);
-      } else if (this.type == 'pattern') {
-        return this._preview ;
-
-      } else {
-        return JSON.stringify(this._preview);
+  public getPreview(): any {
+    if (typeof this.preview === 'object') {
+      if (this.preview.faker != null) {
+        return this.generateFake(this.preview.faker);
       }
+      if (this.type === 'pattern') {
+        return this.preview;
+      }
+      return JSON.stringify(this.preview);
     }
-    return this._preview;
+    return this.preview;
   }
 
-  set preview(value: any) {
-    this._preview = value;
+  public setPreview(value: Preview) {
+    this.preview = value;
   }
 
-  get label(): string {
-    return this._label;
+  public getLabel(): string {
+    return this.label;
   }
 
-  set label(value: string) {
-    this._label = value;
+  public setLabel(value: string) {
+    this.label = value;
   }
 
-  get name(): string {
-    return this._name;
+  public getName(): string {
+    return this.name;
   }
 
-  set name(value: string) {
-    this._name = value;
+  public setName(value: string) {
+    this.name = value;
   }
 
-  get type(): string {
-    return this._type;
+  public getType(): string {
+    return this.type;
   }
 
-  set type(value: string) {
-    this._type = value;
+  public setType(value: string) {
+    this.type = value;
   }
 
-  private _name: string;
-  private _type: string;
-  private _label: string;
-  private _description: string;
-  private _preview: any;
+  private name: string;
+
+  private type: string;
+
+  private label: string;
+
+  private description: string;
+
+  private preview: any;
 
   constructor(name: string, type: string, label: string, description: string, preview: any) {
-    this._name = name;
-    this._type = type;
-    this._label = label;
-    this._description = description;
-    this._preview = preview;
+    this.name = name;
+    this.type = type;
+    this.label = label;
+    this.description = description;
+    this.preview = preview;
   }
 }

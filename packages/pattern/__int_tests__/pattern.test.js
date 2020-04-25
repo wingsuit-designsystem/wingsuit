@@ -9,12 +9,12 @@ describe("Pattern parsing", function () {
     });
     test.each([['blank', 1, 0, 0], ['card', 2, 3, 2]])("pattern %p should have %p variants, %p fields and %p settings.", function (pattern_id, variantsCount, fieldsCount, settingsCount) {
         var pattern = storage.loadPattern(pattern_id);
-        expect(pattern.label).not.toBeNull();
-        expect(pattern.id).not.toBeNull();
-        expect(Object.keys(pattern.patternVariants).length).toEqual(variantsCount);
-        var defaultVariant = pattern.defaultVariant;
-        expect(defaultVariant.label).not.toBeNull();
-        expect(settingsCount).toEqual(Object.keys(defaultVariant.settings).length);
-        expect(fieldsCount).toEqual(Object.keys(defaultVariant.fields).length);
+        expect(pattern.getLabel()).not.toBeNull();
+        expect(pattern.getId()).not.toBeNull();
+        expect(Object.keys(pattern.getPatternVariants()).length).toEqual(variantsCount);
+        var defaultVariant = pattern.getDefaultVariant();
+        expect(defaultVariant.getLabel()).not.toBeNull();
+        expect(settingsCount).toEqual(Object.keys(defaultVariant.getSettings()).length);
+        expect(fieldsCount).toEqual(Object.keys(defaultVariant.getFields()).length);
     });
 });

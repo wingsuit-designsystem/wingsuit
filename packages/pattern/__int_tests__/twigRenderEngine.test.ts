@@ -17,7 +17,7 @@ describe('TwigRenderEngine', () => {
   describe('#render complex pattern', () => {
     test('Render Pattern Card', () => {
       const output = renderEngine.renderPattern('render');
-      expect(output).toEqual('render');
+      expect(output.trim()).toEqual('render');
     });
   });
   describe('#renderTemplate', () => {

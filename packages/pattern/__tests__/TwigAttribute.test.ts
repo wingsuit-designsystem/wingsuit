@@ -1,7 +1,7 @@
 import TwigAttribute from "../src/TwigAttribute";
 
 describe("TwigAttribute test", () => {
-  let twigAttribute:TwigAttribute = null;
+  let twigAttribute:TwigAttribute = new TwigAttribute();
   beforeEach(() => {
     twigAttribute = new TwigAttribute();
   })

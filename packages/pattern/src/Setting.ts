@@ -1,21 +1,23 @@
-import Property from "./Property";
+import Property from './Property';
+
 export default class Setting extends Property {
-    get options(): string[] {
-        return this._options;
-    }
+  public getOptions(): string[] {
+    return this.options;
+  }
 
-    set options(value: string[]) {
-        this._options = value;
-    }
+  public setOptions(value: string[]) {
+    this.options = value;
+  }
 
-    get enable(): boolean {
-        return this._enable;
-    }
+  public getEnable(): boolean {
+    return this.enable;
+  }
 
-    set enable(value: boolean) {
-        this._enable = value;
-    }
-    private _enable: boolean = true;
-    private _options: string[] = [];
+  public setEnable(value: boolean) {
+    this.enable = value;
+  }
 
+  private enable = true;
+
+  private options: string[] = [];
 }
