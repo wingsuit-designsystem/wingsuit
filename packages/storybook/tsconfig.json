@@ -1,16 +1,12 @@
-  {
+
+{
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitAny": false,
-    "outDir": "dist",
-    "removeComments": false,
-    "sourceMap": true
-    // "compileOnSave": true
+    "rootDir": "./src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": []
+  "include": ["src/**/*"],
+  "exclude": ["__tests__/**/*", "__int_tests__/**/*"],
 }
