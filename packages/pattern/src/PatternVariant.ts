@@ -1,5 +1,6 @@
 import Field from "./Field";
 import Setting from "./Setting";
+import Pattern from "./Pattern";
 
 export default class PatternVariant {
   get use(): string {
@@ -14,12 +15,12 @@ export default class PatternVariant {
     return this._description;
   }
 
-  get id(): string {
-    return this._id;
+  get pattern(): Pattern {
+    return this._pattern;
   }
 
-  set id(value: string) {
-    this._id = value;
+  set pattern(pattern: Pattern) {
+    this._pattern = pattern;
   }
 
   get variant(): string {
@@ -72,10 +73,14 @@ export default class PatternVariant {
       const field: Field = this.fields[key];
       values[key] = field.preview;
     });
+
+    if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
+      values['variant'] = this.variant;
+    }
     return values;
   }
 
-  private _id: string;
+  private _pattern: Pattern;
   private _use: string;
   private _variant: string;
   private _label: string;
@@ -83,8 +88,8 @@ export default class PatternVariant {
   private _fields: Field[] = [];
   private _settings: Setting[] = [];
 
-  constructor(id: string, variant: string, use: string, label: string, description: string) {
-    this._id = id;
+  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string) {
+    this._pattern = pattern;
     this._variant = variant;
     this._label = label;
     this._use = use;

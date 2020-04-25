@@ -81,7 +81,7 @@ export default class Pattern {
       const use = variantDefinition['use'] != null ? variantDefinition['use'] : this.use;
       const description = variantDefinition != null ? variantDefinition['description'] : this.description;
 
-      const variant = new PatternVariant(this._id, variantKey, use, label, description);
+      const variant = new PatternVariant(this, variantKey, use, label, description);
 
       if (i == 0) {
         this._defaultVariant = variant;
