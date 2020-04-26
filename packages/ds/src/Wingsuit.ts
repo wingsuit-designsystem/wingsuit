@@ -1,87 +1,92 @@
 /**
- * Wingsuit app to merge webpack config.
+ * Wingsuit Design System.
  */
-import RootConfig from "./RootConfig";
-import IApp from "./IApp";
-
-import * as path from 'path';
+import RootConfig from './RootConfig';
+import IApp from './IApp';
 
 // Library Imports
 const merge = require('webpack-merge');
-merge.multiple()
+const { ProgressPlugin, ProvidePlugin } = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+
+merge.multiple();
 // Plugins:production
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-
+interface CssModesType {
+  hot: any;
+  extract: any;
+}
 export default class Wingsuit {
-  private _rootConfig: RootConfig;
-  private _cssModes: {};
-  get rootConfig() {
-    return this._rootConfig;
+  private rootConfig: RootConfig;
+
+  private cssModes: CssModesType;
+
+  public getRootConfig() {
+    return this.rootConfig;
   }
 
   constructor(rootConfig: RootConfig) {
-    this._rootConfig = rootConfig;
+    this.rootConfig = rootConfig;
 
     /**
      * CSS modes are import to frontend dev. Wingsuit currently supports hot
      * reloading or full css file extraction.
      */
-    this._cssModes =
-      {
-        // 'hot' uses the style-loader plugin which rewrites CSS inline via
-        // webpack-dev-server and is purely development-mode ONLY. style-loader
-        // CANNOT exists alongside MiniCsExtractPlugin
-        hot: {
-          // Webpack for hot starts here
-          module: {
-            rules: [
-              {
-                test: /\.(sa|sc|c)ss$/,
-                use: [{loader: 'style-loader'}],
-              },
-            ],
-          },
-        },
-        // 'extract' uses MiniCssExtractPlugin.loader to write out actual CSS files to
-        // the filesystem. This is useful for production builds, and webpack --watch
-        extract: {
-          // Webpack for extract starts here
-          module: {
-            rules: [
-              {
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                  {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {publicPath: './'},
-                  },
-                ],
-              },
-            ],
-          },
-          plugins: [
-            new OptimizeCSSAssetsPlugin({
-              // Ensure css map file output
-              cssProcessorOptions: {
-                map: {
-                  inline: false,
-                  annotation: true,
-                },
-              },
-            }),
-            new MiniCssExtractPlugin({
-              filename: '[name].styles.css',
-              chunkFilename: '[id].css',
-            }),
+    this.cssModes = {
+      // 'hot' uses the style-loader plugin which rewrites CSS inline via
+      // webpack-dev-server and is purely development-mode ONLY. style-loader
+      // CANNOT exists alongside MiniCsExtractPlugin
+      hot: {
+        // Webpack for hot starts here
+        module: {
+          rules: [
+            {
+              test: /\.(sa|sc|c)ss$/,
+              use: [{ loader: 'style-loader' }],
+            },
           ],
         },
-      };
+      },
+      // 'extract' uses MiniCssExtractPlugin.loader to write out actual CSS files to
+      // the filesystem. This is useful for production builds, and webpack --watch
+      extract: {
+        // Webpack for extract starts here
+        module: {
+          rules: [
+            {
+              test: /\.(sa|sc|c)ss$/,
+              use: [
+                {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: { publicPath: './' },
+                },
+              ],
+            },
+          ],
+        },
+        plugins: [
+          new OptimizeCSSAssetsPlugin({
+            // Ensure css map file output
+            cssProcessorOptions: {
+              map: {
+                inline: false,
+                annotation: true,
+              },
+            },
+          }),
+          new MiniCssExtractPlugin({
+            filename: '[name].styles.css',
+            chunkFilename: '[id].css',
+          }),
+        ],
+      },
+    };
   }
 
   public getCssModes() {
-    return this._cssModes;
+    return this.cssModes;
   }
 
   /**
@@ -99,25 +104,25 @@ export default class Wingsuit {
    */
   public generateWebpack(environment: string, app: IApp, options) {
     const cssModes = this.getCssModes();
-    // Dynamically pull in design system config. Must be named __webpack.config.js
-    // eslint-disable-next-line
 
     return merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       'module.rules.use': 'prepend',
     })(
-      // Wingsuit standard config
+      // Wingsuit shared standard config
       this.getSharedWebpackConfig(),
       // What kind of CSS handling, defaults to extract
-      options.cssMode ? cssModes[options.cssMode] : cssModes['extract'],
+      options.cssMode ? cssModes[options.cssMode] : cssModes.extract,
       // Design system-specific config
-      environment === 'production' ? app.getProductionWebpackConfig() : app.getDevelopmentWebpackConfig(),
+      environment === 'production'
+        ? app.getProductionWebpackConfig()
+        : app.getDevelopmentWebpackConfig(),
       // App config shared between dev and prod modes
-      app.getSharedWebpackConfig(),
+      app.getSharedWebpackConfig()
       // App config specific to dev or prod
       // NODE_ENV === 'development' ? dev : prod
     );
-  };
+  }
 
   /**
    * Wingsuit shard config.
@@ -125,23 +130,18 @@ export default class Wingsuit {
    * The shared loaders, plugins, and processing that all our "apps" should use.
    */
   public getSharedWebpackConfig() {
-    const {ProgressPlugin, ProvidePlugin} = require('webpack');
-
-// Plugins
-    const TerserPlugin = require('terser-webpack-plugin');
-
-// Constants: environment
-// NODE_ENV is set within all NPM scripts before running Webpack, eg:
-//
-//  "NODE_ENV='development' webpack-dev-server --config ./apps/pl/__webpack.config.js --hot",
-//
-// NODE_ENV is either:
-// - development
-// - production
-// Defaults to 'production'
-    const {NODE_ENV = 'production'} = process.env;
-// Enable to track down deprecation during development
-// process.traceDeprecation = true;
+    // Constants: environment
+    // NODE_ENV is set within all NPM scripts before running Webpack, eg:
+    //
+    //  "NODE_ENV='development' webpack-dev-server --config ./apps/pl/__webpack.config.js --hot",
+    //
+    // NODE_ENV is either:
+    // - development
+    // - production
+    // Defaults to 'production'
+    const { NODE_ENV = 'production' } = process.env;
+    // Enable to track down deprecation during development
+    // process.traceDeprecation = true;
 
     return {
       // entry: {}, // See entryPrepend() and wingsuit() below for entry details
@@ -215,7 +215,7 @@ export default class Wingsuit {
                 },
               },
             ],
-          }
+          },
         ],
       },
       optimization: {
@@ -226,7 +226,7 @@ export default class Wingsuit {
         ],
       },
       plugins: [
-        new ProgressPlugin({profile: false}),
+        new ProgressPlugin({ profile: false }),
         // Provides "global" vars mapped to an actual dependency. Allows e.g. jQuery
         // plugins to assume that `window.jquery` is available
         new ProvidePlugin({}),

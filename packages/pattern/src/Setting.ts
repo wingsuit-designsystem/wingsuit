@@ -9,7 +9,7 @@ export default class Setting extends Property {
     this.options = value;
   }
 
-  public getEnable(): boolean {
+  public isEnable(): boolean {
     return this.enable;
   }
 

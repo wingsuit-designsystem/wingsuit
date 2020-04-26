@@ -8,5 +8,5 @@
     "outDir": "dist"
   },
   "include": ["src/**/*"],
-  "exclude": ["__tests__/**/*", "__int_tests__/**/*"],
+  "exclude": ["__tests__/**/*", "__int_tests__/**/*"]
 }

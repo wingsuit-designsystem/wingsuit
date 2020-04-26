@@ -1,22 +1,23 @@
-import IApp from "./IApp";
-import AppConfig from "./AppConfig";
-import {DefinePlugin} from "webpack";
-// Plugins:production
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+import { DefinePlugin } from 'webpack';
 import * as path from 'path';
-import RootConfig from "./RootConfig";
+import IApp from './IApp';
+import AppConfig from './AppConfig';
+// Plugins:production
+import RootConfig from './RootConfig';
+
 const wingsuitTools = require('@wingsuit-designsystem/tools');
 
 export default class StorybookApp implements IApp {
-  private _appConfig: AppConfig;
-  private _rootConfig: RootConfig;
-  constructor(appConfig:AppConfig, rootConfig: RootConfig) {
-    this._appConfig = appConfig;
-    this._rootConfig = rootConfig;
+  private appConfig: AppConfig;
+
+  private rootConfig: RootConfig;
+
+  constructor(appConfig: AppConfig, rootConfig: RootConfig) {
+    this.appConfig = appConfig;
+    this.rootConfig = rootConfig;
   }
 
-  public getSharedWebpackConfig():{} {
+  public getSharedWebpackConfig(): {} {
     return {
       node: {
         fs: 'empty',
@@ -30,7 +31,7 @@ export default class StorybookApp implements IApp {
         // Sass can import other components via shorthand:
         //   `@import ~atoms/thing/thing`
         // Note: Use the tilde (~), do not include trailing ".scss"
-        alias: this._appConfig.namespaces,
+        alias: this.appConfig.getNamespaces(),
       },
       module: {
         rules: [
@@ -41,9 +42,9 @@ export default class StorybookApp implements IApp {
                 loader: '@wingsuit-designsystem/twig-loader',
                 options: {
                   twigOptions: {
-                    namespaces: this._appConfig.namespaces
-                  }
-                }
+                    namespaces: this.appConfig.getNamespaces(),
+                  },
+                },
               },
             ],
           },
@@ -59,19 +60,21 @@ export default class StorybookApp implements IApp {
       },
       plugins: [
         new wingsuitTools.Tailwind2JsonPlugin(
-          path.resolve(`${this._rootConfig.rootPath}/tailwind.config`),
-          path.resolve(`${this._appConfig.appPath}/_silo/tailwind.json`)
+          path.resolve(`${this.rootConfig.getRootPath()}/tailwind.config`),
+          path.resolve(`${this.appConfig.getAppPath()}/_silo/tailwind.json`)
         ),
         new wingsuitTools.Svg2JsonPlugin(
-          path.resolve(`${this._rootConfig.rootPath}/source/default/_patterns/01-atoms/svg/svg`),
-          path.resolve(`${this._appConfig.appPath}/_silo/svgs.json`)
+          path.resolve(
+            `${this.rootConfig.getRootPath()}/source/default/_patterns/01-atoms/svg/svg`
+          ),
+          path.resolve(`${this.appConfig.getAppPath()}/_silo/svgs.json`)
         ),
         new wingsuitTools.Pattern2JsonPlugin(
-          path.resolve(`${this._rootConfig.rootPath}/source/default/_patterns/`),
-          path.resolve(`${this._appConfig.appPath}/_silo/patterns.json`)
+          path.resolve(`${this.rootConfig.getRootPath()}/source/default/_patterns/`),
+          path.resolve(`${this.appConfig.getAppPath()}/_silo/patterns.json`)
         ),
         new DefinePlugin({
-          BUILD_TARGET: JSON.stringify(this._appConfig.appName),
+          BUILD_TARGET: JSON.stringify(this.appConfig.getAppName()),
         }),
       ],
 
@@ -80,15 +83,14 @@ export default class StorybookApp implements IApp {
       },
     };
   }
+
   getDevelopmentWebpackConfig(): {} {
     return {};
   }
+
   getProductionWebpackConfig(): {} {
     return {};
   }
 
-  init() {
-  }
-
-
+  init() {}
 }

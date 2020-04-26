@@ -5,6 +5,9 @@
   "files": [
     "generators"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "gulp-rename": "<=1.2.2",
     "lodash": "^4.17.15",

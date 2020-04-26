@@ -5,7 +5,7 @@ import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs
 
 export function tellStories(patternId, module, callback) {
   const pattern = storage.loadPattern(patternId);
-  const story = storiesOf(pattern.label, module);
+  const story = storiesOf(pattern.getLabel(), module);
   story.addDecorator(withKnobs);
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
@@ -14,7 +14,7 @@ export function tellStories(patternId, module, callback) {
       const knobsVariables = [];
       Object.keys(variant.getSettings()).forEach((key) => {
         const setting = variant.getSetting(key);
-        if (setting.enable()) {
+        if (setting.isEnable()) {
           if (setting.getType() === 'select') {
             knobsVariables[key] = select(
               setting.getLabel(),

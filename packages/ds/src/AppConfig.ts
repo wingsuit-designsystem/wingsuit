@@ -1,34 +1,36 @@
 export default class AppConfig {
-  private _appName: string;
-  private _appPath: string;
-  private _namespaces: {} = {};
+  private appName: string;
+
+  private appPath: string;
+
+  private namespaces: {} = {};
 
   constructor(appName: string, appPath: string) {
-    this._appName = appName;
-    this._appPath = appPath;
+    this.appName = appName;
+    this.appPath = appPath;
   }
 
-  get namespaces(): {} {
-    return this._namespaces;
+  public getNamespaces(): {} {
+    return this.namespaces;
   }
 
-  set namespaces(value: {}) {
-    this._namespaces = value;
+  public setNamespaces(value: {}) {
+    this.namespaces = value;
   }
 
-  get appName(): string {
-    return this._appName;
+  public getAppName(): string {
+    return this.appName;
   }
 
-  set appName(value: string) {
-    this._appName = value;
+  public setAppName(value: string) {
+    this.appName = value;
   }
 
-  get appPath(): string {
-    return this._appPath;
+  public getAppPath(): string {
+    return this.appPath;
   }
 
-  set appPath(value: string) {
-    this._appPath = value;
+  public setAppPath(value: string) {
+    this.appPath = value;
   }
 }

@@ -6,7 +6,7 @@ import AppConfig from "../../src/AppConfig";
 import IApp from "../../src/IApp";
 
 describe('PatternStorage', () => {
-  let wingsuit: Wingsuit = null;
+  let wingsuit: Wingsuit;
 
   beforeEach(() => {
     const rootConfig = new RootConfig(path.resolve(__dirname, '../'));
@@ -16,10 +16,10 @@ describe('PatternStorage', () => {
   describe('#storybook configuration', () => {
     test('Generate Storybook config.', () => {
       const storybookConfig:AppConfig = new AppConfig('storybook', path.resolve(__dirname));
-      storybookConfig.namespaces = {
+      storybookConfig.setNamespaces({
         'atoms': path.resolve(__dirname, '../source/atoms')
-      };
-      const storybookApp:IApp = new StorybookApp(storybookConfig, wingsuit.rootConfig);
+      });
+      const storybookApp:IApp = new StorybookApp(storybookConfig, wingsuit.getRootConfig());
       const config = wingsuit.generateWebpack('development', storybookApp, {});
       console.log(config);
     });

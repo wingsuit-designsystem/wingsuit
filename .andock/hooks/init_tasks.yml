@@ -1,5 +1,0 @@
-- name: Init andock environment
-  command: "echo 'Hello Andock'"
-  args:
-    chdir: "{{ docroot_path }}"
-

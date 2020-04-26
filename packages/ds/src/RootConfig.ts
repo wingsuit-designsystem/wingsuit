@@ -1,42 +1,45 @@
 export default class RootConfig {
   constructor(rootPath) {
-    this._rootPath = rootPath;
+    this.rootPath = rootPath;
   }
 
-  get rootPath(): string {
-    return this._rootPath;
+  public getRootPath(): string {
+    return this.rootPath;
   }
 
-  set rootPath(value: string) {
-    this._rootPath = value;
+  public setRootPath(value: string) {
+    this.rootPath = value;
   }
 
-  get distPath(): string {
-    return this._distPath;
+  public getDistPath(): string {
+    return this.distPath;
   }
 
-  set distPath(value: string) {
-    this._distPath = value;
+  public setDistPath(value: string) {
+    this.distPath = value;
   }
 
-  get assetBundleFolder(): string {
-    return this._assetBundleFolder;
+  public getAssetBundleFolder(): string {
+    return this.assetBundleFolder;
   }
 
-  set assetBundleFolder(value: string) {
-    this._assetBundleFolder = value;
+  public setAssetBundleFolder(value: string) {
+    this.assetBundleFolder = value;
   }
 
-  get assetAtomicFolder(): string {
-    return this._assetAtomicFolder;
+  public getAssetAtomicFolder(): string {
+    return this.assetAtomicFolder;
   }
 
-  set assetAtomicFolder(value: string) {
-    this._assetAtomicFolder = value;
+  setAssetAtomicFolder(value: string) {
+    this.assetAtomicFolder = value;
   }
-  private _rootPath:string;
-  private _distPath: string = 'dist/';
-  private _assetBundleFolder: string = 'assets/';
-  private _assetAtomicFolder: string = 'atomic/';
 
+  private rootPath: string;
+
+  private distPath = 'dist/';
+
+  private assetBundleFolder = 'assets/';
+
+  private assetAtomicFolder = 'atomic/';
 }

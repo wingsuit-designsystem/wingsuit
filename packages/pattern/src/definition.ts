@@ -32,6 +32,9 @@ export interface IPatternDefinition {
   settings: Properties;
   variants: Variants;
 }
+export interface IPatternDefinitionsPatterns {
+  [key: string]: IPatternDefinition;
+}
 export interface IPatternDefinitions {
-  patterns: IPatternDefinition;
+  patterns: IPatternDefinitionsPatterns;
 }

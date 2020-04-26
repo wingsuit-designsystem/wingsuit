@@ -16,7 +16,7 @@ export default class Svg2JsonPlugin {
     const emit = (compilation, callback) => {
       const filename = this.targetJsonFlename;
       const svgFolderPath = this.svgFolderPath;
-      const svgs = [];
+      const svgs:string[] = [];
       fs.readdirSync(svgFolderPath).forEach(file => {
         svgs.push(path.basename(file, '.svg'));
       });

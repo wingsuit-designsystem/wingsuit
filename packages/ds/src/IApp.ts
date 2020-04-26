@@ -1,5 +1,3 @@
-import AppConfig from "./AppConfig";
-
 export default interface IApp {
   init();
 
@@ -8,5 +6,4 @@ export default interface IApp {
   getProductionWebpackConfig(): {};
 
   getDevelopmentWebpackConfig(): {};
-
 }

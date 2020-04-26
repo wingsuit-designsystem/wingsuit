@@ -1,4 +1,0 @@
-
-[andock_docksal_server]
-dev.key-tec.de ansible_connection=ssh ansible_user=andock
-

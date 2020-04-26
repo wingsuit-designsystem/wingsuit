@@ -26,7 +26,8 @@ export default class Pattern2JsonPlugin {
       const fields = field['fields'];
       let output = '';
       try {
-        output = twigRenderEngine.renderPatternPreview(patternId, variantId, settings, fields);
+        const mergedVariables = Object.assign(settings, fields);
+        output = twigRenderEngine.renderPatternPreview(patternId, variantId, mergedVariables);
       } catch (e) {
         output = `Unable to render ${patternId}--${variantId}. Message: ${e.Message()}`;
       }
@@ -48,6 +49,7 @@ export default class Pattern2JsonPlugin {
       mergedPatters = Object.assign(mergedPatters, parsedFiled);
     });
     patternsObj.patterns = mergedPatters;
+
     storage.createDefinitions(patternsObj);
     Object.keys(patternsObj.patterns).forEach((patternId) => {
       const pattern = patternsObj.patterns[patternId];

@@ -1,5 +1,0 @@
-- name: "Install"
-  command: "fin rc -T  --image=docksal/cli:2.7-php7.3 yarn install"
-  args:
-    chdir: "{{ build_path }}/wingsuit"
-
