@@ -19,21 +19,22 @@ export default class Pattern2JsonPlugin {
   }
 
   handleField(field) {
-    if (field['type'] === 'pattern' && field['id'] != null) {
-      const patternId = field['id'];
-      const variantId = field['variant'];
-      const settings = field['settings'];
-      const fields = field['fields'];
+    if (field.type === 'pattern' && field.preview != null && field.preview.id != null) {
+      const preview = field.preview;
+      const patternId = preview.id;
+      const variantId = preview.variant;
+      const settings = preview.settings;
+      const fields = preview.fields;
       let output = '';
       try {
         const mergedVariables = Object.assign(settings, fields);
         output = twigRenderEngine.renderPatternPreview(patternId, variantId, mergedVariables);
       } catch (e) {
-        output = `Unable to render ${patternId}--${variantId}. Message: ${e.Message()}`;
+        output = `Unable to render ${patternId}--${variantId}. Message: ${e.message}`;
       }
 
-      field['preview'] = output;
-      field['type'] = 'rendered';
+      field.preview = output;
+      field.type = 'rendered';
     }
     return field;
   }

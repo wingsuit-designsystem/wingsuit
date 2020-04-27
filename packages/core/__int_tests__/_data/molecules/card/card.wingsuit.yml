@@ -9,14 +9,16 @@ card:
       preview: Text
     image:
       type: pattern
-      id: image
+      preview:
+        id: image
   variants:
     horizontal:
       label: Label
       fields:
         image:
           type: pattern
-          id: image
+          preview:
+            id: image
   settings:
     color:
       type: select

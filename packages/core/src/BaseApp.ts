@@ -24,7 +24,7 @@ export default class BaseApp implements IApp {
       const mergedConfigs = Object.assign(configStub, rootConfig);
       return mergedConfigs;
     } catch (e) {
-      throw new Error(`Configuration "wingsuit.root.config" not found in ${configName}.`);
+      throw new Error(`Configuration "wingsuit.root.config" not found in ${configName}. Message: ${e.message}`);
     }
 
   }

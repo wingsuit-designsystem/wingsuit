@@ -3,10 +3,20 @@ import { storage } from '@wingsuit-designsystem/pattern';
 import { storiesOf } from '@storybook/html';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
 
-export function tellStories(patternId, module, callback) {
+export function tellStories(patternPath, module, callback) {
+  const patternAry = patternPath.split('/');
+  const patternId = patternAry[patternAry.length - 1];
+  let namespace = '';
+  if (patternAry.length > 1) {
+    patternAry.pop();
+    namespace = patternAry.join('/');
+  }
   const pattern = storage.loadPattern(patternId);
-  const story = storiesOf(pattern.getLabel(), module);
+
+  const patternLabel = namespace !== '' ? `${namespace}/${pattern.getLabel()}`:pattern.getLabel();
+  const story = storiesOf( patternLabel, module);
   story.addDecorator(withKnobs);
+
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const variables = variant.getVariables();

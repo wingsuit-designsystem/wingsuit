@@ -55,7 +55,7 @@
     "@storybook/addon-viewport": "^5.3.17",
     "@storybook/html": "^5.3.17",
     "@wingsuit-designsystem/core": "0.1.1-alpha.3",
-    "@wingsuit-designsystem/generator-new-component": "0.1.1-alpha.2",
+    "@wingsuit-designsystem/generator-new-component": "0.1.1-alpha.3",
     "@wingsuit-designsystem/storybook": "0.1.1-alpha.3",
     "autoprefixer": "^9.7.4",
     "babel-core": "^7.0.0-bridge.0",

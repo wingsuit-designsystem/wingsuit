@@ -93,7 +93,7 @@
           },
           "fields": {
             "field": {
-              "type":  "pattern",
+              "type": "pattern",
               "id": "ref",
               "settings": {
                 "setting": "correct"
