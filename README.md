@@ -1,10 +1,10 @@
 ## A design system to build your Twig components better and faster.
 
 
-<div style="text-align:center">
+<p align="center">
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c.svg" width="240px">
 <h1>Wingsuit</h1>
-</div>
+</p>
 
 
 ## [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) + [Tailwind](tailwindcss.com/) + [Storybook](https://storybook.js.org/) + [UI Patterns](https://www.drupal.org/project/ui_patterns)
