@@ -1,0 +1,27 @@
+card:
+  use: "@molecules/card/_card.twig"
+  label: Card
+  description: Example description
+  fields:
+    label:
+      type: text
+      label: Label
+      preview: Text
+    image:
+      type: pattern
+      id: image
+  variants:
+    horizontal:
+      label: Label
+      fields:
+        image:
+          type: pattern
+          id: image
+  settings:
+    color:
+      type: select
+      label: Color
+      options:
+        blue: Blue
+        grey: Grey
+      preview: value_1

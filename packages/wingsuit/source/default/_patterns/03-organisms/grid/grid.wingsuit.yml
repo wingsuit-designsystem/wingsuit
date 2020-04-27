@@ -1,0 +1,177 @@
+grid:
+  use: "@organisms/grid/_grid.twig"
+  label: Grid
+  description: Grid pattern.
+  fields:
+    column_1:
+      type: text
+      label: Column 1
+      preview:
+        faker:
+          property: lorem.text
+    column_2:
+      type: text
+      label: Column 2
+      preview:
+        faker:
+          property: lorem.text
+    column_3:
+      type: text
+      label: Column 3K
+      preview:
+        faker:
+          property: lorem.text
+    column_4:
+      type: text
+      label: Column 4s
+      preview:
+        faker:
+          property: lorem.text
+    column_5:
+      type: text
+      label: Column 5
+      preview:
+        faker:
+          property: lorem.text
+  settings:
+    columns:
+      type: select
+      label: Columns
+      options:
+        1: 1 column
+        2: 2 column
+        3: 3 column
+        4: 4 column
+        5: 5 column
+    gap:
+      type: boolean
+      label: Gap
+      default_value: 1
+    config_1:
+      type: select
+      label: Column widths
+      default_value: equal
+      options:
+        equal: 100%
+    config_2:
+      type: select
+      label: Column widths
+      default_value: equal
+      options:
+        equal: 50%/50%
+        66x33: 66%/33%
+        33x66: 33%/66%
+    config_3:
+      type: select
+      label: Column widths
+      default_value: equal
+      options:
+        equal: 33%/33%/33%
+    config_4:
+      type: select
+      label: Column widths
+      default_value: equal
+      options:
+        equal: 25%/25%/25%/25%
+    config_5:
+      type: select
+      label: Column widths
+      default_value: equal
+      options:
+        equal: 20%/20%/20%/20%
+    padding_top:
+      type: select
+      label: Padding top
+      description: If previous element has spacing bottom, use default for normal or half for small spacing betweeen elements. If previous element has no bottomspacing, because of a background image, then use doubled.
+      options:
+        half: Half
+        default: Default
+        doubled: Doubled
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      description: If next element has spacing top, use default for normal or half for small spacing betweeen elements. If next element has no topspacing, because of a background image, then use doubled.
+      options:
+        half: Half
+        default: Default
+        doubled: Doubled
+    wrapper:
+      type: boolean
+      label: Wrapper
+      default_value: 1
+    width:
+      type: select
+      label: Width
+      default_value: default
+      options:
+        small: 320px
+        medium: 640px
+        large: 860px
+        xlarge: 1024px
+        default: Default
+        full: Full width
+    bg:
+      type: select
+      label: Background
+      options:
+        sprite-cross: Cross
+        sprite-pattern-cube: Cubes
+        sprite-pattern-triangle: Triangles
+        sprite-pattern-stais: Stairs
+        bg-gray-medium: Medium gray
+        bg-gray-light: Light gray
+    bg_size:
+      type: select
+      label: Background size
+      description: Defines the background image size. Use small for small repeated background images like the cross svg. Leave empty for default behavior.
+      options:
+        bg-40: Small
+    crosses:
+      type: select
+      label: Crosses as background
+      description: Creates an partial background with NIM-crosses. Crosses can be aligned to the left or right side.
+      default_value: ''
+      options:
+        left: Left
+        right: Right
+  variants:
+    1_column:
+      label: 1 column Jo
+      settings:
+        columns: 1
+        config_2: "equal"
+        config_3: ""
+        config_4: ""
+        config_5: ""
+    2_column:
+      label: 2 column
+      settings:
+        columns: 2
+        config_1: ""
+        config_3: ""
+        config_4: ""
+        config_5: ""
+    3_column:
+      label: 3 column
+      settings:
+        columns: 3
+        config_1: ""
+        config_2: ""
+        config_4: ""
+        config_5: ""
+    4_column:
+      label: 4 column
+      settings:
+        columns: 4
+        config_1: ""
+        config_2: ""
+        config_3: ""
+        config_5: ""
+    5_column:
+      label: 5 column
+      settings:
+        columns: 5
+        config_1: ""
+        config_2: ""
+        config_3: ""
+        config_4: ""

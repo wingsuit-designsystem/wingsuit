@@ -1,0 +1,139 @@
+image:
+  use: "@atoms/image/_image.twig"
+  label: Image
+  description: Image component
+  fields:
+    image:
+      type: text
+      label: The image field. The field will be generated for placeholder images.
+    caption:
+      type: text
+      label: The image caption text.
+  variants:
+    primary:
+      label: Primary
+    bg:
+      label: Primary
+  settings:
+    placeholder:
+      type: boolean
+      default_value: true
+    style:
+      type: textfield
+      preview: featured
+  data:
+    imageConfig:
+      styles:
+        # Square
+        xsmall_1x1_scale_and_crop:
+          label: Small 1x1
+          width: 80
+          height: 80
+        medium_1x1_scale_and_crop:
+          label: Medium 1x1
+          width: 450
+          height: 450
+        # 7:4 - Usual used for nim cards.
+        xsmall_7x4_scale_and_crop:
+          label: XSmall 7x4
+          width: 420
+          height: 240
+        small_7x4_scale_and_crop:
+          label: Small 7x4
+          width: 600
+          height: 343
+        medium_7x4_scale_and_crop:
+          label: Medium 7x4
+          width: 480
+          height: 274
+        large_7x4_scale_and_crop:
+          label: Large 7x4
+          width: 380
+          height: 180
+        # Hero: Used for card as stage.
+        xsmall_8x9_scale_and_crop:
+          label: XSmall 8x9
+          width: 460
+          height: 518
+        small_8x9_scale_and_crop:
+          label: Small 8x9
+          width: 640
+          height: 720
+        xlarge_32x15_scale_and_crop:
+          label: XLarge 32x15
+          width: 1280
+          height: 600
+        xxlarge_32x15_scale_and_crop:
+          label: XXLarge 32x15
+          width: 1920
+          height: 900
+        # Portrait: 64:67 aspect ratio for special card.
+        large_274x287_scale_and_crop:
+          label: Large 274x287
+          width: 548
+          height: 574
+        # Featured images.
+        xsmall_7x6_scale_and_crop:
+          label: XSmall 7x6
+          width: 420
+          height: 360
+        small_7x6_scale_and_crop:
+          label: Small 7x6
+          width: 600
+          height: 514
+        # Two-thirds width on large view port.
+        large_17x10_scale_and_crop:
+          label: Large 17x10
+          width: 799
+          height: 470
+        # Half width on large view port.
+        large_251x205_scale_and_crop:
+          label: Large 251x205
+          width: 502
+          height: 410
+      stylesResponsive:
+        card:
+          style: medium_7x4_scale_and_crop
+          breakpoints:
+            xsmall: xsmall_7x4_scale_and_crop
+            small: small_7x4_scale_and_crop
+            medium: small_7x4_scale_and_crop
+            large: large_7x4_scale_and_crop
+        card_hero:
+          style: small_8x9_scale_and_crop
+          breakpoints:
+            xsmall: xsmall_8x9_scale_and_crop
+            small: small_8x9_scale_and_crop
+            medium: xlarge_32x15_scale_and_crop
+            large: xxlarge_32x15_scale_and_crop
+        card_hot:
+          style: small_8x9_scale_and_crop
+          breakpoints:
+            xsmall: xsmall_8x9_scale_and_crop
+            small: small_8x9_scale_and_crop
+            large: large_274x287_scale_and_crop
+        two_third_width_featured:
+          style: small_7x6_scale_and_crop
+          breakpoints:
+            xsmall: xsmall_7x6_scale_and_crop
+            small: small_7x6_scale_and_crop
+            large: large_17x10_scale_and_crop
+        half_width_featured:
+          style: small_7x6_scale_and_crop
+          breakpoints:
+            xsmall: xsmall_7x6_scale_and_crop
+            small: small_7x6_scale_and_crop
+            large: large_251x205_scale_and_crop
+      breakpoints:
+        xsmall:
+          mediaQuery: '(min-width: 0px) and (max-width: 459px)'
+        small:
+          mediaQuery: '(min-width: 460px) and (max-width: 639px)'
+        medium:
+          mediaQuery: 'all and (min-width: 640px) and (max-width: 1023px)'
+        large:
+          mediaQuery: 'all and (min-width: 1024px) and (max-width: 1199px)'
+        xlarge:
+          mediaQuery: 'all and (min-width: 1200px) and (max-width: 1439px)'
+        xxlarge:
+          mediaQuery: 'all and (min-width: 1440px)'

@@ -1,0 +1,33 @@
+{
+  "name": "@wingsuit-designsystem/pattern",
+  "version": "0.0.1",
+  "description": "Wingsuit Patterns.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "reflect-metadata": "^0.1.13",
+    "twig": "~1.15.1"
+  }
+}

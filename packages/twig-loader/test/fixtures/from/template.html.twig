@@ -1,0 +1,25 @@
+{% from './a.html.twig' import macroName %}
+
+{% if true %}
+  {% from './b.html.twig' import macroName %}
+{% elseif false %}
+  {% from './c.html.twig' import macroName %}
+{% else %}
+  {% from './d.html.twig' import macroName %}
+{% endif %}
+
+{% for i in 0..10 %}
+  {% from './e.html.twig' import macroName %}
+{% endfor %}
+
+{% block myblock %}
+  {% from './f.html.twig' import macroName %}
+{% endblock %}
+
+{% spaceless %}
+  {% from './g.html.twig' import macroName %}
+{% endspaceless %}
+
+{% macro mymacro() %}
+  {% from './h.html.twig' import macroName %}
+{% endmacro %}

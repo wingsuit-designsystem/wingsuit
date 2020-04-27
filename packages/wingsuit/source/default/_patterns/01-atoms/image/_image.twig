@@ -1,0 +1,28 @@
+
+{#
+/**
+ * @file
+ * image
+ *
+ * Available variables for image:
+ *  - variant [string]: Indicates which image pattern to use.
+ *  - src [string]: Specifies the URL of an image.
+ *  - alt [string]: Specifies an alternate text for an image.
+ *  - placeholder [bool]: Specifies image as placeholder (see _image--placeholder.twig).
+ *  - style [string]: Specifies image style.
+ */
+#}
+
+
+
+{% if variant == 'placeholder' %}
+  {% set image %}
+  {% include '@atoms/image/_image--placeholder.twig' with {variant: 'primary'} %}
+  {% endset %}
+{% endif %}
+
+{% if variant == 'primary' %}
+  {% include '@atoms/image/_image--primary.twig' %}
+{% elseif variant == 'bg' %}
+  {% include '@atoms/image/_image--bg.twig' %}
+{% endif %}

@@ -1,0 +1,34 @@
+button:
+  use: "@atoms/button/_button.twig"
+  label: Button
+  description: Button with different variants.
+  fields:
+    button_content:
+      type: text
+      label: Content
+      preview: More
+  variants:
+    default:
+      label: Default
+    outline:
+      label: Outline
+      description: Inverts colors
+  settings:
+    url:
+      type: token
+      label: Url
+      preview: 'http://www.nim.org'
+    button_svg_size:
+      type: select
+      label: Icon Size
+      default_value: default
+      options:
+        default: Default
+        large: Large
+    button_svg:
+      type: select
+      label: SVG
+      options:
+        chevron-up: Chevron Up
+        chevron-right: Chevron Right
+        arrow-right: Arrow Right

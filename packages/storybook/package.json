@@ -1,0 +1,33 @@
+{
+  "name": "@wingsuit-designsystem/storybook",
+  "version": "0.0.1",
+  "description": "Wingsuit Storybook Integration.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/html": "^5.3.17",
+    "@wingsuit-designsystem/pattern": "0.0.1"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  }
+}

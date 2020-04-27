@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+
+  # andock
+  andock:
+    hostname: andock
+    image: ${ANDOCK_IMAGE:-andockio/andock:dev-latest}
+    volumes:
+      - project_root:/var/www:rw,nocopy  # Project root volume
+      - docksal_ssh_agent:/.ssh-agent:ro
+    environment:
+      - GIT_USER_EMAIL
+      - GIT_USER_NAME
+      - HOST_UID
+      - HOST_GID
