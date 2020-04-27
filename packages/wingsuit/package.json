@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.1",
   "description": "A starterkit to build a design system with Pattern Lab Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
