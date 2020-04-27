@@ -33,7 +33,7 @@
   "dependencies": {
     "@storybook/addon-knobs": "^5.3.17",
     "@storybook/html": "^5.3.17",
-    "@wingsuit-designsystem/pattern": "0.0.1"
+    "@wingsuit-designsystem/pattern": "0.1.1-alpha.2"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
