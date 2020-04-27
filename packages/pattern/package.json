@@ -7,6 +7,14 @@
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
   "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
   "keywords": [
     "Storybook",
     "Atomic Design",

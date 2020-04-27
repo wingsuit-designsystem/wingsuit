@@ -6,7 +6,11 @@
     "bootstrap": "node ./scripts/bootstrap.js",
     "build": "node ./scripts/build-package.js",
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
-    "fix:js": "cross-env NODE_ENV=production eslint --fix --cache --cache-location=.cache/eslint --ext .json,.html,.ts,.tsx,.mjs --report-unused-disable-directives"
+    "fix:js": "cross-env NODE_ENV=production eslint --fix --cache --cache-location=.cache/eslint --ext .json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
+    "publish:debug": "npm run publish:latest -- --npm-tag=debug --no-push",
+    "publish:latest": "lerna publish --exact --concurrency 1 --force-publish",
+    "publish:next": "npm run publish:latest -- --npm-tag=next",
+    "repo-dirty-check": "node ./scripts/repo-dirty-check"
   },
   "workspaces": [
     "packages/*"
