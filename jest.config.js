@@ -27,8 +27,7 @@ module.exports = {
   ],
   roots: [
     '<rootDir>/packages/pattern',
-    '<rootDir>/packages/ds',
-    '<rootDir>/packages/tools',
+    '<rootDir>/packages/core'
   ],
   transform: {
     '^.+\\.[jt]sx?$': '<rootDir>/scripts/babel-jest.js',

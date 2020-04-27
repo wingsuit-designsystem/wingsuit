@@ -1,0 +1,50 @@
+{
+  "name": "@wingsuit-designsystem/core",
+  "version": "0.0.1",
+  "description": "Wingsuit Core Design System.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.0",
+    "@types/webpack": "^4.41.12",
+    "@wingsuit-designsystem/pattern": "0.0.1",
+    "@wingsuit-designsystem/storybook": "0.0.1",
+    "@wingsuit-designsystem/twig-loader": "0.0.1",
+    "babel-jest": "^25.3.0",
+    "css-loader": "^3.4.0",
+    "jest": "^25.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "reflect-metadata": "^0.1.13",
+    "terser-webpack-plugin": "^2.3.6",
+    "ts-jest": "^25.4.0",
+    "ts-loader": "^7.0.0",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

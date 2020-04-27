@@ -1,5 +1,6 @@
 module.exports = {
   important: false,
+
   variants: {
     opacity: ['responsive'],
     borderWidth: ['responsive', 'hover', 'group-hover'],
