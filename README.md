@@ -1,13 +1,10 @@
-## A design system to build your Twig components better and faster.
-
-
+### A design system to build your Twig components better and faster.
 <p align="center">
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c.svg" width="240px">
-<h1>Wingsuit</h1>
+<h1 align="center">Wingsuit</h1>
 </p>
 
-
-## [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) + [Tailwind](tailwindcss.com/) + [Storybook](https://storybook.js.org/) + [UI Patterns](https://www.drupal.org/project/ui_patterns)
+### [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) + [Tailwind](tailwindcss.com/) + [Storybook](https://storybook.js.org/) + [UI Patterns](https://www.drupal.org/project/ui_patterns)
 
 1.  Describe, develop and test your Twig Components in storybook.
 1.  Use this components defined components in Drupal with UI Patterns
