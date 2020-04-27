@@ -1,14 +1,12 @@
-
+### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 <p align="center">
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c.svg" width="240px">
 <h1 align="center">Wingsuit</h1>
-<h3>A design system to build your Twig components better and faster.</h3>
 </p>
-### [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) + [Tailwind](tailwindcss.com/) + [Storybook](https://storybook.js.org/) + [UI Patterns](https://www.drupal.org/project/ui_patterns)
 
 1.  Describe, develop and test your Twig Components in storybook.
 1.  Use this components defined components in Drupal with UI Patterns
-1.  Tailwind + Alpinejs as default 
+1.  Tailwind + Alpinejs configured as frontend frameworks
 
 ## Prerequisites
 
@@ -19,10 +17,6 @@
 
 ## Quickstart
 
-Wingsuit builds design systems in dev mode for local hosting, or production mode for optimized asset generation.
-
-### Quickstart A
-
 1. Simply run:
 
    ```bash
@@ -32,56 +26,30 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
 1. Then `cd wingsuit/` and run:
 
    ```bash
-   npm start
-   ```
-
-### Quickstart B
-1. Clone repository:
-
-   ```bash
-   git clone git@github.com:wingsuit-designsystem/wingsuit.git
-   ```
-
-1. Then `cd wingsuit/wingsuit` and run:
-
-   ```bash
    npm install
-   npm run setup
-   npm start
+   npm run dev:drupal
    ```
+
 
 ## Develop Wingsuit
 1. Clone repository:
 
    ```bash
    git clone git@github.com:wingsuit-designsystem/wingsuit.git
-   npx lerna link
+   yarn bootstrap
+   yarn build
    ```
 
-1. Then `cd packages/wingsuit` and run:
+1. To start storybook `cd packages/wingsuit` and run:
 
    ```bash
-   npm run storybook
+   npm run dev:storybook
    ```
-   
-## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
-### Differences to Particle
-1.  Wingsuit uses Storybook instead of Patternlab
-1.  Wingsuit uses Tailwind instead of Bootstrap
-1.  Uses Postcss instead of Sass
-1.  Uses alpinejs instead of jQuery
-1.  Uses [UI Patterns] instead of Presenter Templates (Presenter templates vs )
 
-## Development
-```
-cd PROJECT/tools
-npm link
-cd PROJECT/wingsuit
-npm link @wingsuit-designsystem/tools
-```
-```
-cd PROJECT/pattern-loader
-npm link
-cd PROJECT/wingsuit
-npm link pattern-loader
-```
+1. To start drupal `cd packages/wingsuit` and run:
+
+   ```bash
+   npm run dev:drupal
+   ```
+## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
+
