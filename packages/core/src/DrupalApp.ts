@@ -5,8 +5,6 @@ import BaseApp from "./BaseApp";
 
 export default class DrupalApp extends BaseApp {
   public getSharedWebpackConfig(): {} {
-    console.log(this.rootConfig);
-    console.log(this.appConfig);
     return {
       entry: {
         app: [path.resolve(this.appConfig.path, 'index.js')],

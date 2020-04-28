@@ -10,6 +10,8 @@ export default class BaseApp implements IApp {
 
   protected rootConfig: RootConfig;
 
+  protected module: NodeModule;
+
   public getRootConfig(): RootConfig {
     return this.rootConfig;
   }
@@ -32,6 +34,7 @@ export default class BaseApp implements IApp {
   constructor(appConfig: AppConfig, module: NodeModule) {
     this.appConfig = appConfig;
     this.rootConfig = this.findRootConfig(module);
+    this.module = module;
   }
 
   public getSharedWebpackConfig(): {} {
