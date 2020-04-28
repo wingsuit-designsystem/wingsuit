@@ -1,6 +1,5 @@
 import {DefinePlugin} from 'webpack';
 import * as path from 'path';
-// Plugins:production
 import BaseApp from "./BaseApp";
 
 export default class DrupalApp extends BaseApp {

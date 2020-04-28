@@ -1,7 +1,10 @@
-import { storage } from '@wingsuit-designsystem/pattern';
-
-import { storiesOf } from '@storybook/html';
+import { storage, twigRenderEngine } from '@wingsuit-designsystem/pattern';
+import {configure, storiesOf} from '@storybook/html';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
+
+const Twig = require('twig');
+const twigDrupal = require('twig-drupal-filters');
+
 
 function getStorybookKnobsOptions (options: {
   [key:string]: string
@@ -13,6 +16,28 @@ function getStorybookKnobsOptions (options: {
   })
   return knobsOption;
 }
+export function init(module, storybookContext, dataContext, namespaces) {
+  dataContext.keys().forEach((key) => {
+    const data = dataContext(key);
+    if (data.patterns != null) {
+      storage.createDefinitions(data);
+    } else {
+      const dataName = Object.keys(data)[0];
+      storage.addGlobal(dataName, data[dataName]);
+    }
+  });
+
+
+  Twig.cache();
+
+  twigRenderEngine.setNamespaces(namespaces);
+  twigRenderEngine.setTwig(Twig)
+  twigRenderEngine.twigFunctions();
+
+  twigDrupal(Twig);
+  configure(storybookContext, module);
+}
+
 export function tellStories(patternPath, module, callback) {
   const patternAry = patternPath.split('/');
   const patternId = patternAry[patternAry.length - 1];

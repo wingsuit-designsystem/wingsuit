@@ -1,5 +1,4 @@
 export default interface IApp {
-  init();
 
   getSharedWebpackConfig(): {};
 

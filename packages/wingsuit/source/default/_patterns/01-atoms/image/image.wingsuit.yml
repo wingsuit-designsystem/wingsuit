@@ -22,9 +22,9 @@ image:
     style:
       label: Style
       type: select
-      preview: large_7x4_scale_and_crop
+      preview: 16x9_xs_sc
       options:
-        1x1_xxs_sc:
+        1x1_xxs_sc: XXSmall 1x1
         8x7_xxs_sc: XSmall 8x7
         8x7_xs_sc: Small 8x7
         16x9_xxxs_sc: XXXSmall 16x9

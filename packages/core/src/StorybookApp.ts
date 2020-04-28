@@ -51,17 +51,17 @@ export default class StorybookApp extends BaseApp {
       plugins: [
         new Tailwind2JsonPlugin(
           path.resolve(`${this.rootConfig.path}/tailwind.config`),
-          path.resolve(`${this.appConfig.path}/_silo/tailwind.json`)
+          path.resolve(`${this.appConfig.path}/_config/_silo/tailwind.json`)
         ),
         new Svg2JsonPlugin(
           path.resolve(
             `${this.rootConfig.path}/source/default/_patterns/01-atoms/svg/svg`
           ),
-          path.resolve(`${this.appConfig.path}/_silo/svgs.json`)
+          path.resolve(`${this.appConfig.path}/_config/_silo/svgs.json`)
         ),
         new Pattern2JsonPlugin(
           path.resolve(`${this.rootConfig.path}/source/default/_patterns/`),
-          path.resolve(`${this.appConfig.path}/_silo/patterns.json`)
+          path.resolve(`${this.appConfig.path}/_config/_silo/patterns.json`)
         ),
         new DefinePlugin({
           BUILD_TARGET: JSON.stringify(this.appConfig.name),
