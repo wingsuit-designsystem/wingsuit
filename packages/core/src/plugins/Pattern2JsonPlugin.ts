@@ -27,7 +27,8 @@ export default class Pattern2JsonPlugin {
       const fields = preview.fields;
       let output = '';
       try {
-        const mergedVariables = Object.assign(settings, fields);
+        const variant = storage.loadVariant(patternId, variantId)
+        const mergedVariables = Object.assign(variant.getVariables(), settings, fields);
         output = twigRenderEngine.renderPatternPreview(patternId, variantId, mergedVariables);
       } catch (e) {
         output = `Unable to render ${patternId}--${variantId}. Message: ${e.message}`;
@@ -71,9 +72,11 @@ export default class Pattern2JsonPlugin {
       }
     });
     fsExtra.readJson(this.targtFilePath, (readerr, existingPatternJson) => {
+      console.log('pattern are different');
       if (readerr) console.error(readerr, `Creating ${path.basename(this.targtFilePath)}!`);
       // Only write output if there is a difference or non-existent target file
       if (jsondiff.diff(existingPatternJson, patternsObj)) {
+        console.log('pattern are differnt');
         fsExtra.outputJson(this.targtFilePath, patternsObj, (writeerr) => {
           if (writeerr) console.error(writeerr);
           callback(null);

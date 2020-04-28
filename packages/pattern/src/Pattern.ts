@@ -2,6 +2,7 @@ import PatternVariant from './PatternVariant';
 import Setting from './Setting';
 import Field from './Field';
 import { IPatternDefinition } from './definition';
+import IPatternStorage from "./IPatternStorage";
 
 export default class Pattern {
   public static DEFAULT_VARIANT_NAME = '__default';
@@ -40,10 +41,13 @@ export default class Pattern {
 
   private defaultVariant: PatternVariant;
 
-  constructor(id: string, definition: IPatternDefinition) {
+  private storage: IPatternStorage;
+
+  constructor(id: string, definition: IPatternDefinition, storage:IPatternStorage) {
     this.id = id;
     this.label = definition.label;
     this.description = definition.description;
+    this.storage = storage;
     this.use = definition.use;
     this.definition = definition;
     this.defaultVariant = new PatternVariant(
@@ -63,6 +67,10 @@ export default class Pattern {
   public getVariant(id: string = Pattern.DEFAULT_VARIANT_NAME) {
     const variantId = id === '' ? Pattern.DEFAULT_VARIANT_NAME : id;
     return this.patternVariants[variantId];
+  }
+
+  public getStorage():IPatternStorage {
+    return this.storage;
   }
 
   private initializeVariants() {

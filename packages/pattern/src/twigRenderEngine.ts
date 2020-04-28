@@ -8,7 +8,6 @@ import Field from './Field';
 let twigImpl = require('twig');
 
 let twigNamespaces = {};
-const globals: {} = {};
 twigImpl.cache();
 
 class DefaultRenderer implements IRenderer {
@@ -80,9 +79,7 @@ export function setNamespaces(namespaces: {}) {
   twigNamespaces = namespaces;
 }
 
-export function addGlobal(name: string, value: {}) {
-  globals[name] = value;
-}
+
 
 export function renderPatternPreview(
   patternId: string,
@@ -126,15 +123,15 @@ export function renderPattern(
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const mergedValues: {} = { wingsuit: globals, ...variables };
+  const mergedVariables = Object.assign(variables, {'wingsuit':storage.getGlobals()})
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),
-    mergedValues
+    mergedVariables
   );
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const mergedVariables: {} = Object.assign(variables, { wingsuit: globals });
+  const mergedVariables = Object.assign(variables, {'wingsuit':storage.getGlobals()})
   return rendererImpl.render(path, path, mergedVariables);
 }

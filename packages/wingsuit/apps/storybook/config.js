@@ -3,18 +3,22 @@ import { storage, twigRenderEngine } from '@wingsuit-designsystem/pattern';
 
 const Twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
-const wingsuitPatternDefinitions = require('./_silo/patterns.json');
+const wingsuitPatternDefinitions = require('./_silo/patterns');
 const wingsuitDataSvgs = require('./_silo/svgs');
+const wingsuitDataImage= require('./_data/image.config.yml');
 const wingsuitDataTailwind = require('./_silo/tailwind');
 
 const namespaces = require('../../source/default/namespaces');
 
 Twig.cache();
 storage.createDefinitions(wingsuitPatternDefinitions);
+storage.addGlobal('tailwind', wingsuitDataTailwind);
+storage.addGlobal('svgs', wingsuitDataSvgs);
+storage.addGlobal('image', wingsuitDataImage);
 
 twigRenderEngine.setNamespaces(namespaces);
-twigRenderEngine.addGlobal('tailwind', wingsuitDataTailwind);
-twigRenderEngine.addGlobal('svgs', wingsuitDataSvgs);
+
+
 twigRenderEngine.setTwig(Twig)
 twigRenderEngine.twigFunctions();
 
@@ -28,6 +32,12 @@ require.context(
 );
 
 require.context(
+  './_patterns',
+  true
+);
+
+require.context(
   './_silo', false, /\.json$/
 );
+import 'holderjs';
 configure(require.context('./_patterns', true, /\.stories\.js$/), module);

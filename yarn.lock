@@ -3577,15 +3577,22 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wingsuit-designsystem/generator-new-component@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/generator-new-component/-/generator-new-component-0.0.1.tgz#c16d5226f2f981b6addab8738252942f14fd66c7"
-  integrity sha512-0ULi28BxL2p5eRv9GQPWa1vxBiweoWDyKzRV1/Nmj+24jpayXOxu2JhQBBqlGD0DaUdyLJYYlLafl95OWgp1iQ==
+"@wingsuit-designsystem/generator-new-component@0.1.1-alpha.3":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/generator-new-component/-/generator-new-component-0.0.8.tgz#19bcffacf69c2f0ab4efcaac2d2b16fb3c242300"
+  integrity sha512-GGBoRrj65aRszfHY24hL1vAayT6rAE5Ymh2sB/uk6BZ0x/MssCW3y6R09dWY+hhm7oj8kyYfL9uJ/IQQsd1CtA==
   dependencies:
     gulp-rename "<=1.2.2"
     lodash "^4.17.15"
     yeoman-generator "^4.3.0"
     yeoman-test "^2.0.0"
+
+"@wingsuit-designsystem/pattern@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/pattern/-/pattern-0.0.1.tgz#84e6a864dc4e85a23cdcf1ec25723d3e60f26519"
+  integrity sha512-alX5Xb5Te4RkYbcy+rw6BfRroII7tnE54Y4cc0PHZzJjgeSf+iDT2W9tQKGoehFnP/9wD/Off/Hkvq0gk4v6ug==
+  dependencies:
+    reflect-metadata "^0.1.13"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -20112,7 +20119,15 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^1.7.2:
+yaml-loader@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/yaml-loader/-/yaml-loader-0.6.0.tgz#fe1c48b9f4803dace55a59a1474e790ba6ab1b48"
+  integrity sha512-1bNiLelumURyj+zvVHOv8Y3dpCri0F2S+DCcmps0pA1zWRLjS+FhZQg4o3aUUDYESh73+pKZNI18bj7stpReow==
+  dependencies:
+    loader-utils "^1.4.0"
+    yaml "^1.8.3"
+
+yaml@^1.7.2, yaml@^1.8.3:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.9.2.tgz#f0cfa865f003ab707663e4f04b3956957ea564ed"
   integrity sha512-HPT7cGGI0DuRcsO51qC1j9O16Dh1mZ2bnXwsi0jrSpsLz0WxOLSLXfkABVl6bZO629py3CU+OMJtpNHDLB97kg==

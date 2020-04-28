@@ -44,7 +44,7 @@ export default class Wingsuit {
         module: {
           rules: [
             {
-              test: /\.(sa|sc|c)ss$/,
+              test: /\.css$/,
               use: [{loader: 'style-loader'}],
             },
           ],
@@ -57,7 +57,7 @@ export default class Wingsuit {
         module: {
           rules: [
             {
-              test: /\.(sa|sc|c)ss$/,
+              test: /\.css$/,
               use: [
                 {
                   loader: MiniCssExtractPlugin.loader,
@@ -143,8 +143,6 @@ export default class Wingsuit {
         : app.getDevelopmentWebpackConfig(),
       // App config shared between dev and prod modes
       app.getSharedWebpackConfig()
-      // App config specific to dev or prod
-      // NODE_ENV === 'development' ? dev : prod
     );
   }
 
@@ -177,7 +175,7 @@ export default class Wingsuit {
       module: {
         rules: [
           {
-            test: /\.(sa|sc|c)ss$/,
+            test: /\.css$/,
             use: [
               {
                 loader: 'css-loader',

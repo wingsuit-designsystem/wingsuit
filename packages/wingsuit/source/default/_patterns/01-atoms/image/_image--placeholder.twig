@@ -8,6 +8,8 @@
  *  - Inherit variables from @atoms/_image.twig
  */
 #}
+{% set imageConfig = wingsuit.image %}
+{% import _self as self %}
 {% macro get_placeholder_src(placeholderStyle) %}
 {% if not placeholderStyle.height %}
   {% set height = random(range(placeholderStyle.width * 0.75, placeholderStyle.width * 1.25, 10)) %}
@@ -22,7 +24,6 @@
 {% set imgSrc = 'https://via.placeholder.com/' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
 {{- imgSrc -}}
 {% endmacro %}
-
 {% macro get_holderjs_src(placeholderStyle) %}
 {# if there's no height, let's randomly get one somewhere between .75 and 1.25 times the width, in increments of 10 #}
 {% if not placeholderStyle.height %}
@@ -61,7 +62,7 @@
 No image style {{ style }} found!
 {% else %}
   {% if isResponsiveImage == false %}
-    {% set imgSrc = _self.get_holderjs_src(placeholderStyle) %}
+    {% set imgSrc = self.get_holderjs_src(placeholderStyle) %}
     {% if variant == 'primary' %}
       <img data-src="{{- imgSrc|trim -}}" class="holderjs" alt="A placeholder image">
     {% elseif variant == 'bg' %}
@@ -74,9 +75,9 @@ No image style {{ style }} found!
       {% for breakpointName, imageStyleName in placeholderStyle.breakpoints %}
         {% set breakpoint = imageBreakpoints[breakpointName] %}
         {% set imageStyle = imageStyles[imageStyleName] %}
-        <source srcset="{{- _self.get_placeholder_src(imageStyle) -}}" media="{{ breakpoint.mediaQuery }}">
+        <source srcset="{{- self.get_placeholder_src(imageStyle) -}}" media="{{ breakpoint.mediaQuery }}">
       {% endfor %}
-      <img data-src="{{- _self.get_holderjs_src(baseImageStyle) -}}" alt="MDN">
+      <img data-src="{{- self.get_holderjs_src(baseImageStyle) -}}" alt="MDN">
     </picture>
   {% endif %}
 {% endif %}

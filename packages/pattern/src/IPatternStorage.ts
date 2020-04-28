@@ -6,4 +6,6 @@ export default interface IPatternStorage {
   loadVariant(patternId: string, variantId: string): PatternVariant;
   createDefinitionsFromFile(path: string): void;
   createDefinitions(definition: {}): void;
+  addGlobal(name, value): void;
+  getGlobals(): {};
 }

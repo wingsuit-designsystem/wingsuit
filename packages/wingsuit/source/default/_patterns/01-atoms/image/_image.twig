@@ -15,10 +15,8 @@
 
 
 
-{% if variant == 'placeholder' %}
-  {% set image %}
+{% if placeholder %}
   {% include '@atoms/image/_image--placeholder.twig' with {variant: 'primary'} %}
-  {% endset %}
 {% endif %}
 
 {% if variant == 'primary' %}

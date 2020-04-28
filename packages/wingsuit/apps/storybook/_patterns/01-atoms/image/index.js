@@ -17,5 +17,3 @@ import 'holderjs';
 // Import demo only astrogoat.
 import './astrogoat.png';
 
-// Import demo assets
-import './images.twig';

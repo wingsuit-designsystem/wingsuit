@@ -1,10 +1,15 @@
 import Field from './Field';
 import Setting from './Setting';
 import Pattern from './Pattern';
+import IPatternStorage from "./IPatternStorage";
 
 export default class PatternVariant {
   public getUse(): string {
     return this.use;
+  }
+
+  public getStorage():IPatternStorage {
+    return this.pattern.getStorage();
   }
 
   public getLabel(): string {
@@ -77,7 +82,8 @@ export default class PatternVariant {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
-    return values;
+    const globals = {'wingsuit': this.getStorage().getGlobals()};
+    return Object.assign(values, globals)
   }
 
   private pattern: Pattern;

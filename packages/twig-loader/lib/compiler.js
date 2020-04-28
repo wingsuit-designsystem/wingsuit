@@ -46,6 +46,10 @@ module.exports = function (options) {
             _.each(token.token.output, processToken);
             _.each(token.token.stack, processDependency);
             break;
+          case 'Twig.logic.type.set':
+            _.each(token.token.output, processToken);
+            _.each(token.token.stack, processDependency);
+            break;
           case 'Twig.logic.type.import':
           case 'Twig.logic.type.from':
             if (token.token.expression != '_self') {

@@ -33,9 +33,14 @@ export default class StorybookApp extends BaseApp {
               },
             ],
           },
+          {
+            test: /\.ya?ml$/,
+            type: 'json', // Required by Webpack v4
+            use: 'yaml-loader'
+          },
           // Non-standard assets on the dependency chain
           {
-            test: /\.(yml|yaml|md)$/,
+            test: /\.(md)$/,
             loader: 'file-loader',
             options: {
               emitFile: false,

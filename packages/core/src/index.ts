@@ -8,5 +8,7 @@ export { default as RootConfig } from './RootConfig';
 const wingsuit = new Wingsuit();
 
 export function getAppPack(environment:string, module: NodeModule, options: {} = {}) {
+  console.log('ASDF');
+  console.log(options);
   return wingsuit.generateWebpack(environment, module, options);
 }

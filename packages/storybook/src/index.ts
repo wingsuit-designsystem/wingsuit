@@ -3,6 +3,16 @@ import { storage } from '@wingsuit-designsystem/pattern';
 import { storiesOf } from '@storybook/html';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
 
+function getStorybookKnobsOptions (options: {
+  [key:string]: string
+}){
+  const knobsOption = {};
+  Object.keys(options).forEach((key)=>{
+    const paramKey = options[key] != null ? options[key] : key;
+    knobsOption[paramKey] = key;
+  })
+  return knobsOption;
+}
 export function tellStories(patternPath, module, callback) {
   const patternAry = patternPath.split('/');
   const patternId = patternAry[patternAry.length - 1];
@@ -10,6 +20,7 @@ export function tellStories(patternPath, module, callback) {
   if (patternAry.length > 1) {
     patternAry.pop();
     namespace = patternAry.join('/');
+
   }
   const pattern = storage.loadPattern(patternId);
 
@@ -28,7 +39,7 @@ export function tellStories(patternPath, module, callback) {
           if (setting.getType() === 'select') {
             knobsVariables[key] = select(
               setting.getLabel(),
-              setting.getOptions(),
+              getStorybookKnobsOptions(setting.getOptions()),
               setting.getPreview()
             );
           } else if (setting.getType() === 'boolean') {
@@ -40,6 +51,7 @@ export function tellStories(patternPath, module, callback) {
           }
         }
       });
+
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
       return callback(mergedSettingValues, variant);
     });
