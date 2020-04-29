@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/storybook",
-  "version": "0.1.1-alpha.4",
+  "version": "0.1.1-alpha.5",
   "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
   "dependencies": {
     "@storybook/addon-knobs": "^5.3.17",
     "@storybook/html": "^5.3.17",
-    "@wingsuit-designsystem/pattern": "0.1.1-alpha.4",
-    "twig-drupal-filters": "^2.0.0",
-    "twig": "~1.15.1"
+    "@wingsuit-designsystem/pattern": "0.1.1-alpha.5",
+    "twig": "~1.15.1",
+    "twig-drupal-filters": "^2.0.0"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

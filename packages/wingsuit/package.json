@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "0.1.1-alpha.4",
+  "version": "0.1.1-alpha.5",
   "description": "A starterkit to build a design system with Pattern Lab Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -37,8 +37,6 @@
     "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
   },
   "devDependencies": {
-    "alpinejs": "^1.10.1",
-    "tailwindcss": "^1.2.0",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@fullhuman/postcss-purgecss": "^1.3.0",
@@ -51,9 +49,10 @@
     "@storybook/addon-notes": "^5.3.17",
     "@storybook/addon-storysource": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
-    "@wingsuit-designsystem/core": "0.1.1-alpha.4",
+    "@wingsuit-designsystem/core": "0.1.1-alpha.5",
     "@wingsuit-designsystem/generator-new-component": "0.1.1-alpha.3",
-    "@wingsuit-designsystem/storybook": "0.1.1-alpha.4",
+    "@wingsuit-designsystem/storybook": "0.1.1-alpha.5",
+    "alpinejs": "^1.10.1",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
@@ -70,6 +69,7 @@
     "lodash": "^4.17.15",
     "prettier": "^1.19.1",
     "regenerator-runtime": "^0.13.3",
+    "tailwindcss": "^1.2.0",
     "webpack": "^4.41.3"
   }
 }
