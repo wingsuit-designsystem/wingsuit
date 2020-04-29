@@ -1,8 +1,8 @@
-### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 <p align="center">
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_i_t.svg" width="240px">
-<h1 align="center">Wingsuit</h1>
 </p>
+
+### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 
 1.  Describe, develop and test your Twig Components in storybook.
 1.  Use this components defined components in Drupal with UI Patterns
