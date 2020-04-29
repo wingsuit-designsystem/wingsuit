@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_i_t.svg" width="240px">
+<img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_it.svg" width="240px">
 </p>
 
 ### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
