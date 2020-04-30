@@ -75,7 +75,6 @@ module.exports = function (options) {
       }
     };
 
-
     var parsedTokens = JSON.parse(tokens);
 
     _.each(parsedTokens, processToken);

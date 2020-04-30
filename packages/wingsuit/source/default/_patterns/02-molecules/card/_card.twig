@@ -9,7 +9,7 @@
   alignment: center
 #}
 {% set classes = classes|default([])|merge([
-  alignment == 'center'?'text-center',
+  alignment == 'center'?'text-center': '',
   'group hover:no-underline'
 ]) | sort | join(' ') | trim  %}
 

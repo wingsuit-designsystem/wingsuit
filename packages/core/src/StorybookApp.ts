@@ -4,9 +4,10 @@ import * as path from 'path';
 import BaseApp from "./BaseApp";
 import Tailwind2JsonPlugin from "./plugins/Tailwind2JsonPlugin";
 import Svg2JsonPlugin from "./plugins/Svg2JsonPlugin";
-import Pattern2JsonPlugin from "./plugins/Pattern2JsonPlugin";
+
 
 export default class StorybookApp extends BaseApp {
+
   public getSharedWebpackConfig(): {} {
     return {
       node: {
@@ -58,10 +59,6 @@ export default class StorybookApp extends BaseApp {
             `${this.rootConfig.path}/source/default/_patterns/01-atoms/svg/svg`
           ),
           path.resolve(`${this.appConfig.path}/_config/_silo/svgs.json`)
-        ),
-        new Pattern2JsonPlugin(
-          path.resolve(`${this.rootConfig.path}/source/default/_patterns/`),
-          path.resolve(`${this.appConfig.path}/_config/_silo/patterns.json`)
         ),
         new DefinePlugin({
           BUILD_TARGET: JSON.stringify(this.appConfig.name),

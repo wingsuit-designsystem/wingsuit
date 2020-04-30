@@ -40,7 +40,6 @@ image:
       label: XXL 16x9
       width: 1900
       height: 1068
-
   stylesResponsive:
     card-hero:
       style: 16x9_xs_sc

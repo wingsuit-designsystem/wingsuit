@@ -29,6 +29,8 @@ export default class Wingsuit {
 
   private app: IApp|null = null;
 
+  private environment = 'production';
+
   constructor() {
 
     /**
@@ -105,7 +107,7 @@ export default class Wingsuit {
       }else if (config.type === 'drupal') {
         this.app = new DrupalApp(config, module);
       } else {
-        throw new Error('No app found. Check wingsuit.app.config. ' + JSON.stringify(config));
+        throw new Error(`No app found. Check wingsuit.app.config. ${JSON.stringify(config)}`);
       }
     }
     return this.app;
@@ -126,7 +128,7 @@ export default class Wingsuit {
    */
   public generateWebpack(environment: string, module: NodeModule, options) {
     const cssModes = this.getCssModes();
-
+    this.environment = environment;
     const app: IApp = this.getApp(module);
 
     return merge.smartStrategy({
@@ -152,26 +154,14 @@ export default class Wingsuit {
    * The shared loaders, plugins, and processing that all our "apps" should use.
    */
   public getSharedWebpackConfig() {
-    // Constants: environment
-    // NODE_ENV is set within all NPM scripts before running Webpack, eg:
-    //
-    //  "NODE_ENV='development' webpack-dev-server --config ./apps/pl/__webpack.config.js --hot",
-    //
-    // NODE_ENV is either:
-    // - development
-    // - production
-    // Defaults to 'production'
-    const {NODE_ENV = 'production'} = process.env;
-    // Enable to track down deprecation during development
-    // process.traceDeprecation = true;
-
     return {
-      // entry: {}, // See entryPrepend() and wingsuit() below for entry details
-      mode: NODE_ENV, // development|production
+      mode: this.environment,
       output: {
         filename: '[name].js',
       },
-      devtool: NODE_ENV === 'development' ? 'eval' : 'source-map',
+      node: {
+      },
+      devtool: this.environment === 'development' ? 'eval' : 'source-map',
       module: {
         rules: [
           {
@@ -244,16 +234,13 @@ export default class Wingsuit {
       optimization: {
         minimizer: [
           new TerserPlugin({
-            sourceMap: NODE_ENV === 'production',
+            sourceMap: this.environment === 'production',
           }),
         ],
       },
       plugins: [
         new ProgressPlugin({profile: false}),
-        // Provides "global" vars mapped to an actual dependency. Allows e.g. jQuery
-        // plugins to assume that `window.jquery` is available
         new ProvidePlugin({}),
-        // Handle .vue files
       ],
     };
   }

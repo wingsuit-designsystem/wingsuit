@@ -6,10 +6,12 @@ const jsondiff = require('jsondiffpatch');
 
 import {storage, twigRenderEngine} from '@wingsuit-designsystem/pattern';
 
-
 export default class Pattern2JsonPlugin {
+
   private readonly targtFilePath: string;
+
   private readonly sourceFolderPath: string;
+
   private readonly plugin = {}
 
   constructor(sourceFolderPath, targtFilePath) {
@@ -19,12 +21,12 @@ export default class Pattern2JsonPlugin {
   }
 
   handleField(field) {
-    if (field.type === 'pattern' && field.preview != null && field.preview.id != null) {
-      const preview = field.preview;
+    const preview = field.preview != null ? field.preview : null;
+    if (field.type === 'pattern' && preview != null && preview.id != null) {
       const patternId = preview.id;
       const variantId = preview.variant;
-      const settings = preview.settings;
-      const fields = preview.fields;
+      const settings = preview.settings != null ? preview.settings : {};
+      const fields = preview.fields != null ? preview.fields : {};
       let output = '';
       try {
         const variant = storage.loadVariant(patternId, variantId)
@@ -50,33 +52,32 @@ export default class Pattern2JsonPlugin {
       const parsedFiled = yaml.safeLoad(file);
       mergedPatters = Object.assign(mergedPatters, parsedFiled);
     });
-    patternsObj.patterns = mergedPatters;
 
+    patternsObj.patterns = mergedPatters;
     storage.createDefinitions(patternsObj);
+
     Object.keys(patternsObj.patterns).forEach((patternId) => {
       const pattern = patternsObj.patterns[patternId];
-      if (pattern['fields'] != null) {
-        Object.keys(pattern['fields']).forEach((fieldName) => {
-          pattern['fields'][fieldName] = this.handleField(pattern['fields'][fieldName]);
+      if (pattern.fields != null) {
+        Object.keys(pattern.fields).forEach((fieldName) => {
+          pattern.fields[fieldName] = this.handleField(pattern.fields[fieldName]);
         });
       }
-      if (pattern['variants'] != null) {
-        Object.keys(pattern['variants']).forEach((variantId) => {
-          const variant = pattern['variants'][variantId];
-          if (typeof variant === 'object' && variant['fields'] != null) {
-            Object.keys(variant['fields']).forEach((fieldName) => {
-              variant['fields'][fieldName] = this.handleField(variant['fields'][fieldName]);
+      if (pattern.variants != null) {
+        Object.keys(pattern.variants).forEach((variantId) => {
+          const variant = pattern.variants[variantId];
+          if (typeof variant === 'object' && variant.fields != null) {
+            Object.keys(variant.fields).forEach((fieldName) => {
+              variant.fields[fieldName] = this.handleField(variant.fields[fieldName]);
             });
           }
         });
       }
     });
     fsExtra.readJson(this.targtFilePath, (readerr, existingPatternJson) => {
-      console.log('pattern are different');
       if (readerr) console.error(readerr, `Creating ${path.basename(this.targtFilePath)}!`);
       // Only write output if there is a difference or non-existent target file
       if (jsondiff.diff(existingPatternJson, patternsObj)) {
-        console.log('pattern are differnt');
         fsExtra.outputJson(this.targtFilePath, patternsObj, (writeerr) => {
           if (writeerr) console.error(writeerr);
           callback(null);

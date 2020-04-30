@@ -3,6 +3,6 @@ import './index';
 
 import { tellStories } from '@wingsuit-designsystem/storybook';
 
-tellStories('atoms/image', module, (variables, variant) => {
+tellStories('01-atoms/image', module, (variables, variant) => {
   return require('atoms/image/_image.twig')(variables);
 });

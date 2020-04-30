@@ -49,6 +49,7 @@
     "@storybook/addon-notes": "^5.3.17",
     "@storybook/addon-storysource": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
+    "@storybook/addon-centered": "^5.3.17",
     "@wingsuit-designsystem/core": "0.1.1-alpha.5",
     "@wingsuit-designsystem/generator-new-component": "0.1.1-alpha.3",
     "@wingsuit-designsystem/storybook": "0.1.1-alpha.5",
@@ -71,5 +72,8 @@
     "regenerator-runtime": "^0.13.3",
     "tailwindcss": "^1.2.0",
     "webpack": "^4.41.3"
+  },
+  "dependencies": {
+    "require-context": "^1.1.0"
   }
 }

@@ -8,7 +8,7 @@ export default class PatternVariant {
     return this.use;
   }
 
-  public getStorage():IPatternStorage {
+  public getStorage(): IPatternStorage {
     return this.pattern.getStorage();
   }
 
@@ -68,6 +68,28 @@ export default class PatternVariant {
     this.settings[setting.getName()] = setting;
   }
 
+  public getPreviewPatterns() {
+    const previewPatterns = {};
+    Object.keys(this.fields).forEach((key) => {
+      const field: Field = this.fields[key];
+      const preview = field.getPreview();
+      if (field.getType() === 'pattern' && preview.id !== null) {
+        const patternId = preview.id;
+
+        const variant = preview.variant !== null ? preview.variant : null;
+        const fields = preview.fields != null ? preview.fields : {};
+        const settings = preview.settings != null ? preview.settings : {};
+        const objects = Object.assign(fields, settings);
+        previewPatterns[key] = {
+          'patternId': patternId,
+          'variant': variant,
+          'variables': objects
+        };
+      }
+    });
+    return previewPatterns;
+  }
+
   public getVariables() {
     const values = {};
     Object.keys(this.settings).forEach((key) => {
@@ -75,7 +97,9 @@ export default class PatternVariant {
     });
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
-      values[key] = field.getPreview();
+      if (field !== null && field.getType() !== 'pattern') {
+        values[key] = field.getPreview();
+      }
     });
 
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {

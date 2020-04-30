@@ -5,9 +5,6 @@ import RootConfig from './RootConfig';
 
 const configStub = require('./stubs/defaultRootConfig.stub');
 
-
-
-
 export default class BaseApp implements IApp {
   protected appConfig: AppConfig;
 
@@ -51,5 +48,4 @@ export default class BaseApp implements IApp {
   getProductionWebpackConfig(): {} {
     return {};
   }
-
 }

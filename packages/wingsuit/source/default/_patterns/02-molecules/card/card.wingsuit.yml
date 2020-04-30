@@ -1,6 +1,6 @@
 card:
   use: "@molecules/card/_card.twig"
-  label: Card
+  label: Card2
   description: Use Cards for your teasers
   fields:
     image:
@@ -8,9 +8,6 @@ card:
       preview:
         id: image
         variant: primary
-        settings:
-          placeholder: true
-
     preheadline:
       type: text
       label: Preheadline
@@ -28,13 +25,13 @@ card:
       label: Headline
       faker: true
       formatter: text
-
   variants:
-    primary:
-      label: Primary
+    default:
+      label: Default
   settings:
     alignment:
       type: select
       label: Alignment
       options:
+        left: Left
         center: Center

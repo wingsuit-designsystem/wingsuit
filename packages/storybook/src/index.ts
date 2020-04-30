@@ -1,10 +1,14 @@
 import { storage, twigRenderEngine } from '@wingsuit-designsystem/pattern';
-import {configure, storiesOf} from '@storybook/html';
+import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/html';
 import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
+import wingsuitTheme from './theme';
+
+import centered from '@storybook/addon-centered/html';
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+import '@storybook/addon-docs/register';
 
 const Twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
-
 
 function getStorybookKnobsOptions (options: {
   [key:string]: string
@@ -16,29 +20,37 @@ function getStorybookKnobsOptions (options: {
   })
   return knobsOption;
 }
-export function init(module, storybookContext, dataContext, namespaces) {
+export function configure(module:NodeModule, storybookContext, dataContext, uipatternsContext, templateContext, namespaces) {
+  // Theming
+  addParameters({
+    options: {
+      theme: wingsuitTheme,
+    },
+  });
+
+  storage.setNamespaces(namespaces);
+  storage.createDefinitionsFromContext(uipatternsContext);
+  storage.createTwigStorageFromContext(templateContext);
+
   dataContext.keys().forEach((key) => {
     const data = dataContext(key);
-    if (data.patterns != null) {
-      storage.createDefinitions(data);
-    } else {
+    if (data.patterns == null) {
       const dataName = Object.keys(data)[0];
       storage.addGlobal(dataName, data[dataName]);
     }
   });
 
-
   Twig.cache();
-
+  twigRenderEngine.setRenderer(new twigRenderEngine.StoredTwigRenderer());
   twigRenderEngine.setNamespaces(namespaces);
   twigRenderEngine.setTwig(Twig)
   twigRenderEngine.twigFunctions();
-
   twigDrupal(Twig);
-  configure(storybookContext, module);
+
+  storybookConfigure(storybookContext, module);
 }
 
-export function tellStories(patternPath, module, callback) {
+export function tellStories(patternPath, module) {
   const patternAry = patternPath.split('/');
   const patternId = patternAry[patternAry.length - 1];
   let namespace = '';
@@ -52,6 +64,15 @@ export function tellStories(patternPath, module, callback) {
   const patternLabel = namespace !== '' ? `${namespace}/${pattern.getLabel()}`:pattern.getLabel();
   const story = storiesOf( patternLabel, module);
   story.addDecorator(withKnobs);
+
+  addParameters({
+    docs: {
+      container: DocsContainer,
+      page: DocsPage,
+    },
+  });
+
+  story.addDecorator(centered);
 
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
@@ -78,7 +99,8 @@ export function tellStories(patternPath, module, callback) {
       });
 
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
-      return callback(mergedSettingValues, variant);
+      return twigRenderEngine.renderPatternPreview(patternId, variantKey, mergedSettingValues);
+
     });
   });
   return story;

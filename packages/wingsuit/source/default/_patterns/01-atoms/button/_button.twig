@@ -8,7 +8,6 @@
  *  - button.invert [bool]: When set, colors will be inverted for light display on dark background.
  */
 #}
-
 {%  set button_element = button_element|default('div') %}
 {% set button_attributes = attributes_object() %}
 {% if url is not empty %}
@@ -19,16 +18,16 @@
   {{- button_content -}}
 {% endset %}
 <{{ button_element }} {{ button_attributes.addClass([
-  'px-10',
-  'py-8',
+  'px-4',
+  'py-3',
   'leading-18',
   'font-bold',
   'uppercase',
   'inline-block',
   'border-2',
   'border-red',
-  variant == 'default' ? 'bg-red text-white',
-  variant == 'outline' ? 'text-red',
+  variant == 'default' ? 'bg-red-500 text-white': '',
+  variant == 'outline' ? 'text-blue-500': '',
 
 ] | sort | join(' ') | trim) }}>
 {{ button_content|striptags }}

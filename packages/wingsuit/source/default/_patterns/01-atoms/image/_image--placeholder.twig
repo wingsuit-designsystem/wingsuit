@@ -8,6 +8,7 @@
  *  - Inherit variables from @atoms/_image.twig
  */
 #}
+
 {% set imageConfig = wingsuit.image %}
 {% import _self as self %}
 {% macro get_placeholder_src(placeholderStyle) %}
@@ -41,7 +42,7 @@
   lineWrap: '.9',
   text: placeholderStyleName ~ ' \n (' ~ placeholderText ~ ')',
 } %}
-{% set imgSrc = 'holder.js/' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
+{% set imgSrc = 'https://via.placeholder.com//' ~ placeholderStyle.width ~ 'x' ~ placeholderStyle.height|round ~ '?' ~ options|url_encode %}
 {{- imgSrc -}}
 {% endmacro %}
 
@@ -58,15 +59,16 @@
   {% set isResponsiveImage = placeholderStyle != null ? true : false %}
 {% endif %}
 
+
 {% if placeholderStyle is empty %}
 No image style {{ style }} found!
 {% else %}
   {% if isResponsiveImage == false %}
     {% set imgSrc = self.get_holderjs_src(placeholderStyle) %}
     {% if variant == 'primary' %}
-      <img data-src="{{- imgSrc|trim -}}" class="holderjs" alt="A placeholder image">
+      <img src="{{- imgSrc|trim -}}" alt="A placeholder image">
     {% elseif variant == 'bg' %}
-      <div data-background-src="?{{- imgSrc -}}" class="bg-img holderjs {{ image_classes }}"></div>
+      <div data-background-src="?{{- imgSrc -}}" class="bg-img {{ image_classes }}"></div>
     {% endif %}
 
   {% else %}

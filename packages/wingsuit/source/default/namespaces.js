@@ -1,12 +1,9 @@
 /**
- * Share atomic concepts with Webpack, Gulp, Pattern Lab, Drupal, etc
+ * Global namespaces
  */
 
 const path = require('path');
-
-//const patterns = path.resolve(__dirname, '_patterns');
-//const patterns = path.resolve('source/default', '_patterns');
-const patterns = 'source/default/_patterns';
+const patterns = path.resolve(__dirname, '_patterns');
 module.exports = {
   // Outside of atomic concepts
   tokens: path.resolve(__dirname, 'tokens'),
