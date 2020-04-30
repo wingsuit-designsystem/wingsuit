@@ -1,12 +1,29 @@
-import Wingsuit from "./Wingsuit";
+import Server from "./server/Server";
+import CssBundle from "./server/configBundles/CssBundle";
+import TailwindBundle from "./server/configBundles/TailwindBundle";
+import SvgBundle from "./server/configBundles/SvgBundle";
+import StorybookBundle from "./server/configBundles/StorybookBundle";
+import DrupalBundle from "./server/configBundles/DrupalBundle";
 
-export { default as Wingsuit } from './Wingsuit';
-export { default as StorybookApp } from './StorybookApp';
-export { default as AppConfig } from './AppConfig';
-export { default as RootConfig } from './RootConfig';
+export { default as Server } from './server/Server';
+export { default as AppConfig } from './server/AppConfig';
+export { default as RootConfig } from './server/RootConfig';
 
-const wingsuit = new Wingsuit();
+const server = new Server();
+
 
 export function getAppPack(environment:string, module: NodeModule, options: {} = {}) {
-  return wingsuit.generateWebpack(environment, module, options);
+  const app = server.getApp(module);
+  server.addConfigBundle(TailwindBundle.create(app));
+  server.addConfigBundle(SvgBundle.create(app));
+
+  // Find a better solution here. Check decorators for this use case.
+  if (app.getAppConfig().type === 'storybook') {
+    server.addConfigBundle(StorybookBundle.create(app));
+  }
+  if (app.getAppConfig().type === 'drupal') {
+    server.addConfigBundle(DrupalBundle.create(app));
+  }
+  server.addConfigBundle(CssBundle.create(app));
+  return server.generateWebpack(environment, module);
 }

@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-import Pattern2JsonPlugin from '../../src/plugins/Pattern2JsonPlugin';
+import Pattern2JsonPlugin from '../../src/server/plugins/Pattern2JsonPlugin';
 
 const targetFilePath:string = path.resolve(`${__dirname}/../_data/test.generate.json`);
 const sourceFolderPath:string = path.resolve(`${__dirname}/../_data`);

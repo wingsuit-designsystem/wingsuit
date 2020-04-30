@@ -1,15 +1,15 @@
 import {DefinePlugin} from 'webpack';
 import * as path from 'path';
-// Plugins:production
-import BaseApp from "./BaseApp";
-import Tailwind2JsonPlugin from "./plugins/Tailwind2JsonPlugin";
-import Svg2JsonPlugin from "./plugins/Svg2JsonPlugin";
+import {BaseConfigBundle} from "../BaseConfigBundle";
+import BaseApp from "../BaseApp";
 
 
-export default class StorybookApp extends BaseApp {
+export default class StorybookBundle extends BaseConfigBundle {
+  public static create(app: BaseApp) {
+    return new StorybookBundle('storybook', app.getRootConfig(), app.getAppConfig());
+  }
 
-  public getSharedWebpackConfig(): {} {
-    return {
+  protected sharedWebpackConfig:{} = {
       node: {
         fs: 'empty',
       },
@@ -50,16 +50,6 @@ export default class StorybookApp extends BaseApp {
         ],
       },
       plugins: [
-        new Tailwind2JsonPlugin(
-          path.resolve(`${this.rootConfig.path}/tailwind.config`),
-          path.resolve(`${this.appConfig.path}/_config/_silo/tailwind.json`)
-        ),
-        new Svg2JsonPlugin(
-          path.resolve(
-            `${this.rootConfig.path}/source/default/_patterns/01-atoms/svg/svg`
-          ),
-          path.resolve(`${this.appConfig.path}/_config/_silo/svgs.json`)
-        ),
         new DefinePlugin({
           BUILD_TARGET: JSON.stringify(this.appConfig.name),
         }),
@@ -67,6 +57,5 @@ export default class StorybookApp extends BaseApp {
       stats: {
         children: false,
       },
-    };
-  }
+    }
 }

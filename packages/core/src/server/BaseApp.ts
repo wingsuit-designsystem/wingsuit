@@ -1,16 +1,19 @@
 import * as path from 'path';
-import IApp from './IApp';
 import AppConfig from './AppConfig';
 import RootConfig from './RootConfig';
 
 const configStub = require('./stubs/defaultRootConfig.stub');
 
-export default class BaseApp implements IApp {
+export default class BaseApp  {
   protected appConfig: AppConfig;
 
   protected rootConfig: RootConfig;
 
   protected module: NodeModule;
+
+  public getAppConfig(): AppConfig {
+    return this.appConfig;
+  }
 
   public getRootConfig(): RootConfig {
     return this.rootConfig;
@@ -37,15 +40,4 @@ export default class BaseApp implements IApp {
     this.module = module;
   }
 
-  public getSharedWebpackConfig(): {} {
-    return {};
-  }
-
-  getDevelopmentWebpackConfig(): {} {
-    return {};
-  }
-
-  getProductionWebpackConfig(): {} {
-    return {};
-  }
 }

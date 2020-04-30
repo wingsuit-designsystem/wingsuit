@@ -2,7 +2,7 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_it.svg" width="240px">
 </p>
 
-### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
+### Server is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 
 1.  Describe, develop and test your Twig Components in storybook.
 1.  Use this components defined components in Drupal with UI Patterns
@@ -31,7 +31,7 @@
    ```
 
 
-## Develop Wingsuit
+## Develop Server
 1. Clone repository:
 
    ```bash
@@ -51,5 +51,5 @@
    ```bash
    npm run dev:drupal
    ```
-## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
+## Server is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 

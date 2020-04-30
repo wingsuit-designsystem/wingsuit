@@ -1,16 +1,9 @@
-import * as path from 'path';
-import Wingsuit from "../../src/Wingsuit";
-import RootConfig from "../../src/RootConfig";
-import StorybookApp from "../../src/StorybookApp";
-import AppConfig from "../../src/AppConfig";
-import IApp from "../../src/IApp";
+import { getAppPack } from '../../src/index';
 
 describe('PatternStorage', () => {
-  let wingsuit: Wingsuit;
   describe('#storybook configuration', () => {
     test('Generate Storybook config.', () => {
-      wingsuit = new Wingsuit()
-      const webpack = wingsuit.generateWebpack('development', module, {});
+      const webpack = getAppPack('development', module);
       console.log(webpack);
     });
   });

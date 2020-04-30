@@ -1,18 +1,18 @@
-# Wingsuit Tools
+# Server Tools
 
 WingsuitTools adds a suite of Theme Helper functions common to Drupal.
-These can be used across Wingsuit Drupal Application.
+These can be used across Server Drupal Application.
 
 ## Configuration
 
-`Wingsuit.php` includes a set of global constants configuration specific to
-a installation of Wingsuit:
+`Server.php` includes a set of global constants configuration specific to
+a installation of Server:
 
-* `THEME_NAME`: The Drupal theme name, default is set as Wingsuit.
+* `THEME_NAME`: The Drupal theme name, default is set as Server.
 * `ASSETS_PATH`: The path to the compiled assets for Drupal to consume.
-* `FRONTEND_DOCS`: A direct link to Phase2's Front End Wingsuit docs.
+* `FRONTEND_DOCS`: A direct link to Phase2's Front End Server docs.
 
-Be aware that this configuration should be updated based on your Wingsuit.
+Be aware that this configuration should be updated based on your Server.
 If you change these variables of your theme, these `const` should be updated.
 
 ## Usage
@@ -25,9 +25,9 @@ class MyCustomThemeTools extends WingsuitTools
 ```
 
 This step will make sure any changes to your theme are not lost if you update
-Wingsuit in the future.
+Server in the future.
 
-Wingsuit Tools have already been added to individual `theme.inc` files, however
+Server Tools have already been added to individual `theme.inc` files, however
 if you'd like to use the Tools elsewhere in PHP simply include the namespace to
 the file (or your custom Tools):
 

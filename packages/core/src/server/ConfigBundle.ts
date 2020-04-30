@@ -1,4 +1,6 @@
-export default interface IApp {
+export default interface ConfigBundle {
+
+  getName();
 
   getSharedWebpackConfig(): {};
 

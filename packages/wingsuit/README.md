@@ -1,4 +1,4 @@
-# Wingsuit: A design system integrating to Pattern Lab and Tailwind with Drupal.
+# Server: A design system integrating to Pattern Lab and Tailwind with Drupal.
 
 ## [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) + [Tailwind](tailwindcss.com/) + [Patternlab 3](https://patternlab.io/) + [UI Patterns](https://www.drupal.org/project/ui_patterns)
 
@@ -25,7 +25,7 @@
 
 ## Quickstart
 
-Wingsuit builds design systems in dev mode for local hosting, or production mode for optimized asset generation.
+Server builds design systems in dev mode for local hosting, or production mode for optimized asset generation.
 
 ### Quickstart A
 
@@ -56,7 +56,7 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
    npm start
    ```
 
-## Develop Wingsuit
+## Develop Server
 1. Clone repository:
 
    ```bash
@@ -69,9 +69,9 @@ Wingsuit builds design systems in dev mode for local hosting, or production mode
    fin up
    fin wingsuit/startup
    ```
-## Wingsuit is heavenly inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
+## Server is heavenly inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 ### Differences to Particle
-1.  Wingsuit uses Tailwind instead of Bootstrap
+1.  Server uses Tailwind instead of Bootstrap
 1.  Uses Postcss instead of Sass
 1.  Uses alpinejs instead of jQuery
 1.  Uses [UI Patterns] instead of Presenter Templates (Presenter templates vs )
