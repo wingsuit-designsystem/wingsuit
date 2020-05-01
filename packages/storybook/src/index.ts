@@ -76,7 +76,6 @@ export function configure(module: NodeModule, storybookContext, dataContext, win
 
 function getStories(pattern: Pattern, module) {
 
-  // const namespace = 'LOAD';
   const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
   const story = storiesOf(patternLabel, module);
   story.addDecorator(withKnobs);
@@ -108,7 +107,7 @@ function getStories(pattern: Pattern, module) {
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
       return twigRenderEngine.renderPatternPreview(pattern.getId(), variantKey, mergedSettingValues);
 
-    }, {notes: variant.getDescription()});
+    }, {notes: variant.getDescription(),  componentSubtitle: 'Displays an image that represents a user or organization', docs: { storyDescription: '4 sizes are supported.' }});
   });
   return story;
 }

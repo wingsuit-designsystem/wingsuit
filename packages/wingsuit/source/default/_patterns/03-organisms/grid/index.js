@@ -9,5 +9,6 @@
 // Module template
 import './_grid.twig';
 
-// Import wingsuit.yaml
-import './grid.wingsuit.yml';
+export const defaults = {
+  patternDefinition: require('./grid.wingsuit.yml')
+};
