@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 export default class CssBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
-    return new CssBundle('css', app.getRootConfig(), app.getAppConfig());
+    return new CssBundle('css', app);
   }
 
   public getSharedWebpackConfig(): {} {

@@ -1,35 +1,48 @@
-import { storage, twigRenderEngine } from '@wingsuit-designsystem/pattern';
+import {storage, twigRenderEngine, Pattern} from '@wingsuit-designsystem/pattern';
 import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/html';
-import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
-import wingsuitTheme from './theme';
+import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
 
 import centered from '@storybook/addon-centered/html';
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+import {DocsPage, DocsContainer, Description} from '@storybook/addon-docs/blocks';
+import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 
 const Twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
 
-function getStorybookKnobsOptions (options: {
-  [key:string]: string
-}){
-  const knobsOption = {};
-  Object.keys(options).forEach((key)=>{
+function getStorybookKnobsOptions(setting) {
+  const options:{} = setting.getOptions();
+  let knobsOption = {
+  };
+
+  if (setting.isRequired() === false) {
+    knobsOption = {
+      Empty: ''
+    };
+  }
+  Object.keys(options).forEach((key) => {
     const paramKey = options[key] != null ? options[key] : key;
     knobsOption[paramKey] = key;
   })
   return knobsOption;
 }
-export function configure(module:NodeModule, storybookContext, dataContext, uipatternsContext, templateContext, namespaces) {
+
+export function configure(module: NodeModule, storybookContext, dataContext, wingsuitYmlContext, templateContext, namespaces) {
   // Theming
   addParameters({
+    docs: {
+      container: DocsContainer,
+      page: DocsPage,
+      description: Description
+    },
     options: {
       theme: wingsuitTheme,
     },
   });
 
+
   storage.setNamespaces(namespaces);
-  storage.createDefinitionsFromContext(uipatternsContext);
+  storage.createDefinitionsFromContext(wingsuitYmlContext);
   storage.createTwigStorageFromContext(templateContext);
 
   dataContext.keys().forEach((key) => {
@@ -47,33 +60,27 @@ export function configure(module:NodeModule, storybookContext, dataContext, uipa
   twigRenderEngine.twigFunctions();
   twigDrupal(Twig);
 
-  storybookConfigure(storybookContext, module);
+  storybookConfigure(() => {
+    // Load stories from wingusit.yml.
+    const patternIds = storage.getPatternIds();
+    patternIds.forEach( (patternId) => {
+      getStories(storage.loadPattern(patternId), module);
+    });
+
+    // Load stories form storybook app.
+    const allExports:any = [];
+    storybookContext.keys().forEach(key => allExports.push(storybookContext(key)));
+    return allExports;
+  }, module);
 }
 
-export function tellStories(patternPath, module) {
-  const patternAry = patternPath.split('/');
-  const patternId = patternAry[patternAry.length - 1];
-  let namespace = '';
-  if (patternAry.length > 1) {
-    patternAry.pop();
-    namespace = patternAry.join('/');
+function getStories(pattern: Pattern, module) {
 
-  }
-  const pattern = storage.loadPattern(patternId);
-
-  const patternLabel = namespace !== '' ? `${namespace}/${pattern.getLabel()}`:pattern.getLabel();
-  const story = storiesOf( patternLabel, module);
+  // const namespace = 'LOAD';
+  const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
+  const story = storiesOf(patternLabel, module);
   story.addDecorator(withKnobs);
-
-  addParameters({
-    docs: {
-      container: DocsContainer,
-      page: DocsPage,
-    },
-  });
-
   story.addDecorator(centered);
-
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const variables = variant.getVariables();
@@ -85,7 +92,7 @@ export function tellStories(patternPath, module) {
           if (setting.getType() === 'select') {
             knobsVariables[key] = select(
               setting.getLabel(),
-              getStorybookKnobsOptions(setting.getOptions()),
+              getStorybookKnobsOptions(setting),
               setting.getPreview()
             );
           } else if (setting.getType() === 'boolean') {
@@ -99,9 +106,9 @@ export function tellStories(patternPath, module) {
       });
 
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
-      return twigRenderEngine.renderPatternPreview(patternId, variantKey, mergedSettingValues);
+      return twigRenderEngine.renderPatternPreview(pattern.getId(), variantKey, mergedSettingValues);
 
-    });
+    }, {notes: variant.getDescription()});
   });
   return story;
 }

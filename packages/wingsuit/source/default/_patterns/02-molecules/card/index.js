@@ -8,4 +8,6 @@ import './_card.twig';
 // Module styles
 import './_card.css';
 
-import './card.wingsuit.yml';
+export const defaults = {
+  patternDefinition: require('./card.wingsuit.yml')
+};

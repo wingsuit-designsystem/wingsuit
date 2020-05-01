@@ -15,6 +15,14 @@ export default class Pattern {
     return this.label;
   }
 
+  public getNamespace(): string {
+    return this.namespace;
+  }
+
+  public setNamespace(namespace): void {
+    this.namespace = namespace;
+  }
+
   public getDescription(): string {
     return this.description;
   }
@@ -33,6 +41,8 @@ export default class Pattern {
 
   private description: string;
 
+  private namespace: string;
+
   private use: string;
 
   private definition: IPatternDefinition;
@@ -43,12 +53,14 @@ export default class Pattern {
 
   private storage: IPatternStorage;
 
+
   constructor(id: string, definition: IPatternDefinition, storage:IPatternStorage) {
     this.id = id;
     this.label = definition.label;
     this.description = definition.description;
     this.storage = storage;
     this.use = definition.use;
+    this.namespace = definition.namespace;
     this.definition = definition;
     this.defaultVariant = new PatternVariant(
       this,
@@ -109,9 +121,10 @@ export default class Pattern {
           key,
           settings[key].type,
           settings[key].label,
-          settings[key].description,
+          settings[key].descripfirstOptiontion,
           settings[key].preview
         );
+        setting.setRequired(settings[key].required ? true : false);
         setting.setOptions(settings[key].options);
         if (settings[key].default_value != null) {
           setting.setPreview(settings[key].default_value);
@@ -119,7 +132,13 @@ export default class Pattern {
         if (settings[key].value != null) {
           setting.setPreview(settings[key].value);
         }
-
+        if (setting.getPreview() == null && settings[key].required === true && settings[key].type === 'select') {
+          const keys = Object.keys(settings[key].options);
+          if (keys.length > 1) {
+            const firstOption = keys[0];
+            setting.setPreview(settings[key].options[firstOption]);
+          }
+        }
         variant.addSetting(setting);
       });
 

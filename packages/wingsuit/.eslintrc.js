@@ -32,10 +32,8 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      node: {},
-      webpack: {
-        config: path.resolve(__dirname, './source/default/webpack.config.js'),
-      },
+      node: {}
+
     },
   },
 };

@@ -11,6 +11,10 @@ export default class BaseApp  {
 
   protected module: NodeModule;
 
+  public getModule(): NodeModule {
+    return this.module;
+  }
+
   public getAppConfig(): AppConfig {
     return this.appConfig;
   }

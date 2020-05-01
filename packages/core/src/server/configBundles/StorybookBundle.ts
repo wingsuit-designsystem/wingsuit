@@ -6,7 +6,7 @@ import BaseApp from "../BaseApp";
 
 export default class StorybookBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
-    return new StorybookBundle('storybook', app.getRootConfig(), app.getAppConfig());
+    return new StorybookBundle('storybook', app);
   }
 
   protected sharedWebpackConfig:{} = {

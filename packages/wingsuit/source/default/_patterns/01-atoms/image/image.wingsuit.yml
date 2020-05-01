@@ -22,7 +22,7 @@ image:
     style:
       label: Style
       type: select
-      preview: 16x9_xs_sc
+      preview: 16x9_md_sc
       options:
         1x1_xxs_sc: XXSmall 1x1
         8x7_xxs_sc: XSmall 8x7
@@ -33,4 +33,4 @@ image:
         16x9_sm_sc: SM 16x9
         16x9_md_sc: LG 16x9
         16x9_xl_sc: XL 16x9
-        16x9_xxl_sc: XXL 16x9
+        16x9_xxl_sc: XXLL 16x9

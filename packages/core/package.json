@@ -57,6 +57,7 @@
     "stylelint": "^12.0.0",
     "stylelint-config-prettier": "^8.0.0",
     "stylelint-webpack-plugin": "^1.2.3",
+    "svg-sprite-loader": "^4.2.7",
     "svg-spritemap-webpack-plugin": "^3.5.3",
     "svg4everybody": "^2.1.9",
     "terser-webpack-plugin": "^2.3.4",

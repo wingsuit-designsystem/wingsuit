@@ -28,10 +28,13 @@ card:
   variants:
     default:
       label: Default
+    horizontal:
+      label: Horizontal
   settings:
     alignment:
       type: select
       label: Alignment
+      required: false
       options:
         left: Left
         center: Center

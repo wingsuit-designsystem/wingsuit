@@ -1,13 +1,10 @@
-import * as path from 'path';
-// Plugins:production
-import Tailwind2JsonPlugin from "../plugins/Tailwind2JsonPlugin";
 import {BaseConfigBundle} from "../BaseConfigBundle";
 import BaseApp from "../BaseApp";
 
 
 export default class TailwindBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
-    return new TailwindBundle('tailwind', app.getRootConfig(), app.getAppConfig());
+    return new TailwindBundle('tailwind', app);
   }
 
   protected sharedWebpackConfig = {
@@ -60,7 +57,7 @@ export default class TailwindBundle extends BaseConfigBundle {
           },
         },
         {
-          test: /\.(png|jpg|gif|svg)$/,
+          test: /\.(png|jpg|gif)$/,
           loader: 'file-loader',
           options: {
             name: 'images/[name].[ext]?[hash]',
@@ -78,12 +75,6 @@ export default class TailwindBundle extends BaseConfigBundle {
           ],
         },
       ],
-    },
-    plugins: [
-      new Tailwind2JsonPlugin(
-        path.resolve(`${this.rootConfig.path}/tailwind.config`),
-        path.resolve(`${this.appConfig.path}/_config/_silo/tailwind.json`)
-      )
-    ]
+    }
   }
 }

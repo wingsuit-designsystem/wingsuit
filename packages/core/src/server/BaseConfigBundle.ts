@@ -1,8 +1,11 @@
 import ConfigBundle from "./ConfigBundle";
 import RootConfig from "./RootConfig";
 import AppConfig from "./AppConfig";
+import BaseApp from "./BaseApp";
 
 export abstract class BaseConfigBundle implements ConfigBundle {
+  protected app: BaseApp;
+
   protected appConfig: AppConfig;
 
   protected rootConfig: RootConfig;
@@ -15,10 +18,15 @@ export abstract class BaseConfigBundle implements ConfigBundle {
 
   protected productionWebpackConfig: {} = {};
 
-  protected constructor(name, rootConfig: RootConfig, appConfig: AppConfig) {
-    this.appConfig = appConfig;
-    this.rootConfig = rootConfig;
+  protected constructor(name, app:BaseApp) {
+    this.appConfig = app.getAppConfig();
+    this.rootConfig = app.getRootConfig();
+    this.app = app;
     this.name = name;
+  }
+
+  public getApp():BaseApp {
+    return this.app;
   }
 
   public getName() {

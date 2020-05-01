@@ -14,6 +14,7 @@ export interface Property {
   label: string;
   default_value: string;
   preview: string | Preview;
+  required: boolean;
 }
 export interface Variants {
   [key: string]: Variant;
@@ -26,6 +27,7 @@ export interface Variant {
 export interface IPatternDefinition {
   label: string;
   id: string;
+  namespace: string;
   use: string;
   description: string;
   fields: Properties;

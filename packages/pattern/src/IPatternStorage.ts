@@ -8,4 +8,5 @@ export default interface IPatternStorage {
   createDefinitions(definition: {}): void;
   addGlobal(name, value): void;
   getGlobals(): {};
+  getPatternIds():string[];
 }

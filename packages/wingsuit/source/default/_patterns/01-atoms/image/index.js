@@ -7,3 +7,7 @@ import './_image.twig';
 import './_image--bg.twig';
 import './_image--placeholder.twig';
 import './_image--primary.twig';
+
+export const defaults = {
+  patternDefinition: require('./image.wingsuit.yml')
+};

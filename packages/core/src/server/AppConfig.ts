@@ -12,6 +12,7 @@ export default interface AppConfig {
   designSystem: string;
 
   cssMode: string
+
 }
 
 interface Namespace {

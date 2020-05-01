@@ -1,15 +1,5 @@
-const namespaces = require('../../source/default/namespaces');
 import {configure} from '@wingsuit-designsystem/storybook';
-
-require.context(
-  './_patterns',
-  true
-);
-require.context(
-  '../../source/default/_patterns',
-  true,
-  /^\.\/(01-atoms|02-molecules|03-organisms)\/[\w-]+$/
-)
+const namespaces = require('../../source/default/namespaces');
 
 configure(module,
   require.context('./_patterns', true, /\.stories\.js$/),
@@ -17,7 +7,7 @@ configure(module,
   require.context(
     '../../source/default/_patterns',
     true,
-    /\.wingsuit\.ya?ml$/
+    /\.js$/
   ),
   require.context(
     '../../source/default/_patterns',

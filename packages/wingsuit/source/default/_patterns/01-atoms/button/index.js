@@ -8,5 +8,6 @@ import 'protons';
 // Module template
 import './_button.twig';
 
-// Import wingsuit.yaml
-import './button.wingsuit.yml';
+export const defaults = {
+  patternDefinition: require('./button.wingsuit.yml')
+};

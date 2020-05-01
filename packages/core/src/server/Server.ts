@@ -1,8 +1,8 @@
 /**
  * Wingsuit Design System.
  */
-import AppConfig from "./AppConfig";
 import * as path from "path";
+import AppConfig from "./AppConfig";
 import BaseApp from "./BaseApp";
 import ConfigBundle from "./ConfigBundle";
 

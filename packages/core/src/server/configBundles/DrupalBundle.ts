@@ -5,7 +5,7 @@ import BaseApp from "../BaseApp";
 
 export default class DrupalBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
-    return new DrupalBundle('drupal', app.getRootConfig(), app.getAppConfig());
+    return new DrupalBundle('drupal', app);
   }
 
   protected sharedWebpackConfig:{} = {
