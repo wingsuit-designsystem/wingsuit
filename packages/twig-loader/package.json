@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/twig-loader",
-  "version": "0.1.1-y.5",
+  "version": "0.1.1-y.6",
   "description": "Webpack loader for compiling twig.js templates",
   "main": "index.js",
   "scripts": {
@@ -31,5 +31,6 @@
   "devDependencies": {
     "mocha": "^5.2.0",
     "should": "^13.2.1"
-  }
+  },
+  "gitHead": "487320117c182b2e52cae0995e309053c115ffc1"
 }
