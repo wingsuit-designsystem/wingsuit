@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/create-wingsuit",
-  "version": "0.1.1-y.6",
+  "version": "0.1.1-y.7",
   "description": "A script to generate Wingsuit",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,5 @@
   "dependencies": {
     "git-clone": "^0.1.0"
   },
-  "gitHead": "487320117c182b2e52cae0995e309053c115ffc1"
+  "gitHead": "f9e3bccd539ec0748619216543e32b471fe3f123"
 }

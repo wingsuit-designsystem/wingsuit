@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "0.1.1-y.6",
+  "version": "0.1.1-y.7",
   "description": "A starterkit to build a design system with Pattern Lab Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -50,9 +50,9 @@
     "@storybook/addon-notes": "^5.3.17",
     "@storybook/addon-storysource": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
-    "@wingsuit-designsystem/core": "0.1.1-y.6",
+    "@wingsuit-designsystem/core": "0.1.1-y.7",
     "@wingsuit-designsystem/generator-new-component": "0.1.1-alpha.3",
-    "@wingsuit-designsystem/storybook": "0.1.1-y.6",
+    "@wingsuit-designsystem/storybook": "0.1.1-y.7",
     "alpinejs": "^1.10.1",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -77,5 +77,5 @@
     "require-context": "^1.1.0",
     "svg4everybody": "^2.1.9"
   },
-  "gitHead": "487320117c182b2e52cae0995e309053c115ffc1"
+  "gitHead": "f9e3bccd539ec0748619216543e32b471fe3f123"
 }
