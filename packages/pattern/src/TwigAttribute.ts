@@ -40,6 +40,10 @@ export default class TwigAttribute {
     return this;
   }
 
+  render () {
+    return this.toString();
+  }
+
   toString() {
     let output = '';
     Array.from(this.attributes.keys()).forEach((key) => {

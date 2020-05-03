@@ -87,7 +87,7 @@ export default class PatternStorage implements IPatternStorage {
     });
   }
 
-  findTwigByNamespace(namespace) {
+  findTwigByNamespace(namespace):any|null {
     let foundResource = null;
     Object.keys(this.twigResources).forEach((key) => {
       if (key.trim() === namespace.trim()) {
@@ -97,12 +97,21 @@ export default class PatternStorage implements IPatternStorage {
     return foundResource;
   }
 
-  findTwigById(id) {
+  findTwigById(id):any|null {
     const use = this.loadPattern(id).getUse();
     return this.findTwigByNamespace(use);
   }
 
-  createTwigStorageFromContext(context) {
+  createGlobalsFromContext(context):void {
+    context.keys().forEach((key) => {
+      const data = context(key);
+      Object.keys(data).forEach((valueKey)=> {
+        this.addGlobal(valueKey, data[valueKey]);
+      })
+    });
+  }
+
+  createTwigStorageFromContext(context):void {
     context.keys().forEach((key) => {
       const pathAry = key.replace('./', '').split('/');
       const folderName = pathAry[0];
@@ -118,7 +127,7 @@ export default class PatternStorage implements IPatternStorage {
     });
   }
 
-  addTwig(namespace, resource) {
+  addTwig(namespace, resource):void {
     this.twigResources[namespace] = resource;
   }
 }

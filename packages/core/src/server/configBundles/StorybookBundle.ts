@@ -22,19 +22,6 @@ export default class StorybookBundle extends BaseConfigBundle {
       module: {
         rules: [
           {
-            test: /\.twig$/,
-            use: [
-              {
-                loader: '@wingsuit-designsystem/twig-loader',
-                options: {
-                  twigOptions: {
-                    namespaces: this.appConfig.namespaces,
-                  },
-                },
-              },
-            ],
-          },
-          {
             test: /\.ya?ml$/,
             type: 'json', // Required by Webpack v4
             use: 'yaml-loader'

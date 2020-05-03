@@ -4,7 +4,7 @@ import { storage } from './index';
 /**
  * Loads template from pattern storage.
  */
-export class NamespaceLoader extends TwingLoaderArray {
+export class TwingNamespaceLoader extends TwingLoaderArray {
   getCacheKey(name: string, from: TwingSource): string {
     return name;
   }

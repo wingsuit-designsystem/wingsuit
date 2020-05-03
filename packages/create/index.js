@@ -63,4 +63,4 @@ const setupWingsuit = () => {
 };
 
 console.log('Cloning Wingsuit repo...');
-clone('https://github.com/wingsuit-designsystem/packages/wingsuit', folder, {}, setupWingsuit);
+clone('https://github.com/wingsuit-designsystem/', folder, {}, setupWingsuit);

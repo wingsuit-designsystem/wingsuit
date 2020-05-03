@@ -1,7 +1,6 @@
 export default { title: '04-templates/Article' };
+import {twigRenderEngine} from '@wingsuit-designsystem/pattern';
 
 export const Article = () => {
-  const button = document.createElement('button');
-  button.innerText = 'Article💯';
-  return button;
+  return twigRenderEngine.renderData('path', require('./article.twig'));
 };
