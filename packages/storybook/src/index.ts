@@ -11,8 +11,7 @@ import {TwingRenderer} from "@wingsuit-designsystem/pattern";
 
 function getStorybookKnobsOptions(setting) {
   const options:{} = setting.getOptions();
-  let knobsOption = {
-  };
+  let knobsOption = {};
 
   if (setting.isRequired() === false) {
     knobsOption = {

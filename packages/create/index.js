@@ -50,17 +50,16 @@ const setupWingsuit = () => {
 
 
   const parentOptions = options;
-  console.log(options);
   spawn('mv', ['wingsuit', 'wingsuit.bak'], options);
-  spawn('mv', ['wingsuit.bak/wingsuit', 'wingsuit'], options);
+  spawn('mv', ['wingsuit.bak/packages/wingsuit', 'wingsuit'], options);
   spawn('rm', ['-rf', 'wingsuit.bak'], options);
 
   console.log('Running Wingsuit dependency installation...');
   options.cwd = folder;
   spawnSync('npm', ['install'], options);
   console.log('Running Wingsuit setup...');
-  spawnSync('npm', ['run', 'setup'], options);
+  spawnSync('npm', ['run', 'dev:storybook'], options);
 };
 
 console.log('Cloning Wingsuit repo...');
-clone('https://github.com/wingsuit-designsystem/', folder, {}, setupWingsuit);
+clone('https://github.com/wingsuit-designsystem/wingsuit', folder, {}, setupWingsuit);

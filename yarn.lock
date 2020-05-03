@@ -3481,16 +3481,6 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wingsuit-designsystem/generator-new-component@0.1.1-alpha.3":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/generator-new-component/-/generator-new-component-0.0.8.tgz#19bcffacf69c2f0ab4efcaac2d2b16fb3c242300"
-  integrity sha512-GGBoRrj65aRszfHY24hL1vAayT6rAE5Ymh2sB/uk6BZ0x/MssCW3y6R09dWY+hhm7oj8kyYfL9uJ/IQQsd1CtA==
-  dependencies:
-    gulp-rename "<=1.2.2"
-    lodash "^4.17.15"
-    yeoman-generator "^4.3.0"
-    yeoman-test "^2.0.0"
-
 "@wingsuit-designsystem/pattern@0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/pattern/-/pattern-0.0.1.tgz#84e6a864dc4e85a23cdcf1ec25723d3e60f26519"
@@ -15793,7 +15783,7 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-schema-utils@^2.0.1, schema-utils@^2.2.0, schema-utils@^2.5.0, schema-utils@^2.6.1, schema-utils@^2.6.5, schema-utils@^2.6.6:
+schema-utils@^2.0.1, schema-utils@^2.5.0, schema-utils@^2.6.1, schema-utils@^2.6.5, schema-utils@^2.6.6:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.6.tgz#299fe6bd4a3365dc23d99fd446caff8f1d6c330c"
   integrity sha512-wHutF/WPSbIi9x6ctjGGk2Hvl0VOz5l3EKEuKbjPlB30mKZUzb9A5k9yEXRX3pwyqVLPvpfZZEllaFq/M718hA==
@@ -17436,16 +17426,6 @@ twig@1.15.1, twig@^1.12.0, twig@~1.15.1:
     locutus "^2.0.11"
     minimatch "3.0.x"
     walk "2.3.x"
-
-twing-loader@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/twing-loader/-/twing-loader-3.0.1.tgz#cd18add0137140a04588f6252c1236d2c6d6eccf"
-  integrity sha512-rwTo5v67IiITOC+ohbzvOKnHQkQVRtpxP+s2m3RT10YwZ/Tg7rrhHqwwWBZRakfyfnao+VAWuEE5FQiL9hcKjA==
-  dependencies:
-    crypto-js "^3.1.9-1"
-    loader-utils "^1.2.3"
-    schema-utils "^2.2.0"
-    slash "^3.0.0"
 
 twing@^3.1.1:
   version "3.1.1"
