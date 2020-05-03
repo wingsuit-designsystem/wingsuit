@@ -6,9 +6,8 @@ import centered from '@storybook/addon-centered/html';
 import {DocsPage, DocsContainer, Description} from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
+import {TwingRenderer} from "@wingsuit-designsystem/pattern";
 
-const Twig = require('twig');
-const twigDrupal = require('twig-drupal-filters');
 
 function getStorybookKnobsOptions(setting) {
   const options:{} = setting.getOptions();
@@ -44,21 +43,9 @@ export function configure(module: NodeModule, storybookContext, dataContext, win
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromContext(wingsuitYmlContext);
   storage.createTwigStorageFromContext(templateContext);
+  storage.createGlobalsFromContext(dataContext);
 
-  dataContext.keys().forEach((key) => {
-    const data = dataContext(key);
-    if (data.patterns == null) {
-      const dataName = Object.keys(data)[0];
-      storage.addGlobal(dataName, data[dataName]);
-    }
-  });
-
-  Twig.cache();
-  twigRenderEngine.setRenderer(new twigRenderEngine.StoredTwigRenderer());
-  twigRenderEngine.setNamespaces(namespaces);
-  twigRenderEngine.setTwig(Twig)
-  twigRenderEngine.twigFunctions();
-  twigDrupal(Twig);
+  twigRenderEngine.setRenderer(new TwingRenderer());
 
   storybookConfigure(() => {
     // Load stories from wingusit.yml.

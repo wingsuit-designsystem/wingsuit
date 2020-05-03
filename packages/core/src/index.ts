@@ -5,6 +5,7 @@ import SvgBundle from "./server/configBundles/SvgBundle";
 import StorybookBundle from "./server/configBundles/StorybookBundle";
 import DrupalBundle from "./server/configBundles/DrupalBundle";
 import TailwindConfigExport from "./server/configBundles/TailwindConfigExport";
+import TwingBundle from "./server/configBundles/TwingBundle";
 
 export { default as Server } from './server/Server';
 export { default as AppConfig } from './server/AppConfig';
@@ -21,6 +22,7 @@ export function getAppPack(environment:string, module: NodeModule, options: {} =
   // Find a better solution here. Check decorators for this use case.
   if (app.getAppConfig().type === 'storybook') {
     server.addConfigBundle(TailwindConfigExport.create(app));
+    server.addConfigBundle(TwingBundle.create(app));
     server.addConfigBundle(StorybookBundle.create(app));
   }
   if (app.getAppConfig().type === 'drupal') {

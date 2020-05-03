@@ -3,12 +3,12 @@
  */
 
 const path = require('path');
+
 const patterns = path.resolve(__dirname, '_patterns');
+
 module.exports = {
-  // Outside of atomic concepts
   tokens: path.resolve(__dirname, 'tokens'),
   clientside: path.resolve(__dirname, 'clientside'),
-  // Atomic concepts
   protons: path.resolve(patterns, '00-protons'),
   atoms: path.resolve(patterns, '01-atoms'),
   molecules: path.resolve(patterns, '02-molecules'),
