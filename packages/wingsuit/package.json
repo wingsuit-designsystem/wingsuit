@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -18,7 +18,6 @@
   ],
   "scripts": {
     "dev:storybook": "npm run build:assets; start-storybook --config-dir apps/storybook -s ./dist/app-assets",
-    "yo": "yo",
     "dev:drupal": "cross-env-shell NODE_ENV=development \"webpack --watch --config ./apps/drupal/webpack.config.js\"",
     "build:drupal": "cross-env-shell NODE_ENV=production \"webpack --config ./apps/drupal/webpack.config.js\"",
     "build:assets": "cross-env-shell NODE_ENV=production \"webpack --config ./apps/assets/webpack.config.js\"",
@@ -35,7 +34,8 @@
     "test:unit": "npm run test:unit:default",
     "test": "npm run test:unit",
     "ci": "npm run lint && npm run test && npm run build:pl && npm run build:drupal",
-    "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json"
+    "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json",
+    "yo": "yo"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -51,9 +51,9 @@
     "@storybook/addon-notes": "^5.3.17",
     "@storybook/addon-storysource": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
-    "@wingsuit-designsystem/core": "0.2.5",
-    "@wingsuit-designsystem/generator-new-component": "0.2.5",
-    "@wingsuit-designsystem/storybook": "0.2.5",
+    "@wingsuit-designsystem/core": "0.2.6",
+    "@wingsuit-designsystem/generator-new-component": "0.2.6",
+    "@wingsuit-designsystem/storybook": "0.2.6",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
