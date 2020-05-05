@@ -8,22 +8,21 @@ import TailwindConfigExport from "./server/configBundles/TailwindConfigExport";
 import TwingBundle from "./server/configBundles/TwingBundle";
 import DefaultBundle from "./server/configBundles/defaultBundle";
 
-export { default as Server } from './server/Server';
-export { default as AppConfig } from './server/AppConfig';
-export { default as RootConfig } from './server/RootConfig';
+export {default as Server} from './server/Server';
+export {default as AppConfig} from './server/AppConfig';
+export {default as RootConfig} from './server/RootConfig';
 
 const server = new Server();
 
 
-export function getAppPack(environment:string, module: NodeModule, webpacks: [] = [], configurationOverwrites: {} = {}) {
+export function getAppPack(environment: string, module: NodeModule, webpacks: [] = [], configurationOverwrites: {} = {}) {
 
   const app = server.getApp(module, configurationOverwrites);
   server.addConfigBundle(DefaultBundle.create(app));
-  if (app.getAppConfig().type === 'assets') {
 
+  if (app.getAppConfig().type === 'assets') {
     server.addConfigBundle(AssetBundle.create(app));
-  }
-  else {
+  } else {
     server.addConfigBundle(TailwindBundle.create(app));
     // Find a better solution here. Check decorators for this use case.
     if (app.getAppConfig().type === 'storybook') {
@@ -33,7 +32,6 @@ export function getAppPack(environment:string, module: NodeModule, webpacks: [] 
     }
     if (app.getAppConfig().type === 'drupal') {
       server.addConfigBundle(DrupalBundle.create(app));
-
     }
     server.addConfigBundle(CssBundle.create(app));
   }

@@ -14,6 +14,34 @@ export default class CssBundle extends BaseConfigBundle {
     return this.cssModes[this.appConfig.cssMode];
   }
 
+  private loader = [
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: true,
+      },
+    },
+
+    {
+      // PostCSS config at ./postcss.config.js
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: true,
+        ident: 'postcss',
+        config: {
+          path: 'postcss.config.js',
+        },
+      },
+    },
+    {
+      loader: 'resolve-url-loader',
+      options: {
+        sourceMap: true,
+        root: '',
+      },
+    },
+  ];
+
   /**
    * CSS modes are import to frontend dev. Wingsuit currently supports hot
    * reloading or full css file extraction.
@@ -28,7 +56,10 @@ export default class CssBundle extends BaseConfigBundle {
         rules: [
           {
             test: /\.css$/,
-            use: [{loader: 'style-loader'}],
+            use: [
+              {loader: 'style-loader'},
+              ... this.loader
+            ],
           },
         ],
       },
@@ -42,10 +73,12 @@ export default class CssBundle extends BaseConfigBundle {
           {
             test: /\.css$/,
             use: [
+
               {
                 loader: MiniCssExtractPlugin.loader,
                 options: {publicPath: './'},
               },
+              ... this.loader,
             ],
           },
         ],

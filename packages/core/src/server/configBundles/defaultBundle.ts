@@ -5,7 +5,7 @@ import {DefinePlugin} from "webpack";
 
 export default class DefaultBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
-    return new DefaultBundle('drupal', app);
+    return new DefaultBundle('default', app);
   }
 
   protected sharedWebpackConfig:{} = {
@@ -19,9 +19,6 @@ export default class DefaultBundle extends BaseConfigBundle {
       new DefinePlugin({
         BUILD_TARGET: JSON.stringify(this.appConfig.name),
       }),
-    ],
-
+    ]
   }
-
-
 }

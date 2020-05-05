@@ -4,7 +4,7 @@ const glob = require('glob');
 const yaml = require('js-yaml');
 const jsondiff = require('jsondiffpatch');
 
-import {storage, twigRenderEngine} from '@wingsuit-designsystem/pattern';
+import {storage, renderer} from '@wingsuit-designsystem/pattern';
 
 export default class Pattern2JsonPlugin {
 
@@ -31,7 +31,7 @@ export default class Pattern2JsonPlugin {
       try {
         const variant = storage.loadVariant(patternId, variantId)
         const mergedVariables = Object.assign(variant.getVariables(), settings, fields);
-        output = twigRenderEngine.renderPatternPreview(patternId, variantId, mergedVariables);
+        output = renderer.renderPatternPreview(patternId, variantId, mergedVariables);
       } catch (e) {
         output = `Unable to render ${patternId}--${variantId}. Message: ${e.message}`;
       }

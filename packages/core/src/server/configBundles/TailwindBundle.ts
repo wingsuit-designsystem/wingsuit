@@ -11,35 +11,6 @@ export default class TailwindBundle extends BaseConfigBundle {
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
-            {
-              // PostCSS config at ./postcss.config.js
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                ident: 'postcss',
-                config: {
-                  path: 'postcss.config.js',
-                },
-              },
-            },
-            {
-              loader: 'resolve-url-loader',
-              options: {
-                sourceMap: true,
-                root: '',
-              },
-            },
-          ],
-        },
-        {
           test: /\.(js)$/,
           enforce: 'pre',
           exclude: /node_modules/,
