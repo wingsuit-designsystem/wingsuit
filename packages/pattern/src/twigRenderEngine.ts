@@ -8,7 +8,6 @@ let rendererImpl: IRenderer;
 export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
-
 export function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,

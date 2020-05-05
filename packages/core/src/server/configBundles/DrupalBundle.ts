@@ -1,5 +1,4 @@
 import path from "path";
-import {DefinePlugin} from "webpack";
 import {BaseConfigBundle} from "../BaseConfigBundle";
 import BaseApp from "../BaseApp";
 
@@ -11,12 +10,6 @@ export default class DrupalBundle extends BaseConfigBundle {
   protected sharedWebpackConfig:{} = {
     entry: {
       app: [path.resolve(this.appConfig.path, 'index.js')],
-    },
-    output: {
-      path: path.join(this.rootConfig.path, this.rootConfig.dist, `app-${this.appConfig.type}`, this.rootConfig.assetBundleFolder),
-    },
-    resolve: {
-      alias: this.appConfig.namespaces,
     },
     module: {
       rules: [
@@ -39,11 +32,6 @@ export default class DrupalBundle extends BaseConfigBundle {
         },
       ],
     },
-    plugins: [
-      new DefinePlugin({
-        BUILD_TARGET: JSON.stringify(this.appConfig.type),
-      }),
-    ],
   }
 
   protected developmentWebpackConfig: {} = {

@@ -13,18 +13,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 const appConfigStub = require('./stubs/defaultAppConfig.stub');
 
 merge.multiple();
-// Plugins:production
 
 interface BundleItems {
   [key: string]: ConfigBundle;
 }
-export default class Server {
 
-  private app: BaseApp|null = null;
+export default class Server {
 
   private environment = 'production';
 
-  private bundles:{} = {};
+  private bundles: {} = {};
 
   public addConfigBundle(bundle: ConfigBundle) {
     this.bundles[bundle.getName()] = bundle;
@@ -34,19 +32,23 @@ export default class Server {
     return this.bundles;
   }
 
-  private resolveAppConfig(module: NodeModule): AppConfig {
-    const config = module.require('./wingsuit.app.config');
+  private resolveAppConfig(module: NodeModule, configurationOverwrites: any = {}): AppConfig {
+    let config: any = {};
+    try {
+      config = module.require('./wingsuit.app.config');
+    } catch (e) {
+      if (configurationOverwrites.type === null) {
+        throw new Error(`Configuration "wingsuit.app.config" not found. Message: ${e.message}`);
+      }
+    }
     config.path = path.dirname(module.filename);
-    const mergedConfigs = Object.assign(appConfigStub, config);
+    const mergedConfigs = Object.assign(appConfigStub, config, configurationOverwrites);
     return mergedConfigs;
   }
 
-  public getApp(module: NodeModule): BaseApp {
-    if (this.app === null) {
-      const config: AppConfig = this.resolveAppConfig(module);
-      this.app = new BaseApp(config, module);
-    }
-    return this.app;
+  public getApp(module: NodeModule, configurationOverwrites: {} = {}): BaseApp {
+    const config: AppConfig = this.resolveAppConfig(module, configurationOverwrites);
+    return new BaseApp(config, module);
 
   }
 
@@ -63,53 +65,47 @@ export default class Server {
    * @param {('hot'|'extract')} options.cssMode - The method of handling CSS output
    * @returns {*} - Fully merged and customized webpack config
    */
-  public generateWebpack(environment: string, module: NodeModule) {
+  public generateWebpack(environment: string, module: NodeModule, webpackConfigs: [] = []) {
     this.environment = environment;
     const bundles = this.getBundles();
-    const shared:any = [];
-    const environmentSpe:any = [];
+    const shared: any = [];
+    const environmentSpe: any = [];
     Object.keys(bundles).forEach((key) => {
       shared.push(bundles[key].getSharedWebpackConfig());
     });
     Object.keys(bundles).forEach((key) => {
-      environmentSpe.push(environment === 'production' ? bundles[key].getProductionWebpackConfig(): bundles[key].getDevelopmentWebpackConfig());
+      environmentSpe.push(environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
     });
 
     return merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
-      'module.rules.use': 'prepend',
+      'module.rules.use': 'replace',
     })(
-
+      ...environmentSpe,
       ...shared,
-      ...environmentSpe
-    );
+      ...webpackConfigs,
+      ...[
+        {
+          mode: this.environment,
+          output: {
+            filename: '[name].js',
+          },
+          node: {},
+          devtool: this.environment === 'development' ? 'eval' : 'source-map',
+          optimization: {
+            minimizer: [
+              new TerserPlugin({
+                sourceMap: this.environment === 'production',
+              }),
+            ],
+          },
+          plugins: [
+            new ProgressPlugin({profile: false}),
+            new ProvidePlugin({}),
+          ],
+        }
+      ]
+    )
   }
 
-  /**
-   * Wingsuit shard config.
-   *
-   * The shared loaders, plugins, and processing that all our "apps" should use.
-   */
-  public getSharedWebpackConfig() {
-    return {
-      mode: this.environment,
-      output: {
-        filename: '[name].js',
-      },
-      node: {
-      },
-      devtool: this.environment === 'development' ? 'eval' : 'source-map',
-      optimization: {
-        minimizer: [
-          new TerserPlugin({
-            sourceMap: this.environment === 'production',
-          }),
-        ],
-      },
-      plugins: [
-        new ProgressPlugin({profile: false}),
-        new ProvidePlugin({}),
-      ],
-    };
-  }
 }

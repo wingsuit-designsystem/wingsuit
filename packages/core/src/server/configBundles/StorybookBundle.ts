@@ -1,7 +1,7 @@
-import {DefinePlugin} from 'webpack';
-import * as path from 'path';
 import {BaseConfigBundle} from "../BaseConfigBundle";
 import BaseApp from "../BaseApp";
+import Svg2JsonPlugin from "../plugins/Svg2JsonPlugin";
+import path from "path";
 
 
 export default class StorybookBundle extends BaseConfigBundle {
@@ -12,12 +12,6 @@ export default class StorybookBundle extends BaseConfigBundle {
   protected sharedWebpackConfig:{} = {
       node: {
         fs: 'empty',
-      },
-      entry: {
-        app: [path.resolve(this.appConfig.path, 'index.js')],
-      },
-      resolve: {
-        alias: this.appConfig.namespaces,
       },
       module: {
         rules: [
@@ -37,9 +31,12 @@ export default class StorybookBundle extends BaseConfigBundle {
         ],
       },
       plugins: [
-        new DefinePlugin({
-          BUILD_TARGET: JSON.stringify(this.appConfig.name),
-        }),
+        new Svg2JsonPlugin(
+          path.resolve(
+            this.appConfig.namespaces.atoms, 'svg/svg'
+          ),
+          path.resolve(`${this.appConfig.path}/_config/_silo/svgs.json`)
+        ),
       ],
       stats: {
         children: false,

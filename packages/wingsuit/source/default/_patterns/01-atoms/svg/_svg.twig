@@ -13,15 +13,10 @@
  */
 #}
 
-{# Starter defaults #}
-{%  set svg = svg|default({
-  svgpath: '@atoms/svg/svg/person.svg',
-  colorOriginal: false,
-}) %}
-
-{# Helper classes #}
-{% set svg_classes = svg_classes|default(['svg'])|merge([
-  not svg.colorOriginal ? 'svg--colorable' : '',
-]) | sort | join(' ') | trim %}
-
-<span class="{{ svg_classes }}">{{ source(svg.svgpath) }}</span>
+{% if variant == 'icon' %}
+  {% include "@atoms/svg/_svg--icon.twig" %}
+{% elseif variant == 'inline-css' %}
+  {% include "@atoms/svg/_svg--inline-css.twig" %}
+{% elseif variant == 'inline' %}
+    {% include "@atoms/svg/_svg--inline.twig" %}
+{% endif %}

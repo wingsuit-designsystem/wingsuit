@@ -1,6 +1,6 @@
 export default interface RootConfig {
   path: string;
-  dist:string;
+  distFolder:string;
   assetBundleFolder:string;
   assetAtomicFolder:string;
 }

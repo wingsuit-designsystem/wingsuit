@@ -1,5 +1,4 @@
 module.exports = {
   namespaces: require('../../source/default/namespaces'),
-  type: "drupal",
-  cssMode: "extract"
+  type: "assets"
 };

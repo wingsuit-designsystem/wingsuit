@@ -107,7 +107,7 @@ export default class Pattern {
         variantDefinition.label != null ? variantDefinition.label : this.label;
       const use = variantDefinition.use != null ? variantDefinition.use : this.use;
       const description =
-        variantDefinition.description != null ? variantDefinition.description : this.description;
+        variantDefinition.description != null ? variantDefinition.description : '';
 
       const variant = new PatternVariant(this, variantKey, use, label, description);
 

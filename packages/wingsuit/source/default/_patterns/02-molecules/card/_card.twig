@@ -44,7 +44,7 @@
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
-{% set attributes = attributes|default(attributes_object()).addClass(classes) %}
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 {# Component #}
 <{{element}} {{ attributes }}>
   <div>
@@ -53,7 +53,7 @@
     {% endblock %}
    </div>
   {% if preheadline is not empty  %}
-    <div {{ attributes|default(attributes_object()).addClass([
+    <div {{ attributes|default(create_attribute()).addClass([
       'text-base',
       'mb-1',
       'uppercase',

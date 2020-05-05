@@ -1,6 +1,6 @@
 import IRenderer from "./IRenderer";
 import {TwingNamespaceLoader} from "./TwingNamespaceLoader";
-import {twigAttributeFunction} from "./twigExtensions";
+import {twigAttributeFunction, twigItok,twigFileUrl} from "./twigExtensions";
 import {renderPattern, renderPatternPreview} from "./twigRenderEngine";
 
 const {TwingEnvironment, TwingFilter, TwingFunction} = require('twing');
@@ -18,13 +18,18 @@ export class TwingRenderer implements IRenderer {
 
       const filter = filters[filterName];
       this.environment.addFilter(new TwingFilter(filterName, filter));
+
     });
     Object.keys(functions).forEach((functionName) => {
-      const func = functions[functionName];
-      this.environment.addFunction(new TwingFunction(functionName, func));
+      if (functionName !== 'file_url') {
+        const func = functions[functionName];
+        this.environment.addFunction(new TwingFunction(functionName, func));
+      }
     })
-    this.environment.addFunction(new TwingFunction('attributes_object', twigAttributeFunction));
+    this.environment.addFunction(new TwingFunction('create_attribute', twigAttributeFunction));
     this.environment.addFunction(new TwingFunction('pattern_preview', renderPatternPreview));
+    this.environment.addFunction(new TwingFunction('ws_itok', twigItok));
+    this.environment.addFunction(new TwingFunction('file_url', twigFileUrl));
     this.environment.addFunction(new TwingFunction('pattern', renderPattern));
 
   }

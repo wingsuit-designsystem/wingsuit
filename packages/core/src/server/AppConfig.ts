@@ -15,6 +15,6 @@ export default interface AppConfig {
 
 }
 
-interface Namespace {
+export interface Namespace {
   [key: string]: string;
 }

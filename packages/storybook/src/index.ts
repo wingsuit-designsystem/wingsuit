@@ -1,13 +1,12 @@
-import {storage, twigRenderEngine, Pattern} from '@wingsuit-designsystem/pattern';
+import {storage, renderer, Pattern} from '@wingsuit-designsystem/pattern';
 import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/html';
 import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
 
 import centered from '@storybook/addon-centered/html';
-import {DocsPage, DocsContainer, Description} from '@storybook/addon-docs/blocks';
+import {DocsPage, DocsContainer, Description, Props, Meta} from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import {TwingRenderer} from "@wingsuit-designsystem/pattern";
-
 
 function getStorybookKnobsOptions(setting) {
   const options:{} = setting.getOptions();
@@ -29,9 +28,11 @@ export function configure(module: NodeModule, storybookContext, dataContext, win
   // Theming
   addParameters({
     docs: {
+      meta: Meta,
       container: DocsContainer,
       page: DocsPage,
-      description: Description
+      description: Description,
+      props: Props
     },
     options: {
       theme: wingsuitTheme,
@@ -44,7 +45,7 @@ export function configure(module: NodeModule, storybookContext, dataContext, win
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
 
-  twigRenderEngine.setRenderer(new TwingRenderer());
+  renderer.setRenderer(new TwingRenderer());
 
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
@@ -91,9 +92,9 @@ function getStories(pattern: Pattern, module) {
       });
 
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
-      return twigRenderEngine.renderPatternPreview(pattern.getId(), variantKey, mergedSettingValues);
+      return renderer.renderPatternPreview(pattern.getId(), variantKey, mergedSettingValues);
 
-    }, {notes: variant.getDescription(),  componentSubtitle: 'Displays an image that represents a user or organization', docs: { storyDescription: '4 sizes are supported.' }});
+    }, {notes: variant.getDescription(),  componentSubtitle: pattern.getDescription(), docs: { storyDescription: variant.getDescription() }});
   });
   return story;
 }

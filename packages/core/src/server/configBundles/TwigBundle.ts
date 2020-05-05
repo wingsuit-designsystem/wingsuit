@@ -8,6 +8,7 @@ export default class TwigBundle extends BaseConfigBundle {
   }
 
   protected sharedWebpackConfig:{} = {
+
       module: {
         rules: [
           {

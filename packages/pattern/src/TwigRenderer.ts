@@ -1,4 +1,4 @@
-import {twigAttributeFunction} from "./twigExtensions";
+import {twigAttributeFunction, twigItok} from "./twigExtensions";
 import IRenderer from "./IRenderer";
 import {renderPatternPreview, renderPattern} from "./twigRenderEngine";
 import { storage } from './index';
@@ -12,7 +12,8 @@ export class TwigRenderer implements IRenderer {
     twigDrupal(twig);
     twig.extendFunction('pattern_preview', renderPatternPreview);
     twig.extendFunction('pattern', renderPattern);
-    twig.extendFunction('attributes_object', twigAttributeFunction);
+    twig.extendFunction('create_attribute', twigAttributeFunction);
+    twig.extendFunction('ws_itok', twigItok);
   }
 
   render(id: string, include: string, variables: {}): string {

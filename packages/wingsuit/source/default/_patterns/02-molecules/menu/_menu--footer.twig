@@ -14,7 +14,7 @@
   variant == 'footer',
 ]) | sort | join(' ') | trim  %}
 {# Defaults: #}
-{% set attributes = attributes|default(attributes_object()).addClass(classes) %}
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 <nav class="flex flex-col" role="navigation">
   <ul {{ attributes }} >

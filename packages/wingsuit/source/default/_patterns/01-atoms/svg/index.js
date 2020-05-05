@@ -4,16 +4,17 @@
 
 import svg4everybody from 'svg4everybody';
 
-import './_icons.generated.css';
-
 // Module template
+import './_icons.generated.css';
 import './_svg.twig';
 import './_svg--icon.twig';
+
+const patternDefinition = require('./svg.wingsuit.yml');
 
 export const name = 'svg';
 
 export const defaults = {
-  dummyClass: 'js-svg-exists',
+  patternDefinition: patternDefinition
 };
 
 /**
