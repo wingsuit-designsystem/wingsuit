@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/create-wingsuit",
-  "version": "0.2.8",
+  "version": "0.2.9-alpha.0",
   "description": "A script to generate Wingsuit",
   "main": "index.js",
   "scripts": {
