@@ -44,4 +44,8 @@ export abstract class BaseConfigBundle implements ConfigBundle {
   getProductionWebpackConfig(): {} {
     return this.productionWebpackConfig;
   }
+
+  alterFinalConfig(config: any): {} {
+    return config;
+  }
 }

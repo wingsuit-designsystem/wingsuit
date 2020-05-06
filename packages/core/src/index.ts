@@ -26,11 +26,13 @@ export function getAppPack(environment: string, module: NodeModule, webpacks: []
     server.addConfigBundle(TailwindBundle.create(app));
     // Find a better solution here. Check decorators for this use case.
     if (app.getAppConfig().type === 'storybook') {
+      server.addConfigBundle(AssetBundle.create(app));
       server.addConfigBundle(TailwindConfigExport.create(app));
       server.addConfigBundle(TwingBundle.create(app));
       server.addConfigBundle(StorybookBundle.create(app));
     }
     if (app.getAppConfig().type === 'drupal') {
+      server.addConfigBundle(AssetBundle.create(app));
       server.addConfigBundle(DrupalBundle.create(app));
     }
     server.addConfigBundle(CssBundle.create(app));

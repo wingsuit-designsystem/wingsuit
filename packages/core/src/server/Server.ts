@@ -77,8 +77,9 @@ export default class Server {
       environmentSpe.push(environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
     });
 
-    return merge.smartStrategy({
+    let config =  merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
+      entry: 'append',
       'module.rules.use': 'replace',
     })(
       ...environmentSpe,
@@ -105,7 +106,12 @@ export default class Server {
           ],
         }
       ]
-    )
+    );
+
+    Object.keys(bundles).forEach((key) => {
+      config = bundles[key].alterFinalConfig(config);
+    });
+    return config;
   }
 
 }

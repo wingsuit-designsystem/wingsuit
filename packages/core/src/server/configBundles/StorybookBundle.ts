@@ -39,6 +39,7 @@ export default class StorybookBundle extends BaseConfigBundle {
         ),
       ],
       stats: {
+        performance: true,
         children: false,
       },
     }

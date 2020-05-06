@@ -5,8 +5,9 @@ export function twigAttributeFunction() {
 }
 
 export function twigFileUrl(url) {
-  return url.replace('wsdist://', '/');
+  return url.replace('ws-assets://', '/');
 }
+
 export function twigItok() {
   return Math.random();
 }

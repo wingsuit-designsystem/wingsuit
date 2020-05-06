@@ -7,4 +7,6 @@ export default interface ConfigBundle {
   getProductionWebpackConfig(): {};
 
   getDevelopmentWebpackConfig(): {};
+
+  alterFinalConfig(config: {}): {};
 }
