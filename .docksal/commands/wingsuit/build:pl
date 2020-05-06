@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-#: exec_target = cli
-
-## Generates full css file (Useful for debugging).
-
-cd ${WINGSUIT_PATH}
-yarn run build:pl

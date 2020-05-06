@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-#: exec_target = cli
-
-## Start patternlab drupal dev mode.
-## Generates css twig templates on the fly.
-
-cd ${WINGSUIT_PATH}
-yarn run dev:drupal

@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/generator-new-component",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Generate a Wingsut component",
   "files": [
     "generators"

@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -17,10 +17,9 @@
     "prototyping"
   ],
   "scripts": {
-    "dev:storybook": "npm run build:assets; start-storybook --config-dir apps/storybook -s ./dist/app-assets",
+    "dev:storybook": "start-storybook --config-dir apps/storybook -s ./dist/storybook-assets",
     "dev:drupal": "cross-env-shell NODE_ENV=development \"webpack --watch --config ./apps/drupal/webpack.config.js\"",
     "build:drupal": "cross-env-shell NODE_ENV=production \"webpack --config ./apps/drupal/webpack.config.js\"",
-    "build:assets": "cross-env-shell NODE_ENV=production \"webpack --config ./apps/assets/webpack.config.js\"",
     "lint:js": "eslint --ext .js,.vue ./",
     "lint:css": "stylelint '**/*.css'",
     "lint": "npm run lint:js; npm run lint:css;",
@@ -51,9 +50,9 @@
     "@storybook/addon-notes": "^5.3.17",
     "@storybook/addon-storysource": "^5.3.17",
     "@storybook/addon-viewport": "^5.3.17",
-    "@wingsuit-designsystem/core": "0.2.7",
-    "@wingsuit-designsystem/generator-new-component": "0.2.7",
-    "@wingsuit-designsystem/storybook": "0.2.7",
+    "@wingsuit-designsystem/core": "0.2.8",
+    "@wingsuit-designsystem/generator-new-component": "0.2.8",
+    "@wingsuit-designsystem/storybook": "0.2.8",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
