@@ -1,6 +1,6 @@
 import path from "path";
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 
 export default class DrupalBundle extends BaseConfigBundle {
   public static create(app: BaseApp) {
@@ -25,7 +25,7 @@ export default class DrupalBundle extends BaseConfigBundle {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
-            outputPath: this.rootConfig.assetAtomicFolder,
+            outputPath: this.designSystemConfig.assetAtomicFolder,
             context: path.join(this.appConfig.path, this.appConfig.designSystem),
             emit: true,
           },

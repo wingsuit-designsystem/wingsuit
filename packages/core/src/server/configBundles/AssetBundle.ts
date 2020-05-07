@@ -1,6 +1,6 @@
 import * as path from 'path';
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 
 const CopyPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
@@ -82,7 +82,7 @@ export default class AssetBundle extends BaseConfigBundle {
   alterFinalConfig(config: any): {} {
     config.module.rules = config.module.rules.map(data => {
       if (/svg\|/.test(String(data.test)))
-        data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+        data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|cur|ani)(\?.*)?$/;
       return data;
     });
     return config;

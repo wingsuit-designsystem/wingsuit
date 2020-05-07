@@ -1,5 +1,5 @@
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');

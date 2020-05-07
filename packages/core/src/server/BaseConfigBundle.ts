@@ -1,14 +1,14 @@
 import ConfigBundle from "./ConfigBundle";
-import RootConfig from "./RootConfig";
-import AppConfig from "./AppConfig";
-import BaseApp from "./BaseApp";
+import DesignSystemConfig from "../common/DesignSystemConfig";
+import AppConfig from "../common/AppConfig";
+import BaseApp from "../common/BaseApp";
 
 export abstract class BaseConfigBundle implements ConfigBundle {
   protected app: BaseApp;
 
   protected appConfig: AppConfig;
 
-  protected rootConfig: RootConfig;
+  protected designSystemConfig: DesignSystemConfig;
 
   protected name;
 
@@ -20,7 +20,7 @@ export abstract class BaseConfigBundle implements ConfigBundle {
 
   protected constructor(name, app:BaseApp) {
     this.appConfig = app.getAppConfig();
-    this.rootConfig = app.getRootConfig();
+    this.designSystemConfig = app.getDesignSystemConfig();
     this.app = app;
     this.name = name;
   }

@@ -1,5 +1,5 @@
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 import Svg2JsonPlugin from "../plugins/Svg2JsonPlugin";
 import path from "path";
 

@@ -2,9 +2,6 @@
   "name": "@wingsuit-designsystem/generator-new-component",
   "version": "0.2.9-alpha.0",
   "description": "Generate a Wingsut component",
-  "files": [
-    "generators"
-  ],
   "publishConfig": {
     "access": "public"
   },
@@ -12,7 +9,20 @@
     "gulp-rename": "<=1.2.2",
     "lodash": "^4.17.15",
     "yeoman-generator": "^4.3.0",
-    "yeoman-test": "^2.0.0"
+    "yeoman-test": "^2.0.0",
+    "@wingsuit-designsystem/core": "0.2.9-alpha.0"
+  },
+  "main": "./dist/generators/app/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
   },
   "gitHead": "f05a12fa1c39691ee150ae453e7665bdf2930a5e"
 }

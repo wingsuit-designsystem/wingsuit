@@ -7,17 +7,20 @@ import DrupalBundle from "./server/configBundles/DrupalBundle";
 import TailwindConfigExport from "./server/configBundles/TailwindConfigExport";
 import TwingBundle from "./server/configBundles/TwingBundle";
 import DefaultBundle from "./server/configBundles/defaultBundle";
+import DesignSystem from "./common/DesignSystem";
 
 export {default as Server} from './server/Server';
-export {default as AppConfig} from './server/AppConfig';
-export {default as RootConfig} from './server/RootConfig';
 
 const server = new Server();
+const designSystem = new DesignSystem();
 
-
+export function getApp(environment: string, module: NodeModule, configurationOverwrites: {} = {}) {
+  const app = designSystem.getApp(module, configurationOverwrites);
+  return app;
+}
 export function getAppPack(environment: string, module: NodeModule, webpacks: [] = [], configurationOverwrites: {} = {}) {
 
-  const app = server.getApp(module, configurationOverwrites);
+  const app = designSystem.getApp(module, configurationOverwrites);
   server.addConfigBundle(DefaultBundle.create(app));
 
   if (app.getAppConfig().type === 'assets') {

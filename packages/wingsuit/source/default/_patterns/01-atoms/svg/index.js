@@ -5,7 +5,6 @@
 import svg4everybody from 'svg4everybody';
 
 // Module template
-import './_icons.generated.css';
 import './_svg.twig';
 import './_svg--icon.twig';
 

@@ -1,8 +1,8 @@
 import * as path from 'path';
 import Server from "../../src/server/Server";
-import RootConfig from "../../src/server/RootConfig";
+import DesignSystemConfig from "../../src/server/RootConfig";
 import StorybookApp from "../../src/server/StorybookApp";
-import AppConfig from "../../src/server/AppConfig";
+import AppConfig from "../../src/common/AppConfig";
 import ConfigBundle from "../../src/server/ConfigBundle";
 
 describe('PatternStorage', () => {

@@ -2,7 +2,7 @@ import * as path from 'path';
 // Plugins:production
 import Tailwind2JsonPlugin from "../plugins/Tailwind2JsonPlugin";
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 
 
 export default class TailwindConfigExport extends BaseConfigBundle {
@@ -13,7 +13,7 @@ export default class TailwindConfigExport extends BaseConfigBundle {
   protected sharedWebpackConfig = {
     plugins: [
       new Tailwind2JsonPlugin(
-        path.resolve(`${this.rootConfig.path}/tailwind.config`),
+        path.resolve(`${this.designSystemConfig.path}/tailwind.config`),
         path.resolve(`${this.appConfig.path}/_config/_silo/tailwind.json`)
       )
     ]

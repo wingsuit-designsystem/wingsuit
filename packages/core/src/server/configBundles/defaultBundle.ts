@@ -1,6 +1,6 @@
 import path from "path";
 import {BaseConfigBundle} from "../BaseConfigBundle";
-import BaseApp from "../BaseApp";
+import BaseApp from "../../common/BaseApp";
 import {DefinePlugin} from "webpack";
 
 export default class DefaultBundle extends BaseConfigBundle {
@@ -10,7 +10,7 @@ export default class DefaultBundle extends BaseConfigBundle {
 
   protected sharedWebpackConfig:{} = {
     output: {
-      path: path.join(this.rootConfig.path, this.rootConfig.distFolder, `${this.appConfig.name}-${this.appConfig.type}`, this.rootConfig.assetBundleFolder),
+      path: path.join(this.designSystemConfig.path, this.designSystemConfig.distFolder, `${this.appConfig.name}-${this.appConfig.type}`, this.designSystemConfig.assetBundleFolder),
     },
     resolve: {
       alias: this.appConfig.namespaces,

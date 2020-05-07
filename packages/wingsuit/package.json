@@ -32,8 +32,8 @@
     "test:unit:default": "NODE_ENV=test jest --projects source/default/",
     "test:unit": "npm run test:unit:default",
     "test": "npm run test:unit",
-    "ci": "npm run lint && npm run test && npm run build:pl && npm run build:drupal",
-    "new": "yo @wingsuit-designsystem/new-component && patternlab build --config ./apps/node-pl/patternlab-config.json",
+    "ci": "npm run lint && npm run test && npm run build:drupal",
+    "new": "yo @wingsuit-designsystem/new-component",
     "yo": "yo"
   },
   "devDependencies": {
@@ -75,7 +75,8 @@
     "alpinejs": "^1.10.1",
     "require-context": "^1.1.0",
     "svg4everybody": "^2.1.9",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "yo": "^3.1.1"
   },
   "gitHead": "f05a12fa1c39691ee150ae453e7665bdf2930a5e"
 }

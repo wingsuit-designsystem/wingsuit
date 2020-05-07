@@ -1,6 +1,8 @@
 module.exports = {
   important: false,
-
+  fontFamily: {
+    'sans': ['SourceSans', '-apple-system', 'BlinkMacSystemFont'],
+  },
   variants: {
     opacity: ['responsive'],
     borderWidth: ['responsive', 'hover', 'group-hover'],

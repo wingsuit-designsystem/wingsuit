@@ -1,16 +1,13 @@
 /**
  * Wingsuit Design System.
  */
-import * as path from "path";
-import AppConfig from "./AppConfig";
-import BaseApp from "./BaseApp";
 import ConfigBundle from "./ConfigBundle";
 
 // Library Imports
 const merge = require('webpack-merge');
 const {ProgressPlugin, ProvidePlugin} = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const appConfigStub = require('./stubs/defaultAppConfig.stub');
+
 
 merge.multiple();
 
@@ -19,6 +16,7 @@ interface BundleItems {
 }
 
 export default class Server {
+
 
   private environment = 'production';
 
@@ -30,26 +28,6 @@ export default class Server {
 
   public getBundles(): BundleItems {
     return this.bundles;
-  }
-
-  private resolveAppConfig(module: NodeModule, configurationOverwrites: any = {}): AppConfig {
-    let config: any = {};
-    try {
-      config = module.require('./wingsuit.app.config');
-    } catch (e) {
-      if (configurationOverwrites.type === null) {
-        throw new Error(`Configuration "wingsuit.app.config" not found. Message: ${e.message}`);
-      }
-    }
-    config.path = path.dirname(module.filename);
-    const mergedConfigs = Object.assign(appConfigStub, config, configurationOverwrites);
-    return mergedConfigs;
-  }
-
-  public getApp(module: NodeModule, configurationOverwrites: {} = {}): BaseApp {
-    const config: AppConfig = this.resolveAppConfig(module, configurationOverwrites);
-    return new BaseApp(config, module);
-
   }
 
   /**
