@@ -1,7 +1,9 @@
+import { renderer } from '@wingsuit-designsystem/pattern';
+
 export default { title: '05-pages/Article' };
-import {twigRenderEngine} from '@wingsuit-designsystem/pattern';
+
+const template = require('./article.twig');
 
 export const Article = () => {
-  return twigRenderEngine.renderData('path', require('./article.twig'));
+  return renderer.renderData('path', template);
 };
-

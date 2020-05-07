@@ -23,8 +23,8 @@
     "lint:js": "eslint --ext .js,.vue ./",
     "lint:css": "stylelint '**/*.css'",
     "lint": "npm run lint:js; npm run lint:css;",
-    "fmt:js": "npm run lint:js -- --fix",
-    "fmt:css": "npm run lint:css -- --fix && prettier --loglevel warn --write '**/*.{css}'",
+    "fmt:js": "eslint --fix --ext .js,.vue ./",
+    "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
     "fmt": "npm run fmt:js; npm run fmt:css",
     "test:backstop:ref": "node tools/tests/vrt/backstop-example-reference.js",
     "test:backstop:test": "node tools/tests/vrt/backstop-example-test.js",
@@ -73,7 +73,9 @@
   },
   "dependencies": {
     "alpinejs": "^1.10.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "require-context": "^1.1.0",
+    "stylelint-scss": "^3.17.2",
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^1.2.0",
     "yo": "^3.1.1"

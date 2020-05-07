@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'SourceSans';
   src: url('fonts/source-sans/SourceSerifPro-Regular.woff') format('woff'),
-  url('fonts/source-sans/SourceSerifPro-Regular.woff2') format('woff2');
+    url('fonts/source-sans/SourceSerifPro-Regular.woff2') format('woff2');
   font-display: auto;
   font-weight: 400;
 }

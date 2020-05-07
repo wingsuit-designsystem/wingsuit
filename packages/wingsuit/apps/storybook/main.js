@@ -1,6 +1,7 @@
+const wingsuitCore = require('@wingsuit-designsystem/core');
+
 module.exports = {
-  webpackFinal: (config) => {
-    const wingsuit = require('@wingsuit-designsystem/core');
-    return wingsuit.getAppPack('development', module, [config]);
+  webpackFinal: config => {
+    return wingsuitCore.getAppPack('development', module, [config]);
   },
-}
+};

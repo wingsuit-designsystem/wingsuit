@@ -2,8 +2,4 @@
  * basicPage
  */
 
-const definition = require('./grid.wingsuit.yml');
-
-export const defaults = {
-  patternDefinition: definition,
-};
+export { patternDefinition as default } from './grid.wingsuit.yml';

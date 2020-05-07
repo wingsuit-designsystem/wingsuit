@@ -1,4 +1,6 @@
+const namespaces = require('../../source/default/namespaces');
+
 module.exports = {
-  namespaces: require('../../source/default/namespaces'),
-  type: "storybook"
+  namespaces,
+  type: 'storybook',
 };

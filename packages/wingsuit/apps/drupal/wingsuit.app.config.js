@@ -1,5 +1,7 @@
+const namespaces = require('../../source/default/namespaces');
+
 module.exports = {
-  namespaces: require('../../source/default/namespaces'),
-  type: "drupal",
-  cssMode: "extract"
+  namespaces,
+  type: 'drupal',
+  cssMode: 'extract',
 };

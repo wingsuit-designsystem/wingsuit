@@ -8,8 +8,4 @@ import './_image--bg.twig';
 import './_image--placeholder.twig';
 import './_image--primary.twig';
 
-const patternDefinition = require('./image.wingsuit.yml');
-
-export const defaults = {
-  patternDefinition: patternDefinition
-};
+export { patternDefinition as default } from './image.wingsuit.yml';

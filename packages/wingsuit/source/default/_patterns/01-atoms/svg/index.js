@@ -13,7 +13,7 @@ const patternDefinition = require('./svg.wingsuit.yml');
 export const name = 'svg';
 
 export const defaults = {
-  patternDefinition: patternDefinition
+  patternDefinition,
 };
 
 /**
