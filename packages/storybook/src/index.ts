@@ -72,6 +72,7 @@ function getStories(pattern: Pattern, module) {
     const variables = variant.getVariables();
     story.add(variant.getLabel(), () => {
       const knobsVariables = [];
+      const groupSetting = 'Settings';
       Object.keys(variant.getSettings()).forEach((key) => {
         const setting = variant.getSetting(key);
         if (setting.isEnable()) {
@@ -79,22 +80,28 @@ function getStories(pattern: Pattern, module) {
             knobsVariables[key] = select(
               setting.getLabel(),
               getStorybookKnobsOptions(setting),
-              setting.getPreview()
+              setting.getPreview(), groupSetting
             );
           } else if (setting.getType() === 'boolean') {
-            knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview());
+            knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
           } else if (setting.getType() === 'number') {
-            knobsVariables[key] = number(setting.getLabel(), setting.getPreview());
+            knobsVariables[key] = number(setting.getLabel(), setting.getPreview(), undefined, groupSetting);
           } else {
-            knobsVariables[key] = text(setting.getLabel(), setting.getPreview());
+            knobsVariables[key] = text(setting.getLabel(), setting.getPreview(), groupSetting);
           }
         }
       });
-
+      const groupFields = 'fields';
+      Object.keys(variant.getFields()).forEach((key) => {
+        const field = variant.getField(key);
+        if (field.getType() !== 'pattern') {
+          knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+        }
+      });
       const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
       return renderer.renderPatternPreview(pattern.getId(), variantKey, mergedSettingValues);
 
-    }, {notes: variant.getDescription(),  componentSubtitle: pattern.getDescription(), docs: { storyDescription: variant.getDescription() }});
+    }, { notes: variant.getDescription(),  componentSubtitle: pattern.getDescription(), docs: { storyDescription: variant.getDescription() }});
   });
   return story;
 }

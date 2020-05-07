@@ -12,19 +12,17 @@ card:
       type: text
       label: Preheadline
       preview:
-        faker: true
-        property: name
+        faker: lorem.word
     headline:
       type: text
       label: Headline
       preview:
-        faker: true
-        property: text
+        faker: lorem.word
     content:
       type: text
-      label: Headline
-      faker: true
-      formatter: text
+      label: Content
+      preview:
+        faker: lorem.paragraph
   variants:
     default:
       label: Default

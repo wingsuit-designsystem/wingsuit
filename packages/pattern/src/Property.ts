@@ -13,11 +13,15 @@ export default class Property {
 
   private generateFake(_preview) {
     let token = 'lorem.word';
+
     if (_preview.token == null && _preview.property != null) {
       token = `{{${_preview.property}}}`;
     }
     if (_preview.token != null) {
       token = _preview.token;
+    }
+    if (typeof _preview === 'string') {
+      token = `{{${_preview}}}`;
     }
     try {
       return faker.fake(token);
