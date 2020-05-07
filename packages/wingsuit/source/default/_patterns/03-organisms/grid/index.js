@@ -2,4 +2,10 @@
  * basicPage
  */
 
-export { patternDefinition as default } from './grid.wingsuit.yml';
+const patternDefinition = require('./grid.wingsuit.yml');
+
+export const name = 'grid';
+
+export const defaults = {
+  patternDefinition,
+};

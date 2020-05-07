@@ -8,6 +8,10 @@ import './_card.twig';
 // Module styles
 import './_card.css';
 
-export { patternDefinition as default } from './card.wingsuit.yml';
+const patternDefinition = require('./card.wingsuit.yml');
+
+export const defaults = {
+  patternDefinition,
+};
 
 export const name = 'card';
