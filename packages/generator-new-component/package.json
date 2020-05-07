@@ -14,12 +14,7 @@
   },
   "main": "./dist/generators/app/index.js",
   "files": [
-    "bin/**/*",
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts",
-    "ts3.5/**/*"
+    "dist/generators"
   ],
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

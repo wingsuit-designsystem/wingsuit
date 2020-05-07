@@ -23,7 +23,7 @@ const PATTERNS_FOLDER = '_patterns';
 export default class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-
+    const rootConfig = require(opts.env.cwd + '/wingsuit.root.config')
     // The chosen app
     this.wingsuitApp = {};
   }
@@ -46,6 +46,7 @@ export default class extends Generator {
         __dirname
       )}`
     );
+
 
     // Prompts presented to user
     const prompts = [
@@ -112,12 +113,7 @@ export default class extends Generator {
       this._dsComponentPath,
       this.props
     );
-    // Copy and process all app files
-    this.fs.copyTpl(
-      this.templatePath('app/**/*.ejs'),
-      this._appComponentPath,
-      this.props
-    );
+
 
     this.log(
       `Your new component ${name} is being created, both as a raw component within your design system and demo folder within your Pattern Lab.`

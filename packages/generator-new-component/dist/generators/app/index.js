@@ -107,7 +107,10 @@ var _default = /*#__PURE__*/function (_Generator) {
 
     _classCallCheck(this, _default);
 
-    _this = _super.call(this, args, opts); // The chosen app
+    _this = _super.call(this, args, opts);
+
+    var rootConfig = require(opts.env.cwd + '/wingsuit.root.config'); // The chosen app
+
 
     _this.wingsuitApp = {};
     return _this;
@@ -182,9 +185,7 @@ var _default = /*#__PURE__*/function (_Generator) {
         return path;
       })); // Copy and process all design system files
 
-      this.fs.copyTpl(this.templatePath('ds/**/*.ejs'), this._dsComponentPath, this.props); // Copy and process all app files
-
-      this.fs.copyTpl(this.templatePath('app/**/*.ejs'), this._appComponentPath, this.props);
+      this.fs.copyTpl(this.templatePath('ds/**/*.ejs'), this._dsComponentPath, this.props);
       this.log("Your new component ".concat(name, " is being created, both as a raw component within your design system and demo folder within your Pattern Lab."));
     }
   }]);
