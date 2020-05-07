@@ -8,9 +8,9 @@ export default class DrupalBundle extends BaseConfigBundle {
   }
 
   protected sharedWebpackConfig:{} = {
-    entry: {
-      app: [path.resolve(this.appConfig.path, 'index.js')],
-    },
+    entry: [
+      path.resolve(this.appConfig.path, 'index.js')
+    ],
     module: {
       rules: [
         {
