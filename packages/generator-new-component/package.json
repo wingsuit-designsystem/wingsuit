@@ -1,12 +1,12 @@
 {
   "name": "@wingsuit-designsystem/generator-new-component",
-  "version": "0.2.9-alpha.1",
+  "version": "0.2.9-alpha.2",
   "description": "Generate a Wingsut component",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@wingsuit-designsystem/core": "0.2.9-alpha.1",
+    "@wingsuit-designsystem/core": "0.2.9-alpha.2",
     "gulp-rename": "<=1.2.2",
     "lodash": "^4.17.15",
     "yeoman-generator": "^4.3.0",
