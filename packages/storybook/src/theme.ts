@@ -6,5 +6,5 @@ export default create({
   brandTitle: 'Wingsuit',
   brandUrl: 'https://github.com/wingsuit-designsystem/wingsuit',
   brandImage:
-    'https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_i.svg',
+    'https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_horizontal.png',
 });

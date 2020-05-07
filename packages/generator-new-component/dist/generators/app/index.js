@@ -107,10 +107,8 @@ var _default = /*#__PURE__*/function (_Generator) {
 
     _classCallCheck(this, _default);
 
-    _this = _super.call(this, args, opts);
-
-    var rootConfig = require(opts.env.cwd + '/wingsuit.root.config'); // The chosen app
-
+    _this = _super.call(this, args, opts); // const rootConfig = require(opts.env.cwd + '/wingsuit.root.config')
+    // The chosen app
 
     _this.wingsuitApp = {};
     return _this;
@@ -128,6 +126,7 @@ var _default = /*#__PURE__*/function (_Generator) {
     value: function prompting() {
       var _this2 = this;
 
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       var self = this;
       this.log("Hi! This will help you build a component folder with assets. Templates for this are in: ".concat(relative(process.cwd(), __dirname))); // Prompts presented to user
 
@@ -183,9 +182,7 @@ var _default = /*#__PURE__*/function (_Generator) {
 
         path.basename = path.basename.replace(ext, '').replace('pattern', name);
         return path;
-      })); // Copy and process all design system files
-
-      this.fs.copyTpl(this.templatePath('ds/**/*.ejs'), this._dsComponentPath, this.props);
+      }));
       this.log("Your new component ".concat(name, " is being created, both as a raw component within your design system and demo folder within your Pattern Lab."));
     }
   }]);

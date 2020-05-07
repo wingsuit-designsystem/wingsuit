@@ -23,7 +23,7 @@ const PATTERNS_FOLDER = '_patterns';
 export default class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    const rootConfig = require(opts.env.cwd + '/wingsuit.root.config')
+    // const rootConfig = require(opts.env.cwd + '/wingsuit.root.config')
     // The chosen app
     this.wingsuitApp = {};
   }
@@ -38,6 +38,7 @@ export default class extends Generator {
 
   // Reserved: present options to the user
   prompting() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     this.log(
@@ -106,14 +107,6 @@ export default class extends Generator {
         return path;
       })
     );
-
-    // Copy and process all design system files
-    this.fs.copyTpl(
-      this.templatePath('ds/**/*.ejs'),
-      this._dsComponentPath,
-      this.props
-    );
-
 
     this.log(
       `Your new component ${name} is being created, both as a raw component within your design system and demo folder within your Pattern Lab.`
