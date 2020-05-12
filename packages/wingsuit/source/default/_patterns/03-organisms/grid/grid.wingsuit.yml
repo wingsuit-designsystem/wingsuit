@@ -7,32 +7,27 @@ grid:
       type: text
       label: Column 1
       preview:
-        faker:
-          property: lorem.text
+        faker: lorem.text
     column_2:
       type: text
       label: Column 2
       preview:
-        faker:
-          property: lorem.text
+        faker: lorem.text
     column_3:
       type: text
       label: Column 3K
       preview:
-        faker:
-          property: lorem.text
+        faker: lorem.text
     column_4:
       type: text
       label: Column 4s
       preview:
-        faker:
-          property: lorem.text
+        faker: lorem.text
     column_5:
       type: text
       label: Column 5
       preview:
-        faker:
-          property: lorem.text
+        faker: lorem.text
   settings:
     columns:
       type: select

@@ -5,7 +5,8 @@
     "rootDir": "./src",
     "strict": true,
     "noUnusedLocals": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react"
   },
   "include": ["src/**/*"],
   "exclude": ["__tests__/**/*", "__int_tests__/**/*"]

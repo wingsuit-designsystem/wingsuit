@@ -1,0 +1,20 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { Button } from '@storybook/react/demo';
+
+<Meta title="Button" component={Button} />
+
+# Button
+
+This `Button` document defines two stories:
+
+<Story name="text">
+  <Button>Hello Button</Button>
+</Story>
+
+<Story name="emoji">
+  <Button>
+    <span role="img" aria-label="so cool">
+      😀 😎 👍 💯
+    </span>
+  </Button>
+</Story>

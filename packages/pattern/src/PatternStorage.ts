@@ -57,17 +57,27 @@ export default class PatternStorage implements IPatternStorage {
     this.definitions = definitions;
   }
 
-  createDefinitionsFromContext(context): void {
+  createDefinitionsFromMultiContext(any): void {
+    if (Array.isArray(any) === true) {
+      any.forEach((context) => {
+        this.createDefinitionsFromContext(context);
+      })
 
+    } else {
+      this.createDefinitionsFromContext(any);
+    }
+  }
+
+  createDefinitionsFromContext(context): void {
     if (this.definitions.patterns == null) {
       this.definitions.patterns = {};
     }
     context.keys().forEach((key) => {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
         const data = context(key);
-        if (data.defaults != null && typeof data.defaults.patternDefinition === 'object') {
-          const {patternDefinition} = data.defaults;
-          let {namespace} = data.defaults;
+        if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
+          const {patternDefinition} = data.wingsuit;
+          let {namespace} = data.wingsuit;
           if (namespace == null) {
             const hierachy = key.split('/');
             if (hierachy.length > 2) {
@@ -76,11 +86,9 @@ export default class PatternStorage implements IPatternStorage {
           }
           Object.keys(patternDefinition).forEach((pattern_key) => {
             if (patternDefinition[pattern_key].namespace == null) {
-
               patternDefinition[pattern_key].namespace = namespace;
             }
             this.definitions.patterns[pattern_key] = patternDefinition[pattern_key];
-            console.log(this.definitions.patterns[pattern_key].namespace);
           })
         }
       }

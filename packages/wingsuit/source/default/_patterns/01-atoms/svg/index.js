@@ -8,13 +8,7 @@ import svg4everybody from 'svg4everybody';
 import './_svg.twig';
 import './_svg--icon.twig';
 
-const patternDefinition = require('./svg.wingsuit.yml');
-
 export const name = 'svg';
-
-export const defaults = {
-  patternDefinition,
-};
 
 /**
  * Components may need to run clean-up tasks if they are removed from DOM.

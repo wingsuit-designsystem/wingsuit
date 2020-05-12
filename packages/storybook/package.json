@@ -34,10 +34,13 @@
     "@storybook/addon-centered": "^5.3.17",
     "@storybook/addon-docs": "^5.3.17",
     "@storybook/addon-knobs": "^5.3.17",
-    "@storybook/html": "^5.3.17",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.17",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/pattern": "0.2.9-alpha.2",
-    "twig": "~1.15.1",
-    "twig-drupal-filters": "^2.0.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

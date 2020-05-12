@@ -67,7 +67,11 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "alpinejs": "^1.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^1.2.0"
   },

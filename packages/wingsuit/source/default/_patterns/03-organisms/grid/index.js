@@ -1,11 +1,6 @@
 /**
  * basicPage
  */
-
-const patternDefinition = require('./grid.wingsuit.yml');
+import 'protons';
 
 export const name = 'grid';
-
-export const defaults = {
-  patternDefinition,
-};
