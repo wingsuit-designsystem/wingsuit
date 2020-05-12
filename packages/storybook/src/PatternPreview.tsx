@@ -1,20 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import {renderer} from '@wingsuit-designsystem/pattern';
 
-type Props =  {patternVariant};
+type Props =  {patternId, variantId};
 
-
-function renderPattern(patternVariant, variables) {
-  const pattern = patternVariant.getPattern();
-  return renderer.renderPatternPreview(pattern.getId(), patternVariant.getVariant(), variables);
-}
-
-const PatternPreview: FunctionComponent<Props> = ({ patternVariant, ...variables }) => (
-  <div dangerouslySetInnerHTML={{ __html: renderPattern(patternVariant, variables) }} />
+const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...variables }) => (
+  <div dangerouslySetInnerHTML={{ __html: renderer.renderPatternPreview(patternId, variantId, variables) }} />
 );
 
-PatternPreview.displayName = 'Pattern';
-PatternPreview.defaultProps = {
-};
+PatternPreview.displayName = 'PatternPreview';
 
 export default PatternPreview;
