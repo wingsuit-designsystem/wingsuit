@@ -26,8 +26,8 @@ export default class AssetBundle extends BaseConfigBundle {
       new SpriteLoaderPlugin(),
       new CopyPlugin([
         {
-          from: 'image/images/*',
-          to: 'images',
+          from: 'images/*',
+          to: ''
         }
       ]),
     ],

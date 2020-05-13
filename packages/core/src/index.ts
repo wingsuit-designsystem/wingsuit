@@ -4,7 +4,7 @@ import TailwindBundle from "./server/configBundles/TailwindBundle";
 import AssetBundle from "./server/configBundles/AssetBundle";
 import StorybookBundle from "./server/configBundles/StorybookBundle";
 import DrupalBundle from "./server/configBundles/DrupalBundle";
-import TailwindConfigExport from "./server/configBundles/TailwindConfigExport";
+// import TailwindConfigExport from "./server/configBundles/TailwindConfigExport";
 import TwingBundle from "./server/configBundles/TwingBundle";
 import DefaultBundle from "./server/configBundles/defaultBundle";
 import DesignSystem from "./common/DesignSystem";
@@ -30,7 +30,7 @@ export function getAppPack(environment: string, module: NodeModule, webpacks: []
     // Find a better solution here. Check decorators for this use case.
     if (app.getAppConfig().type === 'storybook') {
       server.addConfigBundle(AssetBundle.create(app));
-      server.addConfigBundle(TailwindConfigExport.create(app));
+      // server.addConfigBundle(TailwindConfigExport.create(app));
       server.addConfigBundle(TwingBundle.create(app));
       server.addConfigBundle(StorybookBundle.create(app));
     }
