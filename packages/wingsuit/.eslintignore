@@ -4,6 +4,8 @@ dist/
 pattern-lab/
 vendor/
 tools/tests/vrt/backstop_data
+preview.js-generated-config-entry.js
+storybook-init-framework-entry.js
 
 # Ignore yeoman new-component templates
 tools/new-component/templates

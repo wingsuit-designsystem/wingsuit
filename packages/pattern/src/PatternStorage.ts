@@ -14,7 +14,11 @@ export default class PatternStorage implements IPatternStorage {
   private twigResources = {};
 
   addGlobal(name: string, value: {}) {
-    this.globals[name] = value;
+    if (this.globals[name] != null) {
+      this.globals[name] = Object.assign(this.globals[name], value);
+    } else {
+      this.globals[name] = value;
+    }
   }
 
   getGlobals() {
@@ -78,13 +82,18 @@ export default class PatternStorage implements IPatternStorage {
         if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
           const {patternDefinition} = data.wingsuit;
           let {namespace} = data.wingsuit;
+          const {parameters} = data.wingsuit;
           if (namespace == null) {
             const hierachy = key.split('/');
             if (hierachy.length > 2) {
               namespace = hierachy[1];
             }
           }
+
           Object.keys(patternDefinition).forEach((pattern_key) => {
+            if (parameters !== null) {
+              patternDefinition[pattern_key].parameters = parameters;
+            }
             if (patternDefinition[pattern_key].namespace == null) {
               patternDefinition[pattern_key].namespace = namespace;
             }

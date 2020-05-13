@@ -28,6 +28,7 @@ export interface IPatternDefinition {
   label: string;
   id: string;
   namespace: string;
+  parameters: any;
   use: string;
   description: string;
   fields: Properties;

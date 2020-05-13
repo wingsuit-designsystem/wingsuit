@@ -9,6 +9,14 @@ export default class Setting extends Property {
     this.options = value;
   }
 
+  public getDefaultValue() {
+    return this.defaultValue;
+  }
+
+  public setDefaultValue(defaultValue: string) {
+    this.defaultValue = defaultValue;
+  }
+
   public isRequired(): boolean {
     return this.required;
   }
@@ -24,6 +32,8 @@ export default class Setting extends Property {
   public setEnable(value: boolean) {
     this.enable = value;
   }
+
+  private defaultValue = "";
 
   private required = false;
 

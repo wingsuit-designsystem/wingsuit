@@ -1,4 +1,6 @@
-image:
+wingsuit:
+  x: y
+imageConfig:
   styles:
     1x1_xxs_sc:
       label: Small 1x1

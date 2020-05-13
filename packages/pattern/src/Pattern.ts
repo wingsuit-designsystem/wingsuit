@@ -43,6 +43,8 @@ export default class Pattern {
 
   private namespace: string;
 
+  private parameters: any;
+
   private use: string;
 
   private definition: IPatternDefinition;
@@ -61,6 +63,7 @@ export default class Pattern {
     this.storage = storage;
     this.use = definition.use;
     this.namespace = definition.namespace;
+    this.parameters = definition.parameters;
     this.definition = definition;
     this.defaultVariant = new PatternVariant(
       this,
@@ -79,6 +82,10 @@ export default class Pattern {
   public getVariant(id: string = Pattern.DEFAULT_VARIANT_NAME) {
     const variantId = id === '' ? Pattern.DEFAULT_VARIANT_NAME : id;
     return this.patternVariants[variantId];
+  }
+
+  public getParameters():any {
+    return this.parameters;
   }
 
   public getStorage():IPatternStorage {
@@ -126,6 +133,7 @@ export default class Pattern {
         );
         setting.setRequired(settings[key].required ? true : false);
         setting.setOptions(settings[key].options);
+        setting.setDefaultValue(settings[key].default_value);
         if (settings[key].default_value != null) {
           setting.setPreview(settings[key].default_value);
         }

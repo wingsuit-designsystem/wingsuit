@@ -1,6 +1,7 @@
-const patternDefinition = require('./grid.wingsuit.yml');
 import './index';
-export const wingsuit = {
-  patternDefinition
-};
 
+const patternDefinition = require('./grid.wingsuit.yml');
+
+export const wingsuit = {
+  patternDefinition,
+};

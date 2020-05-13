@@ -4,8 +4,16 @@ import {configure as storybookConfigure, storiesOf, addParameters} from '@storyb
 import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
-
-import PatternPreview from './PatternPreview';
+import PatternPreview from './components/PatternPreview';
+import PatternProperties from './docs/PatternProperties';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+} from '@storybook/addon-docs/blocks';
+import {PatternStories} from "./docs/PatternStories";
+import {PatternInclude} from "./docs/PatternInclude";
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -104,12 +112,38 @@ function getStories(pattern: Pattern, module) {
 
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
+    let parameters = {
+      layout: 'centered',
+      component: PatternPreview,
+      notes: variant.getDescription(),
+      componentSubtitle: pattern.getDescription(),
+      docs: {
+
+        patternVariant: variant,
+        page: () => (
+          <>
+            <Title />
+            <Subtitle />
+            <Description />
+            <Primary />
+            <PatternProperties />
+            <PatternInclude />
+            <PatternStories />
+          </>
+        ),
+         storyDescription: variant.getDescription()
+      }
+    };
+    parameters = Object.assign(parameters, pattern.getParameters());
     story.add(
-      variant.getLabel(), () => <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...getProps(variant)}></PatternPreview>
+      variant.getLabel(), () =>
+        <PatternPreview patternId={pattern.getId()}
+                                                variantId={variantKey} {...getProps(variant)}></PatternPreview>,
+      parameters
     )
   });
   return story;
 }
 
-export { default as RenderTwig } from './RenderTwig';
-export { default as PatternPreview } from './PatternPreview';
+export {default as RenderTwig} from './components/RenderTwig';
+export {default as PatternPreview} from './components/PatternPreview';

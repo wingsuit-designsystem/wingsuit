@@ -90,10 +90,10 @@ export default class PatternVariant {
     return previewPatterns;
   }
 
-  public getVariables() {
+  public getVariables(includeGlobals = true) {
     const values = {};
     Object.keys(this.settings).forEach((key) => {
-      values[key] = this.settings[key].preview;
+      values[key] = this.settings[key].getPreview();
     });
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
@@ -106,8 +106,13 @@ export default class PatternVariant {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
-    const globals = {'wingsuit': this.getStorage().getGlobals()};
-    return Object.assign(values, globals)
+    if (includeGlobals) {
+      const globals = this.getStorage().getGlobals();
+      return Object.assign(globals, values);
+    } else {
+      return values;
+    }
+
   }
 
   private pattern: Pattern;

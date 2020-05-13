@@ -17,6 +17,6 @@ scripts/storage
 !.babelrc.js
 !.eslintrc.js
 !.eslintrc-markdown.js
-!.jest.config.js
+!.jest._config.js
 !.storybook
 
