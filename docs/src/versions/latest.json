@@ -1,0 +1,1 @@
+{"version":"5.3.13","info":{"plain":"### Bug Fixes\n\n* React: Remove `MiniCssExtractPlugin` for CRA ([#9759](https://github.com/storybookjs/storybook/pull/9759))\n\n### Maintenance\n\n* Build: Fix DLL generation race condition ([#9770](https://github.com/storybookjs/storybook/pull/9770))"}}
