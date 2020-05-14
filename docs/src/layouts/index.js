@@ -10,7 +10,7 @@ import '../css/github.css';
 const PageTemplate = ({ children }) => (
   <div>
     <a
-      href="https://github.com/storybookjs/storybook"
+      href="https://github.com/wingsuit-designsystem/wingsuit"
       className="github-corner"
       aria-label="View source on Github"
     >

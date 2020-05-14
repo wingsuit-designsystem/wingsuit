@@ -16,7 +16,7 @@
   font-weight: 600;
   margin: 10px 0;
   padding: 0;
-  color: #000;
+  color: #4A5568;
   padding: 12px;
 }
 
@@ -31,13 +31,11 @@
 }
 
 #nav ul li a {
-  font-size: 14px;
-  line-height: 16px;
+  line-height: 18px;
   color: #444;
   padding: 12px;
 }
 
 #nav ul li a.selected {
   background-color: #EBF8FF;
-  font-weight: 600;
 }

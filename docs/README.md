@@ -21,7 +21,7 @@ To fix that problem run:
 On Linux there may be problems installing libpng. 
 ### Edit Documentation
 
-Documentation is written in Markdown and located inside the [`docs/src/pages`](https://github.com/storybookjs/storybook/tree/master/docs/src/pages) directory.
+Documentation is written in Markdown and located inside the [`docs/src/pages`](https://github.com/wingsuit-designsystem/wingsuit/tree/master/docs/src/pages) directory.
 
 ### Guidelines for Writing Good Documentation
 

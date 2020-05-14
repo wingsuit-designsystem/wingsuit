@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
-        repoUrl: 'https://github.com/storybookjs/storybook',
+        repoUrl: 'https://github.com/wingsuit-designsystem/wingsuit',
       },
     },
     {

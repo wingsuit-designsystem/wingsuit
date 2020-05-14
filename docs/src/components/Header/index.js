@@ -3,7 +3,7 @@ import React from 'react';
 import GatsbyLink from 'gatsby-link';
 import './style.css';
 
-import storybookLogo from '../../design/homepage/storybook-logo.svg';
+import wingsuitLogo from '../../design/homepage/wingsuit-logo.svg';
 
 const home = 'https://storybook.js.org/';
 
@@ -58,7 +58,7 @@ class Header extends React.Component {
         <div className="col-xs-12 col-md-12">
           <div id="header-title" className={titleClassname}>
             <Link to={home}>
-              <img className="sb-title" src={storybookLogo} alt="Storybook Logo" />
+              <img className="sb-title" src={wingsuitLogo} alt="Storybook Logo" />
             </Link>
           </div>
           <div id="header-links" className="float-right">

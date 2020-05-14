@@ -1,14 +1,14 @@
 import React from 'react';
 import './style.css';
 
-import storybookLogo from '../../../design/homepage/storybook-logo.svg';
+import wingsuitLogo from '../../../design/homepage/wingsuit-logo.svg';
 
 const Heading = () => (
   <div id="heading" className="row">
     <div className="col-xs-12 col-sm-12">
-      <img className="sb-title" src={storybookLogo} alt="Storybook Logo" />
+      <img className="sb-title" src={wingsuitLogo} alt="Storybook Logo" />
       <h3 className="mt-4 sb-tagline">
-        The UI Development Environment
+        A Designsystem for rapid pattern development.
         <br />
         You'll ♥️ to use
       </h3>
