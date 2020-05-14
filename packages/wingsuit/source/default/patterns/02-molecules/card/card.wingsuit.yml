@@ -1,5 +1,5 @@
 card:
-  use: "@molecules/card/_card.twig"
+  use: "@molecules/card/card.twig"
   label: Card2
   description: Use Cards for your teasers
   fields:

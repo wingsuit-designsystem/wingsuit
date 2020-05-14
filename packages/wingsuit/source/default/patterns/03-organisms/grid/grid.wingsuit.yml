@@ -1,5 +1,5 @@
 grid:
-  use: "@organisms/grid/_grid.twig"
+  use: "@organisms/grid/grid.twig"
   label: Grid
   description: Grid pattern.
   fields:

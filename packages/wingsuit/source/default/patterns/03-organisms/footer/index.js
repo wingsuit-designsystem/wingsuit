@@ -1,10 +1,8 @@
 /**
  * footer
  */
-// Module styles
-import './_footer.css';
 
 // Module template
-import './_footer.twig';
+import './footer.twig';
 
 export const name = 'footer';

@@ -1,0 +1,10 @@
+{% embed '@organisms/footer/_footer.twig' with footer %}
+  {% block menu %}
+    {% include '@molecules/menu/_menu.twig' with {variant: 'footer', items: menu_primary.items} %}
+  {% endblock %}
+  {% block privacy %}
+    {% include '@molecules/menu/_menu.twig' with {variant: 'footer', items: menu_primary.items} %}
+  {% endblock %}
+
+{% endembed %}
+

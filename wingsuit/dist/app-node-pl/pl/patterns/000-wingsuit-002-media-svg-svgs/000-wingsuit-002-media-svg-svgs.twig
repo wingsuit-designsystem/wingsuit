@@ -1,0 +1,46 @@
+{% import "@wingsuit/_macros.twig" as macros %}
+{% embed '@wingsuit/_demo-block.twig' with {
+  "title": svg_demo_block.title,
+  "intro": svg_demo_block.intro
+} %}
+  {% block content %}
+
+    <section class="pl-section">
+      <h2 class="pl-h2">Icons</h2>
+      <table  class="pl-table">
+        <thead>
+        <tr>
+          <th>Icon Name</th>
+          <th>Svg Icon</th>
+          <th>Css Class</th>
+        </tr>
+        </thead>
+        {% for svgIcon in svgs %}
+          <tr>
+            <td>
+              <h3><b>sprite-{{ svgIcon }}</b></h3>
+            </td>
+            <td>
+              {% include "@atoms/svg/_svg--icon.twig" with {
+                icon: svgIcon,
+                size: 'pl-w-4'
+              } %}
+              {{ macros.display_code(
+                '{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: ' ~ svgIcon ~ ',
+    size: "w-4"
+  } %}'
+              ) }}
+            </td>
+            <td>
+            <div class="sprite-{{ svgIcon }} w-4 h-4"></div>
+              {{ macros.display_code(
+                '&lt;i class="sprite-' ~ svgIcon ~ ' pl-w-4 pl-h-4">&lt;/i>'
+              ) }}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </section>
+  {% endblock %}
+{% endembed %}
