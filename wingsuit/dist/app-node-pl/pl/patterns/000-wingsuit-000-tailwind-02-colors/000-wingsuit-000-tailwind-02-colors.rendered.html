@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+	<head>
+		<title>Pattern Lab</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+            
+		<!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+		
+		<!-- End Pattern Lab -->
+
+    
+		<style type="text/css">
+			.spinner {
+				width: 40px;
+				height: 40px;
+
+				position: relative;
+				margin: 100px auto;
+				display: none;
+			}
+
+			.double-bounce1, .double-bounce2 {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #333;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2 {
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce {
+				0%, 100% {
+					-webkit-transform: scale(0.0)
+				}
+				50% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+
+			@keyframes sk-bounce {
+				0%, 100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				50% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+
+			.pl-loading .spinner {
+				display: block;
+			}
+		</style>
+
+  </head>
+	<body class="pl pl-loading"><div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Colors</h1>
+      <div>
+
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-colors/" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+    
+    <section class="pl-section">
+    <h2 class="pl-h2">Background Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>
+          Class
+        </th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0 border-b border-gray-300"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      
+                  <tr>
+            <td> bg-transparent</td>
+            <td>background-color: transparent</td>
+            <td>
+              <div class="flex rounded-lg bg-transparent">transparent</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td> bg-black</td>
+            <td>background-color: #000</td>
+            <td>
+              <div class="flex rounded-lg bg-black">#000</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td> bg-white</td>
+            <td>background-color: #fff</td>
+            <td>
+              <div class="flex rounded-lg bg-white">#fff</div>
+            </td>
+          </tr>
+              
+                              <tr>
+              <td>bg-gray-100</td>
+              <td>background-color: #f7fafc</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-100">#f7fafc</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-200</td>
+              <td>background-color: #edf2f7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-200">#edf2f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-300</td>
+              <td>background-color: #e2e8f0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-300">#e2e8f0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-400</td>
+              <td>background-color: #cbd5e0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-400">#cbd5e0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-500</td>
+              <td>background-color: #a0aec0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-500">#a0aec0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-600</td>
+              <td>background-color: #718096</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-600">#718096</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-700</td>
+              <td>background-color: #4a5568</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-700">#4a5568</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-800</td>
+              <td>background-color: #2d3748</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-800">#2d3748</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-900</td>
+              <td>background-color: #1a202c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-900">#1a202c</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-red-100</td>
+              <td>background-color: #fff5f5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-100">#fff5f5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-200</td>
+              <td>background-color: #fed7d7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-200">#fed7d7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-300</td>
+              <td>background-color: #feb2b2</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-300">#feb2b2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-400</td>
+              <td>background-color: #fc8181</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-400">#fc8181</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-500</td>
+              <td>background-color: #f56565</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-500">#f56565</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-600</td>
+              <td>background-color: #e53e3e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-600">#e53e3e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-700</td>
+              <td>background-color: #c53030</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-700">#c53030</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-800</td>
+              <td>background-color: #9b2c2c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-800">#9b2c2c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-900</td>
+              <td>background-color: #742a2a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-900">#742a2a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-orange-100</td>
+              <td>background-color: #fffaf0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-100">#fffaf0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-200</td>
+              <td>background-color: #feebc8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-200">#feebc8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-300</td>
+              <td>background-color: #fbd38d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-300">#fbd38d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-400</td>
+              <td>background-color: #f6ad55</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-400">#f6ad55</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-500</td>
+              <td>background-color: #ed8936</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-500">#ed8936</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-600</td>
+              <td>background-color: #dd6b20</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-600">#dd6b20</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-700</td>
+              <td>background-color: #c05621</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-700">#c05621</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-800</td>
+              <td>background-color: #9c4221</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-800">#9c4221</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-900</td>
+              <td>background-color: #7b341e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-900">#7b341e</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-yellow-100</td>
+              <td>background-color: #fffff0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-100">#fffff0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-200</td>
+              <td>background-color: #fefcbf</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-200">#fefcbf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-300</td>
+              <td>background-color: #faf089</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-300">#faf089</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-400</td>
+              <td>background-color: #f6e05e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-400">#f6e05e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-500</td>
+              <td>background-color: #ecc94b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-500">#ecc94b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-600</td>
+              <td>background-color: #d69e2e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-600">#d69e2e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-700</td>
+              <td>background-color: #b7791f</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-700">#b7791f</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-800</td>
+              <td>background-color: #975a16</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-800">#975a16</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-900</td>
+              <td>background-color: #744210</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-900">#744210</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-green-100</td>
+              <td>background-color: #f0fff4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-100">#f0fff4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-200</td>
+              <td>background-color: #c6f6d5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-200">#c6f6d5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-300</td>
+              <td>background-color: #9ae6b4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-300">#9ae6b4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-400</td>
+              <td>background-color: #68d391</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-400">#68d391</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-500</td>
+              <td>background-color: #48bb78</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-500">#48bb78</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-600</td>
+              <td>background-color: #38a169</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-600">#38a169</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-700</td>
+              <td>background-color: #2f855a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-700">#2f855a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-800</td>
+              <td>background-color: #276749</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-800">#276749</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-900</td>
+              <td>background-color: #22543d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-900">#22543d</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-teal-100</td>
+              <td>background-color: #e6fffa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-100">#e6fffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-200</td>
+              <td>background-color: #b2f5ea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-200">#b2f5ea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-300</td>
+              <td>background-color: #81e6d9</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-300">#81e6d9</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-400</td>
+              <td>background-color: #4fd1c5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-400">#4fd1c5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-500</td>
+              <td>background-color: #38b2ac</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-500">#38b2ac</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-600</td>
+              <td>background-color: #319795</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-600">#319795</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-700</td>
+              <td>background-color: #2c7a7b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-700">#2c7a7b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-800</td>
+              <td>background-color: #285e61</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-800">#285e61</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-900</td>
+              <td>background-color: #234e52</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-900">#234e52</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-blue-100</td>
+              <td>background-color: #ebf8ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-100">#ebf8ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-200</td>
+              <td>background-color: #bee3f8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-200">#bee3f8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-300</td>
+              <td>background-color: #90cdf4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-300">#90cdf4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-400</td>
+              <td>background-color: #63b3ed</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-400">#63b3ed</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-500</td>
+              <td>background-color: #4299e1</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-500">#4299e1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-600</td>
+              <td>background-color: #3182ce</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-600">#3182ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-700</td>
+              <td>background-color: #2b6cb0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-700">#2b6cb0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-800</td>
+              <td>background-color: #2c5282</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-800">#2c5282</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-900</td>
+              <td>background-color: #2a4365</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-900">#2a4365</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-indigo-100</td>
+              <td>background-color: #ebf4ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-100">#ebf4ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-200</td>
+              <td>background-color: #c3dafe</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-200">#c3dafe</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-300</td>
+              <td>background-color: #a3bffa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-300">#a3bffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-400</td>
+              <td>background-color: #7f9cf5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-400">#7f9cf5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-500</td>
+              <td>background-color: #667eea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-500">#667eea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-600</td>
+              <td>background-color: #5a67d8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-600">#5a67d8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-700</td>
+              <td>background-color: #4c51bf</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-700">#4c51bf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-800</td>
+              <td>background-color: #434190</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-800">#434190</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-900</td>
+              <td>background-color: #3c366b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-900">#3c366b</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-purple-100</td>
+              <td>background-color: #faf5ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-100">#faf5ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-200</td>
+              <td>background-color: #e9d8fd</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-200">#e9d8fd</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-300</td>
+              <td>background-color: #d6bcfa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-300">#d6bcfa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-400</td>
+              <td>background-color: #b794f4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-400">#b794f4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-500</td>
+              <td>background-color: #9f7aea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-500">#9f7aea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-600</td>
+              <td>background-color: #805ad5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-600">#805ad5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-700</td>
+              <td>background-color: #6b46c1</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-700">#6b46c1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-800</td>
+              <td>background-color: #553c9a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-800">#553c9a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-900</td>
+              <td>background-color: #44337a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-900">#44337a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-pink-100</td>
+              <td>background-color: #fff5f7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-100">#fff5f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-200</td>
+              <td>background-color: #fed7e2</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-200">#fed7e2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-300</td>
+              <td>background-color: #fbb6ce</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-300">#fbb6ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-400</td>
+              <td>background-color: #f687b3</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-400">#f687b3</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-500</td>
+              <td>background-color: #ed64a6</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-500">#ed64a6</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-600</td>
+              <td>background-color: #d53f8c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-600">#d53f8c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-700</td>
+              <td>background-color: #b83280</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-700">#b83280</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-800</td>
+              <td>background-color: #97266d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-800">#97266d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-900</td>
+              <td>background-color: #702459</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-900">#702459</div>
+              </td>
+            </tr>
+                            </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+    <h2 class="pl-h2">Text Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      
+                  <tr>
+            <td class="text-transparent">text-transparent</td>
+            <td>color: transparent</td>
+            <td>
+              <div class="flex rounded-lg text-transparent">transparent</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td class="text-black">text-black</td>
+            <td>color: #000</td>
+            <td>
+              <div class="flex rounded-lg text-black">#000</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td class="text-white">text-white</td>
+            <td>color: #fff</td>
+            <td>
+              <div class="flex rounded-lg text-white">#fff</div>
+            </td>
+          </tr>
+              
+                              <tr>
+              <td class="text-gray-100">text-gray-100</td>
+              <td>color: #f7fafc</td>
+              <td>
+                <div class="text-gray-100">#f7fafc</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-200">text-gray-200</td>
+              <td>color: #edf2f7</td>
+              <td>
+                <div class="text-gray-200">#edf2f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-300">text-gray-300</td>
+              <td>color: #e2e8f0</td>
+              <td>
+                <div class="text-gray-300">#e2e8f0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-400">text-gray-400</td>
+              <td>color: #cbd5e0</td>
+              <td>
+                <div class="text-gray-400">#cbd5e0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-500">text-gray-500</td>
+              <td>color: #a0aec0</td>
+              <td>
+                <div class="text-gray-500">#a0aec0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-600">text-gray-600</td>
+              <td>color: #718096</td>
+              <td>
+                <div class="text-gray-600">#718096</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-700">text-gray-700</td>
+              <td>color: #4a5568</td>
+              <td>
+                <div class="text-gray-700">#4a5568</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-800">text-gray-800</td>
+              <td>color: #2d3748</td>
+              <td>
+                <div class="text-gray-800">#2d3748</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-900">text-gray-900</td>
+              <td>color: #1a202c</td>
+              <td>
+                <div class="text-gray-900">#1a202c</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-red-100">text-red-100</td>
+              <td>color: #fff5f5</td>
+              <td>
+                <div class="text-red-100">#fff5f5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-200">text-red-200</td>
+              <td>color: #fed7d7</td>
+              <td>
+                <div class="text-red-200">#fed7d7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-300">text-red-300</td>
+              <td>color: #feb2b2</td>
+              <td>
+                <div class="text-red-300">#feb2b2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-400">text-red-400</td>
+              <td>color: #fc8181</td>
+              <td>
+                <div class="text-red-400">#fc8181</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-500">text-red-500</td>
+              <td>color: #f56565</td>
+              <td>
+                <div class="text-red-500">#f56565</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-600">text-red-600</td>
+              <td>color: #e53e3e</td>
+              <td>
+                <div class="text-red-600">#e53e3e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-700">text-red-700</td>
+              <td>color: #c53030</td>
+              <td>
+                <div class="text-red-700">#c53030</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-800">text-red-800</td>
+              <td>color: #9b2c2c</td>
+              <td>
+                <div class="text-red-800">#9b2c2c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-900">text-red-900</td>
+              <td>color: #742a2a</td>
+              <td>
+                <div class="text-red-900">#742a2a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-orange-100">text-orange-100</td>
+              <td>color: #fffaf0</td>
+              <td>
+                <div class="text-orange-100">#fffaf0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-200">text-orange-200</td>
+              <td>color: #feebc8</td>
+              <td>
+                <div class="text-orange-200">#feebc8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-300">text-orange-300</td>
+              <td>color: #fbd38d</td>
+              <td>
+                <div class="text-orange-300">#fbd38d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-400">text-orange-400</td>
+              <td>color: #f6ad55</td>
+              <td>
+                <div class="text-orange-400">#f6ad55</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-500">text-orange-500</td>
+              <td>color: #ed8936</td>
+              <td>
+                <div class="text-orange-500">#ed8936</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-600">text-orange-600</td>
+              <td>color: #dd6b20</td>
+              <td>
+                <div class="text-orange-600">#dd6b20</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-700">text-orange-700</td>
+              <td>color: #c05621</td>
+              <td>
+                <div class="text-orange-700">#c05621</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-800">text-orange-800</td>
+              <td>color: #9c4221</td>
+              <td>
+                <div class="text-orange-800">#9c4221</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-900">text-orange-900</td>
+              <td>color: #7b341e</td>
+              <td>
+                <div class="text-orange-900">#7b341e</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-yellow-100">text-yellow-100</td>
+              <td>color: #fffff0</td>
+              <td>
+                <div class="text-yellow-100">#fffff0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-200">text-yellow-200</td>
+              <td>color: #fefcbf</td>
+              <td>
+                <div class="text-yellow-200">#fefcbf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-300">text-yellow-300</td>
+              <td>color: #faf089</td>
+              <td>
+                <div class="text-yellow-300">#faf089</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-400">text-yellow-400</td>
+              <td>color: #f6e05e</td>
+              <td>
+                <div class="text-yellow-400">#f6e05e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-500">text-yellow-500</td>
+              <td>color: #ecc94b</td>
+              <td>
+                <div class="text-yellow-500">#ecc94b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-600">text-yellow-600</td>
+              <td>color: #d69e2e</td>
+              <td>
+                <div class="text-yellow-600">#d69e2e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-700">text-yellow-700</td>
+              <td>color: #b7791f</td>
+              <td>
+                <div class="text-yellow-700">#b7791f</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-800">text-yellow-800</td>
+              <td>color: #975a16</td>
+              <td>
+                <div class="text-yellow-800">#975a16</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-900">text-yellow-900</td>
+              <td>color: #744210</td>
+              <td>
+                <div class="text-yellow-900">#744210</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-green-100">text-green-100</td>
+              <td>color: #f0fff4</td>
+              <td>
+                <div class="text-green-100">#f0fff4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-200">text-green-200</td>
+              <td>color: #c6f6d5</td>
+              <td>
+                <div class="text-green-200">#c6f6d5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-300">text-green-300</td>
+              <td>color: #9ae6b4</td>
+              <td>
+                <div class="text-green-300">#9ae6b4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-400">text-green-400</td>
+              <td>color: #68d391</td>
+              <td>
+                <div class="text-green-400">#68d391</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-500">text-green-500</td>
+              <td>color: #48bb78</td>
+              <td>
+                <div class="text-green-500">#48bb78</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-600">text-green-600</td>
+              <td>color: #38a169</td>
+              <td>
+                <div class="text-green-600">#38a169</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-700">text-green-700</td>
+              <td>color: #2f855a</td>
+              <td>
+                <div class="text-green-700">#2f855a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-800">text-green-800</td>
+              <td>color: #276749</td>
+              <td>
+                <div class="text-green-800">#276749</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-900">text-green-900</td>
+              <td>color: #22543d</td>
+              <td>
+                <div class="text-green-900">#22543d</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-teal-100">text-teal-100</td>
+              <td>color: #e6fffa</td>
+              <td>
+                <div class="text-teal-100">#e6fffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-200">text-teal-200</td>
+              <td>color: #b2f5ea</td>
+              <td>
+                <div class="text-teal-200">#b2f5ea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-300">text-teal-300</td>
+              <td>color: #81e6d9</td>
+              <td>
+                <div class="text-teal-300">#81e6d9</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-400">text-teal-400</td>
+              <td>color: #4fd1c5</td>
+              <td>
+                <div class="text-teal-400">#4fd1c5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-500">text-teal-500</td>
+              <td>color: #38b2ac</td>
+              <td>
+                <div class="text-teal-500">#38b2ac</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-600">text-teal-600</td>
+              <td>color: #319795</td>
+              <td>
+                <div class="text-teal-600">#319795</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-700">text-teal-700</td>
+              <td>color: #2c7a7b</td>
+              <td>
+                <div class="text-teal-700">#2c7a7b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-800">text-teal-800</td>
+              <td>color: #285e61</td>
+              <td>
+                <div class="text-teal-800">#285e61</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-900">text-teal-900</td>
+              <td>color: #234e52</td>
+              <td>
+                <div class="text-teal-900">#234e52</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-blue-100">text-blue-100</td>
+              <td>color: #ebf8ff</td>
+              <td>
+                <div class="text-blue-100">#ebf8ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-200">text-blue-200</td>
+              <td>color: #bee3f8</td>
+              <td>
+                <div class="text-blue-200">#bee3f8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-300">text-blue-300</td>
+              <td>color: #90cdf4</td>
+              <td>
+                <div class="text-blue-300">#90cdf4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-400">text-blue-400</td>
+              <td>color: #63b3ed</td>
+              <td>
+                <div class="text-blue-400">#63b3ed</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-500">text-blue-500</td>
+              <td>color: #4299e1</td>
+              <td>
+                <div class="text-blue-500">#4299e1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-600">text-blue-600</td>
+              <td>color: #3182ce</td>
+              <td>
+                <div class="text-blue-600">#3182ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-700">text-blue-700</td>
+              <td>color: #2b6cb0</td>
+              <td>
+                <div class="text-blue-700">#2b6cb0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-800">text-blue-800</td>
+              <td>color: #2c5282</td>
+              <td>
+                <div class="text-blue-800">#2c5282</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-900">text-blue-900</td>
+              <td>color: #2a4365</td>
+              <td>
+                <div class="text-blue-900">#2a4365</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-indigo-100">text-indigo-100</td>
+              <td>color: #ebf4ff</td>
+              <td>
+                <div class="text-indigo-100">#ebf4ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-200">text-indigo-200</td>
+              <td>color: #c3dafe</td>
+              <td>
+                <div class="text-indigo-200">#c3dafe</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-300">text-indigo-300</td>
+              <td>color: #a3bffa</td>
+              <td>
+                <div class="text-indigo-300">#a3bffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-400">text-indigo-400</td>
+              <td>color: #7f9cf5</td>
+              <td>
+                <div class="text-indigo-400">#7f9cf5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-500">text-indigo-500</td>
+              <td>color: #667eea</td>
+              <td>
+                <div class="text-indigo-500">#667eea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-600">text-indigo-600</td>
+              <td>color: #5a67d8</td>
+              <td>
+                <div class="text-indigo-600">#5a67d8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-700">text-indigo-700</td>
+              <td>color: #4c51bf</td>
+              <td>
+                <div class="text-indigo-700">#4c51bf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-800">text-indigo-800</td>
+              <td>color: #434190</td>
+              <td>
+                <div class="text-indigo-800">#434190</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-900">text-indigo-900</td>
+              <td>color: #3c366b</td>
+              <td>
+                <div class="text-indigo-900">#3c366b</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-purple-100">text-purple-100</td>
+              <td>color: #faf5ff</td>
+              <td>
+                <div class="text-purple-100">#faf5ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-200">text-purple-200</td>
+              <td>color: #e9d8fd</td>
+              <td>
+                <div class="text-purple-200">#e9d8fd</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-300">text-purple-300</td>
+              <td>color: #d6bcfa</td>
+              <td>
+                <div class="text-purple-300">#d6bcfa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-400">text-purple-400</td>
+              <td>color: #b794f4</td>
+              <td>
+                <div class="text-purple-400">#b794f4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-500">text-purple-500</td>
+              <td>color: #9f7aea</td>
+              <td>
+                <div class="text-purple-500">#9f7aea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-600">text-purple-600</td>
+              <td>color: #805ad5</td>
+              <td>
+                <div class="text-purple-600">#805ad5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-700">text-purple-700</td>
+              <td>color: #6b46c1</td>
+              <td>
+                <div class="text-purple-700">#6b46c1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-800">text-purple-800</td>
+              <td>color: #553c9a</td>
+              <td>
+                <div class="text-purple-800">#553c9a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-900">text-purple-900</td>
+              <td>color: #44337a</td>
+              <td>
+                <div class="text-purple-900">#44337a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-pink-100">text-pink-100</td>
+              <td>color: #fff5f7</td>
+              <td>
+                <div class="text-pink-100">#fff5f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-200">text-pink-200</td>
+              <td>color: #fed7e2</td>
+              <td>
+                <div class="text-pink-200">#fed7e2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-300">text-pink-300</td>
+              <td>color: #fbb6ce</td>
+              <td>
+                <div class="text-pink-300">#fbb6ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-400">text-pink-400</td>
+              <td>color: #f687b3</td>
+              <td>
+                <div class="text-pink-400">#f687b3</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-500">text-pink-500</td>
+              <td>color: #ed64a6</td>
+              <td>
+                <div class="text-pink-500">#ed64a6</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-600">text-pink-600</td>
+              <td>color: #d53f8c</td>
+              <td>
+                <div class="text-pink-600">#d53f8c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-700">text-pink-700</td>
+              <td>color: #b83280</td>
+              <td>
+                <div class="text-pink-700">#b83280</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-800">text-pink-800</td>
+              <td>color: #97266d</td>
+              <td>
+                <div class="text-pink-800">#97266d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-900">text-pink-900</td>
+              <td>color: #702459</td>
+              <td>
+                <div class="text-pink-900">#702459</div>
+              </td>
+            </tr>
+                            </table>
+    </section>
+    </div>
+</div><!--DO NOT REMOVE-->
+	<script type="text/json" id="pl-pattern-data-footer" class="pl-js-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Colors","patternPartial":"wingsuit-colors","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+</script>
+
+<script>
+  window.patternData = {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Colors","patternPartial":"wingsuit-colors","patternState":"","patternEngineName":"twig-php","extraOutput":{}};
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+
+  var scriptLoader = {
+
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1581326765032">
+  (function() {
+    if (self != top) {
+      var cb = '1581326765032';
+      var js = [];
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+
+<script type="module">
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  import('../../styleguide/js/patternlab-pattern.modern.js');
+</script>
+
+<script id="pl-js-insert-1581326765032" nomodule>
+  /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+  !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
+
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  loadJS('../../styleguide/js/patternlab-pattern.js');
+</script>
+
+
+  <script src="../../../assets/app.js?cacheBuster=182834599"></script>
+
+	</body>
+</html>

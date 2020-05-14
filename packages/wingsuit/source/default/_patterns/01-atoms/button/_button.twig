@@ -1,3 +1,34 @@
-<div>
-{{ button_content }}
-</div>
+{% set button_element = button_element|default('div') %}
+{% set button_attributes = button_attributes|default(create_attribute()) %}
+{% set button_svg_size = button_svg_size|default('default') %}
+
+{% if url is not empty %}
+  {% set button_attributes = button_attributes.setAttribute('href', url) %}
+  {% set button_element = 'a' %}
+{% endif %}
+{%- set button_content = button_content|render -%}
+
+<{{ button_element }} {{ button_attributes.addClass([
+  'px-8',
+  'py-2',
+  'leading-18',
+  'font-bold',
+  'uppercase',
+  'inline-block',
+  variant == 'primary' ? 'bg-primary text-white',
+  variant == 'secondary' ? 'bg-secondary text-white',
+  variant == 'success' ? 'bg-success text-white',
+  variant == 'warning' ? 'bg-warning text-white',
+  variant == 'disabled' ? 'bg-disabled text-gray-xmedium',
+  color,
+] | sort | join(' ') | trim) }}>
+{{ button_content|striptags }}
+  {% if button_svg is not empty %}
+
+    {% include "@atoms/svg/_svg--icon.twig" with {
+      icon: button_svg,
+      size: {default: 'w-15', large: 'w-24'}[button_svg_size],
+      svg_classes: ['inline-block', 'align-middle', button_content|striptags ? 'ml-15', variant == 'outline' ? 'fill-red' : 'fill-white']
+    } %}
+  {% endif %}
+</{{ button_element }}>

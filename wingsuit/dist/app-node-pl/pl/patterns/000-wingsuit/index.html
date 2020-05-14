@@ -1,0 +1,4464 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+	<head>
+		<title>Pattern Lab</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+            
+		<!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+		<link rel="stylesheet" href="../../styleguide/css/pattern-lab.css?1581326765032" media="all">
+		<!-- End Pattern Lab -->
+
+    
+		<style type="text/css">
+			.spinner {
+				width: 40px;
+				height: 40px;
+
+				position: relative;
+				margin: 100px auto;
+				display: none;
+			}
+
+			.double-bounce1, .double-bounce2 {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #333;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2 {
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce {
+				0%, 100% {
+					-webkit-transform: scale(0.0)
+				}
+				50% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+
+			@keyframes sk-bounce {
+				0%, 100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				50% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+
+			.pl-loading .spinner {
+				display: block;
+			}
+		</style>
+
+  </head>
+	<body class="pl pl-loading"><!-- View All Patterns in a Pattern Sub-Type -->
+<div class="pl-c-main">
+  
+	<!-- Index of Patterns -->
+	<div class="pl-c-pattern-index">
+	
+			<div id="viewall-wingsuit-tailwind" class="pl-c-category">
+					
+				<h2 class="pl-c-category__title">
+					<a href="../../patterns/000-wingsuit-000-tailwind&#x2F;index.html" class="pl-c-category__title-link patternLink" data-patternpartial="viewall-wingsuit-tailwind">tailwind</a>
+				</h2><!--end pl-c-category__title-->
+			
+				<div class="pl-c-category__description pl-c-text-passage">
+					
+				</div><!--end pl-c-category__description-->
+				
+			</div><!--end pl-c-category-->
+							<div id="wingsuit-typography" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-01-typography&#x2F;000-wingsuit-000-tailwind-01-typography.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-typography" title="Link to Pattern">
+							Typography
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-typography" data-patternpartial="wingsuit-typography" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-typography">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Typography</h1>
+      <div>
+
+              <p>The <code>theme.fontFamily</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default fontFamily.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/configuration" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      <h2 class="pl-h2">Font Family</h2>
+      <table class="pl-table">
+        <thead>
+        <tr>
+          <th>
+            <div>Class</div>
+          </th>
+          <th>
+            <div>Properties</div>
+          </th>
+          <th>
+            <div>Sample</div>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+                  <tr>
+            <td class="text-blue-700">.font-sans</td>
+            <td>-apple-system BlinkMacSystemFont "Segoe UI" Roboto "Helvetica Neue" Arial "Noto Sans" sans-serif "Apple Color Emoji" "Segoe UI Emoji" "Segoe UI Symbol" "Noto Color Emoji"</td>
+            <td><h2 class="font-sans">Lorem ipsum dolor</h2>
+              <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus.</p></td>
+          </tr>
+                  <tr>
+            <td class="text-blue-700">.font-serif</td>
+            <td>Georgia Cambria "Times New Roman" Times serif</td>
+            <td><h2 class="font-serif">Lorem ipsum dolor</h2>
+              <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus.</p></td>
+          </tr>
+                  <tr>
+            <td class="text-blue-700">.font-mono</td>
+            <td>Menlo Monaco Consolas "Liberation Mono" "Courier New" monospace</td>
+            <td><h2 class="font-mono">Lorem ipsum dolor</h2>
+              <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus.</p></td>
+          </tr>
+                </tbody>
+      </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Font Size      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/font-size">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.text-xs</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-sm</td>
+          <td>0.875rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-base</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-lg</td>
+          <td>1.125rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-xl</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-2xl</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-3xl</td>
+          <td>1.875rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-4xl</td>
+          <td>2.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-5xl</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.text-6xl</td>
+          <td>4rem</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+        <h3 class="pl-h3 pl-mt">Samples</h3>
+  <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-xs</p>
+        <p class="text-xs text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-sm</p>
+        <p class="text-sm text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-base</p>
+        <p class="text-base text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-lg</p>
+        <p class="text-lg text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-xl</p>
+        <p class="text-xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-2xl</p>
+        <p class="text-2xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-3xl</p>
+        <p class="text-3xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-4xl</p>
+        <p class="text-4xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-5xl</p>
+        <p class="text-5xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.text-6xl</p>
+        <p class="text-6xl text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+      </div>
+
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Font Weight      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/font-weight">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.font-hairline</td>
+          <td>100</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-thin</td>
+          <td>200</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-light</td>
+          <td>300</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-normal</td>
+          <td>400</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-medium</td>
+          <td>500</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-semibold</td>
+          <td>600</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-bold</td>
+          <td>700</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-extrabold</td>
+          <td>800</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.font-black</td>
+          <td>900</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+        <h3 class="pl-h3 pl-mt">Samples</h3>
+  <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-hairline</p>
+        <p class="font-hairline text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-thin</p>
+        <p class="font-thin text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-light</p>
+        <p class="font-light text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-normal</p>
+        <p class="font-normal text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-medium</p>
+        <p class="font-medium text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-semibold</p>
+        <p class="font-semibold text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-bold</p>
+        <p class="font-bold text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-extrabold</p>
+        <p class="font-extrabold text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.font-black</p>
+        <p class="font-black text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+      </div>
+
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Letter Spacing      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/letter-spacing">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.tracking-tighter</td>
+          <td>-0.05em</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.tracking-tight</td>
+          <td>-0.025em</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.tracking-normal</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.tracking-wide</td>
+          <td>0.025em</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.tracking-wider</td>
+          <td>0.05em</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.tracking-widest</td>
+          <td>0.1em</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+        <h3 class="pl-h3 pl-mt">Samples</h3>
+  <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-tighter</p>
+        <p class="tracking-tighter text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-tight</p>
+        <p class="tracking-tight text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-normal</p>
+        <p class="tracking-normal text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-wide</p>
+        <p class="tracking-wide text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-wider</p>
+        <p class="tracking-wider text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.tracking-widest</p>
+        <p class="tracking-widest text-gray-800">The quick brown fox jumped over the lazy dog.</p></div>
+      </div>
+
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Line Height      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/line-height">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.leading-none</td>
+          <td>1</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.leading-tight</td>
+          <td>1.25</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.leading-snug</td>
+          <td>1.375</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.leading-normal</td>
+          <td>1.5</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.leading-relaxed</td>
+          <td>1.625</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.leading-loose</td>
+          <td>2</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+        <h3 class="pl-h3 pl-mt">Samples</h3>
+  <div class="pl-samples bg-white rounded-lg border border-gray-400 p-4 ">
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-none</p>
+        <p class="leading-none text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-tight</p>
+        <p class="leading-tight text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-snug</p>
+        <p class="leading-snug text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-normal</p>
+        <p class="leading-normal text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-relaxed</p>
+        <p class="leading-relaxed text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+          <div class="mb-6"><p class="text-sm text-gray-600">.leading-loose</p>
+        <p class="leading-loose text-gray-800">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p></div>
+      </div>
+
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-typography" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Typography","patternPartial":"wingsuit-typography","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-colors" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-02-colors&#x2F;000-wingsuit-000-tailwind-02-colors.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-colors" title="Link to Pattern">
+							Colors
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-colors" data-patternpartial="wingsuit-colors" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-colors">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Colors</h1>
+      <div>
+
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-colors/" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+    
+    <section class="pl-section">
+    <h2 class="pl-h2">Background Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>
+          Class
+        </th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0 border-b border-gray-300"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      
+                  <tr>
+            <td> bg-transparent</td>
+            <td>background-color: transparent</td>
+            <td>
+              <div class="flex rounded-lg bg-transparent">transparent</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td> bg-black</td>
+            <td>background-color: #000</td>
+            <td>
+              <div class="flex rounded-lg bg-black">#000</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td> bg-white</td>
+            <td>background-color: #fff</td>
+            <td>
+              <div class="flex rounded-lg bg-white">#fff</div>
+            </td>
+          </tr>
+              
+                              <tr>
+              <td>bg-gray-100</td>
+              <td>background-color: #f7fafc</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-100">#f7fafc</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-200</td>
+              <td>background-color: #edf2f7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-200">#edf2f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-300</td>
+              <td>background-color: #e2e8f0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-300">#e2e8f0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-400</td>
+              <td>background-color: #cbd5e0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-400">#cbd5e0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-500</td>
+              <td>background-color: #a0aec0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-500">#a0aec0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-600</td>
+              <td>background-color: #718096</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-600">#718096</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-700</td>
+              <td>background-color: #4a5568</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-700">#4a5568</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-800</td>
+              <td>background-color: #2d3748</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-800">#2d3748</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-gray-900</td>
+              <td>background-color: #1a202c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-gray-900">#1a202c</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-red-100</td>
+              <td>background-color: #fff5f5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-100">#fff5f5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-200</td>
+              <td>background-color: #fed7d7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-200">#fed7d7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-300</td>
+              <td>background-color: #feb2b2</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-300">#feb2b2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-400</td>
+              <td>background-color: #fc8181</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-400">#fc8181</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-500</td>
+              <td>background-color: #f56565</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-500">#f56565</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-600</td>
+              <td>background-color: #e53e3e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-600">#e53e3e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-700</td>
+              <td>background-color: #c53030</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-700">#c53030</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-800</td>
+              <td>background-color: #9b2c2c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-800">#9b2c2c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-red-900</td>
+              <td>background-color: #742a2a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-red-900">#742a2a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-orange-100</td>
+              <td>background-color: #fffaf0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-100">#fffaf0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-200</td>
+              <td>background-color: #feebc8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-200">#feebc8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-300</td>
+              <td>background-color: #fbd38d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-300">#fbd38d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-400</td>
+              <td>background-color: #f6ad55</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-400">#f6ad55</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-500</td>
+              <td>background-color: #ed8936</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-500">#ed8936</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-600</td>
+              <td>background-color: #dd6b20</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-600">#dd6b20</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-700</td>
+              <td>background-color: #c05621</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-700">#c05621</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-800</td>
+              <td>background-color: #9c4221</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-800">#9c4221</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-orange-900</td>
+              <td>background-color: #7b341e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-orange-900">#7b341e</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-yellow-100</td>
+              <td>background-color: #fffff0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-100">#fffff0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-200</td>
+              <td>background-color: #fefcbf</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-200">#fefcbf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-300</td>
+              <td>background-color: #faf089</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-300">#faf089</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-400</td>
+              <td>background-color: #f6e05e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-400">#f6e05e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-500</td>
+              <td>background-color: #ecc94b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-500">#ecc94b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-600</td>
+              <td>background-color: #d69e2e</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-600">#d69e2e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-700</td>
+              <td>background-color: #b7791f</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-700">#b7791f</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-800</td>
+              <td>background-color: #975a16</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-800">#975a16</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-yellow-900</td>
+              <td>background-color: #744210</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-yellow-900">#744210</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-green-100</td>
+              <td>background-color: #f0fff4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-100">#f0fff4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-200</td>
+              <td>background-color: #c6f6d5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-200">#c6f6d5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-300</td>
+              <td>background-color: #9ae6b4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-300">#9ae6b4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-400</td>
+              <td>background-color: #68d391</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-400">#68d391</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-500</td>
+              <td>background-color: #48bb78</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-500">#48bb78</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-600</td>
+              <td>background-color: #38a169</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-600">#38a169</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-700</td>
+              <td>background-color: #2f855a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-700">#2f855a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-800</td>
+              <td>background-color: #276749</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-800">#276749</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-green-900</td>
+              <td>background-color: #22543d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-green-900">#22543d</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-teal-100</td>
+              <td>background-color: #e6fffa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-100">#e6fffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-200</td>
+              <td>background-color: #b2f5ea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-200">#b2f5ea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-300</td>
+              <td>background-color: #81e6d9</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-300">#81e6d9</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-400</td>
+              <td>background-color: #4fd1c5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-400">#4fd1c5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-500</td>
+              <td>background-color: #38b2ac</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-500">#38b2ac</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-600</td>
+              <td>background-color: #319795</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-600">#319795</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-700</td>
+              <td>background-color: #2c7a7b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-700">#2c7a7b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-800</td>
+              <td>background-color: #285e61</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-800">#285e61</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-teal-900</td>
+              <td>background-color: #234e52</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-teal-900">#234e52</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-blue-100</td>
+              <td>background-color: #ebf8ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-100">#ebf8ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-200</td>
+              <td>background-color: #bee3f8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-200">#bee3f8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-300</td>
+              <td>background-color: #90cdf4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-300">#90cdf4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-400</td>
+              <td>background-color: #63b3ed</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-400">#63b3ed</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-500</td>
+              <td>background-color: #4299e1</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-500">#4299e1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-600</td>
+              <td>background-color: #3182ce</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-600">#3182ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-700</td>
+              <td>background-color: #2b6cb0</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-700">#2b6cb0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-800</td>
+              <td>background-color: #2c5282</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-800">#2c5282</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-blue-900</td>
+              <td>background-color: #2a4365</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-blue-900">#2a4365</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-indigo-100</td>
+              <td>background-color: #ebf4ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-100">#ebf4ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-200</td>
+              <td>background-color: #c3dafe</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-200">#c3dafe</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-300</td>
+              <td>background-color: #a3bffa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-300">#a3bffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-400</td>
+              <td>background-color: #7f9cf5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-400">#7f9cf5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-500</td>
+              <td>background-color: #667eea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-500">#667eea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-600</td>
+              <td>background-color: #5a67d8</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-600">#5a67d8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-700</td>
+              <td>background-color: #4c51bf</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-700">#4c51bf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-800</td>
+              <td>background-color: #434190</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-800">#434190</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-indigo-900</td>
+              <td>background-color: #3c366b</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-indigo-900">#3c366b</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-purple-100</td>
+              <td>background-color: #faf5ff</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-100">#faf5ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-200</td>
+              <td>background-color: #e9d8fd</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-200">#e9d8fd</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-300</td>
+              <td>background-color: #d6bcfa</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-300">#d6bcfa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-400</td>
+              <td>background-color: #b794f4</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-400">#b794f4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-500</td>
+              <td>background-color: #9f7aea</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-500">#9f7aea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-600</td>
+              <td>background-color: #805ad5</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-600">#805ad5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-700</td>
+              <td>background-color: #6b46c1</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-700">#6b46c1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-800</td>
+              <td>background-color: #553c9a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-800">#553c9a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-purple-900</td>
+              <td>background-color: #44337a</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-purple-900">#44337a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td>bg-pink-100</td>
+              <td>background-color: #fff5f7</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-100">#fff5f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-200</td>
+              <td>background-color: #fed7e2</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-200">#fed7e2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-300</td>
+              <td>background-color: #fbb6ce</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-300">#fbb6ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-400</td>
+              <td>background-color: #f687b3</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-400">#f687b3</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-500</td>
+              <td>background-color: #ed64a6</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-500">#ed64a6</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-600</td>
+              <td>background-color: #d53f8c</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-600">#d53f8c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-700</td>
+              <td>background-color: #b83280</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-700">#b83280</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-800</td>
+              <td>background-color: #97266d</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-800">#97266d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td>bg-pink-900</td>
+              <td>background-color: #702459</td>
+              <td>
+                <div class="p-6 flex rounded-lg bg-pink-900">#702459</div>
+              </td>
+            </tr>
+                            </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+    <h2 class="pl-h2">Text Colors</h2>
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th colspan="2">
+          <div class="sm:hidden absolute inset-0"></div>
+          <div class="hidden sm:block">Properties</div>
+        </th>
+      </tr>
+      </thead>
+
+      
+                  <tr>
+            <td class="text-transparent">text-transparent</td>
+            <td>color: transparent</td>
+            <td>
+              <div class="flex rounded-lg text-transparent">transparent</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td class="text-black">text-black</td>
+            <td>color: #000</td>
+            <td>
+              <div class="flex rounded-lg text-black">#000</div>
+            </td>
+          </tr>
+              
+                  <tr>
+            <td class="text-white">text-white</td>
+            <td>color: #fff</td>
+            <td>
+              <div class="flex rounded-lg text-white">#fff</div>
+            </td>
+          </tr>
+              
+                              <tr>
+              <td class="text-gray-100">text-gray-100</td>
+              <td>color: #f7fafc</td>
+              <td>
+                <div class="text-gray-100">#f7fafc</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-200">text-gray-200</td>
+              <td>color: #edf2f7</td>
+              <td>
+                <div class="text-gray-200">#edf2f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-300">text-gray-300</td>
+              <td>color: #e2e8f0</td>
+              <td>
+                <div class="text-gray-300">#e2e8f0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-400">text-gray-400</td>
+              <td>color: #cbd5e0</td>
+              <td>
+                <div class="text-gray-400">#cbd5e0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-500">text-gray-500</td>
+              <td>color: #a0aec0</td>
+              <td>
+                <div class="text-gray-500">#a0aec0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-600">text-gray-600</td>
+              <td>color: #718096</td>
+              <td>
+                <div class="text-gray-600">#718096</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-700">text-gray-700</td>
+              <td>color: #4a5568</td>
+              <td>
+                <div class="text-gray-700">#4a5568</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-800">text-gray-800</td>
+              <td>color: #2d3748</td>
+              <td>
+                <div class="text-gray-800">#2d3748</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-gray-900">text-gray-900</td>
+              <td>color: #1a202c</td>
+              <td>
+                <div class="text-gray-900">#1a202c</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-red-100">text-red-100</td>
+              <td>color: #fff5f5</td>
+              <td>
+                <div class="text-red-100">#fff5f5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-200">text-red-200</td>
+              <td>color: #fed7d7</td>
+              <td>
+                <div class="text-red-200">#fed7d7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-300">text-red-300</td>
+              <td>color: #feb2b2</td>
+              <td>
+                <div class="text-red-300">#feb2b2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-400">text-red-400</td>
+              <td>color: #fc8181</td>
+              <td>
+                <div class="text-red-400">#fc8181</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-500">text-red-500</td>
+              <td>color: #f56565</td>
+              <td>
+                <div class="text-red-500">#f56565</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-600">text-red-600</td>
+              <td>color: #e53e3e</td>
+              <td>
+                <div class="text-red-600">#e53e3e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-700">text-red-700</td>
+              <td>color: #c53030</td>
+              <td>
+                <div class="text-red-700">#c53030</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-800">text-red-800</td>
+              <td>color: #9b2c2c</td>
+              <td>
+                <div class="text-red-800">#9b2c2c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-red-900">text-red-900</td>
+              <td>color: #742a2a</td>
+              <td>
+                <div class="text-red-900">#742a2a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-orange-100">text-orange-100</td>
+              <td>color: #fffaf0</td>
+              <td>
+                <div class="text-orange-100">#fffaf0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-200">text-orange-200</td>
+              <td>color: #feebc8</td>
+              <td>
+                <div class="text-orange-200">#feebc8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-300">text-orange-300</td>
+              <td>color: #fbd38d</td>
+              <td>
+                <div class="text-orange-300">#fbd38d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-400">text-orange-400</td>
+              <td>color: #f6ad55</td>
+              <td>
+                <div class="text-orange-400">#f6ad55</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-500">text-orange-500</td>
+              <td>color: #ed8936</td>
+              <td>
+                <div class="text-orange-500">#ed8936</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-600">text-orange-600</td>
+              <td>color: #dd6b20</td>
+              <td>
+                <div class="text-orange-600">#dd6b20</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-700">text-orange-700</td>
+              <td>color: #c05621</td>
+              <td>
+                <div class="text-orange-700">#c05621</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-800">text-orange-800</td>
+              <td>color: #9c4221</td>
+              <td>
+                <div class="text-orange-800">#9c4221</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-orange-900">text-orange-900</td>
+              <td>color: #7b341e</td>
+              <td>
+                <div class="text-orange-900">#7b341e</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-yellow-100">text-yellow-100</td>
+              <td>color: #fffff0</td>
+              <td>
+                <div class="text-yellow-100">#fffff0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-200">text-yellow-200</td>
+              <td>color: #fefcbf</td>
+              <td>
+                <div class="text-yellow-200">#fefcbf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-300">text-yellow-300</td>
+              <td>color: #faf089</td>
+              <td>
+                <div class="text-yellow-300">#faf089</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-400">text-yellow-400</td>
+              <td>color: #f6e05e</td>
+              <td>
+                <div class="text-yellow-400">#f6e05e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-500">text-yellow-500</td>
+              <td>color: #ecc94b</td>
+              <td>
+                <div class="text-yellow-500">#ecc94b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-600">text-yellow-600</td>
+              <td>color: #d69e2e</td>
+              <td>
+                <div class="text-yellow-600">#d69e2e</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-700">text-yellow-700</td>
+              <td>color: #b7791f</td>
+              <td>
+                <div class="text-yellow-700">#b7791f</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-800">text-yellow-800</td>
+              <td>color: #975a16</td>
+              <td>
+                <div class="text-yellow-800">#975a16</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-yellow-900">text-yellow-900</td>
+              <td>color: #744210</td>
+              <td>
+                <div class="text-yellow-900">#744210</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-green-100">text-green-100</td>
+              <td>color: #f0fff4</td>
+              <td>
+                <div class="text-green-100">#f0fff4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-200">text-green-200</td>
+              <td>color: #c6f6d5</td>
+              <td>
+                <div class="text-green-200">#c6f6d5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-300">text-green-300</td>
+              <td>color: #9ae6b4</td>
+              <td>
+                <div class="text-green-300">#9ae6b4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-400">text-green-400</td>
+              <td>color: #68d391</td>
+              <td>
+                <div class="text-green-400">#68d391</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-500">text-green-500</td>
+              <td>color: #48bb78</td>
+              <td>
+                <div class="text-green-500">#48bb78</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-600">text-green-600</td>
+              <td>color: #38a169</td>
+              <td>
+                <div class="text-green-600">#38a169</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-700">text-green-700</td>
+              <td>color: #2f855a</td>
+              <td>
+                <div class="text-green-700">#2f855a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-800">text-green-800</td>
+              <td>color: #276749</td>
+              <td>
+                <div class="text-green-800">#276749</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-green-900">text-green-900</td>
+              <td>color: #22543d</td>
+              <td>
+                <div class="text-green-900">#22543d</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-teal-100">text-teal-100</td>
+              <td>color: #e6fffa</td>
+              <td>
+                <div class="text-teal-100">#e6fffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-200">text-teal-200</td>
+              <td>color: #b2f5ea</td>
+              <td>
+                <div class="text-teal-200">#b2f5ea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-300">text-teal-300</td>
+              <td>color: #81e6d9</td>
+              <td>
+                <div class="text-teal-300">#81e6d9</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-400">text-teal-400</td>
+              <td>color: #4fd1c5</td>
+              <td>
+                <div class="text-teal-400">#4fd1c5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-500">text-teal-500</td>
+              <td>color: #38b2ac</td>
+              <td>
+                <div class="text-teal-500">#38b2ac</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-600">text-teal-600</td>
+              <td>color: #319795</td>
+              <td>
+                <div class="text-teal-600">#319795</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-700">text-teal-700</td>
+              <td>color: #2c7a7b</td>
+              <td>
+                <div class="text-teal-700">#2c7a7b</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-800">text-teal-800</td>
+              <td>color: #285e61</td>
+              <td>
+                <div class="text-teal-800">#285e61</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-teal-900">text-teal-900</td>
+              <td>color: #234e52</td>
+              <td>
+                <div class="text-teal-900">#234e52</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-blue-100">text-blue-100</td>
+              <td>color: #ebf8ff</td>
+              <td>
+                <div class="text-blue-100">#ebf8ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-200">text-blue-200</td>
+              <td>color: #bee3f8</td>
+              <td>
+                <div class="text-blue-200">#bee3f8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-300">text-blue-300</td>
+              <td>color: #90cdf4</td>
+              <td>
+                <div class="text-blue-300">#90cdf4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-400">text-blue-400</td>
+              <td>color: #63b3ed</td>
+              <td>
+                <div class="text-blue-400">#63b3ed</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-500">text-blue-500</td>
+              <td>color: #4299e1</td>
+              <td>
+                <div class="text-blue-500">#4299e1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-600">text-blue-600</td>
+              <td>color: #3182ce</td>
+              <td>
+                <div class="text-blue-600">#3182ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-700">text-blue-700</td>
+              <td>color: #2b6cb0</td>
+              <td>
+                <div class="text-blue-700">#2b6cb0</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-800">text-blue-800</td>
+              <td>color: #2c5282</td>
+              <td>
+                <div class="text-blue-800">#2c5282</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-blue-900">text-blue-900</td>
+              <td>color: #2a4365</td>
+              <td>
+                <div class="text-blue-900">#2a4365</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-indigo-100">text-indigo-100</td>
+              <td>color: #ebf4ff</td>
+              <td>
+                <div class="text-indigo-100">#ebf4ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-200">text-indigo-200</td>
+              <td>color: #c3dafe</td>
+              <td>
+                <div class="text-indigo-200">#c3dafe</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-300">text-indigo-300</td>
+              <td>color: #a3bffa</td>
+              <td>
+                <div class="text-indigo-300">#a3bffa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-400">text-indigo-400</td>
+              <td>color: #7f9cf5</td>
+              <td>
+                <div class="text-indigo-400">#7f9cf5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-500">text-indigo-500</td>
+              <td>color: #667eea</td>
+              <td>
+                <div class="text-indigo-500">#667eea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-600">text-indigo-600</td>
+              <td>color: #5a67d8</td>
+              <td>
+                <div class="text-indigo-600">#5a67d8</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-700">text-indigo-700</td>
+              <td>color: #4c51bf</td>
+              <td>
+                <div class="text-indigo-700">#4c51bf</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-800">text-indigo-800</td>
+              <td>color: #434190</td>
+              <td>
+                <div class="text-indigo-800">#434190</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-indigo-900">text-indigo-900</td>
+              <td>color: #3c366b</td>
+              <td>
+                <div class="text-indigo-900">#3c366b</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-purple-100">text-purple-100</td>
+              <td>color: #faf5ff</td>
+              <td>
+                <div class="text-purple-100">#faf5ff</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-200">text-purple-200</td>
+              <td>color: #e9d8fd</td>
+              <td>
+                <div class="text-purple-200">#e9d8fd</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-300">text-purple-300</td>
+              <td>color: #d6bcfa</td>
+              <td>
+                <div class="text-purple-300">#d6bcfa</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-400">text-purple-400</td>
+              <td>color: #b794f4</td>
+              <td>
+                <div class="text-purple-400">#b794f4</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-500">text-purple-500</td>
+              <td>color: #9f7aea</td>
+              <td>
+                <div class="text-purple-500">#9f7aea</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-600">text-purple-600</td>
+              <td>color: #805ad5</td>
+              <td>
+                <div class="text-purple-600">#805ad5</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-700">text-purple-700</td>
+              <td>color: #6b46c1</td>
+              <td>
+                <div class="text-purple-700">#6b46c1</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-800">text-purple-800</td>
+              <td>color: #553c9a</td>
+              <td>
+                <div class="text-purple-800">#553c9a</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-purple-900">text-purple-900</td>
+              <td>color: #44337a</td>
+              <td>
+                <div class="text-purple-900">#44337a</div>
+              </td>
+            </tr>
+                        
+                              <tr>
+              <td class="text-pink-100">text-pink-100</td>
+              <td>color: #fff5f7</td>
+              <td>
+                <div class="text-pink-100">#fff5f7</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-200">text-pink-200</td>
+              <td>color: #fed7e2</td>
+              <td>
+                <div class="text-pink-200">#fed7e2</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-300">text-pink-300</td>
+              <td>color: #fbb6ce</td>
+              <td>
+                <div class="text-pink-300">#fbb6ce</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-400">text-pink-400</td>
+              <td>color: #f687b3</td>
+              <td>
+                <div class="text-pink-400">#f687b3</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-500">text-pink-500</td>
+              <td>color: #ed64a6</td>
+              <td>
+                <div class="text-pink-500">#ed64a6</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-600">text-pink-600</td>
+              <td>color: #d53f8c</td>
+              <td>
+                <div class="text-pink-600">#d53f8c</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-700">text-pink-700</td>
+              <td>color: #b83280</td>
+              <td>
+                <div class="text-pink-700">#b83280</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-800">text-pink-800</td>
+              <td>color: #97266d</td>
+              <td>
+                <div class="text-pink-800">#97266d</div>
+              </td>
+            </tr>
+                      <tr>
+              <td class="text-pink-900">text-pink-900</td>
+              <td>color: #702459</td>
+              <td>
+                <div class="text-pink-900">#702459</div>
+              </td>
+            </tr>
+                            </table>
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-colors" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Colors","patternPartial":"wingsuit-colors","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-spacing" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-03-spacing&#x2F;000-wingsuit-000-tailwind-03-spacing.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-spacing" title="Link to Pattern">
+							Spacing
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-spacing" data-patternpartial="wingsuit-spacing" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-spacing">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Customizing Spacing</h1>
+      <div>
+
+              <p>The <code>theme.spacing</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-spacing" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Padding      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/padding">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Padding</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.p-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-px</td>
+          <td>1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+
+      
+  <div class="pl-code rounded-lg text-white bg-black mt-10">
+      // tailwind.config.js
+      <div>module.exports = {</div>
+      <div class="ml-2">theme: {</div>
+      <pre class="ml-4">
+padding:&nbsp;{
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem",
+    "40": "10rem",
+    "48": "12rem",
+    "56": "14rem",
+    "64": "16rem",
+    "px": "1px"
+}</pre>
+      <div class="ml-2">}</div>
+    <div>}</div>
+  </div>
+
+
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Margin      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/margin">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Margin</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.m-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-auto</td>
+          <td>auto</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-px</td>
+          <td>1px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--1</td>
+          <td>-0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--2</td>
+          <td>-0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--3</td>
+          <td>-0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--4</td>
+          <td>-1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--5</td>
+          <td>-1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--6</td>
+          <td>-1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--8</td>
+          <td>-2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--10</td>
+          <td>-2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--12</td>
+          <td>-3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--16</td>
+          <td>-4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--20</td>
+          <td>-5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--24</td>
+          <td>-6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--32</td>
+          <td>-8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--40</td>
+          <td>-10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--48</td>
+          <td>-12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--56</td>
+          <td>-14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--64</td>
+          <td>-16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--px</td>
+          <td>-1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-spacing" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Spacing","patternPartial":"wingsuit-spacing","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-sizing" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-04-sizing&#x2F;000-wingsuit-000-tailwind-04-sizing.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-sizing" title="Link to Pattern">
+							Sizing
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-sizing" data-patternpartial="wingsuit-sizing" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-sizing">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Customizing Sizing</h1>
+      <div>
+
+              <p>The <code>theme.spacing</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-spacing" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Width      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/width">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Width</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.w-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-auto</td>
+          <td>auto</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-px</td>
+          <td>1px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/2</td>
+          <td>50%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/3</td>
+          <td>33.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2/3</td>
+          <td>66.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/4</td>
+          <td>25%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2/4</td>
+          <td>50%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-3/4</td>
+          <td>75%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/5</td>
+          <td>20%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2/5</td>
+          <td>40%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-3/5</td>
+          <td>60%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-4/5</td>
+          <td>80%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/6</td>
+          <td>16.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2/6</td>
+          <td>33.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-3/6</td>
+          <td>50%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-4/6</td>
+          <td>66.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-5/6</td>
+          <td>83.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-1/12</td>
+          <td>8.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-2/12</td>
+          <td>16.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-3/12</td>
+          <td>25%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-4/12</td>
+          <td>33.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-5/12</td>
+          <td>41.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-6/12</td>
+          <td>50%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-7/12</td>
+          <td>58.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-8/12</td>
+          <td>66.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-9/12</td>
+          <td>75%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-10/12</td>
+          <td>83.333333%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-11/12</td>
+          <td>91.666667%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-full</td>
+          <td>100%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.w-screen</td>
+          <td>100vw</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Min Width      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/min-width">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Min Width</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.min-w-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.min-w-full</td>
+          <td>100%</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Max Width      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/max-width">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Max Width</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.max-w-container</td>
+          <td>1230px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Height      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/height">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Height</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.h-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-auto</td>
+          <td>auto</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-px</td>
+          <td>1px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-full</td>
+          <td>100%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.h-screen</td>
+          <td>100vh</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Min Height      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/min-height">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Min Height</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.min-h-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.min-h-full</td>
+          <td>100%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.min-h-screen</td>
+          <td>100vh</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+      <div class="pl-mb">
+        
+  <h2 class="pl-h2 ">Max Height      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/max-height">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Max Height</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.max-h-full</td>
+          <td>100%</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.max-h-screen</td>
+          <td>100vh</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      </div>
+    </section>
+
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-sizing" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Sizing","patternPartial":"wingsuit-sizing","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-borders" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-05-borders&#x2F;000-wingsuit-000-tailwind-05-borders.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-borders" title="Link to Pattern">
+							Borders
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-borders" data-patternpartial="wingsuit-borders" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-borders">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Borders</h1>
+      <div>
+
+              <p>The <code>theme.border</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-spacing" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      <h2 class="pl-h2">Border Color</h2>
+      <table  class="pl-table">
+        <thead>
+        <tr>
+          <th>Class</th>
+
+          <th colspan="2">
+            <div class="sm:hidden absolute inset-0"></div>
+            <div class="hidden sm:block">Properties</div>
+          </th>
+        </tr>
+        </thead>
+        
+                      <tr>
+              <td>text-transparent</td>
+              <td>color: transparent</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-transparent">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                      <tr>
+              <td>text-black</td>
+              <td>color: #000</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-black">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                      <tr>
+              <td>text-white</td>
+              <td>color: #fff</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-white">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                                    <tr>
+                <td>border-gray-100</td>
+                <td>color: #f7fafc</td>
+                <td>
+                  <div class="border w-full border-gray-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-200</td>
+                <td>color: #edf2f7</td>
+                <td>
+                  <div class="border w-full border-gray-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-300</td>
+                <td>color: #e2e8f0</td>
+                <td>
+                  <div class="border w-full border-gray-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-400</td>
+                <td>color: #cbd5e0</td>
+                <td>
+                  <div class="border w-full border-gray-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-500</td>
+                <td>color: #a0aec0</td>
+                <td>
+                  <div class="border w-full border-gray-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-600</td>
+                <td>color: #718096</td>
+                <td>
+                  <div class="border w-full border-gray-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-700</td>
+                <td>color: #4a5568</td>
+                <td>
+                  <div class="border w-full border-gray-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-800</td>
+                <td>color: #2d3748</td>
+                <td>
+                  <div class="border w-full border-gray-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-900</td>
+                <td>color: #1a202c</td>
+                <td>
+                  <div class="border w-full border-gray-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-red-100</td>
+                <td>color: #fff5f5</td>
+                <td>
+                  <div class="border w-full border-red-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-200</td>
+                <td>color: #fed7d7</td>
+                <td>
+                  <div class="border w-full border-red-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-300</td>
+                <td>color: #feb2b2</td>
+                <td>
+                  <div class="border w-full border-red-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-400</td>
+                <td>color: #fc8181</td>
+                <td>
+                  <div class="border w-full border-red-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-500</td>
+                <td>color: #f56565</td>
+                <td>
+                  <div class="border w-full border-red-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-600</td>
+                <td>color: #e53e3e</td>
+                <td>
+                  <div class="border w-full border-red-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-700</td>
+                <td>color: #c53030</td>
+                <td>
+                  <div class="border w-full border-red-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-800</td>
+                <td>color: #9b2c2c</td>
+                <td>
+                  <div class="border w-full border-red-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-900</td>
+                <td>color: #742a2a</td>
+                <td>
+                  <div class="border w-full border-red-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-orange-100</td>
+                <td>color: #fffaf0</td>
+                <td>
+                  <div class="border w-full border-orange-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-200</td>
+                <td>color: #feebc8</td>
+                <td>
+                  <div class="border w-full border-orange-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-300</td>
+                <td>color: #fbd38d</td>
+                <td>
+                  <div class="border w-full border-orange-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-400</td>
+                <td>color: #f6ad55</td>
+                <td>
+                  <div class="border w-full border-orange-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-500</td>
+                <td>color: #ed8936</td>
+                <td>
+                  <div class="border w-full border-orange-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-600</td>
+                <td>color: #dd6b20</td>
+                <td>
+                  <div class="border w-full border-orange-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-700</td>
+                <td>color: #c05621</td>
+                <td>
+                  <div class="border w-full border-orange-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-800</td>
+                <td>color: #9c4221</td>
+                <td>
+                  <div class="border w-full border-orange-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-900</td>
+                <td>color: #7b341e</td>
+                <td>
+                  <div class="border w-full border-orange-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-yellow-100</td>
+                <td>color: #fffff0</td>
+                <td>
+                  <div class="border w-full border-yellow-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-200</td>
+                <td>color: #fefcbf</td>
+                <td>
+                  <div class="border w-full border-yellow-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-300</td>
+                <td>color: #faf089</td>
+                <td>
+                  <div class="border w-full border-yellow-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-400</td>
+                <td>color: #f6e05e</td>
+                <td>
+                  <div class="border w-full border-yellow-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-500</td>
+                <td>color: #ecc94b</td>
+                <td>
+                  <div class="border w-full border-yellow-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-600</td>
+                <td>color: #d69e2e</td>
+                <td>
+                  <div class="border w-full border-yellow-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-700</td>
+                <td>color: #b7791f</td>
+                <td>
+                  <div class="border w-full border-yellow-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-800</td>
+                <td>color: #975a16</td>
+                <td>
+                  <div class="border w-full border-yellow-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-900</td>
+                <td>color: #744210</td>
+                <td>
+                  <div class="border w-full border-yellow-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-green-100</td>
+                <td>color: #f0fff4</td>
+                <td>
+                  <div class="border w-full border-green-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-200</td>
+                <td>color: #c6f6d5</td>
+                <td>
+                  <div class="border w-full border-green-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-300</td>
+                <td>color: #9ae6b4</td>
+                <td>
+                  <div class="border w-full border-green-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-400</td>
+                <td>color: #68d391</td>
+                <td>
+                  <div class="border w-full border-green-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-500</td>
+                <td>color: #48bb78</td>
+                <td>
+                  <div class="border w-full border-green-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-600</td>
+                <td>color: #38a169</td>
+                <td>
+                  <div class="border w-full border-green-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-700</td>
+                <td>color: #2f855a</td>
+                <td>
+                  <div class="border w-full border-green-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-800</td>
+                <td>color: #276749</td>
+                <td>
+                  <div class="border w-full border-green-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-900</td>
+                <td>color: #22543d</td>
+                <td>
+                  <div class="border w-full border-green-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-teal-100</td>
+                <td>color: #e6fffa</td>
+                <td>
+                  <div class="border w-full border-teal-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-200</td>
+                <td>color: #b2f5ea</td>
+                <td>
+                  <div class="border w-full border-teal-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-300</td>
+                <td>color: #81e6d9</td>
+                <td>
+                  <div class="border w-full border-teal-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-400</td>
+                <td>color: #4fd1c5</td>
+                <td>
+                  <div class="border w-full border-teal-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-500</td>
+                <td>color: #38b2ac</td>
+                <td>
+                  <div class="border w-full border-teal-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-600</td>
+                <td>color: #319795</td>
+                <td>
+                  <div class="border w-full border-teal-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-700</td>
+                <td>color: #2c7a7b</td>
+                <td>
+                  <div class="border w-full border-teal-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-800</td>
+                <td>color: #285e61</td>
+                <td>
+                  <div class="border w-full border-teal-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-900</td>
+                <td>color: #234e52</td>
+                <td>
+                  <div class="border w-full border-teal-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-blue-100</td>
+                <td>color: #ebf8ff</td>
+                <td>
+                  <div class="border w-full border-blue-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-200</td>
+                <td>color: #bee3f8</td>
+                <td>
+                  <div class="border w-full border-blue-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-300</td>
+                <td>color: #90cdf4</td>
+                <td>
+                  <div class="border w-full border-blue-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-400</td>
+                <td>color: #63b3ed</td>
+                <td>
+                  <div class="border w-full border-blue-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-500</td>
+                <td>color: #4299e1</td>
+                <td>
+                  <div class="border w-full border-blue-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-600</td>
+                <td>color: #3182ce</td>
+                <td>
+                  <div class="border w-full border-blue-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-700</td>
+                <td>color: #2b6cb0</td>
+                <td>
+                  <div class="border w-full border-blue-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-800</td>
+                <td>color: #2c5282</td>
+                <td>
+                  <div class="border w-full border-blue-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-900</td>
+                <td>color: #2a4365</td>
+                <td>
+                  <div class="border w-full border-blue-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-indigo-100</td>
+                <td>color: #ebf4ff</td>
+                <td>
+                  <div class="border w-full border-indigo-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-200</td>
+                <td>color: #c3dafe</td>
+                <td>
+                  <div class="border w-full border-indigo-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-300</td>
+                <td>color: #a3bffa</td>
+                <td>
+                  <div class="border w-full border-indigo-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-400</td>
+                <td>color: #7f9cf5</td>
+                <td>
+                  <div class="border w-full border-indigo-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-500</td>
+                <td>color: #667eea</td>
+                <td>
+                  <div class="border w-full border-indigo-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-600</td>
+                <td>color: #5a67d8</td>
+                <td>
+                  <div class="border w-full border-indigo-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-700</td>
+                <td>color: #4c51bf</td>
+                <td>
+                  <div class="border w-full border-indigo-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-800</td>
+                <td>color: #434190</td>
+                <td>
+                  <div class="border w-full border-indigo-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-900</td>
+                <td>color: #3c366b</td>
+                <td>
+                  <div class="border w-full border-indigo-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-purple-100</td>
+                <td>color: #faf5ff</td>
+                <td>
+                  <div class="border w-full border-purple-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-200</td>
+                <td>color: #e9d8fd</td>
+                <td>
+                  <div class="border w-full border-purple-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-300</td>
+                <td>color: #d6bcfa</td>
+                <td>
+                  <div class="border w-full border-purple-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-400</td>
+                <td>color: #b794f4</td>
+                <td>
+                  <div class="border w-full border-purple-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-500</td>
+                <td>color: #9f7aea</td>
+                <td>
+                  <div class="border w-full border-purple-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-600</td>
+                <td>color: #805ad5</td>
+                <td>
+                  <div class="border w-full border-purple-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-700</td>
+                <td>color: #6b46c1</td>
+                <td>
+                  <div class="border w-full border-purple-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-800</td>
+                <td>color: #553c9a</td>
+                <td>
+                  <div class="border w-full border-purple-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-900</td>
+                <td>color: #44337a</td>
+                <td>
+                  <div class="border w-full border-purple-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-pink-100</td>
+                <td>color: #fff5f7</td>
+                <td>
+                  <div class="border w-full border-pink-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-200</td>
+                <td>color: #fed7e2</td>
+                <td>
+                  <div class="border w-full border-pink-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-300</td>
+                <td>color: #fbb6ce</td>
+                <td>
+                  <div class="border w-full border-pink-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-400</td>
+                <td>color: #f687b3</td>
+                <td>
+                  <div class="border w-full border-pink-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-500</td>
+                <td>color: #ed64a6</td>
+                <td>
+                  <div class="border w-full border-pink-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-600</td>
+                <td>color: #d53f8c</td>
+                <td>
+                  <div class="border w-full border-pink-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-700</td>
+                <td>color: #b83280</td>
+                <td>
+                  <div class="border w-full border-pink-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-800</td>
+                <td>color: #97266d</td>
+                <td>
+                  <div class="border w-full border-pink-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-900</td>
+                <td>color: #702459</td>
+                <td>
+                  <div class="border w-full border-pink-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                      <tr>
+              <td>text-default</td>
+              <td>color: #e2e8f0</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-default">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                        </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Border Width      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/border-width">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.border-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-2</td>
+          <td>2px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-4</td>
+          <td>4px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-8</td>
+          <td>8px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-default</td>
+          <td>1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      <h3 class="pt-10">Samples</h3>
+      <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">
+                  <div class="w-1/4 px-2 border bg-gray p-6 m-2"> <code>border-0</code> (0) </div>
+                  <div class="w-1/4 px-2 border-2 bg-gray p-6 m-2"> <code>border-2</code> (2px) </div>
+                  <div class="w-1/4 px-2 border-4 bg-gray p-6 m-2"> <code>border-4</code> (4px) </div>
+                  <div class="w-1/4 px-2 border-8 bg-gray p-6 m-2"> <code>border-8</code> (8px) </div>
+                  <div class="w-1/4 px-2 border bg-gray p-6 m-2"> <code>border-default</code> (1px) </div>
+              </div>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Border Radius      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/border-radius">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.rounded-none</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-sm</td>
+          <td>0.125rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-default</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-lg</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-full</td>
+          <td>9999px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+
+      <h3 class="pt-10">Samples</h3>
+      <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">
+                  <div class="w-1/4 px-2 border rounded-none bg-gray p-6 m-2"> 0 </div>
+                  <div class="w-1/4 px-2 border rounded-sm bg-gray p-6 m-2"> 0.125rem </div>
+                  <div class="w-1/4 px-2 border rounded-default bg-gray p-6 m-2"> 0.25rem </div>
+                  <div class="w-1/4 px-2 border rounded-lg bg-gray p-6 m-2"> 0.5rem </div>
+                  <div class="w-1/4 px-2 border rounded-full bg-gray p-6 m-2"> 9999px </div>
+              </div>
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-borders" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Borders","patternPartial":"wingsuit-borders","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-breakpoints" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-000-tailwind-06-breakpoints&#x2F;000-wingsuit-000-tailwind-06-breakpoints.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-breakpoints" title="Link to Pattern">
+							Breakpoints
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-breakpoints" data-patternpartial="wingsuit-breakpoints" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-breakpoints">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Breakpoints</h1>
+      <div>
+
+              <p>You define your project's breakpoints in the <code>theme.screens</code> section of your <code>tailwind.config.js</code>
+        file.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/breakpoints/" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      <h2 class="pl-h2">Screens</h2>
+      <table class="pl-table">
+        <thead>
+        <th>
+          Screen name
+        </th>
+        <th>
+          Min-width
+        </th>
+        </thead>
+        <tbody>
+                  <tr>
+            <td>sm</td>
+            <td>640px</td>
+          </tr>
+          </li>
+                  <tr>
+            <td>md</td>
+            <td>768px</td>
+          </tr>
+          </li>
+                  <tr>
+            <td>lg</td>
+            <td>1024px</td>
+          </tr>
+          </li>
+                  <tr>
+            <td>xl</td>
+            <td>1280px</td>
+          </tr>
+          </li>
+                </tbody>
+      </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      <h2 class="pl-h2">Devices</h2>
+    <table class="pl-table">
+      <thead>
+        <th>Device name</th>
+        <th>Device width</th>
+      </thead>
+              <tr>
+          <td>iPhone Portrait</td>
+          <td>320px</td>
+        </tr>
+              <tr>
+          <td>Galaxy Nexus Portrait</td>
+          <td>360px</td>
+        </tr>
+              <tr>
+          <td>iPhone 6 Portrait</td>
+          <td>375px</td>
+        </tr>
+              <tr>
+          <td>iPhone 6 Plus Portrait</td>
+          <td>414px</td>
+        </tr>
+              <tr>
+          <td>Galaxy Note 3 Portrait</td>
+          <td>540px</td>
+        </tr>
+              <tr>
+          <td>iPhone Landscape</td>
+          <td>568px</td>
+        </tr>
+              <tr>
+          <td>Google Nexus 7 Portrait</td>
+          <td>604px</td>
+        </tr>
+              <tr>
+          <td>Galaxy Nexus Landscape</td>
+          <td>640px</td>
+        </tr>
+              <tr>
+          <td>iPhone 6 Landscape</td>
+          <td>667px</td>
+        </tr>
+              <tr>
+          <td>iPhone 6 Plus Landscape</td>
+          <td>738px</td>
+        </tr>
+              <tr>
+          <td>iPad Portrait</td>
+          <td>768px</td>
+        </tr>
+              <tr>
+          <td>Galaxy Note 3 Landscape</td>
+          <td>960px</td>
+        </tr>
+              <tr>
+          <td>Google Nexus 7 Landscape</td>
+          <td>966px</td>
+        </tr>
+              <tr>
+          <td>iPad Landscape</td>
+          <td>1024px</td>
+        </tr>
+              <tr>
+          <td>11" MacBook Air</td>
+          <td>1366px</td>
+        </tr>
+              <tr>
+          <td>13" MacBook Air</td>
+          <td>1440px</td>
+        </tr>
+              <tr>
+          <td>21.5" iMac</td>
+          <td>1980px</td>
+        </tr>
+          </table>
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-breakpoints" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Breakpoints","patternPartial":"wingsuit-breakpoints","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="viewall-wingsuit-media" class="pl-c-category">
+					
+				<h2 class="pl-c-category__title">
+					<a href="../../patterns/000-wingsuit-002-media-image&#x2F;index.html" class="pl-c-category__title-link patternLink" data-patternpartial="viewall-wingsuit-media">media</a>
+				</h2><!--end pl-c-category__title-->
+			
+				<div class="pl-c-category__description pl-c-text-passage">
+					
+				</div><!--end pl-c-category__description-->
+				
+			</div><!--end pl-c-category-->
+							<div id="wingsuit-images" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-002-media-image-images&#x2F;000-wingsuit-002-media-image-images.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-images" title="Link to Pattern">
+							Images
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-images" data-patternpartial="wingsuit-images" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-images">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Images</h1>
+      <div>
+
+              <p>Check <code>_data/imageStyles.yml</code> </p>
+                </div>
+
+    </div>
+  <div>
+        <h2 class="pl-h2">Image styles</h2>
+          <div>
+                <h3 class="pl-h3">Small 1x1 <span class="pl-text-sm ">(xsmall_1x1_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/80x80?theme=gray&auto=yes&size=8&lineWrap=.9&text=Small%201x1%20%0A%20%2880x80%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: xsmall_1x1_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">XSmall 16x9 <span class="pl-text-sm ">(xsmall_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/460x258?theme=gray&auto=yes&size=8&lineWrap=.9&text=XSmall%2016x9%20%0A%20%28460x258%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: xsmall_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">Small 16x9 <span class="pl-text-sm ">(small_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/640x359?theme=gray&auto=yes&size=8&lineWrap=.9&text=Small%2016x9%20%0A%20%28640x359%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: small_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">Medium 16x9 <span class="pl-text-sm ">(medium_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/1024x576?theme=gray&auto=yes&size=8&lineWrap=.9&text=Medium%2016x9%20%0A%20%281024x576%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: medium_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">Large 16x9 <span class="pl-text-sm ">(large_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/1200x675?theme=gray&auto=yes&size=8&lineWrap=.9&text=Large%2016x9%20%0A%20%281200x675%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: large_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">XLarge 16x9 <span class="pl-text-sm ">(xlarge_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/1440x810?theme=gray&auto=yes&size=8&lineWrap=.9&text=XLarge%2016x9%20%0A%20%281440x810%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: xlarge_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+          <div>
+                <h3 class="pl-h3">XXLarge 16x9 <span class="pl-text-sm ">(xxlarge_16x9_scale_and_crop)</span></h3>
+        <div class="pl-mt-s">
+        
+
+
+
+  
+
+
+                <img data-src="holder.js/1900x1068?theme=gray&auto=yes&size=8&lineWrap=.9&text=XXLarge%2016x9%20%0A%20%281900x1068%29" class="holderjs" alt="A placeholder image">
+    
+          </div>
+        <div class="pl-mt-s">
+        <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: xxlarge_16x9_scale_and_crop,
+    placeholder: true
+  } %}</pre>
+</div>
+
+        </div>
+        <hr class="pl-hr-s">
+      </div>
+              <hr class="pl-hr">
+      <h2 class="pl-h2">Responsive Image styles</h2>
+              <div>
+                    <h3 class="pl-h3">featured <span class="pl-text-sm ">(featured)</span></h3>
+          <div class="pl-mt-s">
+          
+
+
+
+  
+    
+
+          <picture>
+                              <source srcset="https://via.placeholder.com/460x258?text=XSmall%2016x9%20%0A%20%28460x258%29" media="(min-width: 0px) and (max-width: 459px)">
+            <img data-src="holder.js/1024x576?theme=gray&auto=yes&size=8&lineWrap=.9&text=Medium%2016x9%20%0A%20%281024x576%29" alt="MDN">
+    </picture>
+            </div>
+          <div class="pl-mt-s">
+          <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    style: featured,
+    placeholder: true
+  } %}</pre>
+</div>
+
+          </div>
+          <hr class="pl-hr-s">
+        </div>
+              <hr class="pl-hr">
+    <h2 class="pl-h2">Image using paths.images path</h2>
+    <div>
+      
+
+
+
+  
+<img src="../../../assets/images/astrogoat.png" alt="" />
+    </div>
+<div class="pl-mt-s">
+    <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    variant: 'primary',
+    src: paths.images ~'/astrogoat.png'
+  } %}</pre>
+</div>
+
+</div>
+    <hr class="pl-hr">
+    <h2 class="pl-h2">Background Images</h2>
+    <h3 class="pl-h3">SVG</h3>
+    
+
+
+
+  
+<div style="background-image: url(../../../assets/images/logo.svg); background-repeat: no-repeat" class="image--bg"></div>
+<div class="pl-mt-s pl-mb-s">
+    <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    variant: 'bg',
+    src: paths.images ~'/ogo.svg',
+    alt: 'A friendly goat wearing a space helmet. The Astrogoat!',
+    image_classes: 'image--bg'
+  } %}</pre>
+</div>
+
+</div>
+    <h3 class="pl-h3">PNG</h3>
+    
+
+
+
+  
+<div style="background-image: url(../../../assets/images/astrogoat.png); background-repeat: no-repeat" class="image--bg"></div>
+<div class="pl-mt-s">
+    <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/image/_image.twig" with {
+    variant: 'bg',
+    src: paths.images ~'/astrogoat.png',
+    alt: 'A friendly goat wearing a space helmet. The Astrogoat!',
+    image_classes: 'image--bg'
+  } %}</pre>
+</div>
+
+</div>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-images" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"<h1>How to handle static assets!</h1>\n<p>Please note that image implementations may contain this or similar code:</p>\n<pre><code class=\"language-twig\">{% include &quot;@atoms/_image.twig&quot; with {\n  image: {\n    src: paths.images ~ '/logo.svg',\n  }\n} %}\n</code></pre>\n<p>The logo is file is stored in <code>project/themes/wingsuit/source/images</code>,\nwhere it is imported into our design system as a proton in:\n<code>project/themes/wingsuit/source/default/_patterns/00-protons/index.js</code></p>\n<p>Notice how this <code>index.js</code> contains this code:</p>\n<pre><code class=\"language-javascript\">import '../../../images/logo.svg';\n</code></pre>\n<p>All static assets (images, fonts) <strong>must</strong> be referenced within the javascript\ndependency chain to be moved to <code>dist/assets/</code>.\nThese assets will be available to PL after running <code>npm run compile:pl</code>.\nThe example here provides <em>Pattern Lab</em> assets only, as protons assets are not\nexported. The individual implementation should include references to files as\nneeded.</p>\n","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"media"},"patternExtension":"twig","patternName":"Images","patternPartial":"wingsuit-images","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->			<div id="wingsuit-svgs" class="pl-c-pattern">
+			
+				<div class="pl-c-pattern__header">
+			
+					<h3 class="pl-c-pattern__title">
+			
+						<a href="../../patterns/000-wingsuit-002-media-svg-svgs&#x2F;000-wingsuit-002-media-svg-svgs.rendered.html" class="pl-c-pattern__title-link patternLink" data-patternpartial="wingsuit-svgs" title="Link to Pattern">
+							svg
+			
+			
+						</a><!--end pl-c-pattern__title-link-->
+			
+					</h3><!--end pl-c-pattern__title-->
+			
+					<button class="pl-c-pattern__extra-toggle pl-js-pattern-extra-toggle" id="pl-pattern-extra-toggle-wingsuit-svgs" data-patternpartial="wingsuit-svgs" title="View Pattern Info">
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--expand">Expand</span>
+						<span class="pl-c-pattern__extra-toggle-text pl-c-pattern__extra-toggle-text--collapse">Collapse</span>
+						<div class="pl-c-pattern__toggle-icon-wrapper" aria-hidden="true">
+							<svg viewBox="0 0 16 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--expand">
+								<path fill="currentColor" d="M9 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+							</svg>
+			
+							<svg viewBox="0 0 20 16" width="20" height="20" class="pl-c-pattern__toggle-icon pl-c-pattern__toggle-icon--collapse">
+								<path fill="currentColor" d="M13 11.5l1.5 1.5 5-5-5-5-1.5 1.5 3.5 3.5z"></path>
+								<path fill="currentColor" d="M7 4.5l-1.5-1.5-5 5 5 5 1.5-1.5-3.5-3.5z"></path>
+								<path fill="currentColor" d="M10.958 2.352l1.085 0.296-3 11-1.085-0.296 3-11z"></path>
+							</svg>
+						</div>
+					</button>
+			
+				</div><!--end pl-c-pattern__header-->
+			
+				<div class="pl-c-pattern__extra pl-js-pattern-extra" id="pl-pattern-extra-wingsuit-svgs">
+			    </div><!--end pl-c-pattern__extra-->
+			
+				<div class="pl-js-pattern-example">
+				<div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">SVG Component</h1>
+      <div>
+
+              <p>Store your SVG files in the SVG subdirectory to have them made available via the <code>_svg--icon.twig</code> partial or using a Css Class.</p>
+                </div>
+
+    </div>
+  <div>
+    
+    <section class="pl-section">
+      <h2 class="pl-h2">Icons</h2>
+      <table  class="pl-table">
+        <thead>
+        <tr>
+          <th>Icon Name</th>
+          <th>Svg Icon</th>
+          <th>Css Class</th>
+        </tr>
+        </thead>
+                  <tr>
+            <td>
+              <h3><b>sprite-chevron-down</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=684975885#sprite-chevron-down"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: chevron-down,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-chevron-down w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-chevron-down pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-chevron-left</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=21104599#sprite-chevron-left"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: chevron-left,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-chevron-left w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-chevron-left pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-chevron-right</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=81323455#sprite-chevron-right"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: chevron-right,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-chevron-right w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-chevron-right pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-chevron-up</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=1003557851#sprite-chevron-up"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: chevron-up,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-chevron-up w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-chevron-up pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-close</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=899926980#sprite-close"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: close,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-close w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-close pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-menu</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=162794348#sprite-menu"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: menu,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-menu w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-menu pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-person</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=869013388#sprite-person"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: person,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-person w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-person pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+                  <tr>
+            <td>
+              <h3><b>sprite-search</b></h3>
+            </td>
+            <td>
+              
+
+<div class="pl-w-4 svg">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="../../../assets/images/spritemap.svg?cacheBuster=771485671#sprite-search"></use>
+  </svg>
+</div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>{% include "@atoms/svg/_svg--icon.twig" with {
+    icon: search,
+    size: "w-4"
+  } %}</pre>
+</div>
+
+            </td>
+            <td>
+            <div class="sprite-search w-4 h-4"></div>
+              <div class="pl-code rounded-lg text-white bg-black">
+  <pre>&lt;i class="sprite-search pl-w-4 pl-h-4">&lt;/i></pre>
+</div>
+
+            </td>
+          </tr>
+              </table>
+    </section>
+    </div>
+</div>
+				</div><!--end pl-js-pattern-example-->
+			
+				<script type="text/json" id="pl-pattern-data-wingsuit-svgs" class="pl-js-pattern-data">
+				{"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"media"},"patternExtension":"twig","patternName":"svg","patternPartial":"wingsuit-svgs","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+				</script>
+			
+			</div><!--end pl-c-pattern-->
+  </div><!--end pl-c-pattern-index-->
+
+</div><!--end pl-c-main-->
+<!--DO NOT REMOVE-->
+	<script type="text/json" id="pl-pattern-data-footer" class="pl-js-pattern-data">
+  {"patternPartial":"viewall-wingsuit-all"}
+</script>
+
+<script>
+  window.patternData = {"patternPartial":"viewall-wingsuit-all"};
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+
+  var scriptLoader = {
+
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1581326765032">
+  (function() {
+    if (self != top) {
+      var cb = '1581326765032';
+      var js = [];
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+
+<script type="module">
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  import('../../styleguide/js/patternlab-pattern.modern.js');
+</script>
+
+<script id="pl-js-insert-1581326765032" nomodule>
+  /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+  !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
+
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  loadJS('../../styleguide/js/patternlab-pattern.js');
+</script>
+
+
+  <script src="../../../assets/app.js?cacheBuster=1659237770"></script>
+
+	</body>
+</html>

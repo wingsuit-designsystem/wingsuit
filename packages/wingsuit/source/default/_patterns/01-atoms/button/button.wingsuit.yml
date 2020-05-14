@@ -8,11 +8,17 @@ button:
       label: Content
       preview: More
   variants:
-    default:
-      label: Default
-    outline:
-      label: Outline
+    primary:
+      label: Primary
+    secondary:
+      label: Secondary
       description: Inverts colors
+    success:
+      label: Success
+    warning:
+      label: Warning
+    disabled:
+      label: Disabled
   settings:
     url:
       type: token

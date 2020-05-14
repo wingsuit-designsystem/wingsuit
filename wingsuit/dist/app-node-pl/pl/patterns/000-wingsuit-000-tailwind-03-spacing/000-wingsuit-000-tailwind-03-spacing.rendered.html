@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+	<head>
+		<title>Pattern Lab</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+            
+		<!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+		
+		<!-- End Pattern Lab -->
+
+    
+		<style type="text/css">
+			.spinner {
+				width: 40px;
+				height: 40px;
+
+				position: relative;
+				margin: 100px auto;
+				display: none;
+			}
+
+			.double-bounce1, .double-bounce2 {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #333;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2 {
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce {
+				0%, 100% {
+					-webkit-transform: scale(0.0)
+				}
+				50% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+
+			@keyframes sk-bounce {
+				0%, 100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				50% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+
+			.pl-loading .spinner {
+				display: block;
+			}
+		</style>
+
+  </head>
+	<body class="pl pl-loading"><div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Customizing Spacing</h1>
+      <div>
+
+              <p>The <code>theme.spacing</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-spacing" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Padding      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/padding">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Padding</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.p-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.p-px</td>
+          <td>1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+
+      
+  <div class="pl-code rounded-lg text-white bg-black mt-10">
+      // tailwind.config.js
+      <div>module.exports = {</div>
+      <div class="ml-2">theme: {</div>
+      <pre class="ml-4">
+padding:&nbsp;{
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem",
+    "40": "10rem",
+    "48": "12rem",
+    "56": "14rem",
+    "64": "16rem",
+    "px": "1px"
+}</pre>
+      <div class="ml-2">}</div>
+    <div>}</div>
+  </div>
+
+
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Margin      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/margin">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Margin</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.m-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-1</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-2</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-3</td>
+          <td>0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-4</td>
+          <td>1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-5</td>
+          <td>1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-6</td>
+          <td>1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-8</td>
+          <td>2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-10</td>
+          <td>2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-12</td>
+          <td>3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-16</td>
+          <td>4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-20</td>
+          <td>5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-24</td>
+          <td>6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-32</td>
+          <td>8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-40</td>
+          <td>10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-48</td>
+          <td>12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-56</td>
+          <td>14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-64</td>
+          <td>16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-auto</td>
+          <td>auto</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m-px</td>
+          <td>1px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--1</td>
+          <td>-0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--2</td>
+          <td>-0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--3</td>
+          <td>-0.75rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--4</td>
+          <td>-1rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--5</td>
+          <td>-1.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--6</td>
+          <td>-1.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--8</td>
+          <td>-2rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--10</td>
+          <td>-2.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--12</td>
+          <td>-3rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--16</td>
+          <td>-4rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--20</td>
+          <td>-5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--24</td>
+          <td>-6rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--32</td>
+          <td>-8rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--40</td>
+          <td>-10rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--48</td>
+          <td>-12rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--56</td>
+          <td>-14rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--64</td>
+          <td>-16rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.m--px</td>
+          <td>-1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+    </section>
+    </div>
+</div><!--DO NOT REMOVE-->
+	<script type="text/json" id="pl-pattern-data-footer" class="pl-js-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Spacing","patternPartial":"wingsuit-spacing","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+</script>
+
+<script>
+  window.patternData = {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Spacing","patternPartial":"wingsuit-spacing","patternState":"","patternEngineName":"twig-php","extraOutput":{}};
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+
+  var scriptLoader = {
+
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1581326765032">
+  (function() {
+    if (self != top) {
+      var cb = '1581326765032';
+      var js = [];
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+
+<script type="module">
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  import('../../styleguide/js/patternlab-pattern.modern.js');
+</script>
+
+<script id="pl-js-insert-1581326765032" nomodule>
+  /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+  !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
+
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  loadJS('../../styleguide/js/patternlab-pattern.js');
+</script>
+
+
+  <script src="../../../assets/app.js?cacheBuster=256890974"></script>
+
+	</body>
+</html>

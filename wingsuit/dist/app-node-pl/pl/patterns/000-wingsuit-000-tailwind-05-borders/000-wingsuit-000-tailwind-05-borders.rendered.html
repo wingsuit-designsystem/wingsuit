@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+	<head>
+		<title>Pattern Lab</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+
+            
+		<!-- Begin Pattern Lab (Required for Pattern Lab to run properly) -->
+		
+		<!-- End Pattern Lab -->
+
+    
+		<style type="text/css">
+			.spinner {
+				width: 40px;
+				height: 40px;
+
+				position: relative;
+				margin: 100px auto;
+				display: none;
+			}
+
+			.double-bounce1, .double-bounce2 {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #333;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2 {
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce {
+				0%, 100% {
+					-webkit-transform: scale(0.0)
+				}
+				50% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+
+			@keyframes sk-bounce {
+				0%, 100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				50% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+
+			.pl-loading .spinner {
+				display: block;
+			}
+		</style>
+
+  </head>
+	<body class="pl pl-loading"><div class="container mx-auto">
+  <div class="pl-mb">
+  <h1 class="pl-h1">Borders</h1>
+      <div>
+
+              <p>The <code>theme.border</code> section of your <code>tailwind.config.js</code> file allows you to override Tailwind's default spacing/sizing scale.</p>
+                    <p>For more information see: <a class="pl-link" href="https://tailwindcss.com/docs/customizing-spacing" target="_blank" rel="noopener noreferrer">Tailwind
+            Documentation</a></p>
+          </div>
+
+    </div>
+  <div>
+        <section class="pl-section">
+      <h2 class="pl-h2">Border Color</h2>
+      <table  class="pl-table">
+        <thead>
+        <tr>
+          <th>Class</th>
+
+          <th colspan="2">
+            <div class="sm:hidden absolute inset-0"></div>
+            <div class="hidden sm:block">Properties</div>
+          </th>
+        </tr>
+        </thead>
+        
+                      <tr>
+              <td>text-transparent</td>
+              <td>color: transparent</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-transparent">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                      <tr>
+              <td>text-black</td>
+              <td>color: #000</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-black">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                      <tr>
+              <td>text-white</td>
+              <td>color: #fff</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-white">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                  
+                                    <tr>
+                <td>border-gray-100</td>
+                <td>color: #f7fafc</td>
+                <td>
+                  <div class="border w-full border-gray-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-200</td>
+                <td>color: #edf2f7</td>
+                <td>
+                  <div class="border w-full border-gray-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-300</td>
+                <td>color: #e2e8f0</td>
+                <td>
+                  <div class="border w-full border-gray-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-400</td>
+                <td>color: #cbd5e0</td>
+                <td>
+                  <div class="border w-full border-gray-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-500</td>
+                <td>color: #a0aec0</td>
+                <td>
+                  <div class="border w-full border-gray-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-600</td>
+                <td>color: #718096</td>
+                <td>
+                  <div class="border w-full border-gray-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-700</td>
+                <td>color: #4a5568</td>
+                <td>
+                  <div class="border w-full border-gray-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-800</td>
+                <td>color: #2d3748</td>
+                <td>
+                  <div class="border w-full border-gray-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-gray-900</td>
+                <td>color: #1a202c</td>
+                <td>
+                  <div class="border w-full border-gray-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-red-100</td>
+                <td>color: #fff5f5</td>
+                <td>
+                  <div class="border w-full border-red-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-200</td>
+                <td>color: #fed7d7</td>
+                <td>
+                  <div class="border w-full border-red-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-300</td>
+                <td>color: #feb2b2</td>
+                <td>
+                  <div class="border w-full border-red-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-400</td>
+                <td>color: #fc8181</td>
+                <td>
+                  <div class="border w-full border-red-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-500</td>
+                <td>color: #f56565</td>
+                <td>
+                  <div class="border w-full border-red-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-600</td>
+                <td>color: #e53e3e</td>
+                <td>
+                  <div class="border w-full border-red-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-700</td>
+                <td>color: #c53030</td>
+                <td>
+                  <div class="border w-full border-red-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-800</td>
+                <td>color: #9b2c2c</td>
+                <td>
+                  <div class="border w-full border-red-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-red-900</td>
+                <td>color: #742a2a</td>
+                <td>
+                  <div class="border w-full border-red-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-orange-100</td>
+                <td>color: #fffaf0</td>
+                <td>
+                  <div class="border w-full border-orange-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-200</td>
+                <td>color: #feebc8</td>
+                <td>
+                  <div class="border w-full border-orange-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-300</td>
+                <td>color: #fbd38d</td>
+                <td>
+                  <div class="border w-full border-orange-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-400</td>
+                <td>color: #f6ad55</td>
+                <td>
+                  <div class="border w-full border-orange-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-500</td>
+                <td>color: #ed8936</td>
+                <td>
+                  <div class="border w-full border-orange-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-600</td>
+                <td>color: #dd6b20</td>
+                <td>
+                  <div class="border w-full border-orange-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-700</td>
+                <td>color: #c05621</td>
+                <td>
+                  <div class="border w-full border-orange-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-800</td>
+                <td>color: #9c4221</td>
+                <td>
+                  <div class="border w-full border-orange-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-orange-900</td>
+                <td>color: #7b341e</td>
+                <td>
+                  <div class="border w-full border-orange-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-yellow-100</td>
+                <td>color: #fffff0</td>
+                <td>
+                  <div class="border w-full border-yellow-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-200</td>
+                <td>color: #fefcbf</td>
+                <td>
+                  <div class="border w-full border-yellow-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-300</td>
+                <td>color: #faf089</td>
+                <td>
+                  <div class="border w-full border-yellow-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-400</td>
+                <td>color: #f6e05e</td>
+                <td>
+                  <div class="border w-full border-yellow-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-500</td>
+                <td>color: #ecc94b</td>
+                <td>
+                  <div class="border w-full border-yellow-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-600</td>
+                <td>color: #d69e2e</td>
+                <td>
+                  <div class="border w-full border-yellow-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-700</td>
+                <td>color: #b7791f</td>
+                <td>
+                  <div class="border w-full border-yellow-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-800</td>
+                <td>color: #975a16</td>
+                <td>
+                  <div class="border w-full border-yellow-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-yellow-900</td>
+                <td>color: #744210</td>
+                <td>
+                  <div class="border w-full border-yellow-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-green-100</td>
+                <td>color: #f0fff4</td>
+                <td>
+                  <div class="border w-full border-green-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-200</td>
+                <td>color: #c6f6d5</td>
+                <td>
+                  <div class="border w-full border-green-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-300</td>
+                <td>color: #9ae6b4</td>
+                <td>
+                  <div class="border w-full border-green-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-400</td>
+                <td>color: #68d391</td>
+                <td>
+                  <div class="border w-full border-green-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-500</td>
+                <td>color: #48bb78</td>
+                <td>
+                  <div class="border w-full border-green-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-600</td>
+                <td>color: #38a169</td>
+                <td>
+                  <div class="border w-full border-green-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-700</td>
+                <td>color: #2f855a</td>
+                <td>
+                  <div class="border w-full border-green-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-800</td>
+                <td>color: #276749</td>
+                <td>
+                  <div class="border w-full border-green-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-green-900</td>
+                <td>color: #22543d</td>
+                <td>
+                  <div class="border w-full border-green-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-teal-100</td>
+                <td>color: #e6fffa</td>
+                <td>
+                  <div class="border w-full border-teal-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-200</td>
+                <td>color: #b2f5ea</td>
+                <td>
+                  <div class="border w-full border-teal-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-300</td>
+                <td>color: #81e6d9</td>
+                <td>
+                  <div class="border w-full border-teal-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-400</td>
+                <td>color: #4fd1c5</td>
+                <td>
+                  <div class="border w-full border-teal-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-500</td>
+                <td>color: #38b2ac</td>
+                <td>
+                  <div class="border w-full border-teal-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-600</td>
+                <td>color: #319795</td>
+                <td>
+                  <div class="border w-full border-teal-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-700</td>
+                <td>color: #2c7a7b</td>
+                <td>
+                  <div class="border w-full border-teal-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-800</td>
+                <td>color: #285e61</td>
+                <td>
+                  <div class="border w-full border-teal-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-teal-900</td>
+                <td>color: #234e52</td>
+                <td>
+                  <div class="border w-full border-teal-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-blue-100</td>
+                <td>color: #ebf8ff</td>
+                <td>
+                  <div class="border w-full border-blue-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-200</td>
+                <td>color: #bee3f8</td>
+                <td>
+                  <div class="border w-full border-blue-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-300</td>
+                <td>color: #90cdf4</td>
+                <td>
+                  <div class="border w-full border-blue-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-400</td>
+                <td>color: #63b3ed</td>
+                <td>
+                  <div class="border w-full border-blue-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-500</td>
+                <td>color: #4299e1</td>
+                <td>
+                  <div class="border w-full border-blue-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-600</td>
+                <td>color: #3182ce</td>
+                <td>
+                  <div class="border w-full border-blue-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-700</td>
+                <td>color: #2b6cb0</td>
+                <td>
+                  <div class="border w-full border-blue-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-800</td>
+                <td>color: #2c5282</td>
+                <td>
+                  <div class="border w-full border-blue-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-blue-900</td>
+                <td>color: #2a4365</td>
+                <td>
+                  <div class="border w-full border-blue-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-indigo-100</td>
+                <td>color: #ebf4ff</td>
+                <td>
+                  <div class="border w-full border-indigo-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-200</td>
+                <td>color: #c3dafe</td>
+                <td>
+                  <div class="border w-full border-indigo-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-300</td>
+                <td>color: #a3bffa</td>
+                <td>
+                  <div class="border w-full border-indigo-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-400</td>
+                <td>color: #7f9cf5</td>
+                <td>
+                  <div class="border w-full border-indigo-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-500</td>
+                <td>color: #667eea</td>
+                <td>
+                  <div class="border w-full border-indigo-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-600</td>
+                <td>color: #5a67d8</td>
+                <td>
+                  <div class="border w-full border-indigo-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-700</td>
+                <td>color: #4c51bf</td>
+                <td>
+                  <div class="border w-full border-indigo-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-800</td>
+                <td>color: #434190</td>
+                <td>
+                  <div class="border w-full border-indigo-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-indigo-900</td>
+                <td>color: #3c366b</td>
+                <td>
+                  <div class="border w-full border-indigo-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-purple-100</td>
+                <td>color: #faf5ff</td>
+                <td>
+                  <div class="border w-full border-purple-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-200</td>
+                <td>color: #e9d8fd</td>
+                <td>
+                  <div class="border w-full border-purple-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-300</td>
+                <td>color: #d6bcfa</td>
+                <td>
+                  <div class="border w-full border-purple-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-400</td>
+                <td>color: #b794f4</td>
+                <td>
+                  <div class="border w-full border-purple-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-500</td>
+                <td>color: #9f7aea</td>
+                <td>
+                  <div class="border w-full border-purple-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-600</td>
+                <td>color: #805ad5</td>
+                <td>
+                  <div class="border w-full border-purple-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-700</td>
+                <td>color: #6b46c1</td>
+                <td>
+                  <div class="border w-full border-purple-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-800</td>
+                <td>color: #553c9a</td>
+                <td>
+                  <div class="border w-full border-purple-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-purple-900</td>
+                <td>color: #44337a</td>
+                <td>
+                  <div class="border w-full border-purple-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                                    <tr>
+                <td>border-pink-100</td>
+                <td>color: #fff5f7</td>
+                <td>
+                  <div class="border w-full border-pink-100">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-200</td>
+                <td>color: #fed7e2</td>
+                <td>
+                  <div class="border w-full border-pink-200">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-300</td>
+                <td>color: #fbb6ce</td>
+                <td>
+                  <div class="border w-full border-pink-300">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-400</td>
+                <td>color: #f687b3</td>
+                <td>
+                  <div class="border w-full border-pink-400">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-500</td>
+                <td>color: #ed64a6</td>
+                <td>
+                  <div class="border w-full border-pink-500">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-600</td>
+                <td>color: #d53f8c</td>
+                <td>
+                  <div class="border w-full border-pink-600">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-700</td>
+                <td>color: #b83280</td>
+                <td>
+                  <div class="border w-full border-pink-700">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-800</td>
+                <td>color: #97266d</td>
+                <td>
+                  <div class="border w-full border-pink-800">&nbsp;</div>
+                </td>
+              </tr>
+                          <tr>
+                <td>border-pink-900</td>
+                <td>color: #702459</td>
+                <td>
+                  <div class="border w-full border-pink-900">&nbsp;</div>
+                </td>
+              </tr>
+                              
+                      <tr>
+              <td>text-default</td>
+              <td>color: #e2e8f0</td>
+              <td>
+                <div class="flex rounded-lg">
+                  <div class="border w-full border-default">&nbsp;</div>
+                </div>
+              </td>
+            </tr>
+                        </table>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Border Width      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/border-width">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.border-0</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-2</td>
+          <td>2px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-4</td>
+          <td>4px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-8</td>
+          <td>8px</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.border-default</td>
+          <td>1px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+      <h3 class="pt-10">Samples</h3>
+      <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">
+                  <div class="w-1/4 px-2 border bg-gray p-6 m-2"> <code>border-0</code> (0) </div>
+                  <div class="w-1/4 px-2 border-2 bg-gray p-6 m-2"> <code>border-2</code> (2px) </div>
+                  <div class="w-1/4 px-2 border-4 bg-gray p-6 m-2"> <code>border-4</code> (4px) </div>
+                  <div class="w-1/4 px-2 border-8 bg-gray p-6 m-2"> <code>border-8</code> (8px) </div>
+                  <div class="w-1/4 px-2 border bg-gray p-6 m-2"> <code>border-default</code> (1px) </div>
+              </div>
+    </section>
+    <hr class="pl-hr">
+    <section class="pl-section">
+      
+  <h2 class="pl-h2 ">Border Radius      <a class="pl-link pl-text-sm" href="https://tailwindcss.com/docs/border-radius">(Tailwind documentation)</a>
+    </h2>
+  <div
+    class="lg:max-h-sm overflow-y-auto scrollbar-w-2 scrollbar-track-gray-lighter scrollbar-thumb-rounded scrollbar-thumb-gray scrolling-touch"
+    style="max-height: 400px">
+    <table class="pl-table">
+      <thead>
+      <tr>
+        <th>Class</th>
+        <th>Properties</th>
+      </tr>
+      </thead>
+      <tbody>
+              <tr>
+          <td class="pl-text-blue">.rounded-none</td>
+          <td>0</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-sm</td>
+          <td>0.125rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-default</td>
+          <td>0.25rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-lg</td>
+          <td>0.5rem</td>
+        </tr>
+              <tr>
+          <td class="pl-text-blue">.rounded-full</td>
+          <td>9999px</td>
+        </tr>
+            </tbody>
+    </table>
+  </div>
+
+
+
+      <h3 class="pt-10">Samples</h3>
+      <div class="bg-white rounded-lg border-t border-l border-r border-b border-gray-400 p-4 flex flex-wrap">
+                  <div class="w-1/4 px-2 border rounded-none bg-gray p-6 m-2"> 0 </div>
+                  <div class="w-1/4 px-2 border rounded-sm bg-gray p-6 m-2"> 0.125rem </div>
+                  <div class="w-1/4 px-2 border rounded-default bg-gray p-6 m-2"> 0.25rem </div>
+                  <div class="w-1/4 px-2 border rounded-lg bg-gray p-6 m-2"> 0.5rem </div>
+                  <div class="w-1/4 px-2 border rounded-full bg-gray p-6 m-2"> 9999px </div>
+              </div>
+    </section>
+    </div>
+</div><!--DO NOT REMOVE-->
+	<script type="text/json" id="pl-pattern-data-footer" class="pl-js-pattern-data">
+  {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Borders","patternPartial":"wingsuit-borders","patternState":"","patternEngineName":"twig-php","extraOutput":{}}
+</script>
+
+<script>
+  window.patternData = {"cssEnabled":false,"patternLineageExists":true,"patternLineages":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"lineage":[{"lineagePattern":"wingsuit-demo-block","lineagePath":"../../patterns/000-wingsuit-_demo-block/000-wingsuit-_demo-block.rendered.html"}],"patternLineageRExists":false,"patternLineagesR":[],"lineageR":[],"patternLineageEExists":true,"patternDesc":"","patternBreadcrumb":{"patternType":"wingsuit","patternSubtype":"tailwind"},"patternExtension":"twig","patternName":"Borders","patternPartial":"wingsuit-borders","patternState":"","patternEngineName":"twig-php","extraOutput":{}};
+</script>
+
+<script>
+  /*!
+   * scriptLoader - v0.1
+   *
+   * Copyright (c) 2014 Dave Olsen, http://dmolsen.com
+   * Licensed under the MIT license
+   *
+   */
+
+  var scriptLoader = {
+
+    run: function(js,cb,target) {
+      var s  = document.getElementById(target+'-'+cb);
+      for (var i = 0; i < js.length; i++) {
+        var src = (typeof js[i] != 'string') ? js[i].src : js[i];
+        var c   = document.createElement('script');
+        c.src   = '../../'+src+'?'+cb;
+        if (typeof js[i] != 'string') {
+          if (js[i].dep !== undefined) {
+            c.onload = function(dep,cb,target) {
+              return function() {
+                scriptLoader.run(dep,cb,target);
+              }
+            }(js[i].dep,cb,target);
+          }
+        }
+        s.parentNode.insertBefore(c,s);
+      }
+    }
+
+  }
+</script>
+
+<script id="pl-js-polyfill-insert-1581326765032">
+  (function() {
+    if (self != top) {
+      var cb = '1581326765032';
+      var js = [];
+      scriptLoader.run(js,cb,'pl-js-polyfill-insert');
+    }
+  })();
+</script>
+
+
+<script type="module">
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  import('../../styleguide/js/patternlab-pattern.modern.js');
+</script>
+
+<script id="pl-js-insert-1581326765032" nomodule>
+  /*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
+  !function(e){var t=function(t,n){"use strict";var o=e.document.getElementsByTagName("script")[0],r=e.document.createElement("script");return r.src=t,r.async=!0,o.parentNode.insertBefore(r,o),n&&"function"==typeof n&&(r.onload=n),r};"undefined"!=typeof module?module.exports=t:e.loadJS=t}("undefined"!=typeof global?global:this);
+
+  // always load Pattern-specific JS so UI like accordions, etc can continue to work even when viewed as a standalone HTML page
+  loadJS('../../styleguide/js/patternlab-pattern.js');
+</script>
+
+
+  <script src="../../../assets/app.js?cacheBuster=1147708171"></script>
+
+	</body>
+</html>
