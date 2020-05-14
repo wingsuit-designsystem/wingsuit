@@ -16,12 +16,9 @@
 {# Defaults: #}
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
-<nav class="flex flex-col" role="navigation">
-  <ul {{ attributes }} >
-    {% for item in items %}
-      <li class="border-b border-b-primary">
-        <a class="text-gray-dark text-xs hover:border-b" href="{{ item.link }}">{{ item.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
+<div class="w-full">
+  <div class="max-w-container flex justify-between">
+    <div class="">{{ copy_right }}</div>
+    <div class="" >{{ menu_footer }}</div>
+  </div>
+</div>
