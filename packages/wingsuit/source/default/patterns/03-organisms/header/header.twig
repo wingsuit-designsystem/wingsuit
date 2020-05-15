@@ -9,24 +9,20 @@
  */
 #}
 
-<nav class="fixed w-full bg-white shadow" role="navigation">
-  <div class="max-w-container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
-    <div class="mr-4 md:mr-8">
-      <img src="https://picsum.photos/155/43" alt="">
+<nav class="z-50 h-20 fixed w-full bg-green border-b lg:border-b-0 border-gray-xlight" role="navigation" x-data="{ open: false }">
+  <div class="max-w-container mx-auto p-6 lg:py-6 lg:px-2 justify-between relative flex flex-wrap items-center md:flex-no-wrap">
+    <a href="{{ path('<front>') }}" class="mr-4 w-155 lg:mr-3">
+      {% block logo %}
+        {{ logo }}
+      {% endblock %}
+    </a>
+    <div class="burger flex-container align-right absolute right-0 mr-6 flex items-center lg:hidden cursor-pointer" @click="open = !open">
+      {% include '@atoms/hamburger/_hamburger.twig' %}
     </div>
-    <div class="w-full justify-center hidden lg:visible md:w-auto md:flex-grow md:flex md:items-center">
+    <div class="w-full justify-end top-0 absolute lg:relative -ml-6 lg:ml-0 mt-20 lg:mt-0 lg:block lg:w-auto lg:flex-grow lg:flex lg:items-center" :class="{'block': open, 'hidden': !open}">
       {% block menu %}
         {{ menu }}
       {% endblock %}
-    </div>
-    <a href="#" class="hidden md:flex md:visible text-white font-sans font-normal bg-blue">089 2000 566 00</a>
-    <div class="ml-auto md:hidden">
-      <button class="flex items-center px-3 py-2 border rounded" type="button">
-        <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-        </svg>
-      </button>
     </div>
   </div>
 </nav>

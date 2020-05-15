@@ -12,16 +12,16 @@
 {# Classes: #}
 {% set classes = classes|default([])|merge([
   variant == 'primary',
-  'flex flex-col md:flex-row md:items-center',
+  'block lg:flex flex-col md:flex-row md:items-center     ',
 ]) | sort | join(' ') | trim  %}
 {# Defaults: #}
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
-<nav class="flex flex-col" role="navigation">
+<nav class="block lg:flex flex-col bg-gray-xxlight lg:bg-transparent pb-4" role="navigation">
   <ul {{ attributes }} >
     {% for item in items %}
-      <li class="font-sans px-4 py-1 text-center border-b md:border-b-0 md:p-2 lg:px-4 uppercase border-b-0 font-sans text-gray-light">
-        <a class="hover:border-b text-xs" href="{{ item.link }}">{{ item.title }}</a>
+      <li class="font-sans px-4 pt-4 lg:text-center lg:border-b-0 lg:p-2 lg:px-4 uppercase border-b-0 font-sans text-black">
+        <a class="hover:border-b text-base" href="{{ item.link }}">{{ item.title }}</a>
       </li>
     {% endfor %}
   </ul>
