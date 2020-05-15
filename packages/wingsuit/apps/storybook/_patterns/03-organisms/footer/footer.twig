@@ -1,0 +1,5 @@
+{% embed '@organisms/footer/_footer.twig' %}
+  {% block footer_menu %}
+    {% include '@molecules/menu/_menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer'} %}
+  {% endblock %}
+{% endembed %}

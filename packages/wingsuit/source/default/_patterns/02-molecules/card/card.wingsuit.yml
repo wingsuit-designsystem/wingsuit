@@ -1,6 +1,6 @@
 card:
   use: "@molecules/card/_card.twig"
-  label: Card2
+  label: Card
   description: Use Cards for your teasers
   fields:
     image:
@@ -18,16 +18,25 @@ card:
       label: Headline
       preview:
         faker: lorem.word
-    content:
+    text:
       type: text
-      label: Content
+      label: Text
       preview:
         faker: lorem.paragraph
+    button:
+      type: text
+      label: Button
+      preview:
+        faker: lorem.word
   variants:
     default:
       label: Default
     horizontal:
       label: Horizontal
+    circle:
+      label: Circle
+    rectangle:
+      label: Rectangle
   settings:
     alignment:
       type: select

@@ -1,0 +1,8 @@
+content:
+  join():
+    include():
+      pattern: molecules-card
+      with:
+        variant: horizontal
+        attributes:
+          Attribute(): {}
