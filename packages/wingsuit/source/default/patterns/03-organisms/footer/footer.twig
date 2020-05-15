@@ -1,23 +1,32 @@
+<<<<<<< HEAD:packages/wingsuit/source/default/patterns/03-organisms/footer/footer.twig
 <footer class="bg-gray-xxlight pt-13 pb-11">
   <div class="max-w-container mx-auto md:flex md:flex-no-wrap flex-wrap px-4">
     <div class="md:pr-4 md:w-1/6 flex-shrink pr-0">
       {% block privacy %}
         {{ privacy }}
       {% endblock %}
+=======
+{#
+/**
+ * @file
+ * footer
+ *
+ * Available variables for footer:
+ *  - footer.variable_name [variable_type]: Description of the variable. Example below.
+ *  - footer.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+
+<footer class="bg-primary absolute w-full pt-13 pb-11">
+  <div class="max-w-container mx-auto px-4 block md:flex justify-between text-center md:text-left">
+    <div class="py-6  font-sans text-tiny text-gray-dark">
+      {{ "© 2020 KEY-TEC GmbH & Co. KG"|t }}
+>>>>>>> WS #4: article page updated.:packages/wingsuit/source/default/_patterns/03-organisms/footer/_footer.twig
     </div>
-    <div class="md:w-1/6 md:px-4 flex-shrink px-0">
-      {% block menu %}
-        {{ menu }}
+    <div class="flex">
+      {% block footer_menu %}
+        {{ footer_menu }}
       {% endblock %}
-    </div>
-    <div class="flex justify-between w-full py-4 md:w-4/6 md:py-0">
-      <div class="px-0 md:px-4 text-gray-dark text-tiny">{{ contact }}</div>
-      <div class="">{{ media }}</div>
-    </div>
-  </div>
-  <div class="max-w-container mx-auto px-4">
-    <div class="py-6 mt-12 border-t font-sans text-tiny text-gray-dark">
-      {{ "© 2019 KEY-TEC GmbH & Co. KG"|t }}
     </div>
   </div>
 </footer>

@@ -5,14 +5,27 @@
   Headline_element: String: String (optional): Headline element tag that defaults to div.
   headline: String: The headline on the card.
   preheadline: String: The preheadline on the card.
-  content: String: The content on the card.
+  text: String: The text on the card.
   alignment: center
 #}
 {% set classes = classes|default([])|merge([
   alignment == 'center'?'text-center': '',
-  'group hover:no-underline'
+  'group hover:no-underline',
+  variant == 'default' ? 'block',
+  variant == 'horizontal' ? 'block md:flex',
+  variant == 'circle' ? '',
+  variant == 'rectangle' ? '',
 ]) | sort | join(' ') | trim  %}
 
+{% set content_classes = [
+  variant == 'horizontal'?'block pl-4',
+  variant == 'circle'?'hidden',
+  variant == 'rectangle'?'hidden'
+] | sort | join(' ') | trim %}
+{#image_classes#}
+{% set image_classes = [
+  variant == 'circle'?''
+] | sort | join(' ') | trim %}
 {# Preheadline Classes #}
 {% set preheadline_classes = [
   'text-base',
@@ -30,8 +43,9 @@
   'group-hover:underline',
 ] | sort | join(' ') | trim %}
 
-{# Content Classes #}
-{% set content_classes = [
+{# text Classes #}
+{% set text_classes = [
+  variant == 'horizontal'?'block',
   'text-base',
   'mb-10',
   'text-gray-light',
@@ -47,33 +61,42 @@
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 {# Component #}
 <{{element}} {{ attributes }}>
-  <div>
+  <div class="{{ image_classes }}">
     {% block image %}
       {{ image }}
     {% endblock %}
-   </div>
-  {% if preheadline is not empty  %}
-    <div {{ attributes|default(create_attribute()).addClass([
-      'text-base',
-      'mb-1',
-      'uppercase',
-      'text-gray-light',
-      'font-sans',
-    ] | sort | join(' ') | trim) }}>
-      {% block preheadline %}
-        {{ preheadline }}
-      {% endblock %}
-
-    </div>
-  {% endif %}
-  <{{headline__element}} class="{{ headline_classes }}">
-    {{ headline }}
-  </{{headline__element}}>
-  {% if content is not empty %}
-    <div class="{{ content_classes }}">
-      {% block content %}
-        {{ content }}
-      {% endblock %}
-    </div>
-  {% endif %}
+  </div>
+  <div class="{{ content_classes }}">
+    {% if preheadline is not empty  %}
+      <div {{ attributes|default(create_attribute()).addClass([
+        'text-base',
+        'mb-1',
+        'uppercase',
+        'text-gray-light',
+        'font-sans',
+        ] | sort | join(' ') | trim) }}>
+        {% block preheadline %}
+          {{ preheadline }}
+        {% endblock %}
+      </div>
+    {% endif %}
+    <{{headline__element}} class="{{ headline_classes }}">
+      {{ headline }}
+    </{{headline__element}}>
+    {% if text is not empty %}
+      <div class="{{ text_classes }}">
+        {% block text %}
+          {{ text }}
+        {% endblock %}
+      </div>
+    {% endif %}
+    {% set button_content = button %}
+    {% if button is not empty %}
+      {% embed '@atoms/button/_button.twig' with {variant: 'primary', } %}
+        {% block button %}
+          {{ button }}
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+  </div>
 </{{element}}>

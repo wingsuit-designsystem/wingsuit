@@ -10,3 +10,11 @@ primary_menu:
       icon: arrow-up
     - title: kontakt
       link: "#"
+footer_menu:
+  items:
+    - title: Datenschutz
+      link: "#"
+      in_active_trail: true
+    - title: Impressum
+      link: "#"
+

@@ -1,9 +1,9 @@
-{% embed '@organisms/header/_header.twig' %}
+{% embed '@organisms/header/header.twig' %}
   {% block burger_menu %}
     {% include '@atoms/svg/_svg--icon.twig' with {"icon": "menu", "size": "w-7"} %}
   {% endblock %}
   {% block logo %}
-    {% include "@atoms/image/_image.twig" with {
+    {% include "@atoms/image/image.twig" with {
       variant: 'primary',
       src: paths.images ~ '/dump.png',
     } %}

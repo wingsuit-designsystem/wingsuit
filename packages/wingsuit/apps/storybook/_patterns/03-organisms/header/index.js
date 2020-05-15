@@ -7,10 +7,7 @@
 
 // Ensure all assets required by demos are present.
 import 'protons';
-import 'templates/site-container.twig';
-import './_image.twig';
-import './_card.twig';
+import 'atoms/_image.twig';
 
 // Demo templates.
-import './article.twig';
-import './homepage.twig';
+import './header.twig';
