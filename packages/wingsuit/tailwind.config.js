@@ -4,6 +4,14 @@ module.exports = {
     fontFamily: {
       sans: ['SourceSans', '-apple-system', 'BlinkMacSystemFont'],
     },
+    maxWidth: {
+      'none': 'none',
+      'container': '1200px',
+      'xs': '672px',
+      'sm': '700px',
+      'md': '960px',
+      'lg': '1600px',
+    },
     colors: {
       transparent: 'transparent',
       black: '#222222̣̣̣',
@@ -11,7 +19,7 @@ module.exports = {
       red: '#D6ABAE',
       beige: '#E7C689',
       balzac_blue: '#97b5bd',
-      yellow: '#e7c78a',
+      green: '#deede8',
       blue: '#97B5BD',
       primary: '#fcaca9',
       secondary: '#77b88f',
@@ -19,7 +27,7 @@ module.exports = {
       warning: '#c98987',
       disabled: '#f7f7f7',
       gray: {
-        xxlight: '#F0F0F0',
+        xxlight: '#f5f5f5',
         xlight: '#cecece',
         light: '#9b9b9b',
         xmedium: '#aaaaaa',

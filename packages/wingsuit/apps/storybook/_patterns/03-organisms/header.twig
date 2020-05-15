@@ -1,0 +1,14 @@
+{% embed '@organisms/header/_header.twig' %}
+  {% block burger_menu %}
+    {% include '@atoms/svg/_svg--icon.twig' with {"icon": "menu", "size": "w-7"} %}
+  {% endblock %}
+  {% block logo %}
+    {% include "@atoms/image/_image.twig" with {
+      variant: 'primary',
+      src: paths.images ~ '/dump.png',
+    } %}
+  {% endblock %}
+  {% block menu %}
+    {% include '@molecules/menu/_menu.twig' with {items: wingsuit.primary_menu.items, variant: 'primary'} %}
+  {% endblock %}
+{% endembed %}
