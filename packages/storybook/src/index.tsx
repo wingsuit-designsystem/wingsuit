@@ -113,7 +113,6 @@ function getStories(pattern: Pattern, module) {
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     let parameters = {
-      layout: 'centered',
       component: PatternPreview,
       notes: variant.getDescription(),
       componentSubtitle: pattern.getDescription(),

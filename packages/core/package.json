@@ -47,6 +47,8 @@
     "image-webpack-loader": "^6.0.0",
     "jest": "^25.3.0",
     "jsondiffpatch": "^0.3.11",
+    "lodash": "^4.17.15",
+    "merge-deep": "^3.0.2",
     "mini-css-extract-plugin": "^0.8.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",

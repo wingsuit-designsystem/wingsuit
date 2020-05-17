@@ -1,4 +1,4 @@
-const wingsuitCore = require('@wingsuit-designsystem/core');
+const wingsuiteCore = require('@wingsuit-designsystem/core');
 
 module.exports = {
   addons: [
@@ -7,6 +7,6 @@ module.exports = {
     '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
-    return wingsuitCore.getAppPack('development', module, [config]);
+    return wingsuiteCore.getAppPack(wingsuiteCore.resolveConfig("storybook", "development"), [config]);
   },
 };

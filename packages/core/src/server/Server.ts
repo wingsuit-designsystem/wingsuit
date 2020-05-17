@@ -1,7 +1,11 @@
 /**
  * Wingsuit Design System.
  */
-import ConfigBundle from "./ConfigBundle";
+import AppConfig from "../AppConfig";
+import WebpackBundle from "./WebpackBundle";
+import WebpackBundleConstructor from "./WebpackBundleConstructor";
+
+
 
 // Library Imports
 const merge = require('webpack-merge');
@@ -9,25 +13,26 @@ const {ProgressPlugin, ProvidePlugin} = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 
-merge.multiple();
 
-interface BundleItems {
-  [key: string]: ConfigBundle;
-}
+
+merge.multiple();
 
 export default class Server {
 
-
   private environment = 'production';
 
-  private bundles: {} = {};
+  private bundles:WebpackBundleConstructor[] = [];
 
-  public addConfigBundle(bundle: ConfigBundle) {
-    this.bundles[bundle.getName()] = bundle;
+  public addWebpackBundle(name, bundleClass: WebpackBundleConstructor) {
+    this.bundles[name] = bundleClass;
   }
 
-  public getBundles(): BundleItems {
-    return this.bundles;
+  private getWebpackBundles(appConfig: AppConfig): WebpackBundle[] {
+    const bundles: WebpackBundle[] = [];
+    appConfig.webpackBundles.forEach((name) => {
+      bundles.push(new this.bundles[name](name, appConfig))
+    });
+    return bundles;
   }
 
   /**
@@ -43,16 +48,16 @@ export default class Server {
    * @param {('hot'|'extract')} options.cssMode - The method of handling CSS output
    * @returns {*} - Fully merged and customized webpack config
    */
-  public generateWebpack(environment: string, module: NodeModule, webpackConfigs: [] = []) {
-    this.environment = environment;
-    const bundles = this.getBundles();
+  public generateWebpack(appConfig: AppConfig, webpackConfigs: [] = []) {
+    this.environment = appConfig.environment;
+    const bundles = this.getWebpackBundles(appConfig);
     const shared: any = [];
     const environmentSpe: any = [];
     Object.keys(bundles).forEach((key) => {
       shared.push(bundles[key].getSharedWebpackConfig());
     });
     Object.keys(bundles).forEach((key) => {
-      environmentSpe.push(environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
+      environmentSpe.push(appConfig.environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
     });
 
     let config =  merge.smartStrategy({

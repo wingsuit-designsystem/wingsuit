@@ -1,0 +1,57 @@
+{
+  "name": "@wingsuit-designsystem/cli",
+  "version": "0.2.9-alpha.2",
+  "description": "The Wingsuit CLI",
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit",
+  "author": {
+    "name": "Christian Wiedemann",
+    "email": "christian.wiedemann@key-tec.de",
+    "url": ""
+  },
+  "keywords": [
+    "Drupal",
+    "Tailwind",
+    "Storybook",
+    "UI Patterns"
+  ],
+  "bin": {
+    "ws": "./bin/index.js",
+    "create-component": "./bin/index.js"
+  },
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-config-xo": "^0.27.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js",
+    "test": "cd test && ./run_tests.sh"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "git-clone": "^0.1.0",
+    "yeoman-environment": "^2.10.2",
+    "yosay": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wingsuit-designsystem/wingsuit.git",
+    "directory": "packages/cli"
+  },
+  "gitHead": "f05a12fa1c39691ee150ae453e7665bdf2930a5e"
+}

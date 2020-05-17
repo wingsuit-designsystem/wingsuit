@@ -1,10 +1,24 @@
-import { getAppPack } from '../../src/index';
+import { resolveConfig, getAppPack } from '../../src/index';
+import path from "path";
 
-describe('PatternStorage', () => {
-  describe('#storybook configuration', () => {
-    test('Generate Storybook config.', () => {
-      const webpack = getAppPack('development', module);
-      console.log(webpack);
-    });
+const config = {
+  apps: {
+    storybook: {
+      path: 'packages/core/__tests__'
+    }
+  },
+  designSystems: {
+    default: {
+      namespaces: {
+        atoms: path.resolve(__dirname, '../source/atoms'),
+      }
+    }
+  }
+};
+
+describe('getAppPack', () => {
+  test('Load appPack.', () => {
+    const webpack = getAppPack(resolveConfig("storybook", "development", {}, config), []);
+    console.log(webpack);
   });
 });
