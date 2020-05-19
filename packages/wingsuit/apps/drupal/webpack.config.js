@@ -1,8 +1,7 @@
 /**
  * Wingsuit webpack config.
  */
-const wingsuit = require('@wingsuit-designsystem/core');
-
-const pack = wingsuit.getAppPack('production', module);
-console.log(pack);
+const wingsuitCore = require('@wingsuit-designsystem/core');
+const appConfig = wingsuitCore.resolveConfig('storybook')
+const pack = wingsuitCore.getAppPack(appConfig);
 module.exports = pack;
