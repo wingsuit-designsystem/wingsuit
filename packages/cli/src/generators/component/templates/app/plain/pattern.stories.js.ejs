@@ -1,0 +1,17 @@
+import React from 'react';
+import { RenderTwig } from '@wingsuit-designsystem/storybook';<% if (useDoc == 'mdx') { %>
+import mdx from '<%= cleanPatternType %>/<%= name %>/<%= name %>.mdx';
+<% } %>
+
+const <%= name %>Template = require('./<%= name %>.twig');
+
+export default {
+  title: '<%= patternType %>/<%= capitalizeName %>',<% if (useDoc == 'mdx') { %>
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },<% } %>
+};
+
+export const <%= capitalizeName %> = () => <RenderTwig data={<%= name %>Template} />;

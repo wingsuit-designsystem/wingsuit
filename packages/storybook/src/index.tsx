@@ -47,7 +47,10 @@ export function configure(module: NodeModule, storybookContext, dataContext, tem
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
     patternIds.forEach((patternId) => {
-      getStories(storage.loadPattern(patternId), module);
+      const pattern = storage.loadPattern(patternId);
+      if (pattern.isVisible('storybook')) {
+        getStories(pattern, module);
+      }
     });
 
     // Load stories form storybook app.
@@ -121,23 +124,23 @@ function getStories(pattern: Pattern, module) {
         patternVariant: variant,
         page: () => (
           <>
-            <Title />
-            <Subtitle />
-            <Description />
-            <Primary />
-            <PatternProperties />
-            <PatternInclude />
-            <PatternStories />
+            <Title/>
+            <Subtitle/>
+            <Description/>
+            <Primary/>
+            <PatternProperties/>
+            <PatternInclude/>
+            <PatternStories/>
           </>
         ),
-         storyDescription: variant.getDescription()
+        storyDescription: variant.getDescription()
       }
     };
     parameters = Object.assign(parameters, pattern.getParameters());
     story.add(
       variant.getLabel(), () =>
         <PatternPreview patternId={pattern.getId()}
-                                                variantId={variantKey} {...getProps(variant)}></PatternPreview>,
+                        variantId={variantKey} {...getProps(variant)}></PatternPreview>,
       parameters
     )
   });

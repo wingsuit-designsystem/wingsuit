@@ -47,6 +47,8 @@ export default class Pattern {
 
   private use: string;
 
+  private visible: string;
+
   private definition: IPatternDefinition;
 
   private patternVariants: PatternVariant[] = [];
@@ -56,10 +58,24 @@ export default class Pattern {
   private storage: IPatternStorage;
 
 
+  public isVisible(app) {
+    if (this.visible == null || this.visible === '') {
+      return true;
+    }
+    const apps = this.visible.split('|');
+    for (let i=0; i < apps.length; i++) {
+      if (apps[i].trim() === app) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   constructor(id: string, definition: IPatternDefinition, storage:IPatternStorage) {
     this.id = id;
     this.label = definition.label;
     this.description = definition.description;
+    this.visible = definition.visible;
     this.storage = storage;
     this.use = definition.use;
     this.namespace = definition.namespace;

@@ -43,8 +43,13 @@
     "test": "cd test && ./run_tests.sh"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
     "chalk": "^2.1.0",
+    "eslint-plugin-react": "^7.15.1",
     "git-clone": "^0.1.0",
+    "lerna": "^3.20.2",
+    "typescript": "^3.4.0",
     "yeoman-environment": "^2.10.2",
     "yosay": "^2.0.1"
   },

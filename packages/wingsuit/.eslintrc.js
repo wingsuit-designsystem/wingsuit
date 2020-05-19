@@ -39,6 +39,9 @@ module.exports = {
     'import/prefer-default-export': [0]
   },
   "settings": {
+    "react": {
+      "version": "detect",
+    },
     "import/resolver": {
       "alias": {
         map: aliasMap

@@ -5,11 +5,9 @@ const merge = require('merge-deep');
 
 const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
-export function resolveConfig(appName: string, environment:string, configurationOverwrites: any = {}, wingsuitConfig: any = null): AppConfig {
-  let projectConfig = wingsuitConfig;
-  if (wingsuitConfig == null) {
-    projectConfig = require(`${process.cwd()}/wingsuit.config`)
-  }
+
+export function resolveConfig(appName: string, environment:string = 'development', configurationOverwrites: any = {}, wingsuitConfig: any = null): AppConfig {
+  const projectConfig = wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
   const mergedConfig = merge(configStub.wingsuit, projectConfig);
   let appConfig = mergedConfig.apps[appName];
   const rootPath = process.cwd();
@@ -37,6 +35,5 @@ export function resolveConfig(appName: string, environment:string, configuration
   appConfig.name = appName;
   appConfig.namespaces = designSystem.namespaces;
   appConfig.absDesignSystemPath = path.join(appConfig.absRootPath, designSystem.path);
-  console.log(appConfig);
   return appConfig;
 }

@@ -16,6 +16,10 @@ export {default as Server} from './server/Server';
 
 const server = new Server();
 
+const merge = require('merge-deep');
+
+const configStub = require('./stubs/defaultWingsuitConfig.stub');
+
 server.addWebpackBundle("defaultBundle", DefaultBundle);
 server.addWebpackBundle("AssetBundle", AssetBundle);
 server.addWebpackBundle("TailwindBundle", TailwindBundle);
@@ -30,4 +34,10 @@ export function addAppPack(name, bundleClass: WebpackBundleConstructor) {
 }
 export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
   return server.generateWebpack(appConfig, webpacks);
+}
+
+export function getAppNames (wingsuitConfig: any = null) {
+  const projectConfig = wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
+  const mergedConfig = merge(configStub.wingsuit, projectConfig);
+  return Object.keys(mergedConfig.apps);
 }

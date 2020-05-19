@@ -13,9 +13,8 @@ program
   .action((options) => initiate(options));
 
 program
-  .command('generate')
-  .description('Install Wingsuit.')
-  .option('-f --folder <folder>', 'The target folder')
+  .command('generate-component')
+  .description('Generate Wingsuit component.')
   .option('-N --use-npm', 'Use npm to install deps')
   .action((options) => component(options));
 

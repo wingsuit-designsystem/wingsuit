@@ -1,0 +1,24 @@
+/**
+ * <%= name %>
+ */
+<% if (useCss) { %>
+
+// Module styles
+import './<%= name %>.css';
+<% } %><% if (useJavascriptHandler) { %>
+/**
+ * Components may need to run clean-up tasks if they are removed from DOM.
+ *
+ */
+// eslint-disable-next-line no-unused-vars
+export function disable() {}
+
+/**
+ * Each component has a chance to run when its enable function is called.
+ *
+ */
+export function enable() {
+}
+
+export default enable;
+<% } %>

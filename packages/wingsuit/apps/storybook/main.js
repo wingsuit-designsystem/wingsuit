@@ -1,12 +1,15 @@
-const wingsuiteCore = require('@wingsuit-designsystem/core');
+const wingsuitCore = require('@wingsuit-designsystem/core');
 
 module.exports = {
+  stories: ['./_patterns/**/*.stories.js'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-viewport',
     '@storybook/addon-knobs',
   ],
   webpackFinal: (config) => {
-    return wingsuiteCore.getAppPack(wingsuiteCore.resolveConfig("storybook", "development"), [config]);
+    return wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [
+      config,
+    ]);
   },
 };

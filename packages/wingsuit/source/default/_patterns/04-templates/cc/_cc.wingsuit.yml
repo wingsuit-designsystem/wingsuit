@@ -1,6 +1,6 @@
-<%= underscoreName %>:
-  use: "@<%= cleanPatternType %>/<%= name %>/_<%= name %>.twig"
-  label: <%= name %>
+cc:
+  use: "@templates/cc/_cc.twig"
+  label: cc
   description: Example description
   fields:
     field_1:
@@ -10,6 +10,7 @@
   settings:
     setting_1:
       type: select
+      label: Setting 1
       options:
         option_1: Value 1
       preview: value_1
