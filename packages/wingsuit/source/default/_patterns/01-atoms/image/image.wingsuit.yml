@@ -15,6 +15,10 @@ image:
     bg:
       label: Background
   settings:
+    circle:
+      label: Circle
+      type: boolean
+      default_value: false
     placeholder:
       label: Placeholder
       type: boolean

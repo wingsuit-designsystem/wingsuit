@@ -19,6 +19,7 @@ module.exports = {
       red: '#D6ABAE',
       beige: '#E7C689',
       balzac_blue: '#97b5bd',
+      light_green: '#f5f5f5',
       green: '#deede8',
       blue: '#97B5BD',
       primary: '#fcaca9',

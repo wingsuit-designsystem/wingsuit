@@ -15,7 +15,7 @@
   variant == 'horizontal' ? 'block md:flex',
   variant == 'circle' ? '',
   variant == 'rectangle' ? '',
-]) | sort | join(' ') | trim  %}
+]) | sort | join(' ') | trim %}
 
 {% set content_classes = [
   variant == 'horizontal'?'block pl-4',
@@ -24,7 +24,7 @@
 ] | sort | join(' ') | trim %}
 {#image_classes#}
 {% set image_classes = [
-  variant == 'circle'?''
+  variant == 'circle'?'<style>img {@apply rounded-full; }</style>'
 ] | sort | join(' ') | trim %}
 {# Preheadline Classes #}
 {% set preheadline_classes = [
@@ -48,7 +48,7 @@
   variant == 'horizontal'?'block',
   'text-base',
   'mb-10',
-  'text-gray-light',
+  'text-gray-dark',
   'font-sans',
 ] | sort | join(' ') | trim %}
 {# Defaults: #}
@@ -60,36 +60,36 @@
 {% endif %}
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 {# Component #}
-<{{element}} {{ attributes }}>
-  <div class="{{ image_classes }}">
-    {% block image %}
-      {{ image }}
+<{{ element }} {{ attributes }}>
+<div class="{{ image_classes }}">
+  {% block image %}
+    {{ image }}
+  {% endblock %}
+</div>
+<div class="{{ content_classes }}">
+  {% if preheadline is not empty %}
+    <div {{ attributes|default(create_attribute()).addClass([
+      'text-base',
+      'mb-1',
+      'uppercase',
+      'text-gray-light',
+      'font-sans',
+    ] | sort | join(' ') | trim) }}>
+      {% block preheadline %}
+        {{ preheadline }}
+      {% endblock %}
+    </div>
+  {% endif %}
+  <{{ headline__element }} class="{{ headline_classes }}">
+  {{ headline }}
+</{{ headline__element }}>
+{% if text is not empty %}
+  <div class="{{ text_classes }}">
+    {% block text %}
+      {{ text }}
     {% endblock %}
   </div>
-  <div class="{{ content_classes }}">
-    {% if preheadline is not empty  %}
-      <div {{ attributes|default(create_attribute()).addClass([
-        'text-base',
-        'mb-1',
-        'uppercase',
-        'text-gray-light',
-        'font-sans',
-        ] | sort | join(' ') | trim) }}>
-        {% block preheadline %}
-          {{ preheadline }}
-        {% endblock %}
-      </div>
-    {% endif %}
-    <{{headline__element}} class="{{ headline_classes }}">
-      {{ headline }}
-    </{{headline__element}}>
-    {% if text is not empty %}
-      <div class="{{ text_classes }}">
-        {% block text %}
-          {{ text }}
-        {% endblock %}
-      </div>
-    {% endif %}
+{% endif %}
     {% set button_content = button %}
     {% if button is not empty %}
       {% embed '@atoms/button/_button.twig' with {variant: 'primary', } %}
@@ -98,5 +98,13 @@
         {% endblock %}
       {% endembed %}
     {% endif %}
-  </div>
-</{{element}}>
+    {% if icon is not empty %}
+      {% for icon in icons %}
+        {% include "@atoms/svg/_svg--icon.twig" with {
+          size: 'w-6 h-6',
+          icon: icon
+        } %}
+      {% endfor %}
+    {% endif %}
+</div>
+</{{ element }}>
