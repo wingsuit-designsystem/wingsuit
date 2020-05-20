@@ -56,7 +56,7 @@ export default class extends Generator {
         choices({app}) {
           const config = resolveConfig(app);
           // Return array of atomic folders within the app's design system
-          return readdirSync(`${config.absDesignSystemPath}/_patterns`, {
+          return readdirSync(`${config.absDesignSystemPath}/patterns`, {
             withFileTypes: true,
           }).filter(folder => folder.isDirectory());
         },
@@ -126,14 +126,14 @@ export default class extends Generator {
   getDsComponentPath() {
     const {app, name, patternType} = this.props;
     const config = resolveConfig(app);
-    return join(config.absDesignSystemPath, '_patterns', patternType, name);
+    return join(config.absDesignSystemPath, 'patterns', patternType, name);
   }
 
   // Return path to the design system's component folder
   getAppComponentPath() {
     const {app, name, patternType} = this.props;
     const config = resolveConfig(app);
-    return join(config.absAppPath, '_patterns', patternType, name);
+    return join(config.absAppPath, 'patterns', patternType, name);
   }
 
   writing() {
