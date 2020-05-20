@@ -5,7 +5,7 @@
 import svg4everybody from 'svg4everybody';
 
 // Module template
-import './_svg.twig';
+import './svg.twig';
 import './_svg--icon.twig';
 
 export const name = 'svg';

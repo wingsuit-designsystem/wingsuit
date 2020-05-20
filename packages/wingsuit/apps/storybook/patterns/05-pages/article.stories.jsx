@@ -6,4 +6,4 @@ const twigTemplate = require('./article.twig');
 
 export default { title: '05-pages/Article' };
 
-export const Article2 = () => <RenderTwig data={twigTemplate}></RenderTwig>;
+export const Article = () => <RenderTwig data={twigTemplate}></RenderTwig>;

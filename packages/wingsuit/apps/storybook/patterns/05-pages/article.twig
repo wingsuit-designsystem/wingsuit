@@ -20,11 +20,11 @@
     {% endembed %}
     <div class="block md:flex pt-10">
       <div class="w-full md:w-1/3 pr-2">
-        {% embed '@molecules/card/_card.twig' with {
+        {% embed '@molecules/card/card.twig' with {
           variant: 'rectangle',
         } only %}
           {% block image %}
-            {% include "@atoms/image/_image.twig" with {
+            {% include "@atoms/image/image.twig" with {
               id: image,
               variant: 'primary',
               src: 'https://picsum.photos/800/400',
@@ -37,7 +37,7 @@
           variant: 'circle',
         } only %}
           {% block image %}
-            {% include "@atoms/image/_image.twig" with {
+            {% include "@atoms/image/image.twig" with {
               variant: 'primary',
               src: 'https://picsum.photos/800/400',
             } %}
@@ -49,7 +49,7 @@
           variant: 'rectangle',
         } only %}
           {% block image %}
-            {% include "@atoms/image/_image.twig" with {
+            {% include "@atoms/image/image.twig" with {
               id: image,
               variant: 'primary',
               src: 'https://picsum.photos/800/400',
@@ -61,18 +61,18 @@
   </div>
 {% endset %}
 
-{% embed '@organisms/header/_header.twig' %}
+{% embed '@organisms/header/header.twig' %}
   {% block burger_menu %}
     {% include '@atoms/svg/_svg--icon.twig' with {"icon": "menu", "size": "w-7"} %}
   {% endblock %}
   {% block logo %}
-    {% include "@atoms/image/_image.twig" with {
+    {% include "@atoms/image/image.twig" with {
       variant: 'primary',
       src: paths.images ~ '/dump.png',
     } %}
   {% endblock %}
   {% block menu %}
-    {% include '@molecules/menu/_menu.twig' with {items: wingsuit.primary_menu.items, variant: 'primary'} %}
+    {% include '@molecules/menu/menu.twig' with {items: wingsuit.primary_menu.items, variant: 'primary'} %}
   {% endblock %}
 {% endembed %}
 
@@ -82,8 +82,8 @@
   {% endblock %}
 </main>
 
-{% embed '@organisms/footer/_footer.twig' %}
+{% embed '@organisms/footer/footer.twig' %}
   {% block footer_menu %}
-    {% include '@molecules/menu/_menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer'} %}
+    {% include '@molecules/menu/menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer'} %}
   {% endblock %}
 {% endembed %}

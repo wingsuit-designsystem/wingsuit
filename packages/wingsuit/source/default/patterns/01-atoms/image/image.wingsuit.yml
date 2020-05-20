@@ -1,5 +1,5 @@
 image:
-  use: "@atoms/image/_image.twig"
+  use: "@atoms/image/image.twig"
   label: Image
   description: Image component
   fields:

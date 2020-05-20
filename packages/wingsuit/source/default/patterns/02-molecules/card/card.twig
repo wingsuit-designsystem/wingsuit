@@ -92,7 +92,7 @@
     {% endif %}
     {% set button_content = button %}
     {% if button is not empty %}
-      {% embed '@atoms/button/_button.twig' with {variant: 'primary', } %}
+      {% embed '@atoms/button/button.twig' with {variant: 'primary', } %}
         {% block button %}
           {{ button }}
         {% endblock %}
