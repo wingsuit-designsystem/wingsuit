@@ -97,7 +97,7 @@ function getProps(variant) {
       }
     }
   });
-  const groupFields = 'fields';
+  const groupFields = 'Fields';
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
     if (field.getType() !== 'pattern') {

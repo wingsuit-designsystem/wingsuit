@@ -9,7 +9,7 @@ export default class TailwindConfigExport extends BaseWebpackBundle {
     plugins: [
       new Tailwind2JsonPlugin(
         path.resolve(`${this.appConfig.absRootPath}/tailwind.config`),
-        path.resolve(`${this.appConfig.absAppPath}/_config/_silo/tailwind.json`)
+        path.resolve(`${this.appConfig.absAppPath}/config/silo/tailwind.json`)
       )
     ]
   }

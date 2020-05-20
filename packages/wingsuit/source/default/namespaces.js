@@ -4,7 +4,7 @@
 
 const path = require('path');
 
-const patterns = path.resolve(__dirname, '_patterns');
+const patterns = path.resolve(__dirname, 'patterns');
 
 module.exports = {
   tokens: path.resolve(__dirname, 'tokens'),

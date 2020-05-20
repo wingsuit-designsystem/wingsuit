@@ -1,7 +1,6 @@
 const wingsuitCore = require('@wingsuit-designsystem/core');
 
 module.exports = {
-  stories: ['./_patterns/**/*.stories.js'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-viewport',

@@ -29,7 +29,7 @@ import importAll from '../../tools/webpack/import-all';
  * Usually the first argument to require.context() would be a folder path, but
  * we have our Atomic Design paths aliased, i.e.
  *
- *   'atoms' is actually './_patterns/01-atoms'
+ *   'atoms' is actually './patterns/01-atoms'
  *
  * IMPORTANT: the regex must be "statically analyzable", meaning we cannot set
  * the regex to a variable. (https://github.com/webpack/webpack/issues/4772).
@@ -41,7 +41,7 @@ import importAll from '../../tools/webpack/import-all';
 
 const atomicContext = require.context(
   // From patterns folder
-  './_patterns',
+  './patterns',
   // Deep dive all directories below
   true,
   // Get the first folders after atoms|molecules|organisms

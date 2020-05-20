@@ -5,10 +5,10 @@ const namespaces = require('../../source/default/namespaces');
 configure(
   module,
   [
-    require.context('./_patterns', true, /\.stories(\.js|\.mdx)$/),
-    require.context('../../source/default/_patterns', true, /\.stories\.js$/),
+    require.context('./patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
+    require.context('../../source/default/patterns', true, /\.stories(\.js|\.mdx)$/),
   ],
-  require.context('./_config', true, /\.json|\.ya?ml$/),
-  require.context('../../source/default/_patterns', true, /\.twig$/),
+  require.context('./config', true, /\.json|\.ya?ml$/),
+  require.context('../../source/default/patterns', true, /\.twig$/),
   namespaces
 );

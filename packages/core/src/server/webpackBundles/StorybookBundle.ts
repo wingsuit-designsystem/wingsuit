@@ -31,7 +31,7 @@ export default class StorybookBundle extends BaseWebpackBundle {
           path.resolve(
             this.appConfig.namespaces.atoms, 'svg/svg'
           ),
-          path.resolve(`${this.appConfig.absAppPath}/_config/_silo/svgs.json`)
+          path.resolve(`${this.appConfig.absAppPath}/config/silo/svgs.json`)
         ),
       ],
       stats: {
