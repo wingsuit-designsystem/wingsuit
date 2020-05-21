@@ -1,6 +1,18 @@
+import React from 'react';
 import { configure } from '@wingsuit-designsystem/storybook';
+import './_drupal.js';
+import { useEffect } from '@storybook/client-api';
 
 const namespaces = require('../../source/default/namespaces');
+
+import { addDecorator } from '@storybook/react';
+
+addDecorator(storyFn => {
+
+  return <div style={{background: '#dedede'}}>{useEffect(() => Drupal.attachBehaviors({}, {}), []) }{storyFn()}</div>
+}
+
+);
 
 configure(
   module,
