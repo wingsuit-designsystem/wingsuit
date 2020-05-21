@@ -1,23 +1,10 @@
-{# This pattern can be embedded directly by Drupal.
- # Overwrite the blocks and be happy.
- #}
 {% set content %}
   <div class="max-w-container px-4 m-auto">
     <div class="text-center w-1/2 m-auto pb-8 text-gray-dark">{{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}</div>
-    {% embed '@molecules/card/_card.twig' with {
-      variant: 'horizontal',
-      headline: 'Card title ',
-      text: 'It’s grown to become something of an artform, and there are countless filler text generators sprinkled around the web that provide a modern take on this classic staple of the design industry.',
+    {{ pattern_preview('card', 'horizontal', {
+      headline: 'Card title',
       button: 'more',
-    }  only %}
-      {% block image %}
-        {% include "@atoms/image/_image.twig" with {
-          id: image,
-          variant: 'primary',
-          src: 'https://picsum.photos/1000/1100',
-        } %}
-      {% endblock %}
-    {% endembed %}
+    }) }}
     <div class="block md:flex pt-10">
       <div class="w-full md:w-1/3 pr-2">
         {% embed '@molecules/card/card.twig' with {
@@ -25,9 +12,8 @@
         } only %}
           {% block image %}
             {% include "@atoms/image/image.twig" with {
-              id: image,
-              variant: 'primary',
-              src: 'https://picsum.photos/800/400',
+              placeholder: true,
+              style: '16x9_xs_sc'
             } %}
           {% endblock %}
         {% endembed %}
@@ -35,24 +21,24 @@
       <div class="w-full md:w-1/3 px-2">
         {% embed '@molecules/card/_card.twig' with {
           variant: 'circle',
+          circle: true
         } only %}
           {% block image %}
-            {% include "@atoms/image/image.twig" with {
-              variant: 'primary',
-              src: 'https://picsum.photos/800/400',
+            {% include "@atoms/image/_image.twig" with {
+              placeholder: true,
+              style: '16x9_xs_sc'
             } %}
           {% endblock %}
         {% endembed %}
       </div>
       <div class="w-full md:w-1/3 pl-2">
-        {% embed '@molecules/card/_card.twig' with {
+        {% embed '@molecules/card/card.twig' with {
           variant: 'rectangle',
         } only %}
           {% block image %}
-            {% include "@atoms/image/image.twig" with {
-              id: image,
-              variant: 'primary',
-              src: 'https://picsum.photos/800/400',
+            {% include "@atoms/image/_image.twig" with {
+              placeholder: true,
+              style: '16x9_xs_sc'
             } %}
           {% endblock %}
         {% endembed %}
@@ -68,7 +54,7 @@
   {% block logo %}
     {% include "@atoms/image/image.twig" with {
       variant: 'primary',
-      src: paths.images ~ '/dump.png',
+      src: file_url('dump.png'),
     } %}
   {% endblock %}
   {% block menu %}

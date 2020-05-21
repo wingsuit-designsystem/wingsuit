@@ -66,6 +66,6 @@ export function renderData(path: string, data: {}, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const mergedVariables = Object.assign(variables, {'wingsuit': storage.getGlobals()})
+  const mergedVariables = Object.assign(variables, storage.getGlobals())
   return rendererImpl.render(path, path, mergedVariables);
 }

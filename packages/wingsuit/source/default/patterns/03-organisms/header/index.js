@@ -3,6 +3,6 @@
  */
 
 // Module template
-import './_header.twig';
+import './header.twig';
 
 export const name = 'header';

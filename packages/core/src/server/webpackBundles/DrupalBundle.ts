@@ -29,20 +29,4 @@ export default class DrupalBundle extends BaseWebpackBundle {
       ],
     },
   }
-
-  protected developmentWebpackConfig: {} = {
-    stats: {
-      children: false,
-      entrypoints: false,
-      chunks: true,
-    },
-  }
-
-  protected productionWebpackConfig: {} = {
-    stats: {
-      children: false,
-      entrypoints: false,
-      chunks: true,
-    },
-  };
 }

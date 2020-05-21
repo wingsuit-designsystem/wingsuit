@@ -1,6 +1,6 @@
 import IRenderer from "./IRenderer";
 import {TwingNamespaceLoader} from "./TwingNamespaceLoader";
-import {twigAttributeFunction, twigItok,twigFileUrl} from "./twigExtensions";
+import {twigAttributeFunction, twigItok, twigFileUrl} from "./twigExtensions";
 import {renderPattern, renderPatternPreview} from "./twigRenderEngine";
 
 const {TwingEnvironment, TwingFilter, TwingFunction} = require('twing');

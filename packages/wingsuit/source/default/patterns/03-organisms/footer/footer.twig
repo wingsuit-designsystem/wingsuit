@@ -1,9 +1,15 @@
-<footer class="bg-gray-xxlight pt-13 pb-11">
-  <div class="max-w-container mx-auto md:flex md:flex-no-wrap flex-wrap px-4">
-    <div class="md:pr-4 md:w-1/6 flex-shrink pr-0">
-      {% block privacy %}
-        {{ privacy }}
-      {% endblock %}
+{#
+/**
+ * @file
+ * footer
+ *
+ */
+#}
+
+<footer class="bg-primary w-full pt-13 pb-11">
+  <div class="max-w-container mx-auto px-4 block md:flex justify-between text-center md:text-left">
+    <div class="py-6  font-sans text-tiny text-gray-dark">
+      {{ "Wingsuit Flyer"|t }}
     </div>
     <div class="flex">
       {% block footer_menu %}
@@ -12,5 +18,3 @@
     </div>
   </div>
 </footer>
-
-

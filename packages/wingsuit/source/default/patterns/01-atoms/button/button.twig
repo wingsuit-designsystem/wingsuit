@@ -22,7 +22,7 @@
   variant == 'disabled' ? 'bg-disabled text-gray-xmedium',
   color,
 ] | sort | join(' ') | trim) }}>
-{{ button_content }}
+{{ button_content|striptags }}
   {% if button_svg is not empty %}
 
     {% include "@atoms/svg/_svg--icon.twig" with {

@@ -8,11 +8,8 @@ const namespaces = require('../../source/default/namespaces');
 import { addDecorator } from '@storybook/react';
 
 addDecorator(storyFn => {
-
-  return <div style={{background: '#dedede'}}>{useEffect(() => Drupal.attachBehaviors({}, {}), []) }{storyFn()}</div>
-}
-
-);
+  return <div>{useEffect(() => Drupal.attachBehaviors({}, {}), []) }{storyFn()}</div>
+});
 
 configure(
   module,

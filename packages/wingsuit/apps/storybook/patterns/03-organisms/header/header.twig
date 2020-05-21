@@ -1,3 +1,4 @@
+
 {% embed '@organisms/header/header.twig' %}
   {% block burger_menu %}
     {% include '@atoms/svg/_svg--icon.twig' with {"icon": "menu", "size": "w-7"} %}
@@ -5,7 +6,8 @@
   {% block logo %}
     {% include "@atoms/image/image.twig" with {
       variant: 'primary',
-      src: paths.images ~ '/dump.png',
+      placeholder: false,
+      src: file_url('ws-assets://images/dump.png') ,
     } %}
   {% endblock %}
   {% block menu %}

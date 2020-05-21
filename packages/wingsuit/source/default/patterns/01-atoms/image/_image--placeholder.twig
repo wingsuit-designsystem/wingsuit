@@ -44,13 +44,12 @@
 {{- imgSrc -}}
 {% endmacro %}
 
-{% set placeholderStyleKey = style|default('small_16x9_scale_and_crop') %}
+{% set placeholderStyleKey = style|default('16x9_xxxs_sc') %}
 {% set isResponsiveImage = false %}
 
 {% set imageStyles = imageConfig.styles %}
 {% set imageStylesResponsive = imageConfig.stylesResponsive %}
 {% set imageBreakpoints = imageConfig.breakpoints %}
-
 {% set placeholderStyle = imageStyles[placeholderStyleKey] %}
 {% if placeholderStyle is empty %}
   {% set placeholderStyle = imageStylesResponsive[placeholderStyleKey] %}
@@ -64,7 +63,7 @@ No image style {{ style }} found!
   {% if isResponsiveImage == false %}
     {% set imgSrc = self.get_holderjs_src(placeholderStyle) %}
     {% if variant == 'primary' %}
-      <img src="{{- imgSrc|trim -}}" alt="A placeholder image">
+      <img {% if circle == true %} class="rounded-full" {% endif %} src="{{- imgSrc|trim -}}" alt="A placeholder image">
     {% elseif variant == 'bg' %}
       <div data-background-src="?{{- imgSrc -}}" class="bg-img {{ image_classes }}"></div>
     {% endif %}

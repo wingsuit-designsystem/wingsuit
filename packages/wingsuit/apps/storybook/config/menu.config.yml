@@ -1,20 +1,20 @@
-primary_menu:
-  items:
-    - title: galerie
-      link: "#"
-      in_active_trail: true
-    - title: kollektionen
-      link: "#"
-    - title: shop
-      link: "#"
-      icon: arrow-up
-    - title: kontakt
-      link: "#"
-footer_menu:
-  items:
-    - title: Datenschutz
-      link: "#"
-      in_active_trail: true
-    - title: Impressum
-      link: "#"
-
+wingsuit:
+  primary_menu:
+    items:
+      - title: galerie
+        link: "#"
+        in_active_trail: true
+      - title: kollektionen
+        link: "#"
+      - title: shop
+        link: "#"
+        icon: arrow-up
+      - title: kontakt
+        link: "#"
+  footer_menu:
+    items:
+      - title: Datenschutz
+        link: "#"
+        in_active_trail: true
+      - title: Impressum
+        link: "#"
