@@ -8,7 +8,7 @@
   text: String: The text on the card.
   alignment: center
 #}
-{% set classes = classes|default([])|merge([
+{% set classes = ([
   alignment == 'center'?'text-center': '',
   'group hover:no-underline',
   variant == 'default' ? 'block',

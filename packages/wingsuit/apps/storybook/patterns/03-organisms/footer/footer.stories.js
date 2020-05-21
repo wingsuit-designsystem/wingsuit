@@ -1,7 +1,7 @@
 import {RenderTwig} from "@wingsuit-designsystem/storybook";
 import React from "react";
 
-export default { title: '03-organisms/footer' };
+export default { title: '03-organisms/Footer' };
 
 const twigTemplate = require('./footer.twig');
 

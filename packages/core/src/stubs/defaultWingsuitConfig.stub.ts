@@ -14,7 +14,7 @@ export const wingsuit = {
       type: "storybook",
       path: "./apps/storybook",
       cssMode: "hot",
-      distFolder: "dist",
+      distFolder: "dist/app-storybook",
       assetBundleFolder: "assets",
       designSystem: "default",
       webpackBundles: [
@@ -29,7 +29,7 @@ export const wingsuit = {
       type: "drupal",
       path: "./apps/drupal",
       cssMode: "extract",
-      distFolder: "dist",
+      distFolder: "dist/app-drupal",
       assetBundleFolder: "assets",
       designSystem: "default",
       webpackBundles: [

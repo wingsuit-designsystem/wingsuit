@@ -8,5 +8,8 @@
  *  - Inherit variables from @atoms/_image.twig
  */
 #}
-
-<img src="{{ src }}" alt="{{ alt }}" />
+{% if image is empty and src is not empty %}
+  <img {{ img_attributes }} src="{{ src }}" alt="{{ alt }}" />
+{% else %}
+  {{ image }}
+{% endif %}

@@ -26,7 +26,10 @@ export default class TwigAttribute {
     }
   }
 
-  addClass(className = '') {
+  addClass(className:string|null = '') {
+    if (className == null) {
+      return this;
+    }
     if (this.attributes.get('class') == null) {
       this.attributes.set('class', []);
     }

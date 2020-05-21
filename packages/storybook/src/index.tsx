@@ -120,7 +120,6 @@ function getStories(pattern: Pattern, module) {
       notes: variant.getDescription(),
       componentSubtitle: pattern.getDescription(),
       docs: {
-
         patternVariant: variant,
         page: () => (
           <>

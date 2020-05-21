@@ -9,15 +9,15 @@
  *  - src [string]: Specifies the URL of an image.
  *  - alt [string]: Specifies an alternate text for an image.
  *  - placeholder [bool]: Specifies image as placeholder (see _image--placeholder.twig).
- *  - style [string]: Specifies image style.
  */
 #}
+{% set img_attributes = create_attribute().addClass(size) %}
 
-
-
+{%- set image -%}
 {% if placeholder == true %}
-  {% include '@atoms/image/_image--placeholder.twig' with {variant: 'primary'} %}
-{% endif %}
+{%- include '@atoms/image/_image--placeholder.twig' -%}
+{%- endif -%}
+{%- endset -%}
 
 {% if variant == 'primary' %}
   {% include '@atoms/image/_image--primary.twig' %}

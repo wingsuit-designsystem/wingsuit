@@ -7,7 +7,7 @@ export default class DefaultBundle extends BaseWebpackBundle {
 
   protected sharedWebpackConfig:{} = {
     output: {
-      path: path.join(this.appConfig.absDesignSystemPath, this.appConfig.absDistFolder, `${this.appConfig.name}-${this.appConfig.type}`, this.appConfig.assetBundleFolder),
+      path: path.join(this.appConfig.absDistFolder, this.appConfig.assetBundleFolder),
     },
     resolve: {
       alias: this.appConfig.namespaces,

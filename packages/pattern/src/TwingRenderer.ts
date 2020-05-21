@@ -15,17 +15,17 @@ export class TwingRenderer implements IRenderer {
     this.environment = new TwingEnvironment(loader, {autoescape: false});
 
     Object.keys(filters).forEach((filterName) => {
-
       const filter = filters[filterName];
       this.environment.addFilter(new TwingFilter(filterName, filter));
-
     });
+
     Object.keys(functions).forEach((functionName) => {
       if (functionName !== 'file_url') {
         const func = functions[functionName];
         this.environment.addFunction(new TwingFunction(functionName, func));
       }
-    })
+    });
+
     this.environment.addFunction(new TwingFunction('create_attribute', twigAttributeFunction));
     this.environment.addFunction(new TwingFunction('pattern_preview', renderPatternPreview));
     this.environment.addFunction(new TwingFunction('ws_itok', twigItok));

@@ -1,7 +1,12 @@
 import {RenderTwig} from "@wingsuit-designsystem/storybook";
 import React from "react";
 
-export default { title: '05-pages/article' };
+export default {
+  title: '05-pages/article',
+  parameters: {
+    layout: 'fullscreen',
+  }
+};
 
 const template = require('./article.twig');
 

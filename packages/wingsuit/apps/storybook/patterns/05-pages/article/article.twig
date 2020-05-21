@@ -19,12 +19,12 @@
         {% endembed %}
       </div>
       <div class="w-full md:w-1/3 px-2">
-        {% embed '@molecules/card/_card.twig' with {
+        {% embed '@molecules/card/card.twig' with {
           variant: 'circle',
           circle: true
         } only %}
           {% block image %}
-            {% include "@atoms/image/_image.twig" with {
+            {% include "@atoms/image/image.twig" with {
               placeholder: true,
               style: '16x9_xs_sc'
             } %}
@@ -36,7 +36,7 @@
           variant: 'rectangle',
         } only %}
           {% block image %}
-            {% include "@atoms/image/_image.twig" with {
+            {% include "@atoms/image/image.twig" with {
               placeholder: true,
               style: '16x9_xs_sc'
             } %}
@@ -48,15 +48,6 @@
 {% endset %}
 
 {% embed '@organisms/header/header.twig' %}
-  {% block burger_menu %}
-    {% include '@atoms/svg/_svg--icon.twig' with {"icon": "menu", "size": "w-7"} %}
-  {% endblock %}
-  {% block logo %}
-    {% include "@atoms/image/image.twig" with {
-      variant: 'primary',
-      src: file_url('dump.png'),
-    } %}
-  {% endblock %}
   {% block menu %}
     {% include '@molecules/menu/menu.twig' with {items: wingsuit.primary_menu.items, variant: 'primary'} %}
   {% endblock %}
