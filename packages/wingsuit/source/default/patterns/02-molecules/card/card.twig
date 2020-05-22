@@ -44,13 +44,6 @@
 ] | sort | join(' ') | trim %}
 
 {# text Classes #}
-{% set text_classes = [
-  variant == 'horizontal'?'block',
-  'text-base',
-  'mb-10',
-  'text-gray-dark',
-  'font-sans',
-] | sort | join(' ') | trim %}
 {# Defaults: #}
 {% set element = element|default('div') %}
 {% set headline__element = headline__element|default('h2') %}
@@ -84,7 +77,13 @@
   {{ headline }}
 </{{ headline__element }}>
 {% if text is not empty %}
-  <div class="{{ text_classes }}">
+  <div class="{{ [
+    variant == 'horizontal'?'block',
+    'text-base',
+    'mb-10',
+    'text-gray-dark',
+    'font-sans',
+  ] | sort | join(' ') | trim }}">
     {% block text %}
       {{ text }}
     {% endblock %}
