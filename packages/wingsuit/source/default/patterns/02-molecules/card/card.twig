@@ -8,42 +8,7 @@
   text: String: The text on the card.
   alignment: center
 #}
-{% set classes = ([
-  alignment == 'center'?'text-center': '',
-  'group hover:no-underline',
-  variant == 'default' ? 'block',
-  variant == 'horizontal' ? 'block md:flex',
-  variant == 'circle' ? '',
-  variant == 'rectangle' ? '',
-]) | sort | join(' ') | trim %}
 
-{% set content_classes = [
-  variant == 'horizontal'?'block pl-4',
-  variant == 'circle'?'hidden',
-  variant == 'rectangle'?'hidden'
-] | sort | join(' ') | trim %}
-{#image_classes#}
-{% set image_classes = [
-  variant == 'circle'?'<style>img {@apply rounded-full; }</style>'
-] | sort | join(' ') | trim %}
-{# Preheadline Classes #}
-{% set preheadline_classes = [
-  'text-base',
-  'mb-1',
-  'uppercase',
-  'text-gray-light',
-  'font-sans',
-] | sort | join(' ') | trim %}
-
-{# headline Classes #}
-{% set headline_classes = [
-  'font-serif',
-  'text-4xl',
-  'text-blue',
-  'group-hover:underline',
-] | sort | join(' ') | trim %}
-
-{# text Classes #}
 {# Defaults: #}
 {% set element = element|default('div') %}
 {% set headline__element = headline__element|default('h2') %}
@@ -51,44 +16,56 @@
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
-{# Component #}
-<{{ element }} {{ attributes }}>
-<div class="{{ image_classes }}">
-  {% block image %}
-    {{ image }}
-  {% endblock %}
-</div>
-<div class="{{ content_classes }}">
-  {% if preheadline is not empty %}
-    <div {{ attributes|default(create_attribute()).addClass([
-      'text-base',
-      'mb-1',
-      'uppercase',
-      'text-gray-light',
-      'font-sans',
-    ] | sort | join(' ') | trim) }}>
-      {% block preheadline %}
-        {{ preheadline }}
-      {% endblock %}
-    </div>
-  {% endif %}
-  <{{ headline__element }} class="{{ headline_classes }}">
-  {{ headline }}
-</{{ headline__element }}>
-{% if text is not empty %}
-  <div class="{{ [
-    variant == 'horizontal'?'block',
-    'text-base',
-    'mb-10',
-    'text-gray-dark',
-    'font-sans',
-  ] | sort | join(' ') | trim }}">
-    {% block text %}
-      {{ text }}
+
+<{{ element }} {{ attributes|default(create_attribute()).addClass([
+  alignment == 'center'?'text-center': '',
+  variant == 'default' ? 'block',
+  'group hover:no-underline',
+] | sort | join(' ') | trim) }}>
+  {#start of image div of the card#}
+  <div class="{{ image_classes }}">
+    {% block image %}
+      {{ image }}
     {% endblock %}
   </div>
-{% endif %}
+  {#content-wrapper div of the card#}
+  <div {{ attributes|default(create_attribute()).addClass([
+  ] | sort | join(' ') | trim) }}>
+    {#start of pre-headline div of the card#}
+    {% if preheadline is not empty %}
+      <div {{ attributes|default(create_attribute()).addClass([
+        'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
+      ] | sort | join(' ') | trim) }}>
+        {% block preheadline %}
+          {{ preheadline }}
+        {% endblock %}
+      </div>
+    {% endif %}
+    {#end pre-headline of div#}
+
+    {#start of headline div of the card#}
+    <{{ headline__element }} {{ attributes|default(create_attribute()).addClass([
+      'text-base', 'mb-1', 'uppercase', 'text-gray-light', 'font-sans',
+    ] | sort | join(' ') | trim) }}>
+      {% block headline %}
+        {{ headline }}
+      {% endblock %}
+    </{{ headline__element }}>
+    {#end headline of div#}
+
+    {#start of text div of the card#}
+    {% if text is not empty %}
+      <div {{ attributes|default(create_attribute()).addClass([
+        'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
+      ] | sort | join(' ') | trim) }}">
+        {% block text %}
+          {{ text }}
+        {% endblock %}
+      </div>
+    {% endif %}
+    {#end of text div#}
+
+    {#start of button div of the card#}
     {% set button_content = button %}
     {% if button is not empty %}
       {% embed '@atoms/button/button.twig' with {variant: 'primary', } %}
@@ -97,6 +74,9 @@
         {% endblock %}
       {% endembed %}
     {% endif %}
+    {#end of button div#}
+
+    {#start of icon div of the card#}
     {% if icon is not empty %}
       {% for icon in icons %}
         {% include "@atoms/svg/_svg--icon.twig" with {
@@ -105,5 +85,7 @@
         } %}
       {% endfor %}
     {% endif %}
-</div>
+    {#end of icon div#}
+  </div>
+  {#end of content-wrapper div#}
 </{{ element }}>
