@@ -1,0 +1,5 @@
+{% embed '@organisms/header/header.twig' %}
+  {% block menu %}
+    {% include '@molecules/menu/menu.twig' with {items: primary_menu.items, variant: 'primary'} %}
+  {% endblock %}
+{% endembed %}

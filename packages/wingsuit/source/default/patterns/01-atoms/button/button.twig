@@ -1,11 +1,13 @@
 {% set element = element|default('div') %}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set svg_size = svg_size|default('default') %}
+
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
 {%- set content = content|render -%}
+
 <{{ element }} {{ attributes.addClass([
   'px-4', 'py-2', 'leading-18', 'font-serif', 'uppercase', 'inline-block',
   variant == 'primary' ? 'bg-primary text-white',
@@ -15,7 +17,8 @@
   variant == 'disabled' ? 'bg-disabled text-gray-xmedium',
   color,
 ] | sort | join(' ') | trim) }}>
-{{ content }}
+
+{{ content|striptags }}
   {% if svg is not empty %}
 
     {% include "@atoms/svg/_svg--icon.twig" with {

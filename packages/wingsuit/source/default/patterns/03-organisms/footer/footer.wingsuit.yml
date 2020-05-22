@@ -3,7 +3,10 @@ footer:
   label: Footer
   description: The footer pattern.
   fields:
-    menu:
+    slogan:
+      type: text
+      label: Slogan
+    footer_menu:
       type: pattern
       label: Menu
       preview:

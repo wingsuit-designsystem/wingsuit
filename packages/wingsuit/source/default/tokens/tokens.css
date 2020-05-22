@@ -14,7 +14,7 @@
     url('fonts/source-serif/SourceSerifPro-Bold.woff') format('woff'),
     url('fonts/source-serif/SourceSerifPro-Bold.woff2') format('woff2');
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-display: auto;
 }
 
@@ -27,7 +27,6 @@
   font-weight: 400;
   font-display: auto;
 }
-
 
 body {
   font-family: 'Roboto';
