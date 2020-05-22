@@ -1,8 +1,7 @@
 content:
-  join():
-    include():
-      pattern: molecules-card
+  - join():
+    - include():
+      pattern: templates-article
       with:
-        variant: horizontal
         attributes:
           Attribute(): {}

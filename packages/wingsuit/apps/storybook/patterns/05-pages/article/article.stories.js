@@ -1,5 +1,7 @@
 import {RenderTwig} from "@wingsuit-designsystem/storybook";
 import React from "react";
+import "templates/article";
+
 
 export default {
   title: '05-pages/article',

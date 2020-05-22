@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['SourceSans', '-apple-system', 'BlinkMacSystemFont'],
+      serif: ['Roboto', 'sans-serif'],
     },
     maxWidth: {
       'none': 'none',
@@ -43,5 +44,6 @@ module.exports = {
     backgroundColor: ['responsive', 'hover', 'group-hover'],
     textDecoration: ['responsive', 'hover', 'group-hover'],
     textColor: ['responsive', 'hover', 'group-hover'],
+    fontFamily: ['responsive', 'hover', 'focus'],
   },
 };

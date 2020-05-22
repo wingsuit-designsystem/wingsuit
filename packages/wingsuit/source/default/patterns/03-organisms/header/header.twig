@@ -11,14 +11,19 @@
 
 <nav class="z-50 h-20 fixed w-full bg-green border-b lg:border-b-0 border-gray-xlight top-0" role="navigation"
      x-data="{ open: false }">
-  <div
-    class="max-w-container mx-auto p-6 lg:py-6 lg:px-2 justify-between relative flex flex-wrap items-center md:flex-no-wrap">
-    <a href="{{ path('<front>') }}" class="mr-4 w-155 lg:mr-3">
-      {% include "@atoms/image/image.twig" with {
-        variant: 'primary',
-        placeholder: false,
-        size: 'w-8',
-        src: file_url('ws-assets://images/logo.png') ,
+  <div class="max-w-container mx-auto p-6 lg:py-6 lg:px-2 justify-between relative flex flex-wrap items-center md:flex-no-wrap">
+    <a href="{{ path('<front>') }}" class="mr-4 -mt-6 w-155 lg:mr-3 flex">
+      <div class="hidden lg:block pr-2">
+        {% include "@atoms/image/image.twig" with {
+          variant: 'primary',
+          placeholder: false,
+          size: 'w-20',
+          src: file_url('ws-assets://images/gug_logo_img.png') ,
+        } only %}
+      </div>
+      {% include "@atoms/svg/_svg--icon.twig" with {
+        size: 'w-20 h-16',
+        icon: 'gug_logo_typo'
       } %}
     </a>
     <div class="burger flex-container align-right absolute right-0 mr-6 flex items-center lg:hidden cursor-pointer"
