@@ -16,6 +16,8 @@
 {%- set image -%}
 {% if placeholder == true %}
 {%- include '@atoms/image/_image--placeholder.twig' -%}
+{% else %}
+{{- image -}}
 {%- endif -%}
 {%- endset -%}
 

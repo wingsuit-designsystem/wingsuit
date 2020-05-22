@@ -5,10 +5,11 @@ image:
   fields:
     image:
       type: text
-      label: The image field. The field will be generated for placeholder images.
+      label: The image field.
+      description: The image provided by Drupal.
     caption:
       type: text
-      label: The image caption text.
+      label: The caption text.
   variants:
     primary:
       label: Primary
@@ -19,10 +20,23 @@ image:
       label: Circle
       type: boolean
       default_value: false
+    size:
+      label: Size
+      type: select
+      options:
+        w-4: "Width: Small"
+        w-8: "Width: Medium"
+        w-12: "Width: Large"
+        h-4: "Height: Small"
+        h-8: "Height: Medium"
+        h-12: "Height: Large"
     placeholder:
       label: Placeholder
       type: boolean
       default_value: true
+    src:
+      label: Src
+      type: textfield
     style:
       label: Style
       type: select

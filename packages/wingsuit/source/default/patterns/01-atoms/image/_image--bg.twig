@@ -4,9 +4,6 @@
  * image--bg
  *   Implements background images.
  *
- * Available variables for image:
- *  - Inherit variables from @atoms/_image.twig
- *  - image.repeat [string]: Background repeat value for image.
  */
 #}
-<div style="background-image: url({{ src }}); background-repeat: {{ image.repeat|default('no-repeat') }}" class="{{ image_classes }}"></div>
+<div style="min-height: 30px; background-image: url('{{ file_url(src|default('images/logo.png')) }}'); background-repeat: no-repeat" {{ img_attributes }}></div>
