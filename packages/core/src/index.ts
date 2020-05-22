@@ -6,7 +6,7 @@ import StorybookBundle from "./server/webpackBundles/StorybookBundle";
 import DrupalBundle from "./server/webpackBundles/DrupalBundle";
 import TwingBundle from "./server/webpackBundles/TwingBundle";
 import TwigBundle from "./server/webpackBundles/TwigBundle";
-import DefaultBundle from "./server/webpackBundles/defaultBundle";
+import DefaultBundle from "./server/webpackBundles/DefaultBundle";
 import AppConfig from "./AppConfig";
 import WebpackBundleConstructor from "./server/WebpackBundleConstructor";
 
@@ -20,7 +20,7 @@ const merge = require('merge-deep');
 
 const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
-server.addWebpackBundle("defaultBundle", DefaultBundle);
+server.addWebpackBundle("DefaultBundle", DefaultBundle);
 server.addWebpackBundle("AssetBundle", AssetBundle);
 server.addWebpackBundle("TailwindBundle", TailwindBundle);
 server.addWebpackBundle("TwingBundle", TwingBundle);

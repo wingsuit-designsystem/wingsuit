@@ -2,6 +2,7 @@ export const wingsuit = {
   designSystems: {
     default: {
       path: "source/default",
+      patternPath: "patterns",
       namespaces: {}
     }
   },
@@ -18,7 +19,7 @@ export const wingsuit = {
       assetBundleFolder: "assets",
       designSystem: "default",
       webpackBundles: [
-        "defaultBundle",
+        "DefaultBundle",
         "AssetBundle",
         "TwingBundle",
         "StorybookBundle",
@@ -33,7 +34,7 @@ export const wingsuit = {
       assetBundleFolder: "assets",
       designSystem: "default",
       webpackBundles: [
-        "defaultBundle",
+        "DefaultBundle",
         "AssetBundle",
         "DrupalBundle",
         "CssBundle"

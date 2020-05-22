@@ -2,11 +2,11 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_it.svg" width="240px">
 </p>
 
-### Wingsuit is an open source designsystem to build reusable Twig Components with [Storybook](https://storybook.js.org/) for Drupal - with page and development speed in mind.
+### Wingsuit is an open source design system to build [UI Patterns](https://www.drupal.org/project/ui_patterns) (and|or) Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 
-1.  Describe, develop and test your Twig Components in storybook with [twing](https://www.npmjs.com/package/twing).
-1.  Use this components with zero configuration Drupal with UI Patterns
-1.  Tailwind + Alpinejs for famous develop and page speed
+1.  Describe, develop and test your Pattern in storybook with [twing](https://www.npmjs.com/package/twing).
+1.  Use the same pattern in Drupal with UI Patterns without any presenter pattern
+1.  Tailwind + Alpinejs for rapid development and 100% page speed
 1.  Bundled Webpack base configuration to keep everything up to date.
 
 ## Prerequisites
@@ -44,7 +44,10 @@ To start drupal
 ```bash
 yarn dev:drupal
 ```
-
+## Generate new pattern
+```bash
+yarn ws generate-component
+```
 ## Develop Wingsuit
 To develop Wingsuit you need `yarn`.
 1. Clone repository:

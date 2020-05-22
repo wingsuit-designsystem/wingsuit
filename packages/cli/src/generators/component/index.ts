@@ -167,7 +167,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (componentType === 'plain' || componentType === 'plain_presenter') {
         this.fs.copyTpl(
           this.templatePath('ds/plain/**/*.ejs'),
@@ -175,7 +174,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (componentType === 'plain') {
         this.fs.copyTpl(
           this.templatePath('ds/plain_only/**/*.ejs'),
@@ -183,7 +181,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (componentType === 'plain_presenter') {
         this.fs.copyTpl(
           this.templatePath('app/plain/**/*.ejs'),
@@ -191,7 +188,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (componentType === 'wingsuit_presenter') {
         this.fs.copyTpl(
           this.templatePath('app/wingsuit/**/*.ejs'),
@@ -199,7 +195,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (useCss) {
         // Copy and process all design system files
         this.fs.copyTpl(
@@ -208,7 +203,6 @@ export default class extends Generator {
           this.props
         );
       }
-
       if (useDoc === 'mdx') {
         // Copy and process all design system files
         this.fs.copyTpl(

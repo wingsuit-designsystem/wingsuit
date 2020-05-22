@@ -3,8 +3,6 @@ import {BaseWebpackBundle} from "../BaseWebpackBundle";
 import {DefinePlugin} from "webpack";
 
 export default class DefaultBundle extends BaseWebpackBundle {
-
-
   protected sharedWebpackConfig:{} = {
     output: {
       path: path.join(this.appConfig.absDistFolder, this.appConfig.assetBundleFolder),
