@@ -89,8 +89,8 @@ export default class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'useJavascriptHandler',
-        message: 'Do you need an javascript attach handler?',
+        name: 'useJs',
+        message: 'Do you need an javascript attach event handler?',
         default: false
       },
       {
@@ -137,7 +137,7 @@ export default class extends Generator {
   }
 
   writing() {
-    const {name, useCss, useDoc, componentType} = this.props;
+    const {name, useCss, useDoc, useJs, componentType} = this.props;
 
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
@@ -199,6 +199,14 @@ export default class extends Generator {
         // Copy and process all design system files
         this.fs.copyTpl(
           this.templatePath('ds/css/**/*.ejs'),
+          this.getDsComponentPath(),
+          this.props
+        );
+      }
+      if (useJs) {
+        // Copy and process all design system files
+        this.fs.copyTpl(
+          this.templatePath('ds/js/**/*.ejs'),
           this.getDsComponentPath(),
           this.props
         );
