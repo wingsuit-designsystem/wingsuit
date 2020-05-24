@@ -8,6 +8,8 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
   useEffect(() => {
     renderer.renderData(Math.random().toString(), data.default, variables).then((output: string) => {
       setRendered(output);
+    }).catch((error) => {
+      setRendered(error.message);
     });
   })
 

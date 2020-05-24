@@ -15,10 +15,13 @@ export default function (options) {
   const npmOptions = {
     useYarn,
     checkoutFolder: path.join(folder, '../'),
+    gitFolder: path.resolve(folder),
     targetFolder: folder,
     skipInstall: options.skipInstall,
   };
   const cmdOptions = {stdio: 'inherit', cwd: npmOptions.checkoutFolder};
+  const gitOptions = {stdio: 'inherit', cwd: npmOptions.gitFolder};
+
   spawnSync('pwd', [], cmdOptions);
 
   // Removes the \n from the stringified buffer
@@ -34,7 +37,7 @@ export default function (options) {
   const checkoutLatestTag = () => {
     logger.log('Checking out latest tag...');
     // Make sure to fetch the tags to pull the latest
-    spawnSync('git', ['fetch', '--tags'], cmdOptions);
+    spawnSync('git', ['fetch', '--tags'], gitOptions);
 
     // Pull the latest tag from the repository
     const pullTag = spawnSync('git', ['rev-list', '--tags', '--max-count=1'], {
@@ -43,7 +46,7 @@ export default function (options) {
     const tagHash = extractHash(pullTag.output[1]);
 
     // Checkout the local repo to the latest tag
-    spawnSync('git', ['checkout', tagHash], cmdOptions);
+    spawnSync('git', ['checkout', tagHash], gitOptions);
   };
 
   /*

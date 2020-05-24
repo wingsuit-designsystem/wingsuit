@@ -11,8 +11,7 @@ const PatternPreview: FunctionComponent<Props> = ({patternId, variantId, ...vari
     renderer.renderPatternPreview(patternId, variantId, variables).then((output: string) => {
       setRendered(output);
     }).catch((error) => {
-      console.log("error");
-      setRendered("Error");
+      setRendered(error.message);
     });
   })
   return <div dangerouslySetInnerHTML={{__html: rendered}}/>
