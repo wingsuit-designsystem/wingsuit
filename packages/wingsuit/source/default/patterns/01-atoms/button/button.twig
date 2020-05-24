@@ -1,7 +1,6 @@
 {% set element = element|default('div') %}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set svg_size = svg_size|default('default') %}
-
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}

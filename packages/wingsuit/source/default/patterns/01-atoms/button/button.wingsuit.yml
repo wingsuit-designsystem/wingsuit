@@ -3,7 +3,7 @@ button:
   label: Button
   description: Button with different variants.
   fields:
-    button_content:
+    content:
       type: text
       label: Content
       preview: More
