@@ -19719,7 +19719,7 @@ twig-drupal-filters@^2.0.0:
     slugg "^1.2.1"
     twig "^1.12.0"
 
-twig-lexer@^0.7.0:
+twig-lexer@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/twig-lexer/-/twig-lexer-0.7.2.tgz#8dbc1b5b46e19f5e878e7c4c06fd86e809f828c5"
   integrity sha512-c+SyqPvjH1fDXIdW9E6oWMNGGB0f5Ua64ggEh/3AGUEIImkAGTzVdOY09qLaK1NhLCUSfT/JEjr8VnZbOaZDjg==
@@ -19747,10 +19747,10 @@ twig@^1.10.5, twig@^1.12.0, twig@~1.15.1:
     minimatch "3.0.x"
     walk "2.3.x"
 
-twing@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/twing/-/twing-3.1.1.tgz#9f5bb0d81d1b5d9b567a0a5a6131c283676ee646"
-  integrity sha512-h/yXQC3lJpjtw19e6eGNPT+PAGmD4C13ynrDG7ayJDT7Rz/4j+GhWajIv+iJ/PCYz9JbcirwHjhyJBMhmhpj0w==
+twing@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/twing/-/twing-5.0.1.tgz#8bedac6c0f2afce87608f6a8fe2327207da40727"
+  integrity sha512-oaeOQ8IrJKrxRtC6z+26XqD0B7Wal+52qOvsaJGLIDnvmqlzPT1a9GH4xMOEw40d2EZ6nWUXhYwaroJ4JAQF2w==
   dependencies:
     "@types/luxon" "^1.4.0"
     camelcase "^4.1.0"
@@ -19775,9 +19775,8 @@ twing@^3.1.1:
     snake-case "^2.1.0"
     source-map "^0.6.1"
     tmp "0.0.33"
-    twig-lexer "^0.7.0"
+    twig-lexer "^0.7.2"
     utf8-binary-cutter "^0.9.2"
-    var-validator "0.0.3"
 
 type-check@~0.3.2:
   version "0.3.2"
@@ -20426,11 +20425,6 @@ validate-npm-package-name@^3.0.0:
   integrity sha1-X6kS2B630MdK/BQN5zF/DKffQ34=
   dependencies:
     builtins "^1.0.3"
-
-var-validator@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/var-validator/-/var-validator-0.0.3.tgz#8c20155a350373233a542d3e5aed046c90891d70"
-  integrity sha1-jCAVWjUDcyM6VC0+Wu0EbJCJHXA=
 
 vary@~1.1.2:
   version "1.1.2"

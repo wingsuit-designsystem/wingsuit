@@ -8,11 +8,12 @@ let rendererImpl: IRenderer;
 export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
-export function renderPatternPreview(
+
+export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
-) {
+): Promise<string> {
 
   let passedVariables = variables;
   // Variables are passed as Map in Twing.
@@ -28,19 +29,40 @@ export function renderPatternPreview(
   }
   const patternVariables = variant.getVariables();
   const patternPreview = variant.getPreviewPatterns()
-  const values = [];
+  const promisedPreview: Promise<string>[] = [];
+  const promisedPreviewNames: string[] = [];
+  let i = 0;
   Object.keys(patternPreview).forEach((key: string) => {
-    values[key] = renderPatternPreview(patternPreview[key].patternId, patternPreview[key].variant, patternPreview[key].variables);
+    promisedPreview[i] = renderPatternPreview(patternPreview[key].patternId, patternPreview[key].variant, patternPreview[key].variables);
+    promisedPreviewNames[i] = key;
+    i += 1;
   });
-  const mergedValues: {} = Object.assign(patternVariables, passedVariables, values);
-  return renderPattern(patternId, variantId, mergedValues);
-}
 
-export function renderPattern(
+  if (Object.keys(promisedPreview).length !== 0) {
+    return new Promise<string>((resolve, refuse) => {
+      Promise.all(promisedPreview)
+        .then((promisedPreviewValues: string[]) => {
+          const previewRenderedVariables = {};
+          for (let j = 0; j < promisedPreviewValues.length; j += 1) {
+            previewRenderedVariables[promisedPreviewNames[j]] = promisedPreviewValues[j];
+          }
+          const mergedValues: {} = Object.assign(patternVariables, passedVariables, previewRenderedVariables);
+          renderPattern(patternId, variantId, mergedValues).then((output)=> {
+            resolve(output);
+          });
+        });
+    });
+  }
+  const mergedValues: {} = Object.assign(patternVariables, passedVariables);
+  return renderPattern(patternId, variantId, mergedValues);
+
+}
+export async function renderPattern(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
-) {
+): Promise<string> {
+
   let passedVariables = variables;
   // Variables are passed as Map in Twing.
   if (variables instanceof Map) {
@@ -52,7 +74,7 @@ export function renderPattern(
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const mergedVariables = Object.assign(passedVariables, {'wingsuit': storage.getGlobals()})
+  const mergedVariables = Object.assign(storage.getGlobals(), passedVariables)
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),
@@ -60,12 +82,13 @@ export function renderPattern(
   );
 }
 
-export function renderData(path: string, data: {}, variables: {} = {}) {
-  storage.addTwig(path, data);
+export async function renderData(path: string, template: string, variables: {} = {}) {
+
+  rendererImpl.addTemplate(path, template);
   return renderTemplate(path, variables);
 }
 
-export function renderTemplate(path: string, variables: {} = {}) {
-  const mergedVariables = Object.assign(variables, storage.getGlobals())
+export async function renderTemplate(path: string, variables: {} = {}) {
+  const mergedVariables = Object.assign(storage.getGlobals(), variables);
   return rendererImpl.render(path, path, mergedVariables);
 }

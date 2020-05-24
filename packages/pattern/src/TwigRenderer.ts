@@ -7,6 +7,9 @@ const twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
 
 export class TwigRenderer implements IRenderer {
+  addTemplate(path, data) {
+  }
+
   constructor() {
     twig.cache();
     twigDrupal(twig);
@@ -16,13 +19,19 @@ export class TwigRenderer implements IRenderer {
     twig.extendFunction('ws_itok', twigItok);
   }
 
-  render(id: string, include: string, variables: {}): string {
+  render(id: string, include: string, variables: {}): Promise<string> {
     const template = storage.findTwigByNamespace(include);
     if (template !== null) {
       // @ts-ignore
-      return template(variables);
+      return new Promise((resolve) => {
+        resolve(template(variables))
+      }
+      );
     } else {
-      return `Template ${id} ${include} not loaded. Check require.context in your configure.js`;
+      return new Promise((resolve) => {
+        resolve( `Template ${id} ${include} not loaded. Check require.context in your configure.js`);
+      });
+
     }
   }
 }
