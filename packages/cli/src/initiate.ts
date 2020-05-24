@@ -43,7 +43,7 @@ export default function (options) {
     const tagHash = extractHash(pullTag.output[1]);
 
     // Checkout the local repo to the latest tag
-    spawnSync('git', ['checkout', tagHash], {cwd: folder});
+    spawnSync('git', ['checkout', tagHash], cmdOptions);
   };
 
   /*
