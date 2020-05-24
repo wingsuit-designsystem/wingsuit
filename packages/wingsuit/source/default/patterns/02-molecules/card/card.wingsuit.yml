@@ -31,12 +31,6 @@ card:
   variants:
     default:
       label: Default
-    horizontal:
-      label: Horizontal
-    circle:
-      label: Circle
-    rectangle:
-      label: Rectangle
   settings:
     alignment:
       type: select

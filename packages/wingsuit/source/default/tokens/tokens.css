@@ -1,11 +1,31 @@
 @font-face {
-  font-family: 'SourceSans';
-  src: url('fonts/source-sans/SourceSerifPro-Regular.woff') format('woff'),
-    url('fonts/source-sans/SourceSerifPro-Regular.woff2') format('woff2');
+  font-family: 'Montserrat';
+  src: local('Montserrat light'),
+  url('fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'),
+  url('fonts/montserrat/montserrat-light-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
   font-display: auto;
-  font-weight: 400;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat Regular'),
+  url('fonts/montserrat/montserrat-regular-webfont.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat Medium'),
+  url('fonts/montserrat/Montserrat-Medium.woff2') format('woff2'),
+  url('fonts/montserrat/Montserrat-Medium.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: auto;
+}
 body {
   font-family: 'SourceSans';
 }

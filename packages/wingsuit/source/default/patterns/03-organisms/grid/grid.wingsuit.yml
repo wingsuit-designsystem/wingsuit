@@ -41,7 +41,7 @@ grid:
     gap:
       type: boolean
       label: Gap
-      default_value: 1
+      default_value: true
     config_1:
       type: select
       label: Column widths
@@ -93,7 +93,7 @@ grid:
     wrapper:
       type: boolean
       label: Wrapper
-      default_value: 1
+      default_value: true
     width:
       type: select
       label: Width
@@ -109,29 +109,11 @@ grid:
       type: select
       label: Background
       options:
-        sprite-cross: Cross
-        sprite-pattern-cube: Cubes
-        sprite-pattern-triangle: Triangles
-        sprite-pattern-stais: Stairs
         bg-gray-medium: Medium gray
         bg-gray-light: Light gray
-    bg_size:
-      type: select
-      label: Background size
-      description: Defines the background image size. Use small for small repeated background images like the cross svg. Leave empty for default behavior.
-      options:
-        bg-40: Small
-    crosses:
-      type: select
-      label: Crosses as background
-      description: Creates an partial background with NIM-crosses. Crosses can be aligned to the left or right side.
-      default_value: ''
-      options:
-        left: Left
-        right: Right
   variants:
     1_column:
-      label: 1 column Jo
+      label: 1 column
       settings:
         columns: 1
         config_2: "equal"
