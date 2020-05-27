@@ -16,7 +16,7 @@ export default class Server {
 
   private environment = 'production';
 
-  private bundles:WebpackBundleConstructor[] = [];
+  private bundles: WebpackBundleConstructor[] = [];
 
   public addWebpackBundle(name, bundleClass: WebpackBundleConstructor) {
     this.bundles[name] = bundleClass;
@@ -54,8 +54,7 @@ export default class Server {
     Object.keys(bundles).forEach((key) => {
       environmentSpe.push(appConfig.environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
     });
-
-    let config =  merge.smartStrategy({
+    let config = merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
       'module.rules.use': 'replace',

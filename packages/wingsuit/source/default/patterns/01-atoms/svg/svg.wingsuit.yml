@@ -8,7 +8,7 @@ svg_icon:
       label: Useless field.
   settings:
     size:
-      preview: w-8
+      preview: w-4
       label: Size
       type: select
       options:
@@ -21,7 +21,5 @@ svg_icon:
       preview: search
   variants:
     icon:
-      label: SVG Sprite Map
+      label: Sprite Map
       description: Use a SVG Spritemap to display SVG Icons. This is prefered way to use SVGs.
-    inline-css:
-      label: CSS Class.

@@ -5,16 +5,16 @@ const CopyPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 
-export default class AssetBundle extends BaseWebpackBundle {
+export default class StorybookAssetBundle extends BaseWebpackBundle {
 
   protected productionWebpackConfig: {} = {
     plugins: [],
   }
 
   protected sharedWebpackConfig = {
-    entry: {
-      assets: path.resolve(this.appConfig.path, 'assets.js')
-    },
+    entry: [
+      path.resolve(this.appConfig.path, 'assets.js')
+    ],
     plugins: [
       new SpriteLoaderPlugin(),
       new CopyPlugin([
@@ -26,13 +26,6 @@ export default class AssetBundle extends BaseWebpackBundle {
     ],
     module: {
       rules: [
-        {
-          loader: 'file-loader',
-          test: /\.(png|jpg|gif)$/,
-          options: {
-            name: `${this.appConfig.assetBundleFolder}/images/[name].[ext]`,
-          }
-        },
         {
           test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           use: [
@@ -50,7 +43,7 @@ export default class AssetBundle extends BaseWebpackBundle {
             {
               loader: 'svg-sprite-loader', options: {
                 extract: true,
-                spriteFilename: `${path.resolve(this.appConfig.assetBundleFolder)}/images/spritemap.svg`,
+                spriteFilename: `images/spritemap.svg`,
               },
             },
             'svg-transform-loader',
@@ -70,5 +63,14 @@ export default class AssetBundle extends BaseWebpackBundle {
         }
       ]
     },
+  }
+
+  alterFinalConfig(config: any): {} {
+    config.module.rules = config.module.rules.map(data => {
+      if (/svg\|/.test(String(data.test)))
+        data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|cur|ani)(\?.*)?$/;
+      return data;
+    });
+    return config;
   }
 }

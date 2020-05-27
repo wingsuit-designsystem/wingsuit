@@ -23,18 +23,16 @@ button:
     url:
       type: token
       label: Url
-      preview: 'http://www.nim.org'
-    button_svg_size:
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+    size:
       type: select
       label: Icon Size
-      default_value: default
+      default_value: w-4
       options:
-        default: Default
-        large: Large
-    button_svg:
+        w-4: Default
+        w-8: Large
+    svg:
       type: select
       label: SVG
       options:
-        chevron-up: Chevron Up
-        chevron-right: Chevron Right
-        arrow-right: Arrow Right
+        search: Search

@@ -2,6 +2,7 @@ import Server from "./server/Server";
 import CssBundle from "./server/webpackBundles/CssBundle";
 import BabelBundle from "./server/webpackBundles/BabelBundle";
 import AssetBundle from "./server/webpackBundles/AssetBundle";
+import StorybookAssetBundle from "./server/webpackBundles/StorybookAssetBundle";
 import StorybookBundle from "./server/webpackBundles/StorybookBundle";
 import DrupalBundle from "./server/webpackBundles/DrupalBundle";
 import TwingBundle from "./server/webpackBundles/TwingBundle";
@@ -22,6 +23,7 @@ const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
 server.addWebpackBundle("DefaultBundle", DefaultBundle);
 server.addWebpackBundle("AssetBundle", AssetBundle);
+server.addWebpackBundle("StorybookAssetBundle", StorybookAssetBundle);
 server.addWebpackBundle("BabelBundle", BabelBundle);
 server.addWebpackBundle("TwingBundle", TwingBundle);
 server.addWebpackBundle("StorybookBundle", StorybookBundle);

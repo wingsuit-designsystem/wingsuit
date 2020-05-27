@@ -20,7 +20,7 @@ export const wingsuit = {
       designSystem: "default",
       webpackBundles: [
         "DefaultBundle",
-        "AssetBundle",
+        "StorybookAssetBundle",
         "TwingBundle",
         "StorybookBundle",
         "CssBundle",
