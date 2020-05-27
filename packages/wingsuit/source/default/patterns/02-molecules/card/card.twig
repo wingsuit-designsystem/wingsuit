@@ -8,7 +8,6 @@
   text: String: The text on the card.
   alignment: center
 #}
-
 {# Defaults: #}
 {% set element = element|default('div') %}
 {% set headline__element = headline__element|default('h2') %}
@@ -66,13 +65,8 @@
     {#end of text div#}
 
     {#start of button div of the card#}
-    {% set button_content = button %}
     {% if button is not empty %}
-      {% embed '@atoms/button/button.twig' with {variant: 'primary', } %}
-        {% block button %}
-          {{ button }}
-        {% endblock %}
-      {% endembed %}
+      {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} %}
     {% endif %}
     {#end of button div#}
 

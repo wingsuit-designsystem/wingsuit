@@ -1,7 +1,7 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
-  description: Use Cards for your teasers
+  description: Amazing Cards
   fields:
     image:
       type: pattern

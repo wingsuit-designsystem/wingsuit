@@ -11,7 +11,8 @@ const functions = require('twig-drupal-filters/functions');
 
 export class TwingRenderer implements IRenderer {
   private environment;
-  private cache:{};
+
+  private cache:{} = {};
 
   addTemplate(path, template) {
     this.environment.getLoader().setTemplate(path, template);
@@ -19,7 +20,7 @@ export class TwingRenderer implements IRenderer {
 
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
-    this.environment = new TwingEnvironment(loader, {autoescape: false});
+    this.environment = new TwingEnvironment(loader, {autoescape: false, debug: true});
     this.cache = {};
     Object.keys(filters).forEach((filterName) => {
       const filter = (arg1, arg2) => {
@@ -52,7 +53,6 @@ export class TwingRenderer implements IRenderer {
           resolve(output);
         });
       })
-        // return Promise.resolve('XXX')
       })
     );
     this.environment.addFunction(new TwingFunction('ws_itok', twigItok));

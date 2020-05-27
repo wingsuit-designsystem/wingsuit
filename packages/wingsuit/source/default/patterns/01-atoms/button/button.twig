@@ -6,7 +6,6 @@
   {% set element = 'a' %}
 {% endif %}
 {%- set content = content|render -%}
-
 <{{ element }} {{ attributes.addClass([
   'px-4', 'py-2', 'leading-18', 'font-serif', 'uppercase', 'inline-block',
   variant == 'primary' ? 'bg-primary text-white',

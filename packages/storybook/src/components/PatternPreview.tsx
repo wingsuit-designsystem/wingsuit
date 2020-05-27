@@ -11,9 +11,9 @@ const PatternPreview: FunctionComponent<Props> = ({patternId, variantId, ...vari
     renderer.renderPatternPreview(patternId, variantId, variables).then((output: string) => {
       setRendered(output);
     }).catch((error) => {
-      setRendered(error.message);
+      setRendered("Error");
     });
-  })
+  }, [patternId, variantId, JSON.stringify(variables)])
   return <div dangerouslySetInnerHTML={{__html: rendered}}/>
 };
 

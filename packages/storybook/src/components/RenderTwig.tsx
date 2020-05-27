@@ -1,9 +1,9 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {renderer} from '@wingsuit-designsystem/pattern';
 
-type Props =  {data};
+type Props = { data };
 
-const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
+const RenderTwig: FunctionComponent<Props> = ({data, ...variables}) => {
   const [rendered, setRendered] = useState("");
   useEffect(() => {
     renderer.renderData(Math.random().toString(), data.default, variables).then((output: string) => {
@@ -11,7 +11,7 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
     }).catch((error) => {
       setRendered(error.message);
     });
-  })
+  }, [data, JSON.stringify(variables)])
 
   return <div dangerouslySetInnerHTML={{__html: rendered}}/>
 };
