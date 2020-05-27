@@ -1,5 +1,5 @@
 {
-  "name": "storybook.js.org",
+  "name": "wingsuit.org",
   "version": "1.0.0",
   "private": true,
   "description": "storybook.js.org documentation",
@@ -12,7 +12,9 @@
   "scripts": {
     "build": "gatsby build --prefix-paths && cp static/**/* ./public",
     "dev": "gatsby develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "gh-pages": "gh-pages",
+    "deploy": "gatsby build --prefix-paths && gh-pages -b master -d public -r https://$GH_TOKEN@github.com/wingsuit-designsystem/wingsuit-designsystem.github.io.git"
   },
   "dependencies": {
     "@storybook/components": "5.2.5",
@@ -22,7 +24,7 @@
     "bootstrap": "^4.3.1",
     "gatsby": "^1.9.279",
     "gatsby-link": "^1.6.45",
-    "gatsby-plugin-segment": "^1.0.2",
+    "gatsby-plugin-segment": "1.0.2",
     "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-plugin-styled-components": "^2.0.0",
     "gatsby-remark-autolink-headers": "^1.4.19",
@@ -31,6 +33,7 @@
     "gatsby-remark-smartypants": "^1.4.12",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "gh-pages": "^2.2.0",
     "global": "^4.4.0",
     "html-react-parser": "^0.10.0",
     "is-builtin-module": "^3.0.0",

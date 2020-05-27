@@ -1,6 +1,6 @@
 import {BaseWebpackBundle} from "../BaseWebpackBundle";
 
-export default class TailwindBundle extends BaseWebpackBundle {
+export default class BabelBundle extends BaseWebpackBundle {
 
   protected sharedWebpackConfig = {
     module: {
@@ -20,25 +20,10 @@ export default class TailwindBundle extends BaseWebpackBundle {
           exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
           use: {
             loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
           },
-        },
-        {
-          test: /\.(png|jpg|gif)$/,
-          loader: 'file-loader',
-          options: {
-            name: 'images/[name].[ext]?[hash]',
-          },
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'fonts/[name].[ext]?[hash]',
-              },
-            },
-          ],
         },
       ],
     }

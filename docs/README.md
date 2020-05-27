@@ -1,7 +1,5 @@
 # Documentation
 
-This is the source for [wingsuit.ui](https://storybook.js.org). It documents [Wingsuit](https://github.com/wingsuit-designsystem/wingsuit), an designsystem with storybook for drupal. The site is built with [Gatsby](https://github.com/gatsbyjs/gatsby).
-
 ### Usage
 
 ```sh

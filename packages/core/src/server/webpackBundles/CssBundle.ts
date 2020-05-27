@@ -14,7 +14,7 @@ export default class CssBundle extends BaseWebpackBundle {
     {
       loader: 'css-loader',
       options: {
-        sourceMap: true,
+        sourceMap: true
       },
     },
 
@@ -90,7 +90,7 @@ export default class CssBundle extends BaseWebpackBundle {
           },
         }),
         new MiniCssExtractPlugin({
-          filename: '[name].styles.css',
+          filename: '[name].css',
           chunkFilename: '[id].css',
         }),
       ],

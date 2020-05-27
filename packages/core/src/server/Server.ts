@@ -5,15 +5,10 @@ import AppConfig from "../AppConfig";
 import WebpackBundle from "./WebpackBundle";
 import WebpackBundleConstructor from "./WebpackBundleConstructor";
 
-
-
 // Library Imports
 const merge = require('webpack-merge');
 const {ProgressPlugin, ProvidePlugin} = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-
-
-
 
 merge.multiple();
 

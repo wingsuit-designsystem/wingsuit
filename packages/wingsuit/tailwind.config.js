@@ -6,12 +6,12 @@ module.exports = {
       serif: ['Roboto', 'sans-serif'],
     },
     maxWidth: {
-      'none': 'none',
-      'container': '1200px',
-      'xs': '672px',
-      'sm': '700px',
-      'md': '960px',
-      'lg': '1600px',
+      none: 'none',
+      container: '1200px',
+      xs: '672px',
+      sm: '700px',
+      md: '960px',
+      lg: '1600px',
     },
     colors: {
       transparent: 'transparent',
@@ -35,7 +35,7 @@ module.exports = {
         xmedium: '#aaaaaa',
         medium: '#9e9e9e',
         dark: '#4a4a4a',
-      }
+      },
     },
   },
   variants: {

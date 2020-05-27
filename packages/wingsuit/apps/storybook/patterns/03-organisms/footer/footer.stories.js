@@ -1,5 +1,5 @@
-import {RenderTwig} from "@wingsuit-designsystem/storybook";
-import React from "react";
+import { RenderTwig } from '@wingsuit-designsystem/storybook';
+import React from 'react';
 
 export default { title: '03-organisms/Footer' };
 

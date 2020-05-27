@@ -49,6 +49,10 @@ yarn dev:drupal
 yarn ws generate-component
 ```
 ## Develop Wingsuit
+
+### Help?
+I am looking for help. You can ping me at [Slack](https://app.slack.com/client/T0281C3JF/G0152GSU0HW/thread/C0V5K5QP5-1579643779.001300)  
+
 To develop Wingsuit you need `yarn`.
 1. Clone repository:
 

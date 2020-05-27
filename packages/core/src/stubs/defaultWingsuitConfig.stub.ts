@@ -23,7 +23,8 @@ export const wingsuit = {
         "AssetBundle",
         "TwingBundle",
         "StorybookBundle",
-        "CssBundle"
+        "CssBundle",
+        "BabelBundle"
       ]
     },
     drupal: {
@@ -34,6 +35,7 @@ export const wingsuit = {
       assetBundleFolder: "assets",
       designSystem: "default",
       webpackBundles: [
+        "BabelBundle",
         "DefaultBundle",
         "AssetBundle",
         "DrupalBundle",
