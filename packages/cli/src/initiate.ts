@@ -11,16 +11,18 @@ export default function (options) {
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
+  const branch = options.branch != null ? options.branch : 'stable';
   const folder = !options.folder ? path.resolve("wingsuit") : path.resolve(options.folder)
   const npmOptions = {
     useYarn,
     checkoutFolder: path.join(folder, '../'),
     gitFolder: path.resolve(folder),
     targetFolder: folder,
+    branch: branch,
     skipInstall: options.skipInstall,
   };
   const cmdOptions = {stdio: 'inherit', cwd: npmOptions.checkoutFolder};
-  const gitOptions = {stdio: 'inherit', cwd: npmOptions.gitFolder};
+  const gitOptions = {cwd: npmOptions.gitFolder};
 
   spawnSync('pwd', [], cmdOptions);
 
@@ -35,18 +37,23 @@ export default function (options) {
    * the latest tag, rather than the current HEAD of master.
    */
   const checkoutLatestTag = () => {
-    logger.log('Checking out latest tag...');
-    // Make sure to fetch the tags to pull the latest
-    spawnSync('git', ['fetch', '--tags'], gitOptions);
+    if (npmOptions.branch === 'stable' ) {
+      logger.log('Checking out latest tag...');
+      // Make sure to fetch the tags to pull the latest
+      spawnSync('git', ['fetch', '--tags'], gitOptions);
 
-    // Pull the latest tag from the repository
-    const pullTag = spawnSync('git', ['rev-list', '--tags', '--max-count=1'], {
-      cwd: folder,
-    });
-    const tagHash = extractHash(pullTag.output[1]);
-
-    // Checkout the local repo to the latest tag
-    spawnSync('git', ['checkout', tagHash], gitOptions);
+      // Pull the latest tag from the repository
+      const pullTag = spawnSync('git', ['rev-list', '--tags', '--max-count=1'], {
+        cwd: folder,
+      });
+      const tagHash = extractHash(pullTag.output[1]);
+      // Checkout the local repo to the latest tag
+      spawnSync('git', ['checkout', tagHash], gitOptions);
+    } else if (npmOptions.branch !== 'master') {
+      // Checkout provided branch
+      spawnSync('git', ['fetch', '--all'], gitOptions);
+      spawnSync('git', ['checkout', npmOptions.branch], gitOptions);
+    }
   };
 
   /*
@@ -60,9 +67,10 @@ export default function (options) {
     spawn('mv', ['wingsuit.bak/packages/wingsuit', 'wingsuit'], cmdOptions);
     spawn('rm', ['-rf', 'wingsuit.bak'], cmdOptions);
 
-    console.log('Running Wingsuit dependency installation...');
+
     cmdOptions.cwd = npmOptions.targetFolder;
     if (!npmOptions.skipInstall) {
+      console.log('Running Wingsuit dependency installation...');
       if (useYarn) {
         spawnSync('yarn', ['install'], cmdOptions);
         logger.log('Running Wingsuit setup...');
