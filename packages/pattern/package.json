@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/pattern",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Wingsuit Patterns.",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
   },
-  "type": "module",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "publishConfig": {
     "access": "public"
