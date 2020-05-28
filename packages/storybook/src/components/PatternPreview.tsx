@@ -7,7 +7,9 @@ type Props = { patternId, variantId };
 const PatternPreview: FunctionComponent<Props> = ({patternId, variantId, ...variables}) => {
   const [rendered, setRendered] = useState("");
 
+  console.log('PATTERN PREVIEW')
   useEffect(() => {
+    console.log('RENDER')
     renderer.renderPatternPreview(patternId, variantId, variables).then((output: string) => {
       setRendered(output);
     }).catch((error) => {

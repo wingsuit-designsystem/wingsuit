@@ -10,7 +10,7 @@ import {PatternInclude} from "./PatternInclude";
 import {
   getDocsStories
 } from './utils';
-import PatternProperties from "./PatternProperties";
+// import PatternProperties from "./PatternProperties";
 
 interface StoriesProps {
   title?: JSX.Element | string;
@@ -33,8 +33,7 @@ export const PatternStories: FunctionComponent<StoriesProps> = ({title, includeP
       <Heading>Pattern Variants</Heading>
       {stories.map((story) => {
         return <>
-          <DocsStory withToolbar={true} key={story.id} {...story} expanded/>
-          <PatternProperties story={story}></PatternProperties>
+          <DocsStory key={story.id} {...story} expanded/>
           <PatternInclude story={story}></PatternInclude>
           </>
       })}
