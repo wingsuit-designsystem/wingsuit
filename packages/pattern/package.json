@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/pattern",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Wingsuit Patterns.",
   "repository": {
     "type": "git",
@@ -39,5 +39,5 @@
     "twig-drupal-filters": "^2.0.0",
     "twing": "^5.0.1"
   },
-  "gitHead": "d705a02e4eebebd151d875bf96fee743d20534a3"
+  "gitHead": "f33e3b40f1bad944ca7cd0c1aec27618cc56f9ef"
 }
