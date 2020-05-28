@@ -51,7 +51,7 @@ yarn ws generate-component
 ## Develop Wingsuit
 
 ### Help?
-I am looking for help. You can ping me at [drupaltwig@Slack](drupaltwig.slack.com)    
+I am looking for help. You can ping me at [drupaltwig@Slack](https://drupaltwig.slack.com)    
 
 To develop Wingsuit you need `yarn`.
 1. Clone repository:
