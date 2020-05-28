@@ -8,9 +8,7 @@ const Footer = () => (
     <div className="col-md-12">
       <div className="logos">
         <div className="col-xs-12">
-          <center>
-            Maintained by the <a href="https://storybook.js.org/community/">Storybook Community</a>.
-          </center>
+
           <center>
             <a
               href="https://now-examples-slackin-nqnzoygycp.now.sh/"

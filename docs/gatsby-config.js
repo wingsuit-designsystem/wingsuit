@@ -14,6 +14,8 @@ module.exports = {
       ],
       configurations: [
         '/configurations/overview/',
+        '/configurations/details/',
+        '/configurations/custom-webpack-config/',
       ],
       testing: [
         '/testing/manual-testing/',

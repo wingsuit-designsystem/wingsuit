@@ -31,6 +31,7 @@
 }
 
 #nav ul li a {
+  display: block;
   line-height: 18px;
   color: #444;
   padding: 12px;

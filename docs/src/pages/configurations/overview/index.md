@@ -5,65 +5,89 @@ title: 'Configuration overview'
 
 For CLI options see: [here](../cli-options).
 
-> migration guide: This page documents the method to configure storybook introduced recently in 5.3.0, consult the [migration guide](https://github.com/wingsuit-designsystem/wingsuit/blob/next/MIGRATION.md) if you want to migrate to this format of configuring storybook.
-
 ## Main configuration
 
-Storybook has a few files it uses for configuration, and they are grouped together into a directory (default: `.storybook`).
+By default, Wingsuit will look for wingsuit.config.js file at the root of your project where you can define any customizations.
 
-The most important file is the `main.js` file. This is where general config is declared.
-
-Here's a minimal example of that file:
+The minimal configuration file includes only the namespaces:
 
 ```js
+const namespaces = require('./source/default/namespaces');
+
 module.exports = {
-  stories: ['../src/components/**/*.stories.js'],
-  addons: [
-    '@storybook/addon-essentials',
-  ],
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
 };
+
 ```
 
-`stories` is a list of [glob](https://www.npmjs.com/package/glob) patterns that tells where your stories are located, relative to the configuration file.
+If you want to customize the folder structure or the webpack configuration you can extend the configuration. 
 
-The `addons` field can refer to traditional [addons](../../addons/introduction), but it can also include [presets](/docs/presets/introduction/), which are able to extend the config further.
-
-### `main.js` is a  Preset
-The `main.js` file is actually a preset! So if you know how to configure storybook, then you know how to write a preset, and vice-versa!
-So the `main.js` API is equal to [that of presets](../../presets/writing-presets/#presets-api).
-
-
-## Manager & preview
-
-Storybook works by being split into 2 applications ("manager" and "preview"), which communicate with each other over a postMessage channel.
-
-The preview application is essentially just your stories with a framework-agnostic 'router'. It renders whichever story the  manager application tells it to render.
-
-The manager application renders the UI of [addons](../../addons/introduction), the navigator and [toolbar](../../basics/toolbar-guide/).
-
-There are two extra config files, if you need to configure the runtime of Manager or Preview.
-
-In `preview.js` you can add global [decorators](../../basics/writing-stories/#decorators) and [parameters](../../basics/writing-stories/#parameters):
+Here is the complete configuration: (The configuration stub is located [here](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts))
 
 ```js
-// preview.js
-import { addDecorator } from '@storybook/svelte';
-import { withKnobs } from '@storybook/addon-knobs';
+{
+  designSystems: {
+    default: {
+      path: "source/default",
+      patternPath: "patterns",
+      namespaces: {}
+    }
+  },
+  environments: {
+    development: {},
+    production: {}
+  },
+  apps: {
+    storybook: {
+      type: "storybook",
+      path: "./apps/storybook",
+      cssMode: "hot",
+      distFolder: "dist/app-storybook",
+      assetBundleFolder: "assets",
+      designSystem: "default",
+      webpackBundles: [
+        "DefaultBundle",
+        "StorybookAssetBundle",
+        "TwingBundle",
+        "StorybookBundle",
+        "CssBundle",
+        "BabelBundle"
+      ]
+    },
+    drupal: {
+      type: "drupal",
+      path: "./apps/drupal",
+      cssMode: "extract",
+      distFolder: "dist/app-drupal",
+      assetBundleFolder: "assets",
+      designSystem: "default",
+      webpackBundles: [
+        "BabelBundle",
+        "DefaultBundle",
+        "AssetBundle",
+        "DrupalBundle",
+        "CssBundle"
+      ]
+    }
+  }
+}
 
-addDecorator(withKnobs);
 ```
+Each of this values can overwritten in the `wingsuit.config.js`.
 
-In `manager.js` you can add [UI options](../options-parameter/#global-options).
+Here a short overview of the main concepts.
+`apps` to configure each app. 
 
-```js
-// manager.js
-import { themes } from '@storybook/theming/create';
-import { addons } from '@storybook/addons';
+`environments` to overwrite a configuration value for a specific environment.
 
-addons.setConfig({
-  theme: themes.dark,
-});
-```
+`designsystems` to configure the designsystem itself.
+
+## Configuration details:
+For detailed  [configuration overview](../custom-webpack-config/)
 
 ## webpack
 

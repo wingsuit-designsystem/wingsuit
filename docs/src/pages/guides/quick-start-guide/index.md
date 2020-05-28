@@ -3,54 +3,23 @@ id: 'quick-start-guide'
 title: 'Quick Start Guide'
 ---
 
-Storybook supports many different frontend view layers with more coming!
-React, Vue, Angular, Mithril, Marko, HTML, Svelte, Meteor, Ember, Riot and Preact are currently supported. Follow these steps to get started with Storybook.
-
-Get started using the automated command line tool. This command adds a set of boilerplate files for Storybook in your project:
+Get started using the automated command line tool. This command creates an Wingsuit project including a set of UI Pattern components and simple Twig components. 
+The demo page uses the atomic design principle to structure the patterns.
 
 ```sh
-cd my-project-directory
-npx -p @storybook/cli sb init
+npx @wingsuit-designsystem/cli init
 ```
 
-The tool inspects your `package.json` to determine which view layer you're using. If you want to develop HTML snippets in storybook, we can't determine that automatically. So to install storybook for HTML, use the `--type` flag to force that the HTML project type is set:
+Storybook opens and you can browse through the wingsuit demo page.
 
-```sh
-npx -p @storybook/cli sb init --type html
-```
+[SCREENSHOT]
 
-It's also useful if our automatic detection fails.
+## Source code
+A good starting point is to checkout the design system components.
+The design system components located at `source/patterns/default`. Additional storybook presentation templates located at  `apps/storybook/patterns`.
 
-By default npx will use the latest version, if you want to try out the next version (or any specific version), you can use the following:
+A typical component includes a `pattern.wingsuit.yml`, a `twig template`. Optional a `css file` and/or a `behavior javascript` file. 
+## Create a new component
+To create a new component run:
 
-```sh
-npx -p @storybook/cli@5.0.0-rc.6 sb init
-```
-
-To setup a project manually, take a look at the [Slow Start Guide](/guides/slow-start-guide/).
-
-Start Storybook with:
-
-```sh
-npm run storybook
-```
-
-Storybook should now be available in the browser with a link provided in the console.
-
----
-
-To learn more about what the Storybook CLI command `sb init` command does, have a look at the slow start guides:
-
-- [React](/guides/guide-react/)
-- [React Native](/guides/guide-react-native/)
-- [Vue](/guides/guide-vue/)
-- [Angular](/guides/guide-angular/)
-- [Mithril](/guides/guide-mithril/)
-- [Marko](/guides/guide-marko/)
-- [HTML](/guides/guide-html/)
-- [Svelte](/guides/guide-svelte/)
-- [Ember](/guides/guide-ember/)
-- [Riot](/guides/guide-riot/)
-- [Preact](/guides/guide-preact/)
-
-A step-by-step tutorial is available at [Learn Storybook](https://www.learnstorybook.com).
+`yarn ws generate-component`

@@ -3,19 +3,33 @@ id: 'introduction'
 title: 'Introduction'
 ---
 
-Storybook is a user interface development environment and playground for UI components.
-The tool enables developers to create components independently and showcase components interactively in an isolated development environment.
+Wingsuit is a designsystem for twig based UI Components. The components are developed independently in storybook and can be used by other "apps" like drupal. 
 
-Storybook runs outside of the main app so users can develop UI components in isolation without worrying about app specific dependencies and requirements.
+A wingsuit component is defined by an wingsuit.yml.
+The wingsuit.yml is an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html). 
 
-![Storybook](../static/screenshot.png)
 
-Storybook also supports a lot of [addons](/addons/introduction) and comes with a flexible API to customize Storybook as desired.
-A [Static version](/basics/exporting-storybook) of Storybook can also be built and deployed to an HTTP server.
+<b>Wingsuit uses this configuration file to:</b>
 
-Here are some featured Storybooks to see how it works:
+<b>Generate Storybook stories</b><br>
+Each variant is a storybook story. Fields and Settings are editable with knobs.
+[SCREENSHOT]
 
-- [Demo of React Dates](http://airbnb.io/react-dates/) - [source](https://github.com/airbnb/react-dates)
-- [Demo of React Native Web](https://necolas.github.io/react-native-web/docs/) - [source](https://github.com/necolas/react-native-web)
+<b>Automatic Storybook documentation</b><br>
+A nice documentation page is created directly from the wingsuit.yml. 
+[SCREENSHOT]
 
-Read the Learn Storybook [tutorial](https://www.learnstorybook.com) for a step-by-step guide to building an app with Storybook and to see how building components in isolation can supercharge your app development workflow.
+<b>Drupal integration</b><br>
+With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) patterns can be used with zero configuration in drupal. 
+[SCREENSHOT]
+
+
+### <b>Stay in sync</b>
+One big challenge for design system are to stay in sync between the apps.
+Wingsuit solves the problem with a common component configuration. The <b>wingsuit.yml.</b>
+
+### <b>Frontend frameworks</b>
+Wingsuit ships with [tailwind](https://tailwindcss.com/) and [alpinejs](https://github.com/alpinejs/alpine). 
+The frameworks can easily replaced with other frameworks like [bootstrap 4](https://getbootstrap.com) or [foundation 6](https://get.foundation/sites/docs/).
+
+ 
