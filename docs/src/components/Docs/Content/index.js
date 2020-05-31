@@ -28,7 +28,7 @@ const DocsContent = ({ title, content, editUrl, ...rest }) => (
                 )
               ) {
                 const language = domNode.children[0].attribs.class.replace('language-', '');
-                const code = domNode.children[0].children[0].data;
+                const code = '';
                 return (
                   <SyntaxHighlighter copyable language={language}>
                     {code}
