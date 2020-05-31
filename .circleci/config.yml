@@ -177,20 +177,6 @@ jobs:
           command: |
             cd examples/cra-kitchen-sink
             yarn dev:storybook --smoke-test --quiet
-  frontpage:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore core dependencies cache
-          keys:
-            - core-dependencies-v5-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: yarn bootstrap --install
-      - run:
-          name: Trigger build
-          command: ./scripts/build-frontpage.js
   docs:
     <<: *defaults
     steps:
@@ -277,4 +263,3 @@ workflows:
   deploy:
     jobs:
       - docs
-      - frontpage
