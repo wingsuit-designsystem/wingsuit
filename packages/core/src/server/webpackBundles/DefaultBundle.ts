@@ -1,8 +1,8 @@
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
-import {DefinePlugin} from "webpack";
+import { DefinePlugin } from 'webpack';
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
 export default class DefaultBundle extends BaseWebpackBundle {
-  protected sharedWebpackConfig:{} = {
+  protected sharedWebpackConfig: {} = {
     output: {
       path: this.appConfig.absDistFolder,
     },
@@ -13,6 +13,6 @@ export default class DefaultBundle extends BaseWebpackBundle {
       new DefinePlugin({
         BUILD_TARGET: JSON.stringify(this.appConfig.name),
       }),
-    ]
-  }
+    ],
+  };
 }

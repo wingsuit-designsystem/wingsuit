@@ -1,31 +1,23 @@
 /**
  * Wingsuit Design System.
  */
-import AppConfig from "../AppConfig";
-import WebpackBundle from "./WebpackBundle";
-import WebpackBundleConstructor from "./WebpackBundleConstructor";
+import AppConfig from '../AppConfig';
+import WebpackBundle from './WebpackBundle';
 
 // Library Imports
 const merge = require('webpack-merge');
-const {ProgressPlugin, ProvidePlugin} = require('webpack');
+const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 merge.multiple();
 
 export default class Server {
-
   private environment = 'production';
-
-  private bundles: WebpackBundleConstructor[] = [];
-
-  public addWebpackBundle(name, bundleClass: WebpackBundleConstructor) {
-    this.bundles[name] = bundleClass;
-  }
 
   private getWebpackBundles(appConfig: AppConfig): WebpackBundle[] {
     const bundles: WebpackBundle[] = [];
     appConfig.webpackBundles.forEach((name) => {
-      bundles.push(new this.bundles[name](name, appConfig))
+      bundles.push(new appConfig.webpackBundleRegistry[name](name, appConfig));
     });
     return bundles;
   }
@@ -52,7 +44,11 @@ export default class Server {
       shared.push(bundles[key].getSharedWebpackConfig());
     });
     Object.keys(bundles).forEach((key) => {
-      environmentSpe.push(appConfig.environment === 'production' ? bundles[key].getProductionWebpackConfig() : bundles[key].getDevelopmentWebpackConfig());
+      environmentSpe.push(
+        appConfig.environment === 'production'
+          ? bundles[key].getProductionWebpackConfig()
+          : bundles[key].getDevelopmentWebpackConfig()
+      );
     });
     let config = merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
@@ -73,11 +69,8 @@ export default class Server {
               }),
             ],
           },
-          plugins: [
-            new ProgressPlugin({profile: false}),
-            new ProvidePlugin({}),
-          ],
-        }
+          plugins: [new ProgressPlugin({ profile: false }), new ProvidePlugin({})],
+        },
       ]
     );
 
@@ -86,5 +79,4 @@ export default class Server {
     });
     return config;
   }
-
 }

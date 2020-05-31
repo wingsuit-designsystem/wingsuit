@@ -1,0 +1,127 @@
+{#
+/**
+ * @file
+ * Flex Grid component.
+ *
+ * Available variables for flex grid:
+ *    - columns [int]: Column count. Currently max 4 column is supported
+ *    - config_[1..4]: Grid configuration. Check the configuration array for possible values.
+ *    - gap [bool]: True for spacing betwwen the gutter
+ *    - wrapper [bool]: True for grid wrapper.
+ *    - padding_top [small|medium|large]: Set padding top.
+ *    - padding_bottom [small|medium|large]: Set padding bottom.
+ *    - margin_top [small|medium|large]: Set margin top.
+ *    - margin_bottom [small|medium|large]: Set margin bottom.
+ */
+#}
+
+{% set configuration = {
+  1:
+  {
+    equal: {default: 'w-full'},
+  },
+  2:
+  {
+    equal: {default: 'flex flex-col w-full md:w-1/2 mb-20 last:mb-0 md:mb-0'}, '66x33': {1: 'flex flex-col w-full md:w-2/3 mb-20 last:mb-0 md:mb-0', 2: 'flex flex-col w-full md:w-1/3 mb-20 last:mb-0 md:mb-0'}, '33x66': {1: 'flex flex-col w-full md:w-1/3 mb-20 last:mb-0 md:mb-0', 2: 'flex flex-col w-full md:w-2/3 mb-20 last:mb-0 md:mb-0'}
+  },
+  3:
+  {
+    equal: {default: 'flex flex-col w-full md:w-1/3 mb-20 last:mb-0 md:mb-0'},
+  },
+  4:
+  {
+    equal: {default: 'flex flex-col w-full md:w-1/4 mb-20 last:mb-0 md:mb-0'},
+  },
+  5:
+  {
+    equal: {default: 'flex flex-col w-full sm:w-1/2 md:w-1/5 mb-20 last:mb-0 md:mb-0'},
+  }
+} %}
+
+{% set gap_class_suffix = ['px-10', 'md:px-25'] %}
+{% set config = _context['config_' ~ columns|default('2') ] %}
+{% set current_configuration = configuration[columns][config] %}
+
+{% if current_configuration is not empty %}
+  {% set wrapper__classes = [
+    wrapper ? 'w-full px-20 relative': '',
+    text_color ? 'text-' ~ text_color,
+    bg ? bg: '',
+    bg_size != '' ? bg_size : 'bg-755',
+    padding_top == 'half' ? 'pt-10 md:pt-20' : '',
+    padding_top == 'default' ? 'pt-20 md:pt-40' : '',
+    padding_top == 'doubled' ? 'pt-40 md:pt-80' : '',
+    padding_top == 'xlarge' ? 'pt-40' : '',
+    padding_top == 'large' ? 'md:pt-30 pt-20' : '',
+    padding_top == 'medium' ? 'pt-20' : '',
+    padding_top == 'small' ? 'pt-10' : '',
+    padding_bottom == 'half' ? 'pb-10 md:pb-20' : '',
+    padding_bottom == 'default' ? 'pb-20 md:pb-40' : '',
+    padding_bottom == 'doubled' ? 'pb-40 md:pb-80' : '',
+    padding_bottom == 'xlarge' ? 'pb-40' : '',
+    padding_bottom == 'large' ? 'md:pb-30 pb-20' : '',
+    padding_bottom == 'medium' ? 'pb-20' : '',
+    padding_bottom == 'small' ? 'pb-10' : ''
+  ] | sort | join(' ') | trim %}
+
+  {% set grid__classes = [
+    width == 'small' ? 'max-w-xs': '',
+    width == 'medium' ? 'max-w-screen-md': '',
+    width == 'large' ? 'max-w-860': '',
+    width == 'xlarge' ? 'max-w-screen-lg': '',
+    width == 'default' ? 'max-w-container': '',
+    reverse == true ? 'flex-row-reverse' : '',
+    'mx-auto flex flex-wrap',
+    gap == true ? '-px-10 md:-px-25': '',
+  ] | sort | join(' ') | trim %}
+  {% set attributes = attributes|default(create_attribute()).addClass(grid__classes) %}
+  {% set wrapper__attributes = wrapper__attributes|default(create_attribute()).addClass(wrapper__classes) %}
+
+  {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
+  {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
+  {%- set column_3 -%}{%- block column_3 -%}{{ _context['column_3' ] }}{% endblock %}{% endset %}
+  {%- set column_4 -%}{%- block column_4 -%}{{ _context['column_4' ] }}{% endblock %}{% endset %}
+
+  {% set wrappers_count = wrapper__attributes|length %}
+  {% if wrappers_count != 0 %}
+    <div {{ wrapper__attributes }}>
+  {% endif %}
+  <div {{ attributes }}>
+    {% block columns %}
+      {% if inline_bg == true %}
+        <div class="bg-gray-light py-20 m-20">
+      {% elseif inline_bg_image == true %}
+        <blockquote class="sprite-pattern-triangle bg-500 py-20 m-20">
+      {% endif %}
+      {%- for i in 1..columns -%}
+        {% block column %}
+          {% set column_classes = current_configuration[i] is not empty ? current_configuration[i] : current_configuration['default'] %}
+          {% if gap == true %}
+            {% set column_classes = column_classes ~ ' ' ~ gap_class_suffix|join(' ') %}
+          {% endif %}
+          <div class="{% if crosses %} z-10 {% endif %} {{ column_classes }}">
+            {{ _context['column_' ~ i ] }}
+          </div>
+        {% endblock %}
+      {%- endfor -%}
+      {% if inline_bg == true %}
+        </div>
+      {% elseif inline_bg_image == true %}
+        </blockquote>
+      {% endif %}
+    {% endblock %}
+  </div>
+  {% if wrappers_count != 0 %}
+    {% if crosses %}
+      {% set crosses_classes = [
+        crosses == 'left' ? 'left-0': '',
+        crosses == 'right' ? 'right-0' : '',
+        'sprite-cross bg-755 absolute top-1/2 transform -translate-y-1/2 h-full w-3/5 md:w-1/5 xxl:w-1/4',
+      ] | sort | join(' ') | trim %}
+      <div class="{{ crosses_classes }}"></div>
+    {% endif %}
+    </div>
+  {% endif %}
+{% else %}
+  No configuration found for "{{ columns }}/{{ config }}".
+{% endif %}

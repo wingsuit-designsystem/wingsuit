@@ -7,13 +7,13 @@
  * where they live.
  */
 
-import {resolveConfig, getAppNames} from '@wingsuit-designsystem/core';
+import { resolveConfig, getAppNames } from '@wingsuit-designsystem/core';
 
-const {relative, extname, join} = require('path');
-const {readdirSync} = require('fs');
+const { relative, extname, join } = require('path');
+const { readdirSync } = require('fs');
 
 const Generator = require('yeoman-generator');
-const {startCase, camelCase, kebabCase, snakeCase} = require('lodash');
+const { startCase, camelCase, kebabCase, snakeCase } = require('lodash');
 const rename = require('gulp-rename');
 
 export default class extends Generator {
@@ -22,7 +22,6 @@ export default class extends Generator {
     // The chosen app
     this.appConfig = {};
   }
-
 
   // Reserved: Check for apps and design systems
   initializing() {
@@ -38,7 +37,6 @@ export default class extends Generator {
       )}`
     );
 
-
     // Prompts presented to user
     const prompts = [
       {
@@ -53,12 +51,12 @@ export default class extends Generator {
         type: 'list',
         name: 'patternType',
         message: 'Where would you like this new component?',
-        choices({app}) {
+        choices({ app }) {
           const config = resolveConfig(app);
           // Return array of atomic folders within the app's design system
           return readdirSync(`${config.absDesignSystemPath}/patterns`, {
             withFileTypes: true,
-          }).filter(folder => folder.isDirectory());
+          }).filter((folder) => folder.isDirectory());
         },
       },
       {
@@ -75,23 +73,24 @@ export default class extends Generator {
         default: 'wingsuit',
         choices() {
           return [
-            {value: 'wingsuit', name: 'Wingsuit Component (including UI Pattern yaml)'},
-            {value: 'wingsuit_presenter', name: 'Wingsuit Component with Presenter Template'},
-            {value: 'plain', name: 'Twig Only Component'},
-            {value: 'plain_presenter', name: 'Twig Only Component with Presenter Template'}]
+            { value: 'wingsuit', name: 'Wingsuit Component (including UI Pattern yaml)' },
+            { value: 'wingsuit_presenter', name: 'Wingsuit Component with Presenter Template' },
+            { value: 'plain', name: 'Twig Only Component' },
+            { value: 'plain_presenter', name: 'Twig Only Component with Presenter Template' },
+          ];
         },
       },
       {
         type: 'confirm',
         name: 'useCss',
         message: 'Do you need a CSS file?',
-        default: false
+        default: false,
       },
       {
         type: 'confirm',
         name: 'useJs',
         message: 'Do you need an javascript attach event handler?',
-        default: false
+        default: false,
       },
       {
         type: 'list',
@@ -99,17 +98,17 @@ export default class extends Generator {
         message: 'How do you want to document your component?',
         default: false,
 
-        choices({componentType}) {
+        choices({ componentType }) {
           const choices: any = [];
-          choices.push({value: 'automatic', name: 'Automatic'})
-          choices.push({value: 'mdx', name: 'MDX'});
-          choices.push({value: 'no', name: 'No documentation'});
+          choices.push({ value: 'automatic', name: 'Automatic' });
+          choices.push({ value: 'mdx', name: 'MDX' });
+          choices.push({ value: 'no', name: 'No documentation' });
           return choices;
         },
-      }
+      },
     ];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       this.props = {
         ...props,
@@ -124,25 +123,25 @@ export default class extends Generator {
 
   // Return path to the design system's component folder
   getDsComponentPath() {
-    const {app, name, patternType} = this.props;
+    const { app, name, patternType } = this.props;
     const config = resolveConfig(app);
     return join(config.absDesignSystemPath, 'patterns', patternType, name);
   }
 
   // Return path to the design system's component folder
   getAppComponentPath() {
-    const {app, name, patternType} = this.props;
+    const { app, name, patternType } = this.props;
     const config = resolveConfig(app);
     return join(config.absAppPath, 'patterns', patternType, name);
   }
 
   writing() {
-    const {name, useCss, useDoc, useJs, componentType} = this.props;
+    const { name, useCss, useDoc, useJs, componentType } = this.props;
 
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
     this.registerTransformStream(
-      rename(path => {
+      rename((path) => {
         // basename is 'patterns.twig' here
         const ext = extname(path.basename);
         // Original extname was '.ejs', change it to ext, which is now '.twig'
@@ -154,11 +153,7 @@ export default class extends Generator {
     );
     try {
       // Copy and process all design system files
-      this.fs.copyTpl(
-        this.templatePath('ds/base/**/*.ejs'),
-        this.getDsComponentPath(),
-        this.props
-      );
+      this.fs.copyTpl(this.templatePath('ds/base/**/*.ejs'), this.getDsComponentPath(), this.props);
 
       if (componentType === 'wingsuit' || componentType === 'wingsuit_presenter') {
         this.fs.copyTpl(
@@ -205,11 +200,7 @@ export default class extends Generator {
       }
       if (useJs) {
         // Copy and process all design system files
-        this.fs.copyTpl(
-          this.templatePath('ds/js/**/*.ejs'),
-          this.getDsComponentPath(),
-          this.props
-        );
+        this.fs.copyTpl(this.templatePath('ds/js/**/*.ejs'), this.getDsComponentPath(), this.props);
       }
       if (useDoc === 'mdx') {
         // Copy and process all design system files
@@ -220,13 +211,9 @@ export default class extends Generator {
         );
       }
 
-      this.log(
-        `Your new component ${name} is being created.`
-      );
+      this.log(`Your new component ${name} is being created.`);
     } catch (err) {
-      this.log(
-        `Error while creating component. ${err.message}`
-      );
+      this.log(`Error while creating component. ${err.message}`);
     }
   }
-};
+}

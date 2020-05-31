@@ -1,4 +1,4 @@
-import TwigAttribute from "./TwigAttribute";
+import TwigAttribute from './TwigAttribute';
 
 export function twigAttributeFunction() {
   return Promise.resolve(new TwigAttribute());

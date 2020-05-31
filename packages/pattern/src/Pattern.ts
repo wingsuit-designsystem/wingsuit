@@ -2,7 +2,7 @@ import PatternVariant from './PatternVariant';
 import Setting from './Setting';
 import Field from './Field';
 import { IPatternDefinition } from './definition';
-import IPatternStorage from "./IPatternStorage";
+import IPatternStorage from './IPatternStorage';
 
 export default class Pattern {
   public static DEFAULT_VARIANT_NAME = '__default';
@@ -57,13 +57,12 @@ export default class Pattern {
 
   private storage: IPatternStorage;
 
-
   public isVisible(app) {
     if (this.visible == null || this.visible === '') {
       return true;
     }
     const apps = this.visible.split('|');
-    for (let i=0; i < apps.length; i++) {
+    for (let i = 0; i < apps.length; i += 1) {
       if (apps[i].trim() === app) {
         return true;
       }
@@ -71,7 +70,7 @@ export default class Pattern {
     return false;
   }
 
-  constructor(id: string, definition: IPatternDefinition, storage:IPatternStorage) {
+  constructor(id: string, definition: IPatternDefinition, storage: IPatternStorage) {
     this.id = id;
     this.label = definition.label;
     this.description = definition.description;
@@ -100,11 +99,11 @@ export default class Pattern {
     return this.patternVariants[variantId];
   }
 
-  public getParameters():any {
+  public getParameters(): any {
     return this.parameters;
   }
 
-  public getStorage():IPatternStorage {
+  public getStorage(): IPatternStorage {
     return this.storage;
   }
 
@@ -126,8 +125,7 @@ export default class Pattern {
     variantKeys.forEach((variantKey: string) => {
       const variantDefinition =
         variantsDefinitions[variantKey] != null ? variantsDefinitions[variantKey] : {};
-      const label =
-        variantDefinition.label != null ? variantDefinition.label : this.label;
+      const label = variantDefinition.label != null ? variantDefinition.label : this.label;
       const use = variantDefinition.use != null ? variantDefinition.use : this.use;
       const description =
         variantDefinition.description != null ? variantDefinition.description : '';
@@ -147,7 +145,7 @@ export default class Pattern {
           settings[key].descripfirstOptiontion,
           settings[key].preview
         );
-        setting.setRequired(settings[key].required ? true : false);
+        setting.setRequired(!!settings[key].required);
         setting.setOptions(settings[key].options);
         setting.setDefaultValue(settings[key].default_value);
         if (settings[key].default_value != null) {
@@ -156,7 +154,11 @@ export default class Pattern {
         if (settings[key].value != null) {
           setting.setPreview(settings[key].value);
         }
-        if (setting.getPreview() == null && settings[key].required === true && settings[key].type === 'select') {
+        if (
+          setting.getPreview() == null &&
+          settings[key].required === true &&
+          settings[key].type === 'select'
+        ) {
           const keys = Object.keys(settings[key].options);
           if (keys.length > 1) {
             const firstOption = keys[0];

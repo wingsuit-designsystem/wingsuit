@@ -1,5 +1,4 @@
 export default interface WebpackBundle {
-
   getName();
 
   getSharedWebpackConfig(): {};

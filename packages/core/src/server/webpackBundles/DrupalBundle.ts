@@ -1,10 +1,9 @@
-import path from "path";
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
+import path from 'path';
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
-const glob = require("glob");
+const glob = require('glob');
 
 export default class DrupalBundle extends BaseWebpackBundle {
-
   private behaviorItems = glob.sync(`${this.appConfig.absDesignSystemPath}/**/*.behavior.js`);
 
   private behaviorObject = this.behaviorItems.reduce((acc, item) => {
@@ -21,7 +20,6 @@ export default class DrupalBundle extends BaseWebpackBundle {
     return acc;
   }, {});
 
-
   private cssItems = glob.sync(`${this.appConfig.absDesignSystemPath}/**/*.css`);
 
   private cssObject = this.cssItems.reduce((acc, item) => {
@@ -30,12 +28,12 @@ export default class DrupalBundle extends BaseWebpackBundle {
     return acc;
   }, {});
 
-  protected sharedWebpackConfig:{} = {
+  protected sharedWebpackConfig: {} = {
     target: 'web',
     entry: {
-      ... this.behaviorObject,
-      ... this.cssObject,
-      ... this.vendorObject
+      ...this.behaviorObject,
+      ...this.cssObject,
+      ...this.vendorObject,
     },
     module: {
       rules: [
@@ -58,5 +56,5 @@ export default class DrupalBundle extends BaseWebpackBundle {
         },
       ],
     },
-  }
+  };
 }

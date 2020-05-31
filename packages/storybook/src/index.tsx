@@ -1,19 +1,14 @@
 import React from 'react';
-import {storage, renderer, Pattern, TwingRenderer} from '@wingsuit-designsystem/pattern';
-import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/react';
-import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
+import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
+import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
+import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-} from '@storybook/addon-docs/blocks';
-import {PatternStories} from "./docs/PatternStories";
-import {PatternInclude} from "./docs/PatternInclude";
+import { PatternStories } from './docs/PatternStories';
+import { PatternInclude } from './docs/PatternInclude';
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -21,17 +16,23 @@ function getStorybookKnobsOptions(setting) {
 
   if (setting.isRequired() === false) {
     knobsOption = {
-      Empty: ''
+      Empty: '',
     };
   }
   Object.keys(options).forEach((key) => {
     const paramKey = options[key] != null ? options[key] : key;
     knobsOption[paramKey] = key;
-  })
+  });
   return knobsOption;
 }
 
-export function configure(module: NodeModule, storybookContext, dataContext, templateContext, namespaces) {
+export function configure(
+  module: NodeModule,
+  storybookContext,
+  dataContext,
+  templateContext,
+  namespaces
+) {
   // Theming
   addParameters({
     options: {
@@ -58,18 +59,17 @@ export function configure(module: NodeModule, storybookContext, dataContext, tem
     if (Array.isArray(storybookContext) === false) {
       storybookContext.keys().forEach((key) => {
         if (storybookContext(key).default !== null) {
-          allExports.push(storybookContext(key))
+          allExports.push(storybookContext(key));
         }
-
       });
     } else {
       storybookContext.forEach((innerContext) => {
         innerContext.keys().forEach((key) => {
           if (innerContext(key).default != null) {
-            allExports.push(innerContext(key))
+            allExports.push(innerContext(key));
           }
         });
-      })
+      });
     }
     return allExports;
   }, module);
@@ -85,12 +85,18 @@ function getProps(variant) {
         knobsVariables[key] = select(
           setting.getLabel(),
           getStorybookKnobsOptions(setting),
-          setting.getPreview(), groupSetting
+          setting.getPreview(),
+          groupSetting
         );
       } else if (setting.getType() === 'boolean') {
         knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
       } else if (setting.getType() === 'number') {
-        knobsVariables[key] = number(setting.getLabel(), setting.getPreview(), undefined, groupSetting);
+        knobsVariables[key] = number(
+          setting.getLabel(),
+          setting.getPreview(),
+          undefined,
+          groupSetting
+        );
       } else {
         knobsVariables[key] = text(setting.getLabel(), setting.getPreview(), groupSetting);
       }
@@ -121,29 +127,30 @@ function getStories(pattern: Pattern, module) {
         patternVariant: variant,
         page: () => (
           <>
-            <Title/>
-            <Subtitle/>
-            <Description/>
-            <Primary/>
-            <PatternProperties/>
-            <PatternInclude/>
-            <PatternStories/>
+            <Title />
+            <Subtitle />
+            <Description />
+            <Primary />
+            <PatternProperties />
+            <PatternInclude />
+            <PatternStories />
           </>
         ),
-        storyDescription: variant.getDescription()
-      }
+        storyDescription: variant.getDescription(),
+      },
     };
     parameters = Object.assign(parameters, pattern.getParameters());
     story.add(
-      variant.getLabel(), () =>
-        <PatternPreview patternId={pattern.getId()}
-                        variantId={variantKey} {...getProps(variant)}></PatternPreview>,
+      variant.getLabel(),
+      () => (
+        <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...getProps(variant)} />
+      ),
       parameters
-    )
+    );
   });
   return story;
 }
 
-export {drupalAttachBehaviorDecorator} from './drupal';
-export {default as RenderTwig} from './components/RenderTwig';
-export {default as PatternPreview} from './components/PatternPreview';
+export { drupalAttachBehaviorDecorator } from './drupal';
+export { default as RenderTwig } from './components/RenderTwig';
+export { default as PatternPreview } from './components/PatternPreview';

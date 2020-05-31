@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
-import {IPatternDefinition, IPatternDefinitions} from './definition';
+import { IPatternDefinition, IPatternDefinitions } from './definition';
 
 export default class PatternStorage implements IPatternStorage {
   private definitions: IPatternDefinitions = {} as IPatternDefinitions;
@@ -15,7 +15,11 @@ export default class PatternStorage implements IPatternStorage {
 
   addGlobal(name: string, value: {}) {
     if (this.globals[name] != null) {
-      this.globals[name] = Object.assign(this.globals[name], value);
+      if (typeof value === 'string') {
+        this.globals[name] = value;
+      } else {
+        this.globals[name] = Object.assign(this.globals[name], value);
+      }
     } else {
       this.globals[name] = value;
     }
@@ -63,10 +67,9 @@ export default class PatternStorage implements IPatternStorage {
 
   createDefinitionsFromMultiContext(any): void {
     if (Array.isArray(any) === true) {
-      any.forEach((context) => {
+      any.forEach(context => {
         this.createDefinitionsFromContext(context);
-      })
-
+      });
     } else {
       this.createDefinitionsFromContext(any);
     }
@@ -76,21 +79,22 @@ export default class PatternStorage implements IPatternStorage {
     if (this.definitions.patterns == null) {
       this.definitions.patterns = {};
     }
-    context.keys().forEach((key) => {
+    context.keys().forEach(key => {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
         const data = context(key);
         if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
-          const {patternDefinition} = data.wingsuit;
-          let {namespace} = data.wingsuit;
-          const {parameters} = data.wingsuit;
+          const { patternDefinition } = data.wingsuit;
+          let { namespace } = data.wingsuit;
+          const { parameters } = data.wingsuit;
           if (namespace == null) {
             const hierachy = key.split('/');
             if (hierachy.length > 2) {
+              // eslint-disable-next-line prefer-destructuring
               namespace = hierachy[1];
             }
           }
 
-          Object.keys(patternDefinition).forEach((pattern_key) => {
+          Object.keys(patternDefinition).forEach(pattern_key => {
             if (parameters !== null) {
               patternDefinition[pattern_key].parameters = parameters;
             }
@@ -98,15 +102,15 @@ export default class PatternStorage implements IPatternStorage {
               patternDefinition[pattern_key].namespace = namespace;
             }
             this.definitions.patterns[pattern_key] = patternDefinition[pattern_key];
-          })
+          });
         }
       }
     });
   }
 
-  findTwigByNamespace(namespace):any|null {
+  findTwigByNamespace(namespace): any | null {
     let foundResource = null;
-    Object.keys(this.twigResources).forEach((key) => {
+    Object.keys(this.twigResources).forEach(key => {
       if (key.trim() === namespace.trim()) {
         foundResource = this.twigResources[key];
       }
@@ -114,46 +118,46 @@ export default class PatternStorage implements IPatternStorage {
     return foundResource;
   }
 
-  findTwigById(id):any|null {
+  findTwigById(id): any | null {
     const use = this.loadPattern(id).getUse();
     return this.findTwigByNamespace(use);
   }
 
-  createGlobalsFromContext(context):void {
-    context.keys().forEach((key) => {
+  createGlobalsFromContext(context): void {
+    context.keys().forEach(key => {
       const data = context(key);
-      Object.keys(data).forEach((valueKey)=> {
+      Object.keys(data).forEach(valueKey => {
         this.addGlobal(valueKey, data[valueKey]);
-      })
+      });
     });
   }
 
-  createTwigStorageFromContext(context):void {
-    context.keys().forEach((key) => {
+  createTwigStorageFromContext(context): void {
+    context.keys().forEach(key => {
       const pathAry = key.replace('./', '').split('/');
       const folderName = pathAry[0];
       let mappedNamespace = '';
-      Object.keys(this.namespaces).forEach((namespace) => {
+      Object.keys(this.namespaces).forEach(namespace => {
         const namespaceMap = this.namespaces[namespace].split('/');
         if (namespaceMap[namespaceMap.length - 1] === folderName) {
           mappedNamespace = namespace;
         }
-      })
+      });
       pathAry.shift();
       this.addTwig(`@${mappedNamespace}/${pathAry.join('/')}`, context(key));
     });
   }
 
-  getTwigResources():{} {
+  getTwigResources(): {} {
     const resources = this.twigResources;
     const result = {};
-    Object.keys(resources).forEach((key) => {
+    Object.keys(resources).forEach(key => {
       result[key] = resources[key].default;
     });
     return result;
   }
 
-  addTwig(namespace, resource):void {
+  addTwig(namespace, resource): void {
     this.twigResources[namespace] = resource;
   }
 }

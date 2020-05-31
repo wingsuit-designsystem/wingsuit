@@ -1,33 +1,28 @@
 import { Source } from '@storybook/components';
 
-import React, {useContext, FunctionComponent} from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 
-import {
-  DocsContext,
-  StoryData,
-} from '@storybook/addon-docs/blocks';
+import { DocsContext, StoryData } from '@storybook/addon-docs/blocks';
 
-import {
-  getContextualStory,
-} from './utils';
-import {PatternVariant} from "@wingsuit-designsystem/pattern";
+import { getContextualStory } from './utils';
 
 type Props = { story?: StoryData };
 
-
 export const PatternInclude: FunctionComponent<Props> = (props) => {
   const context = useContext(DocsContext);
-  const story = getContextualStory(context, props.story);
-  if (story == null) {
+  const { story } = props;
+  const contextStory = getContextualStory(context, story);
+  if (contextStory == null) {
     return null;
   }
-  const patternVariant: PatternVariant = story.parameters.docs.patternVariant;
+  const { patternVariant } = contextStory.parameters.docs;
 
-  const code = `{% include "${patternVariant.getPattern().getUse()}" with ${JSON.stringify(patternVariant.getVariables(false))}`;
+  const code = `{% include "${patternVariant.getPattern().getUse()}" with ${JSON.stringify(
+    patternVariant.getVariables(false)
+  )}`;
   return (
     <>
-      <Source dark={true} code={code}></Source>
+      <Source dark code={code} />
     </>
   );
 };
-

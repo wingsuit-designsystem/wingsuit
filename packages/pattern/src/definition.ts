@@ -30,7 +30,7 @@ export interface IPatternDefinition {
   namespace: string;
   parameters: any;
   use: string;
-  visible: string,
+  visible: string;
   description: string;
   fields: Properties;
   settings: Properties;

@@ -33,7 +33,7 @@ export default class Setting extends Property {
     this.enable = value;
   }
 
-  private defaultValue = "";
+  private defaultValue = '';
 
   private required = false;
 

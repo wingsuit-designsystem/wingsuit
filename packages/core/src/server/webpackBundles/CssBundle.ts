@@ -1,11 +1,9 @@
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-
 export default class CssBundle extends BaseWebpackBundle {
-
   public getSharedWebpackConfig(): {} {
     return this.cssModes[this.appConfig.cssMode];
   }
@@ -14,7 +12,7 @@ export default class CssBundle extends BaseWebpackBundle {
     {
       loader: 'css-loader',
       options: {
-        sourceMap: true
+        sourceMap: true,
       },
     },
 
@@ -52,10 +50,7 @@ export default class CssBundle extends BaseWebpackBundle {
         rules: [
           {
             test: /\.css$/,
-            use: [
-              {loader: 'style-loader'},
-              ... this.loader
-            ],
+            use: [{ loader: 'style-loader' }, ...this.loader],
           },
         ],
       },
@@ -69,12 +64,11 @@ export default class CssBundle extends BaseWebpackBundle {
           {
             test: /\.css$/,
             use: [
-
               {
                 loader: MiniCssExtractPlugin.loader,
-                options: {publicPath: './'},
+                options: { publicPath: './' },
               },
-              ... this.loader,
+              ...this.loader,
             ],
           },
         ],

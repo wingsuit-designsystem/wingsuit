@@ -1,0 +1,36 @@
+<div class="max-w-container px-4 m-auto">
+  <div class="text-center w-1/2 m-auto pb-8 text-gray-dark">{{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}</div>
+  <div class="block md:flex group hover:no-underline">
+    <div class="w-full md:w-1/2">
+      {% block image %}
+        {{ image }}
+      {% endblock %}
+    </div>
+    <div class="w-full md:w-1/2 md:pl-4">
+      <div {{ attributes|default(create_attribute()).addClass([
+        'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
+      ] | sort | join(' ') | trim) }}>
+      {% block headline %}
+        {{ headline }}
+      {% endblock %}
+      </div>
+      <div {{ attributes|default(create_attribute()).addClass([
+        'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
+      ] | sort | join(' ') | trim) }}">
+      {% block text %}
+        {{ text }}
+      {% endblock %}
+      </div>
+      <div>
+      {% block button %}
+        {{ button }}
+      {% endblock %}
+      </div>
+    </div>
+  </div>
+  <div class="block md:flex pt-10">
+    {% block more %}
+      {{ more }}
+    {% endblock %}
+  </div>
+</div>

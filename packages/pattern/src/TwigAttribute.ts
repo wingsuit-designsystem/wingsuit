@@ -26,7 +26,7 @@ export default class TwigAttribute {
     }
   }
 
-  addClass(className:string|null = '') {
+  addClass(className: string | null = '') {
     if (className == null) {
       return this;
     }
@@ -43,7 +43,7 @@ export default class TwigAttribute {
     return this;
   }
 
-  render () {
+  render() {
     return this.toString();
   }
 

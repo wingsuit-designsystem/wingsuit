@@ -1,0 +1,280 @@
+version: 2.1
+
+aliases:
+  - &defaults
+    working_directory: /tmp/storybook
+    docker:
+      - image: circleci/node:10-browsers
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore core dependencies cache
+          keys:
+            - core-dependencies-v5-{{ checksum "yarn.lock" }}
+            - core-dependencies-v5-
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Check that yarn.lock is not corrupted
+          command: yarn repo-dirty-check
+      - save_cache:
+          name: Cache core dependencies
+          key: core-dependencies-v5-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+            - packages
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Bootstrap
+          command: yarn bootstrap --core
+      - persist_to_workspace:
+          root: .
+          paths:
+            - packages
+
+  packtracker:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Report webpack stats for manager of official storybook
+          command: |
+            cd examples/official-storybook
+            yarn packtracker
+  examples:
+    <<: *defaults
+    parallelism: 10
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: examples
+          command: |
+            yarn build-storybooks
+      - persist_to_workspace:
+          root: .
+          paths:
+            - built-storybooks
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: running local registry
+          command: yarn local-registry --publish
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .verdaccio-cache
+  examples-v2:
+    docker:
+      - image: cypress/included:4.5.0
+        environment:
+          TERM: xterm
+    working_directory: /tmp/storybook
+    parallelism: 10
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: running local registry
+          command: yarn local-registry --port 6000 --open
+          background: true
+      - run:
+          name: wait for registry
+          command: yarn wait-on http://localhost:6000
+      - run:
+          name: set registry
+          command: yarn config set registry http://localhost:6000/
+      - run:
+          name: test local registry
+          command: yarn info @storybook/core
+      - run:
+          name: run e2e tests
+          command: yarn test:e2e-framework
+      - store_artifacts:
+          path: /tmp/storybook/cypress
+          destination: cypress
+  examples-v2-yarn-2:
+    docker:
+      - image: cypress/included:4.5.0
+        environment:
+          TERM: xterm
+    working_directory: /tmp/storybook
+    # parallelism: 10
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: running local registry
+          command: yarn local-registry --port 6000 --open
+          background: true
+      - run:
+          name: wait for registry
+          command: yarn wait-on http://localhost:6000
+      - run:
+          name: set registry
+          command: yarn config set registry http://localhost:6000/
+      - run:
+          name: test local registry
+          command: yarn info @storybook/core
+      - run:
+          name: run e2e tests
+          command: yarn test:e2e-framework yarn2Cra
+      - store_artifacts:
+          path: /tmp/storybook/cypress
+          destination: cypress
+  e2e:
+    working_directory: /tmp/storybook
+    docker:
+      - image: cypress/included:4.5.0
+        environment:
+          TERM: xterm
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: running example
+          command: yarn serve-storybooks
+          background: true
+      - run:
+          name: await running examples
+          command: yarn await-serve-storybooks
+      - run:
+          name: cypress run
+          command: yarn test:e2e
+
+  smoke-tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run  (smoke test)
+          command: |
+            cd examples/cra-kitchen-sink
+            yarn dev:storybook --smoke-test --quiet
+  frontpage:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore core dependencies cache
+          keys:
+            - core-dependencies-v5-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn bootstrap --install
+      - run:
+          name: Trigger build
+          command: ./scripts/build-frontpage.js
+  docs:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd docs
+            yarn install
+      - run:
+          name: Build docs
+          command: |
+            cd docs
+            yarn build
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Lint
+          command: yarn lint
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Test
+          command: yarn test --coverage --w2 --core
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage
+  coverage:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Upload coverage
+          command: yarn coverage
+
+workflows:
+  test:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - lint:
+          requires:
+            - build
+      - examples:
+          requires:
+            - build
+      - e2e:
+          requires:
+            - examples
+      - smoke-tests:
+          requires:
+            - build
+      - packtracker:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
+      - coverage:
+          requires:
+            - test
+      - publish:
+          requires:
+            - build
+      - examples-v2:
+          requires:
+            - publish
+      - examples-v2-yarn-2:
+          requires:
+            - publish
+  deploy:
+    jobs:
+      - docs
+      - frontpage

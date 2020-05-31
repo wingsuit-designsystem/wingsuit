@@ -1,33 +1,33 @@
-const logger = console;
 import chalk from 'chalk';
-
-const {spawn, spawnSync} = require('child_process');
-const clone = require('git-clone');
-import {hasYarn} from './has_yarn';
 import path from 'path';
+import { hasYarn } from './has_yarn';
+
+const logger = console;
+
+const { spawn, spawnSync } = require('child_process');
+const clone = require('git-clone');
 
 export default function (options) {
-
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
   const branch = options.branch != null ? options.branch : 'stable';
-  const folder = !options.folder ? path.resolve("wingsuit") : path.resolve(options.folder)
+  const folder = !options.folder ? path.resolve('wingsuit') : path.resolve(options.folder);
   const npmOptions = {
     useYarn,
     checkoutFolder: path.join(folder, '../'),
     gitFolder: path.resolve(folder),
     targetFolder: folder,
-    branch: branch,
+    branch,
     skipInstall: options.skipInstall,
   };
-  const cmdOptions = {stdio: 'inherit', cwd: npmOptions.checkoutFolder};
-  const gitOptions = {cwd: npmOptions.gitFolder};
+  const cmdOptions = { stdio: 'inherit', cwd: npmOptions.checkoutFolder };
+  const gitOptions = { cwd: npmOptions.gitFolder };
 
   spawnSync('pwd', [], cmdOptions);
 
   // Removes the \n from the stringified buffer
-  const extractHash = buffer => {
+  const extractHash = (buffer) => {
     const arr = buffer.toString('utf8').split('\n');
     return arr[0];
   };
@@ -37,7 +37,7 @@ export default function (options) {
    * the latest tag, rather than the current HEAD of master.
    */
   const checkoutLatestTag = () => {
-    if (npmOptions.branch === 'stable' ) {
+    if (npmOptions.branch === 'stable') {
       logger.log('Checking out latest tag...');
       // Make sure to fetch the tags to pull the latest
       spawnSync('git', ['fetch', '--tags'], gitOptions);
@@ -67,10 +67,9 @@ export default function (options) {
     spawn('mv', ['wingsuit.bak/packages/wingsuit', 'wingsuit'], cmdOptions);
     spawn('rm', ['-rf', 'wingsuit.bak'], cmdOptions);
 
-
     cmdOptions.cwd = npmOptions.targetFolder;
     if (!npmOptions.skipInstall) {
-      console.log('Running Wingsuit dependency installation...');
+      logger.log('Running Wingsuit dependency installation...');
       if (useYarn) {
         spawnSync('yarn', ['install'], cmdOptions);
         logger.log('Running Wingsuit setup...');
@@ -85,5 +84,4 @@ export default function (options) {
 
   logger.log('Cloning Wingsuit repo...');
   clone('https://github.com/wingsuit-designsystem/wingsuit', folder, cmdOptions, setupWingsuit);
-
 }

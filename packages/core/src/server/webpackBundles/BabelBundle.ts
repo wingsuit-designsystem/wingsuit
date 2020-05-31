@@ -1,7 +1,6 @@
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
 export default class BabelBundle extends BaseWebpackBundle {
-
   protected sharedWebpackConfig = {
     module: {
       rules: [
@@ -21,11 +20,11 @@ export default class BabelBundle extends BaseWebpackBundle {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
+              presets: ['@babel/preset-env'],
+            },
           },
         },
       ],
-    }
-  }
+    },
+  };
 }

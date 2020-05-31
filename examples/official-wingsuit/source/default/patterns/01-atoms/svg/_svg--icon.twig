@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * svg--icon
+ *
+ * Available variables for svgicon:
+ *    - icon [string]: String filename of the SVG to use from svg/
+ *    - size [string]: Pass in a size tailwind utilities.
+ *    Otherwise it will default to black.
+ *    - svgicon.svgstroke [string]: Pass in a theme-color to colorize the SVG
+ *      stroke. Otherwise stroke will be none.
+
+ */
+#}
+
+{% set svg_classes = svg_classes|default([])|merge([
+  'svg',
+  size != '' ? size,
+  fill-color != '' ? fill-color ~ " fill-current"
+]) | sort | join(' ') | trim %}
+<div class="{{ svg_classes }}">
+  <svg viewBox="0 0 500 500">
+    <use xlink:href="{{ file_url('ws-assets://images/spritemap.svg') }}?{{ ws_itok() }}#{{ icon }}"></use>
+  </svg>
+</div>

@@ -1,14 +1,13 @@
-import {twigAttributeFunction, twigItok} from "./twigExtensions";
-import IRenderer from "./IRenderer";
-import {renderPatternPreview, renderPattern} from "./twigRenderEngine";
+import { twigAttributeFunction, twigItok } from './twigExtensions';
+import IRenderer from './IRenderer';
+import { renderPatternPreview, renderPattern } from './twigRenderEngine';
 import { storage } from './index';
 
 const twig = require('twig');
 const twigDrupal = require('twig-drupal-filters');
 
 export class TwigRenderer implements IRenderer {
-  addTemplate(path, data) {
-  }
+  addTemplate(path, data) {}
 
   constructor() {
     twig.cache();
@@ -24,14 +23,11 @@ export class TwigRenderer implements IRenderer {
     if (template !== null) {
       // @ts-ignore
       return new Promise((resolve) => {
-        resolve(template(variables))
-      }
-      );
-    } else {
-      return new Promise((resolve) => {
-        resolve( `Template ${id} ${include} not loaded. Check require.context in your configure.js`);
+        resolve(template(variables));
       });
-
     }
+    return new Promise((resolve) => {
+      resolve(`Template ${id} ${include} not loaded. Check require.context in your configure.js`);
+    });
   }
 }

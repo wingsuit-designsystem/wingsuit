@@ -1,15 +1,8 @@
-import React, {useContext, FunctionComponent} from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 
-import {
-  DocsContext,
-  DocsStory,
-  Heading,
-  DocsStoryProps,
-} from '@storybook/addon-docs/blocks';
-import {PatternInclude} from "./PatternInclude";
-import {
-  getDocsStories
-} from './utils';
+import { DocsContext, DocsStory, Heading, DocsStoryProps } from '@storybook/addon-docs/blocks';
+import { PatternInclude } from './PatternInclude';
+import { getDocsStories } from './utils';
 // import PatternProperties from "./PatternProperties";
 
 interface StoriesProps {
@@ -17,8 +10,10 @@ interface StoriesProps {
   includePrimary?: boolean;
 }
 
-
-export const PatternStories: FunctionComponent<StoriesProps> = ({title, includePrimary = false}) => {
+export const PatternStories: FunctionComponent<StoriesProps> = ({
+  title,
+  includePrimary = false,
+}) => {
   const context = useContext(DocsContext);
   const componentStories = getDocsStories(context);
 
@@ -32,10 +27,12 @@ export const PatternStories: FunctionComponent<StoriesProps> = ({title, includeP
     <>
       <Heading>Pattern Variants</Heading>
       {stories.map((story) => {
-        return <>
-          <DocsStory key={story.id} {...story} expanded/>
-          <PatternInclude story={story}></PatternInclude>
+        return (
+          <>
+            <DocsStory key={story.id} {...story} expanded />
+            <PatternInclude story={story} />
           </>
+        );
       })}
     </>
   );

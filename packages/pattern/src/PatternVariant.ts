@@ -1,7 +1,7 @@
 import Field from './Field';
 import Setting from './Setting';
 import Pattern from './Pattern';
-import IPatternStorage from "./IPatternStorage";
+import IPatternStorage from './IPatternStorage';
 
 export default class PatternVariant {
   public getUse(): string {
@@ -81,9 +81,9 @@ export default class PatternVariant {
         const settings = preview.settings != null ? preview.settings : {};
         const objects = Object.assign(fields, settings);
         previewPatterns[key] = {
-          'patternId': patternId,
-          'variant': variant,
-          'variables': objects
+          patternId,
+          variant,
+          variables: objects,
         };
       }
     });
@@ -109,10 +109,8 @@ export default class PatternVariant {
     if (includeGlobals) {
       const globals = this.getStorage().getGlobals();
       return Object.assign(globals, values);
-    } else {
-      return values;
     }
-
+    return values;
   }
 
   private pattern: Pattern;

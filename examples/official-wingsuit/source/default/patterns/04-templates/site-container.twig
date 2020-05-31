@@ -1,0 +1,21 @@
+{# This pattern can be embedded directly by Drupal.
+ # Overwrite the blocks and be happy.
+ #}
+
+{% block header %}
+  {% embed '@organisms/header/_header.twig' with {items: menu_primary.items} only%}
+    {% block menu %}
+      {% include '@molecules/menu/_menu.twig' with {items: items, primary: true} only %}
+    {% endblock %}
+  {% endembed %}
+{% endblock header %}
+
+<main class="main-content">
+  {% block content %}
+    <p>Main content</p>w
+  {% endblock %}
+</main>
+
+{% block footer %}
+  {% include "@organisms/footer/_footer.twig" %}
+{% endblock footer %}

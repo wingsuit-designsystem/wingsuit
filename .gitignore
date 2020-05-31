@@ -1,3 +1,15 @@
 .idea
 node_modules
 .cache
+built-storybooks
+ts3.5
+.cache
+coverage/
+.tern-port
+*.DS_Store
+docs/public
+package-lock.json
+.nvmrc
+storybook-static
+cypress/videos
+cypress/screenshots

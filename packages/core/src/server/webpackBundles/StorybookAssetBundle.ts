@@ -1,27 +1,23 @@
 import * as path from 'path';
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
 const CopyPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
-
 export default class StorybookAssetBundle extends BaseWebpackBundle {
-
   protected productionWebpackConfig: {} = {
     plugins: [],
-  }
+  };
 
   protected sharedWebpackConfig = {
-    entry: [
-      path.resolve(this.appConfig.path, 'assets.js')
-    ],
+    entry: [path.resolve(this.appConfig.path, 'assets.js')],
     plugins: [
       new SpriteLoaderPlugin(),
       new CopyPlugin([
         {
           from: 'images/*',
-          to: this.appConfig.assetBundleFolder
-        }
+          to: this.appConfig.assetBundleFolder,
+        },
       ]),
     ],
     module: {
@@ -41,7 +37,8 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
           test: /.*\.svg$/,
           use: [
             {
-              loader: 'svg-sprite-loader', options: {
+              loader: 'svg-sprite-loader',
+              options: {
                 extract: true,
                 spriteFilename: `images/spritemap.svg`,
               },
@@ -51,23 +48,25 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
               loader: 'svgo-loader',
               options: {
                 plugins: [
-                  {convertFillsToCurrentColor: true},
-                  {removeTitle: true},
-                  {removeEditorsNSData: false},
-                  {convertColors: {shorthex: false}},
-                  {convertPathData: false}
-                ]
-              }
-            }
-          ]
-        }
-      ]
+                  { convertFillsToCurrentColor: true },
+                  { removeTitle: true },
+                  { removeEditorsNSData: false },
+                  { convertColors: { shorthex: false } },
+                  { convertPathData: false },
+                ],
+              },
+            },
+          ],
+        },
+      ],
     },
-  }
+  };
 
   alterFinalConfig(config: any): {} {
-    config.module.rules = config.module.rules.map(data => {
+    // eslint-disable-next-line no-param-reassign
+    config.module.rules = config.module.rules.map((data) => {
       if (/svg\|/.test(String(data.test)))
+        // eslint-disable-next-line no-param-reassign
         data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|cur|ani)(\?.*)?$/;
       return data;
     });

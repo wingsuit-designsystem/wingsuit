@@ -1,3 +1,5 @@
+import WebpackBundleConstructor from './server/WebpackBundleConstructor';
+
 export default interface AppConfig {
   type: string;
 
@@ -13,9 +15,9 @@ export default interface AppConfig {
 
   cssMode: string;
 
-  assetBundleFolder:string;
+  assetBundleFolder: string;
 
-  assetAtomicFolder:string;
+  assetAtomicFolder: string;
 
   absDesignSystemPath: string;
 
@@ -26,6 +28,12 @@ export default interface AppConfig {
   absDistFolder: string;
 
   webpackBundles: [];
+
+  webpackBundleRegistry: WebpackBundle;
+}
+
+export interface WebpackBundle {
+  [key: string]: WebpackBundleConstructor;
 }
 
 export interface Namespace {

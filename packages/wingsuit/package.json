@@ -19,6 +19,7 @@
   "scripts": {
     "dev:storybook": "start-storybook --config-dir apps/storybook",
     "build:storybook": "build-storybook --config-dir apps/storybook -o ./dist/app-storybook",
+    "build-storybook": "yarn build:storybook",
     "dev:drupal": "cross-env-shell NODE_ENV=development \"webpack --watch --config ./apps/drupal/webpack.config.js\"",
     "build:drupal": "cross-env-shell NODE_ENV=production \"webpack --config ./apps/drupal/webpack.config.js\"",
     "lint:js": "eslint --ext .js,.vue ./",

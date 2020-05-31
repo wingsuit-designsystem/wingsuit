@@ -1,8 +1,7 @@
-import {BaseWebpackBundle} from "../BaseWebpackBundle";
-
+import { BaseWebpackBundle } from '../BaseWebpackBundle';
 
 export default class TwingBundle extends BaseWebpackBundle {
-  protected sharedWebpackConfig:{} = {
+  protected sharedWebpackConfig: {} = {
     module: {
       rules: [
         {
@@ -27,6 +26,6 @@ export default class TwingBundle extends BaseWebpackBundle {
         },
          */
       ],
-    }
-  }
+    },
+  };
 }

@@ -1,53 +1,53 @@
 import * as path from 'path';
-import {storage} from '../src';
+import { TwingLoaderFilesystem } from 'twing';
+import { storage, TwingRenderer } from '../src';
 
-const namespace = require('../__int_tests__/namespaces')['default'];
-
+const namespaces = require('./namespaces').default;
 const renderEngine = require('../src/twigRenderEngine');
-storage.createDefinitionsFromFile(path.join(__dirname, '/_data/patterns.json'));
-renderEngine.setNamespaces(namespace);
-renderEngine.twigFunctions();
-describe('TwigRenderEngine', () => {
-  describe('#renderPattern', () => {
-    test('Render Pattern Card', () => {
-      const output = renderEngine.renderPattern('card', 'default');
-      expect(output).toEqual('Card1');
-    });
-  });
-  describe('#render complex pattern', () => {
-    test('Render Pattern Card', () => {
-      const output = renderEngine.renderPattern('render');
-      expect(output.trim()).toEqual('render');
-    });
-  });
-  describe('#renderTemplate', () => {
-    test('Render Template', () => {
-      storage.addGlobal('global_1', 'correct');
-      const output = renderEngine.renderTemplate('@molecules/tests/global.twig', storage.getGlobals());
-      expect(output).toMatch(/field\:correct/);
-      expect(output).toMatch(/setting\:correct/);
-    });
-  });
-  describe('#renderPreview', () => {
-    test.each([
-        ['global', '__default'],
-        ['default_value', '__default'],
-        ['pattern', '__default'],
-        ['pattern_variant', 'default'],
-        ['pattern_function', '__default'],
-        ['pattern_preview_function', '__default'],
-        ['simple', '__default'],
-        ['variant', 'variant']
-      ],
-    )(
-      "Check rendered pattern %p variant %p",
-      (patternId: string, variantId: string) => {
-        storage.addGlobal('global_1', 'correct');
-        const output = renderEngine.renderPatternPreview(patternId, variantId);
-        expect(output).toMatch(/field\:correct/);
-        expect(output).toMatch(/setting\:correct/);
 
-      }
-    )
+const renderer = new TwingRenderer();
+const loader = new TwingLoaderFilesystem();
+Object.keys(namespaces).forEach((namespace) => {
+  loader.setPaths(namespaces[namespace], namespace);
+});
+
+renderer.setLoader(loader);
+renderEngine.setRenderer(renderer);
+
+storage.createDefinitionsFromFile(path.join(__dirname, '/_data/patterns.json'));
+// renderEngine.setNamespaces(namespace);
+// renderEngine.twigFunctions();
+describe('TwigRenderEngine', () => {
+  test('Render Pattern Card', async () => {
+    const output = await renderEngine.renderPattern('card', 'default');
+    expect(output).toEqual('Card1');
+  });
+  test('Render Pattern render', async () => {
+    const output = await renderEngine.renderPattern('render');
+    expect(output.trim()).toEqual('render');
+  });
+  test('Render Template', async () => {
+    storage.addGlobal('global_1', 'correct');
+    const output = await renderEngine.renderTemplate(
+      '@molecules/tests/global.twig',
+      storage.getGlobals()
+    );
+    expect(output).toMatch(/field:correct/);
+    expect(output).toMatch(/setting:correct/);
+  });
+  test.each([
+    ['global', '__default'],
+    ['default_value', '__default'],
+    ['pattern', '__default'],
+    ['pattern_variant', 'default'],
+    ['pattern_function', '__default'],
+    ['pattern_preview_function', '__default'],
+    ['simple', '__default'],
+    ['variant', 'variant'],
+  ])('Render pattern %p variant %p', async (patternId: string, variantId: string) => {
+    storage.addGlobal('global_1', 'correct');
+    const output = await renderEngine.renderPatternPreview(patternId, variantId);
+    expect(output).toMatch(/field:correct/);
+    expect(output).toMatch(/setting:correct/);
   });
 });
