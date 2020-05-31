@@ -59,7 +59,7 @@ jobs:
             yarn packtracker
   examples:
     <<: *defaults
-    parallelism: 10
+    parallelism: 2
     steps:
       - checkout
       - attach_workspace:
