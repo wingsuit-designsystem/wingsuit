@@ -9,6 +9,7 @@ built-storybooks
 lib/cli/test
 lib/codemod/src/transforms/__testfixtures__
 scripts/storage
+cypress
 *.bundle.js
 *.js.map
 *.d.ts
