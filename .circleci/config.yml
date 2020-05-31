@@ -176,7 +176,7 @@ jobs:
           name: Run  (smoke test)
           command: |
             cd examples/official-wingsuit
-            yarn dev:storybook --smoke-test --quiet
+            yarn storybook --smoke-test --quiet
   docs:
     <<: *defaults
     steps:
