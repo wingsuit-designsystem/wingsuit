@@ -122,8 +122,8 @@ const handleExamples = async (deployables) => {
     const cwd = p(['examples', d]);
 
     await exec(`yarn`, [`build-storybook`, `--output-dir=${out}`, '--quiet'], { cwd });
-    console.log(out);
-    await exec(`npx`, [`sb`, 'extract', out, `${out}/stories.json`], { cwd });
+    // Not working right now.
+    // await exec(`npx`, [`sb`, 'extract', out, `${out}/stories.json`], { cwd });
 
     logger.log('-------');
     logger.log(`✅ ${d} built`);

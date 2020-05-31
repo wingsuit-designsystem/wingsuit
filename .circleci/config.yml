@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Report webpack stats for manager of official storybook
           command: |
-            cd examples/official-storybook
+            cd examples/official-wingsuit
             yarn packtracker
   examples:
     <<: *defaults
