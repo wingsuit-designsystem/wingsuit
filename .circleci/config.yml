@@ -175,7 +175,7 @@ jobs:
       - run:
           name: Run  (smoke test)
           command: |
-            cd examples/cra-kitchen-sink
+            cd examples/official-wingsuit
             yarn dev:storybook --smoke-test --quiet
   docs:
     <<: *defaults
