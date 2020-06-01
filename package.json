@@ -12,6 +12,7 @@
     "publish:latest": "lerna publish --exact --concurrency 1 --force-publish",
     "publish:next": "npm run publish:latest -- --npm-tag=next",
     "repo-dirty-check": "node -r esm ./scripts/run-repo-dirty-check",
+    "local-registry": "ts-node --project=./scripts/tsconfig.json ./scripts/run-registry.ts ",
     "dev:babel": "lerna exec --scope @wingsuit-designsystem/* --parallel -- cross-env-shell node \\$LERNA_ROOT_PATH/scripts/watch-babel.js",
     "dev": "concurrently --kill-others \"yarn dev:tsc\" \"yarn dev:babel\"",
     "dev:tsc": "lerna exec --scope @wingsuit-designsystem/* --parallel -- cross-env-shell node \\$LERNA_ROOT_PATH/scripts/watch-tsc.js",
