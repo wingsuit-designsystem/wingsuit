@@ -12,7 +12,7 @@ npx @wingsuit-designsystem/cli init
 
 Storybook opens and you can browse through the wingsuit demo page.
 
-[SCREENSHOT]
+# SCREENSHOT
 
 ## Source code
 A good starting point is to checkout the design system components.

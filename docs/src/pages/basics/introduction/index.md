@@ -1,7 +1,9 @@
+
 ---
 id: 'introduction'
 title: 'Introduction'
 ---
+
 
 Wingsuit is a designsystem for twig based UI Components. The components are developed independently in storybook and can be used by other "apps" like drupal. 
 
@@ -13,15 +15,15 @@ The wingsuit.yml is an extended variant of the [ui_patterns.yml](https://ui-patt
 
 <b>Generate Storybook stories</b><br>
 Each variant is a storybook story. Fields and Settings are editable with knobs.
-[SCREENSHOT]
+# SCREENSHOT
 
 <b>Automatic Storybook documentation</b><br>
 A nice documentation page is created directly from the wingsuit.yml. 
-[SCREENSHOT]
+# SCREENSHOT
 
 <b>Drupal integration</b><br>
 With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) patterns can be used with zero configuration in drupal. 
-[SCREENSHOT]
+# SCREENSHOT
 
 
 ### <b>Stay in sync</b>
@@ -31,5 +33,3 @@ Wingsuit solves the problem with a common component configuration. The <b>wingsu
 ### <b>Frontend frameworks</b>
 Wingsuit ships with [tailwind](https://tailwindcss.com/) and [alpinejs](https://github.com/alpinejs/alpine). 
 The frameworks can easily replaced with other frameworks like [bootstrap 4](https://getbootstrap.com) or [foundation 6](https://get.foundation/sites/docs/).
-
- 
