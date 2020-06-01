@@ -5,6 +5,4 @@ export default { title: '02-molecules/menu' };
 
 const primaryTemplate = require('./menu.twig');
 
-export const PrimaryMenu = () => (
-  <RenderTwig data={primaryTemplate}></RenderTwig>
-);
+export const PrimaryMenu = () => <RenderTwig data={primaryTemplate}></RenderTwig>;

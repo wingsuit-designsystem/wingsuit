@@ -30,10 +30,7 @@ const moduleNameMapper = Object.keys(namespaces).reduce((acc, entry) => {
   // i.e '^protons[/]?(.*)'
   const nameRegex = `^${entry}[/]?(.*)`;
   // i.e source/default/_patterns/04-templates
-  const namePath = path.relative(
-    path.join(__dirname, rootDir),
-    namespaces[entry]
-  );
+  const namePath = path.relative(path.join(__dirname, rootDir), namespaces[entry]);
   // i.e. moduleNameMapper['^protons[/]?(.*)'] = '<rootDir>/source/default/_patterns/00-protons/$1';
   acc[nameRegex] = `<rootDir>/${namePath}/$1`;
   return acc;

@@ -13,14 +13,6 @@
      x-data="{ open: false }">
   <div class="max-w-container mx-auto p-6 lg:py-6 lg:px-2 justify-between relative flex flex-wrap items-center md:flex-no-wrap">
     <a href="{{ path('<front>') }}" class="mr-4 -mt-6 w-155 lg:mr-3 flex">
-      <div class="hidden lg:block pr-2">
-        {% include "@atoms/image/image.twig" with {
-          variant: 'primary',
-          placeholder: false,
-          size: 'w-20',
-          src: file_url('ws-assets://images/gug_logo_img.png') ,
-        } only %}
-      </div>
       {% include "@atoms/svg/_svg--icon.twig" with {
         size: 'w-20 h-16',
         icon: 'gug_logo_typo'

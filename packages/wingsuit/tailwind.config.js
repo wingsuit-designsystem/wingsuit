@@ -1,5 +1,14 @@
 module.exports = {
   important: false,
+  purge: {
+    content: [
+      './source/**/*.twig',
+      './apps/**/*.twig'
+    ],
+    options: {
+      whitelist: ['bg-red-500', 'px-4'],
+    }
+  },
   theme: {
     fontFamily: {
       sans: ['SourceSans', '-apple-system', 'BlinkMacSystemFont'],

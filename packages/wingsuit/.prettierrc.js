@@ -1,4 +1,13 @@
+const base = require('@storybook/linter-config/prettier.config');
+
 module.exports = {
-  singleQuote: true,
-  trailingComma: 'es5',
+  ...base,
+  arrowParens: 'always',
+  endOfLine:"auto",
+  overrides: [
+    {
+      files: '*.html',
+      options: { parser: 'babel' },
+    },
+  ],
 };

@@ -20,6 +20,7 @@
 
 body {
   font-family: 'SourceSans';
+  color: #4a4a4a;
 }
 
 @tailwind base;
