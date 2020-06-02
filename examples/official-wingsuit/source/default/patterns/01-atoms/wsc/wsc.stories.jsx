@@ -1,6 +1,6 @@
 import './index';
 
-const patternDefinition = require('./button.wingsuit.yml');
+const patternDefinition = require('./wsc.wingsuit.yml');
 
 export const wingsuit = {
   parameters: {

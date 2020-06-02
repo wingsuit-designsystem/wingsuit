@@ -1,4 +1,4 @@
-import { storage } from './index';
+import {storage, TwingRenderer} from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
@@ -9,7 +9,7 @@ export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
-export async function renderPatternPreview(
+export function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
@@ -68,32 +68,31 @@ export async function renderPattern(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-  let passedVariables = variables;
-  // Variables are passed as Map in Twing.
-  if (variables instanceof Map) {
-    const obj = {};
-    // eslint-disable-next-line no-return-assign
-    variables.forEach((value, key) => (obj[key] = value));
-    passedVariables = obj;
-  }
+
+
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const mergedVariables = Object.assign(storage.getGlobals(), passedVariables);
-  return rendererImpl.render(
-    `${patternId}__${variant.getVariant()}`,
-    variant.getUse(),
-    mergedVariables
-  );
+  const copy = { ...storage.getGlobals()};
+  const mergedVariables = Object.assign(copy, variables);
+  return rendererImpl.render(`${patternId}__${variant.getVariant()}`, variant.getUse(), mergedVariables);
+
 }
 
-export async function renderData(path: string, template: string, variables: {} = {}) {
+export function renderData(path: string, template: string, variables: {} = {}) {
   rendererImpl.addTemplate(path, template);
   return renderTemplate(path, variables);
 }
 
-export async function renderTemplate(path: string, variables: {} = {}) {
-  const mergedVariables = Object.assign(storage.getGlobals(), variables);
-  return rendererImpl.render(path, path, mergedVariables);
+export function renderTemplate(path: string, variables: {} = {}) {
+  const copy = { ...storage.getGlobals()};
+  const mergedVariables = Object.assign(copy, variables);
+  return new Promise<string>((resolve, refuse) => {
+    rendererImpl.render(path, path, mergedVariables).then((output) => {
+      console.log('INNER ');
+      resolve(output);
+    });
+  })
+
 }

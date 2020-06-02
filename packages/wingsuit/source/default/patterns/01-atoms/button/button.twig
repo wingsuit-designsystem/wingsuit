@@ -15,7 +15,7 @@
   variant == 'disabled' ? 'bg-disabled text-gray-xmedium',
   color,
 ] | sort | join(' ') | trim) }}>
-{{ content|striptags }}
+{{ content }}
   {% if svg is not empty %}
 
     {% include "@atoms/svg/_svg--icon.twig" with {

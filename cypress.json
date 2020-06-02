@@ -1,5 +1,6 @@
 {
   "defaultCommandTimeout": 20000,
   "requestTimeout": 20000,
-  "responseTimeout": 60000
+  "responseTimeout": 60000,
+  "projectId": "vu3jb7"
 }

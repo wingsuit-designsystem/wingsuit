@@ -1,6 +1,6 @@
-button:
-  use: "@atoms/button/button.twig"
-  label: Button
+wsc:
+  use: "@atoms/wsc/wsc.twig"
+  label: Wingsuit component
   description: Beautiful button made with love
   fields:
     content:
@@ -13,12 +13,6 @@ button:
     secondary:
       label: Secondary
       description: Inverts colors
-    success:
-      label: Success
-    warning:
-      label: Warning
-    disabled:
-      label: Disabled
   settings:
     url:
       type: token
