@@ -1,6 +1,7 @@
 .idea
 node_modules
 .cache
+reset.log
 built-storybooks
 ts3.5
 .cache
