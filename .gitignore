@@ -5,6 +5,7 @@ reset.log
 built-storybooks
 ts3.5
 .cache
+.verdaccio-cache
 coverage/
 .tern-port
 *.DS_Store

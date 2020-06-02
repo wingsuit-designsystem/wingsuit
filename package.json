@@ -24,7 +24,8 @@
     "test:e2e-framework": "ts-node --project=./scripts/tsconfig.json ./scripts/run-e2e.ts",
     "test:e2e-gui": "concurrently --success first --kill-others \"cypress open\" \"yarn serve-storybooks\"",
     "build-storybooks": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true node -r esm ./scripts/build-storybooks.js",
-    "serve-storybooks": "http-server ./built-storybooks -p 8001"
+    "serve-storybooks": "http-server ./built-storybooks -p 8001",
+    "await-serve-storybooks": "wait-on http://localhost:8001"
   },
   "workspaces": [
     "packages/*",
