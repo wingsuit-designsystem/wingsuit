@@ -1,4 +1,4 @@
-import {storage, TwingRenderer} from './index';
+import { storage } from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
