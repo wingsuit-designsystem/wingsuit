@@ -145,8 +145,8 @@ const run = async () => {
     originalNpmRegistryUrl = 'https://registry.npmjs.org/';
   }
 
-  logger.log(`📐 reading version of storybook`);
-  logger.log(`🚛 listing storybook packages`);
+  logger.log(`📐 reading version of wingsuit`);
+  logger.log(`🚛 listing wingsuit packages`);
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
   const [verdaccioServer, packages, version] = await Promise.all<any, Package[], string>([
@@ -166,7 +166,7 @@ const run = async () => {
 
   // await addUser(verdaccioUrl);
 
-  logger.log(`📦 found ${packages.length} storybook packages at version ${chalk.blue(version)}`);
+  logger.log(`📦 found ${packages.length} wingsuit packages at version ${chalk.blue(version)}`);
 
   if (program.publish) {
     await publish(packages, verdaccioUrl);

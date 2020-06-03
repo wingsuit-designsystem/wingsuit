@@ -73,10 +73,13 @@ export default class extends Generator {
         default: 'wingsuit',
         choices() {
           return [
-            { value: 'wingsuit', name: 'Wingsuit Component (including UI Pattern yaml)' },
-            { value: 'wingsuit_presenter', name: 'Wingsuit Component with Presenter Template' },
-            { value: 'plain', name: 'Twig Only Component' },
-            { value: 'plain_presenter', name: 'Twig Only Component with Presenter Template' },
+            { value: 'wingsuit', name: 'Wingsuit component (UI Pattern)' },
+            {
+              value: 'wingsuit_presenter',
+              name: 'Wingsuit component (UI Pattern) with presentation template',
+            },
+            { value: 'plain', name: 'Twig only component' },
+            { value: 'plain_presenter', name: 'Twig only component with presentation template' },
           ];
         },
       },

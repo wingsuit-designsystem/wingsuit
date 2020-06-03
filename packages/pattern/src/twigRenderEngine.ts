@@ -5,11 +5,11 @@ import Pattern from './Pattern';
 
 let rendererImpl: IRenderer;
 
-export function setRenderer(renderer: IRenderer) {
+export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
-export function renderPatternPreview(
+export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
@@ -54,30 +54,36 @@ export function renderPatternPreview(
           passedVariables,
           previewRenderedVariables
         );
-        renderPattern(patternId, variantId, mergedValues).then((output) => {
-          resolve(output);
-        });
+        renderPattern(patternId, variantId, mergedValues)
+          .then((output) => {
+            resolve(output);
+          })
+          .catch((error) => {
+            refuse(error);
+          });
       });
     });
   }
   const mergedValues: {} = Object.assign(patternVariables, passedVariables);
   return renderPattern(patternId, variantId, mergedValues);
 }
+
 export async function renderPattern(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-
-
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const copy = { ...storage.getGlobals()};
+  const copy = { ...storage.getGlobals() };
   const mergedVariables = Object.assign(copy, variables);
-  return rendererImpl.render(`${patternId}__${variant.getVariant()}`, variant.getUse(), mergedVariables);
-
+  return rendererImpl.render(
+    `${patternId}__${variant.getVariant()}`,
+    variant.getUse(),
+    mergedVariables
+  );
 }
 
 export function renderData(path: string, template: string, variables: {} = {}) {
@@ -86,13 +92,7 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const copy = { ...storage.getGlobals()};
+  const copy = { ...storage.getGlobals() };
   const mergedVariables = Object.assign(copy, variables);
-  return new Promise<string>((resolve, refuse) => {
-    rendererImpl.render(path, path, mergedVariables).then((output) => {
-      console.log('INNER ');
-      resolve(output);
-    });
-  })
-
+  return rendererImpl.render(path, path, mergedVariables);
 }
