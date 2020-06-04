@@ -12,12 +12,13 @@
 }
 
 #nav h3 {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
+  text-transform: uppercase;
   margin: 10px 0;
   padding: 0;
   color: #4A5568;
-  padding: 12px;
+  padding: 6px;
 }
 
 #nav ul {
@@ -31,12 +32,13 @@
 }
 
 #nav ul li a {
-  display: block;
+  display: inline-block;
   line-height: 18px;
   color: #444;
-  padding: 12px;
+  padding: 6px;
 }
 
 #nav ul li a.selected {
-  background-color: #EBF8FF;
+  background-color: #B2F5EA;
+  font-weight: bold;
 }

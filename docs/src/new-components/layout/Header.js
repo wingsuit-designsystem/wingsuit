@@ -11,14 +11,8 @@ const { metadata, url } = site;
 const LogotypeWrapper = styled.a`
   display: inline-block;
   img {
-    height: 22px;
+    height: 50px;
     width: auto;
-    margin-top: 14px;
-    @media (min-width: ${breakpoint}px) {
-      height: 26px;
-      margin-top: 10px;
-    }
-
     display: block;
   }
 `;
@@ -121,10 +115,8 @@ const Nav = styled.div`
 `;
 
 const NavWrapper = styled.nav`
-  padding-top: 12px;
-  @media (min-width: ${breakpoint}px) {
-    padding-top: 36px;
-  }
+  padding-top: 5px;
+  padding-bottom: 5px;
 `;
 
 export default function Header({ ...props }) {
@@ -142,7 +134,7 @@ export default function Header({ ...props }) {
         <NavGroup>
           <NavItem>
             <LogotypeWrapper href="/">
-              <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_horizontal.png" alt="Wingsuit" />
+              <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-inline.svg" alt="Wingsuit" />
             </LogotypeWrapper>
             <Version href={url.gitHub.releases}>{metadata.latestVersion}</Version>
           </NavItem>

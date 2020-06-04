@@ -8,8 +8,8 @@ export default create({
   barSelectedColor: '#1fb0bb',
   colorSecondary: '#1fb0bb',
   textColor: 'black',
-  appBg: '#EBF8FF',
+  appBg: '#E6FFFA',
   brandUrl: 'https://github.com/wingsuit-designsystem/wingsuit',
   brandImage:
-    'https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/logo_wingsuit_c_horizontal.png',
+    'https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-inline.png',
 });

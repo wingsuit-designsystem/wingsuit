@@ -8,17 +8,21 @@ import Container from './Container';
 import Footer from '../Footer';
 import './style.css';
 
-const Docs = ({ sections, selectedItem, selectedSectionId, selectedItemId }) => (
-  <div className="container">
-    <Helmet title={`${selectedItem.title}`} />
-    <Header currentSection="docs" />
-    <Container
-      sections={sections}
-      selectedItem={selectedItem}
-      selectedSectionId={selectedSectionId}
-      selectedItemId={selectedItemId}
-    />
-    <Footer />
+const Docs = ({sections, selectedItem, selectedSectionId, selectedItemId}) => (
+  <div>
+    <div className="header-wrapper">
+      <Helmet title={`${selectedItem.title}`}/>
+      <Header currentSection="docs"/>
+    </div>
+    <div className="container">
+      <Container
+        sections={sections}
+        selectedItem={selectedItem}
+        selectedSectionId={selectedSectionId}
+        selectedItemId={selectedItemId}
+      />
+      <Footer/>
+    </div>
   </div>
 );
 Docs.propTypes = {
