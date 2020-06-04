@@ -5,24 +5,11 @@ module.exports = {
     baseColor: '#e64074',
     linkPrefix: '/',
     docSections: {
-      basics: [
-        '/basics/introduction/',
-      ],
-      guides: [
-        '/guides/quick-start-guide/',
-      ],
-      configurations: [
-        '/configurations/details/',
-        '/configurations/custom-webpack-config/',
-      ],
-      components: [
-        '/components/overview/',
-        '/components/wingsuit/',
-        '/components/twig/',
-      ],
-      testing: [
-        '/testing/manual-testing/',
-      ]
+      basics: ['/basics/introduction/'],
+      guides: ['/guides/quick-start-guide/'],
+      configurations: ['/configurations/details/', '/configurations/custom-webpack-config/'],
+      components: ['/components/overview/', '/components/wingsuit/', '/components/twig/'],
+      testing: ['/testing/manual-testing/'],
     },
   },
   plugins: [

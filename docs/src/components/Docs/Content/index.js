@@ -22,7 +22,6 @@ const DocsContent = ({ title, content, editUrl, ...rest }) => (
           {parse(content, {
             replace: (domNode) => {
               if (
-
                 domNode.name === 'pre' &&
                 domNode.children.find(
                   (n) => n.name === 'code' && n.attribs.class && n.attribs.class.match(/^language-/)
