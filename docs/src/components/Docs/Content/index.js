@@ -22,13 +22,14 @@ const DocsContent = ({ title, content, editUrl, ...rest }) => (
           {parse(content, {
             replace: (domNode) => {
               if (
+
                 domNode.name === 'pre' &&
                 domNode.children.find(
                   (n) => n.name === 'code' && n.attribs.class && n.attribs.class.match(/^language-/)
                 )
               ) {
                 const language = domNode.children[0].attribs.class.replace('language-', '');
-                const code = '';
+                const code = domNode.children[0].children[0].data;
                 return (
                   <SyntaxHighlighter copyable language={language}>
                     {code}

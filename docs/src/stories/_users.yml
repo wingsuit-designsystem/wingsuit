@@ -1,10 +1,3 @@
-airbnb:
-  logo: ./logos/airbnb.svg
-  title: Airbnb Dates
-  description: An internationalizable, mobile-friendly datepicker library for the web.
-  source: https://github.com/airbnb/react-dates
-  demo: http://airbnb.io/react-dates/
-  site: http://airbnb.com
 buffer:
   logo: ./logos/buffer.svg
   title: Buffer Components

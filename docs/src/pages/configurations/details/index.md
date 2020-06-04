@@ -1,11 +1,11 @@
 ---
 id: 'details'
-title: 'Detailed configuration overview'
+title: 'Configuration'
 ---
 
-The default configuration file Wingsuit uses internally.
+The folder layout of the designsystem, the used webpack bundles and the folder structure of the deployment can configured inside the `wingsuit.config.js`.<br> 
+A good starting point is complete wingsuit file:
 
-## Overview:
 ```js
 export const wingsuit = {
   designSystems: {
@@ -54,6 +54,31 @@ export const wingsuit = {
   }
 }
 ```
+If you don't change the folder structure of the design system the minimal configuration file looks like:
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+
+```
+
+## Main Section
+
+* `apps` to configure each app. 
+
+* `designsystems` to configure the designsystem itself.
+
+## Extend the configuration
+
+* `environments` to overwrite a configuration value for a specific environment.
+
+* `extend` To extend instead of replace the configuration.
 
 ## Design systems
 The `designSystems` section is where you define the folder structure of your design system. 
@@ -88,23 +113,6 @@ With namespaces you can include twig components and javascript components.
   import "atoms/button";
 ```
 
-## Environments
-
-Under each environment you can overwrite default variables.
-
-Here a example to overwrite the cssMode for development:
-```js
-    environments: {
-      ...
-          development: {
-            apps: {
-              storybook: {
-                cssMode: "extract"
-              }
-            }
-          }
-```
-
 ## Apps
 Each apps has the following configuration keys:
 
@@ -121,3 +129,21 @@ Each apps has the following configuration keys:
 `designSystem`: Link to the design system.
 
 `webpackBundles`: The used webpack bundles. [Here you can find more informations](../custom-webpack-config) about webpack bundles.
+
+
+## Environments
+
+Under each environment you can overwrite default variables.
+
+Here a example to overwrite the cssMode for development:
+```js
+    environments: {
+      ...
+          development: {
+            apps: {
+              storybook: {
+                cssMode: "extract"
+              }
+            }
+          }
+```

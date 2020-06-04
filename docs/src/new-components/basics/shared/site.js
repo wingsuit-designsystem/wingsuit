@@ -6,8 +6,8 @@ const docsUrl = `${homepageUrl}/docs`;
 const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 
 export const metadata = {
-  title: 'Storybook',
-  description: `Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+  title: 'Wingsuit',
+  description: `Wingsuit is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
   latestVersion: 'v1.0',

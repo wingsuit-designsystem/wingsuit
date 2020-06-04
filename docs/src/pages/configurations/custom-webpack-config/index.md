@@ -10,10 +10,7 @@ The goal is to deliver a community driven set of webpack configurations which ca
 
 A webpack bundle is basicly a class which returns a webpack config object. 
 
-To get an overview of all existing webpackBundles
-New webpack bundles can be referenced inside the `wingsuit.config.js`. 
-
-### Create a new `webpack bundle`
+## Create a new `webpack bundle`
 
 Create a new Class which under `.wingsuit/webpackBundle` extends BaseConfigBundle.
 
@@ -43,9 +40,37 @@ Register the bundle inside your wingsuit.config.js.
   };
 
 ```
-### Extend or replace existing config?
+## Extend or replace config?
 
+There are two possibilities to use webpack bundles: 
+### Extend
 The most common use case is to extend the existing webpackBundles config. Therefor you can use the `extend` keyword inside the `webpack.config.js`.
-#### Extend
 ```js
+module.exports = {
+  extend: {
+      apps: {
+        storybook: {
+          webpackBundles: [
+            "CustomBundle"
+          ],
+        }
+      }
+    } 
+  };
 ```
+
+### Replace
+It's also possible to replace the existing bundles an complete custom configuration. To do that overwrite the app config. 
+```js
+module.exports = {
+  apps: {
+    storybook: {
+      webpackBundles: [
+        "StorybookBundle",
+        "CssBundle",
+        "CustomBundle"
+      ],
+    }
+  }
+};
+``` 

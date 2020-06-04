@@ -1,10 +1,9 @@
 module.exports = {
   pathPrefix: '/docs',
   siteMetadata: {
-    siteTitle: 'Storybook',
+    siteTitle: 'Wingsuit',
     baseColor: '#e64074',
     linkPrefix: '/',
-
     docSections: {
       basics: [
         '/basics/introduction/',
@@ -13,14 +12,17 @@ module.exports = {
         '/guides/quick-start-guide/',
       ],
       configurations: [
-        '/configurations/overview/',
         '/configurations/details/',
         '/configurations/custom-webpack-config/',
+      ],
+      components: [
+        '/components/overview/',
+        '/components/wingsuit/',
+        '/components/twig/',
       ],
       testing: [
         '/testing/manual-testing/',
       ]
-
     },
   },
   plugins: [
