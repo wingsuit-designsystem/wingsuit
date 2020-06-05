@@ -21,12 +21,10 @@ class MainLinks extends React.Component {
       <div id="main-links">
         <div className="main-links-container">
           <div className="try-now">
-            <h2>Try Now</h2>
+            <h2>Try it now!</h2>
             <pre>
               <code>
-                cd projects
-                <br />
-                npx -p @wingsuit-designsystem/cli ws init
+                npx @wingsuit-designsystem/cli init
                 <br />
               </code>
             </pre>
