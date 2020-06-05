@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/docs',
+  pathPrefix: '/',
   siteMetadata: {
     siteTitle: 'Wingsuit',
     baseColor: '#e64074',

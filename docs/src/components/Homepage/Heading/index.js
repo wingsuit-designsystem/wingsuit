@@ -4,8 +4,8 @@ import './style.css';
 import wingsuitLogo from '../../../design/homepage/wingsuit-logo.svg';
 
 const Heading = () => (
-  <div id="heading" className="row">
-    <div className="col-xs-12 col-sm-12">
+  <div id="heading">
+    <div>
       <img className="sb-title" src={wingsuitLogo} alt="Storybook Logo" />
       <h3 className="mt-4 sb-tagline">
         A Designsystem for rapid pattern development.
