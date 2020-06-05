@@ -10,7 +10,7 @@ const Heading = () => (
       <h3 className="mt-4 sb-tagline">
         A Designsystem for rapid pattern development.
         <br />
-        You'll ♥️ to use
+        You will ♥️ using it!
       </h3>
     </div>
   </div>

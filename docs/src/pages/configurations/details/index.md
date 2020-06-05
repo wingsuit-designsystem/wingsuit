@@ -3,8 +3,8 @@ id: 'details'
 title: 'Configuration'
 ---
 
-The folder layout of the designsystem, the used webpack bundles and the folder structure of the deployment can configured inside the `wingsuit.config.js`.<br> 
-A good starting point is complete wingsuit file:
+The folder layout of the design system, the used webpack bundles and the folder structure of the deployment can be configured inside the `wingsuit.config.js`.<br> 
+A good starting point is the complete `wingsuit.config.js` file:
 
 ```js
 export const wingsuit = {
@@ -54,7 +54,7 @@ export const wingsuit = {
   }
 }
 ```
-If you don't change the folder structure of the design system the minimal configuration file looks like:
+If you don't change the folder structure of the design system, the minimal configuration file looks like:
 ```js
 const namespaces = require('./source/default/namespaces');
 
@@ -70,15 +70,15 @@ module.exports = {
 
 ## Main Section
 
-* `apps` to configure each app. 
+* `apps` for app specific configuration. 
 
-* `designsystems` to configure the designsystem itself.
+* `designSystems` to configure the design system itself.
 
 ## Extend the configuration
 
 * `environments` to overwrite a configuration value for a specific environment.
 
-* `extend` To extend instead of replace the configuration.
+* `extend` to extend the configuration instead of replacing it.
 
 ## Design systems
 The `designSystems` section is where you define the folder structure of your design system. 
@@ -101,7 +101,7 @@ module.exports = {
 ```
 
 ### Namespaces:
-With namespaces you can include twig components and javascript components.
+You can use namespaces in twig and javascript imports.
 
 <b>TWIG:</b>
 ```js
@@ -114,28 +114,28 @@ With namespaces you can include twig components and javascript components.
 ```
 
 ## Apps
-Each apps has the following configuration keys:
+Each apps uses the following configuration keys:
 
-`type`: The type of the app.
+* `type` the type of the app.
 
-`path`: The path to the app.
+* `path` the path to the app.
 
-`cssMode`: Extract css or not.
+* `cssMode` extract css or not.
 
-`distFolder`: The path to the dist folder.
+* `distFolder` the path to the dist folder.
 
-`assetBundleFolder`: The folder name under the dist folder for assets.
+* `assetBundleFolder` the folder name under the dist folder for assets.
 
-`designSystem`: Link to the design system.
+* `designSystem` link to the design system.
 
-`webpackBundles`: The used webpack bundles. [Here you can find more informations](../custom-webpack-config) about webpack bundles.
+* `webpackBundles` the used webpack bundles. [Here you can find more information](../custom-webpack-config) about webpack bundles.
 
 
 ## Environments
 
 Under each environment you can overwrite default variables.
 
-Here a example to overwrite the cssMode for development:
+Here is a example to overwrite the cssMode for development:
 ```js
     environments: {
       ...
