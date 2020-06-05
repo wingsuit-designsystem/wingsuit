@@ -4,15 +4,15 @@ title: 'Custom webpack configuration'
 ---
 
 ## Overview
-Wingsuit uses `webpack bundles` to make webpack configs reusable for differnt apps. 
+Wingsuit uses `webpack bundles` to make webpack configs reusable across different apps. 
 
-The goal is to deliver a community driven set of webpack configurations which can easily extend or replaced.
+The goal is to deliver a community driven set of webpack configurations which can easily be extended or replaced.
 
-A webpack bundle is basicly a class which returns a webpack config object. 
+A webpack bundle is a class which returns a webpack config object. 
 
 ## Create a new `webpack bundle`
 
-Create a new Class which under `.wingsuit/webpackBundle` extends BaseConfigBundle.
+Create a new class under `.wingsuit/webpackBundle` which extends `BaseConfigBundle`.
 
 ```js
 const wingsuitCore = require("@wingsuit-designsystem/core");
@@ -27,7 +27,7 @@ class CustomBundle extends wingsuitCore.BaseWebpackBundle {
 module.exports = CustomBundle;
 
 ```
-Register the bundle inside your wingsuit.config.js.
+Then register the bundle inside your wingsuit.config.js:
 ```js
   const CustomBundle = require('./.wingsuit/webpackBundle/CustomBundle');
   
@@ -42,9 +42,9 @@ Register the bundle inside your wingsuit.config.js.
 ```
 ## Extend or replace config?
 
-There are two possibilities to use webpack bundles: 
+There are two ways to use webpack bundles: 
 ### Extend
-The most common use case is to extend the existing webpackBundles config. Therefor you can use the `extend` keyword inside the `webpack.config.js`.
+The most common use case is to extend the existing `webpackBundles` config. For this you can use the `extend` keyword inside the `webpack.config.js`.
 ```js
 module.exports = {
   extend: {
@@ -60,7 +60,7 @@ module.exports = {
 ```
 
 ### Replace
-It's also possible to replace the existing bundles an complete custom configuration. To do that overwrite the app config. 
+It's also possible to replace the existing bundles with a completely custom configuration. Doing so overwrites the existing app config. 
 ```js
 module.exports = {
   apps: {
