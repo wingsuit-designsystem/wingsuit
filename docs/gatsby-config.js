@@ -8,7 +8,7 @@ module.exports = {
       basics: ['/basics/introduction/'],
       guides: ['/guides/quick-start-guide/'],
       configurations: ['/configurations/details/', '/configurations/custom-webpack-config/'],
-      components: ['/components/overview/', '/components/wingsuit/', '/components/twig/'],
+      components: ['/components/overview/', '/components/globals/','/components/wingsuit/', '/components/twig/', '/components/presentation/'],
       testing: ['/testing/manual-testing/'],
     },
   },

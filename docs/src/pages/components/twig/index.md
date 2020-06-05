@@ -2,11 +2,16 @@
 id: 'twig'
 title: 'Twig only'
 ---
+A twig only component works without any wingsuit yml file. The patterns are useful if you don't need or don't want a UI Patterns integeration.
 
+A typical use case for twig only components are menu or header components. 
+
+The data for this components can be provided as variables or defined globaly inside yaml files in `apps/storybook/data`. So typically 
 
 <b>A twig only component contains:</b>
 * index.js
 * pattern.stories.jsx
+* pattern.twig
 * css file (optional)
 * javascript file. (optional)
 
@@ -21,5 +26,11 @@ export default { title: '01-folder/Name' };
 
 const twigTemplate = require('./twigfile.twig');
 
-export const VariantName = () => <RenderTwig data={twigTemplate}></RenderTwig>;
+export const Variant = () => <RenderTwig data={twigTemplate}></RenderTwig>;
+```
+
+You can assign variables as properties to the twig component.
+
+```js
+export const Variant2 = () => <RenderTwig data={twigTemplate} variable1="value1"></RenderTwig>;
 ```

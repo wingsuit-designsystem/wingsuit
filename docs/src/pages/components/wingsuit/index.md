@@ -1,16 +1,18 @@
 ---
 id: 'wingsuit'
-title: 'Wingsuit component'
+title: 'Wingsuit (UI Pattern)'
 ---
-<b>A wingsuit component contains:</b>
+The wingsuit pattern is defined inside a `pattern.wingsuit.yml`. 
+
+<b>A Wingsuit component contains:</b>
 * index.js
 * pattern.stories.jsx
 * pattern.wingsuit.yml
 * css file (optional)
 * javascript file. (optional)
 
- 
-The wingsuit pattern is defined inside a `pattern.wingsuit.yml`. This yml file must exposed inside the `pattern.stories.jsx` file.
+The reference to the `wingsuit.yml` file must exposed inside the `pattern.stories.jsx` file.
+
 
 ```js
 const patternDefinition = require('./pattern.wingsuit.yml');

@@ -80,63 +80,40 @@ class MainLinks extends React.Component {
                 <li>
                   <Link to="/guides/quick-start-guide/">Quick setup</Link>
                 </li>
-                <li>
-                  <Link to="/guides/slow-start-guide/">Adding to existing project</Link>
-                </li>
-                <li>
-                  <Link to="/basics/writing-stories/">Writing stories</Link>
-                </li>
-                <li>
-                  <Link to="/basics/live-examples/">Live Examples</Link>
-                </li>
               </ul>
             </div>
 
             <div className="col-sm-4 read-docs">
-              <Link to="/configurations/default-config/">
+              <Link to="/configurations/details/">
                 <h3>Configuration</h3>
               </Link>
               <ul>
                 <li>
-                  <Link to="/configurations/options-parameter/">Storybook options</Link>
+                  <Link to="/configurations/details/">Configuration</Link>
                 </li>
                 <li>
-                  <Link to="/configurations/custom-babel-config/">Babel configurations</Link>
+                  <Link to="/configurations/custom-webpack-config/">Custom webpack configuration</Link>
                 </li>
-                <li>
-                  <Link to="/configurations/custom-webpack-config/">Webpack configurations</Link>
-                </li>
-                <li>
-                  <Link to="/configurations/typescript-config/">Typescript configurations</Link>
-                </li>
-                <li>
-                  <Link to="/configurations/add-custom-head-tags/">Custom scripts & styling</Link>
-                </li>
-                <li>
-                  <Link to="/configurations/add-custom-body/">Custom html body</Link>
-                </li>
-                <li>
-                  <Link to="/configurations/serving-static-files/">Serving static files</Link>
-                </li>
+
               </ul>
             </div>
 
             <div className="col-sm-4 read-docs">
-              <Link to="/configurations/default-config/">
-                <h3>Addons</h3>
+              <Link to="/components/overview/">
+                <h3>Components</h3>
               </Link>
               <ul>
                 <li>
-                  <Link to="/addons/introduction/">Intro to Addons</Link>
+                  <Link to="/components/globals/">Global variables</Link>
                 </li>
                 <li>
-                  <Link to="/addons/using-addons/">Using Addons</Link>
+                  <Link to="/components/wingsuit/">Wingsuit/UI Patterns</Link>
                 </li>
                 <li>
-                  <Link to="/addons/writing-addons/">Writing Addons</Link>
+                  <Link to="/components/twig/">Twig only</Link>
                 </li>
                 <li>
-                  <Link to="/addons/api/">Api</Link>
+                  <Link to="/components/presentation/">Presentation</Link>
                 </li>
               </ul>
             </div>
