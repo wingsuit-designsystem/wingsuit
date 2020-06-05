@@ -3,8 +3,6 @@
 /**
  * @file
  *
- * Enforce some of the business logic within Particle around components and
- * where they live.
  */
 
 import { resolveConfig, getAppNames } from '@wingsuit-designsystem/core';
@@ -23,11 +21,6 @@ export default class extends Generator {
     this.appConfig = {};
   }
 
-  // Reserved: Check for apps and design systems
-  initializing() {
-    // Build out list of PL apps we want to present to user
-  }
-
   // Reserved: present options to the user
   prompting() {
     this.log(
@@ -44,7 +37,7 @@ export default class extends Generator {
         name: 'app',
         message: 'Which app should be used?',
         choices() {
-          return getAppNames();
+          return getAppNames(null, 'storybook');
         },
       },
       {
@@ -80,6 +73,7 @@ export default class extends Generator {
             },
             { value: 'plain', name: 'Twig only component' },
             { value: 'plain_presenter', name: 'Twig only component with presentation template' },
+            { value: 'presenter', name: 'Presentation template' },
           ];
         },
       },
@@ -155,8 +149,13 @@ export default class extends Generator {
       })
     );
     try {
-      // Copy and process all design system files
-      this.fs.copyTpl(this.templatePath('ds/base/**/*.ejs'), this.getDsComponentPath(), this.props);
+      if (componentType !== 'presenter') {
+        this.fs.copyTpl(
+          this.templatePath('ds/base/**/*.ejs'),
+          this.getDsComponentPath(),
+          this.props
+        );
+      }
 
       if (componentType === 'wingsuit' || componentType === 'wingsuit_presenter') {
         this.fs.copyTpl(
@@ -165,6 +164,7 @@ export default class extends Generator {
           this.props
         );
       }
+
       if (componentType === 'plain' || componentType === 'plain_presenter') {
         this.fs.copyTpl(
           this.templatePath('ds/plain/**/*.ejs'),
@@ -172,6 +172,7 @@ export default class extends Generator {
           this.props
         );
       }
+
       if (componentType === 'plain') {
         this.fs.copyTpl(
           this.templatePath('ds/plain_only/**/*.ejs'),
@@ -179,6 +180,7 @@ export default class extends Generator {
           this.props
         );
       }
+
       if (componentType === 'plain_presenter') {
         this.fs.copyTpl(
           this.templatePath('app/plain/**/*.ejs'),
@@ -186,9 +188,18 @@ export default class extends Generator {
           this.props
         );
       }
+
       if (componentType === 'wingsuit_presenter') {
         this.fs.copyTpl(
           this.templatePath('app/wingsuit/**/*.ejs'),
+          this.getAppComponentPath(),
+          this.props
+        );
+      }
+
+      if (componentType === 'presenter') {
+        this.fs.copyTpl(
+          this.templatePath('app/presentation/**/*.ejs'),
           this.getAppComponentPath(),
           this.props
         );
@@ -201,15 +212,23 @@ export default class extends Generator {
           this.props
         );
       }
+
       if (useJs) {
-        // Copy and process all design system files
         this.fs.copyTpl(this.templatePath('ds/js/**/*.ejs'), this.getDsComponentPath(), this.props);
       }
-      if (useDoc === 'mdx') {
-        // Copy and process all design system files
+
+      if (useDoc === 'mdx' && componentType !== 'presenter') {
         this.fs.copyTpl(
           this.templatePath('ds/doc/**/*.ejs'),
           this.getDsComponentPath(),
+          this.props
+        );
+      }
+
+      if (useDoc === 'mdx' && componentType === 'presenter') {
+        this.fs.copyTpl(
+          this.templatePath('app/doc/**/*.ejs'),
+          this.getAppComponentPath(),
           this.props
         );
       }
