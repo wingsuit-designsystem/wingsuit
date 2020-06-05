@@ -19,14 +19,14 @@ export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
   return pack;
 }
 
-export function getAppNames(wingsuitConfig: any = null, type = null) {
+export function getAppNames(wingsuitConfig: any = null, type = "") {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
   const mergedConfig = merge(configStub.wingsuit, projectConfig);
   const names: string[] = [];
   Object.keys(mergedConfig.apps).forEach((name) => {
-    if (type === null || type === mergedConfig.apps[name].type) {
+    if (type === "" || type === mergedConfig.apps[name].type) {
       names.push(name);
     }
   });
