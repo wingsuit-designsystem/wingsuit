@@ -92,9 +92,10 @@ class MainLinks extends React.Component {
                   <Link to="/configurations/details/">Configuration</Link>
                 </li>
                 <li>
-                  <Link to="/configurations/custom-webpack-config/">Custom webpack configuration</Link>
+                  <Link to="/configurations/custom-webpack-config/">
+                    Custom webpack configuration
+                  </Link>
                 </li>
-
               </ul>
             </div>
 
