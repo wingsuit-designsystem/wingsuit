@@ -5,7 +5,6 @@ import StorybookAssetBundle from '../server/webpackBundles/StorybookAssetBundle'
 import StorybookBundle from '../server/webpackBundles/StorybookBundle'
 import DrupalBundle from '../server/webpackBundles/DrupalBundle'
 import TwingBundle from '../server/webpackBundles/TwingBundle'
-import TwigBundle from '../server/webpackBundles/TwigBundle'
 import DefaultBundle from '../server/webpackBundles/DefaultBundle'
 
 export const wingsuit = {
@@ -17,7 +16,6 @@ export const wingsuit = {
     StorybookBundle,
     DrupalBundle,
     TwingBundle,
-    TwigBundle,
     DefaultBundle,
   },
   designSystems: {
