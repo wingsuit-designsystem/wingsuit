@@ -1,22 +1,26 @@
-{{ pattern_preview('header') }}
+{% embed "@templates/site-container.twig"
+  with {
+  primary_menu: pattern_preview('menu', 'primary'),
+  footer_menu: pattern_preview('menu', 'footer')
+} %}
+  {% block main %}
+    <div class="main-content w-full py-10 mt-20">
 
-<main class="main-content w-full py-10 mt-20">
-  {% block content %}
-    <div class="max-w-container px-4 m-auto">
-      <div class="text-center w-1/2 m-auto pb-8 text-gray-dark">{{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}</div>
-      <div class="block md:flex pt-10">
-        <div class="w-full md:w-1/3 md:pr-2 mb-5">
-          {{ pattern_preview('card', 'default') }}
-        </div>
-        <div class="w-full md:w-1/3 md:px-2 mb-5">
-          {{ pattern_preview('card', 'default') }}
-        </div>
-        <div class="w-full md:w-1/3 md:pl-2 mb-5">
-          {{ pattern_preview('card', 'default') }}
+      <div class="max-w-container px-4 m-auto">
+        <div
+          class="text-center w-1/2 m-auto pb-8 text-gray-dark">{{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}</div>
+        <div class="block md:flex pt-10">
+          <div class="w-full md:w-1/3 md:pr-2 mb-5">
+            {{ pattern_preview('card', 'default') }}
+          </div>
+          <div class="w-full md:w-1/3 md:px-2 mb-5">
+            {{ pattern_preview('card', 'default') }}
+          </div>
+          <div class="w-full md:w-1/3 md:pl-2 mb-5">
+            {{ pattern_preview('card', 'default') }}
+          </div>
         </div>
       </div>
     </div>
   {% endblock %}
-</main>
-
-{{ pattern_preview('footer') }}
+{% endembed %}

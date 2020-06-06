@@ -106,9 +106,8 @@ function getProps(variant) {
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
     if (field.getType() === 'object') {
-      knobsVariables[key] = object(field.getLabel(), field.getPreview(),groupFields);
-    }
-    else if (field.getType() !== 'pattern') {
+      knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
+    } else if (field.getType() !== 'pattern') {
       knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
     }
   });
