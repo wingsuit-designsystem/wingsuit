@@ -33,6 +33,7 @@ jobs:
             - examples
             - node_modules
             - packages
+            - /root/.cache
   build:
     <<: *defaults
     steps:
