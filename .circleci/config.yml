@@ -30,6 +30,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
+            - examples
             - node_modules
             - packages
   build:
