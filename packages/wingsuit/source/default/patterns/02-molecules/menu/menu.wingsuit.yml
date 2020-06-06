@@ -1,0 +1,35 @@
+menu:
+  use: "@molecules/menu/menu.twig"
+  label: Menu
+  description: Primary and footer menu pattern.
+  fields:
+    items:
+      type: object
+      label: Items
+  variants:
+    primary:
+      label: Primary
+      description: The main menu on top of the page.
+      fields:
+        items:
+          - title: galerie
+            link: "#"
+            in_active_trail: true
+          - title: kollektionen
+            link: "#"
+          - title: shop
+            link: "#"
+            icon: arrow-up
+          - title: kontakt
+            link: "#"
+    footer:
+      label: Footer
+      description: The footer menu.
+      fields:
+        items:
+          - title: Datenschutz
+            link: "#"
+            in_active_trail: true
+          - title: Impressum
+            link: "#"
+  visibility: storybook

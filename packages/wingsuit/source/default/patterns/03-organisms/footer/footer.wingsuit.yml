@@ -1,0 +1,12 @@
+footer:
+  use: "@organisms/footer/footer.twig"
+  label: Footer
+  description: The footer pattern.
+  fields:
+    menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+  visibility: storybook

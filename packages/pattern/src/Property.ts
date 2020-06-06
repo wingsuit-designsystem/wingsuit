@@ -35,7 +35,7 @@ export default class Property {
       if (this.preview.faker != null) {
         return this.generateFake(this.preview.faker);
       }
-      if (this.type === 'pattern') {
+      if (this.type === 'pattern' || this.type === 'object') {
         return this.preview;
       }
       return JSON.stringify(this.preview);

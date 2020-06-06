@@ -65,7 +65,7 @@ card:
 
 <b>Let's look at the extensions:</b>
 
-`faker`
+### faker
 
 The `faker` key generates automatic preview data with [faker.js](https://github.com/marak/Faker.js/).
 The value can be a string or a subobject. 
@@ -77,9 +77,9 @@ The value can be a string or a subobject.
         token: "{{ name.lastName }} {{ name.firstName }}
 ```
 
-`pattern`
-
-With type:pattern you can render patterns inside the pattern.
+### field extensions: 
+#### type pattern
+With field type `pattern` you can render patterns inside the pattern.
 ```yaml
   fields:  
     image:
@@ -96,3 +96,23 @@ With type:pattern you can render patterns inside the pattern.
 * `variant` The variant of the pattern.
 * `fields` Overwrite fields preview values of the pattern.
 * `settings` Overwrite setting preview values of the pattern.
+
+#### type object
+```yaml
+  fields:  
+    items:
+      type: object
+      preview:
+        - title: Datenschutz
+          link: "#"
+          in_active_trail: true
+        - title: Impressum
+          link: "#"
+```  
+With field type `object` you can pass any objects to the twig template. This is useful for menu for example. You can edit the json string with knobs.
+
+### Visibilty
+@TODO: Write explanation
+```yaml
+visibility: storybook | drupal | none
+```

@@ -1,7 +1,7 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
-import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
@@ -105,7 +105,10 @@ function getProps(variant) {
   const groupFields = 'Fields';
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
-    if (field.getType() !== 'pattern') {
+    if (field.getType() === 'object') {
+      knobsVariables[key] = object(field.getLabel(), field.getPreview(),groupFields);
+    }
+    else if (field.getType() !== 'pattern') {
       knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
     }
   });
