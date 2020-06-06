@@ -33,7 +33,6 @@ jobs:
             - examples
             - node_modules
             - packages
-            - /root/.cache
   build:
     <<: *defaults
     steps:
@@ -158,6 +157,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - run:
+          name: install cypress
+          command: yarn install
       - run:
           name: running example
           command: yarn serve-storybooks
