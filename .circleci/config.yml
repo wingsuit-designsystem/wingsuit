@@ -46,6 +46,7 @@ jobs:
           root: .
           paths:
             - packages
+            - examples
 
   packtracker:
     <<: *defaults
