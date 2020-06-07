@@ -16,7 +16,7 @@ export default class Svg2JsonPlugin {
   }
 
   public apply(compiler) {
-    const emit = (compilation, callback) => {
+    const beforeCompile = (compilation, callback) => {
       const filename = this.targetJsonFlename;
       const { svgFolderPath } = this;
       const svgs: string[] = [];
@@ -41,9 +41,9 @@ export default class Svg2JsonPlugin {
     };
 
     if (compiler.hooks) {
-      compiler.hooks.emit.tapAsync(this.plugin, emit);
+      compiler.hooks.beforeCompile.tapAsync(this.plugin, beforeCompile);
     } else {
-      compiler.plugin('emit', emit);
+      compiler.plugin('beforeCompile', beforeCompile);
     }
   }
 }

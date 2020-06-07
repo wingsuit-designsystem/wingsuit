@@ -3,7 +3,7 @@ import React from 'react';
 import 'templates/article';
 
 export default {
-  title: '05-pages/article',
+  title: 'Pages/Article',
   parameters: {
     layout: 'fullscreen',
   },

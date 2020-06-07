@@ -91,6 +91,12 @@ export default class PatternStorage implements IPatternStorage {
             if (hierachy.length > 2) {
               // eslint-disable-next-line prefer-destructuring
               namespace = hierachy[1];
+              const namespaceParts = namespace.split('-');
+              if (namespaceParts.length > 1 && namespaceParts[0].length === 2) {
+                namespaceParts.shift();
+                namespace = namespaceParts.join('-');
+                namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1)
+              }
             }
           }
 

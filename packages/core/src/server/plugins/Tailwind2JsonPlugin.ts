@@ -17,7 +17,7 @@ export default class Tailwind2JsonPlugin {
   }
 
   apply(compiler) {
-    const emit = (compilation, callback) => {
+    const beforeCompile = (compilation, callback) => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const tailwindConfig = require(this.tailwindConfig);
       const filename = this.targetFilePath;
@@ -39,9 +39,9 @@ export default class Tailwind2JsonPlugin {
     };
 
     if (compiler.hooks) {
-      compiler.hooks.emit.tapAsync(this.plugin, emit);
+      compiler.hooks.beforeCompile.tapAsync(this.plugin, beforeCompile);
     } else {
-      compiler.plugin('emit', emit);
+      compiler.plugin('beforeCompile', beforeCompile);
     }
   }
 }

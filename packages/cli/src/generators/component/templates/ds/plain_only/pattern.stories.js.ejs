@@ -6,7 +6,7 @@ import mdx from './<%= name %>.mdx';
 const <%= name %>Template = require('./<%= name %>.twig');
 
 export default {
-  title: '<%= patternType %>/<%= capitalizeName %>',<% if (useDoc == 'mdx') { %>
+  title: '<%= capitalizeCleanPatternType %>/<%= capitalizeName %>',<% if (useDoc == 'mdx') { %>
   parameters: {
     docs: {
       page: mdx,

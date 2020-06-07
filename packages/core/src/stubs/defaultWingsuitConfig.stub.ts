@@ -5,6 +5,7 @@ import StorybookAssetBundle from '../server/webpackBundles/StorybookAssetBundle'
 import StorybookBundle from '../server/webpackBundles/StorybookBundle'
 import DrupalBundle from '../server/webpackBundles/DrupalBundle'
 import TwingBundle from '../server/webpackBundles/TwingBundle'
+import TailwindConfigExport from '../server/webpackBundles/TailwindConfigExport'
 import DefaultBundle from '../server/webpackBundles/DefaultBundle'
 
 export const wingsuit = {
@@ -13,6 +14,7 @@ export const wingsuit = {
     BabelBundle,
     AssetBundle,
     StorybookAssetBundle,
+    TailwindConfigExport,
     StorybookBundle,
     DrupalBundle,
     TwingBundle,
@@ -40,6 +42,7 @@ export const wingsuit = {
       webpackBundles: [
         'DefaultBundle',
         'StorybookAssetBundle',
+        'TailwindConfigExport',
         'TwingBundle',
         'StorybookBundle',
         'CssBundle',

@@ -4,7 +4,7 @@ import 'atoms/hamburger';
 import 'atoms/image';
 
 export default {
-  title: '05-pages/homepage',
+  title: 'Pages/Homepage',
   parameters: {
     layout: 'fullscreen',
   },

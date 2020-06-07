@@ -107,13 +107,15 @@ export default class extends Generator {
 
     return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
+      const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
       this.props = {
         ...props,
         // 'name' already exists as kebab-case-name (dashes)
         capitalizeName: startCase(props.name),
         underscoreName: snakeCase(props.name),
         camelCaseName: camelCase(props.name),
-        cleanPatternType: props.patternType.replace(/([0-9])\w+-/g, ''),
+        cleanPatternType: cleanPatternType,
+        capitalizeCleanPatternType: startCase(cleanPatternType)
       };
     });
   }
