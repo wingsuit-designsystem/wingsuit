@@ -95,7 +95,7 @@ export default class PatternStorage implements IPatternStorage {
               if (namespaceParts.length > 1 && namespaceParts[0].length === 2) {
                 namespaceParts.shift();
                 namespace = namespaceParts.join('-');
-                namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1)
+                namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1);
               }
             }
           }

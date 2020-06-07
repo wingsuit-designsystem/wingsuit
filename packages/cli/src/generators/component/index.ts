@@ -114,8 +114,8 @@ export default class extends Generator {
         capitalizeName: startCase(props.name),
         underscoreName: snakeCase(props.name),
         camelCaseName: camelCase(props.name),
-        cleanPatternType: cleanPatternType,
-        capitalizeCleanPatternType: startCase(cleanPatternType)
+        cleanPatternType,
+        capitalizeCleanPatternType: startCase(cleanPatternType),
       };
     });
   }
