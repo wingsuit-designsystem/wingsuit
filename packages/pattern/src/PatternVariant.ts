@@ -90,7 +90,7 @@ export default class PatternVariant {
     return previewPatterns;
   }
 
-  public getVariables(includeGlobals = true) {
+  public getVariables() {
     const values = {};
     Object.keys(this.settings).forEach((key) => {
       values[key] = this.settings[key].getPreview();
@@ -105,10 +105,6 @@ export default class PatternVariant {
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
-    }
-    if (includeGlobals) {
-      const globals = this.getStorage().getGlobals();
-      return Object.assign(globals, values);
     }
     return values;
   }

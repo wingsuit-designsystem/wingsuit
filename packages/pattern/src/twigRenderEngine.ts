@@ -14,44 +14,36 @@ export async function renderPatternPreview(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-  let passedVariables = variables;
-  // Variables are passed as Map in Twing.
-  if (variables instanceof Map) {
-    const obj = {};
-    // eslint-disable-next-line no-return-assign
-    variables.forEach((value, key) => (obj[key] = value));
-    passedVariables = obj;
-  }
 
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   if (variant == null) {
     throw new Error(`Pattern ${patternId}:${variantId} not found.`);
   }
-  const patternVariables = variant.getVariables();
-  const patternPreview = variant.getPreviewPatterns();
+
+  const previewPatterns = variant.getPreviewPatterns();
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];
   let i = 0;
-  Object.keys(patternPreview).forEach((key: string) => {
+  Object.keys(previewPatterns).forEach((key: string) => {
     promisedPreview[i] = renderPatternPreview(
-      patternPreview[key].patternId,
-      patternPreview[key].variant,
-      patternPreview[key].variables
+      previewPatterns[key].patternId,
+      previewPatterns[key].variant,
+      previewPatterns[key].variables
     );
     promisedPreviewNames[i] = key;
     i += 1;
   });
 
+  const patternVariables = variant.getVariables();
   if (Object.keys(promisedPreview).length !== 0) {
     return new Promise<string>((resolve, refuse) => {
       Promise.all(promisedPreview).then((promisedPreviewValues: string[]) => {
         const previewRenderedVariables = {};
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
           previewRenderedVariables[promisedPreviewNames[j]] = promisedPreviewValues[j];
-        }
-        const mergedValues: {} = Object.assign(
+          }
+          const mergedValues: {} = Object.assign(
           patternVariables,
-          passedVariables,
           previewRenderedVariables
         );
         renderPattern(patternId, variantId, mergedValues)
@@ -64,7 +56,8 @@ export async function renderPatternPreview(
       });
     });
   }
-  const mergedValues: {} = Object.assign(patternVariables, passedVariables);
+  const copyVariables = { ...variables };
+  const mergedValues: {} = Object.assign(patternVariables, copyVariables);
   return renderPattern(patternId, variantId, mergedValues);
 }
 
