@@ -9,6 +9,8 @@
 1.  Tailwind + Alpinejs for rapid development and 100% page speed
 1.  Bundled Webpack base configuration to keep everything up to date.
 
+## Documentation
+Check out <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information.
 ## Prerequisites
 
 - [Node `^8`, `^10`](https://nodejs.org)

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import {Link as NewLink} from '../../../new-components/basics';
 import { window } from 'global';
 
 import '../../Docs/Nav/style.css';
@@ -10,7 +11,7 @@ class MainLinks extends React.Component {
   componentDidMount() {
     window.docsearch({
       apiKey: 'a4f7f972f1d8f99a66e237e7fd2e489f',
-      indexName: 'storybook-js',
+      indexName: 'wingsuit',
       inputSelector: '#search',
       debug: false, // Set debug to true if you want to inspect the dropdown
     });
@@ -28,6 +29,12 @@ class MainLinks extends React.Component {
                 <br />
               </code>
             </pre>
+
+            <h2 style={{paddingTop: 40}}>Online demo!</h2>
+            <div style={{paddingBottom: 40}} className="used-by-more-examples">
+              <a href="/preview/storybook">Storybook</a>
+              <a href="/preview/docs">Documentation only</a>
+            </div>
           </div>
 
           <div
@@ -51,7 +58,7 @@ class MainLinks extends React.Component {
                 style={{ maxWidth: '450px', margin: '20px auto' }}
               >
                 <label className="sr-only control-label" htmlFor="search">
-                  Search storybook documentation
+                  Search wingsuit documentation
                 </label>
                 <input
                   className="form-control"
@@ -75,6 +82,9 @@ class MainLinks extends React.Component {
                 <h3>Basics</h3>
               </Link>
               <ul>
+                <li>
+                  <Link to="/basics/introduction/">Introduction</Link>
+                </li>
                 <li>
                   <Link to="/guides/quick-start-guide/">Quick setup</Link>
                 </li>

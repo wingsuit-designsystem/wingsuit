@@ -45,6 +45,7 @@
     "dev": "concurrently --kill-others \"yarn dev:tsc\" \"yarn dev:babel\"",
     "dev:tsc": "lerna exec --scope @wingsuit-designsystem/* --parallel -- cross-env-shell node \\$LERNA_ROOT_PATH/scripts/watch-tsc.js",
     "docs:build": "npm --prefix docs run build",
+    "publish:docs": "./scripts/publish-docs.sh;",
     "docs:dev": "npm --prefix docs run dev",
     "test:e2e": "cypress run",
     "test:e2e-framework": "ts-node --project=./scripts/tsconfig.json ./scripts/run-e2e.ts",

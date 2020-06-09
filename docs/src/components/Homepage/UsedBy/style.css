@@ -63,8 +63,8 @@
 .used-by-more-examples {
   text-align: center;
   display: block;
-  margin-top: 50px;
-  font-size: 2em;
+  margin-top: 20px;
+  font-size: 18px;
 }
 
 .used-by-more-examples a,
@@ -74,6 +74,7 @@
 .used-by-more-examples a:focus {
   background-color: #e4004f;
   color: #fff;
-  padding: 20px;
+  padding: 12px;
   border-radius: 6px;
+  margin-right: 12px;
 }
