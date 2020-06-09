@@ -27,7 +27,10 @@
 </main>
 
 {% embed '@organisms/footer/footer.twig' %}
+  {% block slogan %}
+    {{ 'Wingsuit Flyer' }}
+  {% endblock %}
   {% block footer_menu %}
-    {% include '@molecules/menu/menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer'} %}
+    {% include '@molecules/menu/menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer', slogan: 'Wingsuit Flyer'} %}
   {% endblock %}
 {% endembed %}

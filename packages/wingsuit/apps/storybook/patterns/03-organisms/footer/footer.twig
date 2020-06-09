@@ -1,4 +1,7 @@
 {% embed '@organisms/footer/footer.twig' %}
+  {% block slogan %}
+    {{ 'Wingsuit Flyer' }}
+  {% endblock %}
   {% block footer_menu %}
     {% include '@molecules/menu/menu.twig' with {items: wingsuit.footer_menu.items, variant: 'footer'} %}
   {% endblock %}
