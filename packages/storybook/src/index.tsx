@@ -76,7 +76,6 @@ export function configure(module: NodeModule, storybookContext, dataContext, tem
 }
 
 function getProps(variant) {
-  const variables = variant.getVariables();
   const knobsVariables = [];
   const groupSetting = 'Settings';
   Object.keys(variant.getSettings()).forEach((key) => {
@@ -104,8 +103,7 @@ function getProps(variant) {
       knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
     }
   });
-  const mergedSettingValues: {} = Object.assign(variables, knobsVariables);
-  return mergedSettingValues;
+  return knobsVariables;
 }
 
 function getStories(pattern: Pattern, module) {

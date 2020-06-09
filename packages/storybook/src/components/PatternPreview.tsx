@@ -1,12 +1,22 @@
-import React, { FunctionComponent } from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {renderer} from '@wingsuit-designsystem/pattern';
 import PropTypes from 'prop-types';
 
-type Props =  {patternId, variantId};
+type Props = { patternId, variantId };
 
-const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...variables }) => (
-  <div dangerouslySetInnerHTML={{ __html: renderer.renderPatternPreview(patternId, variantId, variables) }} />
-);
+const PatternPreview: FunctionComponent<Props> = ({patternId, variantId, ...variables}) => {
+  const [rendered, setRendered] = useState("");
+
+  useEffect(() => {
+    renderer.renderPatternPreview(patternId, variantId, variables).then((output: string) => {
+      setRendered(output);
+    }).catch((error) => {
+      console.log("error");
+      setRendered("Error");
+    });
+  })
+  return <div dangerouslySetInnerHTML={{__html: rendered}}/>
+};
 
 PatternPreview.displayName = 'PatternPreview';
 

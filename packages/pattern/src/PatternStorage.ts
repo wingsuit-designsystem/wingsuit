@@ -144,6 +144,15 @@ export default class PatternStorage implements IPatternStorage {
     });
   }
 
+  getTwigResources():{} {
+    const resources = this.twigResources;
+    const result = {};
+    Object.keys(resources).forEach((key) => {
+      result[key] = resources[key].default;
+    });
+    return result;
+  }
+
   addTwig(namespace, resource):void {
     this.twigResources[namespace] = resource;
   }

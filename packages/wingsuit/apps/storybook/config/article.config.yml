@@ -1,7 +1,0 @@
-content:
-  - join():
-    - include():
-      pattern: templates-article
-      with:
-        attributes:
-          Attribute(): {}
