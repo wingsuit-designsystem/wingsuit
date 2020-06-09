@@ -59,19 +59,19 @@ To develop Wingsuit you need `yarn`.
 ```bash
 git clone git@github.com:wingsuit-designsystem/wingsuit.git
 yarn bootstrap
-yarn build
+yarn dev
 ```
 
 1. To start storybook `cd packages/wingsuit` and run:
 
 ```bash
-yarn run dev:storybook
+yarn dev:storybook
 ```
 
 1. To start drupal `cd packages/wingsuit` and run:
 
 ```bash
-npm run dev:drupal
+yarn dev:drupal
 ```
 ## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 
