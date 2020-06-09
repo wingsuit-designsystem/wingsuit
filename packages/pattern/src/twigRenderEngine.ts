@@ -1,4 +1,4 @@
-import { storage } from './index';
+import {storage} from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
@@ -41,10 +41,11 @@ export async function renderPatternPreview(
         const previewRenderedVariables = {};
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
           previewRenderedVariables[promisedPreviewNames[j]] = promisedPreviewValues[j];
-          }
-          const mergedValues: {} = Object.assign(
-          patternVariables,
-          previewRenderedVariables
+        }
+        const copyVariables = {...variables};
+        const mergedValues: {} = Object.assign(
+          previewRenderedVariables,
+          copyVariables
         );
         renderPattern(patternId, variantId, mergedValues)
           .then((output) => {
@@ -56,7 +57,7 @@ export async function renderPatternPreview(
       });
     });
   }
-  const copyVariables = { ...variables };
+  const copyVariables = {...variables};
   const mergedValues: {} = Object.assign(patternVariables, copyVariables);
   return renderPattern(patternId, variantId, mergedValues);
 }
@@ -70,7 +71,7 @@ export async function renderPattern(
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const copy = { ...storage.getGlobals() };
+  const copy = {...storage.getGlobals()};
   const mergedVariables = Object.assign(copy, variables);
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
@@ -85,7 +86,7 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const copy = { ...storage.getGlobals() };
+  const copy = {...storage.getGlobals()};
   const mergedVariables = Object.assign(copy, variables);
   return rendererImpl.render(path, path, mergedVariables);
 }
