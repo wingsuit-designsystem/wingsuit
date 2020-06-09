@@ -44,6 +44,7 @@ export async function renderPatternPreview(
         }
         const copyVariables = {...variables};
         const mergedValues: {} = Object.assign(
+          patternVariables,
           previewRenderedVariables,
           copyVariables
         );
