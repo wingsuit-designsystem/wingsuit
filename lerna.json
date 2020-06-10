@@ -3,7 +3,7 @@
     "packages/*",
     "examples/*"
   ],
-  "version": "0.4.10",
+  "version": "0.4.11",
   "registry": "https://registry.npmjs.org",
   "npmClient": "yarn"
 }

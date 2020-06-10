@@ -8,8 +8,8 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      sans: ['SourceSans', '-apple-system', 'BlinkMacSystemFont'],
-      serif: ['Roboto', 'sans-serif'],
+      serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
+      sans: ['Roboto', 'sans-serif'],
     },
     maxWidth: {
       none: 'none',

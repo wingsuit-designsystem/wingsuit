@@ -28,7 +28,8 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
             {
               loader: 'file-loader',
               options: {
-                name: `${this.appConfig.assetBundleFolder}/fonts/[name].[ext]?[hash]`,
+                outputPath: path.join(this.appConfig.assetBundleFolder, 'font'),
+                name: '[name].[ext]?[hash]',
               },
             },
           ],
