@@ -67,7 +67,7 @@ function buildBaseVariables(variables, addGlobals = true) {
   if (variables instanceof Map) {
     const obj = {};
     variables.forEach((value, key) => {
-      obj[key] = value
+      obj[key] = value;
     });
     passedVariables = obj;
   }
