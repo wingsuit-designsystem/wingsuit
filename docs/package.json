@@ -14,7 +14,7 @@
     "dev": "gatsby develop",
     "serve": "gatsby serve",
     "gh-pages": "gh-pages",
-    "publish:latest": "gatsby build --prefix-paths && gh-pages -t -b master -d public -r https://$GH_TOKEN@github.com/wingsuit-designsystem/wingsuit-designsystem.github.io.git"
+    "publish:latest": "gh-pages -t -b master -d public -r https://$GH_TOKEN@github.com/wingsuit-designsystem/wingsuit-designsystem.github.io.git"
   },
   "dependencies": {
     "@storybook/components": "5.2.5",

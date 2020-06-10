@@ -28,7 +28,7 @@ export default class AssetBundle extends BaseWebpackBundle {
           loader: 'file-loader',
           test: /\.(png|jpg|gif)$/,
           options: {
-            name: `${this.appConfig.assetBundleFolder}/images/[name].[ext]`,
+            name: path.join(this.appConfig.assetBundleFolder, 'images/[name].[ext]'),
           },
         },
         {
@@ -37,7 +37,7 @@ export default class AssetBundle extends BaseWebpackBundle {
             {
               loader: 'file-loader',
               options: {
-                name: `${this.appConfig.assetBundleFolder}/fonts/[name].[ext]?[hash]`,
+                name: path.join(this.appConfig.assetBundleFolder, 'fonts/[name].[ext]?[hash]'),
               },
             },
           ],
@@ -49,9 +49,7 @@ export default class AssetBundle extends BaseWebpackBundle {
               loader: 'svg-sprite-loader',
               options: {
                 extract: true,
-                spriteFilename: `${path.resolve(
-                  this.appConfig.assetBundleFolder
-                )}/images/spritemap.svg`,
+                spriteFilename: path.join(this.appConfig.assetBundleFolder, 'images/spritemap.svg'),
               },
             },
             'svg-transform-loader',

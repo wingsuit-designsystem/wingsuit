@@ -37,7 +37,7 @@ export const wingsuit = {
       path: './apps/storybook',
       cssMode: 'hot',
       distFolder: 'dist/app-storybook',
-      assetBundleFolder: 'assets',
+      assetBundleFolder: '',
       designSystem: 'default',
       webpackBundles: [
         'DefaultBundle',

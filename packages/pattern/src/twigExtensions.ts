@@ -5,7 +5,7 @@ export function twigAttributeFunction() {
 }
 
 export function twigFileUrl(url) {
-  return Promise.resolve(url.replace('ws-assets://', '/'));
+  return Promise.resolve(url.replace('ws-assets://', ''));
 }
 
 export function twigItok() {

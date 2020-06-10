@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import {Link as NewLink} from '../../../new-components/basics';
 import { window } from 'global';
+import { Link as NewLink } from '../../../new-components/basics';
 
 import '../../Docs/Nav/style.css';
 import { UsedByBg } from '../UsedBy';
@@ -30,8 +30,8 @@ class MainLinks extends React.Component {
               </code>
             </pre>
 
-            <h2 style={{paddingTop: 40}}>Online demo!</h2>
-            <div style={{paddingBottom: 40}} className="used-by-more-examples">
+            <h2 style={{ paddingTop: 40 }}>Online demo!</h2>
+            <div style={{ paddingBottom: 40 }} className="used-by-more-examples">
               <a href="/preview/storybook">Storybook</a>
               <a href="/preview/docs">Documentation only</a>
             </div>

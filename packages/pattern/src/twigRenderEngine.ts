@@ -1,4 +1,4 @@
-import {storage} from './index';
+import { storage } from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
@@ -14,7 +14,6 @@ export async function renderPatternPreview(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   if (variant == null) {
     throw new Error(`Pattern ${patternId}:${variantId} not found.`);
@@ -42,13 +41,12 @@ export async function renderPatternPreview(
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
           previewRenderedVariables[promisedPreviewNames[j]] = promisedPreviewValues[j];
         }
-        const copyVariables = {...variables};
-        const mergedValues: {} = Object.assign(
-          patternVariables,
-          previewRenderedVariables,
-          copyVariables
-        );
-        renderPattern(patternId, variantId, mergedValues)
+        const finalVariables: {} = {
+          ...patternVariables,
+          ...buildBaseVariables(variables),
+          ...previewRenderedVariables,
+        };
+        renderPattern(patternId, variantId, finalVariables)
           .then((output) => {
             resolve(output);
           })
@@ -58,11 +56,26 @@ export async function renderPatternPreview(
       });
     });
   }
-  const copyVariables = {...variables};
-  const mergedValues: {} = Object.assign(patternVariables, copyVariables);
-  return renderPattern(patternId, variantId, mergedValues);
+  return renderPattern(patternId, variantId, {
+    ...patternVariables,
+    ...buildBaseVariables(variables, false),
+  });
 }
-
+function buildBaseVariables(variables, addGlobals = true) {
+  let passedVariables = variables;
+  // Variables are passed as Map in Twing.
+  if (variables instanceof Map) {
+    const obj = {};
+    variables.forEach((value, key) => {
+      obj[key] = value
+    });
+    passedVariables = obj;
+  }
+  if (addGlobals) {
+    return { ...storage.getGlobals(), ...passedVariables };
+  }
+  return passedVariables;
+}
 export async function renderPattern(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
@@ -72,12 +85,11 @@ export async function renderPattern(
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
   }
-  const copy = {...storage.getGlobals()};
-  const mergedVariables = Object.assign(copy, variables);
+  const finalVariables = buildBaseVariables(variables);
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),
-    mergedVariables
+    finalVariables
   );
 }
 
@@ -87,7 +99,6 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const copy = {...storage.getGlobals()};
-  const mergedVariables = Object.assign(copy, variables);
-  return rendererImpl.render(path, path, mergedVariables);
+  const finalVariables = { ...storage.getGlobals(), ...variables };
+  return rendererImpl.render(path, path, finalVariables);
 }
