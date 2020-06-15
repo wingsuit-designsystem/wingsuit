@@ -10,5 +10,9 @@
 </main>
 
 {% block footer %}
-  {% include "@organisms/footer/footer.twig" with {menu: footer_menu} %}
+  {% embed "@organisms/footer/footer.twig" with {menu: footer_menu} %}
+    {% block slogan %}
+      {{ 'Wingsuit flyer' }}
+    {% endblock %}
+  {% endembed %}
 {% endblock footer %}
