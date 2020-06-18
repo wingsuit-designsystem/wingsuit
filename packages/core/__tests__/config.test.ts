@@ -1,5 +1,4 @@
 import path from 'path';
-import { storage } from '@wingsuit-designsystem/pattern/dist';
 import { resolveConfig } from '../src/index';
 
 const config_1 = {
@@ -21,7 +20,7 @@ const config_2 = {
   apps: {
     storybook: {
       path: 'packages/core/__tests__',
-      webpackBundles: ['DefaultBundle'],
+      presets: ['DefaultBundle'],
     },
   },
   designSystems: {
@@ -37,7 +36,7 @@ const config_3 = {
   extend: {
     apps: {
       storybook: {
-        webpackBundles: ['AddonBundle'],
+        presets: ['AddonBundle'],
       },
     },
   },
@@ -57,15 +56,15 @@ const config_3 = {
 
 describe('#Test config', () => {
   test.each([
-    [config_1, 7],
+    [config_1, 6],
     [config_2, 1],
-    [config_3, 8],
-  ])('Render pattern %p variant %p', (config: {}, webpackLength) => {
+    [config_3, 7],
+  ])('Render pattern %p variant %p', (config: {}, presetsLength) => {
     const appConfig = resolveConfig('storybook', 'development', {}, config);
     expect(appConfig.environment).toBe('development');
     expect(appConfig.absAppPath).toBe(__dirname);
     expect(appConfig.absRootPath).toBe(process.cwd());
-    expect(appConfig.webpackBundles.length).toBe(webpackLength);
+    expect(appConfig.presets.length).toBe(presetsLength);
     expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
   });
 });

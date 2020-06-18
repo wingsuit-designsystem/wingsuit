@@ -1,39 +1,40 @@
 import path from 'path';
-import { BaseWebpackBundle } from '../BaseWebpackBundle';
+import AppConfig from "../../AppConfig";
 
 const glob = require('glob');
 
-export default class DrupalBundle extends BaseWebpackBundle {
-  private behaviorItems = glob.sync(`${this.appConfig.absDesignSystemPath}/**/*.behavior.js`);
+export function webpack(appConfig: AppConfig) {
 
-  private behaviorObject = this.behaviorItems.reduce((acc, item) => {
+  const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
+
+  const behaviorObject = behaviorItems.reduce((acc, item) => {
     const name = path.basename(item).replace('.behavior.js', '');
     acc[`behaviors/${name}`] = item;
     return acc;
   }, {});
 
-  private vendorItems = glob.sync(`${this.appConfig.absDesignSystemPath}/**/*.vendor.js`);
+  const vendorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.vendor.js`);
 
-  private vendorObject = this.vendorItems.reduce((acc, item) => {
+  const vendorObject = vendorItems.reduce((acc, item) => {
     const name = path.basename(item).replace('.vendor.js', '');
     acc[`vendors/${name}`] = item;
     return acc;
   }, {});
 
-  private cssItems = glob.sync(`${this.appConfig.absDesignSystemPath}/**/*.css`);
+  const cssItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.css`);
 
-  private cssObject = this.cssItems.reduce((acc, item) => {
+  const cssObject = cssItems.reduce((acc, item) => {
     const name = path.basename(item).replace('.css', '');
     acc[`css/${name}`] = item;
     return acc;
   }, {});
 
-  protected sharedWebpackConfig: {} = {
+  return {
     target: 'web',
     entry: {
-      ...this.behaviorObject,
-      ...this.cssObject,
-      ...this.vendorObject,
+      ...behaviorObject,
+      ...cssObject,
+      ...vendorObject,
     },
     module: {
       rules: [
@@ -49,8 +50,8 @@ export default class DrupalBundle extends BaseWebpackBundle {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
-            outputPath: this.appConfig.assetAtomicFolder,
-            context: this.appConfig.absDesignSystemPath,
+            outputPath: appConfig.assetAtomicFolder,
+            context: appConfig.absDesignSystemPath,
             emit: true,
           },
         },

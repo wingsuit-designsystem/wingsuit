@@ -24,20 +24,19 @@ export function resolveConfig(
   if (
     projectConfig.apps != null &&
     projectConfig.apps[appName] != null &&
-    projectConfig.apps[appName].webpackBundles != null &&
-    projectConfig.apps[appName].webpackBundles.length !== 0
+    projectConfig.apps[appName].presets != null &&
+    projectConfig.apps[appName].presets.length !== 0
   ) {
-    appConfig.webpackBundles = projectConfig.apps[appName].webpackBundles;
+    appConfig.presets = projectConfig.apps[appName].presets;
   }
 
   const rootPath = process.cwd();
   if (appConfig == null) {
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
-  appConfig.webpackBundleRegistry = {};
-
-  Object.keys(mergedConfig.webpackBundles).forEach((name) => {
-    appConfig.webpackBundleRegistry[name] = mergedConfig.webpackBundles[name];
+  appConfig.presetsRegistry = {};
+  Object.keys(mergedConfig.presets).forEach((name) => {
+    appConfig.presetsRegistry[name] = mergedConfig.presets[name];
   });
 
   if (mergedConfig.environments[environment] != null) {
@@ -48,6 +47,8 @@ export function resolveConfig(
     appConfig = Object.assign(appConfig, projectConfig[appName]);
   }
   // Overwrite by parameter.
+  appConfig.webpack = mergedConfig.webpack;
+  appConfig.webpackFinal = mergedConfig.webpackFinal;
   appConfig = Object.assign(appConfig, configurationOverwrites);
   appConfig.absRootPath = rootPath;
   appConfig.environment = environment;
@@ -59,6 +60,7 @@ export function resolveConfig(
       `No designSystem found: ${appConfig.designSystem}. Please check your wingsuit.config.`
     );
   }
+
   appConfig.name = appName;
   appConfig.namespaces = designSystem.namespaces;
   appConfig.absDesignSystemPath = path.join(appConfig.absRootPath, designSystem.path);

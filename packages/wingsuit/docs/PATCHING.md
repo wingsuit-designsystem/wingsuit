@@ -1,6 +1,6 @@
-# Patching Server
+# Patching PresetManager
 
-It is possible to patch `node_modules` in use by Server. This is particularly
+It is possible to patch `node_modules` in use by PresetManager. This is particularly
 useful for Node Pattern Lab 3, which at the time of writing is still in Beta.
 
 ## Requirements
@@ -14,7 +14,7 @@ to patch packages directly.
 
 ## Usage
 
-Add the following to your `package.json` file ins Server:
+Add the following to your `package.json` file ins PresetManager:
 
 ```
  "scripts": {
@@ -26,7 +26,7 @@ Make your changes **directly** in the `node_module` you wish to update. After
 doing your work, simply run `npx patch-package package-name` to capture your
 update. For example, you have patched a file in `@pattern-lab/core`, simply run
 `npx patch-package @pattern-lab/core`. This generates a `patch` directory at the
-root of Server.
+root of PresetManager.
 
 When you run `npm install`, the `patch-package` module will run with the
 postinstall script above, patching your `npm` package with the source from the

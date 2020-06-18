@@ -1,21 +1,19 @@
-import Server from './server/Server';
+import PresetManager from './server/PresetManager';
 
 import AppConfig from './AppConfig';
 
 export { resolveConfig } from './resolveConfig';
 
-export { BaseWebpackBundle } from './server/BaseWebpackBundle';
+export { default as PresetManager } from './server/PresetManager';
 
-export { default as Server } from './server/Server';
-
-const server = new Server();
+const presetManager = new PresetManager();
 
 const merge = require('merge-deep');
 
 const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
 export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
-  const pack = server.generateWebpack(appConfig, webpacks);
+  const pack = presetManager.generateWebpack(appConfig, webpacks);
   return pack;
 }
 

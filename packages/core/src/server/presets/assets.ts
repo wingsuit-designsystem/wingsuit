@@ -1,34 +1,40 @@
 import * as path from 'path';
-import { BaseWebpackBundle } from '../BaseWebpackBundle';
+import AppConfig from "../../AppConfig";
 
 const CopyPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
-export default class StorybookAssetBundle extends BaseWebpackBundle {
-  protected productionWebpackConfig: {} = {
-    plugins: [],
-  };
-
-  protected sharedWebpackConfig = {
-    entry: [path.resolve(this.appConfig.path, 'assets.js')],
+export function webpack(appConfig: AppConfig) {
+  return {
+    entry: {
+      assets: path.resolve(appConfig.path, 'assets.js'),
+    },
     plugins: [
       new SpriteLoaderPlugin(),
       new CopyPlugin([
         {
           from: 'images/*',
-          to: this.appConfig.assetBundleFolder,
+          to: appConfig.assetBundleFolder,
         },
       ]),
     ],
     module: {
       rules: [
         {
+          loader: 'file-loader',
+          test: /\.(png|jpg|gif)$/,
+          options: {
+            outputPath: path.join(appConfig.assetBundleFolder, 'images'),
+            name: '[name].[ext]',
+          },
+        },
+        {
           test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           use: [
             {
               loader: 'file-loader',
               options: {
-                outputPath: path.join(this.appConfig.assetBundleFolder, 'font'),
+                outputPath: path.join(appConfig.assetBundleFolder, 'font'),
                 name: '[name].[ext]?[hash]',
               },
             },
@@ -41,7 +47,7 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
               loader: 'svg-sprite-loader',
               options: {
                 extract: true,
-                spriteFilename: `images/spritemap.svg`,
+                spriteFilename: path.join(appConfig.assetBundleFolder, 'images/spritemap.svg'),
               },
             },
             'svg-transform-loader',
@@ -49,11 +55,11 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
               loader: 'svgo-loader',
               options: {
                 plugins: [
-                  { convertFillsToCurrentColor: true },
-                  { removeTitle: true },
-                  { removeEditorsNSData: false },
-                  { convertColors: { shorthex: false } },
-                  { convertPathData: false },
+                  {convertFillsToCurrentColor: true},
+                  {removeTitle: true},
+                  {removeEditorsNSData: false},
+                  {convertColors: {shorthex: false}},
+                  {convertPathData: false},
                 ],
               },
             },
@@ -61,16 +67,18 @@ export default class StorybookAssetBundle extends BaseWebpackBundle {
         },
       ],
     },
-  };
+  }
+}
 
-  alterFinalConfig(config: any): {} {
+export function webpackFinal(appConfig: AppConfig, config: any): {} {
+  if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((data) => {
-      if (/svg\|/.test(String(data.test)))
+      if (/svg\|ico\|jpg\|/.test(String(data.test)))
         // eslint-disable-next-line no-param-reassign
-        data.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|cur|ani)(\?.*)?$/;
+        data = {};
       return data;
     });
-    return config;
   }
+  return config;
 }
