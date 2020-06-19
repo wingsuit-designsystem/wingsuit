@@ -1,6 +1,6 @@
 import * as path from 'path';
 import Tailwind2JsonPlugin from '../plugins/Tailwind2JsonPlugin';
-import AppConfig from "../../AppConfig";
+import AppConfig from '../../AppConfig';
 
 export function webpack(appConfig: AppConfig) {
   return {

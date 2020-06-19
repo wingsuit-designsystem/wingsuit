@@ -1,6 +1,6 @@
 import path from 'path';
 import Svg2JsonPlugin from '../plugins/Svg2JsonPlugin';
-import AppConfig from "../../AppConfig";
+import AppConfig from '../../AppConfig';
 
 export function webpack(appConfig: AppConfig) {
   return {

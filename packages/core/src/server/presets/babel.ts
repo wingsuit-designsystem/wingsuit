@@ -1,4 +1,4 @@
-import AppConfig from "../../AppConfig";
+import AppConfig from '../../AppConfig';
 
 export function webpack(appConfig: AppConfig) {
   return {
@@ -26,5 +26,5 @@ export function webpack(appConfig: AppConfig) {
         },
       ],
     },
-  }
+  };
 }

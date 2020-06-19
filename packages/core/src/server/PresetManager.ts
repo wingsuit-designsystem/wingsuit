@@ -1,12 +1,12 @@
 /**
  * Wingsuit PresetManager.
  */
-import AppConfig, {Preset} from '../AppConfig';
-import {DefinePlugin} from "webpack";
+import { DefinePlugin } from 'webpack';
+import AppConfig, { Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
-const {ProgressPlugin, ProvidePlugin} = require('webpack');
+const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 merge.multiple();
@@ -20,9 +20,9 @@ export default class PresetManager {
       if (appConfig.presetsRegistry[name] != null) {
         presets.push(appConfig.presetsRegistry[name]);
       } else {
+        // eslint-disable-next-line no-console
         console.log(`No preset ${name} found in registry.`);
       }
-
     });
     return presets;
   }
@@ -35,13 +35,13 @@ export default class PresetManager {
   public generateWebpack(appConfig: AppConfig, webpackConfigs: [] = []) {
     this.environment = appConfig.environment;
     const presets = this.getPresets(appConfig);
+
     const shared: any = [];
     Object.keys(presets).forEach((key) => {
       if (presets[key] != null) {
         shared.push(presets[key].webpack(appConfig));
       }
     });
-
     let config = merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
@@ -67,9 +67,13 @@ export default class PresetManager {
               }),
             ],
           },
-          plugins: [new DefinePlugin({
-            BUILD_TARGET: JSON.stringify(appConfig.name),
-          }), new ProgressPlugin({profile: false}), new ProvidePlugin({})],
+          plugins: [
+            new DefinePlugin({
+              BUILD_TARGET: JSON.stringify(appConfig.name),
+            }),
+            new ProgressPlugin({ profile: false }),
+            new ProvidePlugin({}),
+          ],
         },
       ]
     );
@@ -78,10 +82,9 @@ export default class PresetManager {
       if (presets[key].webpackFinal != null) {
         config = presets[key].webpackFinal(appConfig, config);
       }
-
     });
+
     config = appConfig.webpackFinal(appConfig, config);
-    console.log(config.module.rules);
     return config;
   }
 }

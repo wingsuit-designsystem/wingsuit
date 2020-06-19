@@ -1,20 +1,20 @@
-import AppConfig from "../AppConfig";
+import AppConfig from '../AppConfig'
 
-const css = require('../server/presets/css');
-const babel = require('../server/presets/babel');
-const assets = require('../server/presets/assets');
-const storybook = require('../server/presets/storybook');
-const drupal = require('../server/presets/drupal');
-const twing = require('../server/presets/twing');
-const tailwindTokens = require('../server/presets/tailwindTokens');
+const css = require('../server/presets/css')
+const babel = require('../server/presets/babel')
+const assets = require('../server/presets/assets')
+const storybook = require('../server/presets/storybook')
+const drupal = require('../server/presets/drupal')
+const twing = require('../server/presets/twing')
+const tailwindTokens = require('../server/presets/tailwindTokens')
 
 export const wingsuit = {
   webpackFinal: (appConfig: AppConfig, config: any) => {
-    return config;
+    return config
   },
 
   webpack: (appConfig: AppConfig) => {
-    return {};
+    return {}
   },
 
   presets: {
@@ -45,16 +45,8 @@ export const wingsuit = {
       distFolder: 'dist/app-storybook',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [
-        'tailwindTokens',
-        'twing',
-        'storybook',
-        'css',
-        'babel',
-        'assets',
-      ],
+      presets: ['tailwindTokens', 'assets', 'twing', 'storybook', 'css', 'babel'],
     },
-
     drupal: {
       type: 'drupal',
       path: './apps/drupal',

@@ -1,10 +1,9 @@
 import path from 'path';
-import AppConfig from "../../AppConfig";
+import AppConfig from '../../AppConfig';
 
 const glob = require('glob');
 
 export function webpack(appConfig: AppConfig) {
-
   const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
 
   const behaviorObject = behaviorItems.reduce((acc, item) => {
@@ -42,7 +41,9 @@ export function webpack(appConfig: AppConfig) {
           test: /\.(yml|md|yaml)$/,
           loader: 'file-loader',
           options: {
-            emitFile: false,
+            name: '[name].[ext]',
+            outputPath: 'wingsuit',
+            emit: true,
           },
         },
         {

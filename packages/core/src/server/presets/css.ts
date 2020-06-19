@@ -1,10 +1,9 @@
-import AppConfig from "../../AppConfig";
+import AppConfig from '../../AppConfig';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 export function webpack(appConfig: AppConfig) {
-
   const loader = [
     {
       loader: 'css-loader',
