@@ -6,8 +6,8 @@ module.exports = {
     linkPrefix: '/',
     docSections: {
       basics: ['/basics/introduction/'],
-      guides: ['/guides/quick-start-guide/'],
-      configurations: ['/configurations/details/', '/configurations/custom-webpack-config/'],
+      guides: ['/guides/quick-start-guide/', '/guides/create-component-guide/'],
+      configurations: ['/configurations/details/', '/configurations/custom-webpack-config/', '/configurations/preset-webpack/'],
       components: [
         '/components/overview/',
         '/components/globals/',

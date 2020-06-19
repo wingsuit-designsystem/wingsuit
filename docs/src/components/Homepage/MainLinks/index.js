@@ -88,6 +88,9 @@ class MainLinks extends React.Component {
                 <li>
                   <Link to="/guides/quick-start-guide/">Quick setup</Link>
                 </li>
+                <li>
+                  <Link to="/guides/create-component-guide/">Create new component</Link>
+                </li>
               </ul>
             </div>
 
@@ -102,6 +105,11 @@ class MainLinks extends React.Component {
                 <li>
                   <Link to="/configurations/custom-webpack-config/">
                     Custom webpack configuration
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/configurations/preset-webpack/">
+                    Webpack presets
                   </Link>
                 </li>
               </ul>

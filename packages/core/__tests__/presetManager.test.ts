@@ -1,14 +1,14 @@
 import path from 'path';
-import {resolveConfig, PresetManager} from '../src/index';
+import { resolveConfig, PresetManager } from '../src/index';
 
 const config = {
   webpack: (appConfig) => {
-    return {"testWebpack": true}
+    return { testWebpack: true };
   },
   webpackFinal: (appConfig, webpack) => {
     // eslint-disable-next-line no-param-reassign
     webpack.testWebpackFinal = true;
-    return webpack
+    return webpack;
   },
   designSystems: {
     default: {
