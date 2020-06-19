@@ -16,6 +16,14 @@ export function resolveConfig(
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
   let mergedConfig = merge(configStub.wingsuit, projectConfig);
+
+  if (projectConfig.webpack) {
+    mergedConfig.webpack = projectConfig.webpack;
+  }
+  if (projectConfig.webpackFinal) {
+    mergedConfig.webpackFinal = projectConfig.webpackFinal;
+  }
+
   if (projectConfig.extend != null) {
     mergedConfig = merge(mergedConfig, projectConfig.extend);
   }
