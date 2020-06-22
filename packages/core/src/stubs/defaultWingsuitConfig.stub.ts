@@ -52,6 +52,7 @@ export const wingsuit = {
       path: './apps/drupal',
       cssMode: 'extract',
       distFolder: 'dist/app-drupal',
+      assetAtomicFolder: 'assets/atomic',
       assetBundleFolder: 'assets',
       designSystem: 'default',
       presets: ['babel', 'assets', 'drupal', 'css'],
