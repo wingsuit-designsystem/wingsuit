@@ -82,10 +82,10 @@ const generate = async ({ cwd, name, version, generator }: Options) => {
 };
 
 const initStorybook = async ({ cwd, autoDetect = true, name }: Options) => {
-  logger.info(`🎨 Initializing Storybook with @wingsuit/cli`);
+  logger.info(`🎨 Initializing Storybook with @wingsuit-designsystem/cli`);
   try {
     const type = autoDetect ? '' : `--type ${name}`;
-    await exec(`npx -p @wingsuit/cli ws init --skip-install --yes ${type}`, { cwd });
+    await exec(`npx -p @wingsuit-designsystem/cli ws init --skip-install ${type}`, { cwd });
   } catch (e) {
     logger.error(`🚨 Storybook initialization failed`);
     throw e;
@@ -140,7 +140,7 @@ const buildStorybook = async ({ cwd, preBuildCommand }: Options) => {
     if (preBuildCommand) {
       await exec(preBuildCommand, { cwd });
     }
-    await exec(`yarn build-wingsuit --quiet`, { cwd });
+    await exec(`yarn build:storybook --quiet`, { cwd });
   } catch (e) {
     logger.error(`🚨 Storybook build failed`);
     throw e;
