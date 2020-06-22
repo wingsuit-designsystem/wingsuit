@@ -24,7 +24,7 @@ export function webpack(appConfig: AppConfig) {
 
   const cssObject = cssItems.reduce((acc, item) => {
     const name = path.basename(item).replace('.css', '');
-    acc[`css/${name}`] = item;
+    acc[`${name}`] = item;
     return acc;
   }, {});
 

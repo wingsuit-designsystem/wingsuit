@@ -11,7 +11,6 @@ export function webpack(appConfig: AppConfig) {
         sourceMap: true,
       },
     },
-
     {
       // PostCSS config at ./postcss.config.js
       loader: 'postcss-loader',
@@ -80,8 +79,9 @@ export function webpack(appConfig: AppConfig) {
           },
         }),
         new MiniCssExtractPlugin({
+          publicPath: '../',
           filename: '[name].css',
-          chunkFilename: '[id].css',
+          chunkFilename: 'css/[id].css',
         }),
       ],
     },
