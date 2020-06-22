@@ -1,5 +1,3 @@
-import WebpackBundleConstructor from './server/WebpackBundleConstructor';
-
 export default interface AppConfig {
   type: string;
 
@@ -27,13 +25,21 @@ export default interface AppConfig {
 
   absDistFolder: string;
 
-  webpackBundles: [];
+  webpack(appConfig: AppConfig);
 
-  webpackBundleRegistry: WebpackBundle;
+  webpackFinal(appConfig: AppConfig, config: any);
+
+  presets: [];
+
+  presetsRegistry: PresetItem;
 }
 
-export interface WebpackBundle {
-  [key: string]: WebpackBundleConstructor;
+export interface Preset {
+  webpack(appConfig: AppConfig);
+  webpackFinal(appConfig: AppConfig, config: any);
+}
+export interface PresetItem {
+  [key: string]: Preset;
 }
 
 export interface Namespace {

@@ -1,14 +1,10 @@
-import { BaseWebpackBundle } from '../BaseWebpackBundle';
+import AppConfig from '../../AppConfig';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-export default class CssBundle extends BaseWebpackBundle {
-  public getSharedWebpackConfig(): {} {
-    return this.cssModes[this.appConfig.cssMode];
-  }
-
-  private loader = [
+export function webpack(appConfig: AppConfig) {
+  const loader = [
     {
       loader: 'css-loader',
       options: {
@@ -40,7 +36,7 @@ export default class CssBundle extends BaseWebpackBundle {
    * CSS modes are import to frontend dev. Wingsuit currently supports hot
    * reloading or full css file extraction.
    */
-  protected cssModes = {
+  const cssModes = {
     // 'hot' uses the style-loader plugin which rewrites CSS inline via
     // webpack-dev-server and is purely development-mode ONLY. style-loader
     // CANNOT exists alongside MiniCsExtractPlugin
@@ -50,7 +46,7 @@ export default class CssBundle extends BaseWebpackBundle {
         rules: [
           {
             test: /\.css$/,
-            use: [{ loader: 'style-loader' }, ...this.loader],
+            use: [{ loader: 'style-loader' }, ...loader],
           },
         ],
       },
@@ -68,7 +64,7 @@ export default class CssBundle extends BaseWebpackBundle {
                 loader: MiniCssExtractPlugin.loader,
                 options: { publicPath: './' },
               },
-              ...this.loader,
+              ...loader,
             ],
           },
         ],
@@ -90,4 +86,5 @@ export default class CssBundle extends BaseWebpackBundle {
       ],
     },
   };
+  return cssModes[appConfig.cssMode];
 }

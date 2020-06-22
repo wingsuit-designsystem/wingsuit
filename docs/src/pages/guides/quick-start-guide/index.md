@@ -20,8 +20,4 @@ A good starting point is to have a look at the design system components, which y
 A typical component includes a `pattern.wingsuit.yml`, a `twig template`,  and optionally a `css file` and/or a `behavior javascript` file. 
 
 ### Create a new component
-Another good starting point is to create a new component:
-
-`yarn ws generate-component`
-
-The wizard will guide you through all possible pattern types including documentation.
+Another good starting point is to create a [new component](../create-component-guide).

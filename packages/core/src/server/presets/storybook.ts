@@ -1,9 +1,9 @@
 import path from 'path';
-import { BaseWebpackBundle } from '../BaseWebpackBundle';
 import Svg2JsonPlugin from '../plugins/Svg2JsonPlugin';
+import AppConfig from '../../AppConfig';
 
-export default class StorybookBundle extends BaseWebpackBundle {
-  protected sharedWebpackConfig: {} = {
+export function webpack(appConfig: AppConfig) {
+  return {
     node: {
       fs: 'empty',
     },
@@ -26,8 +26,8 @@ export default class StorybookBundle extends BaseWebpackBundle {
     },
     plugins: [
       new Svg2JsonPlugin(
-        path.resolve(this.appConfig.namespaces.atoms, 'svg/svg'),
-        path.resolve(`${this.appConfig.absAppPath}/config/silo/svgs.json`)
+        path.resolve(appConfig.namespaces.atoms, 'svg/svg'),
+        path.resolve(`${appConfig.absAppPath}/config/silo/svgs.json`)
       ),
     ],
     stats: {

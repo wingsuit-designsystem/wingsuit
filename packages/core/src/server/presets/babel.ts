@@ -1,7 +1,7 @@
-import { BaseWebpackBundle } from '../BaseWebpackBundle';
+import AppConfig from '../../AppConfig';
 
-export default class BabelBundle extends BaseWebpackBundle {
-  protected sharedWebpackConfig = {
+export function webpack(appConfig: AppConfig) {
+  return {
     module: {
       rules: [
         {

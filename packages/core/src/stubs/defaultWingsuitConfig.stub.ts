@@ -1,24 +1,30 @@
-import CssBundle from '../server/webpackBundles/CssBundle'
-import BabelBundle from '../server/webpackBundles/BabelBundle'
-import AssetBundle from '../server/webpackBundles/AssetBundle'
-import StorybookAssetBundle from '../server/webpackBundles/StorybookAssetBundle'
-import StorybookBundle from '../server/webpackBundles/StorybookBundle'
-import DrupalBundle from '../server/webpackBundles/DrupalBundle'
-import TwingBundle from '../server/webpackBundles/TwingBundle'
-import TailwindConfigExport from '../server/webpackBundles/TailwindConfigExport'
-import DefaultBundle from '../server/webpackBundles/DefaultBundle'
+import AppConfig from '../AppConfig'
+
+const css = require('../server/presets/css')
+const babel = require('../server/presets/babel')
+const assets = require('../server/presets/assets')
+const storybook = require('../server/presets/storybook')
+const drupal = require('../server/presets/drupal')
+const twing = require('../server/presets/twing')
+const tailwindTokens = require('../server/presets/tailwindTokens')
 
 export const wingsuit = {
-  webpackBundles: {
-    CssBundle,
-    BabelBundle,
-    AssetBundle,
-    StorybookAssetBundle,
-    TailwindConfigExport,
-    StorybookBundle,
-    DrupalBundle,
-    TwingBundle,
-    DefaultBundle,
+  webpackFinal: (appConfig: AppConfig, config: any) => {
+    return config
+  },
+
+  webpack: (appConfig: AppConfig) => {
+    return {}
+  },
+
+  presets: {
+    css,
+    babel,
+    assets,
+    tailwindTokens,
+    storybook,
+    drupal,
+    twing,
   },
   designSystems: {
     default: {
@@ -39,15 +45,7 @@ export const wingsuit = {
       distFolder: 'dist/app-storybook',
       assetBundleFolder: '',
       designSystem: 'default',
-      webpackBundles: [
-        'DefaultBundle',
-        'StorybookAssetBundle',
-        'TailwindConfigExport',
-        'TwingBundle',
-        'StorybookBundle',
-        'CssBundle',
-        'BabelBundle',
-      ],
+      presets: ['tailwindTokens', 'assets', 'twing', 'storybook', 'css', 'babel'],
     },
     drupal: {
       type: 'drupal',
@@ -56,7 +54,7 @@ export const wingsuit = {
       distFolder: 'dist/app-drupal',
       assetBundleFolder: 'assets',
       designSystem: 'default',
-      webpackBundles: ['BabelBundle', 'DefaultBundle', 'AssetBundle', 'DrupalBundle', 'CssBundle'],
+      presets: ['babel', 'assets', 'drupal', 'css'],
     },
   },
 }
