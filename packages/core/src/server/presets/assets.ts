@@ -39,7 +39,7 @@ export function webpack(appConfig: AppConfig) {
           ],
         },
         {
-          test: /.*\.svg$/,
+          test: /.*\/icons\/.*\.svg$/,
           use: [
             {
               loader: 'svg-sprite-loader',
@@ -63,6 +63,15 @@ export function webpack(appConfig: AppConfig) {
               },
             },
           ],
+        },
+
+        {
+          loader: 'file-loader',
+          test: /.*\/images\/.*\.svg$/,
+          options: {
+            outputPath: path.join(appConfig.assetBundleFolder, 'images'),
+            name: '[name].[ext]',
+          },
         },
         {
           loader: 'file-loader',
