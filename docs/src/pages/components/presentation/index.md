@@ -24,7 +24,7 @@ export const Variant = () => <RenderTwig data={twigTemplate}></RenderTwig>;
 ```
 
 ### Additonal twig functions
-Inside the twig template you two additonal twig functions:
+Inside the twig template you need two additional twig functions:
 
 * `pattern_preview(patterId, variantId, variables)` to render a existing pattern including all preview data from the component. You can overwrite preview data with variables.
 * `pattern(patterId, variantId, variables)` to render a pattern without any preview data. You need to provide all variables as the third argument.
