@@ -49,6 +49,7 @@ const Container = ({ sections, selectedItem, selectedSectionId, selectedItemId }
       />
     </div>
     <div className="content col-xs-12 col-sm-12 col-md-9 col-lg-9">
+      <Search />
       <div className="nav-dropdown">
         <NavDropdown
           sections={sections}
@@ -56,8 +57,6 @@ const Container = ({ sections, selectedItem, selectedSectionId, selectedItemId }
           selectedItem={selectedItem.id}
         />
       </div>
-
-      <Search />
 
       <Content
         title={selectedItem.title}

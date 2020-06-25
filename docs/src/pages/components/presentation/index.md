@@ -4,7 +4,6 @@ title: 'Presentation'
 ---
 Presentation templates located typically at `apps/storybook/patterns/type/`. 
 They are useful to present a combination of components. A very typical use case are the pages in atomic design.
-But often it makes also sense for other use cases.
 
 <b>A Presentation component contains:</b>
 * pattern.stories.jsx

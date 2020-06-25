@@ -14,6 +14,8 @@ module.exports = {
         '/components/wingsuit/',
         '/components/twig/',
         '/components/presentation/',
+        '/components/assets/',
+        '/components/javascript/',
       ],
       testing: ['/testing/manual-testing/'],
     },
@@ -52,7 +54,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-segment',
       options: {
-        writeKey: 'AvvBObOmHaEMqfub8JJUXq5umjsuaqS8',
+        writeKey: 'Yp6DgNNFnTRzWk9yDOLFdMyrbeGInjYp',
       },
     },
   ],

@@ -32,8 +32,8 @@ class MainLinks extends React.Component {
 
             <h2 style={{ paddingTop: 40 }}>Online demo!</h2>
             <div style={{ paddingBottom: 40 }} className="used-by-more-examples">
-              <a href="/preview/storybook">Storybook</a>
-              <a href="/preview/docs">Documentation only</a>
+              <a href="https://wingsuit.netlify.app/?path=/story/base-welcome--page" target="_blank" rel="noreferrer">Storybook</a>
+              <a href="/preview/docs" target="_blank" rel="noreferrer">Documentation only</a>
             </div>
           </div>
 

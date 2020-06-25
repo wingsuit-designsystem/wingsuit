@@ -26,7 +26,7 @@ export function webpack(appConfig: AppConfig) {
     },
     plugins: [
       new Svg2JsonPlugin(
-        path.resolve(appConfig.namespaces.atoms, 'svg/svg'),
+        path.resolve(appConfig.namespaces.atoms, 'svg/svg/icons'),
         path.resolve(`${appConfig.absAppPath}/config/silo/svgs.json`)
       ),
     ],

@@ -75,5 +75,12 @@ yarn dev:storybook
 ```bash
 yarn dev:drupal
 ```
+
+1. To build docs
+```bash
+yarn dev:drupal
+```
+
+
 ## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 

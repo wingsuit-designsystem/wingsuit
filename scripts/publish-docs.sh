@@ -15,10 +15,6 @@ mkdir -p public/preview
 
 cd ../packages/wingsuit
 
-# Create storybook preview
-yarn build:storybook
-mv dist/app-storybook ../../docs/public/preview/storybook
-
 # Create storybook docs
 yarn build:storybook --docs
 mv dist/app-storybook ../../docs/public/preview/docs
