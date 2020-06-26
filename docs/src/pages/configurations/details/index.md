@@ -3,8 +3,8 @@ id: 'details'
 title: 'Configuration'
 ---
 
-The folder layout of the design system, the used webpack bundles and the folder structure of the deployment can be configured inside the `wingsuit.config.js`.<br> 
-A good starting point is the complete `wingsuit.config.js` file:
+The layout folder of the design system, the used webpack bundles and the structure folder of the deployment can be configured inside the `wingsuit.config.js`.<br> 
+A good starting point is the complete `wingsuit.config.js` file which is located `wingsuit/wingsuit.config.js`:
 
 ```js
 import AppConfig from '../AppConfig'

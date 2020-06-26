@@ -9,7 +9,7 @@ Wingsuit is a design system for twig based UI components. The components are dev
 A Wingsuit component is defined by an wingsuit.yml, which is an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html). 
 
 
-<b>Wingsuit uses this configuration file to:</b>
+<b>Wingsuit uses the following configuration files to:</b>
 
 * <b>Generate Storybook stories</b><br>
 Each variant is a Storybook story. Fields and settings are editable with [knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs).

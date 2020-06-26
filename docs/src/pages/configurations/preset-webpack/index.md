@@ -39,7 +39,7 @@ Then register the bundle inside your wingsuit.config.js:
 ## Extend or replace config?
 
 There are two ways to use presets: 
-### Extend
+### 1. Extend
 The most common use case is to extend the existing `presets` config. For this you can use the `extend` keyword inside the `webpack.config.js`.
 ```js
 module.exports = {
@@ -55,7 +55,7 @@ module.exports = {
   };
 ```
 
-### Replace
+### 2. Replace
 It's also possible to replace the existing bundles with a completely custom configuration. Doing so overwrites the existing app config. 
 ```js
 module.exports = {
