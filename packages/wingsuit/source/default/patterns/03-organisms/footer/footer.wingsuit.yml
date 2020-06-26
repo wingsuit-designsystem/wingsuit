@@ -3,7 +3,11 @@ footer:
   label: Footer
   description: The footer pattern.
   fields:
-    menu:
+    slogan:
+      type: text
+      label: Slogan
+      preview: "Wingsuit flyer"
+    footer_menu:
       type: pattern
       label: Menu
       preview:

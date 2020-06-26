@@ -5,10 +5,13 @@
   }
   %}
 {% block main %}
-  {% embed '@templates/article/article.twig' with {
-    headline: 'Card Headline',
-    text: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.'
-  } %}
+  {% embed '@templates/article/article.twig' %}
+    {% block headline %}
+      {{ 'Card Headline' }}
+    {% endblock %}
+    {% block text %}
+      {{ 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.' }}
+    {% endblock %}
     {% block image %}
       {% include "@atoms/image/image.twig" with {
         variant: 'primary',
