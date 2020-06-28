@@ -20,7 +20,6 @@ const getSections = (sections, edges) =>
       const page = edges.find(({ node }) => node.fields.slug === path);
       if (page == null) {
         console.log(path);
-
       }
       return page.node.frontmatter;
     }),

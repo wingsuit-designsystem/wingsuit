@@ -7,11 +7,11 @@ const Heading = () => (
   <div id="heading">
     <div>
       <img className="sb-title" src={wingsuitLogo} alt="Storybook Logo" />
-      <h3 className="mt-4 sb-tagline">
-        A Designsystem for rapid pattern development.
+      <h1 className="mt-4 sb-tagline">
+        Wingsuit is an open-source design system to build UI Patterns with Storybook for Drupal.
         <br />
-        You will ♥️ using it!
-      </h3>
+        You will ♥️ your development speed!
+      </h1>
     </div>
   </div>
 );

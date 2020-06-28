@@ -54,13 +54,11 @@ class MainLinks extends React.Component {
             }}
           >
             <UsedByBg
-              color="#a7d0ff"
-              style={{
-                transform: 'rotateY(180deg)',
-              }}
+              color="#81E6D9"
+
             />
             <div className="col-xs-12 col-sm-12 read-docs">
-              <h2 style={{ color: '#6DABF5' }}>Documentation</h2>
+              <h2 style={{ color: '#000000' }}>Documentation</h2>
               <div
                 className="form-group has-feedback"
                 style={{ maxWidth: '450px', margin: '20px auto' }}

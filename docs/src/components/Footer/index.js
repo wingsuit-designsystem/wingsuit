@@ -11,11 +11,11 @@ const Footer = () => (
 
           <center>
             <a
-              href="https://now-examples-slackin-nqnzoygycp.now.sh/"
+              href="https://drupaltwig.slack.com/"
               target="_blank"
               rel="noreferrer noopener"
             >
-              <img src={slackIcon} alt="Storybook Slack" style={{ padding: '7px' }} />
+              <img src={slackIcon} alt="Wingsuit Slack" style={{ padding: '7px' }} />
             </a>
             <a
               href="https://github.com/wingsuit-designsystem/wingsuit"

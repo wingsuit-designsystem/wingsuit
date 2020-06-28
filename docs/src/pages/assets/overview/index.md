@@ -3,11 +3,11 @@ id: 'overview'
 title: 'Overview'
 ---
 
-Wingsuit will compile all assets which are `@import`ed inside the designsystem or inside your `apps/app/assets.js`. 
+Wingsuit will compile all assets which are `@import`ed inside the designsystem or inside your `apps/[app]/assets.js`. 
 
 If you are missing an asset inside your `dist` folder - or your webpack auto reload is not working - check if this file is `@import`ed.
 
-You can configure the dist folder in `wingsuit.conf.yml`. The default points `[root]/dist/app-[type]`.
+You can configure the dist folder in your `wingsuit.conf.yml`. The default points `[root]/dist/app-[type]`.
 ```
   apps: {
     storybook: {

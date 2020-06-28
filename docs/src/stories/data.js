@@ -44,7 +44,7 @@ export const docsData = {
       heading: 'Assets',
       items: [
         { id: 'images', title: 'Images' },
-        { id: 'svgs', title: 'Svgs' }
+        { id: 'svgs', title: 'Svgs' },
       ],
     },
   ],
