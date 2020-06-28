@@ -2,91 +2,33 @@
 id: 'details'
 title: 'Configuration'
 ---
+Wingsuit shipes with a preset of variables which fits most use cases and you propably don't need to change them.
 
-The layout folder of the design system, the used webpack bundles and the structure folder of the deployment can be configured inside the `wingsuit.config.js`.<br> 
-A good starting point is the complete `wingsuit.config.js` file which is located `wingsuit/wingsuit.config.js`:
 
-```js
-import AppConfig from '../AppConfig'
 
-const css = require('../server/presets/css')
-const babel = require('../server/presets/babel')
-const assets = require('../server/presets/assets')
-const storybook = require('../server/presets/storybook')
-const drupal = require('../server/presets/drupal')
-const twing = require('../server/presets/twing')
-const tailwindTokens = require('../server/presets/tailwindTokens')
-
-export const wingsuit = {
-  webpackFinal: (appConfig: AppConfig, config: any) => {
-    return config
-  },
-
-  webpack: (appConfig: AppConfig) => {
-    return {}
-  },
-
-  presets: {
-    css,
-    babel,
-    assets,
-    tailwindTokens,
-    storybook,
-    drupal,
-    twing,
-  },
-  designSystems: {
-    default: {
-      path: 'source/default',
-      patternPath: 'patterns',
-      namespaces: {},
-    },
-  },
-  environments: {
-    development: {},
-    production: {},
-  },
-  apps: {
-    storybook: {
-      type: 'storybook',
-      path: './apps/storybook',
-      cssMode: 'hot',
-      distFolder: 'dist/app-storybook',
-      assetBundleFolder: '',
-      designSystem: 'default',
-      presets: ['tailwindTokens', 'assets', 'twing', 'storybook', 'css', 'babel'],
-    },
-    drupal: {
-      type: 'drupal',
-      path: './apps/drupal',
-      cssMode: 'extract',
-      distFolder: 'dist/app-drupal',
-      assetBundleFolder: 'assets',
-      designSystem: 'default',
-      presets: ['babel', 'assets', 'drupal', 'css'],
-    },
-  },
-}
-```
-If you don't change the folder structure of the design system, the minimal configuration file looks like:
-```js
-const namespaces = require('./source/default/namespaces');
-
-module.exports = {
-  designSystems: {
-    default: {
-      namespaces,
-    },
-  },
-};
-
-```
-
-## Main Section
+### The main Section
+The Wingsuit configuration file has 3 main sections:
 
 * `apps` for app specific configuration. 
+    * `type` the type of the app.
+    * `path` the path to the app.
+    * `cssMode` extract css or not.
+    * `distFolder` the path to the dist folder.
+    * `assetBundleFolder` the folder name under the dist folder for assets.
+
+For example if you want to change the path to the drupal theme you can easily change the
+
+* `designSystem` link to the design system.
+
+* `webpackBundles` the used webpack bundles. [Here you can find more information](../custom-webpack-config) about webpack bundles.
 
 * `designSystems` to configure the design system itself.
+
+* `presets` for app specific configuration.
+   
+
+
+
 
 ## Extend the configuration
 
@@ -126,24 +68,6 @@ You can use namespaces in twig and javascript imports.
 ```js
   import "atoms/button";
 ```
-
-## Apps
-Each apps uses the following configuration keys:
-
-* `type` the type of the app.
-
-* `path` the path to the app.
-
-* `cssMode` extract css or not.
-
-* `distFolder` the path to the dist folder.
-
-* `assetBundleFolder` the folder name under the dist folder for assets.
-
-* `designSystem` link to the design system.
-
-* `webpackBundles` the used webpack bundles. [Here you can find more information](../custom-webpack-config) about webpack bundles.
-
 
 ## Environments
 

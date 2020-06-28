@@ -1,0 +1,46 @@
+45 error Error: Command failed: git commit -m v0.5.6
+45 error husky > pre-commit (node v10.19.0)
+45 error $ /home/cw/projects/wingsuit/wingsuit/node_modules/.bin/lint-staged
+45 error Stashing changes... [started]
+45 error Stashing changes... [skipped]
+45 error → No partially staged files found...
+45 error Running tasks... [started]
+45 error Running tasks for *.html [started]
+45 error Running tasks for *.js [started]
+45 error Running tasks for *.jsx [started]
+45 error Running tasks for *.ts [started]
+45 error Running tasks for *.tsx [started]
+45 error Running tasks for *.html [skipped]
+45 error → No staged files match *.html
+45 error Running tasks for *.jsx [skipped]
+45 error → No staged files match *.jsx
+45 error Running tasks for *.ts [skipped]
+45 error → No staged files match *.ts
+45 error yarn lint:js --fix [started]
+45 error yarn lint:js --fix [started]
+45 error yarn lint:js --fix [completed]
+45 error Running tasks for *.tsx [completed]
+45 error yarn lint:js --fix [failed]
+45 error →
+45 error Running tasks for *.js [failed]
+45 error →
+45 error Running tasks... [failed]
+45 error
+45 error
+45 error
+45 error ✖ yarn lint:js --fix found some errors. Please fix them and try committing again.
+45 error $ cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives packages --fix /home/cw/projects/wingsuit/wingsuit/packages/wingsuit/source/default/patterns/01-atoms/button/button.behavior.js
+45 error
+45 error /home/cw/projects/wingsuit/wingsuit/packages/wingsuit/source/default/patterns/01-atoms/button/button.behavior.js
+45 error 2:19  error  'settings' is defined but never used  no-unused-vars
+45 error
+45 error ✖ 1 problem (1 error, 0 warnings)
+45 error
+45 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+45 error error Command failed with exit code 1.
+45 error error Command failed with exit code 1.
+45 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+45 error husky > pre-commit hook failed (add --no-verify to bypass)
+45 error
+45 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
+45 error     at Promise.all.then.arr (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16)
