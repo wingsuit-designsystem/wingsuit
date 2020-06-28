@@ -39,6 +39,14 @@ export const docsData = {
         { id: 'babel', title: 'Babel' },
       ],
     },
+    {
+      id: 'assets',
+      heading: 'Assets',
+      items: [
+        { id: 'images', title: 'Images' },
+        { id: 'svgs', title: 'Svgs' }
+      ],
+    },
   ],
   selectedItem: {
     id: 'writing-stories',

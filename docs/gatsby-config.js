@@ -17,9 +17,13 @@ module.exports = {
         '/components/globals/',
         '/components/wingsuit/',
         '/components/twig/',
-        '/components/presentation/',
-        '/components/assets/',
-        '/components/javascript/',
+        '/components/presentation/'
+      ],
+      assets: [
+        '/assets/overview/',
+        '/assets/images/',
+        '/assets/svg/',
+        '/assets/javascript/',
       ],
       testing: ['/testing/manual-testing/'],
     },

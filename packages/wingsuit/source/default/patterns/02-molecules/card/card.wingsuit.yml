@@ -4,33 +4,42 @@ card:
   description: Amazing Cards
   fields:
     image:
+      label: Image
       type: pattern
+      description: The image tag.
       preview:
         id: image
         variant: primary
     preheadline:
       type: text
       label: Preheadline
+      description: A short headline above the headline.
       preview:
         faker: lorem.word
     headline:
       type: text
       label: Headline
+      description: The main headline.
       preview:
         faker: lorem.word
     text:
       type: text
       label: Text
+      description: A long text under the headline.
       preview:
         faker: lorem.paragraph
     button:
       type: text
       label: Button
+      description: An optional button at the bottom of the card.
       preview:
         faker: lorem.word
   variants:
     default:
       label: Default
+    horizontal:
+      label: Horizontal
+      description: Image left - text right on desktop.
   settings:
     alignment:
       type: select

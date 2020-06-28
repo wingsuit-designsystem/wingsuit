@@ -18,6 +18,10 @@ const getSections = (sections, edges) =>
     heading: capitalize(key),
     items: sections[key].map((path) => {
       const page = edges.find(({ node }) => node.fields.slug === path);
+      if (page == null) {
+        console.log(path);
+
+      }
       return page.node.frontmatter;
     }),
   }));
@@ -90,6 +94,7 @@ export const pageQuery = graphql`
           guides
           configurations
           components
+          assets
           testing
         }
       }

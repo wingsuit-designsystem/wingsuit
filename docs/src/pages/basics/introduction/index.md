@@ -13,11 +13,11 @@ A Wingsuit component is defined by an wingsuit.yml, which is an extended variant
 
 * <b>Generate Storybook stories</b><br>
 Each variant is a Storybook story. Fields and settings are editable with [knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs).
-# SCREENSHOT
+<img src="images/knobs.png">
 
 * <b>Automatic Storybook documentation</b><br>
 A nice documentation page is created directly from the wingsuit.yml. 
-# SCREENSHOT
+<img src="images/docs.png">
 
 * <b>Drupal integration</b><br>
 With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, patterns can be used with zero configuration in drupal. 
