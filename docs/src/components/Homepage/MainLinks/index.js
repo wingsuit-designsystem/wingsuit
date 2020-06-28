@@ -53,10 +53,7 @@ class MainLinks extends React.Component {
               position: 'relative',
             }}
           >
-            <UsedByBg
-              color="#81E6D9"
-
-            />
+            <UsedByBg color="#81E6D9" />
             <div className="col-xs-12 col-sm-12 read-docs">
               <h2 style={{ color: '#000000' }}>Documentation</h2>
               <div

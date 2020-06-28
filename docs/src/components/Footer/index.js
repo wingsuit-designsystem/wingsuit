@@ -8,13 +8,8 @@ const Footer = () => (
     <div className="col-md-12">
       <div className="logos">
         <div className="col-xs-12">
-
           <center>
-            <a
-              href="https://drupaltwig.slack.com/"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <a href="https://drupaltwig.slack.com/" target="_blank" rel="noreferrer noopener">
               <img src={slackIcon} alt="Wingsuit Slack" style={{ padding: '7px' }} />
             </a>
             <a
