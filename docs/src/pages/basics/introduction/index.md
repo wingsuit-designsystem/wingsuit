@@ -4,9 +4,9 @@ title: 'Introduction'
 ---
 
 
-Wingsuit is a design system for twig based UI components. The components are developed independently in [Storybook](https://storybook.js.org/) and can be used by other "apps", like Drupal. 
+Wingsuit is a design system for twig based UI components. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component you can use the component in other apps like drupal. 
 
-A Wingsuit component is defined by an wingsuit.yml, which is an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html). 
+The `wingsuit.yml`, an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html) is the heart of each component. 
 
 
 <b>Wingsuit uses the following configuration files to:</b>
@@ -25,7 +25,7 @@ With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion)
 
 
 * <b>Stay in sync</b><br>
-One big challenge for design systems is to stay in sync between the apps.
+One big challenge for design systems is to stay in sync between apps.
 Wingsuit solves this problem with a common component configuration - the <b>wingsuit.yml</b>.
 
 * <b>Frontend frameworks</b><br>
