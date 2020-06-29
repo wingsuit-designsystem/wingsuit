@@ -18,7 +18,7 @@
 
 <{{ element }} {{ attributes|default(create_attribute()).addClass([
   alignment == 'center'?'text-center': '',
-  variant == 'default' ? 'block',
+  'block',
   'group hover:no-underline',
 ] | sort | join(' ') | trim) }}>
   {#start of image div of the card#}
@@ -69,17 +69,6 @@
       {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} %}
     {% endif %}
     {#end of button div#}
-
-    {#start of icon div of the card#}
-    {% if icon is not empty %}
-      {% for icon in icons %}
-        {% include "@atoms/svg/_svg--icon.twig" with {
-          size: 'w-6 h-6',
-          icon: icon
-        } %}
-      {% endfor %}
-    {% endif %}
-    {#end of icon div#}
   </div>
   {#end of content-wrapper div#}
 </{{ element }}>

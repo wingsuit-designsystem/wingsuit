@@ -1,0 +1,7 @@
+.is_active {
+  @apply border-b-2 border-gray-dark;
+}
+
+.is_active:hover {
+  @apply border-b-2 border-gray-dark;
+}
