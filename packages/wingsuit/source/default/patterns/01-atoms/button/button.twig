@@ -18,7 +18,6 @@
 ] | sort | join(' ') | trim) }}>
 {{ content }}
   {% if svg is not empty %}
-
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: svg,
       size: size,

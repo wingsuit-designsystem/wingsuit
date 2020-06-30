@@ -1,9 +1,9 @@
-button:
-  use: "@atoms/button/button.twig"
-  label: Button
-  description: Beautiful button made with love
+hamburger:
+  use: "@atoms/hamburger/hamburger.twig"
+  label: hamburger
+  description: Beautiful hamburger made with love
   fields:
-    content:
+    dummy:
       type: text
       label: Content
       preview: More
