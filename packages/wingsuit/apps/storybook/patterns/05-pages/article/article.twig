@@ -1,38 +1,39 @@
 {% embed "@templates/site-container.twig"
   with {
-    primary_menu: pattern_preview('menu', 'primary'),
-    footer_menu: pattern_preview('menu', 'footer')
-  }
-  %}
-{% block main %}
-  {% embed '@templates/article/article.twig' with {
-    headline: 'Card Headline',
-    text: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.'
-  } %}
-    {% block image %}
-      {% include "@atoms/image/image.twig" with {
-        variant: 'primary',
-        placeholder: false,
-        src: file_url('ws-assets://images/sample-image.png') ,
-      } %}
-    {% endblock %}
-    {% block button %}
-      {% include "@atoms/button/button.twig" with {
-        content: 'more',
-        variant: 'primary'
-      } %}
-    {% endblock %}
-    {% block more %}
-      <div class="w-full md:w-1/3 pr-2 mb-5">
-        {{ pattern_preview('card', 'default') }}
-      </div>
-      <div class="w-full md:w-1/3 px-2 mb-5">
-        {{ pattern_preview('card', 'default') }}
-      </div>
-      <div class="w-full md:w-1/3 pl-2 mb-5">
-        {{ pattern_preview('card', 'default') }}
-      </div>
-    {% endblock %}
-  {% endembed %}
-{% endblock %}
+  primary_menu: pattern_preview('menu', 'primary'),
+  footer_menu: pattern_preview('menu', 'footer')
+} %}
+  {% block main %}
+    {% embed '@templates/article/article.twig' with {
+      headline: 'Card Headline',
+      text: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.'
+    } %}
+      {% block image %}
+        {% include "@atoms/image/image.twig" with {
+          variant: 'primary',
+          placeholder: false,
+          src: file_url('ws-assets://images/sample-image.png') ,
+        } %}
+      {% endblock %}
+      {% block button %}
+        {% include "@atoms/button/button.twig" with {
+          content: 'more',
+          variant: 'primary'
+        } %}
+      {% endblock %}
+      {% block more %}
+        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, gap: true, wrapper: false, width: 'large', padding_top: 'large', padding_bottom: 'large'} %}
+          {% block column_1 %}
+            {{ pattern_preview('card', 'default') }}
+          {% endblock %}
+          {% block column_2 %}
+            {{ pattern_preview('card', 'default') }}
+          {% endblock %}
+          {% block column_3 %}
+            {{ pattern_preview('card', 'default') }}
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
 {% endembed %}

@@ -23,3 +23,6 @@ card:
       label: Button
       preview:
         faker: lorem.word
+    more:
+      type: text
+      label: More
