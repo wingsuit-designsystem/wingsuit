@@ -7,7 +7,7 @@ Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit
 
 You can overwrite the preset in your `wingsuit.config.js`. 
 
-<b>The Wingsuit configuration file has three main sections which represent the main wingsuit :</b>
+<b>The Wingsuit configuration file has three main sections</b>
 
 * `apps` for app-specific configuration. 
 
