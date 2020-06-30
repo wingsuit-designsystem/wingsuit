@@ -2,44 +2,52 @@
 id: 'details'
 title: 'Configuration'
 ---
-Wingsuit shipes with a preset of variables which fits most use cases and you propably don't need to change them.
 
+Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts) of variables which fit most use cases.
 
+You can overwrite the preset in your `wingsuit.config.js`. 
 
-### The main Section
-The Wingsuit configuration file has 3 main sections:
+<b>The Wingsuit configuration file has three main sections which represent the main wingsuit :</b>
 
-* `apps` for app specific configuration. 
-    * `type` the type of the app.
-    * `path` the path to the app.
-    * `cssMode` extract css or not.
-    * `distFolder` the path to the dist folder.
-    * `assetBundleFolder` the folder name under the dist folder for assets.
+* `apps` for app-specific configuration. 
 
-For example if you want to change the path to the drupal theme you can easily change the
+* `designSystem` for design system configuration. Each app link to a design system.
 
-* `designSystem` link to the design system.
+* `presets` the loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
 
-* `webpackBundles` the used webpack bundles. [Here you can find more information](../custom-webpack-config) about webpack bundles.
+### Extend the configuration
+With the `extend` key, you can extend instead of overwriting a configuration.  
 
-* `designSystems` to configure the design system itself.
+### Environment specific configuration
+With `environments` you can overwrite a configuration value for a specific environment.
 
-* `presets` for app specific configuration.
-   
+Here is an example of overwriting the cssMode for development:
+```js
+    environments: {
+      ...
+          development: {
+            apps: {
+              storybook: {
+                cssMode: "extract"
+              }
+            }
+          }
+```
 
+## Details
+### Apps
+Each app has five properties.
+* `type` the type of the app.
+* `path` the path to the app.
+* `cssMode` extract CSS or not.
+* `designSystem` The name to the design system.
+* `distFolder` the path to the dist folder.
+* `assetBundleFolder` the folder name under the dist folder for assets.
 
-
-
-## Extend the configuration
-
-* `environments` to overwrite a configuration value for a specific environment.
-
-* `extend` to extend the configuration instead of replacing it.
-
-## Design systems
+### Design systems
 The `designSystems` section is where you define the folder structure of your design system. 
 Each design system uses `namespaces` to configure folder aliases.
-### Sample namespaces:
+#### Sample namespaces:
 ```js
 const path = require('path');
 
@@ -56,7 +64,7 @@ module.exports = {
 };
 ```
 
-### Namespaces:
+#### Namespaces:
 You can use namespaces in twig and javascript imports.
 
 <b>TWIG:</b>
@@ -69,19 +77,5 @@ You can use namespaces in twig and javascript imports.
   import "atoms/button";
 ```
 
-## Environments
-
-Under each environment you can overwrite default variables.
-
-Here is a example to overwrite the cssMode for development:
-```js
-    environments: {
-      ...
-          development: {
-            apps: {
-              storybook: {
-                cssMode: "extract"
-              }
-            }
-          }
-```
+#### Presets
+TBD

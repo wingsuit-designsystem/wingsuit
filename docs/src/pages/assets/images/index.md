@@ -3,10 +3,11 @@ id: 'images'
 title: 'Images & Icons'
 ---
 
+
 The `apps/[app]/assets.js` includes all images. Wingsuit will compile these files to `[dist]/assets/images`.
 
 ### Embedding images in twig:
-You can use the `ws-assets` stream wrapper to get path to the asset folder. Ensure you have the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module enabled. This works also in storybook.
+You can use the `ws-assets` stream wrapper to get a path to the asset folder. Ensure you have the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module enabled. 
 
 <b>Sample twig file with an image:</b>
 ```twig
@@ -17,8 +18,8 @@ or use the image component:
 ```twig
 {% include "@atoms/image/image.wig" with {"placeholder": false, path: "images/dummy.png" }
 ```
-### Image in css:
-To you use images inside your css file use the relative path to the image. Webpack will replace the right output path.  
+### Image in CSS:
+To use images inside your CSS file, use the relative path to the image. Webpack will replace the right output path.  
 
 ### Placeholder images:
 Wingsuit supports image styles and responsive image styles for placeholder images in storybook. 
@@ -63,4 +64,4 @@ Or use the `pattern_preview` twig function:
 ```twig
     {{ pattern_preview('image', 'primary', {"placeholder": true, "style": "1x1_xxs"}) }}
 ```
-This works for simple image styles and responsive image styles.
+Image style works for simple image styles and responsive image styles.

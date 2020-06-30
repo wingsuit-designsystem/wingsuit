@@ -11,8 +11,7 @@ The wingsuit pattern is defined inside a `pattern.wingsuit.yml`.
 * css file (optional)
 * javascript file. (optional)
 
-The reference to the `wingsuit.yml` file must exposed inside the `pattern.stories.jsx` file.
-
+Expose the reference to the `wingsuit.yml` file inside the `pattern.stories.jsx` file.
 
 ```js
 const patternDefinition = require('./pattern.wingsuit.yml');
@@ -109,10 +108,10 @@ With field type `pattern` you can render patterns inside the pattern.
         - title: Impressum
           link: "#"
 ```  
-With field type `object` you can pass any objects to the twig template. This is useful for menu for example. You can edit the json string with knobs.
+With field type `object` you can pass any objects to the twig template. This is useful for the menu, for example. You can edit the JSON string with knobs.
 
-### Visibilty
-@TODO: Write explanation
+### Visibility
+@TODO: Write an explanation
 ```yaml
 visibility: storybook | drupal | none
 ```

@@ -5,9 +5,9 @@ title: 'Presets'
 
 Wingsuit uses `presets` to make webpack configurations reusable across different apps.
 
-A preset is a set of hooks that is called by Wingsuit on webpack initialization and can override configurations for webpack.
+A preset is a set of hooks called by Wingsuit on webpack initialization and can override configurations for webpack.
 
-The goal is to deliver a community driven set of webpack presets. Checkout the predefined presets in the [default config stub](@TODO).
+The goal is to deliver a community-driven set of webpack presets. Checkout the predefined presets in the [default config stub](@TODO).
 
 Each preset have two possible hooks:
 ```js
@@ -71,4 +71,4 @@ module.exports = {
 };
 ``` 
 
-Place your `preset` file wherever you want, if you want to share it far and wide you’ll want to make it its own package.
+Place your `preset` file wherever you want. If you want to share it far and wide, you’ll want to make it its package.

@@ -20,7 +20,7 @@ module.exports = {
   }
 }
 ``` 
-If you want to alter the final config use the `webpackFinal hook`.
+If you want to alter the final config, use the `webpackFinal hook`.
 
 ```js
 module.exports = {
@@ -34,8 +34,3 @@ module.exports = {
   }
 }
 ``` 
-
-## Preset
-
-With preset you can create reusable webpack configs. Check out the [preset configuration](../preset-webpack). 
-
