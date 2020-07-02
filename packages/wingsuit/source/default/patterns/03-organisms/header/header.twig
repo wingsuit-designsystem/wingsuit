@@ -8,26 +8,58 @@
  *  - header.invert [bool]: When set, colors will be inverted for light display on dark background.
  */
 #}
+{% set nav_classes = [
+   'z-50',
+   'h-20',
+   'fixed',
+   'w-full',
+   'bg-green',
+   'border-b lg:border-b-0 border-gray-xlight',
+   'top-0',
+] | sort | join(' ') | trim %}
+{% set container_classes = [
+  'max-w-container',
+  'relative',
+  'mx-auto',
+  'p-6 lg:py-6 lg:px-2',
+  'justify-between',
+  'flex flex-wrap md:flex-no-wrap',
+  'items-center',
+] | sort | join(' ') | trim %}
+{% set burger_menu_classes = [
+  'burger',
+  'absolute right-0',
+  'flex-container flex',
+  'align-right',
+  'mr-6',
+  'items-center',
+  'lg:hidden',
+  'cursor-pointer',
+] | sort | join(' ') | trim %}
+{% set menu_wrapper_classes = [
+  'w-full',
+  'justify-end lg:flex',
+  'top-0 absolute',
+  'lg:relative',
+  '-ml-6 lg:ml-0 mt-20 lg:mt-0',
+  'lg:block',
+  'lg:w-auto',
+  'lg:flex-grow',
+  'lg:items-center',
+] | sort | join(' ') | trim %}
 
-<nav class="z-50 h-20 fixed w-full bg-green border-b
-            lg:border-b-0 border-gray-xlight top-0" role="navigation"
-            x-data="{ open: false }">
-  <div class="max-w-container mx-auto p-6 lg:py-6 lg:px-2 justify-between
-              relative flex flex-wrap items-center md:flex-no-wrap">
+<nav class="{{ nav_classes }}" role="navigation" x-data="{ open: false }">
+  <div class="{{ container_classes }}">
     <a href="{{ path('<front>') }}" class="mr-4 -mt-6 w-155 lg:mr-3 flex">
       {% include "@atoms/svg/_svg--icon.twig" with {
         size: 'w-20 h-16',
         icon: 'gug_logo_typo'
       } %}
     </a>
-    <div class="burger flex-container align-right absolute right-0
-                mr-6 flex items-center lg:hidden cursor-pointer"
-                @click="open = !open">
+    <div class="{{ burger_menu_classes }}" @click="open = !open">
       {% include '@atoms/hamburger/hamburger.twig' %}
     </div>
-    <div class="w-full justify-end top-0 absolute lg:relative -ml-6 lg:ml-0 mt-20
-             lg:mt-0 lg:block lg:w-auto lg:flex-grow lg:flex lg:items-center"
-             :class="{'block': open, 'hidden': !open}">
+    <div class="{{ menu_wrapper_classes }}" :class="{'block': open, 'hidden': !open}">
       {% block menu %}
         {{ menu }}
       {% endblock %}
