@@ -12,15 +12,32 @@
 {# Classes: #}
 {% set classes = classes|default([])|merge([
   variant == 'primary',
-  'block lg:flex flex-col md:flex-row md:items-center     ',
+  'block lg:flex flex-col md:flex-row md:items-center',
 ]) | sort | join(' ') | trim  %}
+{% set nav_clsses = [
+  'block',
+  'lg:flex lg:bg-transparent',
+  'flex-col',
+  'bg-gray-xxlight',
+  'pb-4',
+] | sort | join(' ') | trim %}
+{% set list_clsses = [
+  'font-sans',
+  'px-4',
+  'pt-4',
+  'lg:text-center lg:border-b-0 lg:p-2 lg:px-4',
+  'uppercase',
+  'border-b-0',
+  'font-sans',
+  'text-black'
+] | sort | join(' ') | trim %}
 {# Defaults: #}
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
-<nav class="block lg:flex flex-col bg-gray-xxlight lg:bg-transparent pb-4" role="navigation">
+<nav class="{{ nav_classes }}" role="navigation">
   <ul {{ attributes }} >
     {% for item in items %}
-      <li class="font-sans px-4 pt-4 lg:text-center lg:border-b-0 lg:p-2 lg:px-4 uppercase border-b-0 font-sans text-black">
+      <li class="{{ list_classes }}">
         <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
       </li>
     {% endfor %}

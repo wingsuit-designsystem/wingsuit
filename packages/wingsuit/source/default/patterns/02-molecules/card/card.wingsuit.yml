@@ -34,9 +34,6 @@ card:
       description: An optional button at the bottom of the card.
       preview:
         faker: lorem.word
-    horizontal:
-      label: Horizontal
-      description: Image left - text right on desktop.
   settings:
     alignment:
       type: select

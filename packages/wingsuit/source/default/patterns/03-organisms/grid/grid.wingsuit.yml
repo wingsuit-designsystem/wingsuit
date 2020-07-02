@@ -7,27 +7,27 @@ grid:
       type: text
       label: Column 1
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph
     column_2:
       type: text
       label: Column 2
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph
     column_3:
       type: text
       label: Column 3K
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph
     column_4:
       type: text
       label: Column 4s
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph
     column_5:
       type: text
       label: Column 5
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph
   settings:
     columns:
       type: select
@@ -82,6 +82,10 @@ grid:
         half: Half
         default: Default
         doubled: Doubled
+        xlarge: X-large
+        large: Large
+        medium: Medium
+        small: Small
     padding_bottom:
       type: select
       label: Padding bottom
@@ -90,6 +94,10 @@ grid:
         half: Half
         default: Default
         doubled: Doubled
+        xlarge: X-large
+        large: Large
+        medium: Medium
+        small: Small
     wrapper:
       type: boolean
       label: Wrapper

@@ -23,6 +23,8 @@ module.exports = {
       transparent: 'transparent',
       black: '#222222',
       white: '#FFFFFF',
+      green: '#deede8',
+      blue: '#97B5BD',
       primary: '#fcaca9',
       secondary: '#77b88f',
       success: '#e39b98',

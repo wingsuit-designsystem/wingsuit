@@ -15,7 +15,7 @@
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
-
+{#the card component starts here#}
 <{{ element }} {{ attributes|default(create_attribute()).addClass([
   alignment == 'center'?'text-center': '',
   'block',
@@ -28,13 +28,12 @@
     {% endblock %}
   </div>
   {#content-wrapper div of the card#}
-  <div {{ attributes|default(create_attribute()).addClass([
-  ] | sort | join(' ') | trim) }}>
+  <div {{ attributes|default(create_attribute()).addClass([] | sort | join(' ') | trim) }}>
     {#start of pre-headline div of the card#}
     {% if preheadline is not empty %}
       <div {{ attributes|default(create_attribute()).addClass([
-        'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
-      ] | sort | join(' ') | trim) }}>
+              'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
+           ] | sort | join(' ') | trim) }}>
         {% block preheadline %}
           {{ preheadline }}
         {% endblock %}
@@ -44,8 +43,8 @@
 
     {#start of headline div of the card#}
     <{{ headline__element }} {{ attributes|default(create_attribute()).addClass([
-      'text-base', 'mb-1', 'uppercase', 'text-gray-light', 'font-sans',
-    ] | sort | join(' ') | trim) }}>
+       'text-base', 'mb-1', 'uppercase', 'text-gray-light', 'font-sans',
+     ] | sort | join(' ') | trim) }}>
       {% block headline %}
         {{ headline }}
       {% endblock %}
@@ -55,8 +54,8 @@
     {#start of text div of the card#}
     {% if text is not empty %}
       <div {{ attributes|default(create_attribute()).addClass([
-        'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
-      ] | sort | join(' ') | trim) }}">
+              'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
+           ] | sort | join(' ') | trim) }}">
         {% block text %}
           {{ text }}
         {% endblock %}
