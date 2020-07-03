@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * menu
+ *
+ * Available variables for menu:
+ *  - menu.variable_name [variable_type]: Description of the variable. Example below.
+ *  - menu.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+
+{# Classes: #}
+{% set classes = classes|default([])|merge([
+  variant == 'primary',
+  'flex flex-col lg:flex-row lg:items-center',
+]) | sort | join(' ') | trim  %}
+{# Defaults: #}
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+<nav class="flex flex-col bg-white" role="navigation">
+  <ul {{ attributes }} >
+    <li class="font-sans px-4 py-4 text-center border-gray-xlight border-t lg:border-t-0 lg:p-2 lg:px-4 uppercase border-b-0 font-sans text-gray-light">
+      <a class="hover:border-b text-lg lg:text-xs" href="{{ previous_url }}">{{ "Previous"|t }}</a>
+    </li>
+    {% for item in items %}
+      <li class="font-sans px-4 py-4 text-center border-gray-xlight border-t lg:border-t-0 lg:p-2 lg:px-4 uppercase border-b-0 font-sans text-gray-light">
+        <a class="hover:border-b text-lg lg:text-xs" href="{{ item.link }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+    <li class="font-sans px-4 py-4 text-center border-gray-xlight border-t lg:border-t-0 lg:p-2 lg:px-4 uppercase border-b-0 font-sans text-black">
+      <a class="hover:border-b text-lg lg:text-xs" href="{{ next_url }}">{{ "Next"|t }}</a>
+    </li>
+  </ul>
+</nav>

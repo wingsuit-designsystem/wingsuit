@@ -1,0 +1,17 @@
+headline:
+  use: "@atoms/headline/headline.twig"
+  label: Headline
+  description: Pattern for headline.
+  fields:
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.word
+  settings:
+    element:
+      type: select
+      label: Element
+      options:
+        h1: h1
+        h2: h2

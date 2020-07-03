@@ -1,0 +1,10 @@
+{% set classes = classes|default([])|merge([
+  'headline',
+]) | sort | join(' ') | trim %}
+{% set element = element|default('div') %}
+
+<{{ element }} {{ attributes|default(create_attribute()).addClass(classes) }}>
+{{ title_prefix }}
+  {{ title_suffix }}
+  {{ content }}
+</{{ element }}>
