@@ -1,8 +1,7 @@
 #nav {
   color: #4A5568;
-  margin: 40px 0;
-  padding: 0 15px 0 0;
-  border-right: 1px solid #ececec;
+  margin: 20px 0;
+  padding: 0px 15px 0 0;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -13,7 +12,8 @@
 
 #nav h3 {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin: 10px 0;
   padding: 0;
@@ -36,9 +36,9 @@
   line-height: 18px;
   color: #444;
   padding: 6px;
+  margin-bottom: 15px;
 }
 
 #nav ul li a.selected {
   background-color: #B2F5EA;
-  font-weight: bold;
 }

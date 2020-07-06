@@ -1,6 +1,6 @@
 ---
 id: 'wingsuit'
-title: 'Wingsuit (UI Pattern)'
+title: 'Wingsuit (UI Patterns)'
 ---
 The wingsuit pattern is defined inside a `pattern.wingsuit.yml`. 
 
@@ -24,7 +24,7 @@ export const wingsuit = {
 ### The pattern.wingsuit.yml
 The `pattern.wingsuit.yml` is a extended version of the [UI Patterns yaml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html) with additions of [UI Patterns Settings](https://www.drupal.org/project/ui_patterns_settings)
 
-A typical pattern definition file looks like:
+A typical pattern definition file looks like this:
  
 ```yaml
 card:
@@ -78,7 +78,7 @@ The value can be a string or a subobject.
 
 ### field extensions: 
 #### type pattern
-With field type `pattern` you can render patterns inside the pattern.
+With field type `pattern` you can render patterns inside the pattern:
 ```yaml
   fields:  
     image:
@@ -93,8 +93,8 @@ With field type `pattern` you can render patterns inside the pattern.
 ```  
 * `id` The id of the pattern.
 * `variant` The variant of the pattern.
-* `fields` Overwrite fields preview values of the pattern.
-* `settings` Overwrite setting preview values of the pattern.
+* `fields` Overwrites fields preview values of the pattern.
+* `settings` Overwrites setting preview values of the pattern.
 
 #### type object
 ```yaml

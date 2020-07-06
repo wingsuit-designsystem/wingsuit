@@ -11,12 +11,12 @@ You can overwrite the preset in your `wingsuit.config.js`.
 
 * `apps` for app-specific configuration. 
 
-* `designSystem` for design system configuration. Each app link to a design system.
+* `designSystem` for design system configuration. Each app links to a design system.
 
-* `presets` the loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
+* `presets` list of loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
 
 ### Extend the configuration
-With the `extend` key, you can extend instead of overwriting a configuration.  
+With the `extend` key, you can extend the default configuration.  
 
 ### Environment specific configuration
 With `environments` you can overwrite a configuration value for a specific environment.
@@ -36,7 +36,7 @@ Here is an example of overwriting the cssMode for development:
 
 ## Details
 ### Apps
-Each app has five properties.
+Each app is configurable by following properties:
 * `type` the type of the app.
 * `path` the path to the app.
 * `cssMode` extract CSS or not.
@@ -45,7 +45,7 @@ Each app has five properties.
 * `assetBundleFolder` the folder name under the dist folder for assets.
 
 ### Design systems
-The `designSystems` section is where you define the folder structure of your design system. 
+In the `designSystems` section you define the folder structure of your design system. 
 Each design system uses `namespaces` to configure folder aliases.
 #### Sample namespaces:
 ```js
@@ -78,4 +78,4 @@ You can use namespaces in twig and javascript imports.
 ```
 
 #### Presets
-TBD
+Wing

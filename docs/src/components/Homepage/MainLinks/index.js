@@ -10,8 +10,8 @@ import './style.css';
 class MainLinks extends React.Component {
   componentDidMount() {
     window.docsearch({
-      apiKey: 'a4f7f972f1d8f99a66e237e7fd2e489f',
-      indexName: 'wingsuit',
+      apiKey: 'fae96724816fdc3cd16b899557964910',
+      indexName: 'wingsuit-designsystem',
       inputSelector: '#search',
       debug: false, // Set debug to true if you want to inspect the dropdown
     });

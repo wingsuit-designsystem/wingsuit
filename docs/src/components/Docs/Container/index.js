@@ -16,12 +16,13 @@ const getEditUrl = (selectedSectionId, selectedItemId) => {
 class Search extends Component {
   componentDidMount() {
     window.docsearch({
-      apiKey: 'a4f7f972f1d8f99a66e237e7fd2e489f',
-      indexName: 'storybook-js',
+      apiKey: 'fae96724816fdc3cd16b899557964910',
+      indexName: 'wingsuit-designsystem',
       inputSelector: '#search',
       debug: false,
     });
   }
+
 
   render() {
     return (

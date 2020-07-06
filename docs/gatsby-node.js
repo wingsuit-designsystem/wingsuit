@@ -34,7 +34,7 @@ function generateVersionsFile() {
 
 function generateSitemap(pages) {
   const sitemap = sm.createSitemap({
-    hostname: 'https://wingsuit-designsystem.org',
+    hostname: 'https://wingsuit-designsystem.github.io',
     cacheTime: '60000',
     urls: pagesToSitemap(pages),
   });

@@ -11,7 +11,7 @@ import parse from 'html-react-parser';
 const DocsContent = ({ title, content, editUrl, ...rest }) => (
   <div id="docs-content">
     <div className="content">
-      <h2 className="title">{title}</h2>
+      <h1 className="title docs-content__title">{title}</h1>
       <p>
         <a className="edit-link" href={editUrl} target="_blank" rel="noopener noreferrer">
           Edit this page

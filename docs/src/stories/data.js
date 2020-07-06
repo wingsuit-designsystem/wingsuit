@@ -47,6 +47,14 @@ export const docsData = {
         { id: 'svgs', title: 'Svgs' },
       ],
     },
+    {
+      id: 'drupal',
+      heading: 'Drupal',
+      items: [
+        { id: 'overview', title: 'Overview' },
+        { id: 'svgs', title: 'Svgs' },
+      ],
+    },
   ],
   selectedItem: {
     id: 'writing-stories',

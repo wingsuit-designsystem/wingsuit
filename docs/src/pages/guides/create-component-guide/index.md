@@ -8,4 +8,4 @@ To create a new component run:
 yarn ws generate-component 
 ```
 
-The wizard will guide you through all possible pattern types including documentation.
+The wizard will guide you through all possible pattern types, including documentation.

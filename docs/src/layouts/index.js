@@ -15,11 +15,11 @@ const PageTemplate = ({ children }) => (
       aria-label="View source on Github"
     >
       <svg
-        width="80"
-        height="80"
+        width="60"
+        height="60"
         viewBox="0 0 250 250"
         style={{
-          fill: '#E91E63',
+          fill: '#000000',
           color: '#fff',
           position: 'absolute',
           top: 0,

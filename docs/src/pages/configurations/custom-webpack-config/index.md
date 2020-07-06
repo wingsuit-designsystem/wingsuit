@@ -20,7 +20,7 @@ module.exports = {
   }
 }
 ``` 
-If you want to alter the final config, use the `webpackFinal hook`.
+If you want to alter the final config, use the `webpackFinal hook`:
 
 ```js
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
     // Alter final webpack config.
     return webpack; 
   },
-  ....
+  ...
   designSystem: {
     ....
   }

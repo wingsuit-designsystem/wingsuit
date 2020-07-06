@@ -12,7 +12,7 @@ npx @wingsuit-designsystem/cli init
 
 After the installation succeeds, Storybook will open and you can browse the Wingsuit demo page.
 
-# SCREENSHOT
+<img src="images/storybook.png">
 
 ## Get an overview
 A good starting point is to have a look at the design system components, which you will find at `source/patterns/default`. Additional Storybook presentation templates are located at  `apps/storybook/patterns`.

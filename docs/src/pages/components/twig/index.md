@@ -16,7 +16,7 @@ The data for these components can be provided as variables or defined globally i
 * css file (optional)
 * javascript file. (optional)
 
-Wingsuit provides a react component `RenderTwig` to render twig templates.
+Wingsuit provides the react component `RenderTwig` to render twig templates:
 
 ```js
 import { RenderTwig } from '@wingsuit-designsystem/storybook';
@@ -30,7 +30,7 @@ const twigTemplate = require('./twigfile.twig');
 export const Variant = () => <RenderTwig data={twigTemplate}></RenderTwig>;
 ```
 
-You can assign variables as properties to the twig component.
+You can assign variables as properties to the twig component:
 
 ```js
 export const Variant2 = () => <RenderTwig data={twigTemplate} variable1="value1"></RenderTwig>;

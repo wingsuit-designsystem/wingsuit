@@ -94,6 +94,7 @@ export const pageQuery = graphql`
           configurations
           components
           assets
+          drupal
           testing
         }
       }

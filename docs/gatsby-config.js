@@ -20,6 +20,7 @@ module.exports = {
         '/components/presentation/',
       ],
       assets: ['/assets/overview/', '/assets/images/', '/assets/svg/', '/assets/javascript/'],
+      drupal: ['/drupal/overview/', '/drupal/ui_patterns/', '/drupal/presenter/'],
       testing: ['/testing/manual-testing/'],
     },
   },
