@@ -27,7 +27,7 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          test: /.*\/fonts\/.*\.(svg|woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           use: [
             {
               loader: 'file-loader',

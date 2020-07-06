@@ -23,7 +23,6 @@ class Search extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="search">
