@@ -150,19 +150,13 @@ jobs:
   e2e:
     working_directory: /tmp/storybook
     docker:
-      - image: cypress/included:4.5.0
+      - image: cypress/included:4.7.0
         environment:
           TERM: xterm
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          name: install cypress
-          command: yarn install
-      - run:
-          name: Built storybook
-          command: yarn build-storybooks
       - run:
           name: running example
           command: yarn serve-storybooks
