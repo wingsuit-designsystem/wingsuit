@@ -5,17 +5,8 @@
  *
  */
 #}
-{% set container_classes = [
-  'max-w-container',
-  'mx-auto',
-  'px-4',
-  'block',
-  'md:flex justify-between',
-  'text-center md:text-left'
-] | sort | join(' ') | trim %}
-
 <footer class="bg-primary w-full pt-13 pb-11">
-  <div class="{{ container_classes }}">
+  <div class="max-w-container mx-auto px-4 block md:flex justify-between text-center md:text-left">
     <div class="py-6 font-sans text-tiny text-gray-dark">
       {{ "Gören & Ganoven"|t }}
     </div>

@@ -1,9 +1,10 @@
-{% set classes = classes|default([])|merge([
-  'headline',
-]) | sort | join(' ') | trim %}
 {% set element = element|default('div') %}
 
-<{{ element }} {{ attributes|default(create_attribute()).addClass(classes) }}>
+<{{ element }} {{ attributes|default(create_attribute()).addClass(
+  ['headline',
+  size == 'large' ? 'text-6xl',
+  size == 'medium' ? 'text-l',
+]|sort) }}>
 {{ title_prefix }}
   {{ title_suffix }}
   {{ content }}

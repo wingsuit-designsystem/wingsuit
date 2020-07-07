@@ -15,21 +15,17 @@
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
-{#the card component starts here#}
 <{{ element }} {{ attributes|default(create_attribute()).addClass([
   alignment == 'center'?'text-center': '',
   'block',
   'group hover:no-underline',
 ] | sort | join(' ') | trim) }}>
-  {#start of image div of the card#}
   <div class="{{ image_classes }}">
     {% block image %}
       {{ image }}
     {% endblock %}
   </div>
-  {#content-wrapper div of the card#}
   <div {{ attributes|default(create_attribute()).addClass([] | sort | join(' ') | trim) }}>
-    {#start of pre-headline div of the card#}
     {% if preheadline is not empty %}
       <div {{ attributes|default(create_attribute()).addClass([
               'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
@@ -39,9 +35,6 @@
         {% endblock %}
       </div>
     {% endif %}
-    {#end pre-headline of div#}
-
-    {#start of headline div of the card#}
     <{{ headline__element }} {{ attributes|default(create_attribute()).addClass([
        'text-base', 'mb-1', 'uppercase', 'text-gray-light', 'font-sans',
      ] | sort | join(' ') | trim) }}>
@@ -49,9 +42,6 @@
         {{ headline }}
       {% endblock %}
     </{{ headline__element }}>
-    {#end headline of div#}
-
-    {#start of text div of the card#}
     {% if text is not empty %}
       <div {{ attributes|default(create_attribute()).addClass([
               'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
@@ -61,13 +51,8 @@
         {% endblock %}
       </div>
     {% endif %}
-    {#end of text div#}
-
-    {#start of button div of the card#}
     {% if button is not empty %}
       {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} %}
     {% endif %}
-    {#end of button div#}
   </div>
-  {#end of content-wrapper div#}
 </{{ element }}>
