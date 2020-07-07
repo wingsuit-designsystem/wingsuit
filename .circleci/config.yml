@@ -161,6 +161,9 @@ jobs:
           name: install cypress
           command: yarn install
       - run:
+          name: Built storybook
+          command: yarn build-storybooks
+      - run:
           name: running example
           command: yarn serve-storybooks
           background: true
