@@ -1,12 +1,12 @@
 /**
  * Wingsuit PresetManager.
  */
-import {DefinePlugin} from 'webpack';
-import AppConfig, {Preset} from '../AppConfig';
+import { DefinePlugin } from 'webpack';
+import AppConfig, { Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
-const {ProgressPlugin, ProvidePlugin} = require('webpack');
+const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 merge.multiple();
@@ -16,7 +16,7 @@ export default class PresetManager {
 
   private getPresets(appConfig: AppConfig): Preset[] {
     const presets: Preset[] = [];
-    appConfig.presets.forEach((name) => {
+    appConfig.presets.forEach(name => {
       if (appConfig.presetsRegistry[name] != null) {
         presets.push(appConfig.presetsRegistry[name]);
       } else {
@@ -37,7 +37,7 @@ export default class PresetManager {
     const presets = this.getPresets(appConfig);
 
     const shared: any = [];
-    Object.keys(presets).forEach((key) => {
+    Object.keys(presets).forEach(key => {
       if (presets[key] != null) {
         shared.push(presets[key].webpack(appConfig));
       }
@@ -71,14 +71,14 @@ export default class PresetManager {
             new DefinePlugin({
               BUILD_TARGET: JSON.stringify(appConfig.name),
             }),
-            new ProgressPlugin({profile: false}),
+            new ProgressPlugin({ profile: false }),
             new ProvidePlugin({}),
           ],
         },
       ]
     );
 
-    Object.keys(presets).forEach((key) => {
+    Object.keys(presets).forEach(key => {
       if (presets[key].webpackFinal != null) {
         config = presets[key].webpackFinal(appConfig, config);
       }

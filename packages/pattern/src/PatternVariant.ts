@@ -70,7 +70,7 @@ export default class PatternVariant {
 
   public getPreviewPatterns() {
     const previewPatterns = {};
-    Object.keys(this.fields).forEach((key) => {
+    Object.keys(this.fields).forEach(key => {
       const field: Field = this.fields[key];
       const preview = field.getPreview();
       if (field.getType() === 'pattern' && preview.id !== null) {
@@ -92,10 +92,10 @@ export default class PatternVariant {
 
   public getVariables() {
     const values = {};
-    Object.keys(this.settings).forEach((key) => {
+    Object.keys(this.settings).forEach(key => {
       values[key] = this.settings[key].getPreview();
     });
-    Object.keys(this.fields).forEach((key) => {
+    Object.keys(this.fields).forEach(key => {
       const field: Field = this.fields[key];
       if (field !== null && field.getType() !== 'pattern') {
         values[key] = field.getPreview();

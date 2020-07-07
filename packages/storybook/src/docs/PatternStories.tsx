@@ -26,7 +26,7 @@ export const PatternStories: FunctionComponent<StoriesProps> = ({
   return (
     <>
       <Heading>Pattern Variants</Heading>
-      {stories.map((story) => {
+      {stories.map(story => {
         return (
           <>
             <DocsStory key={story.id} {...story} expanded />

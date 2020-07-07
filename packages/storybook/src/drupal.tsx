@@ -31,7 +31,7 @@ class Drupal {
     const { behaviors } = window.Drupal;
 
     window.setTimeout(() => {
-      Object.keys(behaviors).forEach((i) => {
+      Object.keys(behaviors).forEach(i => {
         if (typeof behaviors[i].attach === 'function') {
           try {
             behaviors[i].attach(context, settings);

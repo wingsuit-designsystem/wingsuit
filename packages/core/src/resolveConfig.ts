@@ -43,7 +43,7 @@ export function resolveConfig(
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
   appConfig.presetsRegistry = {};
-  Object.keys(mergedConfig.presets).forEach((name) => {
+  Object.keys(mergedConfig.presets).forEach(name => {
     appConfig.presetsRegistry[name] = mergedConfig.presets[name];
   });
 
@@ -61,7 +61,10 @@ export function resolveConfig(
   appConfig.absRootPath = rootPath;
   appConfig.environment = environment;
   appConfig.absAppPath = path.join(rootPath, appConfig.path);
-  appConfig.absDistFolder = yargs.argv['output-dir'] != null ? path.resolve(yargs.argv['output-dir']) : path.join(appConfig.absRootPath, appConfig.distFolder);
+  appConfig.absDistFolder =
+    yargs.argv['output-dir'] != null
+      ? path.resolve(yargs.argv['output-dir'])
+      : path.join(appConfig.absRootPath, appConfig.distFolder);
   const designSystem = mergedConfig.designSystems[appConfig.designSystem];
   if (designSystem == null) {
     throw new Error(
