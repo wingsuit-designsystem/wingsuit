@@ -2,7 +2,7 @@ import { clickAddon, visit } from '../helper';
 
 describe('Wingsuit Component', () => {
   beforeEach(() => {
-    visit('official-wingsuit/?path=/story/01-atoms-wingsuit-component--primary');
+    visit('official-wingsuit/?path=/story/atoms-wingsuit-component--primary');
   });
 
   it('[text] it should change field value.', () => {
