@@ -19,6 +19,7 @@ export default function(options) {
     gitFolder: path.resolve(folder),
     targetFolder: folder,
     branch,
+    smokeTest: options.smokeTest,
     skipInstall: options.skipInstall,
   };
   const cmdOptions = { stdio: 'inherit', cwd: npmOptions.checkoutFolder };
@@ -73,11 +74,19 @@ export default function(options) {
       if (useYarn) {
         spawnSync('yarn', ['install'], cmdOptions);
         logger.log('Running Wingsuit setup...');
-        spawnSync('yarn', ['dev:storybook'], cmdOptions);
+        const startArgs = ['dev:storybook'];
+        if (npmOptions.smokeTest) {
+          startArgs.push('--smoke-test');
+        }
+        spawnSync('yarn', startArgs, cmdOptions);
       } else {
         spawnSync('npm', ['install'], cmdOptions);
         logger.log('Running Wingsuit setup...');
-        spawnSync('npm', ['run', 'dev:storybook'], cmdOptions);
+        const startArgs = ['run', 'dev:storybook'];
+        if (npmOptions.smokeTest) {
+          startArgs.push('--smoke-test');
+        }
+        spawnSync('npm', startArgs, cmdOptions);
       }
     }
   };

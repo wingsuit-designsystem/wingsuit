@@ -10,6 +10,7 @@ program
   .option('-f --folder <folder>', 'The target folder')
   .option('-s --skip-install', 'Skip installing deps')
   .option('-N --use-npm', 'Use npm to install deps')
+  .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')
   .action(options => initiate(options));
 
