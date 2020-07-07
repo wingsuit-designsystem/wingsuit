@@ -1,12 +1,12 @@
 /**
  * Wingsuit PresetManager.
  */
-import { DefinePlugin } from 'webpack';
-import AppConfig, { Preset } from '../AppConfig';
+import {DefinePlugin} from 'webpack';
+import AppConfig, {Preset} from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
-const { ProgressPlugin, ProvidePlugin } = require('webpack');
+const {ProgressPlugin, ProvidePlugin} = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
 merge.multiple();
@@ -52,11 +52,11 @@ export default class PresetManager {
       ...[
         appConfig.webpack(appConfig),
         {
-          output: {
-            path: appConfig.absDistFolder,
-          },
           resolve: {
             alias: appConfig.namespaces,
+          },
+          output: {
+            path: appConfig.absDistFolder,
           },
           mode: this.environment,
           devtool: this.environment === 'development' ? 'eval' : 'source-map',
@@ -71,7 +71,7 @@ export default class PresetManager {
             new DefinePlugin({
               BUILD_TARGET: JSON.stringify(appConfig.name),
             }),
-            new ProgressPlugin({ profile: false }),
+            new ProgressPlugin({profile: false}),
             new ProvidePlugin({}),
           ],
         },
