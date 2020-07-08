@@ -12,20 +12,20 @@ program
   .option('-N --use-npm', 'Use npm to install deps')
   .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')
-  .action(options => initiate(options));
+  .action((options) => initiate(options));
 
 program
   .command('generate-component')
   .description('Generate Wingsuit component.')
   .option('-N --use-npm', 'Use npm to install deps')
-  .action(options => component(options));
+  .action((options) => component(options));
 
 program.command('*', '').action(() => {
   const [, , invalidCmd] = process.argv;
   logger.error(' Invalid command: %s.\n See --help for a list of available commands.', invalidCmd);
   // eslint-disable-next-line
     const availableCommands = program.commands.map(cmd => cmd._name);
-  const suggestion = availableCommands.find(cmd => leven(cmd, invalidCmd) < 3);
+  const suggestion = availableCommands.find((cmd) => leven(cmd, invalidCmd) < 3);
   if (suggestion) {
     logger.log(`\n Did you mean ${suggestion}?`);
   }
@@ -33,10 +33,7 @@ program.command('*', '').action(() => {
   process.exit(1);
 });
 
-program
-  .usage('<command> [options]')
-  .version('1')
-  .parse(process.argv);
+program.usage('<command> [options]').version('1').parse(process.argv);
 
 if (program.rawArgs.length < 3) {
   program.help();
