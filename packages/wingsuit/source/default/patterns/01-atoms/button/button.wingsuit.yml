@@ -1,7 +1,7 @@
 button:
   use: "@atoms/button/button.twig"
   label: Button
-  description: Beautiful button made with love
+  description: Types of buttons with different colors.
   fields:
     content:
       type: text

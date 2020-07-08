@@ -1,7 +1,7 @@
 headline:
   use: "@atoms/headline/headline.twig"
   label: Headline
-  description: Pattern for headline.
+  description: Flexible headline with options to choose size and tags.
   fields:
     content:
       type: text

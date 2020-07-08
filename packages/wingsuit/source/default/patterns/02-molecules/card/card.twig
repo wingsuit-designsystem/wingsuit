@@ -1,14 +1,3 @@
-{#
-  Card!
-  element: String (optional): Element tag that defaults to article.
-  image: Object:
-  Headline_element: String: String (optional): Headline element tag that defaults to div.
-  headline: String: The headline on the card.
-  preheadline: String: The preheadline on the card.
-  text: String: The text on the card.
-  alignment: center
-#}
-{# Defaults: #}
 {% set element = element|default('div') %}
 {% set headline__element = headline__element|default('h2') %}
 {% if url is not empty %}

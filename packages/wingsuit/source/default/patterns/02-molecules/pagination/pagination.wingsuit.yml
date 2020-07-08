@@ -1,7 +1,7 @@
 pagination:
   use: "@molecules/pagination/pagination.twig"
   label: Pagination
-  description: pagination menu pattern.
+  description: Primary and footer menu pattern.
   fields:
     items:
       type: object
@@ -9,7 +9,7 @@ pagination:
   variants:
     primary:
       label: Primary
-      description: The main menu on top of the page.
+      description: The Pagination on bottom of the page.
       fields:
         items:
           - title: 1
@@ -17,19 +17,15 @@ pagination:
             in_active_trail: true
           - title: 2
             link: "#"
-          - title: 3
-            link: "#"
           - title: ...
             link: "#"
-          - title: 9
+          - title: 6
             link: "#"
-          - title: 10
-            link: "#"
-      settings:
-        previous_url:
-          type: link
-          label: Previous url
-        next_url:
-          type: link
-          label: Next url
+  settings:
+    previous_url:
+      type: link
+      label: Previous url
+    next_url:
+      type: link
+      label: Next url
   visibility: storybook

@@ -1,19 +1,8 @@
-{#
-/**
- * @file
- * svg--icon
- *
- * Available variables for svgicon:
- *    - icon [string]: String filename of the SVG to use from svg/
- *    - size [string]: Pass in a size tailwind utilities.
- */
-#}
+{% set attributes = attributes|default(create_attribute()) %}
 
-{% set svg_classes = svg_classes|default([])|merge([
+<div {{ attributes.addClass([
   'svg',
   size != '' ? size,
   'sprite-' ~ icon
-]) | sort | join(' ') | trim %}
-
-<div class="{{ svg_classes }}">
+] | sort | join(' ') | trim) }}>
 </div>

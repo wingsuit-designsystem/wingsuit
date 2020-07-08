@@ -1,7 +1,7 @@
 image:
   use: "@atoms/image/image.twig"
   label: Image
-  description: Image component
+  description: Image component with flexible size, style and variant.
   fields:
     image:
       type: text

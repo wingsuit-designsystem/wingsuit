@@ -1,5 +1,5 @@
 .is_active {
-  @apply border-b-2 border-gray-dark text-black;
+  @apply border-b-2 border-gray-dark text-blue;
 }
 
 .is_active:hover {

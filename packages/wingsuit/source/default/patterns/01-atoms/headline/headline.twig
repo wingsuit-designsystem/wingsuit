@@ -1,10 +1,11 @@
+{% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('div') %}
 
-<{{ element }} {{ attributes|default(create_attribute()).addClass(
-  ['headline',
+<{{ element }} {{ attributes.addClass([
+  'headline',
   size == 'large' ? 'text-6xl',
   size == 'medium' ? 'text-l',
-]|sort) }}>
+] | sort | join(' ') | trim) }}>
 {{ title_prefix }}
   {{ title_suffix }}
   {{ content }}
