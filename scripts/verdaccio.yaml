@@ -52,7 +52,6 @@ packages:
 
   # storybook packages are NOT proxied to global registry
   # allowing us to republish any version during tests
-
   '@*/*':
     access: $all
     publish: $all

@@ -16,6 +16,8 @@ rm -rfd run
 mkdir run
 cd run
 echo "Running ws in $(pwd)"
+
+yarn ws init --folder "$(pwd)/smoketest" --smoke-test
 yarn ws init --folder "$(pwd)/wingsuit" --skip-install
 cd wingsuit
 

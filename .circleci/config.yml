@@ -100,7 +100,7 @@ jobs:
           at: .
       - run:
           name: running local registry
-          command: yarn local-registry --port 6000 --open
+          command: yarn local-registry --port 6000 --open --publish
           background: true
       - run:
           name: wait for registry

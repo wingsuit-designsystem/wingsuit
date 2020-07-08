@@ -12,11 +12,12 @@ export default function(options) {
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
   const branch = options.branch != null ? options.branch : 'stable';
+  const tmpCheckoutFolder = 'wscheckout';
   const folder = !options.folder ? path.resolve('wingsuit') : path.resolve(options.folder);
   const npmOptions = {
     useYarn,
     checkoutFolder: path.join(folder, '../'),
-    gitFolder: path.resolve(folder),
+    gitFolder: path.join(folder, '../', tmpCheckoutFolder),
     targetFolder: folder,
     branch,
     smokeTest: options.smokeTest,
@@ -44,9 +45,7 @@ export default function(options) {
       spawnSync('git', ['fetch', '--tags'], gitOptions);
 
       // Pull the latest tag from the repository
-      const pullTag = spawnSync('git', ['rev-list', '--tags', '--max-count=1'], {
-        cwd: folder,
-      });
+      const pullTag = spawnSync('git', ['rev-list', '--tags', '--max-count=1'], gitOptions);
       const tagHash = extractHash(pullTag.output[1]);
       // Checkout the local repo to the latest tag
       spawnSync('git', ['checkout', tagHash], gitOptions);
@@ -64,9 +63,8 @@ export default function(options) {
   const setupWingsuit = () => {
     // This function must complete before the subsequent installs can be ran.
     checkoutLatestTag();
-    spawn('mv', ['wingsuit', 'wingsuit.bak'], cmdOptions);
-    spawn('mv', ['wingsuit.bak/packages/wingsuit', 'wingsuit'], cmdOptions);
-    spawn('rm', ['-rf', 'wingsuit.bak'], cmdOptions);
+    spawn('mv', [`${npmOptions.gitFolder}/packages/wingsuit`, npmOptions.targetFolder], cmdOptions);
+    spawn('rm', ['-rf', npmOptions.gitFolder], cmdOptions);
 
     cmdOptions.cwd = npmOptions.targetFolder;
     if (!npmOptions.skipInstall) {
@@ -91,6 +89,6 @@ export default function(options) {
     }
   };
 
-  logger.log('Cloning Wingsuit repo...');
-  clone('https://github.com/wingsuit-designsystem/wingsuit', folder, cmdOptions, setupWingsuit);
+  logger.log(`Cloning Wingsuit repo ...`);
+  clone('https://github.com/wingsuit-designsystem/wingsuit', npmOptions.gitFolder, cmdOptions, setupWingsuit);
 }
