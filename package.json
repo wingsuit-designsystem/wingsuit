@@ -61,7 +61,7 @@
   "optionalDependencies": {
     "@cypress/webpack-preprocessor": "^5.1.2",
     "cypress": "^4.7.0",
-    "verdaccio": "^4.5.1",
+    "verdaccio": "^4.7.2",
     "verdaccio-auth-memory": "^9.4.0"
   },
   "devDependencies": {
