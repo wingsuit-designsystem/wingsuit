@@ -21,7 +21,7 @@
   }
 } %}
 
-{% set gap_class_suffix = ['px-10', 'md:px-25'] %}
+{% set gap_class_suffix = ['px-6', 'md:px-25'] %}
 {% set config = _context['config_' ~ columns|default('2') ] %}
 {% set current_configuration = configuration[columns][config] %}
 
@@ -55,7 +55,7 @@
     width == 'default' ? 'max-w-container': '',
     reverse == true ? 'flex-row-reverse' : '',
     'mx-auto flex flex-wrap',
-    gap == true ? '-mx-10 md:-mx-25': '',
+    gap == true ? '-mx-6 md:-mx-25': '',
   ] | sort | join(' ') | trim %}
   {% set attributes = attributes|default(create_attribute()).addClass(grid__classes) %}
   {% set wrapper__attributes = wrapper__attributes|default(create_attribute()).addClass(wrapper__classes) %}

@@ -44,5 +44,6 @@ card:
         left: Left
         center: Center
     url:
-      type: link
+      type: token
       label: Url
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'

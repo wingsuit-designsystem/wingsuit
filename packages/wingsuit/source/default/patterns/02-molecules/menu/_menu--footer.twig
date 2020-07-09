@@ -1,12 +1,10 @@
-{% set classes = classes|default([])|merge([
-  variant == 'footer',
-  'flex flex-col md:flex-row md:items-center justify-center',
-]) | sort | join(' ') | trim  %}
+{% set attributes = attributes|default(create_attribute()) %}
 
-{# Defaults: #}
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 <nav class="flex flex-col justify-center m-auto md:m-0" role="navigation">
-  <ul {{ attributes }} >
+  <ul {{ attributes.addClass([
+    variant == 'footer',
+    'flex flex-col md:flex-row md:items-center justify-center',
+  ] | sort | join(' ') | trim) }} >
     {% for item in items %}
       <li class="font-sans px-4 pt-4 lg:p-2 lg:px-4 lg:border-b-0 border-b-0 uppercase text-gray-dark lg:text-center">
         <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">

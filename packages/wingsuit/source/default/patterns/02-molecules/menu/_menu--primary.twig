@@ -1,17 +1,13 @@
-{% set classes = classes|default([])|merge([
-  variant == 'primary',
-  'block lg:flex flex-col md:flex-row md:items-center',
-]) | sort | join(' ') | trim  %}
-
-{# Defaults: #}
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+{% set attributes = attributes|default(create_attribute()) %}
 
 <nav class="block lg:flex flex-col bg-gray-xxlight lg:bg-transparent pb-4" role="navigation">
-  <ul {{ attributes }} >
+  <ul {{ attributes.addClass([
+    variant == 'primary',
+    'block lg:flex flex-col md:flex-row md:items-center',
+  ] | sort | join(' ') | trim) }}>
     {% for item in items %}
       <li class="font-sans px-4 pt-4 lg:p-2 lg:px-4 lg:border-b-0 border-b-0 uppercase lg:text-center text-black">
-        <a class="hover:border-b text-base
-           {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">
+        <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">
            {{ item.title }}
         </a>
       </li>

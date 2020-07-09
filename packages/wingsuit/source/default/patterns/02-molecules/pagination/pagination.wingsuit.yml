@@ -6,21 +6,16 @@ pagination:
     items:
       type: object
       label: Items
-  variants:
-    primary:
-      label: Primary
-      description: The Pagination on bottom of the page.
-      fields:
-        items:
-          - title: 1
-            link: "#"
-            in_active_trail: true
-          - title: 2
-            link: "#"
-          - title: ...
-            link: "#"
-          - title: 6
-            link: "#"
+      preview:
+        - title: 1
+          link: "#"
+          in_active_trail: true
+        - title: 2
+          link: "#"
+        - title: ...
+          link: "#"
+        - title: 6
+          link: "#"
   settings:
     previous_url:
       type: link

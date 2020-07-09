@@ -1,10 +1,15 @@
 {% set element = element|default('div') %}
+{% set attributes = attributes|default(create_attribute()) %}
 {% set headline__element = headline__element|default('h2') %}
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
-<{{ element }} {{ attributes|default(create_attribute()).addClass([
+{% set image_classes = ([
+  alignment == 'center'?'justify-center': '',
+  'flex',
+]) | sort | join(' ') | trim %}
+<{{ element }} {{ attributes.addClass([
   alignment == 'center'?'text-center': '',
   'block',
   'group hover:no-underline',
@@ -14,34 +19,28 @@
       {{ image }}
     {% endblock %}
   </div>
-  <div {{ attributes|default(create_attribute()).addClass([] | sort | join(' ') | trim) }}>
+  <div>
     {% if preheadline is not empty %}
-      <div {{ attributes|default(create_attribute()).addClass([
-              'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
-           ] | sort | join(' ') | trim) }}>
+      <div class="font-serif text-4xl text-blue group-hover:underline">
         {% block preheadline %}
           {{ preheadline }}
         {% endblock %}
       </div>
     {% endif %}
-    <{{ headline__element }} {{ attributes|default(create_attribute()).addClass([
-       'text-base', 'mb-1', 'uppercase', 'text-gray-light', 'font-sans',
-     ] | sort | join(' ') | trim) }}>
+    <{{ headline__element }} class="text-base mb-1 uppercase text-gray-light font-sans">
       {% block headline %}
         {{ headline }}
       {% endblock %}
     </{{ headline__element }}>
     {% if text is not empty %}
-      <div {{ attributes|default(create_attribute()).addClass([
-              'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
-           ] | sort | join(' ') | trim) }}">
+      <div class="text-base mb-10 text-gray-dark font-sans">
         {% block text %}
           {{ text }}
         {% endblock %}
       </div>
     {% endif %}
     {% if button is not empty %}
-      {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} %}
+      {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} only %}
     {% endif %}
   </div>
 </{{ element }}>
