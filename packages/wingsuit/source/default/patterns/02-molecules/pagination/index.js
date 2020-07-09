@@ -10,5 +10,3 @@ import './pagination.css';
 
 // Module template
 import './pagination.twig';
-
-

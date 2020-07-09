@@ -47,10 +47,10 @@ export async function renderPatternPreview(
           ...previewRenderedVariables,
         };
         renderPattern(patternId, variantId, finalVariables)
-          .then(output => {
+          .then((output) => {
             resolve(output);
           })
-          .catch(error => {
+          .catch((error) => {
             refuse(error);
           });
       });
