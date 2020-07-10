@@ -7,7 +7,7 @@
 
 import { resolveConfig, getAppNames } from '@wingsuit-designsystem/core';
 
-const { relative, extname, join } = require('path');
+const { relative, join } = require('path');
 const { readdirSync } = require('fs');
 
 const Generator = require('yeoman-generator');
@@ -141,12 +141,8 @@ export default class extends Generator {
     // a reserved method to which Yeoman provides all file streams from copyTpl()
     this.registerTransformStream(
       rename((path) => {
-        // basename is 'patterns.twig' here
-        const ext = extname(path.basename);
-        // Original extname was '.ejs', change it to ext, which is now '.twig'
-        path.extname = ext;
-        // Remove extension ('.twig') from basename, replace 'pattern" with name
-        path.basename = path.basename.replace(ext, '').replace('pattern', name);
+        // Remove extension and replace pattern with pattern name
+        path.basename = path.basename.replace('pattern', name);
         return path;
       })
     );

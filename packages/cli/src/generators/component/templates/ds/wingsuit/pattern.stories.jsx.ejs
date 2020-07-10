@@ -1,0 +1,18 @@
+import './index';<% if (useDoc == 'mdx') { %>
+import mdx from './<%= name %>.mdx';
+<% } %>
+const patternDefinition = require('./<%= name %>.wingsuit.yml');
+
+export const wingsuit = {
+  patternDefinition,<% if (useDoc == 'mdx') { %>
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },<% } %><% if (useDoc == 'no') { %>
+  parameters: {
+    docs: {
+      page: null,
+    },
+  },<% } %>
+};

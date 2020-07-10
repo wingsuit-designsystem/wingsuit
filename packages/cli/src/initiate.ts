@@ -88,7 +88,6 @@ export default function (options) {
       }
     }
   };
-
   logger.log(`Cloning Wingsuit repo ...`);
   clone(
     'https://github.com/wingsuit-designsystem/wingsuit',
