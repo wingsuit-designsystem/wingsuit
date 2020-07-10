@@ -1,3 +1,6 @@
+const rem = px => ({ [px]: `${px / 16}rem` });
+const remVal = px => (`${px / 16}rem` );
+
 module.exports = {
   important: false,
   purge: {
@@ -11,13 +14,19 @@ module.exports = {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
       sans: ['Roboto', 'sans-serif'],
     },
+    fontSize: {
+      // Final mobile:
+      ...rem(13),
+      ...rem(28),
+      ...rem(36),
+    },
     maxWidth: {
       none: 'none',
-      container: '1200px',
-      xs: '672px',
-      sm: '700px',
-      md: '960px',
-      lg: '1600px',
+      container: remVal(1200),
+      xs: remVal(672),
+      sm: remVal(700),
+      md: remVal(960),
+      lg: remVal(1600),
     },
     colors: {
       transparent: 'transparent',

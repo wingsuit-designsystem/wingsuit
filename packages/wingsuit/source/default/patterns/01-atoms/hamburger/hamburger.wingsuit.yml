@@ -1,9 +1,5 @@
 hamburger:
   use: "@atoms/hamburger/hamburger.twig"
-  label: hamburger
+  label: Hamburger
   description: Simple animated hamburger icon.
-  fields:
-    dummy:
-      type: text
-      label: Content
-      preview: More
+
