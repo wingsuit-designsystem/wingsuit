@@ -2,7 +2,7 @@ import Field from './Field';
 import Setting from './Setting';
 import Pattern from './Pattern';
 import IPatternStorage from './IPatternStorage';
-import TwigAttribute from "./TwigAttribute";
+import TwigAttribute from './TwigAttribute';
 
 export default class PatternVariant {
   public getUse(): string {

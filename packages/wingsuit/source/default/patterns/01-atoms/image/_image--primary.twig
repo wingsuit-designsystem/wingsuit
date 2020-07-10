@@ -3,3 +3,6 @@
 {% else %}
   {{ image }}
 {% endif %}
+{% if caption is not empty %}
+<div>{{ caption }}</div>
+{% endif %}
