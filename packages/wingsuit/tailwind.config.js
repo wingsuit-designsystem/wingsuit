@@ -1,5 +1,5 @@
-const rem = px => ({ [px]: `${px / 16}rem` });
-const remVal = px => (`${px / 16}rem` );
+const rem = (px) => ({ [px]: `${px / 16}rem` });
+const remVal = (px) => `${px / 16}rem`;
 
 module.exports = {
   important: false,

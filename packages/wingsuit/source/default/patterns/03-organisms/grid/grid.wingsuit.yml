@@ -38,10 +38,6 @@ grid:
         3: 3 column
         4: 4 column
         5: 5 column
-    gap:
-      type: boolean
-      label: Gap
-      default_value: true
     config_1:
       type: select
       label: Column widths
@@ -98,10 +94,6 @@ grid:
         large: Large
         medium: Medium
         small: Small
-    wrapper:
-      type: boolean
-      label: Wrapper
-      default_value: true
     width:
       type: select
       label: Width

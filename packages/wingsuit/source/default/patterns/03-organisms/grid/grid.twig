@@ -55,7 +55,7 @@
     width == 'default' ? 'max-w-container': '',
     reverse == true ? 'flex-row-reverse' : '',
     'mx-auto flex flex-wrap',
-    gap == true ? '-mx-6 md:-mx-25': '',
+    width != 'full' ? '-mx-6 md:-mx-25',
   ] | sort | join(' ') | trim %}
   {% set attributes = attributes|default(create_attribute()).addClass(grid__classes) %}
   {% set wrapper__attributes = wrapper__attributes|default(create_attribute()).addClass(wrapper__classes) %}
@@ -72,9 +72,6 @@
 {% endif %}
   <div {{ attributes }}>
     {% block columns %}
-      {% if inline_bg == true %}
-        <div class="bg-gray-light py-20 m-20">
-      {% endif %}
       {%- for i in 1..columns -%}
         {% block column %}
           {% set column_classes = current_configuration[i] is not empty ? current_configuration[i] : current_configuration['default'] %}
@@ -86,9 +83,6 @@
           </div>
         {% endblock %}
       {%- endfor -%}
-      {% if inline_bg == true %}
-        </div>
-      {% endif %}
     {% endblock %}
   </div>
 {% if wrappers_count != 0 %}
