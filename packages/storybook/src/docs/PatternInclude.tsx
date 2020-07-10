@@ -8,7 +8,7 @@ import { getContextualStory } from './utils';
 
 type Props = { story?: StoryData };
 
-export const PatternInclude: FunctionComponent<Props> = props => {
+export const PatternInclude: FunctionComponent<Props> = (props) => {
   const context = useContext(DocsContext);
   const { story } = props;
   const contextStory = getContextualStory(context, story);

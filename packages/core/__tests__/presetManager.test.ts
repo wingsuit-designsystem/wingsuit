@@ -2,7 +2,7 @@ import path from 'path';
 import { resolveConfig, PresetManager } from '../src/index';
 
 const config = {
-  webpack: appConfig => {
+  webpack: (appConfig) => {
     return { testWebpack: true };
   },
   webpackFinal: (appConfig, webpack) => {

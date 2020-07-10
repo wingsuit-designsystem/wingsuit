@@ -1,7 +1,7 @@
 footer:
   use: "@organisms/footer/footer.twig"
   label: Footer
-  description: The footer pattern.
+  description: The footer pattern with copyright and menu.
   fields:
     menu:
       type: pattern

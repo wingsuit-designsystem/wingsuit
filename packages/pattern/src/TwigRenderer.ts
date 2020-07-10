@@ -22,11 +22,11 @@ export class TwigRenderer implements IRenderer {
     const template = storage.findTwigByNamespace(include);
     if (template !== null) {
       // @ts-ignore
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         resolve(template(variables));
       });
     }
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve(`Template ${id} ${include} not loaded. Check require.context in your configure.js`);
     });
   }

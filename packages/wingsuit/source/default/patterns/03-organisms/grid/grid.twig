@@ -1,20 +1,3 @@
-{#
-/**
- * @file
- * Flex Grid component.
- *
- * Available variables for flex grid:
- *    - columns [int]: Column count. Currently max 4 column is supported
- *    - config_[1..4]: Grid configuration. Check the configuration array for possible values.
- *    - gap [bool]: True for spacing betwwen the gutter
- *    - wrapper [bool]: True for grid wrapper.
- *    - padding_top [small|medium|large]: Set padding top.
- *    - padding_bottom [small|medium|large]: Set padding bottom.
- *    - margin_top [small|medium|large]: Set margin top.
- *    - margin_bottom [small|medium|large]: Set margin bottom.
- */
-#}
-
 {% set configuration = {
   1:
   {
@@ -38,7 +21,7 @@
   }
 } %}
 
-{% set gap_class_suffix = ['px-10', 'md:px-25'] %}
+{% set gap_class_suffix = ['px-6', 'md:px-25'] %}
 {% set config = _context['config_' ~ columns|default('2') ] %}
 {% set current_configuration = configuration[columns][config] %}
 
@@ -63,7 +46,7 @@
     padding_bottom == 'medium' ? 'pb-20' : '',
     padding_bottom == 'small' ? 'pb-10' : ''
   ] | sort | join(' ') | trim %}
-
+{#The grid width is defined here #}
   {% set grid__classes = [
     width == 'small' ? 'max-w-xs': '',
     width == 'medium' ? 'max-w-screen-md': '',
@@ -72,26 +55,25 @@
     width == 'default' ? 'max-w-container': '',
     reverse == true ? 'flex-row-reverse' : '',
     'mx-auto flex flex-wrap',
-    gap == true ? '-px-10 md:-px-25': '',
+    gap == true ? '-mx-6 md:-mx-25': '',
   ] | sort | join(' ') | trim %}
   {% set attributes = attributes|default(create_attribute()).addClass(grid__classes) %}
   {% set wrapper__attributes = wrapper__attributes|default(create_attribute()).addClass(wrapper__classes) %}
-
+  {#The number of columns is set here #}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
   {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
   {%- set column_3 -%}{%- block column_3 -%}{{ _context['column_3' ] }}{% endblock %}{% endset %}
   {%- set column_4 -%}{%- block column_4 -%}{{ _context['column_4' ] }}{% endblock %}{% endset %}
+  {%- set column_5 -%}{%- block column_5 -%}{{ _context['column_5' ] }}{% endblock %}{% endset %}
 
   {% set wrappers_count = wrapper__attributes|length %}
-  {% if wrappers_count != 0 %}
-    <div {{ wrapper__attributes }}>
-  {% endif %}
+{% if wrappers_count != 0 %}
+  <div {{ wrapper__attributes }}>
+{% endif %}
   <div {{ attributes }}>
     {% block columns %}
       {% if inline_bg == true %}
         <div class="bg-gray-light py-20 m-20">
-      {% elseif inline_bg_image == true %}
-        <blockquote class="sprite-pattern-triangle bg-500 py-20 m-20">
       {% endif %}
       {%- for i in 1..columns -%}
         {% block column %}
@@ -99,29 +81,19 @@
           {% if gap == true %}
             {% set column_classes = column_classes ~ ' ' ~ gap_class_suffix|join(' ') %}
           {% endif %}
-          <div class="{% if crosses %} z-10 {% endif %} {{ column_classes }}">
+          <div class="{{ column_classes }}">
             {{ _context['column_' ~ i ] }}
           </div>
         {% endblock %}
       {%- endfor -%}
       {% if inline_bg == true %}
         </div>
-      {% elseif inline_bg_image == true %}
-        </blockquote>
       {% endif %}
     {% endblock %}
   </div>
-  {% if wrappers_count != 0 %}
-    {% if crosses %}
-      {% set crosses_classes = [
-        crosses == 'left' ? 'left-0': '',
-        crosses == 'right' ? 'right-0' : '',
-        'sprite-cross bg-755 absolute top-1/2 transform -translate-y-1/2 h-full w-3/5 md:w-1/5 xxl:w-1/4',
-      ] | sort | join(' ') | trim %}
-      <div class="{{ crosses_classes }}"></div>
-    {% endif %}
-    </div>
-  {% endif %}
+{% if wrappers_count != 0 %}
+  </div>
+{% endif %}
 {% else %}
   No configuration found for "{{ columns }}/{{ config }}".
 {% endif %}

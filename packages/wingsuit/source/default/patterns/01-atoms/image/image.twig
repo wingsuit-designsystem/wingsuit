@@ -1,15 +1,3 @@
-
-{#
-/**
- * @file
- * image
- *
- * Available variables for image:
- *  - variant [string]: Indicates which image pattern to use.
- *  - src [string]: Specifies the URL of an image.
- *  - alt [string]: Specifies an alternate text for an image.
- */
-#}
 {% set img_attributes = create_attribute().addClass(size) %}
 {%- set image -%}
 {% if placeholder == true %}

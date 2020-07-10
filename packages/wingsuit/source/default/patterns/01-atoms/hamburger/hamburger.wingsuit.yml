@@ -1,39 +1,9 @@
 hamburger:
   use: "@atoms/hamburger/hamburger.twig"
   label: hamburger
-  description: Beautiful hamburger made with love
+  description: Simple animated hamburger icon.
   fields:
     dummy:
       type: text
       label: Content
       preview: More
-  variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
-      description: Inverts colors
-    success:
-      label: Success
-    warning:
-      label: Warning
-    disabled:
-      label: Disabled
-  settings:
-    url:
-      type: token
-      label: Url
-      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
-    size:
-      type: select
-      label: Icon Size
-      default_value: w-4
-      required: true
-      options:
-        w-4: Default
-        w-8: Large
-    svg:
-      type: select
-      label: SVG
-      options:
-        search: Search

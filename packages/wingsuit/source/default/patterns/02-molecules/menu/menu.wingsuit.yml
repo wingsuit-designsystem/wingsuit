@@ -29,7 +29,6 @@ menu:
         items:
           - title: Datenschutz
             link: "#"
-            in_active_trail: true
           - title: Impressum
             link: "#"
   visibility: storybook
