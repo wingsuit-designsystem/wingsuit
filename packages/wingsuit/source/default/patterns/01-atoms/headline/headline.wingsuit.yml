@@ -12,6 +12,7 @@ headline:
     element:
       type: select
       label: Element
+      required: true
       options:
         h1: h1
         h2: h2

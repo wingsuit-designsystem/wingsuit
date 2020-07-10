@@ -29,6 +29,24 @@ grid:
       preview:
         faker: lorem.paragraph
   settings:
+    width:
+      type: select
+      label: Width
+      required: true
+      default_value: default
+      options:
+        default: Default
+        large: Large
+        full: Full width
+    gap:
+      type: select
+      label: Gap
+      required: true
+      default_value: default
+      options:
+        none: None
+        default: Default
+        large: Large
     columns:
       type: select
       label: Columns
@@ -75,9 +93,7 @@ grid:
       label: Padding top
       description: If previous element has spacing bottom, use default for normal or half for small spacing betweeen elements. If previous element has no bottomspacing, because of a background image, then use doubled.
       options:
-        half: Half
         default: Default
-        doubled: Doubled
         xlarge: X-large
         large: Large
         medium: Medium
@@ -94,17 +110,6 @@ grid:
         large: Large
         medium: Medium
         small: Small
-    width:
-      type: select
-      label: Width
-      default_value: default
-      options:
-        small: 320px
-        medium: 640px
-        large: 860px
-        xlarge: 1024px
-        default: Default
-        full: Full width
     bg:
       type: select
       label: Background

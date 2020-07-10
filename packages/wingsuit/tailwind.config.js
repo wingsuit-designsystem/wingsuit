@@ -1,5 +1,4 @@
 const rem = (px) => ({ [px]: `${px / 16}rem` });
-const remVal = (px) => `${px / 16}rem`;
 
 module.exports = {
   important: false,
@@ -22,11 +21,8 @@ module.exports = {
     },
     maxWidth: {
       none: 'none',
-      container: remVal(1200),
-      xs: remVal(672),
-      sm: remVal(700),
-      md: remVal(960),
-      lg: remVal(1600),
+      ...rem(1200),
+      ...rem(1600),
     },
     colors: {
       transparent: 'transparent',

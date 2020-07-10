@@ -2,6 +2,7 @@ import Field from './Field';
 import Setting from './Setting';
 import Pattern from './Pattern';
 import IPatternStorage from './IPatternStorage';
+import TwigAttribute from "./TwigAttribute";
 
 export default class PatternVariant {
   public getUse(): string {
@@ -106,6 +107,8 @@ export default class PatternVariant {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
+    // eslint-disable-next-line dot-notation
+    values['attributes'] = new TwigAttribute();
     return values;
   }
 

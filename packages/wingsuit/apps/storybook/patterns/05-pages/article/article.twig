@@ -22,7 +22,7 @@
         } %}
       {% endblock %}
       {% block more %}
-        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, gap: true, wrapper: false, width: 'large', padding_top: 'large', padding_bottom: 'large'} %}
+        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, width: 'full', padding_top: 'large', padding_bottom: 'large'} %}
           {% block column_1 %}
             {{ pattern_preview('card') }}
           {% endblock %}
