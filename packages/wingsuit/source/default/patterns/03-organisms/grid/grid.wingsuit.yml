@@ -1,31 +1,31 @@
 grid:
   use: "@organisms/grid/grid.twig"
   label: Grid
-  description: Grid pattern.
+  description: "Flexible 5 Column Grid."
   fields:
     column_1:
       type: text
-      label: Column 1
+      label: First Column
       preview:
         faker: lorem.paragraph
     column_2:
       type: text
-      label: Column 2
+      label: Second Column
       preview:
         faker: lorem.paragraph
     column_3:
       type: text
-      label: Column 3K
+      label: Third Column
       preview:
         faker: lorem.paragraph
     column_4:
       type: text
-      label: Column 4s
+      label: Fourth Column
       preview:
         faker: lorem.paragraph
     column_5:
       type: text
-      label: Column 5
+      label: Five Column
       preview:
         faker: lorem.paragraph
   settings:
@@ -51,11 +51,11 @@ grid:
       type: select
       label: Columns
       options:
-        1: 1 column
-        2: 2 column
-        3: 3 column
-        4: 4 column
-        5: 5 column
+        1: One column
+        2: Two columns
+        3: Three columns
+        4: Four columns
+        5: Five columns
     config_1:
       type: select
       label: Column widths
@@ -118,7 +118,7 @@ grid:
         bg-gray-light: Light gray
   variants:
     1_column:
-      label: 1 column
+      label: One Column
       settings:
         columns: 1
         config_2: "equal"
@@ -126,7 +126,7 @@ grid:
         config_4: ""
         config_5: ""
     2_column:
-      label: 2 column
+      label: Two Columns
       settings:
         columns: 2
         config_1: ""
@@ -134,7 +134,7 @@ grid:
         config_4: ""
         config_5: ""
     3_column:
-      label: 3 column
+      label: Three Columns
       settings:
         columns: 3
         config_1: ""
@@ -142,7 +142,7 @@ grid:
         config_4: ""
         config_5: ""
     4_column:
-      label: 4 column
+      label: Four Columns
       settings:
         columns: 4
         config_1: ""
@@ -150,7 +150,7 @@ grid:
         config_3: ""
         config_5: ""
     5_column:
-      label: 5 column
+      label: Five Columns
       settings:
         columns: 5
         config_1: ""
