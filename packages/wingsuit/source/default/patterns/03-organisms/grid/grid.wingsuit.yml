@@ -1,7 +1,7 @@
 grid:
   use: "@organisms/grid/grid.twig"
   label: Grid
-  description: "Flexible 5 Column Grid."
+  description: "Flexible Grid with maximum Five Columns."
   fields:
     column_1:
       type: text
