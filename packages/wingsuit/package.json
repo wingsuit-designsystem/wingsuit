@@ -28,13 +28,7 @@
     "fmt:js": "eslint --fix --ext .js,.vue ./",
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
     "fmt": "npm run fmt:js; npm run fmt:css",
-    "test:backstop:ref": "node tools/tests/vrt/backstop-example-reference.js",
-    "test:backstop:test": "node tools/tests/vrt/backstop-example-test.js",
-    "test:pa11y": "pa11y-ci --config tools/tests/accessibility/pa11y.js",
-    "test:unit:default": "NODE_ENV=test jest --projects source/default/",
-    "test:unit": "npm run test:unit:default",
-    "test": "npm run test:unit",
-    "ci": "npm run lint && npm run test && npm run build:drupal"
+    "ci": "npm run lint && npm run build:drupal"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

@@ -1,28 +1,40 @@
 ---
 id: 'ui_patterns'
-title: 'UI Patterns'
+title: 'How to use Wingsuit with UI Patterns and Layout Builder'
 ---
+
  
-The easiest and most straight forward drupal integration is to use [UI Patterns](https://www.drupal.org/project/ui_patterns).
+This "How To" explains how to use Wingsuit with UI Patterns and Drupal Layout Builder. 
 
-We suggest to use
+## Step 1:
+Add following modules to your composer.json:
+
+* [components](https://www.drupal.org/project/components)
+* [ui\_patterns](https://www.drupal.org/project/ui_patterns)
+* [ui\_patterns\_layout\_builder](https://www.drupal.org/project/ui_patterns_layout_builder)
+* [ui\_patterns_settings](https://www.drupal.org/project/ui_patterns_layout_settings)
+* [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion)
+
+After that enable following modules:
+* components
+* ui\_patterns
+* ui\_patterns\_layout
+* ui\_patterns\_layout\_builder
+* ui\_patterns\_settings
+* wingsuit_companion
+
 ```
-composer require drupal/components:~2.0 
-composer require drupal/ui_patterns
-composer require drupal/ui_patterns_settings 
-composer require drupal/wingsuit_companion 
-drush en components ui_patterns ui_patterns_layout ui_patterns_settings wingsuit_companion 
+drush en components ui_patterns ui_patterns_layout ui_patterns_layout_builder ui_patterns_settings wingsuit_companion 
 ```
 
-If you plan to use the layout builder add: 
+## Step 2:
+Install Wingsuit under `themes/custom` and enable the wingsuit theme and set it as default.
 
 ```
-composer require drupal/ui_patterns_layout_builder
-drush en layout_builder ui_patterns_layout_builder
+npx @wingsuit-designsystem/cli init
+drush en wingsuit
 ```
 
-Ensure that Wingsuit is under `themes/custom`. 
 
-Now activate the Wingsuit theme.
 
 [SCREENSHOT]

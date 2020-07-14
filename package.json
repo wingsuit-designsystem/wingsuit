@@ -52,7 +52,8 @@
     "test:e2e-gui": "concurrently --success first --kill-others \"cypress open\" \"yarn serve-storybooks\"",
     "build-storybooks": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true node -r esm ./scripts/build-storybooks.js",
     "serve-storybooks": "http-server ./built-storybooks -p 8001",
-    "await-serve-storybooks": "wait-on http://localhost:8001"
+    "await-serve-storybooks": "wait-on http://localhost:8001",
+    "drupal-demo:update-theme": "./scripts/rsync_theme.sh;"
   },
   "workspaces": [
     "packages/*",

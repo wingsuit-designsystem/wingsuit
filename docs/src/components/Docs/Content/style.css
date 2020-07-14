@@ -1,9 +1,7 @@
 #docs-content .content {
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   font-size: 17px;
   line-height: 25px;
   margin: 20px 0;
-  max-width: 700px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -25,7 +23,6 @@
 #docs-content .markdown p,
 #docs-content .markdown li,
 #docs-content .markdown a {
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   font-size: 16px;
   line-height: 26px;
   color: #333;
