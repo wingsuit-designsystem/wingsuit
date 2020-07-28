@@ -75,7 +75,7 @@ export function webpack(appConfig: AppConfig) {
         },
         {
           loader: 'file-loader',
-          test: /\.(png|jpg|gif)$/,
+          test: /\.(png|jpg|gif|webp)$/,
           options: {
             outputPath: path.join(appConfig.assetBundleFolder, 'images'),
             name: '[name].[ext]',
