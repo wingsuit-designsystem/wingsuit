@@ -1,4 +1,7 @@
-{% set img_attributes = create_attribute().addClass(size) %}
+{% set img_attributes = create_attribute().addClass([
+  size != '' ? size,
+] | sort | join(' ') | trim
+  ) %}
 {%- set image -%}
 {% if placeholder == true %}
 {%- include '@atoms/image/_image--placeholder.twig' -%}
