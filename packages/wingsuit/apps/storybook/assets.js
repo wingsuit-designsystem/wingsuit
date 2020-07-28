@@ -3,5 +3,5 @@ function requireAll(r) {
 }
 
 requireAll(
-  require.context('../../source/default', true, /\.(svg|png|jpg|jpeg|gif|woff|woff2|ttf)$/)
+  require.context('../../source/default', true, /\.(svg|png|webp|jpg|jpeg|gif|woff|woff2|ttf)$/)
 );
