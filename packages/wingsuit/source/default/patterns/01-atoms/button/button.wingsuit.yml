@@ -3,23 +3,25 @@ button:
   label: Button
   description: Types of buttons with different colors.
   fields:
-    content:
+    text:
       type: text
-      label: Content
+      label: Text
       preview: More
   variants:
-    primary:
-      label: Primary
-    secondary:
-      label: Secondary
+    default:
+      label: Default
+    hollow:
+      label: Hollow
       description: Inverts colors
-    success:
-      label: Success
-    warning:
-      label: Warning
-    disabled:
-      label: Disabled
   settings:
+    color:
+      type: select
+      required: true
+      label: Color
+      preview: primary
+      options:
+        primary: Primary
+        secondary: Secondary
     url:
       type: token
       label: Url
