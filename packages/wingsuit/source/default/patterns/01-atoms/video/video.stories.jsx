@@ -1,6 +1,6 @@
 import './index';
 
-const patternDefinition = require('./pagination.wingsuit.yml');
+const patternDefinition = require('./video.wingsuit.yml');
 
 export const wingsuit = {
   patternDefinition,

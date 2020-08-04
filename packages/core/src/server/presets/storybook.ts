@@ -3,7 +3,7 @@ import Svg2JsonPlugin from '../plugins/Svg2JsonPlugin';
 import AppConfig from '../../AppConfig';
 
 export function webpack(appConfig: AppConfig) {
-  return {
+  const resultWebpack = {
     node: {
       fs: 'empty',
     },
@@ -24,15 +24,19 @@ export function webpack(appConfig: AppConfig) {
         },
       ],
     },
-    plugins: [
-      new Svg2JsonPlugin(
-        path.resolve(appConfig.namespaces.atoms, 'svg/svg/icons'),
-        path.resolve(`${appConfig.absAppPath}/config/silo/svgs.json`)
-      ),
-    ],
     stats: {
       performance: true,
       children: false,
     },
   };
+  if (appConfig.namespaces.atoms != null) {
+    // @ts-ignore
+    resultWebpack.plugins = [
+      new Svg2JsonPlugin(
+        path.resolve(appConfig.namespaces.atoms, 'svg/svg/icons'),
+        path.resolve(`${appConfig.absAppPath}/config/silo/svgs.json`)
+      ),
+    ];
+  }
+  return resultWebpack;
 }

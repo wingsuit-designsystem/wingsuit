@@ -7,6 +7,7 @@ const storybook = require('../server/presets/storybook')
 const drupal = require('../server/presets/drupal')
 const twing = require('../server/presets/twing')
 const tailwindTokens = require('../server/presets/tailwindTokens')
+const assetsVideos = require('../server/presets/assetsVideos')
 
 export const wingsuit = {
   webpackFinal: (appConfig: AppConfig, config: any) => {
@@ -21,6 +22,7 @@ export const wingsuit = {
     css,
     babel,
     assets,
+    assetsVideos,
     tailwindTokens,
     storybook,
     drupal,
@@ -45,7 +47,7 @@ export const wingsuit = {
       distFolder: 'dist/app-storybook',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: ['tailwindTokens', 'assets', 'twing', 'storybook', 'css', 'babel'],
+      presets: ['tailwindTokens', 'assets', 'assetsVideos', 'twing', 'storybook', 'css', 'babel'],
     },
     drupal: {
       type: 'drupal',
@@ -55,7 +57,7 @@ export const wingsuit = {
       assetAtomicFolder: 'assets/atomic',
       assetBundleFolder: 'assets',
       designSystem: 'default',
-      presets: ['babel', 'assets', 'drupal', 'css'],
+      presets: ['babel', 'assets', 'assetsVideos', 'drupal', 'css'],
     },
   },
 }

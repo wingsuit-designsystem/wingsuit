@@ -21,13 +21,12 @@
 @font-face {
   font-family: 'Roboto';
   src: local('Roboto'),
-  url('fonts/roboto/roboto-v20-latin-regular.woff2') format('woff2'),
-  url('fonts/roboto/roboto-v20-latin-regular.woff') format('woff');
+    url('fonts/roboto/roboto-v20-latin-regular.woff2') format('woff2'),
+    url('fonts/roboto/roboto-v20-latin-regular.woff') format('woff');
   font-style: normal;
   font-weight: 400;
   font-display: auto;
 }
-
 
 body {
   font-family: 'Roboto';
