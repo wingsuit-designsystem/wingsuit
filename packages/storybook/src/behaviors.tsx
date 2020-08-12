@@ -1,28 +1,26 @@
-/*
-@deprecated
-Use behaviors instead.
- */
 import React from 'react';
 import { useEffect } from '@storybook/client-api';
 
-interface DrupalWindow extends Window {
-  Drupal: Drupal;
+
+declare const window: Window;
+
+let behaviorName;
+export function init(pbehaviorName) {
+  window[pbehaviorName] = { behaviors: {} };
+  behaviorName = pbehaviorName;
 }
 
-declare const window: DrupalWindow;
+export function attachBehaviorDecorator(storyFn) {
 
-window.Drupal = { behaviors: {} };
-
-export function drupalAttachBehaviorDecorator(storyFn) {
   return (
     <div>
       {storyFn()}
-      {useEffect(() => Drupal.attachBehaviors({}, {}), [])}
+      {useEffect(() => BehaviorExecutor.attachBehaviors({}, {}), [])}
     </div>
   );
 }
 
-class Drupal {
+class BehaviorExecutor {
   public behaviors: {} = {};
 
   public static throwError(error) {
@@ -32,7 +30,7 @@ class Drupal {
   }
 
   public static attachBehaviors(context = {}, settings = {}) {
-    const { behaviors } = window.Drupal;
+    const { behaviors } = window[behaviorName];
 
     window.setTimeout(() => {
       Object.keys(behaviors).forEach((i) => {
@@ -40,7 +38,7 @@ class Drupal {
           try {
             behaviors[i].attach(context, settings);
           } catch (e) {
-            Drupal.throwError(e);
+            BehaviorExecutor.throwError(e);
           }
         }
       });

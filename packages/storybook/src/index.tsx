@@ -154,5 +154,6 @@ function getStories(pattern: Pattern, module) {
 }
 
 export { drupalAttachBehaviorDecorator } from './drupal';
+export { init as initDecorator, attachBehaviorDecorator } from './behaviors';
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
