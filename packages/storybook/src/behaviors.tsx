@@ -1,17 +1,16 @@
 import React from 'react';
 import { useEffect } from '@storybook/client-api';
 
-
 declare const window: Window;
 
 let behaviorName;
 export function init(pbehaviorName) {
+  // @ts-ignore
   window[pbehaviorName] = { behaviors: {} };
   behaviorName = pbehaviorName;
 }
 
 export function attachBehaviorDecorator(storyFn) {
-
   return (
     <div>
       {storyFn()}
@@ -30,6 +29,7 @@ class BehaviorExecutor {
   }
 
   public static attachBehaviors(context = {}, settings = {}) {
+    // @ts-ignore
     const { behaviors } = window[behaviorName];
 
     window.setTimeout(() => {
