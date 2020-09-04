@@ -27,6 +27,8 @@ component-libraries:
     paths:
       - ../../dist/app-drupal/assets/atomic/patterns/03-organisms
   templates:
-    paths: []
+    paths:
+      - ../../dist/app-drupal/assets/atomic/patterns/04-templates
   pages:
     paths: []
+core_version_requirement: ^8 || ^9

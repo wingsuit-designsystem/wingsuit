@@ -46,34 +46,12 @@
  */
 #}
 {{ page.tabs }}
-<header class="content-header clearfix">
-  {% embed "@organisms/header/_header.twig" %}
-    {% block menu %}
-      {{ page.primary_menu }}
-    {% endblock %}
-    {% block logo %}
-      {% include "@atoms/image/_image.twig" with {
-        variant: 'primary',
-        src: '/themes/custom/wingsuit/apps/drupal/logo.svg'
-      } %}
-    {% endblock %}
-  {% endembed %}
-</header>
-<main>
-  {{ page.content }}
-</main>
-{% embed "@organisms/footer/_footer.twig" with {"menu": page.footer} %}
-  {% block contact %}
-    <p>KEY-TEC GmbH &amp; Co. KG<br>Blutenburgstr. 68<br>80636 München<br>
-      <a class="hover:border-b" href="tel:089200056600">+49 (0) 89 / 2000 566 - 00</a>
-      <br>
-      <a class="hover:border-b" href="mailto:patrick.konstantin@key-tec.de">patrick.konstantin@key-tec.de</a>
-    </p>
-  {% endblock%}
-  {% block media %}
-    {% include "@atoms/image/_image.twig" with {
-      variant: 'primary',
-      src: '/themes/custom/wingsuit/apps/drupal/logo.svg'
-    } %}
+
+{% embed "@templates/site-container.twig" with {
+  primary_menu: page.primary_menu,
+  footer_menu: page.footer
+} %}
+  {% block content %}
+    {{ page.content }}
   {% endblock %}
 {% endembed %}

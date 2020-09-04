@@ -2,11 +2,20 @@
 core:
   css:
     theme:
-      ../../dist/app-drupal/assets/app.styles.css:
+      ../../dist/app-drupal/tokens.css:
+        preprocess: true
+      ../../dist/app-drupal/typo.css:
+        preprocess: true
+      ../../dist/app-drupal/hamburger.css:
+        preprocess: true
+      ../../dist/app-drupal/is-active.css:
         preprocess: true
   js:
-    ../../dist/app-drupal/assets/app.js:
+    ../../dist/app-drupal/vendors/alpine.js:
       preprocess: true
+    ../../dist/app-drupal/behaviors/button.js:
+      preprocess: true
+
   # see all in Drupal's `core/core.libraries.yml`
   dependencies:
     - core/drupal
