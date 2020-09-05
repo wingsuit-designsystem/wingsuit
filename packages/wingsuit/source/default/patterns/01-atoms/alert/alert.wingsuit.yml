@@ -1,0 +1,17 @@
+alert:
+  use: "@atoms/alert/alert.twig"
+  label: alert
+  description: Example description
+  
+  fields:
+    field_1:
+      type: text
+      label: Content
+      preview: Text
+  settings:
+    setting_1:
+      type: select
+      label: Setting 1
+      options:
+        option_1: Value 1
+      preview: value_1

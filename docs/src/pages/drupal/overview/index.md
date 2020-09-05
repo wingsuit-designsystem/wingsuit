@@ -5,7 +5,7 @@ title: 'Component-Based Theming in Drupal'
 
 Drupal theming without a component based solution can be very frustrating, prone to errors and hard to maintain.
 
-It is very likley that you need to theme the same component more than once. Once you need your button inside as a field, next time you need the same button inside your node template. The solution most developer took is to copy the template and adjust them to their needs.
+It is very likely that you need to theme the same component more than once. Once you need your button inside as a field, next time you need the same button inside your node template. The solution most developer took is to copy the template and adjust them to their needs.
 You distribute your component markup across the project and changes to a component must be done on several places inside your project.  
 
 This get even more worse if you use a modern CSS framework like tailwind where everything is configured through classes directly on the element.
@@ -27,11 +27,6 @@ If you need to theme your link field with the button component you create a fiel
 %}
 ```
 
-<b>There downsides of this solution:</b>
- * You need to configure everything inside your TWIG markup.
- * You can't use `Manage Display` to configure your layout.
- * You have to check the presenter template to know which component template is included.
- * Extracting data structure and pass it to the component template is realy tricky.
 
 ### UI Patterns
 With UI Patterns you can get rid of the presenter templates in most of the cases. UI Pattern expose a component data model to drupal. The site builder can use the Administration UI to map drupal data fields to templates.
@@ -54,6 +49,3 @@ Since Drupal 8.6 the Layout Builder is a stable. The Layout Builder has several 
 * You can add sections to each entity. Each section can have a pattern.
 * The UI is much more intuitive than the old `Manage Display`
 * Editors can use the same patterns as the site builder.
-
-## Layout Builder is the best way to use UI Patterns!
-

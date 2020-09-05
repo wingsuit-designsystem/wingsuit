@@ -4,6 +4,7 @@ card:
   description: Use Article for your teasers
   fields:
     image:
+      labe: Image
       type: pattern
       preview:
         id: image

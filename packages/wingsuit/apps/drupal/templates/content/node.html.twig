@@ -70,4 +70,11 @@
  *   in different view modes.
  */
 #}
+{% if title_suffix is not empty  or attributes['data-quickedit-entity-id'] %}
+<article{{ attributes }}>
+  {{ title_suffix }}
+{% endif %}
 {{ content }}
+{% if title_suffix is not empty  or attributes['data-quickedit-entity-id'] %}
+</article>
+{% endif %}

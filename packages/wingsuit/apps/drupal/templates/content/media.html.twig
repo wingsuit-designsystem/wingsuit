@@ -12,13 +12,13 @@
  * @ingroup themeable
  */
 #}
-{% if title_suffix.contextual_links is not empty %}
+{% if title_suffix is not empty or attributes['data-quickedit-entity-id'] %}
 <div{{ attributes }}>
-  {{ title_suffix.contextual_links }}
+  {{ title_suffix }}
 {% endif %}
   {% if content %}
     {{ content }}
   {% endif %}
-{% if title_suffix.contextual_links is not empty %}
+{% if title_suffix is not empty or attributes['data-quickedit-entity-id'] %}
 </div>
 {% endif %}

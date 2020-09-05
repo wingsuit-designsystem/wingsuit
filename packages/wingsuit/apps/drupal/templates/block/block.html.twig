@@ -25,14 +25,12 @@
  * @see template_preprocess_block()
  */
 #}
-{% block content %}
-  {% if attributes['data-layout-block-uuid'] != "" %}
-  <div {{ attributes }}>
+{% if title_suffix is not empty or attributes['data-quickedit-entity-id'] %}
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
   {% endif %}
-    {{ title_prefix }}
-    {{ title_suffix }}
   {{ content }}
-  {% if attributes['data-layout-block-uuid'] != "" %}
-  </div>
-  {% endif %}
-{% endblock %}
+  {% if title_suffix is not empty or attributes['data-quickedit-entity-id'] %}
+</div>
+{% endif %}

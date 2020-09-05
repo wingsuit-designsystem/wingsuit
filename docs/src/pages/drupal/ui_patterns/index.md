@@ -16,15 +16,12 @@ Add following modules to your composer.json:
 * [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion)
 
 After that enable following modules:
-* components
-* ui\_patterns
-* ui\_patterns\_layout
+* wingsuit_companion
 * ui\_patterns\_layout\_builder
 * ui\_patterns\_settings
-* wingsuit_companion
 
 ```
-drush en components ui_patterns ui_patterns_layout ui_patterns_layout_builder ui_patterns_settings wingsuit_companion 
+drush en ui_patterns_layout_builder ui_patterns_settings wingsuit_companion 
 ```
 
 ## Step 2:
@@ -32,9 +29,23 @@ Install Wingsuit under `themes/custom` and enable the wingsuit theme and set it 
 
 ```
 npx @wingsuit-designsystem/cli init
-drush en wingsuit
 ```
 
+Go to the wingsuit folder and run:
+```
+yarn build:drupal
+```
+The command generates the dist folder to `wingsuit/dist/app-drupal`. The theme takes css js and patterns from the dist folder and not from `source` folder.
 
+You can configure the path of your dist folder. See [Configuration details](../../configurations/details/index.md) to configure the webpack part. Open "Wingsuit settings" under Configuration in drupal and adjust the path to the dist folder.
 
-[SCREENSHOT]
+If you want to develop in drupal run:
+```
+yarn dev:drupal
+```
+This will run start and `webpack watch`.
+
+## Congratulations:
+Now your are done now! Open `Manage Display` you will find all your patterns.
+
+  
