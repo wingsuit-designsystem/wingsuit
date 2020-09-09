@@ -37,11 +37,9 @@ class MainLinks extends React.Component {
                 target="_blank"
                 rel="noreferrer"
               >
-                Storybook
+                Storybook on netlify
               </a>
-              <a href="/preview/docs" target="_blank" rel="noreferrer">
-                Documentation only
-              </a>
+
             </div>
           </div>
 

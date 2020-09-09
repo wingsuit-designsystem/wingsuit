@@ -7,7 +7,7 @@
   ] | sort | join(' ') | trim) }} >
     {% for item in items %}
       <li class="font-sans px-4 pt-4 lg:p-2 lg:px-4 lg:border-b-0 border-b-0 uppercase text-gray-dark lg:text-center">
-        <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">
+        <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
           {{ item.title }}
         </a>
       </li>

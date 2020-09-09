@@ -13,15 +13,15 @@ menu:
       fields:
         items:
           - title: galerie
-            link: "#"
+            url: "#"
             in_active_trail: true
           - title: kollektionen
-            link: "#"
+            url: "#"
           - title: shop
-            link: "#"
+            url: "#"
             icon: arrow-up
           - title: kontakt
-            link: "#"
+            url: "#"
     footer:
       label: Footer
       description: The footer menu.
