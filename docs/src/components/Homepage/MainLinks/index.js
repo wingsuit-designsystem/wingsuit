@@ -39,7 +39,6 @@ class MainLinks extends React.Component {
               >
                 Storybook on netlify
               </a>
-
             </div>
           </div>
 
