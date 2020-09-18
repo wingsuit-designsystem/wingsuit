@@ -1,4 +1,5 @@
 import './index';
+
 const patternDefinition = require('./container.wingsuit.yml');
 
 export const wingsuit = {
