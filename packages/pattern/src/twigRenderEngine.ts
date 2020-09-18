@@ -1,8 +1,8 @@
-import {storage} from './index';
+import { storage } from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
-import {MultiValueTypes} from "./Field";
+import { MultiValueTypes } from './Field';
 
 let rendererImpl: IRenderer;
 
@@ -52,13 +52,13 @@ export async function renderPatternPreview(
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
               }
-              previewRenderedVariables[nameKeys[0]][delta] = promisedPreviewValues[j]
+              previewRenderedVariables[nameKeys[0]][delta] = promisedPreviewValues[j];
             }
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.field_items) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
               }
-              previewRenderedVariables[nameKeys[0]][delta] = {content: promisedPreviewValues[j]}
+              previewRenderedVariables[nameKeys[0]][delta] = { content: promisedPreviewValues[j] };
             }
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
@@ -101,7 +101,7 @@ function buildBaseVariables(variables, addGlobals = true) {
     passedVariables = obj;
   }
   if (addGlobals) {
-    return {...storage.getGlobals(), ...passedVariables};
+    return { ...storage.getGlobals(), ...passedVariables };
   }
   return passedVariables;
 }
@@ -129,6 +129,6 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const finalVariables = {...storage.getGlobals(), ...variables};
+  const finalVariables = { ...storage.getGlobals(), ...variables };
   return rendererImpl.render(path, path, finalVariables);
 }
