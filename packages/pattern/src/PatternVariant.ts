@@ -89,11 +89,10 @@ export default class PatternVariant {
       const field: Field = this.fields[key];
       const preview = field.getPreview();
       if (field.getType() === 'pattern' && Array.isArray(preview)) {
-        for (let i = 0; i < preview.length; i+=1) {
+        for (let i = 0; i < preview.length; i += 1) {
           previewPatterns[`${key}--${i}`] = this.buildPreviewPattern(preview[i]);
         }
-      }
-      else if (field.getType() === 'pattern' && preview.id !== null) {
+      } else if (field.getType() === 'pattern' && preview.id !== null) {
         previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });

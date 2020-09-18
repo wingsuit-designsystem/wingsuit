@@ -46,12 +46,10 @@ describe('TwigRenderEngine', () => {
     ['pattern_function', '__default'],
     ['pattern_preview_function', '__default'],
     ['simple', '__default'],
-    ['variant', 'variant']
-
+    ['variant', 'variant'],
   ])('Render pattern %p in variant %p', async (patternId: string, variantId: string) => {
     storage.addGlobal('global_1', 'correct');
-    const output = await renderEngine.renderPatternPreview(patternId, variantId, {
-    });
+    const output = await renderEngine.renderPatternPreview(patternId, variantId, {});
     expect(output).toMatch(/field:correct/);
     expect(output).toMatch(/setting:correct/);
   });
