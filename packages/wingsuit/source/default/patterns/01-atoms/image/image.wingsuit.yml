@@ -52,3 +52,4 @@ image:
         16x9_md_sc: LG 16x9
         16x9_xl_sc: XL 16x9
         16x9_xxl_sc: XXLL 16x9
+  visibility: storybook

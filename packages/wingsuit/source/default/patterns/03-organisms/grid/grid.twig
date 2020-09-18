@@ -82,7 +82,7 @@
 
   <div {{ attributes|default(create_attribute()).addClass(
     [
-    gap_negative_sizes[gap],
+      gap_configuration_negative_sizes[gap],
     'flex flex-wrap'
   ] | sort | join(' ') | trim) }}>
     {% block columns %}

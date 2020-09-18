@@ -4,12 +4,12 @@
   footer_menu: pattern_preview('menu', 'footer')
 } %}
   {% block main %}
-    <div class="main-content w-full py-10 mt-20">
-      <div class="max-w-1200 px-4 m-auto">
-        <div class="text-center w-1/2 m-auto pb-8 text-gray-dark">
+    {% embed "@organisms/container/container.twig"%}
+      {% block content %}
+        <div class="text-center w-1/2 m-auto pb-8 text-gray-dark pt-8">
           {{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}
         </div>
-        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, width: 'large', padding_top: 'large', padding_bottom: 'large'} %}
+        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, gap: 'default'} %}
           {% block column_1 %}
             {{ pattern_preview('card') }}
           {% endblock %}
@@ -20,7 +20,7 @@
             {{ pattern_preview('card') }}
           {% endblock %}
         {% endembed %}
-      </div>
-    </div>
+      {% endblock %}
+    {% endembed %}
   {% endblock %}
 {% endembed %}

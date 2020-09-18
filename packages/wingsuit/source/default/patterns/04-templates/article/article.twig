@@ -1,6 +1,7 @@
-<div class="max-w-1200 px-4 m-auto mt-20">
+
+{% set content %}
   <div class="text-center w-1/2 m-auto pb-8 text-gray-dark pt-10">
-    {{ "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups." }}
+    {{ text }}
   </div>
   <div class="block md:flex group hover:no-underline pt-10">
     <div class="w-full md:w-1/2">
@@ -9,24 +10,20 @@
       {% endblock %}
     </div>
     <div class="w-full md:w-1/2 md:pl-4">
-      <div {{ attributes|default(create_attribute()).addClass([
-        'pt-4', 'font-serif', 'text-28', 'text-blue', 'group-hover:underline',
-      ] | sort | join(' ') | trim) }}>
-      {% block headline %}
-        {{ headline }}
-      {% endblock %}
+      <div class="font-serif text-28 text-blue group-hover:underline">
+        {% block headline %}
+          {{ headline }}
+        {% endblock %}
       </div>
-      <div {{ attributes|default(create_attribute()).addClass([
-        'text-base', 'mb-10', 'text-gray-dark', 'font-sans',
-      ] | sort | join(' ') | trim) }}">
-      {% block text %}
-        {{ text }}
-      {% endblock %}
+      <div class="text-base mb-10 text-gray-dark font-sans">
+        {% block text %}
+          {{ text }}
+        {% endblock %}
       </div>
       <div>
-      {% block button %}
-        {{ button }}
-      {% endblock %}
+        {% block button %}
+          {{ button }}
+        {% endblock %}
       </div>
     </div>
   </div>
@@ -35,4 +32,7 @@
       {{ more }}
     {% endblock %}
   </div>
-</div>
+{% endset %}
+{% embed "@organisms/container/container.twig" with {content: content}%}
+{% endembed %}
+

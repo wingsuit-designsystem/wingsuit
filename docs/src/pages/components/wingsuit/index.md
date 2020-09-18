@@ -121,20 +121,23 @@ This works also with a list of patterns.
 ```  
 You can control how wingsuit will handle the resulting array of objects.
 
-Following options are available:
-* `single_value`: All patterns will concated to a single value. You can render the variable dirctly inside your twig template.
+<b>Following options are available:</b>
+* `single_value`: All patterns will rendered into a single value. The resulting variable is a string not a array. This useful if you to add multiple objects into one area.
 
+<b>pattern.twig</b>
 ```
 {{ image }}
 ```
-* `items`: With multi_value_type: items wingsuit provides a list of patterns. So you have to loop through the array to render the result.
+* `items` provides a list of patterns. The resulting variable is an array you can loop through.
+
+<b>pattern.twig</b>
 ```
 {% for item in image %}
 {{ item }}
 {% endfor %}
 ```
 
-* `field_items`: With multi_value_type: field_items wingsuit provides a list of objects. The rendered pattern is inside the content key. This is very useful to emulate multi value field templates in drupal.
+* `field_items` provides a list of objects. The rendered pattern is inside the content key. This is useful to emulate multi value field templates in drupal.
 ```
 {% for item in image %}
 {{ item.key }}

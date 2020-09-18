@@ -2,39 +2,29 @@
   with {
   primary_menu: pattern_preview('menu', 'primary'),
   footer_menu: pattern_preview('menu', 'footer')
+
 } %}
   {% block main %}
-    {% embed '@templates/article/article.twig' with {
-      headline: 'Card Headline',
-      text: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.'
+    {% set more %}
+      {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, gap: 'default'} %}
+        {% block column_1 %}
+          {{ pattern_preview('card') }}
+        {% endblock %}
+        {% block column_2 %}
+          {{ pattern_preview('card') }}
+        {% endblock %}
+        {% block column_3 %}
+          {{ pattern_preview('card') }}
+        {% endblock %}
+      {% endembed %}
+    {% endset %}
+    {% include '@templates/article/article.twig' with {
+      headline: 'Headline',
+      text: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+      image: pattern_preview('image', 'primary'),
+      button: pattern_preview('button', 'default'),
+      more: more
+
     } %}
-      {% block image %}
-        {% include "@atoms/image/image.twig" with {
-          variant: 'primary',
-          placeholder: true,
-          style: '16x9_sm_sc'
-        } %}
-      {% endblock %}
-      {% block button %}
-        {% include "@atoms/button/button.twig" with {
-          text: 'More',
-          variant: 'default',
-          color: 'primary'
-        } %}
-      {% endblock %}
-      {% block more %}
-        {% embed '@organisms/grid/grid.twig' with {config_3: 'equal', columns: 3, width: 'full', padding_top: 'large', padding_bottom: 'large'} %}
-          {% block column_1 %}
-            {{ pattern_preview('card') }}
-          {% endblock %}
-          {% block column_2 %}
-            {{ pattern_preview('card') }}
-          {% endblock %}
-          {% block column_3 %}
-            {{ pattern_preview('card') }}
-          {% endblock %}
-        {% endembed %}
-      {% endblock %}
-    {% endembed %}
   {% endblock %}
 {% endembed %}
