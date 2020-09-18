@@ -96,6 +96,51 @@ With field type `pattern` you can render patterns inside the pattern:
 * `fields` Overwrites fields preview values of the pattern.
 * `settings` Overwrites setting preview values of the pattern.
 
+##### Pattern list
+This works also with a list of patterns. 
+```yaml
+  fields:  
+    image:
+      type: pattern
+      multi_value_type: single_value
+      preview:
+        -
+          id: image
+          variant: primary
+          settings:
+            style: medium
+          fields:
+            field: value
+        -
+          id: image
+          variant: primary
+          settings:
+            style: medium
+          fields:
+            field: value
+```  
+You can control how wingsuit will handle the resulting array of objects.
+
+Following options are available:
+* `single_value`: All patterns will concated to a single value. You can render the variable dirctly inside your twig template.
+
+```
+{{ image }}
+```
+* `items`: With multi_value_type: items wingsuit provides a list of patterns. So you have to loop through the array to render the result.
+```
+{% for item in image %}
+{{ item }}
+{% endfor %}
+```
+
+* `field_items`: With multi_value_type: field_items wingsuit provides a list of objects. The rendered pattern is inside the content key. This is very useful to emulate multi value field templates in drupal.
+```
+{% for item in image %}
+{{ item.key }}
+{% endfor %}
+```
+
 #### type object
 ```yaml
   fields:  

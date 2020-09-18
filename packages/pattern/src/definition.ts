@@ -15,6 +15,7 @@ export interface Property {
   default_value: string;
   preview: string | Preview;
   required: boolean;
+  multi_value_type: string;
 }
 export interface Variants {
   [key: string]: Variant;

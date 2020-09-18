@@ -36,6 +36,9 @@ describe('TwigRenderEngine', () => {
     expect(output).toMatch(/setting:correct/);
   });
   test.each([
+    ['patterns_field_items', '__default'],
+    ['patterns_single_value', '__default'],
+    ['patterns_items', '__default'],
     ['global', '__default'],
     ['default_value', '__default'],
     ['pattern', '__default'],
@@ -43,12 +46,11 @@ describe('TwigRenderEngine', () => {
     ['pattern_function', '__default'],
     ['pattern_preview_function', '__default'],
     ['simple', '__default'],
-    ['variant', 'variant'],
-    ['ref', ''],
+    ['variant', 'variant']
+
   ])('Render pattern %p in variant %p', async (patternId: string, variantId: string) => {
     storage.addGlobal('global_1', 'correct');
     const output = await renderEngine.renderPatternPreview(patternId, variantId, {
-      setting: 'field:correct setting:correct',
     });
     expect(output).toMatch(/field:correct/);
     expect(output).toMatch(/setting:correct/);

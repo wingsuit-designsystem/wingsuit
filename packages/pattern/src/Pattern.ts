@@ -1,7 +1,7 @@
 import PatternVariant from './PatternVariant';
 import Setting from './Setting';
-import Field from './Field';
-import { IPatternDefinition } from './definition';
+import Field, {MultiValueTypes} from './Field';
+import {IPatternDefinition} from './definition';
 import IPatternStorage from './IPatternStorage';
 
 export default class Pattern {
@@ -176,6 +176,15 @@ export default class Pattern {
           fields[key].description,
           fields[key].preview
         );
+        if (Array.isArray(fields[key].preview)) {
+          if (fields[key].multi_value_type != null) {
+            field.setMultiValueType(MultiValueTypes[fields[key].multi_value_type])
+          }
+          else {
+            field.setMultiValueType(MultiValueTypes.single_value);
+          }
+
+        }
         variant.addField(field);
       });
 

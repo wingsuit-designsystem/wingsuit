@@ -1,7 +1,8 @@
-import { storage } from './index';
+import {storage} from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
+import {MultiValueTypes} from "./Field";
 
 let rendererImpl: IRenderer;
 
@@ -39,7 +40,34 @@ export async function renderPatternPreview(
       Promise.all(promisedPreview).then((promisedPreviewValues: string[]) => {
         const previewRenderedVariables = {};
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
-          previewRenderedVariables[promisedPreviewNames[j]] = promisedPreviewValues[j];
+          const nameKeys = promisedPreviewNames[j].split('--');
+          // Handling multi value fields.
+          // Multi value patterns uses key--i as field name.
+          if (nameKeys.length === 1) {
+            previewRenderedVariables[nameKeys[0]] = promisedPreviewValues[j];
+          } else {
+            const fieldName = nameKeys[0];
+            const delta: number = Number.parseInt(nameKeys[1], 10);
+            if (variant.getField(fieldName).multiValueType() === MultiValueTypes.items) {
+              if (previewRenderedVariables[nameKeys[0]] === undefined) {
+                previewRenderedVariables[nameKeys[0]] = [];
+              }
+              previewRenderedVariables[nameKeys[0]][delta] = promisedPreviewValues[j]
+            }
+            if (variant.getField(fieldName).multiValueType() === MultiValueTypes.field_items) {
+              if (previewRenderedVariables[nameKeys[0]] === undefined) {
+                previewRenderedVariables[nameKeys[0]] = [];
+              }
+              previewRenderedVariables[nameKeys[0]][delta] = {content: promisedPreviewValues[j]}
+            }
+            if (variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value) {
+              if (previewRenderedVariables[nameKeys[0]] === undefined) {
+                previewRenderedVariables[nameKeys[0]] = promisedPreviewValues[j];
+              } else {
+                previewRenderedVariables[nameKeys[0]] += promisedPreviewValues[j];
+              }
+            }
+          }
         }
         const finalVariables: {} = {
           ...patternVariables,
@@ -51,7 +79,7 @@ export async function renderPatternPreview(
             resolve(output);
           })
           .catch((error) => {
-            refuse(error);
+            resolve(error);
           });
       });
     });
@@ -61,6 +89,7 @@ export async function renderPatternPreview(
     ...buildBaseVariables(variables, false),
   });
 }
+
 function buildBaseVariables(variables, addGlobals = true) {
   let passedVariables = variables;
   // Variables are passed as Map in Twing.
@@ -72,10 +101,11 @@ function buildBaseVariables(variables, addGlobals = true) {
     passedVariables = obj;
   }
   if (addGlobals) {
-    return { ...storage.getGlobals(), ...passedVariables };
+    return {...storage.getGlobals(), ...passedVariables};
   }
   return passedVariables;
 }
+
 export async function renderPattern(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
@@ -99,6 +129,6 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const finalVariables = { ...storage.getGlobals(), ...variables };
+  const finalVariables = {...storage.getGlobals(), ...variables};
   return rendererImpl.render(path, path, finalVariables);
 }

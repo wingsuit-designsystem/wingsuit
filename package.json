@@ -129,5 +129,8 @@
     "ts-node": "^8.9.1",
     "typescript": "^3.4.0",
     "wait-on": "^4.0.0"
+  },
+  "dependencies": {
+    "window-size": "^1.1.1"
   }
 }
