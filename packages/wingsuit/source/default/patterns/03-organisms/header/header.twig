@@ -1,20 +1,16 @@
-<nav class="z-50 h-20 fixed w-full bg-green border-b lg:border-b-0 border-gray-xlight top-0" role="navigation"
+<header class="z-50 h-20 fixed w-full bg-green border-b lg:border-b-0 border-gray-xlight flex top-0" role="navigation"
      x-data="{ open: false }">
-  <div class="max-w-1200 relative mx-auto p-6 lg:py-6 lg:px-2 justify-between flex flex-wrap md:flex-no-wrap items-center">
-    <a href="{{ path('<front>') }}" class="mr-4 -mt-6 w-155 lg:mr-3 flex">
+
+  {% embed "@organims/container/container.twig" %}
+  {% block content %}
+  <div class="relative justify-between flex flex-wrap md:flex-no-wrap items-center">
+    <a href="{{ path('<front>') }}" class="mr-4 w-155">
       {% include "@atoms/svg/_svg--icon.twig" with {
-        size: 'w-20 h-16',
-        icon: 'gug_logo_typo'
+        size: 'w-16 h-16',
+        icon: 'logo'
       } %}
-      <div class="pl-1 hidden lg:block">
-        {% include '@atoms/image/image.twig' with {
-          variant: 'primary',
-          size: 'w-20',
-          src: file_url('ws-assets://images/gug_logo_img.png')
-        } %}
-      </div>
     </a>
-    <div class="burger absolute right-0 flex-container flex align-right mr-6 items-center lg:hidden cursor-pointer"
+    <div class="burger flex align-right mr-6 items-center lg:hidden cursor-pointer"
          @click="open = !open">
       {% include '@atoms/hamburger/hamburger.twig' %}
     </div>
@@ -26,4 +22,4 @@
       {% endblock %}
     </div>
   </div>
-</nav>
+</header>

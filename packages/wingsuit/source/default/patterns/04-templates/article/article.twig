@@ -10,7 +10,7 @@
     </div>
     <div class="w-full md:w-1/2 md:pl-4">
       <div {{ attributes|default(create_attribute()).addClass([
-        'font-serif', 'text-4xl', 'text-blue', 'group-hover:underline',
+        'pt-4', 'font-serif', 'text-28', 'text-blue', 'group-hover:underline',
       ] | sort | join(' ') | trim) }}>
       {% block headline %}
         {{ headline }}

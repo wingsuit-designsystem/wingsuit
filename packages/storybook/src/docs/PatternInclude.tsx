@@ -19,7 +19,7 @@ export const PatternInclude: FunctionComponent<Props> = (props) => {
 
   const code = `{% include "${patternVariant.getPattern().getUse()}" with ${JSON.stringify(
     patternVariant.getVariables(false)
-  )}`;
+  )} %}`;
   return (
     <>
       <Source dark code={code} />

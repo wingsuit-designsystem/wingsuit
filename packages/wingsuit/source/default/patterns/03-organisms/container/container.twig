@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * container
+ *
+ * See container.wingsuit.yaml for documentation.
+ */
+#}
+
+{% set width = width|default('default') %}
+
+{% if bg %}
+<div {{ create_attribute().addClass(
+  [
+    bg == 'gray-medium' ? 'bg-gray-medium',
+    bg == 'gray-light' ? 'bg-gray-light'
+  ] | sort | join(' ') | trim) }}">
+{% endif %}
+  <div {{ attributes|default(create_attribute()).addClass(
+    [
+      padding_x == 'default' ? 'px-6',
+      padding_x == 'large' ? 'px-10',
+      padding_top == 'default' ? 'pt-20 md:pt-40',
+      padding_top == 'large' ? 'md:pt-30 pt-20',
+      padding_top == 'small' ? 'pt-10',
+      padding_bottom == 'default' ? 'pb-20 md:pb-40',
+      padding_bottom == 'large' ? 'md:pb-30 pb-20',
+      padding_bottom == 'small' ? 'pb-10',
+      width == 'small' ? 'max-w-800',
+      width == 'default' ? 'max-w-1200',
+      width == 'large' ? 'max-w-1600',
+      'px-6',
+      'mx-auto'
+    ] | sort | join(' ') | trim) }}>
+    {% block content %}
+    {{ content }}
+    {% endblock %}
+  </div>
+{% if bg %}
+</div>
+{% endif %}

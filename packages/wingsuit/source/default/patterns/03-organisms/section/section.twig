@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * section
+ *
+ * See section.wingsuit.yaml for documentation.
+ */
+#}
+
+{% embed "@organisms/container/container.twig" with { attributes: attributes }%}
+  {% block content %}
+    {% include "@organisms/grid/grid.twig" with {attributes: create_attribute() }%}
+  {% endblock %}
+{% endembed %}

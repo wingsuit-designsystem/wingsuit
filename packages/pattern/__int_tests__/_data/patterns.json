@@ -98,13 +98,100 @@
           },
           "fields": {
             "field": {
-              "type":  "pattern",
+              "type": "pattern",
               "id": "ref",
               "settings": {
                 "setting": "correct"
               }
             }
           }
+        }
+      }
+    },
+    "patterns_field_items": {
+      "use": "@molecules/tests/check_field_items.twig",
+      "label": "Patterns Field items",
+      "description": "Example description",
+      "fields": {
+        "field": {
+          "type": "pattern",
+          "multi_value_type": "field_items",
+          "label": "Content",
+          "preview": [
+            {
+              "id": "ref",
+              "settings": {
+                "setting": "correct"
+              }
+            },
+            {
+              "id": "ref",
+              "settings": {
+                "setting": "correct"
+              }
+            }
+          ]
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
+        }
+      }
+    },
+    "patterns_items": {
+      "use": "@molecules/tests/check_items.twig",
+      "label": "Patterns",
+      "description": "Example description",
+      "fields": {
+        "field": {
+          "type": "pattern",
+          "multi_value_type": "items",
+          "label": "Content",
+          "preview": [
+            {
+              "id": "ref",
+              "settings": {
+                "setting": "correct"
+              }
+            }
+          ]
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
+        }
+      }
+    },
+    "patterns_single_value": {
+      "use": "@molecules/tests/check.twig",
+      "label": "Patterns",
+      "description": "Example description",
+      "fields": {
+        "field": {
+          "type": "pattern",
+          "multi_value_type": "single_value",
+          "label": "Content",
+          "preview": [
+            {
+              "id": "ref",
+              "settings": {
+                "setting": "correct"
+              }
+            }
+          ]
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
         }
       }
     },

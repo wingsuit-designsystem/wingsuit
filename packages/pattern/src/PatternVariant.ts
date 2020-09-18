@@ -45,7 +45,7 @@ export default class PatternVariant {
     this.fields[field.getName()] = field;
   }
 
-  public getField(name: string) {
+  public getField(name: string): Field {
     return this.fields[name];
   }
 
@@ -69,23 +69,32 @@ export default class PatternVariant {
     this.settings[setting.getName()] = setting;
   }
 
+  private buildPreviewPattern(preview) {
+    const patternId = preview.id;
+
+    const variant = preview.variant !== null ? preview.variant : null;
+    const fields = preview.fields != null ? preview.fields : {};
+    const settings = preview.settings != null ? preview.settings : {};
+    const objects = Object.assign(fields, settings);
+    return {
+      patternId,
+      variant,
+      variables: objects,
+    };
+  }
+
   public getPreviewPatterns() {
     const previewPatterns = {};
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
       const preview = field.getPreview();
-      if (field.getType() === 'pattern' && preview.id !== null) {
-        const patternId = preview.id;
-
-        const variant = preview.variant !== null ? preview.variant : null;
-        const fields = preview.fields != null ? preview.fields : {};
-        const settings = preview.settings != null ? preview.settings : {};
-        const objects = Object.assign(fields, settings);
-        previewPatterns[key] = {
-          patternId,
-          variant,
-          variables: objects,
-        };
+      if (field.getType() === 'pattern' && Array.isArray(preview)) {
+        for (let i = 0; i < preview.length; i+=1) {
+          previewPatterns[`${key}--${i}`] = this.buildPreviewPattern(preview[i]);
+        }
+      }
+      else if (field.getType() === 'pattern' && preview.id !== null) {
+        previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });
     return previewPatterns;
