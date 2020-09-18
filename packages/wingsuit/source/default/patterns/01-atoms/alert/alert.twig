@@ -7,9 +7,8 @@
  */
 #}
 
-<div>
-  <h1>alert</h1>
-  <div>Wingsuit component!</div>
-  <div>Field variable: <code>{{ field_1 }}</code></div>
-  <div>Setting variable: <code>{{ setting_1 }}</code></div>
+<div {{
+  attributes|default(create_attribute())}}>
+  <div class="bg-gray-medium p-2">{% block header %}{{ header }}{% endblock %}</div>
+  <div class="bg-gray-light p-2">{% block content %}{{ content }}{% endblock %}</div>
 </div>

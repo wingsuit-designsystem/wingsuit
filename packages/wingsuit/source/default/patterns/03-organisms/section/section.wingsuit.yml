@@ -1,7 +1,7 @@
-grid:
-  use: "@organisms/grid/grid.twig"
-  label: Grid
-  description: "Flexible Grid with maximum Five Columns."
+section:
+  use: "@organisms/section/section.twig"
+  label: Section
+  description: "Multi column section. A combination of container and grid. Very useful for the Drupal layout builder."
   fields:
     column_1:
       type: text
@@ -29,6 +29,46 @@ grid:
       preview:
         faker: lorem.paragraph
   settings:
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+    bg:
+      type: select
+      label: Background color
+      options:
+        gray-medium: Medium gray
+        gray-light: Light gray
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      default_value: default
+      options:
+        default: Default
+        large: Large
+    padding_top:
+      type: select
+      label: Padding top
+      description: If previous element has spacing bottom, use default for normal or small for small spacing betweeen elements.
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      description: If next element has spacing top, use default for normal or small for small spacing betweeen elements.
+      options:
+        small: Small
+        default: Default
+        large: Large
     gap:
       type: select
       label: Gap
@@ -120,4 +160,3 @@ grid:
         config_2: ""
         config_3: ""
         config_4: ""
-  visibility: storybook

@@ -11,14 +11,15 @@
       {% block image %}
         {% include "@atoms/image/image.twig" with {
           variant: 'primary',
-          placeholder: false,
-          src: file_url('ws-assets://images/sample-image.png') ,
+          placeholder: true,
+          style: '16x9_sm_sc'
         } %}
       {% endblock %}
       {% block button %}
         {% include "@atoms/button/button.twig" with {
-          content: 'more',
-          variant: 'primary'
+          text: 'More',
+          variant: 'default',
+          color: 'primary'
         } %}
       {% endblock %}
       {% block more %}
