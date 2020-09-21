@@ -1,14 +1,14 @@
 import React from 'react';
-import {storage, renderer, Pattern, TwingRenderer} from '@wingsuit-designsystem/pattern';
-import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/react';
-import {withKnobs, text, boolean, number, select, object} from '@storybook/addon-knobs';
-import {Title, Subtitle, Description, Primary} from '@storybook/addon-docs/blocks';
+import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
+import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
+import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
-import {PatternStories} from './docs/PatternStories';
-import {PatternInclude} from './docs/PatternInclude';
+import { PatternStories } from './docs/PatternStories';
+import { PatternInclude } from './docs/PatternInclude';
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -19,7 +19,7 @@ function getStorybookKnobsOptions(setting) {
       Empty: '',
     };
   }
-  Object.keys(options).forEach((key) => {
+  Object.keys(options).forEach(key => {
     const paramKey = options[key] != null ? options[key] : key;
     knobsOption[paramKey] = key;
   });
@@ -47,7 +47,7 @@ export function configure(
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
-    patternIds.forEach((patternId) => {
+    patternIds.forEach(patternId => {
       const pattern = storage.loadPattern(patternId);
       if (pattern.isVisible('storybook')) {
         getStories(pattern, module);
@@ -57,14 +57,14 @@ export function configure(
     // Load stories form storybook app.
     const allExports: any = [];
     if (Array.isArray(storybookContext) === false) {
-      storybookContext.keys().forEach((key) => {
+      storybookContext.keys().forEach(key => {
         if (storybookContext(key).default !== null) {
           allExports.push(storybookContext(key));
         }
       });
     } else {
-      storybookContext.forEach((innerContext) => {
-        innerContext.keys().forEach((key) => {
+      storybookContext.forEach(innerContext => {
+        innerContext.keys().forEach(key => {
           if (innerContext(key).default != null) {
             allExports.push(innerContext(key));
           }
@@ -78,7 +78,7 @@ export function configure(
 function getProps(variant) {
   const knobsVariables = [];
   const groupSetting = 'Settings';
-  Object.keys(variant.getSettings()).forEach((key) => {
+  Object.keys(variant.getSettings()).forEach(key => {
     const setting = variant.getSetting(key);
     if (setting.isEnable()) {
       if (setting.getType() === 'select') {
@@ -103,7 +103,7 @@ function getProps(variant) {
     }
   });
   const groupFields = 'Fields';
-  Object.keys(variant.getFields()).forEach((key) => {
+  Object.keys(variant.getFields()).forEach(key => {
     const field = variant.getField(key);
     if (field.getType() === 'object') {
       knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
@@ -117,11 +117,13 @@ function getProps(variant) {
 function getStories(pattern: Pattern, module) {
   const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
   const story = storiesOf(patternLabel, module);
-  story.addDecorator(withKnobs({
-    escapeHTML: false,
-  }));
+  story.addDecorator(
+    withKnobs({
+      escapeHTML: false,
+    })
+  );
 
-  Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
+  Object.keys(pattern.getPatternVariants()).forEach(variantKey => {
     const variant = pattern.getVariant(variantKey);
     let parameters = {
       component: PatternPreview,
@@ -131,13 +133,13 @@ function getStories(pattern: Pattern, module) {
         patternVariant: variant,
         page: () => (
           <>
-            <Title/>
-            <Subtitle/>
-            <Description/>
-            <Primary/>
-            <PatternProperties/>
-            <PatternInclude/>
-            <PatternStories/>
+            <Title />
+            <Subtitle />
+            <Description />
+            <Primary />
+            <PatternProperties />
+            <PatternInclude />
+            <PatternStories />
           </>
         ),
         storyDescription: variant.getDescription(),
@@ -155,7 +157,7 @@ function getStories(pattern: Pattern, module) {
   return story;
 }
 
-export {drupalAttachBehaviorDecorator} from './drupal';
-export {init as initDecorator, attachBehaviorDecorator} from './behaviors';
-export {default as RenderTwig} from './components/RenderTwig';
-export {default as PatternPreview} from './components/PatternPreview';
+export { drupalAttachBehaviorDecorator } from './drupal';
+export { init as initDecorator, attachBehaviorDecorator } from './behaviors';
+export { default as RenderTwig } from './components/RenderTwig';
+export { default as PatternPreview } from './components/PatternPreview';
