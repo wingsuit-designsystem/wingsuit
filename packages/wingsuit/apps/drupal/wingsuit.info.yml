@@ -19,16 +19,16 @@ component-libraries:
     paths: []
   atoms:
     paths:
-      - ../../dist/app-drupal/assets/atomic/patterns/01-atoms
+      - ../../dist/app-drupal/atomic/patterns/01-atoms
   molecules:
     paths:
-      - ../../dist/app-drupal/assets/atomic/patterns/02-molecules
+      - ../../dist/app-drupal/atomic/patterns/02-molecules
   organisms:
     paths:
-      - ../../dist/app-drupal/assets/atomic/patterns/03-organisms
+      - ../../dist/app-drupal/atomic/patterns/03-organisms
   templates:
     paths:
-      - ../../dist/app-drupal/assets/atomic/patterns/04-templates
+      - ../../dist/app-drupal/atomic/patterns/04-templates
   pages:
     paths: []
 core_version_requirement: ^8 || ^9
