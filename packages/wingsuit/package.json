@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/wingsuit",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0-beta.12",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "license": "GPL-2.0",
@@ -39,10 +39,10 @@
     "@storybook/react": "^6.0.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.0-beta.11",
-    "@wingsuit-designsystem/core": "1.0.0-beta.11",
-    "@wingsuit-designsystem/pattern": "1.0.0-beta.11",
-    "@wingsuit-designsystem/storybook": "1.0.0-beta.11",
+    "@wingsuit-designsystem/cli": "1.0.0-beta.12",
+    "@wingsuit-designsystem/core": "1.0.0-beta.12",
+    "@wingsuit-designsystem/pattern": "1.0.0-beta.12",
+    "@wingsuit-designsystem/storybook": "1.0.0-beta.12",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -74,5 +74,5 @@
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^1.7.0"
   },
-  "gitHead": "24181302c3122c8ebde3f87e394895a8feaf7e55"
+  "gitHead": "3ae91a2497b7c8d7b315f375a9a3fb8a49620cb6"
 }
