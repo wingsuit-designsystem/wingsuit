@@ -6,7 +6,7 @@ core:
         preprocess: true
       ws-assets://typo.css:
         preprocess: true
-      ws-assets:///hamburger.css:
+      ws-assets://hamburger.css:
         preprocess: true
   js:
     ws-assets://vendors/alpine.js:
