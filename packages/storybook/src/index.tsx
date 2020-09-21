@@ -1,14 +1,14 @@
 import React from 'react';
-import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
-import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
-import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
-import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
+import {storage, renderer, Pattern, TwingRenderer} from '@wingsuit-designsystem/pattern';
+import {configure as storybookConfigure, storiesOf, addParameters} from '@storybook/react';
+import {withKnobs, text, boolean, number, select, object} from '@storybook/addon-knobs';
+import {Title, Subtitle, Description, Primary} from '@storybook/addon-docs/blocks';
 import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
-import { PatternStories } from './docs/PatternStories';
-import { PatternInclude } from './docs/PatternInclude';
+import {PatternStories} from './docs/PatternStories';
+import {PatternInclude} from './docs/PatternInclude';
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -117,7 +117,9 @@ function getProps(variant) {
 function getStories(pattern: Pattern, module) {
   const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
   const story = storiesOf(patternLabel, module);
-  story.addDecorator(withKnobs);
+  story.addDecorator(withKnobs({
+    escapeHTML: false,
+  }));
 
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
@@ -129,13 +131,13 @@ function getStories(pattern: Pattern, module) {
         patternVariant: variant,
         page: () => (
           <>
-            <Title />
-            <Subtitle />
-            <Description />
-            <Primary />
-            <PatternProperties />
-            <PatternInclude />
-            <PatternStories />
+            <Title/>
+            <Subtitle/>
+            <Description/>
+            <Primary/>
+            <PatternProperties/>
+            <PatternInclude/>
+            <PatternStories/>
           </>
         ),
         storyDescription: variant.getDescription(),
@@ -153,7 +155,7 @@ function getStories(pattern: Pattern, module) {
   return story;
 }
 
-export { drupalAttachBehaviorDecorator } from './drupal';
-export { init as initDecorator, attachBehaviorDecorator } from './behaviors';
-export { default as RenderTwig } from './components/RenderTwig';
-export { default as PatternPreview } from './components/PatternPreview';
+export {drupalAttachBehaviorDecorator} from './drupal';
+export {init as initDecorator, attachBehaviorDecorator} from './behaviors';
+export {default as RenderTwig} from './components/RenderTwig';
+export {default as PatternPreview} from './components/PatternPreview';
