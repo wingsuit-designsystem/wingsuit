@@ -2,18 +2,16 @@
 core:
   css:
     theme:
-      ../../dist/app-drupal/tokens.css:
+      ws-assets://tokens.css:
         preprocess: true
-      ../../dist/app-drupal/typo.css:
+      ws-assets://typo.css:
         preprocess: true
-      ../../dist/app-drupal/hamburger.css:
-        preprocess: true
-      ../../dist/app-drupal/is-active.css:
+      ws-assets:///hamburger.css:
         preprocess: true
   js:
-    ../../dist/app-drupal/vendors/alpine.js:
+    ws-assets://vendors/alpine.js:
       preprocess: true
-    ../../dist/app-drupal/behaviors/button.js:
+    ws-assets://behaviors/button.js:
       preprocess: true
 
   # see all in Drupal's `core/core.libraries.yml`
