@@ -6,8 +6,9 @@ const logger = console;
 
 const { spawn, spawnSync } = require('child_process');
 const clone = require('git-clone');
+const fs = require('fs');
 
-export default function (options) {
+export default function(options) {
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
@@ -29,7 +30,7 @@ export default function (options) {
   spawnSync('pwd', [], cmdOptions);
 
   // Removes the \n from the stringified buffer
-  const extractHash = (buffer) => {
+  const extractHash = buffer => {
     const arr = buffer.toString('utf8').split('\n');
     return arr[0];
   };
@@ -54,6 +55,17 @@ export default function (options) {
       spawnSync('git', ['fetch', '--all'], gitOptions);
       spawnSync('git', ['checkout', npmOptions.branch], gitOptions);
     }
+    const pkg = JSON.parse(fs.readFileSync(`${npmOptions.gitFolder}/package.json`));
+    Object.keys(pkg.dependencies).forEach(key => {
+      if (key.indexOf('@wingsuit-designsystem/') === 0) {
+        pkg.dependencies[key] = `^${pkg.dependencies[key]}`;
+      }
+    });
+    fs.writeFile('package.json', JSON.stringify(pkg), function(err) {
+      if (err) {
+        console.log(err);
+      }
+    });
   };
 
   /*

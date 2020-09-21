@@ -43,6 +43,7 @@
     "test": "cd test && ./run_tests.sh"
   },
   "dependencies": {
+    "cross-spawn": "^7.0.3",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "@wingsuit-designsystem/core": "1.0.0-beta.10",

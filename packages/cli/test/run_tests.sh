@@ -9,7 +9,7 @@ declare test_root=$PWD
 function cleanup {
   rm -rfd ${test_root}/run
 }
-trap cleanup EXIT
+# trap cleanup EXIT
 
 # copy all files from fixtures directory to `run`
 rm -rfd run

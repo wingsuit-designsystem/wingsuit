@@ -2,6 +2,7 @@ import program from 'commander';
 import leven from 'leven';
 import initiate from './initiate';
 import component from './component';
+import version from './version';
 
 const logger = console;
 program
@@ -13,6 +14,11 @@ program
   .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')
   .action((options) => initiate(options));
+
+program
+  .command('version')
+  .description('Shows Wingsuit version.')
+  .action((options) => version(options));
 
 program
   .command('generate-component')
