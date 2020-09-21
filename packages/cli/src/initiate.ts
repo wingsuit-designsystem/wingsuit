@@ -55,13 +55,14 @@ export default function(options) {
       spawnSync('git', ['fetch', '--all'], gitOptions);
       spawnSync('git', ['checkout', npmOptions.branch], gitOptions);
     }
-    const pkg = JSON.parse(fs.readFileSync(`${npmOptions.gitFolder}/package.json`));
-    Object.keys(pkg.dependencies).forEach(key => {
+    const pkgFile = `${npmOptions.gitFolder}/packages/wingsuit/package.json`;
+    const pkg = JSON.parse(fs.readFileSync(pkgFile));
+    Object.keys(pkg.devDependencies).forEach(key => {
       if (key.indexOf('@wingsuit-designsystem/') === 0) {
-        pkg.dependencies[key] = `^${pkg.dependencies[key]}`;
+        pkg.devDependencies[key] = `^${pkg.devDependencies[key]}`;
       }
     });
-    fs.writeFile('package.json', JSON.stringify(pkg), function(err) {
+    fs.writeFileSync(pkgFile, JSON.stringify(pkg, null, 4), function(err) {
       if (err) {
         console.log(err);
       }
