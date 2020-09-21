@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/storybook",
-  "version": "1.0.0-1.0.0-beta.11.0",
+  "version": "1.0.0-beta.11",
   "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
@@ -47,5 +47,5 @@
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
   },
-  "gitHead": "c3da3714569f0e437fb99b3907323541226a44b6"
+  "gitHead": "e4066a0eb082ae849ffdea0d64da9f2ddba5d193"
 }
