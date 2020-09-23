@@ -100,7 +100,7 @@ With field type `pattern` you can render patterns inside the pattern:
 This works also with a list of patterns. 
 ```yaml
   fields:  
-    image:
+    images:
       type: pattern
       multi_value_type: single_value
       preview:
@@ -126,21 +126,21 @@ You can control how wingsuit will handle the resulting array of objects.
 
 <b>pattern.twig</b>
 ```
-{{ image }}
+{{ images }}
 ```
 * `items` provides a list of patterns. The resulting variable is an array you can loop through.
 
 <b>pattern.twig</b>
 ```
-{% for item in image %}
+{% for item in images %}
 {{ item }}
 {% endfor %}
 ```
 
 * `field_items` provides a list of objects. The rendered pattern is inside the content key. This is useful to emulate multi value field templates in drupal.
 ```
-{% for item in image %}
-{{ item.key }}
+{% for item in images %}
+{{ item.content }}
 {% endfor %}
 ```
 
