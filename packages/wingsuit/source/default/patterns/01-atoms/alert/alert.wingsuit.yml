@@ -1,6 +1,6 @@
 alert:
   use: "@atoms/alert/alert.twig"
-  label: alert
+  label: Alert
   description: Example description
   fields:
     header:
