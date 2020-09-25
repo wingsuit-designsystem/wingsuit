@@ -2,7 +2,7 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
-# Drupal + Tailwind CSS + UI Patterns
+# Storybook for Drupal with Tailwind CSS and UI Patterns
 
 ## Wingsuit is an open source design system to build [UI Patterns](https://www.drupal.org/project/ui_patterns) (and|or) Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
 
