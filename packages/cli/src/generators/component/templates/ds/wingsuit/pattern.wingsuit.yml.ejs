@@ -3,7 +3,7 @@
   label: <%= capitalizeName %>
   description: Example description
   <% if (componentType == 'wingsuit_presenter') { %>
-  visible: index
+  visible: storybook
   <% } %>
   fields:
     field_1:
@@ -16,4 +16,12 @@
       label: Setting 1
       options:
         option_1: Value 1
-      preview: value_1
+      preview: value_1<% if (useJs || useCss) { %>
+  libraries:
+    - pattern_<%= underscoreName %>:<% if (useCss) { %>
+       css:
+         component:
+           ws-assets://<%= name %>.css: {}<% } %><% if (useJs) { %>
+       js:
+         ws-assets://behaviors/<%= name %>.js: {}
+<% } %><% } %>
