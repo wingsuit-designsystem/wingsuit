@@ -87,36 +87,36 @@ jobs:
           root: .
           paths:
             - .verdaccio-cache
-  examples-v2:
-    docker:
-      - image: cypress/included:4.5.0
-        environment:
-          TERM: xterm
-    working_directory: /tmp/storybook
-    parallelism: 2
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: running local registry
-          command: yarn local-registry --port 6000 --open
-          background: true
-      - run:
-          name: wait for registry
-          command: yarn wait-on http://localhost:6000
-      - run:
-          name: set registry
-          command: yarn config set registry http://localhost:6000/
-      - run:
-          name: test local registry
-          command: yarn info @wingsuit-designsystem/core
-      - run:
-          name: run e2e tests
-          command: yarn test:e2e-framework
-      - store_artifacts:
-          path: /tmp/storybook/cypress
-          destination: cypress
+#  examples-v2:
+#    docker:
+#      - image: cypress/included:4.5.0
+#        environment:
+#          TERM: xterm
+#    working_directory: /tmp/storybook
+#    parallelism: 2
+#    steps:
+#      - checkout
+#      - attach_workspace:
+#          at: .
+#      - run:
+#          name: running local registry
+#          command: yarn local-registry --port 6000 --open
+#          background: true
+#      - run:
+#          name: wait for registry
+#          command: yarn wait-on http://localhost:6000
+#      - run:
+#          name: set registry
+#          command: yarn config set registry http://localhost:6000/
+#      - run:
+#          name: test local registry
+#          command: yarn info @wingsuit-designsystem/core
+#      - run:
+#          name: run e2e tests
+#          command: yarn test:e2e-framework
+#      - store_artifacts:
+#          path: /tmp/storybook/cypress
+#          destination: cypress
 #  examples-v2-yarn-2:
 #    docker:
 #      - image: cypress/included:4.7.0
