@@ -259,9 +259,9 @@ workflows:
       - publish:
           requires:
             - build
-      - examples-v2:
-          requires:
-            - publish
+#      - examples-v2:
+#          requires:
+#            - publish
 #      - examples-v2-yarn-2:
 #          requires:
 #            - publish
