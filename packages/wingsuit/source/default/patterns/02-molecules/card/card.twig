@@ -9,38 +9,35 @@
   alignment == 'center'?'justify-center': '',
   'flex',
 ]) | sort | join(' ') | trim %}
+
+
 <{{ element }} {{ attributes.addClass([
   alignment == 'center'?'text-center': '',
-  'block',
-  'group hover:no-underline',
+  'w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink',
 ] | sort | join(' ') | trim) }}>
-  <div class="{{ image_classes }}">
-    {% block image %}
-      {{ image }}
-    {% endblock %}
-  </div>
-  <div>
-    {% if preheadline is not empty %}
-      <div class="font-serif text-36 text-blue group-hover:underline">
+
+
+  <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+    <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+      <p class="w-full text-gray-600 text-xs md:text-sm px-6">
         {% block preheadline %}
           {{ preheadline }}
         {% endblock %}
-      </div>
-    {% endif %}
-    <{{ headline__element }} class="text-base mb-1 uppercase text-gray-light font-sans">
-      {% block headline %}
-        {{ headline }}
-      {% endblock %}
-    </{{ headline__element }}>
-    {% if text is not empty %}
-      <div class="text-base mb-10 text-gray-dark font-sans">
+      </p>
+      <h2 class="w-full font-bold text-xl text-gray-800 px-6">
+        {% block headline %}
+          {{ headline }}
+        {% endblock %}</h2>
+      <p class="text-gray-800 text-base px-6 mb-5">
         {% block text %}
           {{ text }}
         {% endblock %}
-      </div>
-    {% endif %}
-    {% if button is not empty %}
+      </p>
+    </a>
+  </div>
+  <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+    <div class="flex items-center justify-start">
       {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} only %}
-    {% endif %}
+    </div>
   </div>
 </{{ element }}>

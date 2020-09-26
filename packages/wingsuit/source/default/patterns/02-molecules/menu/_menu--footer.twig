@@ -1,16 +1,16 @@
 {% set attributes = attributes|default(create_attribute()) %}
 
-<nav class="flex flex-col justify-center m-auto md:m-0" role="navigation">
+<nav role="navigation">
   <ul {{ attributes.addClass([
-    variant == 'footer',
-    'flex flex-col md:flex-row md:items-center justify-center',
+    'list-reset mb-6',
   ] | sort | join(' ') | trim) }} >
     {% for item in items %}
-      <li class="font-sans px-4 pt-4 lg:p-2 lg:px-4 lg:border-b-0 border-b-0 uppercase text-gray-dark lg:text-center">
-        <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
+      <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+        <a class="no-underline hover:underline text-gray-800 hover:text-orange-500 {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
           {{ item.title }}
         </a>
       </li>
     {% endfor %}
   </ul>
 </nav>
+
