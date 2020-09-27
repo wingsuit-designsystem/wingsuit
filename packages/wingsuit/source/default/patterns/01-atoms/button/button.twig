@@ -8,14 +8,14 @@
 {% endif %}
 
 <{{ tag_name }} {{ attributes.addClass([
-  variant == 'default' ? ' mx-auto lg:mx-0 hover:underline text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg',
-  variant == 'hollow' ? ' mx-auto lg:mx-0 hover:underline text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg',
+  'mx-auto lg:mx-0 hover:underline text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg transistion transition-colors duration-200',
+  pattern_configuration('button', variant, color)
 ] | sort | join(' ') | trim) }}>
 {{ text }}
   {% if svg is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: svg,
-      size: size,
+      size: 'w-4',
     } %}
   {% endif %}
 </{{ tag_name }}>
