@@ -1,0 +1,32 @@
+hero:
+  use: "@molecules/hero/hero.twig"
+  label: Hero
+  description: Super Hero section to Sell yourself!
+  fields:
+    pre_headline:
+      type: text
+      label: Pre Headline
+      preview: "What business are you?"
+    headline:
+      type: text
+      label: Headline
+      preview: "Main Hero Message to sell yourself!"
+    text:
+      type: text
+      label: Text
+      preview: "Sub-hero message, not too long and not too short. Make it just right!"
+    button:
+      type: pattern
+      label: Text
+      preview:
+        id: button
+        variant: default
+    image:
+      type: pattern
+      label: Image
+      preview:
+        id: image
+        variant: primary
+        settings:
+          placeholder: false
+          src: images/hero.png

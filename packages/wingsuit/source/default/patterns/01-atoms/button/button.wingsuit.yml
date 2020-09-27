@@ -10,6 +10,11 @@ button:
   variants:
     default:
       label: Default
+      configuration:
+        color:
+          orange: 'bg-orange-600'
+          white: 'bg-white'
+
     hollow:
       label: Hollow
       description: Inverts colors
@@ -18,22 +23,14 @@ button:
       type: select
       required: true
       label: Color
-      preview: primary
+      preview: orange
       options:
-        primary: Primary
-        secondary: Secondary
+        orange: Orange
+        white: White
     url:
       type: token
       label: Url
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
-    size:
-      type: select
-      label: Icon Size
-      default_value: w-4
-      required: true
-      options:
-        w-4: Default
-        w-8: Large
     svg:
       type: select
       label: SVG
