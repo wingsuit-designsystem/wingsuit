@@ -41,6 +41,14 @@ export default class PatternVariant {
     return this.fields;
   }
 
+  public setConfiguration(configuration: any) {
+    this.configuration = configuration;
+  }
+
+  public getConfiguration(): any {
+    return this.configuration;
+  }
+
   public addField(field: Field) {
     this.fields[field.getName()] = field;
   }
@@ -138,15 +146,18 @@ export default class PatternVariant {
 
   private description: string;
 
+  private configuration: any;
+
   private fields: Field[] = [];
 
   private settings: Setting[] = [];
 
-  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string) {
+  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string, configuration: any) {
     this.pattern = pattern;
     this.variant = variant;
     this.label = label;
     this.use = use;
     this.description = description;
+    this.configuration = configuration;
   }
 }
