@@ -9,6 +9,16 @@ let rendererImpl: IRenderer;
 export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
+export async function getPatternConfiguration(
+  patternId: string,
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME
+) {
+  const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+  if (variant == null) {
+    throw new Error(`Pattern ${patternId}:${variantId} not found.`);
+  }
+
+}
 
 export function twingMapToArray(variables): string[] {
   const ary: string[] = [];

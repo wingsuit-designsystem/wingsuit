@@ -36,6 +36,7 @@ export interface IPatternDefinition {
   fields: Properties;
   settings: Properties;
   variants: Variants;
+  configuration: any;
 }
 export interface IPatternDefinitionsPatterns {
   [key: string]: IPatternDefinition;
