@@ -9,7 +9,9 @@ card:
       description: The image tag.
       preview:
         id: image
-        variant: primary
+        variant: placeholder_image
+        settings:
+          style: card
     preheadline:
       type: text
       label: Preheadline

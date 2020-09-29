@@ -9,7 +9,6 @@
 
 <{{ tag_name }} {{ attributes.addClass([
   'mx-auto lg:mx-0 hover:underline text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg transistion transition-colors duration-200',
-  pattern_configuration('button', variant, color)
 ] | sort | join(' ') | trim) }}>
 {{ text }}
   {% if svg is not empty %}

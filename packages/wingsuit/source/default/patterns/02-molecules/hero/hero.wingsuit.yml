@@ -26,7 +26,6 @@ hero:
       label: Image
       preview:
         id: image
-        variant: primary
+        variant: image
         settings:
-          placeholder: false
-          src: images/hero.png
+          url: ws-assets://images/hero.png
