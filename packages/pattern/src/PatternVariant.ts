@@ -152,7 +152,14 @@ export default class PatternVariant {
 
   private settings: Setting[] = [];
 
-  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string, configuration: any) {
+  constructor(
+    pattern: Pattern,
+    variant: string,
+    use: string,
+    label: string,
+    description: string,
+    configuration: any
+  ) {
     this.pattern = pattern;
     this.variant = variant;
     this.label = label;

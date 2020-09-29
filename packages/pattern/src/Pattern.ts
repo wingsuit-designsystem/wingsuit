@@ -1,7 +1,7 @@
 import PatternVariant from './PatternVariant';
 import Setting from './Setting';
-import Field, {MultiValueTypes} from './Field';
-import {IPatternDefinition} from './definition';
+import Field, { MultiValueTypes } from './Field';
+import { IPatternDefinition } from './definition';
 import IPatternStorage from './IPatternStorage';
 
 export default class Pattern {
@@ -119,7 +119,8 @@ export default class Pattern {
     const variantKeys: string[] = [];
     const settings: {} = this.definition.settings != null ? this.definition.settings : {};
     const fields: {} = this.definition.fields != null ? this.definition.fields : {};
-    const configuration: {} = this.definition.configuration != null ? this.definition.configuration : {};
+    const configuration: {} =
+      this.definition.configuration != null ? this.definition.configuration : {};
 
     const variantsDefinitions: {} =
       this.definition.variants != null ? this.definition.variants : {};
@@ -139,9 +140,17 @@ export default class Pattern {
       const use = variantDefinition.use != null ? variantDefinition.use : this.use;
       const description =
         variantDefinition.description != null ? variantDefinition.description : '';
-      const variantConfiguration = variantDefinition.configuration != null ? variantDefinition.configuration : {};
-      const mergedConfiguration = {...variantConfiguration, ...configuration}
-      const variant = new PatternVariant(this, variantKey, use, label, description, mergedConfiguration);
+      const variantConfiguration =
+        variantDefinition.configuration != null ? variantDefinition.configuration : {};
+      const mergedConfiguration = { ...variantConfiguration, ...configuration };
+      const variant = new PatternVariant(
+        this,
+        variantKey,
+        use,
+        label,
+        description,
+        mergedConfiguration
+      );
 
       if (isFirst === true) {
         this.defaultVariant = variant;

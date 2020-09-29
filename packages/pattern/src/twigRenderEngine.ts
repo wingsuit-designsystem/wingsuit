@@ -17,7 +17,6 @@ export async function getPatternConfiguration(
   if (variant == null) {
     throw new Error(`Pattern ${patternId}:${variantId} not found.`);
   }
-
 }
 
 export function twingMapToArray(variables): string[] {
@@ -97,10 +96,10 @@ export async function renderPatternPreview(
           ...previewRenderedVariables,
         };
         renderPattern(patternId, variantId, finalVariables)
-          .then((output) => {
+          .then(output => {
             resolve(output);
           })
-          .catch((error) => {
+          .catch(error => {
             resolve(error);
           });
       });
