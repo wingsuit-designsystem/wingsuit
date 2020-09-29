@@ -1,4 +1,4 @@
 <!--  .storybook/preview-body.html -->
-<body class="wingsuit-body">
+<body class="wingsuit-body" x-data="{ isScrollDown: false }" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; ">
 <div id="root" class="wingsuit-root"></div>
 </body>

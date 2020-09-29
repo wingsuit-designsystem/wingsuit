@@ -18,6 +18,7 @@ module.exports = {
       },
       maxWidth: {
         none: 'none',
+        ...rem(120),
         ...rem(800),
         ...rem(1200),
         ...rem(1600),
