@@ -49,7 +49,7 @@ export default class TwigAttribute {
 
   toString() {
     let output = '';
-    Array.from(this.attributes.keys()).forEach((key) => {
+    Array.from(this.attributes.keys()).forEach(key => {
       let attributeValue = null;
       if (typeof this.attributes.get(key) === 'object' && Array.isArray(this.attributes.get(key))) {
         attributeValue = this.attributes.get(key).join(' ');

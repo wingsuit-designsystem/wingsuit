@@ -1,4 +1,4 @@
-import { twigAttributeFunction, twigItok } from './twigExtensions';
+import { twigAttributeFunction, twigItok, twigUuid } from './twigExtensions';
 import IRenderer from './IRenderer';
 import { renderPatternPreview, renderPattern } from './twigRenderEngine';
 import { storage } from './index';
@@ -16,17 +16,18 @@ export class TwigRenderer implements IRenderer {
     twig.extendFunction('pattern', renderPattern);
     twig.extendFunction('create_attribute', twigAttributeFunction);
     twig.extendFunction('ws_itok', twigItok);
+    twig.extendFunction('uuid', twigUuid);
   }
 
   render(id: string, include: string, variables: {}): Promise<string> {
     const template = storage.findTwigByNamespace(include);
     if (template !== null) {
       // @ts-ignore
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve(template(variables));
       });
     }
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       resolve(`Template ${id} ${include} not loaded. Check require.context in your configure.js`);
     });
   }
