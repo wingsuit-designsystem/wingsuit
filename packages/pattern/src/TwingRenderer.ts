@@ -1,7 +1,7 @@
 import { TwingLoaderArray } from 'twing';
 import { TwingLoaderInterface } from 'twing/dist/types/lib/loader-interface';
 import IRenderer from './IRenderer';
-import { twigAttributeFunction, twigItok, twigFileUrl } from './twigExtensions';
+import { twigAttributeFunction, twigItok, twigFileUrl, twigUuid } from './twigExtensions';
 import { renderPattern, renderPatternPreview } from './twigRenderEngine';
 import { storage } from './index';
 import Pattern from './Pattern';
@@ -66,6 +66,8 @@ export class TwingRenderer implements IRenderer {
       )
     );
     this.environment.addFunction(new TwingFunction('ws_itok', twigItok));
+    this.environment.addFunction(new TwingFunction('uuid', twigUuid));
+
     this.environment.addFunction(new TwingFunction('file_url', twigFileUrl));
     this.environment.addFunction(new TwingFunction('pattern', renderPattern));
   }
