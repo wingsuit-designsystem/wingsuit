@@ -9,18 +9,23 @@
 <div style="background: linear-gradient(90deg, #d53369 0%, #daae51 100%);" class="text-white">
   <div class="pt-24">
 
-    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-      <!--Left Col-->
-      <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-        <p class="uppercase tracking-loose w-full">{{ pre_headline }}</p>
-        <h1 class="my-4 text-5xl font-bold leading-tight">{{ headline }}</h1>
-        <p class="leading-normal text-2xl mb-8">{{ text }}</p>
-        {{ button }}
-      </div>
-      <div class="w-full md:w-3/5 py-6 text-center">
-        {{ image }}
-      </div>
-    </div>
+    {% embed "@organisms/container/container.twig" %}
+      {% block content %}
+        <div class="flex flex-wrap flex-col md:flex-row items-center">
+          <!--Left Col-->
+          <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+            <p class="uppercase tracking-loose w-full">{{ pre_headline }}</p>
+            <h1 class="my-4 text-5xl font-bold leading-tight">{{ headline }}</h1>
+            <p class="leading-normal text-2xl mb-8">{{ text }}</p>
+            {{ button }}
+          </div>
+          <div class="w-full md:w-3/5 py-6 text-center">
+            {{ image }}
+          </div>
+        </div>
+      {% endblock %}
+    {% endembed %}
+
   </div>
   <div class="relative -mt-12 lg:-mt-24">
     <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"

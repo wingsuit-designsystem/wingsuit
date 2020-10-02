@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Placeholder component.
+ *
+ * Use this component for prototyping images.
+ * Configure image styles in apps/storybook/config/image.config.yml.
+ *
+ * Use variant image or background.
+ */
+#}
+
+{% import '@atoms/placeholder/_placeholder-macro.twig' as placeholder %}
+
+{% set variant = variant|default('image') %}
+
+{% if variant == 'image' %}
+  {%- set image -%}
+    {{ placeholder.image(style, imageConfig, placeholder_url) }}
+  {% endset %}
+  {{ image }}
+{% elseif variant == 'background' %}
+  {{ placeholder.background(style, imageConfig, background_classes, placeholder_url) }}
+{% endif %}
+

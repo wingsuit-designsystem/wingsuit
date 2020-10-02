@@ -10,5 +10,10 @@
 </main>
 
 {% block footer %}
-  {% include "@organisms/footer/footer.twig" with {menu: footer_menu} %}
+  {% include "@organisms/footer/footer.twig" with {
+    menu_1: footer_menu_1,
+    menu_2: footer_menu_2,
+    menu_3: footer_menu_3,
+    menu_4: footer_menu_4,
+  } %}
 {% endblock footer %}

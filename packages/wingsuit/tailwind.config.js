@@ -10,12 +10,6 @@ module.exports = {
   },
   theme: {
     extend: {
-      fontSize: {
-        // Final mobile:
-        ...rem(13),
-        ...rem(28),
-        ...rem(36),
-      },
       maxWidth: {
         none: 'none',
         ...rem(120),

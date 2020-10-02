@@ -67,8 +67,17 @@
  */
 #}
 
-{% set gap_configuration = gap_configuration|default('default') %}
-{% set config = _context['config_' ~ columns|default('2') ] %}
+{% set columns = columns|default(2) %}
+{% set gap = gap|default('default') %}
+
+{# Here we check if a configuration is manual provied #}
+{# if not take a configuration from wingsuit.yml file #}
+{% if config is empty %}
+{% set config = _context['config_' ~ columns ] %}
+{% endif %}
+{% if config is empty %}
+  {% set config = 'equal' %}
+{% endif %}
 {% set current_configuration = column_configuration[columns][config] %}
 
 {% if current_configuration is not empty %}
