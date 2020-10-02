@@ -1,11 +1,12 @@
 {% set attributes = attributes|default(create_attribute()) %}
+{% set fill_color = fill_color|default('fill-current') %}
 
-<div {{ attributes.addClass([
-  'svg',
-  size != '' ? size,
-  fill-color != '' ? fill-color ~ " fill-current"
-] | sort | join(' ') | trim) }}>
-  <svg viewBox="0 0 500 500">
+  <svg {{
+  attributes.addClass([
+    'svg',
+    fill_color,
+    size,
+  ] | sort | join(' ') | trim)
+  }}>
     <use xlink:href="{{ file_url('ws-assets://images/spritemap.svg') }}#{{ icon }}"></use>
   </svg>
-</div>

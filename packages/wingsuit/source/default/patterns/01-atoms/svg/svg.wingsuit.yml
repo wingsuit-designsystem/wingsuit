@@ -3,6 +3,10 @@ svg_icon:
   label: Svg Icon
   description: Flexible SVG icon component. Choose between SVG spritemap, CSS classes or inline SVGs.
   settings:
+    fill_color:
+      label: Fill color
+      type: textfield
+      preview: fill-current
     size:
       preview: w-4
       label: Size
