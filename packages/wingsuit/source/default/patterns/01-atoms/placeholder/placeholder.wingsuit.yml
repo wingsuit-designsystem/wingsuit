@@ -1,0 +1,48 @@
+placeholder:
+  use: "@atoms/placeholder/placeholder.twig"
+  label: Placeholder
+  description: "Placeholder image component."
+  variants:
+    image:
+      label: Image
+      description: "Placeholder images are very useful for prototype images.
+        You can configure your image styles in the apps/storybook/config/image.config.yml
+        and select the configured image style."
+      settings:
+        background_classes: ""
+    background:
+      label: Background image
+  settings:
+    placeholder_url:
+      label: Placeholder service
+      type: select
+      preview: https://satyr.io/[width]x[height]
+      required: true
+      options:
+        "https://satyr.io/[width]x[height]": https://satyr.io/
+        "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
+        "https://fakeimg.pl/[width]x[height]/random": https://fakeimg.pl/
+        "https://placeimg.com/[width]/[height]/tech/grayscale": https://placeimg/
+    background_classes:
+      label: Classes
+      description: Classes applied to background image container.
+      type: text
+      preview: w-full h-20 bg-cover
+    style:
+      label: Image style
+      type: select
+      preview: 16x9_md_sc
+      options:
+        1x1_xxs_sc: XXSmall 1x1
+        8x7_xxs_sc: XSmall 8x7
+        8x7_xs_sc: Small 8x7
+        16x9_xxxs_sc: XXXSmall 16x9
+        16x9_xxs_sc: XXSmall 16x9
+        16x9_xs_sc: XSmall 16x9
+        16x9_sm_sc: SM 16x9
+        16x9_md_sc: LG 16x9
+        16x9_xl_sc: XL 16x9
+        16x9_xxl_sc: XXLL 16x9
+        card: Card
+        article: Article
+  visibility: storybook

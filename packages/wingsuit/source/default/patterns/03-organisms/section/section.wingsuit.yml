@@ -3,6 +3,12 @@ section:
   label: Section
   description: "Multi column section. A combination of container and grid. Very useful for the Drupal layout builder."
   fields:
+    headline:
+      type: text
+      label: Section Headline
+      description: Optional centered headline
+      preview:
+        faker: lorem.word
     column_1:
       type: text
       label: First Column

@@ -5,12 +5,10 @@
  *
  * Image component for images and background images.
  *
- * Use variant placeholder or placeholder_background for prototyping.
  */
 #}
 
 {% set variant = variant|default('image') %}
-{% set placeholder_url = placeholder_url|default('https://satyr.io/') %}
 
 {% if variant == 'image' %}
   {%- set image -%}
@@ -23,18 +21,5 @@
   {% include '@atoms/image/_image--image.twig' with { image: image, caption: caption } only %}
 {% elseif variant == 'background' %}
   {% include '@atoms/image/_image--background.twig' with {url: url, background_style: background_style } only %}
-{% elseif variant == 'placeholder_image' %}
-  {%- set image -%}
-    {% import '@atoms/image/_placeholder-macro.twig' as placeholder %}
-    {{ placeholder.image(style, imageConfig, placeholder_url) }}
-  {% endset %}
-  {% include '@atoms/image/_image--image.twig' with { image: image, caption: caption } only %}
-{% elseif variant == 'placeholder_background' %}
-  {% import '@atoms/image/_placeholder-macro.twig' as placeholder %}
-  {% set image_styles = imageConfig.styles %}
-  {% set url %}
-    {{ placeholder.get_placeholder_url(image_styles[style], placeholder_url) }}
-  {% endset %}
-  {% include '@atoms/image/_image--background.twig' with { url: url, background_style: background_style } only %}
 {% endif %}
 

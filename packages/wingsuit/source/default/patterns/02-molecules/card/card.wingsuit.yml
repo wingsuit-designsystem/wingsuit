@@ -8,8 +8,8 @@ card:
       type: pattern
       description: The image tag.
       preview:
-        id: image
-        variant: placeholder_image
+        id: placeholder
+        variant: image
         settings:
           style: card
     preheadline:

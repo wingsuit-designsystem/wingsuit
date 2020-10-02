@@ -19,7 +19,7 @@
   {% if not image_style.height %}
     {% set height = random(range(image_style.width * 0.75, image_style.width * 1.25, 10)) %}
   {% endif %}
-  {% set img_src = placeholder_url ~ image_style.width ~ 'x' ~ image_style.height %}
+  {% set img_src = placeholder_url|replace({'[width]': image_style.width, '[height]': image_style.height}) %}
   {{- img_src -}}
 {% endmacro %}
 
@@ -68,4 +68,11 @@
       </picture>
     {% endif %}
   {% endif %}
+{% endmacro %}
+
+{% macro background(style, imageConfig, classes, placeholder_url) %}
+  {% import _self as self %}
+  {% set image_styles = imageConfig.styles %}
+<div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url) }}')">
+</div>
 {% endmacro %}

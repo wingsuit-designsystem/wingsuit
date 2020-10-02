@@ -1,11 +1,11 @@
 image:
   use: "@atoms/image/image.twig"
   label: Image
-  description: "Image component with placeholder support."
+  description: "Image with capture component."
   fields:
     image:
       type: text
-      label: The image field.
+      label: The image.
       description: The image provided by Drupal.
     caption:
       type: text
@@ -14,68 +14,17 @@ image:
     image:
       label: Image
       description: Use variant "image" for drupal images or theme images. Use ws-assets:// for theme images. E.g. "ws-assets://images/logo.svg"
-      settings:
-        placeholder: false
-        style: false
-        background_style: false
-        placeholder_url: false
     background:
       label: Background image
       description: Set the image url with setting "url" and control the display with setting "background_style"
-      settings:
-        placeholder: false
-        placeholder_url: false
-        style: false
-    placeholder_image:
-      label: Image (placeholder)
-      description: "Placeholder images are very useful for prototype images.
-        You can configure your image styles in the apps/storybook/config/image.config.yml
-        and select the configured image style."
-      settings:
-        placeholder: true
-        url: false
-        background_style: false
-    placeholder_background:
-      label: Background image (placeholder)
-      settings:
-        placeholder: true
-        url: false
   settings:
-    placeholder:
-      label: Placeholder
-      type: boolean
-      default_value: false
-      description: Generate placeholder image.
     url:
       label: Url
       type: textfield
       description: Use "Url" if you don't have the rendered image tag. The component will generate an image tag.
       preview: 'ws-assets://images/logo.svg'
-    placeholder_url:
-      label: Placeholder url
-      type: textfield
-      description: The placeholder service url.
-      preview: https://satyr.io/
     background_style:
       label: Background style
       description: Classes applied to background image container.
       type: text
       preview: w-full h-20 bg-cover
-    style:
-      label: Image style
-      type: select
-      preview: 16x9_md_sc
-      options:
-        1x1_xxs_sc: XXSmall 1x1
-        8x7_xxs_sc: XSmall 8x7
-        8x7_xs_sc: Small 8x7
-        16x9_xxxs_sc: XXXSmall 16x9
-        16x9_xxs_sc: XXSmall 16x9
-        16x9_xs_sc: XSmall 16x9
-        16x9_sm_sc: SM 16x9
-        16x9_md_sc: LG 16x9
-        16x9_xl_sc: XL 16x9
-        16x9_xxl_sc: XXLL 16x9
-        card: Card
-        article: Article
-  visibility: storybook
