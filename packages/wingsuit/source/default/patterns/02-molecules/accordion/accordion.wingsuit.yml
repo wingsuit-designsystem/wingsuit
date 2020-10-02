@@ -1,0 +1,15 @@
+accordion:
+  use: "@molecules/accordion/accordion.twig"
+  label: Accordion
+  description: Pure CSS Collapsible / Accordion
+  fields:
+    items:
+      type: pattern
+      label: Items
+      preview:
+        -
+          id: accordion_item
+        -
+          id: accordion_item
+        -
+          id: accordion_item

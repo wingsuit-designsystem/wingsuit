@@ -1,0 +1,15 @@
+accordion_item:
+  use: "@atoms/accordion-item/accordion-item.twig"
+  label: Accordion Item
+  description: A single accordion item.
+  fields:
+    headline:
+      type: text
+      label: Headline
+      preview:
+        faker: lorem.word
+    text:
+      type: text
+      label: Text
+      preview:
+        faker: lorem.word

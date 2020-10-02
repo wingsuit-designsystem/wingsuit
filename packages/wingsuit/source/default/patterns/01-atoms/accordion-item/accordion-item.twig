@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * accordion-item
+ *
+ * See accordion-item.wingsuit.yaml for documentation.
+ */
+#}
+{% set id = uuid() %}
+<div class="tab w-full overflow-hidden border-t" data-children-count="1">
+  <input class="absolute opacity-0 " id="{{ id }}" type="checkbox" name="tabs">
+  <label class="block p-5 leading-normal cursor-pointer" for="{{ id }}">{{ headline }}</label>
+  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+    <div class="p-5">{{ text }}</div>
+  </div>
+</div>
