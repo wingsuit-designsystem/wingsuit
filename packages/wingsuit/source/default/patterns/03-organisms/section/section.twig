@@ -19,7 +19,7 @@
   {% include "@organisms/grid/grid.twig" with {attributes: create_attribute() } %}
 {% endset %}
 
-{% embed "@organisms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
+{% embed "@atoms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
   {% block content %}
   {% if headline is not empty %}
     <h2 class="pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ headline }}</h2>

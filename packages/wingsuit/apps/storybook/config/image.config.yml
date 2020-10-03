@@ -29,18 +29,31 @@ imageConfig:
       width: 768
       height: 432
     16x9_md_sc:
-      label: LG 16x9
+      label: MD 16x9
       width: 1024
       height: 576
-    16x9_xl_sc:
-      label: XL 16x9
+    16x9_l_sc:
+      label: L 16x9
       width: 1280
       height: 720
+    16x9_xl_sc:
+      label: XL 16x9
+      width: 1600
+      height: 900
     16x9_xxl_sc:
       label: XXL 16x9
       width: 1900
       height: 1068
   stylesResponsive:
+    banner:
+      style: 16x9_xs_sc
+      breakpoints:
+        xxs: 8x7_xxs_sc
+        xs: 8x7_xs_sc
+        sm: 16x9_sm_sc
+        md: 16x9_md_sc
+        lg: 16x9_l_sc
+        xl: 16x9_xxl_sc
     card:
       style: 16x9_xs_sc
       breakpoints:

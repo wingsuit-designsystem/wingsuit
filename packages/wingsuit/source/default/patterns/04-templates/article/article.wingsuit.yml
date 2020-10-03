@@ -1,7 +1,7 @@
 article:
   use: "@templates/article/article.twig"
   label: Article
-  description: Use Article for your teasers
+  description: The article template.
   fields:
     headline:
       type: text

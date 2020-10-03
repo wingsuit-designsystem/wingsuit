@@ -3,7 +3,7 @@
  * @file
  * Image placeholder generation.
  *
- * Generates placeholder images and responsive images based on image configuration.
+ * Generates placeholder images and responsive placeholder images based on image configuration.
  */
 #}
 
@@ -60,8 +60,10 @@
     {% else %}
       <picture>
         {% for breakpoint_name, image_style_name in image_style.breakpoints %}
+          {% if image_styles[image_style_name] is not empty %}
           <source srcset="{{- self.get_placeholder_url(image_styles[image_style_name], placeholder_url) -}}"
                   media="{{ breakpoints[breakpoint_name].mediaQuery }}">
+          {% endif %}
         {% endfor %}
         <img src="{{- self.get_placeholder_url(image_styles[image_style.style], placeholder_url)|trim -}}"
              alt="MDN">
