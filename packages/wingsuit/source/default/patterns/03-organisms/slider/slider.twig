@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * slider
+ *
+ * See slider.wingsuit.yaml for documentation.
+ */
+#}
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    {% for item in items %}
+    <div class="swiper-slide">{{ item.content }}</div>
+    {% endfor %}
+  </div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+

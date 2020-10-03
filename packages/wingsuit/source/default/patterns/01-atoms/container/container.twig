@@ -33,6 +33,7 @@
       width == 'default' ? 'max-w-1200',
       width == 'large' ? 'max-w-1600',
       'px-6',
+      classes,
       'mx-auto'
     ] | sort | join(' ') | trim) }}>
     {% block content %}

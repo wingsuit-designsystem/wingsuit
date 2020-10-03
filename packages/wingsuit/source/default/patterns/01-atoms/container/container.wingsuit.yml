@@ -1,5 +1,5 @@
 container:
-  use: "@organisms/container/container.twig"
+  use: "@atoms/container/container.twig"
   label: Container
   description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
   fields:
@@ -40,6 +40,10 @@ container:
         small: Small
         default: Default
         large: Large
+    classes:
+      type: text
+      label: Classes
+      description: Additional CSS classes
     padding_bottom:
       type: select
       label: Padding bottom

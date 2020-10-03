@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * banner
+ *
+ * See banner.wingsuit.yaml for documentation.
+ */
+#}
+{% set position_classes ={
+  'top_left': '',
+  'top_center': 'text-center justify-center',
+  'top_right': 'text-right justify-end',
+  'center_left': 'items-center',
+  'center_center': 'text-center items-center justify-center',
+  'center_right': 'text-right items-center justify-end',
+  'bottom_left': 'items-end',
+  'bottom_center': 'text-center items-end justify-center',
+  'bottom_right': 'text-right items-end justify-end',
+} %}
+
+{% set teaser %}{{- teaser -}}{% endset %}
+
+<div class="relative swiper-slide">
+  {{ image }}
+  <div class="absolute top-0 left-0 w-full h-full flex">
+
+    {% embed "@atoms/container/container.twig" with { teaser: teaser, headline: headline , classes: 'flex-1 flex ' ~ position_classes[variant]} only %}
+      {% block content %}
+        <div class="p-6">
+          <h2 class="text-3xl font-serif">
+            {{ headline }}
+          </h2>
+          {% if teaser is not empty %}
+            <div class="text-xl">
+              {{ teaser }}
+            </div>
+          {% endif %}
+        </div>
+      {% endblock %}
+    {% endembed %}
+  </div>
+</div>

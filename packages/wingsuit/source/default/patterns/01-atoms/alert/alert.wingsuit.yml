@@ -1,7 +1,7 @@
 alert:
   use: "@atoms/alert/alert.twig"
   label: Alert
-  description: Example description
+  description: Colorful status, warning and error messages.
   fields:
     header:
       type: text

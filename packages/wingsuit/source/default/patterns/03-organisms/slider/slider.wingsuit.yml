@@ -1,0 +1,26 @@
+slider:
+  use: "@organisms/slider/slider.twig"
+  label: Slider
+  description: Javascript slider with swipperjs (https://swiperjs.com/).
+    Change the slider behavior in slider.behavior.js.
+  fields:
+    items:
+      type: pattern
+      label: Content
+      multi_value_type: field_items
+      preview:
+        - id: banner
+          variant: bottom_left
+        - id: banner
+          variant: bottom_left
+        - id: banner
+          variant: bottom_left
+        - id: banner
+          variant: bottom_left
+        - id: banner
+          variant: bottom_left
+
+  libraries:
+    - pattern_slider:
+       js:
+         ws-assets://behaviors/slider.js: {}

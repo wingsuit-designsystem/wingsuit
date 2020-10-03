@@ -45,4 +45,5 @@ placeholder:
         16x9_xxl_sc: XXLL 16x9
         card: Card
         article: Article
+        banner: Banner
   visibility: storybook

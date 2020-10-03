@@ -4,10 +4,17 @@ import { useEffect } from '@storybook/client-api';
 declare const window: Window;
 
 let behaviorName;
+let beahviorsInitialized = false;
+export function isInit() {
+  return beahviorsInitialized;
+}
 export function init(pbehaviorName) {
-  // @ts-ignore
-  window[pbehaviorName] = { behaviors: {} };
-  behaviorName = pbehaviorName;
+  if (beahviorsInitialized === false) {
+    // @ts-ignore
+    window[pbehaviorName] = { behaviors: {} };
+    behaviorName = pbehaviorName;
+  }
+  beahviorsInitialized = true;
 }
 
 export function attachBehaviorDecorator(storyFn) {
@@ -31,9 +38,8 @@ class BehaviorExecutor {
   public static attachBehaviors(context = {}, settings = {}) {
     // @ts-ignore
     const { behaviors } = window[behaviorName];
-
     window.setTimeout(() => {
-      Object.keys(behaviors).forEach((i) => {
+      Object.keys(behaviors).forEach(i => {
         if (typeof behaviors[i].attach === 'function') {
           try {
             behaviors[i].attach(context, settings);

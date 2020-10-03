@@ -43,7 +43,7 @@ export function resolveConfig(
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
   appConfig.presetsRegistry = {};
-  Object.keys(mergedConfig.presets).forEach((name) => {
+  Object.keys(mergedConfig.presets).forEach(name => {
     appConfig.presetsRegistry[name] = mergedConfig.presets[name];
   });
 

@@ -37,6 +37,7 @@
     "@storybook/addon-viewport": "^6.0.0",
     "@storybook/linter-config": "^2.5.0",
     "@storybook/react": "^6.0.0",
+    "@storybook/addon-backgrounds": "^6.0.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/cli": "1.0.0-beta.16",
@@ -70,9 +71,9 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
-    "@storybook/addon-backgrounds": "^6.0.21",
     "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",
+    "swiper": "^5.4.5",
     "tailwindcss": "^1.7.0"
   },
   "gitHead": "c3da3714569f0e437fb99b3907323541226a44b6"
