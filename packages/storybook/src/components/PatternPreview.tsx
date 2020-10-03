@@ -13,7 +13,7 @@ const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...var
       .then((output: string) => {
         setRendered(output);
       })
-      .catch(error => {
+      .catch((error) => {
         setRendered(`Error: ${error.message}`);
       });
   }, [patternId, variantId, JSON.stringify(variables)]);

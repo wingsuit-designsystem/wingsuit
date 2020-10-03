@@ -13,7 +13,7 @@ function getOptionString(setting) {
   return '';
 }
 
-export const PatternProperties: FC<Props> = props => {
+export const PatternProperties: FC<Props> = (props) => {
   const context = useContext(DocsContext);
   const { story } = props;
   const contextStory = getContextualStory(context, story);
@@ -23,7 +23,7 @@ export const PatternProperties: FC<Props> = props => {
 
     const fields = patternVariant.getFields();
     properties.Fields = { name: 'Fields', rows: {} };
-    Object.keys(fields).forEach(key => {
+    Object.keys(fields).forEach((key) => {
       const field = fields[key];
       properties.Fields.rows[key] = {
         name: key,
@@ -35,7 +35,7 @@ export const PatternProperties: FC<Props> = props => {
     });
     const settings = patternVariant.getSettings();
     properties.Settings = { name: 'Settings', rows: {} };
-    Object.keys(settings).forEach(key => {
+    Object.keys(settings).forEach((key) => {
       const setting = settings[key];
       if (setting.isEnable()) {
         properties.Settings.rows[key] = {

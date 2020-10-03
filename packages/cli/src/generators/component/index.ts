@@ -49,7 +49,7 @@ export default class extends Generator {
           // Return array of atomic folders within the app's design system
           return readdirSync(`${config.absDesignSystemPath}/patterns`, {
             withFileTypes: true,
-          }).filter(folder => folder.isDirectory());
+          }).filter((folder) => folder.isDirectory());
         },
       },
       {
@@ -105,7 +105,7 @@ export default class extends Generator {
       },
     ];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
       this.props = {
@@ -140,7 +140,7 @@ export default class extends Generator {
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
     this.registerTransformStream(
-      rename(path => {
+      rename((path) => {
         // Remove extension and replace pattern with pattern name
         path.basename = path.basename.replace('pattern', name);
         return path;
