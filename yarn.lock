@@ -11093,6 +11093,13 @@ hsla-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/hsla-regex/-/hsla-regex-1.0.0.tgz#c1ce7a3168c8c6614033a4b5f7877f3b225f9c38"
   integrity sha1-wc56MWjIxmFAM6S194d/OyJfnDg=
 
+html-attribute-parser@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/html-attribute-parser/-/html-attribute-parser-1.0.0.tgz#13f89523dcdd6192b22702221a4db1f3f572e118"
+  integrity sha1-E/iVI9zdYZKyJwIiGk2x8/Vy4Rg=
+  dependencies:
+    source-component "^1.0.0"
+
 html-comment-regex@^1.1.0, html-comment-regex@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.2.tgz#97d4688aeb5c81886a364faa0cad1dda14d433a7"
@@ -19745,6 +19752,11 @@ sort-package-json@^1.22.1:
     globby "10.0.0"
     is-plain-obj "2.1.0"
     sort-object-keys "^1.1.3"
+
+source-component@^1.0.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/source-component/-/source-component-1.2.1.tgz#e6a76d260e97bef676e1153ef934563b6743ed87"
+  integrity sha1-5qdtJg6XvvZ24RU++TRWO2dD7Yc=
 
 source-list-map@^2.0.0:
   version "2.0.1"

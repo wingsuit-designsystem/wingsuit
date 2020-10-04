@@ -9,6 +9,7 @@ import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
 import { PatternStories } from './docs/PatternStories';
 import { PatternInclude } from './docs/PatternInclude';
+import TwigAttribute from "@wingsuit-designsystem/pattern/dist/TwigAttribute";
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -88,6 +89,8 @@ function getProps(variant) {
           setting.getPreview(),
           groupSetting
         );
+      } else if (setting.getType() === 'attributes') {
+        knobsVariables[key] = new TwigAttribute(text(setting.getLabel(), setting.getPreview(), groupSetting));
       } else if (setting.getType() === 'boolean') {
         knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
       } else if (setting.getType() === 'number') {

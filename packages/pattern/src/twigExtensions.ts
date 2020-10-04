@@ -1,7 +1,7 @@
 import TwigAttribute from './TwigAttribute';
 
-export function twigAttributeFunction() {
-  return Promise.resolve(new TwigAttribute());
+export function twigAttributeFunction(attributes = '') {
+  return Promise.resolve(new TwigAttribute(attributes));
 }
 
 export function twigFileUrl(url) {
