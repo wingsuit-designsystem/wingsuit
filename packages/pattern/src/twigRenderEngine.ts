@@ -10,16 +10,28 @@ export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
+export function twingMapToArray(variables):string[] {
+  if (variables instanceof Map) {
+    const obj = {};
+    variables.forEach( (value, key) => {
+      obj[key] = value;
+    });
+  }
+  return variables;
+}
 export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-  const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  if (variant == null) {
-    throw new Error(`Pattern ${patternId}:${variantId} not found.`);
+  let variant: PatternVariant;
+  try {
+    variant = storage.loadVariant(patternId, variantId);
+  } catch (err) {
+    return new Promise<string>((resolve, refuse) => {
+      resolve(err.message);
+    })
   }
-
   const previewPatterns = variant.getPreviewPatterns();
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];

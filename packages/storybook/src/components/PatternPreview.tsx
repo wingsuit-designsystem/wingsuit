@@ -6,7 +6,6 @@ type Props = { patternId; variantId };
 
 const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...variables }) => {
   const [rendered, setRendered] = useState('');
-
   useEffect(() => {
     renderer
       .renderPatternPreview(patternId, variantId, variables)

@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "faker": "^4.1.0",
+    "html-attribute-parser": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "twig": "~1.15.1",
     "twig-drupal-filters": "^2.0.0",

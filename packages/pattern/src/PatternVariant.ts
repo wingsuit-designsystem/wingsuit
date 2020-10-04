@@ -92,7 +92,7 @@ export default class PatternVariant {
         for (let i = 0; i < preview.length; i += 1) {
           previewPatterns[`${key}--${i}`] = this.buildPreviewPattern(preview[i]);
         }
-      } else if (field.getType() === 'pattern' && preview.id !== null) {
+      } else if (field.getType() === 'pattern' && preview != null && preview.id != null) {
         previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });
@@ -101,8 +101,13 @@ export default class PatternVariant {
 
   public getVariables() {
     const values = {};
-    Object.keys(this.settings).forEach((key) => {
-      values[key] = this.settings[key].getPreview();
+    Object.keys(this.settings).forEach(key => {
+      if (this.settings[key].getType() === 'attributes') {
+        values[key] = new TwigAttribute(this.settings[key].getPreview());
+      }
+      else {
+        values[key] = this.settings[key].getPreview();
+      }
     });
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
@@ -116,7 +121,11 @@ export default class PatternVariant {
       values['variant'] = this.variant;
     }
     // eslint-disable-next-line dot-notation
-    values['attributes'] = new TwigAttribute();
+    if (values['attributes'] == null) {
+      // eslint-disable-next-line dot-notation
+      values['attributes'] = new TwigAttribute();
+    }
+
     return values;
   }
 

@@ -1,5 +1,5 @@
-import PatternStorage from './PatternStorage';
 import IPatternStorage from './IPatternStorage';
+import PatternStorage from './PatternStorage';
 import * as TwigRenderEngine from './twigRenderEngine';
 
 export { default as IPatternStorage } from './IPatternStorage';

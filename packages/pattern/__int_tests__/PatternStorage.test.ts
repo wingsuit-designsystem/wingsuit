@@ -2,12 +2,11 @@ import * as path from 'path';
 import PatternStorage from '../src/PatternStorage';
 import Pattern from '../src/Pattern';
 import PatternVariant from '../src/PatternVariant';
+import { storage } from '../src';
 
 describe('PatternStorage', () => {
-  let storage: PatternStorage = new PatternStorage();
 
   beforeEach(() => {
-    storage = new PatternStorage();
   });
 
   describe('#createDefinitionsFromFile', () => {

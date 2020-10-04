@@ -1,0 +1,150 @@
+form_input:
+  use: "@atoms/forms/_input.twig"
+  namespace: "Atoms/Forms"
+  label: Input
+  variants:
+    text:
+      label: Text
+      settings:
+        attributes: ""
+    checkbox:
+      label: Checkbox
+      settings:
+        attributes: "type=\"checkbox\""
+      fields:
+        children:
+          id: form_label
+    radio:
+      label: Radio
+      settings:
+        attributes: "type=\"radio\""
+      fields:
+        children:
+          id: form_label
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  visibility: storybook
+
+form_label:
+  use: "@atoms/forms/_form-label.twig"
+  namespace: "Atoms/Forms"
+  label: Label
+  fields:
+    title:
+      type: text
+      label: Titel
+      preview:
+        faker: lorem.word
+  visibility: storybook
+
+form_textarea:
+  use: "@atoms/forms/_textarea.twig"
+  namespace: "Atoms/Forms"
+  label: Textarea
+  settings:
+    wrapper_attributes:
+      type: attributes
+      label: Warapper attributes
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    value:
+      type: text
+      label: Value
+      preview:
+        faker: lorem.sentence
+  visibility: storybook
+
+form_select:
+  use: "@atoms/forms/_select.twig"
+  namespace: "Atoms/Forms"
+  label: Select
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    options:
+      type: object
+      label: Options
+      preview:
+        - label: Option 1
+          type: "option"
+          selected: true
+        - label: Option 2
+          type: "option"
+        - label: Option 3
+          type: "option"
+  visibility: storybook
+
+form_checkboxes:
+  use: "@atoms/forms/_checkboxes.twig"
+  namespace: "Atoms/Forms"
+  label: Checkboxes
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_input
+          variant: "checkbox"
+        - id: form_input
+          variant: "checkbox"
+        - id: form_input
+          variant: "checkbox"
+  visibility: storybook
+
+form_radios:
+  use: "@atoms/forms/_radios.twig"
+  namespace: "Atoms/Forms"
+  label: Radios
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_input
+          variant: "radio"
+        - id: form_input
+          variant: "radio"
+        - id: form_input
+          variant: "radio"
+  visibility: storybook
+
+
+form_element:
+  use: "@atoms/forms/_radios.twig"
+  namespace: "Atoms/Forms"
+  label: Radios
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_input
+          variant: "radio"
+        - id: form_input
+          variant: "radio"
+        - id: form_input
+          variant: "radio"
+  visibility: storybook
