@@ -109,12 +109,18 @@ form_checkboxes:
       type: pattern
       label: Children
       preview:
-        - id: form_input
+        - id: form_element
           variant: "checkbox"
-        - id: form_input
+          settings:
+            label_display: after
+        - id: form_element
           variant: "checkbox"
-        - id: form_input
+          settings:
+            label_display: after
+        - id: form_element
           variant: "checkbox"
+          settings:
+            label_display: after
   visibility: storybook
 
 form_radios:
