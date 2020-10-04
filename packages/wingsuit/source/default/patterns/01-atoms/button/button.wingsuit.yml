@@ -14,7 +14,6 @@ button:
         color:
           orange: 'bg-orange-600'
           white: 'bg-white'
-
     hollow:
       label: Hollow
       description: Inverts colors
