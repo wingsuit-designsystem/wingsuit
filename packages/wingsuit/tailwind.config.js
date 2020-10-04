@@ -1,3 +1,5 @@
+const customForms = require('@tailwindcss/custom-forms');
+
 const rem = (px) => ({ [px]: `${px / 16}rem` });
 
 module.exports = {
@@ -31,4 +33,5 @@ module.exports = {
     textColor: ['responsive', 'hover', 'group-hover'],
     fontFamily: ['responsive', 'hover', 'focus'],
   },
+  plugins: [customForms],
 };

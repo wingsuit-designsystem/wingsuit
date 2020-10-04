@@ -10,4 +10,12 @@
  * @see template_preprocess_input()
  */
 #}
-<input {{ attributes.addClass('px-4') }} />{{ children }}
+<input {{ attributes.addClass([
+  variant == 'textfield' or
+  variant == 'email' or
+  variant == 'date' or
+  variant == 'tel' ? 'form-input w-full',
+  variant == 'radio' ? 'form-radio mr-2',
+  variant == 'checkbox' ? 'form-checkbox mr-2',
+]|sort
+) }} />{{ children }}

@@ -48,6 +48,7 @@
   set classes = [
     'js-form-item',
     'form-item',
+    'pb-4'
   ]
 %}
 {%
@@ -56,15 +57,20 @@
     description_display == 'invisible' ? 'visually-hidden',
   ]
 %}
-<div{{ attributes.addClass(classes) }}>
+{%
+  set description = description is empty ? {'content': description_text} : description
+%}
+<label{{ attributes.addClass(classes) }}>
   {% if label_display in ['before', 'invisible'] %}
+    <div class="pb-2">
     {{ label }}
+    </div>
   {% endif %}
   {% if prefix is not empty %}
     <span class="field-prefix">{{ prefix }}</span>
   {% endif %}
   {% if description_display == 'before' and description.content %}
-    <div{{ description.attributes }}>
+    <div class="pb-4">
       {{ description.content }}
     </div>
   {% endif %}
@@ -76,7 +82,7 @@
     {{ label }}
   {% endif %}
   {% if errors %}
-    <div class="form-item--error-message">
+    <div class="text-red-500">
       {{ errors }}
     </div>
   {% endif %}
@@ -85,4 +91,4 @@
       {{ description.content }}
     </div>
   {% endif %}
-</div>
+</label>
