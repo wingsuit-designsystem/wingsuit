@@ -12,7 +12,7 @@
 #}
 {% spaceless %}
   <div class="form-item__dropdown">
-    <select{{ attributes.addClass('form-item__select') }}>
+    <select{{ attributes.addClass('form-select w-full') }}>
       {% for option in options %}
         {% if option.type == 'optgroup' %}
           <optgroup label="{{ option.label }}">
