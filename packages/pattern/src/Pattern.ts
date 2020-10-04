@@ -97,7 +97,11 @@ export default class Pattern {
   public getVariant(id: string = Pattern.DEFAULT_VARIANT_NAME) {
     const variantId = id === '' ? Pattern.DEFAULT_VARIANT_NAME : id;
     if (this.patternVariants[variantId] == null) {
-      throw new Error(`Variant "${id}" not found in pattern "${this.getId()}". Possible Variants are: "${Object.keys(this.patternVariants).join(', ')}"`);
+      throw new Error(
+        `Variant "${id}" not found in pattern "${this.getId()}". Possible Variants are: "${Object.keys(
+          this.patternVariants
+        ).join(', ')}"`
+      );
     }
     return this.patternVariants[variantId];
   }

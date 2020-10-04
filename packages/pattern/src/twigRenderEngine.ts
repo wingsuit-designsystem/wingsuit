@@ -10,10 +10,10 @@ export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
-export function twingMapToArray(variables):string[] {
+export function twingMapToArray(variables): string[] {
   if (variables instanceof Map) {
     const obj = {};
-    variables.forEach( (value, key) => {
+    variables.forEach((value, key) => {
       obj[key] = value;
     });
   }
@@ -30,7 +30,7 @@ export async function renderPatternPreview(
   } catch (err) {
     return new Promise<string>((resolve, refuse) => {
       resolve(err.message);
-    })
+    });
   }
   const previewPatterns = variant.getPreviewPatterns();
   const promisedPreview: Promise<string>[] = [];

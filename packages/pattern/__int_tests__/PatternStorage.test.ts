@@ -5,9 +5,7 @@ import PatternVariant from '../src/PatternVariant';
 import { storage } from '../src';
 
 describe('PatternStorage', () => {
-
-  beforeEach(() => {
-  });
+  beforeEach(() => {});
 
   describe('#createDefinitionsFromFile', () => {
     test('Load Pattern Card', () => {
