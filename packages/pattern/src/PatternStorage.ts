@@ -44,7 +44,11 @@ export default class PatternStorage implements IPatternStorage {
   loadPattern(patternId: string): Pattern {
     const definition: IPatternDefinition = this.definitions.patterns[patternId];
     if (definition == null) {
-      throw new Error(`Pattern definition "${patternId}" not found. Possible pattern ids are: "${Object.keys(this.definitions.patterns).join(' ,')}"`);
+      throw new Error(
+        `Pattern definition "${patternId}" not found. Possible pattern ids are: "${Object.keys(
+          this.definitions.patterns
+        ).join(' ,')}"`
+      );
     }
     return new Pattern(patternId, definition, this);
   }

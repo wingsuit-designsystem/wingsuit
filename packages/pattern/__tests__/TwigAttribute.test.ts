@@ -10,11 +10,13 @@ describe('TwigAttribute test', () => {
     expect(twigAttribute.toString()).toBe(' class="class1 class2" data="test"');
   });
   test('addClass.', () => {
-    twigAttribute.addClass(['class1',  'class2']);
+    twigAttribute.addClass(['class1', 'class2']);
     twigAttribute.addClass('class1 class2');
     twigAttribute.addClass('class3 class4');
     twigAttribute.addClass(' class5   class6    ');
-    expect(twigAttribute.toString()).toBe(' class="class1 class2 class1 class2 class3 class4 class5 class6"');
+    expect(twigAttribute.toString()).toBe(
+      ' class="class1 class2 class1 class2 class3 class4 class5 class6"'
+    );
   });
   test('setAttribute', () => {
     twigAttribute.setAttribute('attr1', 'value1');

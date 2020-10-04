@@ -1,4 +1,4 @@
-import {twingMapToArray} from './twigRenderEngine';
+import { twingMapToArray } from './twigRenderEngine';
 
 const htmlAttributeParser = require('html-attribute-parser');
 
@@ -9,9 +9,9 @@ export default class TwigAttribute {
     this.attributes = new Map();
     if (attributes !== '') {
       const attrs = htmlAttributeParser(`<div ${attributes}></div>`).attributes;
-      Object.keys(attrs).forEach((key) => {
+      Object.keys(attrs).forEach(key => {
         this.attributes.set(key, attrs[key]);
-      })
+      });
     }
   }
 
