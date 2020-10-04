@@ -11,13 +11,13 @@ export async function setRenderer(renderer: IRenderer) {
 }
 
 export function twingMapToArray(variables): string[] {
+  const ary: string[] = [];
   if (variables instanceof Map) {
-    const obj = {};
     variables.forEach((value, key) => {
-      obj[key] = value;
+      ary.push(value);
     });
   }
-  return variables;
+  return ary;
 }
 export async function renderPatternPreview(
   patternId: string,
