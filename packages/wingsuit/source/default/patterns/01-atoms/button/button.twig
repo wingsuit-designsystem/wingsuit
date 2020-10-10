@@ -15,10 +15,15 @@
 ] | sort | join(' ') | trim) }}>
 {{ text }}
   {% if svg is not empty %}
+    {% set attributes = create_attribute() %}
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: svg,
       size: size,
-      svg_classes: ['inline-block', 'align-middle', content|striptags ? 'ml-15', variant == 'outline' ? 'fill-red' : 'fill-white']
+      attributes: attributes.addClass([
+        'inline-block', 'align-middle', 
+        content|striptags ? 'ml-15',
+        variant == 'outline' ? 'fill-red' : 'fill-white'
+      ] | sort | join(' ') | trim)
     } %}
   {% endif %}
 </{{ tag_name }}>
