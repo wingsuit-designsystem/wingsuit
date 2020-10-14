@@ -62,7 +62,8 @@ section:
     padding_top:
       type: select
       label: Padding top
-      description: If previous element has spacing bottom, use default for normal or small for small spacing betweeen elements.
+      description: The spacing to the previous element.
+      default_value: default
       options:
         small: Small
         default: Default
@@ -70,7 +71,8 @@ section:
     padding_bottom:
       type: select
       label: Padding bottom
-      description: If next element has spacing top, use default for normal or small for small spacing betweeen elements.
+      description: The spacing to the next element..
+      default_value: default
       options:
         small: Small
         default: Default

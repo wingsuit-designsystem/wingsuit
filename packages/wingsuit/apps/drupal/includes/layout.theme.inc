@@ -13,4 +13,12 @@ function wingsuit_preprocess_page(&$variables) {
   if ($moduleHandler->moduleExists('components')) {
     $variables['has_components_module'] = TRUE;
   }
+
+  if (wingsuit_is_layout_builder()) {
+    $variables['is_layout_builder'] = TRUE;
+  } else {
+    $variables['is_layout_builder'] = FALSE;
+  }
+
+  $variables['header_has_spacer'] = TRUE;
 }
