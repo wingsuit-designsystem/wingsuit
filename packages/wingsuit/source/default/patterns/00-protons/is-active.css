@@ -1,8 +1,0 @@
-.is-active {
-  @apply border-b-2 border-gray-dark;
-}
-
-.is-active:hover {
-  @apply border-b-2 border-gray-dark;
-}
-

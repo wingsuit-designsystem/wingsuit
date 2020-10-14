@@ -2,6 +2,8 @@
 core:
   css:
     theme:
+      css/_drupal-styles.css:
+        preprocess: false
       ws-assets://tokens.css:
         preprocess: true
       ws-assets://typo.css:
@@ -16,3 +18,8 @@ core:
   dependencies:
     - core/drupal
     - core/drupalSettings
+    - wingsuit/headerOffset
+
+headerOffset:
+  js:
+    js/header-offset.js: {}

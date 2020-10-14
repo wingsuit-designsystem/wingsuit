@@ -9,4 +9,9 @@ header:
       preview:
         id: menu
         variant: primary
+  settings:
+    has_spacer:
+      label: Has spacer
+      type: boolean
+      default_value: false
   visibility: storybook

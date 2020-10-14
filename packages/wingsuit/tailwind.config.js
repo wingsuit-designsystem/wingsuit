@@ -4,14 +4,20 @@ const rem = (px) => ({ [px]: `${px / 16}rem` });
 
 module.exports = {
   important: false,
+  future: {
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+  },
   purge: {
+    layers: ['utilities'],
     content: ['./source/**/*.twig', './apps/**/*.twig'],
-    options: {
-      whitelist: ['bg-red-500', 'px-4'],
-    },
+    whitelist: ['bg-red-500', 'px-4'],
   },
   theme: {
     extend: {
+      height: {
+        18: '4.5rem',
+      },
       maxWidth: {
         none: 'none',
         ...rem(120),

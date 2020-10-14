@@ -7,13 +7,10 @@ libraries:
   - wingsuit/core
 regions:
   primary_menu: Primary menu
-  secondary_menu: Secondary menu
   highlighted: Highlighted
   breadcrumb: Breadcrumb
-  page_top: Page top
   content: Content
-  page_bottom: Page bottom
-  footer: Footer
+  footer_menu: Footer menu
 component-libraries:
   protons:
     paths: []
