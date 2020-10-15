@@ -15,3 +15,7 @@ accordion_item:
       description: The collapsed content.
       preview:
         faker: lorem.paragraph
+  settings:
+    id:
+      type: token
+      label: Id
