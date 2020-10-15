@@ -17,7 +17,7 @@
             <p class="uppercase tracking-loose w-full">{{ pre_headline }}</p>
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ headline }}</h1>
             <p class="leading-normal text-2xl mb-8">{{ text }}</p>
-            {{ button }}
+            {% include "@atoms/button/button.twig" with {text: button, variant: "default", color: "white" } %}
           </div>
           <div class="w-full md:w-3/5 py-6 text-center">
             {{ image }}

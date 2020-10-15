@@ -45,6 +45,7 @@ section:
         small: Small
         default: Default
         large: Large
+        xlarge: Xlarge
     bg:
       type: select
       label: Background color
