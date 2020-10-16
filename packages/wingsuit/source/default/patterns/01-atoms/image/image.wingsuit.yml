@@ -26,5 +26,5 @@ image:
     background_style:
       label: Background style
       description: Classes applied to background image container.
-      type: text
+      type: textfield
       preview: w-full h-20 bg-cover
