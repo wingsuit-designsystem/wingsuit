@@ -101,7 +101,7 @@ export default class PatternVariant {
 
   public getVariables() {
     const values = {};
-    Object.keys(this.settings).forEach(key => {
+    Object.keys(this.settings).forEach((key) => {
       if (this.settings[key].getType() === 'attributes') {
         values[key] = new TwigAttribute(this.settings[key].getPreview());
       } else {

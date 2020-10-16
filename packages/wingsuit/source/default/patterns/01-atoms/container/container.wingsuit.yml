@@ -42,7 +42,7 @@ container:
         default: Default
         large: Large
     classes:
-      type: text
+      type: textfield
       label: Classes
       description: Additional CSS classes
     padding_bottom:

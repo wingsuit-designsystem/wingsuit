@@ -26,7 +26,7 @@ placeholder:
     background_classes:
       label: Classes
       description: Classes applied to background image container.
-      type: text
+      type: textfield
       preview: w-full h-20 bg-cover
     style:
       label: Image style
