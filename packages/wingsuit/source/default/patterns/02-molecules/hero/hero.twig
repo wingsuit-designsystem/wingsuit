@@ -13,10 +13,10 @@
       {% block content %}
         <div class="flex flex-wrap flex-col md:flex-row items-center">
           <!--Left Col-->
-          <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p class="uppercase tracking-loose w-full">{{ pre_headline }}</p>
+          <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left z-10">
+            <div class="uppercase tracking-loose w-full">{{ pre_headline }}</div>
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ headline }}</h1>
-            <p class="leading-normal text-2xl mb-8">{{ text }}</p>
+            <div class="leading-normal text-2xl mb-8">{{ text }}</div>
             {{ button }}
           </div>
           <div class="w-full md:w-3/5 py-6 text-center">

@@ -18,6 +18,7 @@ container:
         small: Small
         default: Default
         large: Large
+        xlarge: Xlarge
     bg:
       type: select
       label: Background color
@@ -41,7 +42,7 @@ container:
         default: Default
         large: Large
     classes:
-      type: text
+      type: textfield
       label: Classes
       description: Additional CSS classes
     padding_bottom:

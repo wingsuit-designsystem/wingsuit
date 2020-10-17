@@ -24,6 +24,7 @@ module.exports = {
         ...rem(800),
         ...rem(1200),
         ...rem(1600),
+        ...rem(1900),
       },
     },
     fontFamily: {

@@ -27,14 +27,14 @@ export class TwingRenderer implements IRenderer {
     const loader = new TwingLoaderArray(storage.getTwigResources());
     this.environment = new TwingEnvironment(loader, { autoescape: false, debug: true });
     this.cache = {};
-    Object.keys(filters).forEach(filterName => {
+    Object.keys(filters).forEach((filterName) => {
       const filter = (arg1, arg2) => {
         return Promise.resolve(filters[filterName](arg1, arg2));
       };
       this.environment.addFilter(new TwingFilter(filterName, filter));
     });
 
-    Object.keys(functions).forEach(functionName => {
+    Object.keys(functions).forEach((functionName) => {
       if (functionName !== 'file_url') {
         const func = (arg1, arg2) => {
           return Promise.resolve(functions[functionName](arg1, arg2));
@@ -56,8 +56,8 @@ export class TwingRenderer implements IRenderer {
           if (this.cache[cacheKey]) {
             return Promise.resolve(this.cache[cacheKey]);
           }
-          return new Promise(resolve => {
-            renderPatternPreview(patternId, variantId, variables).then(output => {
+          return new Promise((resolve) => {
+            renderPatternPreview(patternId, variantId, variables).then((output) => {
               this.cache[cacheKey] = output;
               resolve(output);
             });
