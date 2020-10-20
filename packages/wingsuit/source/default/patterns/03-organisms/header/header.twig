@@ -4,12 +4,10 @@
   {% endif %}
   <header class="header-offset fixed w-full z-30 top-0 text-white"
           x-bind:class="{ 'bg-white shadow': isScrollDown}"
-          x-on:click="menuIsOpen = !menuIsOpen"
-  >
+          x-on:click="menuIsOpen = !menuIsOpen">
     {% embed "@atoms/container/container.twig" %}
       {% block content %}
-        <div class="flex flex-wrap items-center justify-between mt-0 py-2">
-
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <div class="flex items-center">
             <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
               <!--Icon from: http://www.potlabicons.com/ -->
@@ -18,23 +16,20 @@
               </div>
             </a>
           </div>
-
           <div class="block lg:hidden pr-4">
             {% include "@atoms/hamburger/hamburger.twig" only %}
           </div>
-
-          <div
-            class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
-            id="nav-content"
-            :class="{'block -mx-6': menuIsOpen, 'hidden': !menuIsOpen}">
+          <div class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+               id="nav-content"
+               :class="{'block -mx-6': menuIsOpen, 'hidden': !menuIsOpen}">
             {{ menu }}
-            <button id="navAction"
-                    class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
-              Action
+            <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">Button
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
             </button>
           </div>
         </div>
-
       {% endblock %}
     {% endembed %}
     <hr class="border-b border-gray-100 opacity-25 my-0 py-0">

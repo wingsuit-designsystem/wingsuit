@@ -45,6 +45,12 @@ card:
       options:
         left: Left
         center: Center
+    bg_color:
+      type: select
+      label: Bg Color
+      options:
+        gray: Gray
+        blue: Blue
     url:
       type: token
       label: Url
