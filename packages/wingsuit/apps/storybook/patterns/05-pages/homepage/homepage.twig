@@ -8,7 +8,7 @@
 } %}
   {% block main %}
     {{ pattern_preview('hero') }}
-    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Section title"}%}
+    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Section title"} %}
       {% block column_1 %}
         {{ pattern_preview('card') }}
       {% endblock %}
@@ -17,6 +17,46 @@
       {% endblock %}
       {% block column_3 %}
         {{ pattern_preview('card') }}
+      {% endblock %}
+    {% endembed %}
+    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Text cards", padding_top: "small"} %}
+      {% block column_1 %}
+        {% include "@molecules/card/card.twig" with {
+          bg_color: "gray",
+          alignment: "center",
+          image: "",
+          preheadline: "Preheadline",
+          headline: "Headline",
+          text: "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
+          button: "Read more"
+        } %}
+      {% endblock %}
+      {% block column_2 %}
+        {% include "@molecules/card/card.twig" with {
+          bg_color: "gray",
+          alignment: "center",
+          image: "",
+          preheadline: "Preheadline",
+          headline: "Headline",
+          text: "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
+          button: "Read more"
+        } %}
+      {% endblock %}
+      {% block column_3 %}
+        {% include "@molecules/card/card.twig" with {
+          bg_color: "gray",
+          alignment: "center",
+          image: "",
+          preheadline: "Preheadline",
+          headline: "Headline",
+          text: "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
+          button: "Read more"
+        } %}
+      {% endblock %}
+    {% endembed %}
+    {% embed "@organisms/section/section.twig" with { columns: 1, headline: "Accordion", padding_top: "small"} %}
+      {% block column_1 %}
+        {{ pattern_preview('accordion') }}
       {% endblock %}
     {% endembed %}
   {% endblock %}
