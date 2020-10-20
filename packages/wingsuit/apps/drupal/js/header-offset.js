@@ -2,7 +2,7 @@
  * @file
  * Adds the toolbar offset the fixed header component.
  */
-(function($) {
+(function ($) {
   Drupal.behaviors.header_offset = {
     attach() {
       if (typeof $ !== 'undefined') {
