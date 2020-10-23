@@ -21,14 +21,11 @@ const DocsContent = ({ title, content, editUrl, ...rest }) => (
         <ThemeProvider theme={convert(create({ base: 'light' }))}>
           {parse(content, {
             replace: (domNode) => {
-
-              if (
-                domNode.name === 'pre'
-              ){
+              if (domNode.name === 'pre') {
                 console.log(domNode.name);
                 console.log(domNode);
               }
-                if (
+              if (
                 domNode.name === 'pre' &&
                 domNode.children.find(
                   (n) => n.name === 'code' && n.attribs.class && n.attribs.class.match(/^language-/)
@@ -37,7 +34,14 @@ const DocsContent = ({ title, content, editUrl, ...rest }) => (
                 const language = domNode.children[0].attribs.class.replace('language-', '');
                 const code = domNode.children[0].children[0].data;
                 return (
-                  <SyntaxHighlighter className="code-hightlight" format={false} bordered={true} padded={true} copyable={true} language={language}>
+                  <SyntaxHighlighter
+                    className="code-hightlight"
+                    format={false}
+                    bordered
+                    padded
+                    copyable
+                    language={language}
+                  >
                     {code}
                   </SyntaxHighlighter>
                 );

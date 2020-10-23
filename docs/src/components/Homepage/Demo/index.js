@@ -4,7 +4,7 @@ import './style.css';
 
 const Demo = () => (
   <div id="demo" className="bg-gray-100">
-    <img style={{width: '100%'}} className="p-4" src={demoImg} alt="" />
+    <img style={{ width: '100%' }} className="p-4" src={demoImg} alt="" />
   </div>
 );
 

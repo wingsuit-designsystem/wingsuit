@@ -9,7 +9,11 @@ const Footer = () => (
       <div className="logos">
         <div className="col-xs-12">
           <center>
-            <a href="https://drupaltwig.slack.com/archives/C01C82BH864" target="_blank" rel="noreferrer noopener">
+            <a
+              href="https://drupaltwig.slack.com/archives/C01C82BH864"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <img src={slackIcon} alt="Wingsuit Slack" style={{ padding: '7px' }} />
             </a>
             <a
@@ -17,7 +21,11 @@ const Footer = () => (
               target="_blank"
               rel="noreferrer noopener"
             >
-              <img src={githubIcon} alt="Storybook GitHub" style={{ borderRadius: '50%', padding: '0', background: '#ffffff' }} />
+              <img
+                src={githubIcon}
+                alt="Storybook GitHub"
+                style={{ borderRadius: '50%', padding: '0', background: '#ffffff' }}
+              />
             </a>
           </center>
         </div>
