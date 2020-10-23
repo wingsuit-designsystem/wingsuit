@@ -1,8 +1,7 @@
 #heading {
   text-align: center;
-  padding: 85px 0 50px;
+  padding: 90px 0 90px;
   background-color: #E6FFFA;
-  margin-bottom: 40px;
 }
 
 .sb-title {
@@ -11,9 +10,9 @@
 }
 
 .sb-tagline {
-  font-weight: 100;
-  font-size: 29px;
-  line-height: 42px;
+  padding: 34px 20px 34px 20px;
+  font-size: 64px;
+  line-height: 90px;
 }
 
 .heart {
@@ -22,45 +21,27 @@
 
 @media only screen and (max-width: 980px) {
   #heading {
-    padding: 45px 0 25px;
-  }
-
-  .sb-title {
-    width: 400px;
+    padding: 140px 0 140px;
   }
 
   .sb-tagline {
-    font-size: 24px;
-    line-height: 33px;
+    font-size: 34px;
+    line-height: 150%;
   }
 }
 
 @media only screen and (max-width: 870px) {
   #heading {
-    padding: 35px 0 15px;
-  }
-
-  .sb-title {
-    width: 400px;
-  }
-
-  .sb-tagline {
-    font-size: 20px;
-    line-height: 29px;
+    padding: 120px 0 120px;
   }
 }
 
 @media only screen and (max-width: 540px) {
   #heading {
-    padding: 15px 0 15px;
+    padding: 90px 0 90px;
   }
 
   .sb-title {
     width: 80%;
-  }
-
-  .sb-tagline {
-    ffont-size: 16px;
-    line-height: 26px;
   }
 }

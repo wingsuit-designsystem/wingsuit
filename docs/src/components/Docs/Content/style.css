@@ -7,6 +7,7 @@
 
 #docs-content .title {
   font-size: 30px;
+  font-weight: bold;
   color: rgb(0, 0, 0);
   margin-bottom: 0;
   line-height: 1.5;
@@ -34,13 +35,29 @@
 
 #docs-content .markdown h2 {
   font-size: 24px;
-  margin: 30px 0 10px 0;
+  line-height: 150%;
+  margin-bottom: 16px;
 }
 
 #docs-content .markdown h3 {
-  font-size: 18px;
-  margin: 30px 0 10px 0;
-  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  margin-bottom: 16px;
+}
+
+#docs-content .markdown h4 {
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+#docs-content .code-hightlight {
+  margin-bottom: 30px;
+}
+
+#docs-content .markdown * + h2, #docs-content .markdown * + h3 {
+  margin-top: 48px;
 }
 
 #docs-content .markdown a,
@@ -50,7 +67,9 @@
   text-decoration: none;
   color: #1E88E5;
 }
-
+#docs-content ul {
+  padding-left: 15px;
+}
 #docs-content .markdown a:hover {
   text-decoration: underline;
 }

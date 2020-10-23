@@ -11,18 +11,54 @@ import MainLinks from './MainLinks';
 import UsedBy from './UsedBy';
 import Footer from '../Footer';
 
-const Homepage = ({ users }) => (
+const Homepage = ({users}) => (
   <div>
-    <Helmet title="Wingsuit - Designsystem you'll love to use" />
+    <Helmet title="Wingsuit - Designsystem you'll love to use"/>
     {/* <Header currentSection="home" /> */}
-    <Heading />
-    <div className="container">
-      <Demo />
+    <Heading/>
+    <div style={{width: '100%'}} className="overflow-hidden">
+      <div className="container-fluid p-0">
+        <div className="row no-gutters relative" style={{position: 'relative', overflow: 'hidden'}}>
+          <div className="col-12 col-sm-6 text-center">
+            <h1 className="sb-tagline">
+              Build Components with Storybook for Drupal
+            </h1>
+            <div style={{paddingBottom: 40}}>
+              <div className="bg-green-100 pt-4 pb-4">
+                <h3 className="font-weight-bold">Online Demo!</h3>
+
+                <div className="used-by-more-examples ">
+                  <a
+                    href="https://wingsuit.netlify.app/?path=/story/base-welcome--page"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-green-500"
+                    style={{maxWidth: 300, margin: 'auto'}}
+                  >
+                    Storybook on Netlify!
+                  </a>
+                </div>
+              </div>
+              <div className="bg-blue-100 d-block d-sm-none">
+                <div className="circle--mobile bg-red-100"></div>
+              </div>
+            </div>
+            <UsedBy users={users}/>
+            <Demo/>
+          </div>
+          <div className="column col-6 d-none d-sm-block">
+            <div className="circle bg-red-100"></div>
+          </div>
+          <div className="d-none d-sm-block bg-blue-100" style={{zIndex: -1, position: 'absolute', width: '100%', height: '100%', left: '50%'}}></div>
+        </div>
+      </div>
+
       {/* <Platforms /> */}
-      <MainLinks />
-      <UsedBy users={users} />
+
+      <MainLinks/>
+
       {/* <Featured featuredStorybooks={featuredStorybooks} /> */}
-      <Footer />
+      <Footer/>
     </div>
   </div>
 );

@@ -6,7 +6,7 @@ title: 'Quickstart guide'
 Get started using the automated command line tool. This command creates a Wingsuit demo project. 
 The demo page uses the atomic design principle to structure the patterns.
 
-```
+```shell script
 npx @wingsuit-designsystem/cli init
 ```
 

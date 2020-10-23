@@ -1,5 +1,4 @@
 #main-links {
-  margin: 40px auto 30px;
 }
 
 #main-links hr {
@@ -11,15 +10,17 @@
 }
 
 #main-links h2 {
-  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 #main-links pre {
-  background-color: #444;
-  color: #DDD;
+  background-color: #8000FF;
   padding: 15px 20px;
+  font-weight: bold;
   line-height: 22px;
   border: 0;
+  font-size: 18px;
   border-radius: 0;
 }
 
@@ -29,7 +30,10 @@
 
 .try-now {
   max-width: 450px;
-  margin: 40px auto;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
 }
 
 .has-feedback {
@@ -66,10 +70,6 @@
     margin: 30px auto 20px;
   }
 
-  #main-links h2 {
-    font-size: 22px;
-  }
-
   #main-links pre {
     padding: 13px 28px;
     font-size: 12px;
@@ -87,10 +87,6 @@
 
   #main-links hr {
     margin: 35px auto 0;
-  }
-
-  #main-links h2 {
-    font-size: 20px;
   }
 
   #main-links pre {

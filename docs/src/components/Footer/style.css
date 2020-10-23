@@ -1,5 +1,6 @@
 #footer {
-  margin: 25px 0
+  padding: 25px 0;
+  background: #000000;
 }
 
 #footer a {

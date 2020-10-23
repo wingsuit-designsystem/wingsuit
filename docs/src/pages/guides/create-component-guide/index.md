@@ -4,8 +4,10 @@ title: 'Create new component'
 ---
 
 To create a new component run:
-``` 
+```sh
 yarn ws generate-component 
 ```
 
 The wizard will guide you through all possible pattern types, including documentation.
+
+If you are not sure which component type you need [check the component documentation](../../components/overview).
