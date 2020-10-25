@@ -21,8 +21,11 @@ const Docs = ({sections, selectedItem, selectedSectionId, selectedItemId}) => (
         selectedSectionId={selectedSectionId}
         selectedItemId={selectedItemId}
       />
-      <Footer/>
     </div>
+    <div className="container-fluid">
+    <Footer/>
+    </div>
+
   </div>
 );
 Docs.propTypes = {

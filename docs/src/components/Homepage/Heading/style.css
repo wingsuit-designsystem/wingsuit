@@ -9,10 +9,15 @@
   width: 500px;
 }
 
+.sb-tagline__subline {
+  margin-top:20px;
+  font-size: 24px;
+  line-height: 34px;
+}
 .sb-tagline {
   padding: 34px 20px 34px 20px;
   font-size: 64px;
-  line-height: 90px;
+  line-height: 70px;
 }
 
 .heart {

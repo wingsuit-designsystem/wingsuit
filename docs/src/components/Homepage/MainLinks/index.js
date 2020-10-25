@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { window } from 'global';
-import { Link as NewLink } from '../../../new-components/basics';
+import {window} from 'global';
+import {Link as NewLink} from '../../../new-components/basics';
 
 import '../../Docs/Nav/style.css';
-import { UsedByBg } from '../UsedBy';
+import {UsedByBg} from '../UsedBy';
 import './style.css';
 
 class MainLinks extends React.Component {
@@ -22,13 +22,30 @@ class MainLinks extends React.Component {
       <div id="main-links">
         <div className="main-links-container bg-purple-100">
           <div className="try-now">
-            <h2 className="font-weight-bold text-center">Try it now!</h2>
-            <pre className="bg-purple-500" style={{ color: '#fff' }}>
-              <code>
-                npx @wingsuit-designsystem/cli init
-                <br />
-              </code>
-            </pre>
+            <div className="row">
+              <div className="col-2 d-none d-sm-block triangle-container">
+                <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" className="svg-triangle">
+                  <polygon points="0,0 0,100 150,50"/>
+                </svg>
+              </div>
+              <div className="col-12 col-sm-8">
+                <div>
+                  <h2 style={{marginBottom: '10px',marginTop: '20px'}} className="font-weight-bold text-center">Try it now!</h2>
+                  <pre className="bg-purple-500" style={{color: '#fff', height: '52px'}}>
+                  <code>
+                    npx @wingsuit-designsystem/cli init
+                    <br/>
+                  </code>
+                </pre>
+                </div>
+              </div>
+              <div className="col-2 d-none d-sm-block triangle-container">
+                <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg"
+                     className="svg-triangle">
+                  <polygon points="150,0 150,100 0,50"/>
+                </svg>
+              </div>
+            </div>
           </div>
           <div className="bg-yellow-100">
             <div className="container">
@@ -41,7 +58,7 @@ class MainLinks extends React.Component {
                 }}
               >
                 <div className="col-xs-12 col-sm-12 read-docs">
-                  <h2 style={{ color: '#000000' }}>Documentation</h2>
+                  <h2 style={{color: '#000000'}}>Documentation</h2>
                 </div>
 
                 <div className="col-sm-4 read-docs">
@@ -101,7 +118,7 @@ class MainLinks extends React.Component {
                 </div>
                 <div
                   className="form-group has-feedback"
-                  style={{ maxWidth: '450px', margin: '20px auto' }}
+                  style={{maxWidth: '450px', margin: '20px auto'}}
                 >
                   <label className="sr-only control-label" htmlFor="search">
                     Search wingsuit documentation
