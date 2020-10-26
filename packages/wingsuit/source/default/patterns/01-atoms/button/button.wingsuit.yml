@@ -10,22 +10,21 @@ button:
   variants:
     default:
       label: Default
-      configuration:
-        color:
-          orange: 'bg-orange-600'
-          white: 'bg-white'
     hollow:
       label: Hollow
       description: Inverts colors
+    gray:
+      label: Gray
   settings:
     color:
       type: select
       required: true
       label: Color
-      preview: orange
+      preview: pink
       options:
-        orange: Orange
+        pink: Pink
         white: White
+        gray: Gray
     url:
       type: token
       label: Url

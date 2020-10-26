@@ -1,42 +1,43 @@
-<footer class="bg-white mt-32 body-font">
+<footer class="text-gray-700 body-font">
   {% embed "@atoms/container/container.twig" %}
     {% block content %}
-      <div class="w-full flex flex-col md:flex-row py-6">
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Links</p>
-          {{ menu_1 }}
-        </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Legal</p>
-          {{ menu_2 }}
-        </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Social</p>
-          {{ menu_3 }}
-        </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Company</p>
-          {{ menu_4 }}
-        </div>
-        <div class="flex-1 mb-6 flex md:justify-end">
-          <a class="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            <div class="max-w-120">
-              {% include "@atoms/image/image.twig" with {"url": "ws-assets://images/logo.svg"} only %}
-            </div>
+      <div class="block lg:flex py-24">
+        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center mb-6 md:text-left">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">tailblocks</span>
           </a>
+          <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+        </div>
+        <div class="w-full flex flex-col md:flex-row">
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Links</h2>
+            {{ menu_1 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Legal</h2>
+            {{ menu_2 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Social</h2>
+            {{ menu_3 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Company</h2>
+            {{ menu_4 }}
+          </div>
         </div>
       </div>
     {% endblock %}
   {% endembed %}
-  </div>
   <div class="bg-gray-200">
-    {% embed "@atoms/container/container.twig" %}
-      {% block content %}
-    <div class="py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-        <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 wingsuit —
-          <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@key-tec</a>
-        </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+    <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+      <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
+        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
         <a class="text-gray-500">
           <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
                viewBox="0 0 24 24">
@@ -65,9 +66,7 @@
             <circle cx="4" cy="4" r="2" stroke="none"></circle>
           </svg>
         </a>
-        </span>
-      </div>
-      {% endblock %}
-    {% endembed %}
+      </span>
+    </div>
   </div>
 </footer>

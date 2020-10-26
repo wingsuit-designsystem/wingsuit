@@ -21,8 +21,14 @@ hero:
       preview:
         id: button
         variant: default
+    button_second:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: hollow
         settings:
-          color: white
+          color: gray
     image:
       type: pattern
       label: Image

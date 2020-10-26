@@ -21,6 +21,7 @@
     {% endembed %}
     {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Text cards", padding_top: "small"} %}
       {% block column_1 %}
+        {{ pattern_preview('card', '', 'image') }}
         {% include "@molecules/card/card.twig" with {
           bg_color: "gray",
           alignment: "center",

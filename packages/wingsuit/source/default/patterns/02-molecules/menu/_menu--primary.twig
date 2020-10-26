@@ -2,8 +2,8 @@
   <ul class="list-reset lg:flex justify-end flex-1 items-center">
     {% for item in items %}
       <li class="mr-3">
-        <a
-          class="inline-block py-2 px-4 text-black font-bold no-underline {% if (item.in_active_trail) %}no-underline {% else %} hover:text-gray-800 hover:text-underline py-2 px-4{% endif %}"
+        {# {% if (item.in_active_trail) %}no-underline {% else %} hover:text-gray-900 hover:text-underline py-2 px-4{% endif %} #}
+        <a class="mr-5 text-gray-600 hover:text-gray-900"
           href="{{ item.url }}">
           {{ item.title }}
         </a>
