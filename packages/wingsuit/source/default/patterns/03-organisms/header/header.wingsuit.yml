@@ -9,6 +9,12 @@ header:
       preview:
         id: menu
         variant: primary
+    button:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: gray
   settings:
     has_spacer:
       label: Has spacer

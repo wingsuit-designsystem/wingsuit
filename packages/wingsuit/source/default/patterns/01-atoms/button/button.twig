@@ -8,9 +8,10 @@
 {% endif %}
 
 <{{ tag_name }} {{ attributes.addClass([
-  'mx-auto lg:mx-0 hover:underline text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg transistion transition-colors duration-200',
-  variant == 'default' ? 'bg-' ~ color  ~ '-500',
-  variant == 'hollow' ? 'border border-' ~ color ~ '-500',
+  'inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg',
+  variant == 'default' ? 'bg-pink-500', 'text-white',
+  variant == 'gray' ? 'bg-gray-200', 'text-black', 'text-base', 'mt-4 md:mt-0',
+  variant == 'hollow' ? 'border border-' ~ color ~ '-500', 'text-' ~ color  ~ '-500',
 ] | sort | join(' ') | trim) }}>
 {{ text }}
   {% if svg is not empty %}
