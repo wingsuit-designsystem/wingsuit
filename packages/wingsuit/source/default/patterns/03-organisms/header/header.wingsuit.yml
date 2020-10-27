@@ -14,7 +14,7 @@ header:
       label: Button
       preview:
         id: button
-        variant: gray
+        variant: blue
   settings:
     has_spacer:
       label: Has spacer

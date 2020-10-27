@@ -9,9 +9,9 @@
 
 <{{ tag_name }} {{ attributes.addClass([
   'inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg',
-  variant == 'default' ? 'bg-pink-500', 'text-white',
-  variant == 'gray' ? 'bg-gray-200', 'text-black', 'text-base', 'mt-4 md:mt-0',
-  variant == 'hollow' ? 'border border-' ~ color ~ '-500', 'text-' ~ color  ~ '-500',
+  variant == 'pink' ? 'bg-pink-500 text-white hover:bg-pink-600',
+  variant == 'blue' ? 'bg-blue-200 text-black text-base mt-4 md:mt-0 hover:bg-blue-400',
+  variant == 'hollow-pink' ? 'border border-pink-500 text-pink-500',
 ] | sort | join(' ') | trim) }}>
 {{ text }}
   {% if svg is not empty %}
