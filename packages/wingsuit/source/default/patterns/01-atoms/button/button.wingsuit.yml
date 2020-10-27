@@ -8,13 +8,13 @@ button:
       label: Text
       preview: More
   variants:
-    default:
-      label: Default
-    hollow:
-      label: Hollow
+    pink:
+      label: Pink
+    hollow-pink:
+      label: Hollow pink
       description: Inverts colors
-    gray:
-      label: Gray
+    blue:
+      label: Blue
   settings:
     color:
       type: select

@@ -2,12 +2,10 @@
   {% if has_spacer %}
     <div class="h-18"></div>
   {% endif %}
-  <header class="header-offset fixed w-full z-30 top-0 text-white"
-          x-bind:class="{ 'bg-white shadow': isScrollDown}"
-          x-on:click="menuIsOpen = !menuIsOpen">
+  <header class="header-offset fixed w-full z-30 top-0 text-white" x-data="{ open: false }">
     {% embed "@atoms/container/container.twig" %}
       {% block content %}
-        <div class="container mx-auto flex flex-wrap p-5 justify-between md:flex-row items-center">
+        <div class="flex flex-wrap py-5 justify-between md:flex-row">
           <div class="flex items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
@@ -16,12 +14,10 @@
               <span class="ml-3 text-xl">tailblocks</span>
             </a>
           </div>
-          <div class="block lg:hidden pr-4">
+          <div class="block lg:hidden pr-4"  @click="open = !open">
             {% include "@atoms/hamburger/hamburger.twig" only %}
           </div>
-          <div class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
-               id="nav-content"
-               :class="{'block -mx-6': menuIsOpen, 'hidden': !menuIsOpen}">
+          <div class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black z-20"  :class="{'block': open, 'hidden': !open}">
             {{ menu }}
             <div>
               {{ button }}
