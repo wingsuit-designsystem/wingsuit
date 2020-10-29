@@ -142,7 +142,7 @@ export default class Pattern {
         variantDefinition.description != null ? variantDefinition.description : '';
       const variantConfiguration =
         variantDefinition.configuration != null ? variantDefinition.configuration : {};
-      const mergedConfiguration = { ...variantConfiguration, ...configuration };
+      const mergedConfiguration = { ...configuration, ...variantConfiguration };
       const variant = new PatternVariant(
         this,
         variantKey,
