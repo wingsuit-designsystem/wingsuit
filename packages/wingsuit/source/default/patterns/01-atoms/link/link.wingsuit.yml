@@ -1,0 +1,21 @@
+link:
+  use: "@atoms/link/link.twig"
+  label: Link
+  description: Example description
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: Read more
+  settings:
+    url:
+      type: token
+      label: Url
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+    svg:
+      type: select
+      label: SVG
+      default_value: right-arrow
+      options:
+        search: Search
+        right-arrow: Right-arrow

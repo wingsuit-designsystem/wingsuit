@@ -3,6 +3,11 @@ footer:
   label: Footer
   description: The footer pattern with copyright and menu.
   fields:
+    logo:
+      type: pattern
+      label: Logo
+      preview:
+        id: logo
     menu_1:
       type: pattern
       label: Menu

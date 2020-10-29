@@ -2,15 +2,13 @@
   {% if has_spacer %}
     <div class="h-18"></div>
   {% endif %}
-  <header class="header-offset fixed w-full z-30 top-0 text-white" x-data="{ open: false }">
+  <header class="header-offset bg-white sticky w-full z-30 top-0 text-white" x-data="{ open: false }">
     {% embed "@atoms/container/container.twig" %}
       {% block content %}
         <div class="flex flex-wrap py-5 justify-between md:flex-row">
           <div class="flex items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
+              {{ logo }}
               <span class="ml-3 text-xl">tailblocks</span>
             </a>
           </div>

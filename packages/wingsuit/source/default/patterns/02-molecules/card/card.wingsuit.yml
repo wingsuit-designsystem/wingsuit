@@ -30,12 +30,12 @@ card:
       description: A long text under the headline.
       preview:
         faker: lorem.paragraph
-    button:
-      type: text
-      label: Button
+    link:
+      type: pattern
+      label: Link
       description: An optional button at the bottom of the card.
       preview:
-        faker: lorem.word
+        id: link
   settings:
     alignment:
       type: select
@@ -54,4 +54,3 @@ card:
     url:
       type: token
       label: Url
-      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
