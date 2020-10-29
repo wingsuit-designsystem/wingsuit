@@ -157,4 +157,3 @@ grid:
       large:
         container: -mx-10 -md:mx-35
         cell: px-10 md:px-35
-  visibility: storybook
