@@ -70,7 +70,9 @@ export class TwingRenderer implements IRenderer {
 
     this.environment.addFunction(new TwingFunction('file_url', twigFileUrl));
     this.environment.addFunction(new TwingFunction('pattern', renderPattern));
-    this.environment.addFunction(new TwingFunction('pattern_configuration', getPatternConfiguration))
+    this.environment.addFunction(
+      new TwingFunction('pattern_configuration', getPatternConfiguration)
+    );
   }
 
   async render(id: string, include: string, variables: {}): Promise<string> {
