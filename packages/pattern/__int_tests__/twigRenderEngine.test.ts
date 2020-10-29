@@ -36,6 +36,7 @@ describe('TwigRenderEngine', () => {
     expect(output).toMatch(/setting:correct/);
   });
   test.each([
+    ['configuration', 'variant'],
     ['patterns_field_items', '__default'],
     ['patterns_single_value', '__default'],
     ['patterns_items', '__default'],

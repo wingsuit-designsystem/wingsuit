@@ -1,22 +1,35 @@
-import { storage } from './index';
+import {storage} from './index';
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
-import { MultiValueTypes } from './Field';
+import {MultiValueTypes} from './Field';
 
 let rendererImpl: IRenderer;
 
 export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
+
 export async function getPatternConfiguration(
   patternId: string,
-  variantId: string = Pattern.DEFAULT_VARIANT_NAME
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  configuration: string
 ) {
-  const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  if (variant == null) {
-    throw new Error(`Pattern ${patternId}:${variantId} not found.`);
+  try {
+    const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+    return new Promise<string>((resolve, refuse) => {
+      const config = variant.getConfiguration();
+      resolve(config[configuration]);
+    });
+  } catch (e) {
+    return new Promise<string>((resolve, refuse) => {
+      console.log(`Cannot load pattern configuration. Message: ${e.message}`);
+      resolve('');
+    });
   }
+
+
+
 }
 
 export function twingMapToArray(variables): string[] {
@@ -28,6 +41,7 @@ export function twingMapToArray(variables): string[] {
   }
   return ary;
 }
+
 export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
@@ -79,7 +93,7 @@ export async function renderPatternPreview(
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
               }
-              previewRenderedVariables[nameKeys[0]][delta] = { content: promisedPreviewValues[j] };
+              previewRenderedVariables[nameKeys[0]][delta] = {content: promisedPreviewValues[j]};
             }
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
@@ -122,7 +136,7 @@ function buildBaseVariables(variables, addGlobals = true) {
     passedVariables = obj;
   }
   if (addGlobals) {
-    return { ...storage.getGlobals(), ...passedVariables };
+    return {...storage.getGlobals(), ...passedVariables};
   }
   return passedVariables;
 }
@@ -150,6 +164,6 @@ export function renderData(path: string, template: string, variables: {} = {}) {
 }
 
 export function renderTemplate(path: string, variables: {} = {}) {
-  const finalVariables = { ...storage.getGlobals(), ...variables };
+  const finalVariables = {...storage.getGlobals(), ...variables};
   return rendererImpl.render(path, path, finalVariables);
 }
