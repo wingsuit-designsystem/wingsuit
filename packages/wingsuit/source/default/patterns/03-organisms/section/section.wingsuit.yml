@@ -73,7 +73,6 @@ section:
       type: select
       label: Padding bottom
       description: The spacing to the next element..
-      default_value: default
       options:
         small: Small
         default: Default

@@ -6,6 +6,8 @@
  * See accordion-item.wingsuit.yaml for documentation.
  */
 #}
+{% set id = uuid() %}
+
 <div class="tab w-full overflow-hidden border-t" data-children-count="1">
   <input class="absolute opacity-0 " id="{{ id }}" type="checkbox" name="tabs">
   <label class="block p-5 leading-normal text-4xl cursor-pointer" for="{{ id }}">{{ label }}</label>
