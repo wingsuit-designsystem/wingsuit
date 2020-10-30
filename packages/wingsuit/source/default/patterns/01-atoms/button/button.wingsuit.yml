@@ -8,23 +8,43 @@ button:
       label: Text
       preview: More
   variants:
-    pink:
-      label: Pink
-    hollow-pink:
-      label: Hollow pink
+    default:
+      label: Default
+    outline:
+      label: Outline
       description: Inverts colors
-    blue:
-      label: Blue
   settings:
+    text_color:
+      type: select
+      required: true
+      label: Text color
+      preview: secondary
+      options:
+        primary: Primary
+        white: White
+        secondary: Secondary
+    size:
+      type: select
+      required: true
+      label: Size
+      preview: small
+      options:
+        small: Small
+        medium: Medium
+        large: Large
+    expanded:
+      type: select
+      label: Expanded
+      options:
+        full: Full
     color:
       type: select
       required: true
       label: Color
-      preview: pink
+      preview: primary
       options:
-        pink: Pink
-        white: White
-        gray: Gray
+        primary: Primary
+        secondary: Secondary
     url:
       type: token
       label: Url
@@ -32,5 +52,22 @@ button:
     svg:
       type: select
       label: SVG
+      default_value: right-arrow
       options:
         search: Search
+        right-arrow: Right-arrow
+    svg_alignment:
+      type: select
+      label: SVG alignment
+      options:
+        left: Left
+        right: Right
+    icon_size:
+      type: select
+      required: true
+      label: Icon size
+      preview: small
+      options:
+        small: Small
+        medium: Medium
+        large: Large
