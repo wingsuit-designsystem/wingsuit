@@ -1,0 +1,9 @@
+rich_text:
+  use: "@atoms/rich-text/rich-text.twig"
+  label: Rich Text
+  description: Example description
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: '<h2>Headline 2</h2><p>Lorem Ipsum</p>'

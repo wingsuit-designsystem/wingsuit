@@ -15,6 +15,10 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        primary: '#ED64A6',
+        secondary: '#90CDF4',
+      },
       height: {
         18: '4.5rem',
       },
