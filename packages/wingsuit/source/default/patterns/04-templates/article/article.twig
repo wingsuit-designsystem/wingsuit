@@ -1,12 +1,12 @@
 {% embed "@atoms/container/container.twig" with { padding_top: 'small' } %}
   {% block content %}
-  <div class="text-center w-1/2 m-auto pb-8 text-gray-dark">
+  <div class="text-center w-1/2 m-auto text-gray-dark">
     {% include "@atoms/headline/headline.twig" with {
       content: headline
     } only %}
   </div>
   <div class="block md:flex group hover:no-underline pt-10">
-    <div class="w-full md:w-1/2">
+    <div class="w-full md:w-1/2 pb-8">
       {% block image %}
         {{ image }}
       {% endblock %}

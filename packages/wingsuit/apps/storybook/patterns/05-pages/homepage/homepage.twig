@@ -24,5 +24,10 @@
         {{ pattern_preview('accordion') }}
       {% endblock %}
     {% endembed %}
+    {% embed "@organisms/section/section.twig" with { columns: 1, headline: "Banner"} %}
+      {% block column_1 %}
+        {{ pattern_preview('banner', 'center_left') }}
+      {% endblock %}
+    {% endembed %}
   {% endblock %}
 {% endembed %}

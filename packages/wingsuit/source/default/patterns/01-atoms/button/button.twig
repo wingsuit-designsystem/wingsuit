@@ -7,13 +7,14 @@
   {% set tag_name = 'a' %}
 {% endif %}
 {% set icon_size = ([
-  icon_size == 'small' ? 'w-8 h-8',
-  icon_size == 'medium' ? 'w-10 h-10',
-  icon_size == 'large' ? 'w-12 h-12',
+  'ml-1',
+  size == 'small' ? 'w-4 h-4',
+  size == 'medium' ? 'w-5 h-5',
+  size == 'large' ? 'w-6 h-6',
 ]) | sort | join(' ') | trim %}
 
 <{{ tag_name }} {{ attributes.addClass([
-  'flex items-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
+  'flex items-center justify-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
   variant == 'default' ? 'bg-'~ color ~' text-' ~ text_color ~' hover:bg-' ~ color ~ '-600',
   variant == 'outline' ? 'border border-'~ color ~' text-' ~ text_color,
   expanded == 'full' ? 'w-full',
@@ -26,8 +27,7 @@
   {% if svg is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: svg,
-      fill_color: 'currentColor',
       size: icon_size,
-    } %}
+    } only %}
   {% endif %}
 </{{ tag_name }}>

@@ -6,7 +6,8 @@ container:
     content:
       type: text
       label: Content
-      preview: Text
+      preview:
+        faker: lorem.paragraphs
   settings:
     width:
       type: select
@@ -37,6 +38,7 @@ container:
       type: select
       label: Padding top
       description: If previous element has spacing bottom, use default for normal or small for small spacing betweeen elements.
+      default_value: default
       options:
         small: Small
         default: Default

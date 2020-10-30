@@ -62,12 +62,3 @@ button:
       options:
         left: Left
         right: Right
-    icon_size:
-      type: select
-      required: true
-      label: Icon size
-      preview: small
-      options:
-        small: Small
-        medium: Medium
-        large: Large

@@ -20,10 +20,11 @@ article:
       preview:
         faker: lorem.paragraph
     button:
-      type: text
+      type: pattern
       label: Button
       preview:
-        faker: lorem.word
+        id: button
+        variant: default
     more:
       type: text
       label: More articles

@@ -1,4 +1,5 @@
 const customForms = require('@tailwindcss/custom-forms');
+const typography = require('@tailwindcss/typography');
 
 const rem = (px) => ({ [px]: `${px / 16}rem` });
 
@@ -15,6 +16,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fill: {
+        current: 'currentColor',
+      },
       colors: {
         primary: '#ED64A6',
         secondary: '#90CDF4',
@@ -43,6 +47,7 @@ module.exports = {
     textDecoration: ['responsive', 'hover', 'group-hover'],
     textColor: ['responsive', 'hover', 'group-hover'],
     fontFamily: ['responsive', 'hover', 'focus'],
+    fill: ['responsive', 'hover', 'focus'],
   },
-  plugins: [customForms],
+  plugins: [customForms, typography],
 };
