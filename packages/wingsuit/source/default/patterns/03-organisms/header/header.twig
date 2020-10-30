@@ -8,14 +8,16 @@
         <div class="flex flex-wrap py-5 justify-between md:flex-row">
           <div class="flex items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-              {{ logo }}
+              {% include "@atoms/logo/logo.twig" %}
               <span class="ml-3 text-xl">tailblocks</span>
             </a>
           </div>
-          <div class="block lg:hidden pr-4"  @click="open = !open">
+          <div class="block lg:hidden" @click="open = !open">
             {% include "@atoms/hamburger/hamburger.twig" only %}
           </div>
-          <div class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black z-20"  :class="{'block': open, 'hidden': !open}">
+          <div
+            class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black z-20"
+            :class="{'block': open, 'hidden': !open}">
             {{ menu }}
             <div>
               {{ button }}

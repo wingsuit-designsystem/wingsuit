@@ -20,13 +20,13 @@ hero:
       label: Button
       preview:
         id: button
-        variant: pink
+        variant: default
     button_second:
       type: pattern
       label: Button
       preview:
         id: button
-        variant: hollow-pink
+        variant: outline
         settings:
           color: gray
     image:

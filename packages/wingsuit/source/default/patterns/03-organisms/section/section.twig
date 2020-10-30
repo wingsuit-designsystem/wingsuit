@@ -7,6 +7,7 @@
  */
 #}
 
+{% set padding_top = padding_top|default('default') %}
 {%- set headline -%}{%- block headline -%}{{ headline }}{% endblock %}{% endset %}
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
