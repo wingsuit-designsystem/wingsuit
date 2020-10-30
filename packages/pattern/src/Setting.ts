@@ -25,19 +25,11 @@ export default class Setting extends Property {
     this.required = required;
   }
 
-  public isEnable(): boolean {
-    return this.enable;
-  }
 
-  public setEnable(value: boolean) {
-    this.enable = value;
-  }
 
   private defaultValue = '';
 
   private required = false;
-
-  private enable = true;
 
   private options: string[] = [];
 }

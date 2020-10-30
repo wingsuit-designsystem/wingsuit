@@ -110,10 +110,12 @@ function getProps(variant) {
   const groupFields = 'Fields';
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
-    if (field.getType() === 'object') {
-      knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
-    } else if (field.getType() !== 'pattern') {
-      knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+    if (field.isEnable()) {
+      if (field.getType() === 'object') {
+        knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
+      } else if (field.getType() !== 'pattern') {
+        knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+      }
     }
   });
   return knobsVariables;
@@ -135,21 +137,21 @@ function getStories(pattern: Pattern, module) {
       notes: variant.getDescription(),
       componentSubtitle: pattern.getDescription(),
       docs: {
-        patternVariant: variant,
         page: () => (
           <>
             <Title />
             <Subtitle />
             <Description />
             <Primary />
-            <PatternProperties />
-            <PatternInclude />
-            <PatternStories />
+            <PatternProperties variant={variant}/>
+            <PatternInclude variant={variant}/>
+            <PatternStories pattern={pattern}/>
           </>
         ),
         storyDescription: variant.getDescription(),
-      },
+      }
     };
+
     parameters = Object.assign(parameters, pattern.getParameters());
     story.add(
       variant.getLabel(),
@@ -170,3 +172,5 @@ export {
 } from './behaviors';
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
+export { default as PatternLoad } from './docs/PatternLoad';
+export {PatternStories, PatternProperties, PatternInclude}

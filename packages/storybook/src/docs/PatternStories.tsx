@@ -1,36 +1,47 @@
-import React, { useContext, FunctionComponent } from 'react';
+import React, { FunctionComponent} from 'react';
 
-import { DocsContext, DocsStory, Heading, DocsStoryProps } from '@storybook/addon-docs/blocks';
-import { PatternInclude } from './PatternInclude';
-import { getDocsStories } from './utils';
-// import PatternProperties from "./PatternProperties";
+import { Heading, Preview } from '@storybook/addon-docs/blocks';
+import {Pattern} from '@wingsuit-designsystem/pattern';
+
+import {PatternInclude} from './PatternInclude';
+import {PatternProperties} from './PatternProperties';
+import PatternPreview from "../components/PatternPreview";
+
 
 interface StoriesProps {
-  title?: JSX.Element | string;
   includePrimary?: boolean;
+  showInclude?: boolean;
+  pattern: Pattern;
 }
 
-export const PatternStories: FunctionComponent<StoriesProps> = ({
-  title,
-  includePrimary = false,
-}) => {
-  const context = useContext(DocsContext);
-  const componentStories = getDocsStories(context);
+export const PatternStories: FunctionComponent<StoriesProps> = (props: StoriesProps) => {
+  const {pattern, includePrimary} = props;
 
-  let stories: DocsStoryProps[] = componentStories;
-  if (!includePrimary) stories = stories.slice(1);
-
-  if (!stories || stories.length === 0) {
+  if (pattern == null) {
     return null;
   }
+  let variants = Object.values(pattern.getPatternVariants());
+  if (!includePrimary) {
+    variants = variants.slice(1);
+  }
+  if (variants.length === 0) {
+    return null;
+  }
+
   return (
     <>
-      <Heading>Pattern Variants</Heading>
-      {stories.map((story) => {
+      {variants.map((variant) => {
+        const included = props.showInclude ?? <PatternInclude variant={variant}/>
         return (
           <>
-            <DocsStory key={story.id} {...story} expanded />
-            <PatternInclude story={story} />
+            <Heading>{variant.getLabel()}</Heading>
+            <Preview>
+              <PatternPreview patternId={pattern.getId()} variantId={variant.getId()} />
+            </Preview>
+            <>
+              { included }
+            </>
+            <PatternProperties variant={variant}></PatternProperties>
           </>
         );
       })}
@@ -39,5 +50,6 @@ export const PatternStories: FunctionComponent<StoriesProps> = ({
 };
 
 PatternStories.defaultProps = {
-  title: 'PatternStories',
+  includePrimary: false,
+  showInclude: true
 };

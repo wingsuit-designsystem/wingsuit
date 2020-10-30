@@ -6,7 +6,7 @@ slider:
   fields:
     items:
       type: pattern
-      label: Content
+      label: Slider items
       multi_value_type: field_items
       preview:
         - id: banner

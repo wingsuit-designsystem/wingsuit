@@ -81,6 +81,7 @@ export default class Pattern {
     this.parameters = definition.parameters;
     this.definition = definition;
     this.defaultVariant = new PatternVariant(
+      '__default',
       this,
       Pattern.DEFAULT_VARIANT_NAME,
       this.use,
@@ -144,6 +145,7 @@ export default class Pattern {
         variantDefinition.configuration != null ? variantDefinition.configuration : {};
       const mergedConfiguration = { ...configuration, ...variantConfiguration };
       const variant = new PatternVariant(
+        variantKey,
         this,
         variantKey,
         use,
@@ -162,7 +164,7 @@ export default class Pattern {
           key,
           settings[key].type,
           settings[key].label,
-          settings[key].descripfirstOptiontion,
+          settings[key].description,
           settings[key].preview
         );
         setting.setRequired(!!settings[key].required);
@@ -180,9 +182,9 @@ export default class Pattern {
           settings[key].type === 'select'
         ) {
           const keys = Object.keys(settings[key].options);
-          if (keys.length > 1) {
+          if (keys.length > 0) {
             const firstOption = keys[0];
-            setting.setPreview(settings[key].options[firstOption]);
+            setting.setPreview(firstOption);
           }
         }
         variant.addSetting(setting);
@@ -218,6 +220,7 @@ export default class Pattern {
           Object.keys(variantDefinition.fields).forEach((key: string) => {
             const field: Field = variant.getField(key);
             field.setPreview(variantDefinition.fields[key]);
+            field.setEnable(false);
           });
         }
       }

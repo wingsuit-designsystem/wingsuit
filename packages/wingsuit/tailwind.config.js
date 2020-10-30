@@ -11,7 +11,7 @@ module.exports = {
   },
   purge: {
     layers: ['utilities'],
-    content: ['./source/**/*.twig', './apps/**/*.twig'],
+    content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
     whitelist: ['bg-red-500', 'px-4'],
   },
   theme: {

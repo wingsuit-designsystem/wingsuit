@@ -9,6 +9,10 @@ export default class PatternVariant {
     return this.use;
   }
 
+  public getId(): string {
+    return this.id;
+  }
+
   public getStorage(): IPatternStorage {
     return this.pattern.getStorage();
   }
@@ -138,6 +142,8 @@ export default class PatternVariant {
 
   private pattern: Pattern;
 
+  private id: string;
+
   private use: string;
 
   private variant: string;
@@ -153,6 +159,7 @@ export default class PatternVariant {
   private settings: Setting[] = [];
 
   constructor(
+    id: string,
     pattern: Pattern,
     variant: string,
     use: string,
@@ -160,6 +167,7 @@ export default class PatternVariant {
     description: string,
     configuration: any
   ) {
+    this.id = id;
     this.pattern = pattern;
     this.variant = variant;
     this.label = label;

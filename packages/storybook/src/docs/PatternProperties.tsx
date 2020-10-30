@@ -1,10 +1,9 @@
-import React, { FC, useContext } from 'react';
-import { TabbedArgsTable } from '@storybook/components';
-import { DocsContext, StoryData } from '@storybook/addon-docs/blocks';
+import React, {FC} from 'react';
+import {TabbedArgsTable} from '@storybook/components';
 
-import { getContextualStory } from './utils';
+import {PatternVariant} from "@wingsuit-designsystem/pattern";
 
-type Props = { story?: StoryData };
+type Props = { variant: PatternVariant };
 
 function getOptionString(setting) {
   if (setting.options) {
@@ -13,18 +12,15 @@ function getOptionString(setting) {
   return '';
 }
 
-export const PatternProperties: FC<Props> = (props) => {
-  const context = useContext(DocsContext);
-  const { story } = props;
-  const contextStory = getContextualStory(context, story);
+export const PatternProperties: FC<Props> = (props: Props) => {
   const properties: any = {};
-  if (contextStory !== undefined) {
-    const { patternVariant } = contextStory.parameters.docs;
 
-    const fields = patternVariant.getFields();
-    properties.Fields = { name: 'Fields', rows: {} };
-    Object.keys(fields).forEach((key) => {
-      const field = fields[key];
+  const {variant} = props;
+  const fields = variant.getFields();
+  properties.Fields = {name: 'Fields', rows: {}};
+  Object.keys(fields).forEach((key) => {
+    const field = fields[key];
+    if (field.isEnable()) {
       properties.Fields.rows[key] = {
         name: key,
         type: field.getType(),
@@ -32,30 +28,30 @@ export const PatternProperties: FC<Props> = (props) => {
           field.getDescription() != null ? field.getDescription() : ''
         }`,
       };
-    });
-    const settings = patternVariant.getSettings();
-    properties.Settings = { name: 'Settings', rows: {} };
-    Object.keys(settings).forEach((key) => {
-      const setting = settings[key];
-      if (setting.isEnable()) {
-        properties.Settings.rows[key] = {
+    }
+  });
+  const settings = variant.getSettings();
+  properties.Settings = {name: 'Settings', rows: {}};
+  Object.keys(settings).forEach((key) => {
+    const setting = settings[key];
+    if (setting.isEnable()) {
+      properties.Settings.rows[key] = {
+        name: setting.getName(),
+        description: `<b>[${setting.getType()}]</b> ${setting.getLabel()} <br> ${
+          setting.getDescription() != null ? `${setting.getDescription()} <br> `  : ''
+        } ${getOptionString(setting)}`,
+        defaultValue: {
+          summary: setting.getDefaultValue(),
+        },
+        type: {
           name: setting.getLabel(),
-          description: `<b>[${setting.getType()}]</b> ${setting.getLabel()} <br> ${
-            setting.getDescription() != null ? setting.getDescription() : ''
-          } ${getOptionString(setting)}`,
-          defaultValue: {
-            summary: setting.getDefaultValue(),
-          },
-          type: {
-            name: setting.getLabel(),
-            required: setting.isRequired(),
-          },
-        };
-      }
-    });
-  }
+          required: setting.isRequired(),
+        },
+      };
+    }
+  });
 
-  return <TabbedArgsTable tabs={properties} />;
+  return <TabbedArgsTable tabs={properties}/>;
 };
 
 PatternProperties.displayName = 'PatternProperties';

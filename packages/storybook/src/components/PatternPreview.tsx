@@ -15,6 +15,9 @@ const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...var
       .catch((error) => {
         setRendered(`Error: ${error.message}`);
       });
+    return () => {
+      setRendered('');
+    }
   }, [patternId, variantId, JSON.stringify(variables)]);
 
   // eslint-disable-next-line react/no-danger
