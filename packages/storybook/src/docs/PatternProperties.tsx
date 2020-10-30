@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {TabbedArgsTable} from '@storybook/components';
+import React, { FC } from 'react';
+import { TabbedArgsTable } from '@storybook/components';
 
-import {PatternVariant} from "@wingsuit-designsystem/pattern";
+import { PatternVariant } from '@wingsuit-designsystem/pattern';
 
 type Props = { variant: PatternVariant };
 
@@ -15,9 +15,9 @@ function getOptionString(setting) {
 export const PatternProperties: FC<Props> = (props: Props) => {
   const properties: any = {};
 
-  const {variant} = props;
+  const { variant } = props;
   const fields = variant.getFields();
-  properties.Fields = {name: 'Fields', rows: {}};
+  properties.Fields = { name: 'Fields', rows: {} };
   Object.keys(fields).forEach((key) => {
     const field = fields[key];
     if (field.isEnable()) {
@@ -31,14 +31,14 @@ export const PatternProperties: FC<Props> = (props: Props) => {
     }
   });
   const settings = variant.getSettings();
-  properties.Settings = {name: 'Settings', rows: {}};
+  properties.Settings = { name: 'Settings', rows: {} };
   Object.keys(settings).forEach((key) => {
     const setting = settings[key];
     if (setting.isEnable()) {
       properties.Settings.rows[key] = {
         name: setting.getName(),
         description: `<b>[${setting.getType()}]</b> ${setting.getLabel()} <br> ${
-          setting.getDescription() != null ? `${setting.getDescription()} <br> `  : ''
+          setting.getDescription() != null ? `${setting.getDescription()} <br> ` : ''
         } ${getOptionString(setting)}`,
         defaultValue: {
           summary: setting.getDefaultValue(),
@@ -51,7 +51,7 @@ export const PatternProperties: FC<Props> = (props: Props) => {
     }
   });
 
-  return <TabbedArgsTable tabs={properties}/>;
+  return <TabbedArgsTable tabs={properties} />;
 };
 
 PatternProperties.displayName = 'PatternProperties';

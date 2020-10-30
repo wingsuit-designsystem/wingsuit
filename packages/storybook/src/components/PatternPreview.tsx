@@ -17,7 +17,7 @@ const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...var
       });
     return () => {
       setRendered('');
-    }
+    };
   }, [patternId, variantId, JSON.stringify(variables)]);
 
   // eslint-disable-next-line react/no-danger

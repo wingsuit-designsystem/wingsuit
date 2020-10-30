@@ -143,13 +143,13 @@ function getStories(pattern: Pattern, module) {
             <Subtitle />
             <Description />
             <Primary />
-            <PatternProperties variant={variant}/>
-            <PatternInclude variant={variant}/>
-            <PatternStories pattern={pattern}/>
+            <PatternProperties variant={variant} />
+            <PatternInclude variant={variant} />
+            <PatternStories pattern={pattern} />
           </>
         ),
         storyDescription: variant.getDescription(),
-      }
+      },
     };
 
     parameters = Object.assign(parameters, pattern.getParameters());
@@ -173,4 +173,4 @@ export {
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
-export {PatternStories, PatternProperties, PatternInclude}
+export { PatternStories, PatternProperties, PatternInclude };
