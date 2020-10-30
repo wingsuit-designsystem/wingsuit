@@ -15,7 +15,12 @@
   {%- set column_3 -%}{%- block column_3 -%}{{ _context['column_3' ] }}{% endblock %}{% endset %}
   {%- set column_4 -%}{%- block column_4 -%}{{ _context['column_4' ] }}{% endblock %}{% endset %}
   {%- set column_5 -%}{%- block column_5 -%}{{ _context['column_5' ] }}{% endblock %}{% endset %}
-  {% include "@organisms/grid/grid.twig" with {attributes: create_attribute() } %}
+  {% set cells = [] %}
+  {%- for i in 1..columns -%}
+    {% set cells = cells|merge([_context['column_' ~ i ]]) %}
+  {% endfor %}
+  {% set columns_width = columns_width|default(_context['columns_width_' ~ columns ]) %}
+  {% include "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
 {% endset %}
 
 {% embed "@atoms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}

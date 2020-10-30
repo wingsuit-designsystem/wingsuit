@@ -1,7 +1,7 @@
 section:
   use: "@organisms/section/section.twig"
   label: Section
-  description: "Multi column section. A combination of container and grid. Very useful for the Drupal layout builder."
+  description: "Five column section. A combination of container and grid. Very useful for the Drupal layout builder."
   fields:
     headline:
       type: text
@@ -77,9 +77,9 @@ section:
         small: Small
         default: Default
         large: Large
-    gap:
+    gutter:
       type: select
-      label: Gap
+      label: Gutter
       required: true
       default_value: default
       options:
@@ -89,82 +89,102 @@ section:
     columns:
       type: select
       label: Columns
+      required: true
       options:
         1: One column
         2: Two columns
         3: Three columns
         4: Four columns
         5: Five columns
-    config_1:
+    columns_width_1:
       type: select
       label: Column widths
       default_value: equal
+      required: true
       options:
         equal: 100%
-    config_2:
+    columns_width_2:
       type: select
       label: Column widths
       default_value: equal
+      required: true
       options:
         equal: 50%/50%
         66x33: 66%/33%
         33x66: 33%/66%
-    config_3:
+    columns_width_3:
       type: select
       label: Column widths
       default_value: equal
+      required: true
       options:
         equal: 33%/33%/33%
-    config_4:
+    columns_width_4:
       type: select
       label: Column widths
       default_value: equal
+      required: true
       options:
         equal: 25%/25%/25%/25%
-    config_5:
+    columns_width_5:
       type: select
       label: Column widths
       default_value: equal
+      required: true
       options:
         equal: 20%/20%/20%/20%
   variants:
     1_column:
       label: One Column
+      fields:
+        column_2: ""
+        column_3: ""
+        column_4: ""
+        column_5: ""
       settings:
         columns: 1
-        config_2: "equal"
-        config_3: ""
-        config_4: ""
-        config_5: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
     2_column:
       label: Two Columns
+      fields:
+        column_3: ""
+        column_4: ""
+        column_5: ""
       settings:
         columns: 2
-        config_1: ""
-        config_3: ""
-        config_4: ""
-        config_5: ""
+        columns_width_1: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
     3_column:
       label: Three Columns
+      fields:
+        column_4: ""
+        column_5: ""
       settings:
         columns: 3
-        config_1: ""
-        config_2: ""
-        config_4: ""
-        config_5: ""
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_4: ""
+        columns_width_5: ""
     4_column:
       label: Four Columns
+      fields:
+        column_5: ""
       settings:
         columns: 4
-        config_1: ""
-        config_2: ""
-        config_3: ""
-        config_5: ""
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_5: ""
     5_column:
       label: Five Columns
       settings:
         columns: 5
-        config_1: ""
-        config_2: ""
-        config_3: ""
-        config_4: ""
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""
