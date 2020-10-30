@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'overview'
-title: 'Overview'
----
+
+## title: 'Overview'
 
 Wingsuit knows following component types:
 * ### Wingsuit component

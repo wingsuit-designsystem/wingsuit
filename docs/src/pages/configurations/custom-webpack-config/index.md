@@ -1,12 +1,13 @@
----
+* * *
+
 id: 'custom-webpack-config'
-title: 'Custom webpack configuration'
----
+
+## title: 'Custom webpack configuration'
 
 ## Overview
 
 Add a `webpack hook` to your wingsuit.config.js if you want to extend the webpack configuration:
- 
+
 ```js
 module.exports = {
   webpack: function(appConfig) {
@@ -19,7 +20,8 @@ module.exports = {
     ....
   }
 }
-``` 
+```
+
 If you want to alter the final config, use the `webpackFinal hook`:
 
 ```js
@@ -33,4 +35,4 @@ module.exports = {
     ....
   }
 }
-``` 
+```

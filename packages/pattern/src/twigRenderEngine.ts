@@ -23,6 +23,7 @@ export async function getPatternConfiguration(
     });
   } catch (e) {
     return new Promise<string>((resolve, refuse) => {
+      // eslint-disable-next-line no-console
       console.log(`Cannot load pattern configuration. Message: ${e.message}`);
       resolve('');
     });
