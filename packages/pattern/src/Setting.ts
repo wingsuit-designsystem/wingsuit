@@ -25,8 +25,6 @@ export default class Setting extends Property {
     this.required = required;
   }
 
-
-
   private defaultValue = '';
 
   private required = false;
