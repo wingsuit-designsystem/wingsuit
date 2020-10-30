@@ -29,6 +29,7 @@ const getSelectedSection = (sections, path) =>
   Object.keys(sections).find((key) => sections[key].indexOf(path) >= 0);
 
 const DocsContainer = ({ data }) => {
+  console.log(data);
   const { site, markdownRemark, allMarkdownRemark } = data;
   const { frontmatter, fields, html } = markdownRemark;
   const { id, title } = frontmatter;
@@ -107,7 +108,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            id
           }
         }
       }
@@ -119,7 +119,6 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        id
       }
     }
   }

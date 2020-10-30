@@ -1,7 +1,5 @@
-* * *
-
+---
 id: 'manual-testing'
-
-## title: 'Manual Testing'
-
+title: 'Manual Testing'
+---
 TBD

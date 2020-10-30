@@ -1,18 +1,14 @@
-* * *
-
+---
 id: 'javascript'
-
-## title: 'Javascript'
-
+title: 'Javascript'
+---
 ## Custom javascript
-
 Drupal javascript behaviors are working out of the box in Wingsuit. 
 Put your custom javascript code in a `component.behavior.js` file inside your component.
 
 Wingsuit will load the file automatically and call the `attach` function after component initialization. 
 
 <b>Sample behavior file:</b>
-
 ```js
 Drupal.behaviors.button = {
   attach(context, settings) {
@@ -21,19 +17,17 @@ Drupal.behaviors.button = {
 };
 
 ```
-
 Wingsuit supports ES6 and compiles (babel) every behavior file to a separately compiled behavior file.
 You can find the compiled files in `dist/behaviors/*.behavior.js`.
 
-## Vendor libraries
-
+## Vendor libraries 
 To embed a 3d party library: 
 
-1.  Add the 3d party library to your package.json. Run `yarn add library`.
-2.  Create a javascript file under `source/default/vendorjs/lib.vendor.js` and `@import` the referenced library.
-
+1. Add the 3d party library to your package.json. Run `yarn add library`.
+1. Create a javascript file under `source/default/vendorjs/lib.vendor.js` and `@import` the referenced library.
+    
 <b>Sample</b>:
-
+    
 ```js
 import 'regenerator-runtime/runtime';
 import 'alpinejs';

@@ -1,19 +1,15 @@
-* * *
-
+---
 id: 'presentation'
-
-## title: 'Presentation'
-
+title: 'Presentation'
+---
 Presentation templates are located typically at `apps/storybook/patterns/type/`. 
 They are useful to present a combination of components. A very typical use case is the pages in atomic design.
 
 <b>A Presentation component contains:</b>
-
--   pattern.stories.jsx
--   pattern.twig
+* pattern.stories.jsx
+* pattern.twig
 
 Inside the stories, you load the twig file the same way you do it in the [twig only](../twig) component.
-
 ```js
 import { RenderTwig } from '@wingsuit-designsystem/storybook';
 import React from 'react';
@@ -27,8 +23,9 @@ export const Variant = () => <RenderTwig data={twigTemplate}></RenderTwig>;
 ```
 
 ### Additional twig functions
-
 Inside the twig template you may use two additional twig functions:
 
--   `pattern_preview(patternId, variantId, variables)` to render an existing pattern, including all preview data from the component. You can overwrite preview data with variables.
--   `pattern(patternId, variantId, variables)` to render a pattern without any preview data. You can provide all variables as the third argument.
+* `pattern_preview(patternId, variantId, variables)` to render an existing pattern, including all preview data from the component. You can overwrite preview data with variables.
+* `pattern(patternId, variantId, variables)` to render a pattern without any preview data. You can provide all variables as the third argument.
+
+

@@ -1,8 +1,7 @@
-* * *
-
+---
 id: 'preset-webpack'
-
-## title: 'Presets'
+title: 'Presets'
+---
 
 Wingsuit uses `presets` to make webpack configurations reusable across different apps.
 
@@ -11,7 +10,6 @@ A preset is a set of hooks called by Wingsuit on webpack initialization and can 
 The goal is to deliver a community-driven set of webpack presets. Check out the predefined presets in the [default config stub](@TODO).
 
 Each preset has two possible hooks:
-
 ```js
 module.exports = {
   webpack: function(appConfig) {
@@ -25,9 +23,7 @@ module.exports = {
   }
 }
 ```
-
 Then register the bundle inside your wingsuit.config.js:
-
 ```js
   const customPreset = require('custom/Preset');
   
@@ -40,15 +36,11 @@ Then register the bundle inside your wingsuit.config.js:
   };
 
 ```
-
 ## Extend or replace config?
 
 There are two ways to use presets: 
-
 ### 1. Extend
-
 The most common use case is to extend the existing `presets` config. For this, you can use the `extend` keyword inside the `webpack.config.js`:
-
 ```js
 module.exports = {
   extend: {
@@ -64,9 +56,7 @@ module.exports = {
 ```
 
 ### 2. Replace
-
 It's also possible to replace the existing bundles with a completely custom configuration. Doing so overwrites the existing app config: 
-
 ```js
 module.exports = {
   apps: {
@@ -79,6 +69,6 @@ module.exports = {
     }
   }
 };
-```
+``` 
 
 Place your `preset` file wherever you want. If you want to share it far and wide, you should make a node package out of it.

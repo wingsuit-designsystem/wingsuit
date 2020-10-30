@@ -1,8 +1,7 @@
-* * *
-
+---
 id: 'twig'
-
-## title: 'Twig only'
+title: 'Twig only'
+---
 
 A twig only component works without any wingsuit YAML file. The patterns are useful if you don't need or don't want a UI Pattern integration.
 
@@ -11,12 +10,11 @@ A typical use case for twig only components are menu or header components.
 The data for these components can be provided as variables or defined globally inside YAML files in `apps/storybook/data`. So typically 
 
 <b>A twig only component contains:</b>
-
--   index.js
--   pattern.stories.jsx
--   pattern.twig
--   css file (optional)
--   javascript file. (optional)
+* index.js
+* pattern.stories.jsx
+* pattern.twig
+* css file (optional)
+* javascript file. (optional)
 
 Wingsuit provides the react component `RenderTwig` to render twig templates:
 
