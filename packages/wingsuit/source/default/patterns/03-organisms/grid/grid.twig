@@ -25,21 +25,23 @@
       'flex flex-wrap'
     ] | sort | join(' ') | trim) }}>
     {% block cells %}
-      {% for i, cell in cells %}
-        {% set column_i = (i % columns) + 1 %}
+      {% for cell_counter, cell in cells %}
+        {% set column_i = (cell_counter % columns) + 1 %}
         {% set column_classes = configuration[column_i] is not empty ? configuration[column_i] : configuration['default'] %}
-        {% set column_attributes = create_attribute().
+        {% set cell_attributes = create_attribute().
           addClass(
           [
             'flex flex-col',
             column_classes,
             gutter_cell_classes
           ] | sort | join(' ') | trim) %}
-        <div {{ column_attributes }}>
-          {% block cell %}
+        {% block cell_outer %}
+        <div {{ cell_attributes }}>
+          {% block cell_inner %}
             {{ cell }}
           {% endblock %}
         </div>
+        {% endblock %}
       {%- endfor -%}
     {% endblock %}
   </div>

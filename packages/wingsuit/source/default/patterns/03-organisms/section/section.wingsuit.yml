@@ -119,6 +119,7 @@ section:
       required: true
       options:
         equal: 33%/33%/33%
+        25x50x25: 25%/50%/25%
     columns_width_4:
       type: select
       label: Column widths

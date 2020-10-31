@@ -11,6 +11,9 @@ const PatternLoad: FunctionComponent<Props> = (props: Props) => {
     // @ts-ignore
     setPattern(loaded);
   }, []);
-  return <>{children(pattern)}</>;
+  if (pattern != null) {
+    return <>{children(pattern)}</>;
+  }
+  return <>Loading</>;
 };
 export default PatternLoad;

@@ -1,6 +1,6 @@
 import { Meta, Story, Preview, Title, Subtitle, Primary, Heading, Subheading } from '@storybook/addon-docs/blocks';
 
-import { PatternDoc, PatternLoad } from '@wingsuit-designsystem/storybook';
+import { PatternDoc, PatternLoad, PatternPreview } from '@wingsuit-designsystem/storybook';
 import { storage } from '@wingsuit-designsystem/pattern';
 import { Source } from '@storybook/components';
 import dedent from 'ts-dedent';
@@ -10,28 +10,87 @@ import dedent from 'ts-dedent';
   <>
     <Title />
     <Subtitle />
-    <Description />
     <Heading>
-      Usage
+      Simple usage
     </Heading>
     <Source format={false} language="twig" dark code={dedent`
-      {% set items = [
-        'Item 1',
-        'Item 2'
+      {% set cells = [
+        'Cell 1',
+        'Cell 2'
       ] %}
       {% include "@organisms/grid/grid.twig" with {
         attributes: create_attribute(),
-        items: items,
-        columns_count: 2,
-        columns_config: 'equal',
+        cells: cells,
+        columns: 2,
+        columns_width: 'equal',
         gutter: 'default'
       } only %}
     `} />
     <Heading>
+      Cells
+    </Heading>
+    <p>
+      The pattern loops through a list of cells and print each cell.<br/>
+      To adjust the way the blocks are printed use twig blocks.
+    </p>
+    <Heading>Blocks</Heading>
+    <p>
+       <ul>
+        <li><b>cell_outer</b><br/>Use block cell_outer to adjust the markup of each cell. Variables: <b>cell_attributes</b>, <b>cell</b>, <b>cell_counter</b>.</li>
+        <li><b>cell_inner</b><br/>Use block cell_inner to print the cell variable. Variables: <b>cell</b>, <b>cell_counter</b></li>
+       </ul>
+    </p>
+    <Subheading>Example: cell_inner</Subheading>
+    <Source format={false} language="twig" dark code={dedent`
+      {% set cells = [
+            {content: '<div class="w-full h-20 bg-primary">1</div>'},
+            {content: '<div class="w-full h-20 bg-primary">2</div>'},
+            {content: '<div class="w-full h-20 bg-primary">3</div>'},
+            {content: '<div class="w-full h-20 bg-primary">4</div>'},
+            {content: '<div class="w-full h-20 bg-primary">5</div>'},
+            {content: '<div class="w-full h-20 bg-primary">6</div>'},
+          ] %}
+          {% embed "@organisms/grid/grid.twig" with {
+            attributes: create_attribute(),
+            cells: cells,
+            columns: 2,
+            columns_width: 'equal',
+            gutter: 'default'
+          } only %}
+            {% block cell_inner %}
+              {{ cell.content }}
+            {% endblock %}
+          {% endembed %}
+    `} />
+    <Subheading>Example: cell_outer</Subheading>
+        <Source format={false} language="twig" dark code={dedent`
+          {% set cells = [
+                {content: '<div class="w-full h-20 bg-primary">1</div>'},
+                {content: '<div class="w-full h-20 bg-primary">2</div>'},
+                {content: '<div class="w-full h-20 bg-primary">3</div>'},
+                {content: '<div class="w-full h-20 bg-primary">4</div>'},
+                {content: '<div class="w-full h-20 bg-primary">5</div>'},
+                {content: '<div class="w-full h-20 bg-primary">6</div>'},
+              ] %}
+              {% embed "@organisms/grid/grid.twig" with {
+                attributes: create_attribute(),
+                cells: cells,
+                columns: 2,
+                columns_width: 'equal',
+                gutter: 'default'
+              } only %}
+              {% block cell_outer %}
+                <div {{ cell_attributes.addClass('additional-class') }}>
+                {{ cell.content }} + { cell_counter }
+                </div>
+              {% endblock %}
+              {% endembed %}
+        `} />
+    <Heading>
       Column widths
     </Heading>
     <p>
-      The component ships with most common columns widths configurations like 50x50 or 33x66.
+      The pattern comes with most common column widths configurations like 50x50 or 33x66.
       If you need additional configuration you can extends the columns_configuration inside the grid.wingsuit.yml.
     </p>
     <Source format={false} language="yml" dark code={dedent`
@@ -58,7 +117,34 @@ import dedent from 'ts-dedent';
           cell: px-6 md:px-25 mb-6 last:mb-0
         ...
           `}/>
-    <PatternDoc pattern={pattern} showInclude={false} includePrimary={true}/>
+     <Heading>
+       Examples
+     </Heading>
+     <Subheading>
+       4 Columns with 4 equal columns.
+     </Subheading>
+    <Source format={false} language="twig" dark code={dedent`
+      {% include "@organisms/grid/grid.twig" with {
+        cells: cells,
+        columns: 4,
+        columns_width: 'equal',
+        gutter: 'default'
+      } only %}
+    `} />
+    <PatternPreview variant={pattern.getDefaultVariant()} columns="4" config="equal"/>
+     <Subheading>
+       3 Columns with 25% 50% 25%.
+     </Subheading>
+     <Source format={false} language="twig" dark code={dedent`
+       {% include "@organisms/grid/grid.twig" with {
+         cells: cells,
+         columns: 3,
+         columns_width: '25x50x25',
+         gutter: 'default'
+       } only %}
+     `} />
+    <PatternPreview variant={pattern.getDefaultVariant()} columns="3" columns_width="25x50x25"/>
+
   </>
   )}
 </PatternLoad>

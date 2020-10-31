@@ -1,15 +1,16 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { renderer } from '@wingsuit-designsystem/pattern';
-import PropTypes from 'prop-types';
 
-type Props = { patternId; variantId };
+type Props = { patternId?; variantId?; variant? };
 
-const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...variables }) => {
+const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, variant, ...variables }) => {
   const [rendered, setRendered] = useState('');
+  const finalPatternId = variant !== null ? variant.getPattern().getId(): patternId;
+  const finalVariantId = variant !== null ? variant.getId(): variantId;
   useEffect(() => {
     let mounted = true;
     renderer
-      .renderPatternPreview(patternId, variantId, variables)
+      .renderPatternPreview(finalPatternId, finalVariantId, variables)
       .then((output: string) => {
         if (mounted) {
           setRendered(output);
@@ -30,8 +31,10 @@ const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...var
 
 PatternPreview.displayName = 'PatternPreview';
 
-PatternPreview.propTypes = {
-  patternId: PropTypes.string.isRequired,
-  variantId: PropTypes.string.isRequired,
+PatternPreview.defaultProps = {
+  patternId: '',
+  variantId: '',
+  variant: null
 };
+
 export default PatternPreview;
