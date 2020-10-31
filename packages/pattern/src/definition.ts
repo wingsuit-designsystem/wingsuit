@@ -2,6 +2,9 @@ export interface Faker {
   token: string;
   property: string;
 }
+export interface Options {
+  [key: string]: string;
+}
 export interface Preview {
   faker: Faker;
 }
@@ -16,6 +19,7 @@ export interface Property {
   preview: string | Preview;
   required: boolean;
   multi_value_type: string;
+  options: Options;
 }
 export interface Variants {
   [key: string]: Variant;

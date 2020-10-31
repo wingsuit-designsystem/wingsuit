@@ -9,14 +9,14 @@ grid:
       label: Cells
       description: The cells of the grid.
       preview:
-        - "Item 1"
-        - "Item 2"
-        - "Item 3"
-        - "Item 4"
-        - "Item 5"
-        - "Item 6"
-        - "Item 7"
-        - "Item 8"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-primary'></div>"
   settings:
     gutter:
       type: select
@@ -33,6 +33,7 @@ grid:
       label: Columns
       description: The number of grid columns
       required: true
+      preview: 4
       options:
         1: One column
         2: Two columns

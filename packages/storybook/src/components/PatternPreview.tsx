@@ -7,16 +7,20 @@ type Props = { patternId; variantId };
 const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...variables }) => {
   const [rendered, setRendered] = useState('');
   useEffect(() => {
+    let mounted = true;
     renderer
       .renderPatternPreview(patternId, variantId, variables)
       .then((output: string) => {
-        setRendered(output);
+        if(mounted) {
+          setRendered(output);
+        }
       })
       .catch((error) => {
         setRendered(`Error: ${error.message}`);
       });
     return () => {
       setRendered('');
+      mounted = false;
     };
   }, [patternId, variantId, JSON.stringify(variables)]);
 
