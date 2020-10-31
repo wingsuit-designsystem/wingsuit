@@ -13,7 +13,7 @@ interface StoriesProps {
   pattern: Pattern;
 }
 
-export const PatternStories: FunctionComponent<StoriesProps> = (props: StoriesProps) => {
+export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps) => {
   const { pattern, includePrimary } = props;
 
   if (pattern == null) {
@@ -32,21 +32,21 @@ export const PatternStories: FunctionComponent<StoriesProps> = (props: StoriesPr
       {variants.map((variant) => {
         const included = props.showInclude ?? <PatternInclude variant={variant} />;
         return (
-          <>
+          <div key={variant.getId()}>
             <Heading>{variant.getLabel()}</Heading>
             <Preview>
               <PatternPreview patternId={pattern.getId()} variantId={variant.getId()} />
             </Preview>
             <>{included}</>
             <PatternProperties variant={variant} />
-          </>
+          </div>
         );
       })}
     </>
   );
 };
 
-PatternStories.defaultProps = {
+PatternDoc.defaultProps = {
   includePrimary: false,
   showInclude: true,
 };

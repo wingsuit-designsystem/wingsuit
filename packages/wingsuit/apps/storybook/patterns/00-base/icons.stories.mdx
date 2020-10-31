@@ -14,7 +14,7 @@ const icons = svgFile.svgs;
     icons.map((icon)=>{
       const url = `images/spritemap.svg#${icon}`;
       return (
-        <IconItem name={icon}>
+        <IconItem name={icon} key={icon}>
           <svg viewBox="0 0 500 500">
             <use xlinkHref={url}></use>
           </svg>

@@ -13,10 +13,10 @@ const fontSizes = tailwindFile.tailwind.theme.fontSize;
 {
   Object.keys(fontFamilies).map((key,i)=>{
     return (
-      <>
+      <div key={key}>
         <Subtitle><b>Font Family:</b> {fontFamilies[key][0]} ({key})</Subtitle>
         <Typeset fontFamily={key} fontSizes={Object.values(fontSizes)} />
-      </>
+      </div>
     )
   })
 }

@@ -1,5 +1,5 @@
 import Property from './Property';
-import {Options} from "./definition";
+import { Options } from './definition';
 
 export default class Setting extends Property {
   public getOptions(): Options {
@@ -16,15 +16,12 @@ export default class Setting extends Property {
       if (this.options[key] === label) {
         optionKey = key;
       }
-    })
+    });
     return optionKey;
   }
 
   public getPreviewDisplayValue(): string {
-    if (this.getType() === 'select'
-      && this.getPreview() != null
-      && this.getPreview() !== ''
-    ) {
+    if (this.getType() === 'select' && this.getPreview() != null && this.getPreview() !== '') {
       return this.options[this.getPreview()];
     }
     return this.getPreview();

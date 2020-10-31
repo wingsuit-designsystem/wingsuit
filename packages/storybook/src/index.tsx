@@ -8,7 +8,7 @@ import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
-import { PatternStories } from './docs/PatternStories';
+import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
 function getStorybookKnobsOptions(setting) {
@@ -145,7 +145,7 @@ function getStories(pattern: Pattern, module) {
             <Primary />
             <PatternProperties variant={variant} />
             <PatternInclude variant={variant} />
-            <PatternStories pattern={pattern} />
+            <PatternDoc pattern={pattern} />
           </>
         ),
         storyDescription: variant.getDescription(),
@@ -173,4 +173,4 @@ export {
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
-export { PatternStories, PatternProperties, PatternInclude };
+export { PatternDoc, PatternProperties, PatternInclude };

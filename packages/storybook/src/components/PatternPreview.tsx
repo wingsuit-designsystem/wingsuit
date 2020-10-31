@@ -11,7 +11,7 @@ const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, ...var
     renderer
       .renderPatternPreview(patternId, variantId, variables)
       .then((output: string) => {
-        if(mounted) {
+        if (mounted) {
           setRendered(output);
         }
       })
