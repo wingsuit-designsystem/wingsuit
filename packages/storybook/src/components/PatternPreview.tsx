@@ -3,10 +3,15 @@ import { renderer } from '@wingsuit-designsystem/pattern';
 
 type Props = { patternId?; variantId?; variant? };
 
-const PatternPreview: FunctionComponent<Props> = ({ patternId, variantId, variant, ...variables }) => {
+const PatternPreview: FunctionComponent<Props> = ({
+  patternId,
+  variantId,
+  variant,
+  ...variables
+}) => {
   const [rendered, setRendered] = useState('');
-  const finalPatternId = variant !== null ? variant.getPattern().getId(): patternId;
-  const finalVariantId = variant !== null ? variant.getId(): variantId;
+  const finalPatternId = variant !== null ? variant.getPattern().getId() : patternId;
+  const finalVariantId = variant !== null ? variant.getId() : variantId;
   useEffect(() => {
     let mounted = true;
     renderer
@@ -34,7 +39,7 @@ PatternPreview.displayName = 'PatternPreview';
 PatternPreview.defaultProps = {
   patternId: '',
   variantId: '',
-  variant: null
+  variant: null,
 };
 
 export default PatternPreview;
