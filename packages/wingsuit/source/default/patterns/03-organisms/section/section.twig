@@ -6,8 +6,9 @@
  * See section.wingsuit.yaml for documentation.
  */
 #}
-
-{% set padding_top = padding_top|default('default') %}
+{% if padding_top is not defined %}
+{% set padding_top = 'default' %}
+{% endif %}
 {%- set headline -%}{%- block headline -%}{{ headline }}{% endblock %}{% endset %}
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
@@ -23,7 +24,7 @@
   {% include "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
 {% endset %}
 
-{% embed "@atoms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
+{% embed "@organisms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
   {% block content %}
   {% if headline is not empty %}
     <h2 class="pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ headline }}</h2>

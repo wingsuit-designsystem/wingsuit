@@ -1,7 +1,8 @@
 section:
   use: "@organisms/section/section.twig"
   label: Section
-  description: "Five column section. A combination of container and grid. Very useful for the Drupal layout builder."
+  description: "A section with a headline and maximum five columns. A combination of container and grid.
+    You can use this pattern as a section in Drupal's Layout Builder."
   fields:
     headline:
       type: text
