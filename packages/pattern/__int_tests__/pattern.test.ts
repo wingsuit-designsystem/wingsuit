@@ -21,6 +21,7 @@ describe('Pattern parsing', () => {
       expect(defaultVariant.getLabel()).not.toBeNull();
       expect(settingsCount).toEqual(Object.keys(defaultVariant.getSettings()).length);
       expect(fieldsCount).toEqual(Object.keys(defaultVariant.getFields()).length);
+
     }
   );
 });
