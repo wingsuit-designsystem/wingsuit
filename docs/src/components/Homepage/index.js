@@ -22,9 +22,12 @@ const Homepage = ({ users }) => (
           className="row no-gutters relative"
           style={{ position: 'relative', overflow: 'hidden' }}
         >
-          <div className="col-12 col-sm-6 text-center">
+          <div className="col-12 col-sm-9 text-center">
             <h1 className="sb-tagline">
-              Build Components with Storybook and Tailwind CSS for Drupal
+              <span className="sb-tagline-sm">Build</span> Components{' '}
+              <span className="sb-tagline-sm">in</span> Storybook{' '}
+              <span className="sb-tagline-sm">with</span> Tailwind CSS{' '}
+              <span className="sb-tagline-sm">and</span> UI Patterns for Drupal
               <br />
               <div className="sb-tagline__subline">You will ♥️ it!</div>
             </h1>
@@ -57,12 +60,12 @@ const Homepage = ({ users }) => (
             <UsedBy users={users} />
             <Demo />
           </div>
-          <div className="column col-6 d-none d-sm-block">
+          <div className="column col-3 d-none d-sm-block">
             <div className="circle bg-red-100" />
           </div>
           <div
             className="d-none d-sm-block bg-blue-100"
-            style={{ zIndex: -1, position: 'absolute', width: '100%', height: '100%', left: '50%' }}
+            style={{ zIndex: -1, position: 'absolute', width: '100%', height: '100%', left: '75%' }}
           />
         </div>
       </div>

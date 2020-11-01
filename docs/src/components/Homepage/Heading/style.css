@@ -18,6 +18,8 @@
   padding: 34px 20px 34px 20px;
   font-size: 64px;
   line-height: 70px;
+  max-width: 700px;
+  margin: auto;
 }
 
 .heart {

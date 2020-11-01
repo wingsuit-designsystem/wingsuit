@@ -27,9 +27,6 @@
 
 .try-now {
   margin: auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
-
 }
 
 .has-feedback {
@@ -106,8 +103,19 @@
   position: relative;
 }
 
+.svg-triangle.svg-triangle--rotate {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .svg-triangle {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  height: 120px;
+  width: 100%;
+  fill: #f0fff4;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
