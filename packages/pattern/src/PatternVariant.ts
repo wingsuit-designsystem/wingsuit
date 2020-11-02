@@ -9,6 +9,10 @@ export default class PatternVariant {
     return this.use;
   }
 
+  public getId(): string {
+    return this.id;
+  }
+
   public getStorage(): IPatternStorage {
     return this.pattern.getStorage();
   }
@@ -39,6 +43,14 @@ export default class PatternVariant {
 
   public getFields(): Field[] {
     return this.fields;
+  }
+
+  public setConfiguration(configuration: any) {
+    this.configuration = configuration;
+  }
+
+  public getConfiguration(): any {
+    return this.configuration;
   }
 
   public addField(field: Field) {
@@ -130,6 +142,8 @@ export default class PatternVariant {
 
   private pattern: Pattern;
 
+  private id: string;
+
   private use: string;
 
   private variant: string;
@@ -138,15 +152,27 @@ export default class PatternVariant {
 
   private description: string;
 
+  private configuration: any;
+
   private fields: Field[] = [];
 
   private settings: Setting[] = [];
 
-  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string) {
+  constructor(
+    id: string,
+    pattern: Pattern,
+    variant: string,
+    use: string,
+    label: string,
+    description: string,
+    configuration: any
+  ) {
+    this.id = id;
     this.pattern = pattern;
     this.variant = variant;
     this.label = label;
     this.use = use;
     this.description = description;
+    this.configuration = configuration;
   }
 }

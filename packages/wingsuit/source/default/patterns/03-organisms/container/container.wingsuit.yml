@@ -1,5 +1,5 @@
 container:
-  use: "@atoms/container/container.twig"
+  use: "@organisms/container/container.twig"
   label: Container
   description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
   fields:
@@ -37,7 +37,7 @@ container:
     padding_top:
       type: select
       label: Padding top
-      description: If previous element has spacing bottom, use default for normal or small for small spacing betweeen elements.
+      description: The padding configuration to the previous element.
       default_value: default
       options:
         small: Small

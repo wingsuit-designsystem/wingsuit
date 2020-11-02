@@ -1,3 +1,64 @@
 hr {
   max-width: 540px;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.circle--mobile {
+  border-radius: 50%;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.circle {
+  position: absolute;
+  width: 200%;
+  padding-bottom: 200%;
+  border-radius: 50%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-black {
+  background-color: #000000;
+}
+
+.bg-blue-100 {
+  background-color: #EBF8FF;
+}
+
+.bg-red-100 {
+  background-color: #FFF5F5;
+}
+
+.bg-green-100 {
+  background: #F0FFF4;
+}
+
+.bg-purple-100 {
+  background: #FAF5FF;
+}
+
+.bg-purple-500 {
+  background: #8000FF;
+}
+
+.bg-green-500 {
+  background: #00FFD1;
+}
+
+.bg-gray-100 {
+  background: #F7FAFC;
+}
+
+.bg-yellow-100 {
+  background: #FFFFF0;
+}

@@ -18,7 +18,7 @@
     - pattern_<%= underscoreName %>:<% if (useCss) { %>
        css:
          component:
-           ws-assets://<%= name %>.css: {}<% } %><% if (useJs) { %>
+           ../<%= name %>.css: {}<% } %><% if (useJs) { %>
        js:
-         ws-assets://behaviors/<%= name %>.js: {}
+         ../behaviors/<%= name %>.js: {}
 <% } %><% } %>

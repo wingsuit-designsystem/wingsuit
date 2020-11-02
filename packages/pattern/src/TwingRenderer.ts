@@ -2,7 +2,7 @@ import { TwingLoaderArray } from 'twing';
 import { TwingLoaderInterface } from 'twing/dist/types/lib/loader-interface';
 import IRenderer from './IRenderer';
 import { twigAttributeFunction, twigItok, twigFileUrl, twigUuid } from './twigExtensions';
-import { renderPattern, renderPatternPreview } from './twigRenderEngine';
+import { renderPattern, renderPatternPreview, getPatternConfiguration } from './twigRenderEngine';
 import { storage } from './index';
 import Pattern from './Pattern';
 
@@ -70,6 +70,9 @@ export class TwingRenderer implements IRenderer {
 
     this.environment.addFunction(new TwingFunction('file_url', twigFileUrl));
     this.environment.addFunction(new TwingFunction('pattern', renderPattern));
+    this.environment.addFunction(
+      new TwingFunction('pattern_configuration', getPatternConfiguration)
+    );
   }
 
   async render(id: string, include: string, variables: {}): Promise<string> {

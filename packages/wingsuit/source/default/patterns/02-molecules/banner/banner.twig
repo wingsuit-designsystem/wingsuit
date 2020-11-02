@@ -24,7 +24,7 @@
   {{ image }}
   <div class="absolute top-0 left-0 w-full h-full flex">
 
-    {% embed "@atoms/container/container.twig" with { teaser: teaser, headline: headline , classes: 'flex-1 flex ' ~ position_classes[variant]} only %}
+    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline , classes: 'flex-1 flex ' ~ position_classes[variant]} only %}
       {% block content %}
         <div class="p-6">
           <h2 class="text-3xl font-serif">

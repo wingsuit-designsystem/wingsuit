@@ -9,9 +9,9 @@ You can overwrite the preset in your `wingsuit.config.js`.
 
 <b>The Wingsuit configuration file has three main sections</b>
 
-* `apps` for app-specific configuration. 
+* `apps` for app-specific configuration. An typical app is drupal. You can configure here where your app is located, how you want to compile your assets and store your assets.   
 
-* `designSystem` for design system configuration. Each app links to a design system.
+* `designSystem` for design system configuration. The design system is where your patterns living. Here you can configure everything around your patterns.
 
 * `presets` list of loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
 
@@ -23,19 +23,18 @@ With `environments` you can overwrite a configuration value for a specific envir
 
 Here is an example of overwriting the cssMode for development:
 ```js
-    environments: {
-      ...
-          development: {
-            apps: {
-              storybook: {
-                cssMode: "extract"
-              }
-            }
+environments: {
+  ...
+      development: {
+        apps: {
+          storybook: {
+            cssMode: "extract"
           }
+        }
+      }
 ```
 
-## Details
-### Apps
+## App details
 Each app is configurable by following properties:
 * `type` the type of the app.
 * `path` the path to the app.
@@ -44,12 +43,13 @@ Each app is configurable by following properties:
 * `distFolder` the path to the dist folder.
 * `assetBundleFolder` the folder name under the dist folder for assets.
 
-### Design systems
+## Design systems details
 In the `designSystems` section you define the folder structure of your design system. 
 Each design system uses `namespaces` to configure folder aliases.
-#### Sample namespaces:
+### Namespaces:
+
 ```js
-const path = require('path');
+const path = require('path' );
 
 const patterns = path.resolve(__dirname, 'patterns');
 
@@ -64,7 +64,6 @@ module.exports = {
 };
 ```
 
-#### Namespaces:
 You can use namespaces in twig and javascript imports.
 
 <b>TWIG:</b>
@@ -77,5 +76,5 @@ You can use namespaces in twig and javascript imports.
   import "atoms/button";
 ```
 
-#### Presets
-Wing
+## Presets details
+Check the [presets documentation](../preset-webpack) for more infos.

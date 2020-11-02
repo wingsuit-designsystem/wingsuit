@@ -72,6 +72,8 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
+    "@storybook/addon-backgrounds": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
     "@tailwindcss/typography": "^0.2.0",
     "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",

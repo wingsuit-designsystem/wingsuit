@@ -72,8 +72,8 @@
 .used-by-more-examples a:hover,
 .used-by-more-examples a:active,
 .used-by-more-examples a:focus {
-  background-color: #e4004f;
-  color: #fff;
+  color: #000;
+  display: block;
   padding: 12px;
   border-radius: 6px;
   margin-right: 12px;

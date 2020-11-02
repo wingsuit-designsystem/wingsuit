@@ -16,11 +16,61 @@ const Homepage = ({ users }) => (
     <Helmet title="Wingsuit - Designsystem you'll love to use" />
     {/* <Header currentSection="home" /> */}
     <Heading />
-    <div className="container">
-      <Demo />
+    <div style={{ width: '100%' }} className="overflow-hidden">
+      <div className="container-fluid p-0">
+        <div
+          className="row no-gutters relative"
+          style={{ position: 'relative', overflow: 'hidden' }}
+        >
+          <div className="col-12 col-sm-6 text-center">
+            <h1 className="sb-tagline">
+              Build Components with Storybook and Tailwind CSS for Drupal
+              <br />
+              <div className="sb-tagline__subline">You will ♥️ it!</div>
+            </h1>
+            <div>
+              <div className="bg-green-100 pt-5 pb-5">
+                <div role="group" aria-label="Basic example">
+                  <a
+                    href="/basics/introduction"
+                    rel="noreferrer"
+                    className="mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold"
+                    style={{ maxWidth: 300, margin: 'auto' }}
+                  >
+                    Get Started
+                  </a>
+                  <a
+                    href="https://wingsuit.netlify.app/?path=/story/base-welcome--page"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mb-2 btn btn-lg bg-green-500 font-weight-bold"
+                    style={{ maxWidth: 300, margin: 'auto' }}
+                  >
+                    Storybook on Netlify!
+                  </a>
+                </div>
+              </div>
+              <div className="bg-blue-100 d-block d-sm-none">
+                <div className="circle--mobile bg-red-100" />
+              </div>
+            </div>
+            <UsedBy users={users} />
+            <Demo />
+          </div>
+          <div className="column col-6 d-none d-sm-block">
+            <div className="circle bg-red-100" />
+          </div>
+          <div
+            className="d-none d-sm-block bg-blue-100"
+            style={{ zIndex: -1, position: 'absolute', width: '100%', height: '100%', left: '50%' }}
+          />
+        </div>
+      </div>
+
       {/* <Platforms /> */}
+
       <MainLinks />
-      <UsedBy users={users} />
+
       {/* <Featured featuredStorybooks={featuredStorybooks} /> */}
       <Footer />
     </div>

@@ -1,5 +1,6 @@
 #footer {
-  margin: 25px 0
+  padding: 25px 0;
+  background: #000000;
 }
 
 #footer a {
@@ -23,9 +24,6 @@
 }
 
 @media only screen and (max-width: 998px) {
-  #footer {
-    margin: 25px 0
-  }
 
   #footer .logos img {
     margin: 0 8px;

@@ -81,11 +81,13 @@ export default class Pattern {
     this.parameters = definition.parameters;
     this.definition = definition;
     this.defaultVariant = new PatternVariant(
+      '__default',
       this,
       Pattern.DEFAULT_VARIANT_NAME,
       this.use,
       this.label,
-      this.description
+      this.description,
+      definition.configuration
     );
     this.initializeVariants();
   }
@@ -118,6 +120,9 @@ export default class Pattern {
     const variantKeys: string[] = [];
     const settings: {} = this.definition.settings != null ? this.definition.settings : {};
     const fields: {} = this.definition.fields != null ? this.definition.fields : {};
+    const configuration: {} =
+      this.definition.configuration != null ? this.definition.configuration : {};
+
     const variantsDefinitions: {} =
       this.definition.variants != null ? this.definition.variants : {};
 
@@ -136,8 +141,18 @@ export default class Pattern {
       const use = variantDefinition.use != null ? variantDefinition.use : this.use;
       const description =
         variantDefinition.description != null ? variantDefinition.description : '';
-
-      const variant = new PatternVariant(this, variantKey, use, label, description);
+      const variantConfiguration =
+        variantDefinition.configuration != null ? variantDefinition.configuration : {};
+      const mergedConfiguration = { ...configuration, ...variantConfiguration };
+      const variant = new PatternVariant(
+        variantKey,
+        this,
+        variantKey,
+        use,
+        label,
+        description,
+        mergedConfiguration
+      );
 
       if (isFirst === true) {
         this.defaultVariant = variant;
@@ -149,7 +164,7 @@ export default class Pattern {
           key,
           settings[key].type,
           settings[key].label,
-          settings[key].descripfirstOptiontion,
+          settings[key].description,
           settings[key].preview
         );
         setting.setRequired(!!settings[key].required);
@@ -167,9 +182,9 @@ export default class Pattern {
           settings[key].type === 'select'
         ) {
           const keys = Object.keys(settings[key].options);
-          if (keys.length > 1) {
+          if (keys.length > 0) {
             const firstOption = keys[0];
-            setting.setPreview(settings[key].options[firstOption]);
+            setting.setPreview(firstOption);
           }
         }
         variant.addSetting(setting);
@@ -205,6 +220,7 @@ export default class Pattern {
           Object.keys(variantDefinition.fields).forEach((key: string) => {
             const field: Field = variant.getField(key);
             field.setPreview(variantDefinition.fields[key]);
+            field.setEnable(false);
           });
         }
       }

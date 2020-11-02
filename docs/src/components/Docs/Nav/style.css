@@ -1,13 +1,7 @@
 #nav {
   color: #4A5568;
-  margin: 20px 0;
   padding: 0px 15px 0 0;
   -webkit-font-smoothing: antialiased;
-}
-
-#nav .col-xs-12 {
-  margin: 0;
-  padding: 0;
 }
 
 #nav h3 {

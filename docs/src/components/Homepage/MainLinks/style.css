@@ -1,7 +1,3 @@
-#main-links {
-  margin: 40px auto 30px;
-}
-
 #main-links hr {
   margin: 50px auto 0;
 }
@@ -11,15 +7,17 @@
 }
 
 #main-links h2 {
-  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 #main-links pre {
-  background-color: #444;
-  color: #DDD;
+  background-color: #8000FF;
   padding: 15px 20px;
+  font-weight: bold;
   line-height: 22px;
   border: 0;
+  font-size: 18px;
   border-radius: 0;
 }
 
@@ -28,8 +26,10 @@
 }
 
 .try-now {
-  max-width: 450px;
-  margin: 40px auto;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
 }
 
 .has-feedback {
@@ -62,14 +62,6 @@
     width: 55% !important;
   }
 
-  #main-links {
-    margin: 30px auto 20px;
-  }
-
-  #main-links h2 {
-    font-size: 22px;
-  }
-
   #main-links pre {
     padding: 13px 28px;
     font-size: 12px;
@@ -81,16 +73,8 @@
     width: 65% !important;
   }
 
-  #main-links {
-    margin: 24px auto 16px;
-  }
-
   #main-links hr {
     margin: 35px auto 0;
-  }
-
-  #main-links h2 {
-    font-size: 20px;
   }
 
   #main-links pre {
@@ -104,12 +88,26 @@
     width: 75% !important;
   }
 
-  #main-links {
-    margin: 20px auto 13px;
-  }
-
   #main-links pre {
     padding: 13px 20px;
     line-height: 18px;
   }
+}
+
+.svg-triangle--left {
+  transform: rotate(180deg);
+}
+
+.svg-triangle {
+  fill: #F0FFF4;
+}
+
+.triangle-container {
+  position: relative;
+}
+
+.svg-triangle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

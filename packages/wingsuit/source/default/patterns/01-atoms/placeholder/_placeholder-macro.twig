@@ -38,12 +38,13 @@
  *   The image.
  */
 #}
-{% macro image(style, imageConfig, placeholder_url) %}
+{% macro image(style, placeholder_url) %}
 
+  {% set imageConfig = pattern_configuration('placeholder', 'image', 'image_config') %}
   {% import _self as self %}
   {% set is_responsive_image = false %}
   {% set image_styles = imageConfig.styles %}
-  {% set responsive_image_styles = imageConfig.stylesResponsive %}
+  {% set responsive_image_styles = imageConfig.styles_responsive %}
   {% set breakpoints = imageConfig.breakpoints %}
   {% set image_style = image_styles[style] %}
   {% if image_style is empty %}
@@ -72,8 +73,9 @@
   {% endif %}
 {% endmacro %}
 
-{% macro background(style, imageConfig, classes, placeholder_url) %}
+{% macro background(style, classes, placeholder_url) %}
   {% import _self as self %}
+  {% set imageConfig = pattern_configuration('placeholder', 'background', 'image_config') %}
   {% set image_styles = imageConfig.styles %}
 <div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url) }}')">
 </div>

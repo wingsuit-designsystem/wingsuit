@@ -3,12 +3,8 @@ import demoImg from './images/demo-image.png';
 import './style.css';
 
 const Demo = () => (
-  <div id="demo" className="row">
-    <div className="col-xs-12 col-sm-12">
-      <center>
-        <img className="demo-img" src={demoImg} alt="" />
-      </center>
-    </div>
+  <div id="demo" className="bg-gray-100">
+    <img style={{ width: '100%' }} className="p-4" src={demoImg} alt="" />
   </div>
 );
 

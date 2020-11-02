@@ -10,6 +10,26 @@ export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
+export async function getPatternConfiguration(
+  patternId: string,
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  configuration: string
+) {
+  try {
+    const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+    return new Promise<string>((resolve, refuse) => {
+      const config = variant.getConfiguration();
+      resolve(config[configuration]);
+    });
+  } catch (e) {
+    return new Promise<string>((resolve, refuse) => {
+      // eslint-disable-next-line no-console
+      console.log(`Cannot load pattern configuration. Message: ${e.message}`);
+      resolve('');
+    });
+  }
+}
+
 export function twingMapToArray(variables): string[] {
   const ary: string[] = [];
   if (variables instanceof Map) {
@@ -19,6 +39,7 @@ export function twingMapToArray(variables): string[] {
   }
   return ary;
 }
+
 export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,

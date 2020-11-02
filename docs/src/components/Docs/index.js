@@ -8,11 +8,11 @@ import Container from './Container';
 import Footer from '../Footer';
 import './style.css';
 
-const Docs = ({sections, selectedItem, selectedSectionId, selectedItemId}) => (
+const Docs = ({ sections, selectedItem, selectedSectionId, selectedItemId }) => (
   <div>
     <div className="header-wrapper">
-      <Helmet title={`${selectedItem.title}`}/>
-      <Header currentSection="docs"/>
+      <Helmet title={`${selectedItem.title}`} />
+      <Header currentSection="docs" />
     </div>
     <div className="container">
       <Container
@@ -21,7 +21,9 @@ const Docs = ({sections, selectedItem, selectedSectionId, selectedItemId}) => (
         selectedSectionId={selectedSectionId}
         selectedItemId={selectedItemId}
       />
-      <Footer/>
+    </div>
+    <div className="container-fluid">
+      <Footer />
     </div>
   </div>
 );
