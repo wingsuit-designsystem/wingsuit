@@ -25,17 +25,21 @@ class MainLinks extends React.Component {
           <div className="try-now d-sm-none">
             <div className="d-flex flex-row" style={{ height: '140px' }}>
               <div style={{ flex: 1, position: 'relative' }}>
-                <img className="svg-triangle" src={triangle} alt="SVG Triangle"/>
+                <img className="svg-triangle" src={triangle} alt="SVG Triangle" />
               </div>
               <div style={{ flex: 1, position: 'relative' }}>
-                <img src={triangle} className="svg-triangle svg-triangle--rotate" alt="SVG Triangle"/>
+                <img
+                  src={triangle}
+                  className="svg-triangle svg-triangle--rotate"
+                  alt="SVG Triangle"
+                />
               </div>
             </div>
           </div>
           <div className="try-now" style={{ height: '140px' }}>
             <div className="d-flex flex-row">
               <div className="d-none d-sm-block" style={{ flex: 1, position: 'relative' }}>
-                <img className="svg-triangle" src={triangle} alt="SVG Triangle"/>
+                <img className="svg-triangle" src={triangle} alt="SVG Triangle" />
               </div>
               <div className="flex-grow" style={{ margin: 'auto' }}>
                 <div>
@@ -54,7 +58,11 @@ class MainLinks extends React.Component {
                 </div>
               </div>
               <div className="d-none d-sm-block" style={{ flex: 1, position: 'relative' }}>
-                <img src={triangle} className="svg-triangle svg-triangle--rotate" alt="SVG Triangle"/>
+                <img
+                  src={triangle}
+                  className="svg-triangle svg-triangle--rotate"
+                  alt="SVG Triangle"
+                />
               </div>
             </div>
           </div>

@@ -5,10 +5,10 @@
 
 {% set classes = [
   'flex items-center justify-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
-  pattern_configuration('button', variant, 'colors')[colors],
-  expanded == 'full' ? 'w-full',
-  pattern_configuration('button', variant, 'size')['text'][size],
+  expanded ? 'w-full',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+  pattern_configuration('button', variant, 'colors')[colors],
+  pattern_configuration('button', variant, 'size')['text'][size],
 ] %}
 
 {% set icon_size = ([
