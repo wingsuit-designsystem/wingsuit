@@ -20,9 +20,9 @@ header:
       preview:
         id: button
         variant: default
-  settings:
-    has_spacer:
-      label: Has spacer
-      type: boolean
-      default_value: false
+  variants:
+    fixed:
+      label: Fixed
+    sticky:
+      label: Sticky
   visibility: storybook

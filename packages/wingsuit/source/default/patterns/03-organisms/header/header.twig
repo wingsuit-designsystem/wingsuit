@@ -1,8 +1,9 @@
-<div class="leading-normal tracking-normal ">
-  {% if has_spacer %}
-    <div class="h-18"></div>
-  {% endif %}
-  <header class="header-offset bg-white sticky w-full z-30 top-0 text-white" x-data="{ open: false }">
+<div class="leading-normal tracking-normal mb-20">
+  {% set header_classes = ([
+    variant == 'fixed'?'fixed h-18 w-full',
+    variant == 'sticky'?'sticky',
+  ]) | sort | join(' ') | trim %}
+  <header class="{{ header_classes }} header-offset bg-white w-full z-30 top-0 text-white" x-data="{ open: false }">
     {% embed "@organisms/container/container.twig" %}
       {% block content %}
         <div class="flex flex-wrap py-5 justify-between md:flex-row">
@@ -26,6 +27,6 @@
         </div>
       {% endblock %}
     {% endembed %}
-    <hr class="border-b border-gray-100 opacity-25 my-0 py-0">
+    {# <hr class="border-b border-gray-100 opacity-25 my-0 py-0"> #}
   </header>
 </div>
