@@ -9,13 +9,12 @@ export default class TwigAttribute {
     this.attributes = new Map();
     if (attributes !== '') {
       const attrs = htmlAttributeParser(`<div ${attributes}></div>`).attributes;
-      Object.keys(attrs).forEach((key) => {
+      Object.keys(attrs).forEach(key => {
         if (key === 'class') {
           this.attributes.set(key, attrs[key].split(' '));
         } else {
           this.attributes.set(key, attrs[key]);
         }
-
       });
     }
   }
@@ -51,7 +50,6 @@ export default class TwigAttribute {
     const classes = this.attributes.get('class');
     let classAry: string[] = [];
     if (className instanceof Map) {
-
       classAry = twingMapToArray(className);
     } else if (Array.isArray(className)) {
       classAry = className;
@@ -60,7 +58,6 @@ export default class TwigAttribute {
     }
     for (let i = 0; i < classAry.length; i += 1) {
       if (classAry[i] !== '') {
-        console.log(classes);
         classes.push(classAry[i]);
       }
     }
@@ -73,7 +70,7 @@ export default class TwigAttribute {
 
   toString() {
     let output = '';
-    Array.from(this.attributes.keys()).forEach((key) => {
+    Array.from(this.attributes.keys()).forEach(key => {
       let attributeValue = null;
       if (typeof this.attributes.get(key) === 'object' && Array.isArray(this.attributes.get(key))) {
         attributeValue = this.attributes.get(key).join(' ');
