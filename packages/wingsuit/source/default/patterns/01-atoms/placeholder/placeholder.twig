@@ -15,11 +15,7 @@
 {% set variant = variant|default('image') %}
 
 {% if variant == 'image' %}
-  {%- set image -%}
-    {{ placeholder.image(style, placeholder_url) }}
-  {% endset %}
-  {{ image }}
+  {{ placeholder.image(style, placeholder_url) }}
 {% elseif variant == 'background' %}
   {{ placeholder.background(style, background_classes, placeholder_url) }}
 {% endif %}
-

@@ -1,7 +1,7 @@
 {% set attributes = attributes|default(create_attribute()) %}
 {% set fill_color = fill_color|default('fill-current') %}
 
-  <svg {{
+<svg {{
   attributes.addClass([
     'svg',
     fill_color,
@@ -9,4 +9,4 @@
   ] | sort | join(' ') | trim)
   }}>
     <use xlink:href="{{ file_url('ws-assets://images/spritemap.svg') }}#{{ icon }}"></use>
-  </svg>
+</svg>
