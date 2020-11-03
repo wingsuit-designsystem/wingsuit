@@ -22,34 +22,35 @@
   'w-full flex flex-col flex-grow flex-shrink',
 ]) | sort | join(' ') | trim %}
 
+{{ TEMPLATE }}
 <{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
-<div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
-  {% if image is not empty %}
-    {% block image %}
-      {{ image }}
-    {% endblock %}
-  {% endif %}
-  <div class="p-6">
-    <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
-      {% block preheadline %}
-        {{ preheadline }}
+  <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+    {% if image is not empty %}
+      {% block image %}
+        {{ image }}
       {% endblock %}
-    </div>
-    <h2 class="title-font text-2xl font-medium text-gray-900 mb-3">
-      {% block headline %}
-        {{ headline }}
-      {% endblock %}
-    </h2>
-    <div class="leading-relaxed mb-3">
-      {% block text %}
-        {{ text }}
-      {% endblock %}
-    </div>
-    <div class="{{ link_classes }}">
-      {% block link %}
-        {{ link }}
-      {% endblock %}
+    {% endif %}
+    <div class="p-6">
+      <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
+        {% block preheadline %}
+          {{ preheadline }}
+        {% endblock %}
+      </div>
+      <h2 class="title-font text-2xl font-medium text-gray-900 mb-3">
+        {% block headline %}
+          {{ headline }}
+        {% endblock %}
+      </h2>
+      <div class="leading-relaxed mb-3">
+        {% block text %}
+          {{ text }}
+        {% endblock %}
+      </div>
+      <div class="{{ link_classes }}">
+        {% block link %}
+          {{ link }}
+        {% endblock %}
+      </div>
     </div>
   </div>
-</div>
 </{{ element }}>

@@ -1,34 +1,32 @@
+{# SETTINGS #}
 {% set tag_name = tag_name|default('div') %}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set svg_size = svg_size|default('default') %}
+{% set icon_size = icon_size|default('default') %}
+
+{% set classes = [
+  'flex items-center justify-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
+  pattern_configuration('button', variant, 'colors')[colors],
+  expanded == 'full' ? 'w-full',
+  pattern_configuration('button', variant, 'size')['text'][size],
+  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+] %}
+
+{% set icon_size = ([
+  icon_alignment == 'left' ? 'mr-2' : 'ml-2',
+  pattern_configuration('button', variant, 'size')['icon'][size],
+]) | sort | join(' ') | trim %}
 
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set tag_name = 'a' %}
 {% endif %}
-{% set icon_size = ([
-  svg_alignment == 'left' ? 'mr-1',
-  svg_alignment == 'right' ? 'ml-1',
-  size == 'small' ? 'w-4 h-4',
-  size == 'medium' ? 'w-5 h-5',
-  size == 'large' ? 'w-6 h-6',
-]) | sort | join(' ') | trim %}
 
-<{{ tag_name }} {{ attributes.addClass([
-  'flex items-center justify-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
-  variant == 'default' ? pattern_configuration('button', 'default', 'colors')[colors],
-  variant == 'outline' ? 'border', pattern_configuration('button', 'outline', 'colors')[colors],
-  expanded == 'full' ? 'w-full',
-  size == 'small' ? 'text-xs',
-  size == 'medium' ? 'text-base',
-  size == 'large' ? 'text-xl',
-  svg_alignment == 'left' ? 'flex-row-reverse',
-  svg_alignment == 'right' ? 'flex-row',
-] | sort | join(' ') | trim) }}>
-{{ text }}
-  {% if svg is not empty %}
+{# TEMPLATE #}
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+  {{ text }}
+  {% if icon is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
-      icon: svg,
+      icon: icon,
       size: icon_size,
     } only %}
   {% endif %}

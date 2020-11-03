@@ -21,7 +21,7 @@ placeholder:
       options:
         "https://satyr.io/[width]x[height]": https://satyr.io/
         "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
-        "https://fakeimg.pl/[width]x[height]/random": https://fakeimg.pl/
+        "https://fakeimg.pl/[width]x[height]": https://fakeimg.pl/
         "https://placeimg.com/[width]/[height]/tech/grayscale": https://placeimg/
     background_classes:
       label: Classes
