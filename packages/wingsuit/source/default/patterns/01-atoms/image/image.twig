@@ -1,10 +1,7 @@
 {#
 /**
  * @file
- * Image component.
- *
  * Image component for images and background images.
- *
  */
 #}
 
@@ -18,8 +15,14 @@
       {{- image -}}
     {%- endif -%}
   {% endset %}
-  {% include '@atoms/image/_image--image.twig' with { image: image, caption: caption } only %}
-{% elseif variant == 'background' %}
-  {% include '@atoms/image/_image--background.twig' with {url: url, background_style: background_style } only %}
-{% endif %}
 
+  {% include '@atoms/image/_image--image.twig' with {
+    image: image,
+    caption: caption
+  } only %}
+{% elseif variant == 'background' %}
+  {% include '@atoms/image/_image--background.twig' with {
+    url: url,
+    background_style: background_style
+  } only %}
+{% endif %}

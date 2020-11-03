@@ -18,9 +18,7 @@
 {% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
 
 {% if configuration is not empty %}
-
-  <div {{ attributes|default(create_attribute()).addClass(
-    [
+  <div {{ attributes|default(create_attribute()).addClass([
       gutter_container_classes,
       'flex flex-wrap'
     ] | sort | join(' ') | trim) }}>
@@ -36,11 +34,11 @@
             gutter_cell_classes
           ] | sort | join(' ') | trim) %}
         {% block cell_outer %}
-        <div {{ cell_attributes }}>
-          {% block cell_inner %}
-            {{ cell }}
-          {% endblock %}
-        </div>
+          <div {{ cell_attributes }}>
+            {% block cell_inner %}
+              {{ cell }}
+            {% endblock %}
+          </div>
         {% endblock %}
       {%- endfor -%}
     {% endblock %}

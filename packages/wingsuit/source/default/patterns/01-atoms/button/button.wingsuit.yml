@@ -21,6 +21,16 @@ button:
           primary: 'border-primary text-black hover:bg-pink-600'
           secondary: 'border-secondary text-black hover:bg-blue-600'
       description: Inverts colors
+  configuration:
+    size:
+      text:
+        small: text-xs
+        medium: text-base
+        large: text-xl
+      icon:
+        small: w-4 h-4
+        medium: w-5 h-5
+        large: w-6 h-6
   settings:
     size:
       type: select
@@ -46,16 +56,16 @@ button:
       type: token
       label: Url
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
-    svg:
+    icon:
       type: select
-      label: SVG
-      default_value: right-arrow
+      label: Icon
       options:
         search: Search
         right-arrow: Right-arrow
-    svg_alignment:
+    icon_alignment:
       type: select
-      label: SVG alignment
+      label: Icon alignment
+      default_value: right
       options:
         left: Left
         right: Right
