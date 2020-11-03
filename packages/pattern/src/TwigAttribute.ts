@@ -10,7 +10,12 @@ export default class TwigAttribute {
     if (attributes !== '') {
       const attrs = htmlAttributeParser(`<div ${attributes}></div>`).attributes;
       Object.keys(attrs).forEach((key) => {
-        this.attributes.set(key, attrs[key]);
+        if (key === 'class') {
+          this.attributes.set(key, attrs[key].split(' '));
+        } else {
+          this.attributes.set(key, attrs[key]);
+        }
+
       });
     }
   }
@@ -46,15 +51,16 @@ export default class TwigAttribute {
     const classes = this.attributes.get('class');
     let classAry: string[] = [];
     if (className instanceof Map) {
+
       classAry = twingMapToArray(className);
     } else if (Array.isArray(className)) {
       classAry = className;
     } else {
       classAry = className.split(' ');
     }
-
     for (let i = 0; i < classAry.length; i += 1) {
       if (classAry[i] !== '') {
+        console.log(classes);
         classes.push(classAry[i]);
       }
     }
