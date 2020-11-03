@@ -10,19 +10,18 @@ button:
   variants:
     default:
       label: Default
+      configuration:
+        colors:
+          primary: 'bg-primary text-white hover:bg-pink-600'
+          secondary: 'bg-secondary text-black hover:bg-blue-600'
     outline:
       label: Outline
+      configuration:
+        colors:
+          primary: 'border-primary text-black hover:bg-pink-600'
+          secondary: 'border-secondary text-black hover:bg-blue-600'
       description: Inverts colors
   settings:
-    text_color:
-      type: select
-      required: true
-      label: Text color
-      preview: secondary
-      options:
-        primary: Primary
-        white: White
-        secondary: Secondary
     size:
       type: select
       required: true
@@ -33,11 +32,9 @@ button:
         medium: Medium
         large: Large
     expanded:
-      type: select
+      type: boolean
       label: Expanded
-      options:
-        full: Full
-    color:
+    colors:
       type: select
       required: true
       label: Color

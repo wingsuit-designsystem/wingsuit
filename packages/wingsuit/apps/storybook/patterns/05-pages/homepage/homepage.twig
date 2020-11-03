@@ -29,5 +29,16 @@
         {{ pattern_preview('banner', 'center_left') }}
       {% endblock %}
     {% endembed %}
+    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Section title"} %}
+      {% block column_1 %}
+        {{ pattern_preview('card', '', {'image': 'https://satyr.io/460x402'}) }}
+      {% endblock %}
+      {% block column_2 %}
+        {{ pattern_preview('card', '', {'image': 'null'}) }}
+      {% endblock %}
+      {% block column_3 %}
+        {{ pattern_preview('card', '', {'image': 'null'}) }}
+      {% endblock %}
+    {% endembed %}
   {% endblock %}
 {% endembed %}
