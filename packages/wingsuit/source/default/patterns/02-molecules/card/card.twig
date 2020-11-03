@@ -15,12 +15,14 @@
   'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0',
 ]) | sort | join(' ') | trim %}
 
-<{{ element }} {{ attributes.addClass([
+{% set classes = ([
   alignment == 'center' ? 'text-center rounded': '',
   bg_color == 'gray' ? 'bg-gray-200',
   bg_color == 'blue' ? 'bg-blue-200',
   'w-full flex flex-col flex-grow flex-shrink',
-] | sort | join(' ') | trim) }}>
+]) | sort | join(' ') | trim %}
+
+<{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
 <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
   {% if image is not empty %}
     {% block image %}

@@ -1,13 +1,14 @@
 {% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('div') %}
 {% set size = size|default('large') %}
-
-<{{ element }} {{ attributes.addClass([
+{% set classes = ([
   'headline',
   'font-serif',
   size == 'large' ? 'text-4xl',
   size == 'medium' ? 'text-xl',
-] | sort | join(' ') | trim) }}>
+]) | sort | join(' ') | trim %}
+
+<{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
 {{ title_prefix }}
   {{ title_suffix }}
   {{ content }}

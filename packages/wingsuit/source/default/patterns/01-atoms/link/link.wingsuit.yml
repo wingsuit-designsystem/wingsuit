@@ -12,9 +12,9 @@ link:
       type: token
       label: Url
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
-    svg:
+    icon:
       type: select
-      label: SVG
+      label: Icon
       default_value: right-arrow
       options:
         search: Search
