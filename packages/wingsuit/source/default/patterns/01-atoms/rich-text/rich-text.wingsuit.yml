@@ -1,7 +1,7 @@
 rich_text:
   use: "@atoms/rich-text/rich-text.twig"
   label: Rich Text
-  description: Example description
+  description: By providing the wright tag we can creat different types of text like headlines H1 - H6, list and more.
   fields:
     text:
       type: text
