@@ -8,7 +8,7 @@
   size == 'medium' ? 'text-xl',
 ]) | sort | join(' ') | trim %}
 
-<{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
+<{{ element }} {{ attributes.addClass(classes) }}>
 {{ title_prefix }}
   {{ title_suffix }}
   {{ content }}
