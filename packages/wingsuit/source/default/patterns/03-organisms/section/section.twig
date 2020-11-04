@@ -7,9 +7,11 @@
  */
 #}
 {% if padding_top is not defined %}
-{% set padding_top = 'default' %}
+  {% set padding_top = 'default' %}
 {% endif %}
+
 {%- set headline -%}{%- block headline -%}{{ headline }}{% endblock %}{% endset %}
+
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
   {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
@@ -23,8 +25,16 @@
   {% set columns_width = columns_width|default(_context['columns_width_' ~ columns ]) %}
   {% include "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
 {% endset %}
-
-{% embed "@organisms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
+{% embed "@organisms/container/container.twig" with {
+  attributes: attributes,
+  content: grid,
+  width: width,
+  padding_x: padding_x,
+  padding_top: padding_top,
+  padding_bottom: padding_bottom,
+  bg: bg,
+  headline: headline
+} only %}
   {% block content %}
   {% if headline is not empty %}
     <h2 class="pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ headline }}</h2>
