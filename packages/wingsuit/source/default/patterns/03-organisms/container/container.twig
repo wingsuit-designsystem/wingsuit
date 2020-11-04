@@ -9,34 +9,39 @@
 
 {% set width = width|default('default') %}
 
+{% set bg_classes = ([
+  bg == 'gray-medium' ? 'bg-gray-medium',
+  bg == 'gray-light' ? 'bg-gray-light'
+] | sort | join(' ') | trim )%}
+
+{% set classes = ([
+  padding_x == 'default' ? 'px-6',
+  padding_x == 'large' ? 'px-10',
+
+  padding_top == 'small' ? 'pt-4',
+  padding_top == 'default' ? 'pt-10 md:pt-20',
+  padding_top == 'large' ? 'pt-20 md:pt-30',
+
+  padding_bottom == 'small' ? 'pb-4',
+  padding_bottom == 'default' ? 'pt-10 md:pt-20',
+  padding_bottom == 'large' ? 'pt-20 md:pt-30',
+
+  width == 'small' ? 'max-w-800',
+  width == 'default' ? 'max-w-1200',
+  width == 'large' ? 'max-w-1600',
+  width == 'xlarge' ? 'max-w-1900',
+  'px-6',
+  classes,
+  'mx-auto'
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
 {% if bg %}
-<div {{ create_attribute().addClass(
-  [
-    bg == 'gray-medium' ? 'bg-gray-medium',
-    bg == 'gray-light' ? 'bg-gray-light'
-  ] | sort | join(' ') | trim) }}">
+<div {{ create_attribute().addClass(bg_classes) }}">
 {% endif %}
-  <div {{ attributes|default(create_attribute()).addClass(
-    [
-      padding_x == 'default' ? 'px-6',
-      padding_x == 'large' ? 'px-10',
-
-      padding_top == 'small' ? 'pt-4',
-      padding_top == 'default' ? 'pt-10 md:pt-20',
-      padding_top == 'large' ? 'pt-20 md:pt-30',
-
-      padding_bottom == 'small' ? 'pb-4',
-      padding_bottom == 'default' ? 'pt-10 md:pt-20',
-      padding_bottom == 'large' ? 'pt-20 md:pt-30',
-
-      width == 'small' ? 'max-w-800',
-      width == 'default' ? 'max-w-1200',
-      width == 'large' ? 'max-w-1600',
-      width == 'xlarge' ? 'max-w-1900',
-      'px-6',
-      classes,
-      'mx-auto'
-    ] | sort | join(' ') | trim) }}>
+  <div {{ attributes }}>
     {% block content %}
     {{ content }}
     {% endblock %}

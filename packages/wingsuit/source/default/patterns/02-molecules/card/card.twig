@@ -1,5 +1,4 @@
 {% set element = element|default('article') %}
-{% set attributes = attributes|default(create_attribute()) %}
 {% set headline__element = headline__element|default('h2') %}
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
@@ -20,10 +19,12 @@
   bg_color == 'gray' ? 'bg-gray-200',
   bg_color == 'blue' ? 'bg-blue-200',
   'w-full flex flex-col flex-grow flex-shrink',
-]) | sort | join(' ') | trim %}
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {{ TEMPLATE }}
-<{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
+<{{ element }} {{ attributes }}>
   <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
     {% if image is not empty %}
       {% block image %}
