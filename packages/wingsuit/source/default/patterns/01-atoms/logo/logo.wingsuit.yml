@@ -1,16 +1,4 @@
 logo:
   use: "@atoms/logo/logo.twig"
   label: Logo
-  description: Example description
-  fields:
-    field_1:
-      type: text
-      label: Content
-      preview: Text
-  settings:
-    setting_1:
-      type: select
-      label: Setting 1
-      options:
-        option_1: Value 1
-      preview: value_1
+  description:  You can use thi logo pattern on the header or footer or other necessary places.

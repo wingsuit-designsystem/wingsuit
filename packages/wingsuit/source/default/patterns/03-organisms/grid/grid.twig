@@ -17,11 +17,15 @@
 
 {% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
 
+{% set classes = ([
+  gutter_container_classes,
+  'flex flex-wrap'
+]) | sort | join(' ') | trim %}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
 {% if configuration is not empty %}
-  <div {{ attributes|default(create_attribute()).addClass([
-      gutter_container_classes,
-      'flex flex-wrap'
-    ] | sort | join(' ') | trim) }}>
+  <div {{ attributes }}>
     {% block cells %}
       {% for cell_counter, cell in cells %}
         {% set column_i = (cell_counter % columns) + 1 %}

@@ -1,9 +1,11 @@
-{% set attributes = attributes|default(create_attribute()) %}
+{% set classes = ([
+  'list-reset mb-6 grid lg:block',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 <nav role="navigation">
-  <ul {{ attributes.addClass([
-    'list-reset mb-6 grid lg:block',
-  ] | sort | join(' ') | trim) }} >
+  <ul {{ attributes }} >
     {% for item in items %}
       <li class="mt-2 inline-block mr-2 md:block md:mr-0">
         <a class="text-gray-600 hover:text-gray-800 {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
