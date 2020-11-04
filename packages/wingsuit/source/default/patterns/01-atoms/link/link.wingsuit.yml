@@ -1,7 +1,7 @@
 link:
   use: "@atoms/link/link.twig"
   label: Link
-  description: Example description
+  description: In order to use this link pattern you have two possibility by providing the URL it can be used to link texts or with out the URL as a normal text with icon or without icon.
   fields:
     text:
       type: text
