@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
@@ -56,10 +55,6 @@ export default class PatternStorage implements IPatternStorage {
   loadVariant(patternId: string, variantId: string): PatternVariant {
     const pattern: Pattern = this.loadPattern(patternId);
     return pattern.getVariant(variantId);
-  }
-
-  createDefinitionsFromFile(path: string): void {
-    this.definitions = JSON.parse(fs.readFileSync(path, 'utf8'));
   }
 
   createDefinitions(definitions: IPatternDefinitions): void {

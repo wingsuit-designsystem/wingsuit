@@ -9,9 +9,11 @@
 
 {# SETTINGS #}
 {% if padding_top is not defined %}
-{% set padding_top = 'default' %}
+  {% set padding_top = 'default' %}
 {% endif %}
+
 {%- set headline -%}{%- block headline -%}{{ headline }}{% endblock %}{% endset %}
+
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
   {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
@@ -32,7 +34,16 @@
 ] | sort | join(' ') | trim )%}
 
 {# TEMPLATES #}
-{% embed "@organisms/container/container.twig" with { attributes: attributes, content: grid, padding_top: padding_top }%}
+{% embed "@organisms/container/container.twig" with {
+  attributes: attributes,
+  content: grid,
+  width: width,
+  padding_x: padding_x,
+  padding_top: padding_top,
+  padding_bottom: padding_bottom,
+  bg: bg,
+  headline: headline
+} only %}
   {% block content %}
   {% if headline is not empty %}
     <h2 class="{{ headline_classes }}">{{ headline }}</h2>

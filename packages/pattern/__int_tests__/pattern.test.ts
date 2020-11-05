@@ -1,11 +1,14 @@
 import * as path from 'path';
+import fs from 'fs';
 import Pattern from '../src/Pattern';
 import PatternVariant from '../src/PatternVariant';
 import { storage } from '../src';
 
 describe('Pattern parsing', () => {
   beforeEach(() => {
-    storage.createDefinitionsFromFile(path.join(__dirname, '_data/patterns.json'));
+    storage.createDefinitions(
+      JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+    );
   });
   test.each([
     ['blank', 1, 0, 0],

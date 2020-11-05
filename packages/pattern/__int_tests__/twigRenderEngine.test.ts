@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { TwingLoaderFilesystem } from 'twing';
+import fs from 'fs';
 import { storage, TwingRenderer } from '../src';
 
 const namespaces = require('./namespaces').default;
@@ -7,16 +8,17 @@ const renderEngine = require('../src/twigRenderEngine');
 
 const renderer = new TwingRenderer();
 const loader = new TwingLoaderFilesystem();
-Object.keys(namespaces).forEach(namespace => {
+Object.keys(namespaces).forEach((namespace) => {
   loader.setPaths(namespaces[namespace], namespace);
 });
 
 renderer.setLoader(loader);
 renderEngine.setRenderer(renderer);
 
-storage.createDefinitionsFromFile(path.join(__dirname, '/_data/patterns.json'));
-// renderEngine.setNamespaces(namespace);
-// renderEngine.twigFunctions();
+storage.createDefinitions(
+  JSON.parse(fs.readFileSync(path.join(__dirname, '/_data/patterns.json')))
+);
+
 describe('TwigRenderEngine', () => {
   test('Render Pattern Card', async () => {
     const output = await renderEngine.renderPattern('card', 'default');

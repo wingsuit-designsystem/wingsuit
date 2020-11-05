@@ -2628,7 +2628,7 @@
   dependencies:
     type-detect "4.0.8"
 
-"@storybook/addon-backgrounds@^6.0.28":
+"@storybook/addon-backgrounds@^6.0.0":
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-6.0.28.tgz#03f991bbc9965e4ea2ce359c8be0dd4cd76723b1"
   integrity sha512-yASdONGm7/Y9v+oBT4aStdMo+o/WeUlIu5Ll0M433e9k6bv4YV1p13uZMlyGDlIKLVpb+4GG31mupPT6YoHmKw==
@@ -2713,7 +2713,7 @@
     react-select "^3.0.8"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addon-links@^6.0.28":
+"@storybook/addon-links@^6.0.0":
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.0.28.tgz#990aa86332de7a745edfc9c98dffff8aa4916bda"
   integrity sha512-5i0nh8vKQKRZGQAnI05VBPSKnZYlaIeB7sPcAzBvb1a8aSVQS4O1MBS9H5e92iN9N4QD7GujhN0aQh3aRbq/hw==
@@ -2795,7 +2795,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addons@6.0.28":
+"@storybook/addons@6.0.28", "@storybook/addons@^6.0.0":
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.0.28.tgz#8c7ef3229706e2dc32d40ec9158431a3ffee3e5b"
   integrity sha512-3Brf9w/u2sw0huarcO1iLFBmGt7KtApRxX4bFcsRiPPFxliDrmb1sAsd37UbKp8qBSw1U6FByjuTJQ7xn/TDhg==

@@ -1,10 +1,9 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
-import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
+import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
-import wingsuitTheme from './theme';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
@@ -34,12 +33,6 @@ export function configure(
   templateContext,
   namespaces
 ) {
-  // Theming
-  addParameters({
-    options: {
-      theme: wingsuitTheme,
-    },
-  });
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromMultiContext(storybookContext);
   storage.createTwigStorageFromContext(templateContext);
@@ -173,4 +166,5 @@ export {
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
+export { default as wingsuitTheme } from './theme';
 export { PatternDoc, PatternProperties, PatternInclude };
