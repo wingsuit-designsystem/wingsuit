@@ -1,39 +1,15 @@
-{# PAGINATION CLASSES #}
-{% set classes = ([
-  'flex flex-col bg-white items-center',
-] | sort | join(' ') | trim )%}
-
-{% set wrapper_classes = ([
-  'flex flex-row',
-] | sort | join(' ') | trim )%}
-
-{% set previous_classes = ([
-  'font-sans px-4 py-4  lg:p-2 lg:px-4 text-gray-light',
-] | sort | join(' ') | trim )%}
-
-{% set active_item_classes = ([
-  'font-sans px-4 py-4 lg:p-2 lg:px-4 text-black',
-] | sort | join(' ') | trim )%}
-
-{% set next_classes = ([
-  'font-sans px-4 py-4  lg:p-2 lg:px-4 text-black',
-] | sort | join(' ') | trim )%}
-
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
-
-{# TEMPLATE #}
-<nav {{ attributes }} role="navigation">
-  <ul class="{{ wrapper_classes }}">
-    <li class="{{ previous_classes }}">
+<nav class="flex flex-col bg-white items-center" role="navigation">
+  <ul class="flex flex-row">
+    <li class="font-sans px-4 py-4  lg:p-2 lg:px-4 text-gray-light">
       <a class="text-md" href="{{ previous_url }}">{{ "Previous"|t }}</a>
     </li>
     {% for item in items %}
-      <li class="{{ active_item_classes }}">
+      <li class="font-sans px-4 py-4 lg:p-2 lg:px-4 text-black">
         <a class="text-md {% if (item.in_active_trail) %}is-active{% endif %}"
            href="{{ item.link }}">{{ item.title }}</a>
       </li>
     {% endfor %}
-    <li class="{{ next_classes }}">
+    <li class="font-sans px-4 py-4  lg:p-2 lg:px-4 text-black">
       <a class="text-md" href="{{ next_url }}">{{ "Next"|t }}</a>
     </li>
   </ul>
