@@ -6,12 +6,33 @@
  * See accordion-item.wingsuit.yaml for documentation.
  */
 #}
+{# SETTINGS #}
 {% set id = uuid() %}
 
-<div class="tab w-full overflow-hidden border-t" data-children-count="1">
-  <input class="absolute opacity-0 " id="{{ id }}" type="checkbox" name="tabs">
-  <label class="block p-5 leading-normal text-base cursor-pointer" for="{{ id }}">{{ label }}</label>
-  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+{# ACCORDION-ITEM CLASSES #}
+{% set classes = ([
+  'tab w-full overflow-hidden border-t',
+] | sort | join(' ') | trim )%}
+
+{% set input_classes = ([
+  'absolute opacity-0',
+] | sort | join(' ') | trim )%}
+
+{% set label_classes = ([
+  'block p-5 leading-normal text-base cursor-pointer',
+] | sort | join(' ') | trim )%}
+
+{% set content_wrapper = ([
+  'tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<div {{ attributes }} data-children-count="1">
+  <input class="{{ input_classes }}" id="{{ id }}" type="checkbox" name="tabs">
+  <label class="{{ label_classes }}" for="{{ id }}">{{ label }}</label>
+  <div class="{{ content_wrapper }}">
     <div class="p-5">{{ content }}</div>
   </div>
 </div>

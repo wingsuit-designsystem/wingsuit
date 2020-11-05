@@ -13,12 +13,16 @@
  * @see template_preprocess_textarea()
  */
 #}
+
+{# TEXTAREA CLASSES #}
 {%
   set classes = [
     'form-textarea',
     'w-full'
   ]
 %}
+
+{# TEMPLATES #}
 <div{{ wrapper_attributes }}>
   <textarea{{ attributes.addClass(classes) }}>{{ value }}</textarea>
 </div>

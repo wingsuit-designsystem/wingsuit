@@ -10,4 +10,13 @@
  * @see template_preprocess_radios()
  */
 #}
-<div{{ attributes.addClass('form-item--radio') }}>{{ children }}</div>
+
+{# RADIOS CLASSES #}
+{% set classes = ([
+  'form-item--radio',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATES #}
+<div{{ attributes }}>{{ children }}</div>

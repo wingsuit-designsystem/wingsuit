@@ -4,9 +4,10 @@
  * Image component for images and background images.
  */
 #}
-
+{# SETTINGS #}
 {% set variant = variant|default('image') %}
 
+{# TEMPLATES #}
 {% if variant == 'image' %}
   {%- set image -%}
     {% if url is not empty %}

@@ -1,7 +1,8 @@
 alert:
   use: "@atoms/alert/alert.twig"
   label: Alert
-  description: Colorful status, warning and error messages by selecting the right variants for every situation.
+  description: Colorful status, warning and error messages by selecting the right variants for every situation .
+               we cain use it by including it in the twig template and also selecting the right variant.
   fields:
     header:
       type: text

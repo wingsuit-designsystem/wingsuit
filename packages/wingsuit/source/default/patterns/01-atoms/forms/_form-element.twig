@@ -44,6 +44,7 @@
  * @see template_preprocess_form_element()
  */
 #}
+{# FORM-ELEMENT CLASSES #}
 {%
   set classes = [
     'js-form-item',
@@ -60,6 +61,8 @@
 {%
   set description = description is empty ? {'content': description_text} : description
 %}
+
+{# TEMPLATE #}
 <label{{ attributes.addClass(classes) }}>
   {% if label_display in ['before', 'invisible'] %}
     <div class="pb-2">

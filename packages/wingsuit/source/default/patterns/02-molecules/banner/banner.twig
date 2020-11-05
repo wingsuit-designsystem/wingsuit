@@ -6,6 +6,7 @@
  * See banner.wingsuit.yaml for documentation.
  */
 #}
+{# SETTINGS #}
 {% set position_classes ={
   'top_left': '',
   'top_center': 'text-center justify-center',
@@ -17,21 +18,38 @@
   'bottom_center': 'text-center items-end justify-center',
   'bottom_right': 'text-right items-end justify-end',
 } %}
-
 {% set teaser %}{{- teaser -}}{% endset %}
+{# BANNER CLASSES #}
+{% set classes = ([
+  'relative swiper-slide',
+] | sort | join(' ') | trim )%}
 
-<div class="relative swiper-slide">
+{% set wrapper_classes = ([
+  'absolute top-0 left-0 w-full h-full flex',
+] | sort | join(' ') | trim )%}
+
+{% set headline_classes = ([
+  'text-3xl font-serif',
+] | sort | join(' ') | trim )%}
+
+{% set teaser_classes = ([
+  'text-xl',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATES #}
+<div {{ attributes }}>
   {{ image }}
-  <div class="absolute top-0 left-0 w-full h-full flex">
-
+  <div class="{{ wrapper_classes }}">
     {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline , classes: 'flex-1 flex ' ~ position_classes[variant]} only %}
       {% block content %}
         <div class="p-6">
-          <h2 class="text-3xl font-serif">
+          <h2 class="{{ headline_classes }}">
             {{ headline }}
           </h2>
           {% if teaser is not empty %}
-            <div class="text-xl">
+            <div class="{{ teaser_classes }}">
               {{ teaser }}
             </div>
           {% endif %}
