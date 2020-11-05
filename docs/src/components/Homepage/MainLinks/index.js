@@ -25,11 +25,17 @@ class MainLinks extends React.Component {
           <div className="try-now d-sm-none">
             <div className="d-flex flex-row" style={{ height: '140px' }}>
               <div style={{ flex: 1, position: 'relative' }}>
-                <img className="svg-triangle" src={triangle} alt="SVG Triangle" />
+                <img
+                  className="svg-triangle"
+                  src={triangle}
+                  alt="SVG Triangle"
+                  style={{ paddingRight: '40px' }}
+                />
               </div>
               <div style={{ flex: 1, position: 'relative' }}>
                 <img
                   src={triangle}
+                  style={{ paddingRight: '40px' }}
                   className="svg-triangle svg-triangle--rotate"
                   alt="SVG Triangle"
                 />
@@ -49,7 +55,15 @@ class MainLinks extends React.Component {
                   >
                     Try it now!
                   </h2>
-                  <pre className="bg-purple-500" style={{ color: '#fff', height: '52px' }}>
+                  <pre
+                    className="bg-purple-500"
+                    style={{
+                      paddingLeft: '40px',
+                      paddingRight: '40px',
+                      color: '#fff',
+                      height: '52px',
+                    }}
+                  >
                     <code>
                       npx @wingsuit-designsystem/cli init
                       <br />
@@ -76,7 +90,7 @@ class MainLinks extends React.Component {
                   position: 'relative',
                 }}
               >
-                <div className="col-xs-12 col-sm-12 read-docs">
+                <div className="col-xs-12 col-sm-12 read-docs" style={{ paddingBottom: '40px' }}>
                   <h2 style={{ color: '#000000' }}>Documentation</h2>
                 </div>
 

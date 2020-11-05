@@ -22,7 +22,7 @@ const Homepage = ({ users }) => (
           className="row no-gutters relative"
           style={{ position: 'relative', overflow: 'hidden' }}
         >
-          <div className="col-12 col-sm-9 text-center">
+          <div className="col-12 col-sm-6 col-xl-9 text-center">
             <h1 className="sb-tagline">
               <span className="sb-tagline-sm">Build</span> Components{' '}
               <span className="sb-tagline-sm">in</span> Storybook{' '}
@@ -58,20 +58,15 @@ const Homepage = ({ users }) => (
               </div>
             </div>
             <UsedBy users={users} />
-            <Demo />
           </div>
-          <div className="column col-3 d-none d-sm-block">
+          <div className="column col-6 col-xl-3 d-none d-sm-block bg-blue-100">
             <div className="circle bg-red-100" />
           </div>
-          <div
-            className="d-none d-sm-block bg-blue-100"
-            style={{ zIndex: -1, position: 'absolute', width: '100%', height: '100%', left: '75%' }}
-          />
         </div>
       </div>
 
       {/* <Platforms /> */}
-
+      <Demo />
       <MainLinks />
 
       {/* <Featured featuredStorybooks={featuredStorybooks} /> */}

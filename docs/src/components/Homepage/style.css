@@ -20,8 +20,14 @@ body {
 .circle {
   position: absolute;
   height: 100%;
-  padding-right: 400%;
+  width: 200%;
   border-radius: 50%;
+}
+
+@media only screen and (min-width: 1921px) {
+  .circle {
+    width: 100%;
+  }
 }
 
 .overflow-hidden {

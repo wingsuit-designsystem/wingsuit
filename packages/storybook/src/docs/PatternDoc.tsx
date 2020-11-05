@@ -32,7 +32,7 @@ export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps)
       {variants.map((variant) => {
         const included = props.showInclude ?? <PatternInclude variant={variant} />;
         return (
-          <div key={variant.getId()}>
+          <div key={variant.getId()} id={`anchor--${variant.getStoryId()}`}>
             <Heading>{variant.getLabel()}</Heading>
             <Preview>
               <PatternPreview patternId={pattern.getId()} variantId={variant.getId()} />
