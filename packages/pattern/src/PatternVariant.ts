@@ -165,7 +165,7 @@ export default class PatternVariant {
   private settings: Setting[] = [];
 
   private cleanStorybookString(string: string) {
-    return string.toLowerCase().replace(' ','-').replace('/','');
+    return string.toLowerCase().replace(' ', '-').replace('/', '-');
   }
 
   constructor(
@@ -185,10 +185,11 @@ export default class PatternVariant {
     this.description = description;
     this.configuration = configuration;
     if (pattern.getNamespace() != null) {
-      this.storyId = this.cleanStorybookString(`${pattern.getNamespace()}-${pattern.getLabel()}--${label}`);
+      this.storyId = this.cleanStorybookString(
+        `${pattern.getNamespace()}-${pattern.getLabel()}--${label}`
+      );
     } else {
       this.storyId = '';
     }
-
   }
 }

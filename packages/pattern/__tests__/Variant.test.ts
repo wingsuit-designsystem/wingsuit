@@ -1,20 +1,20 @@
-import PatternVariant from "../src/PatternVariant";
-import Pattern from "../src/Pattern";
-import PatternStorage from "../src/PatternStorage";
+import PatternVariant from '../src/PatternVariant';
+import Pattern from '../src/Pattern';
+import PatternStorage from '../src/PatternStorage';
 
 describe('Variant test', () => {
   test('Test variant properties.', () => {
     const definition = {
       id: 'test',
       description: 'test-description',
-      namespace: 'atoms',
+      namespace: 'atoms/atoms',
       label: 'test-label',
       use: '@test/test',
       fields: {},
       settings: {},
       parameters: [],
       visible: 'storybook',
-      configuration: {}
+      configuration: {},
     };
     const storage: PatternStorage = new PatternStorage();
 
@@ -25,7 +25,6 @@ describe('Variant test', () => {
     expect(variant.getDescription()).toBe('');
     expect(variant.getId()).toBe('__default');
     expect(variant.getUse()).toBe('@test/test');
-    expect(variant.getStoryId()).toBe('atoms-test-label--test-label');
-
+    expect(variant.getStoryId()).toBe('atoms-atoms-test-label--test-label');
   });
 });
