@@ -9,6 +9,10 @@ export default class PatternVariant {
     return this.use;
   }
 
+  public getStoryId(): string {
+    return this.storyId;
+  }
+
   public getId(): string {
     return this.id;
   }
@@ -152,11 +156,17 @@ export default class PatternVariant {
 
   private description: string;
 
+  private storyId: string;
+
   private configuration: any;
 
   private fields: Field[] = [];
 
   private settings: Setting[] = [];
+
+  private cleanStorybookString(string: string) {
+    return string.toLowerCase().replace(' ','-').replace('/','');
+  }
 
   constructor(
     id: string,
@@ -174,5 +184,11 @@ export default class PatternVariant {
     this.use = use;
     this.description = description;
     this.configuration = configuration;
+    if (pattern.getNamespace() != null) {
+      this.storyId = this.cleanStorybookString(`${pattern.getNamespace()}-${pattern.getLabel()}--${label}`);
+    } else {
+      this.storyId = '';
+    }
+
   }
 }
