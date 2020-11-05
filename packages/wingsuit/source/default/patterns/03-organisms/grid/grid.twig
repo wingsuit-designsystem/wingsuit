@@ -7,6 +7,7 @@
  */
 #}
 
+{# SETTINGS #}
 {% set columns = columns|default(2) %}
 {% set columns_width = columns_width|default('equal') %}
 
@@ -24,6 +25,7 @@
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
+{# TEMPLATE #}
 {% if configuration is not empty %}
   <div {{ attributes }}>
     {% block cells %}

@@ -1,22 +1,46 @@
-<div class="leading-normal tracking-normal mb-20">
-  {% set header_classes = ([
-    variant == 'fixed'?'fixed h-18 w-full',
-    variant == 'sticky'?'sticky',
-  ]) | sort | join(' ') | trim %}
-  <header class="{{ header_classes }} header-offset bg-white w-full z-30 top-0 text-white" x-data="{ open: false }">
+{# HEADER CLASSES #}
+{% set classes = ([
+  'leading-normal tracking-normal mb-20',
+] | sort | join(' ') | trim )%}
+
+{% set header_classes = ([
+  'header-offset bg-white w-full z-30 top-0 text-white',
+  variant == 'fixed'?'fixed h-18 w-full',
+  variant == 'sticky'?'sticky',
+]) | sort | join(' ') | trim %}
+
+{% set wrapper_classes = ([
+  'flex flex-wrap py-5 justify-between md:flex-row',
+]) | sort | join(' ') | trim %}
+
+{% set logo_classes = ([
+  'flex items-center',
+]) | sort | join(' ') | trim %}
+
+{% set hamburger_classes = ([
+  'block lg:hidden',
+] | sort | join(' ') | trim )%}
+
+{% set menu_classes = ([
+  'lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent',
+  'w-full flex-grow hidden text-black z-20 mt-2 bg-white',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<div {{ attributes }}>
+  <header class="{{ header_classes }}" x-data="{ open: false }">
     {% embed "@organisms/container/container.twig" %}
       {% block content %}
-        <div class="flex flex-wrap py-5 justify-between md:flex-row">
-          <div class="flex items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-              {% include "@atoms/logo/logo.twig" %}
-            </a>
+        <div class="{{ wrapper_classes }}">
+          <div class="{{ logo_classes }}">
+            {% include "@atoms/logo/logo.twig" only %}
           </div>
-          <div class="block lg:hidden" @click="open = !open">
+          <div class="{{ hamburger_classes }}" @click="open = !open">
             {% include "@atoms/hamburger/hamburger.twig" only %}
           </div>
-          <div
-            class="w-full flex-grow lg:flex lg:justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black z-20"
+          <div class="{{ menu_classes }}"
             :class="{'block': open, 'hidden': !open}">
             {{ menu }}
             <div>

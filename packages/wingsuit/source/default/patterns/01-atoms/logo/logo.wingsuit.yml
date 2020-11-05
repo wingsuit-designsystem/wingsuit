@@ -1,4 +1,5 @@
 logo:
   use: "@atoms/logo/logo.twig"
   label: Logo
-  description:  You can use thi logo pattern on the header or footer or other necessary places.
+  description:  This logo pattern represents the logos of the front page, header or footer ...etc.
+                we can use it by including it in the needed twig templates.

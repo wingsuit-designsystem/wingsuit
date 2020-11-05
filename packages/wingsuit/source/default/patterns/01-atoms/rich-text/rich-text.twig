@@ -7,7 +7,14 @@
  * See rich-text.wingsuit.yaml for documentation.
  */
 #}
+{# RICH-TEXT CLASSES #}
+{% set classes = ([
+  'prose lg:prose-lg',
+] | sort | join(' ') | trim )%}
 
-<div class="prose lg:prose-lg">
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<div {{ attributes }}>
   {{ text }}
 </div>

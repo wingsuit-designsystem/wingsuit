@@ -10,12 +10,18 @@
  * @see template_preprocess_input()
  */
 #}
-<input {{ attributes.addClass([
+
+{# VARIANTS #}
+{% set classes = ([
   variant == 'textfield' or
   variant == 'email' or
   variant == 'date' or
   variant == 'tel' ? 'form-input w-full',
   variant == 'radio' ? 'form-radio mr-1',
   variant == 'checkbox' ? 'form-checkbox mr-1',
-]|sort
-) }} />{{ children }}
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATES #}
+<input {{ attributes }} />{{ children }}

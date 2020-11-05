@@ -1,6 +1,8 @@
+{# SETTING #}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('div') %}
 {% set size = size|default('large') %}
+
 {% set classes = ([
   'headline',
   'font-serif',
@@ -8,6 +10,7 @@
   size == 'medium' ? 'text-xl',
 ]) | sort | join(' ') | trim %}
 
+{# TEMPLATES #}
 <{{ element }} {{ attributes.addClass([] | sort | join(' ') | trim) }}>
 {{ title_prefix }}
   {{ title_suffix }}

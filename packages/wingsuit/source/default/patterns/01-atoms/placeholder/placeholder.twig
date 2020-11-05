@@ -10,10 +10,12 @@
  */
 #}
 
+{# SETTINGS #}
 {% import '@atoms/placeholder/_placeholder-macro.twig' as placeholder %}
 
 {% set variant = variant|default('image') %}
 
+{# VARIANT TEMPLATES #}
 {% if variant == 'image' %}
   {{ placeholder.image(style, placeholder_url) }}
 {% elseif variant == 'background' %}
