@@ -1,13 +1,13 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
-import { configure as storybookConfigure, storiesOf, addParameters } from '@storybook/react';
+import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
-import wingsuitTheme from './theme';
+import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
-import { PatternStories } from './docs/PatternStories';
+import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
 function getStorybookKnobsOptions(setting) {
@@ -33,12 +33,6 @@ export function configure(
   templateContext,
   namespaces
 ) {
-  // Theming
-  addParameters({
-    options: {
-      theme: wingsuitTheme,
-    },
-  });
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromMultiContext(storybookContext);
   storage.createTwigStorageFromContext(templateContext);
@@ -88,6 +82,10 @@ function getProps(variant) {
           setting.getPreview(),
           groupSetting
         );
+      } else if (setting.getType() === 'attributes') {
+        knobsVariables[key] = new TwigAttribute(
+          text(setting.getLabel(), setting.getPreview(), groupSetting)
+        );
       } else if (setting.getType() === 'boolean') {
         knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
       } else if (setting.getType() === 'number') {
@@ -105,10 +103,12 @@ function getProps(variant) {
   const groupFields = 'Fields';
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
-    if (field.getType() === 'object') {
-      knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
-    } else if (field.getType() !== 'pattern') {
-      knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+    if (field.isEnable()) {
+      if (field.getType() === 'object') {
+        knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
+      } else if (field.getType() !== 'pattern') {
+        knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+      }
     }
   });
   return knobsVariables;
@@ -130,21 +130,21 @@ function getStories(pattern: Pattern, module) {
       notes: variant.getDescription(),
       componentSubtitle: pattern.getDescription(),
       docs: {
-        patternVariant: variant,
         page: () => (
           <>
             <Title />
             <Subtitle />
             <Description />
             <Primary />
-            <PatternProperties />
-            <PatternInclude />
-            <PatternStories />
+            <PatternProperties variant={variant} />
+            <PatternInclude variant={variant} />
+            <PatternDoc pattern={pattern} />
           </>
         ),
         storyDescription: variant.getDescription(),
       },
     };
+
     parameters = Object.assign(parameters, pattern.getParameters());
     story.add(
       variant.getLabel(),
@@ -158,6 +158,13 @@ function getStories(pattern: Pattern, module) {
 }
 
 export { drupalAttachBehaviorDecorator } from './drupal';
-export { init as initDecorator, attachBehaviorDecorator } from './behaviors';
+export {
+  isInit as isInitDecorator,
+  init as initDecorator,
+  attachBehaviorDecorator,
+} from './behaviors';
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
+export { default as PatternLoad } from './docs/PatternLoad';
+export { default as wingsuitTheme } from './theme';
+export { PatternDoc, PatternProperties, PatternInclude };

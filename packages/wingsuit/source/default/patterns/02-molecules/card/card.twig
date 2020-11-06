@@ -1,46 +1,59 @@
+{# SETTINGS #}
 {% set element = element|default('article') %}
-{% set attributes = attributes|default(create_attribute()) %}
 {% set headline__element = headline__element|default('h2') %}
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
+{# CARD CLASSES #}
 {% set image_classes = ([
   alignment == 'center'?'justify-center': '',
   'flex',
 ]) | sort | join(' ') | trim %}
-<{{ element }} {{ attributes.addClass([
-  alignment == 'center'?'text-center': '',
-  'block',
-  'group hover:no-underline',
-] | sort | join(' ') | trim) }}>
-  <div class="{{ image_classes }}">
-    {% block image %}
-      {{ image }}
-    {% endblock %}
-  </div>
-  <div>
-    {% if preheadline is not empty %}
-      <div class="font-serif text-36 text-blue group-hover:underline">
+
+{% set link_classes = ([
+  alignment == 'center'?'mx-auto': '',
+  'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0',
+]) | sort | join(' ') | trim %}
+
+{% set classes = ([
+  alignment == 'center' ? 'text-center rounded': '',
+  bg_color == 'gray' ? 'bg-gray-200',
+  bg_color == 'blue' ? 'bg-blue-200',
+  'w-full flex flex-col flex-grow flex-shrink',
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<{{ element }} {{ attributes }}>
+  <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+    {% if image is not empty %}
+      {% block image %}
+        {{ image }}
+      {% endblock %}
+    {% endif %}
+    <div class="p-6">
+      <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
         {% block preheadline %}
           {{ preheadline }}
         {% endblock %}
       </div>
-    {% endif %}
-    <{{ headline__element }} class="text-base mb-1 uppercase text-gray-light font-sans">
-      {% block headline %}
-        {{ headline }}
-      {% endblock %}
-    </{{ headline__element }}>
-    {% if text is not empty %}
-      <div class="text-base mb-10 text-gray-dark font-sans">
+      <h2 class="title-font text-2xl font-medium text-gray-900 mb-3">
+        {% block headline %}
+          {{ headline }}
+        {% endblock %}
+      </h2>
+      <div class="leading-relaxed mb-3">
         {% block text %}
           {{ text }}
         {% endblock %}
       </div>
-    {% endif %}
-    {% if button is not empty %}
-      {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} only %}
-    {% endif %}
+      <div class="{{ link_classes }}">
+        {% block link %}
+          {{ link }}
+        {% endblock %}
+      </div>
+    </div>
   </div>
 </{{ element }}>

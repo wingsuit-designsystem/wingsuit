@@ -12,6 +12,12 @@
   margin-bottom: 0;
   line-height: 1.5;
 }
+.btn {
+  border-bottom: 4px solid transparent;
+}
+.btn:hover {
+  border-bottom: 4px solid black;
+}
 
 #docs-content a.edit-link {
   color: #319795 !important;

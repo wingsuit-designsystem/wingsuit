@@ -5,7 +5,8 @@
     </li>
     {% for item in items %}
       <li class="font-sans px-4 py-4 lg:p-2 lg:px-4 text-black">
-        <a class="text-md {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
+        <a class="text-md {% if (item.in_active_trail) %}is-active{% endif %}"
+           href="{{ item.link }}">{{ item.title }}</a>
       </li>
     {% endfor %}
     <li class="font-sans px-4 py-4  lg:p-2 lg:px-4 text-black">

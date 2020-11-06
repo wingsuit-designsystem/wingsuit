@@ -4,6 +4,7 @@ hr {
 
 body {
   overflow-x: hidden;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .circle--mobile {
@@ -12,11 +13,21 @@ body {
   padding-bottom: 100%;
 }
 
+.sb-tagline-sm {
+  font-size: 1em;
+}
+
 .circle {
   position: absolute;
+  height: 100%;
   width: 200%;
-  padding-bottom: 200%;
   border-radius: 50%;
+}
+
+@media only screen and (min-width: 1921px) {
+  .circle {
+    width: 100%;
+  }
 }
 
 .overflow-hidden {

@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
@@ -44,21 +43,18 @@ export default class PatternStorage implements IPatternStorage {
   loadPattern(patternId: string): Pattern {
     const definition: IPatternDefinition = this.definitions.patterns[patternId];
     if (definition == null) {
-      throw new Error(`Pattern ${patternId} not loaded.`);
+      throw new Error(
+        `Pattern definition "${patternId}" not found. Possible pattern ids are: "${Object.keys(
+          this.definitions.patterns
+        ).join(' ,')}"`
+      );
     }
     return new Pattern(patternId, definition, this);
   }
 
   loadVariant(patternId: string, variantId: string): PatternVariant {
     const pattern: Pattern = this.loadPattern(patternId);
-    if (pattern != null) {
-      return pattern.getVariant(variantId);
-    }
-    throw new Error(`Variant ${patternId}.${variantId}  not loaded.`);
-  }
-
-  createDefinitionsFromFile(path: string): void {
-    this.definitions = JSON.parse(fs.readFileSync(path, 'utf8'));
+    return pattern.getVariant(variantId);
   }
 
   createDefinitions(definitions: IPatternDefinitions): void {

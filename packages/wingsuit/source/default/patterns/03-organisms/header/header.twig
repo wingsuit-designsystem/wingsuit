@@ -1,27 +1,31 @@
-<header class="z-50 sticky w-full bg-green border-b lg:border-b-0 border-gray-xlight top-0" role="navigation"
-     x-data="{ open: false }">
+{# SETTINGS #}
+{% set header_classes = ([
+  'header-offset bg-white w-full z-30 top-0 text-white',
+  variant == 'fixed'?'fixed h-18 w-full',
+  variant == 'sticky'?'sticky',
+]) | sort | join(' ') | trim %}
 
-  {% embed "@organisms/container/container.twig" %}
-  {% block content %}
-  <div class="h-20 justify-between flex flex-wrap md:flex-no-wrap items-center">
-    <a href="{{ path('<front>') }}" class="mr-4 w-155">
-      {% include "@atoms/svg/_svg--icon.twig" with {
-        size: 'w-16 h-16',
-        icon: 'logo'
-      } %}
-    </a>
-    <div class="burger align-right mr-6 items-center lg:hidden cursor-pointer"
-         @click="open = !open">
-      {% include '@atoms/hamburger/hamburger.twig' %}
-    </div>
-    <div
-      class="w-full justify-end lg:flex top-0 absolute lg:relative -ml-6 lg:ml-0 mt-20 lg:mt-0 lg:block lg:w-auto lg:flex-grow lg:items-center"
-      :class="{'block': open, 'hidden': !open}">
-      {% block menu %}
-        {{ menu }}
+{# TEMPLATE #}
+<div class="leading-normal tracking-normal mb-20">
+  <header class="{{ header_classes }}" x-data="{ open: false }">
+    {% embed "@organisms/container/container.twig" with {menu: menu, button: button} only%}
+      {% block content %}
+        <div class="flex flex-wrap py-5 justify-between md:flex-row">
+          <div class="flex items-center">
+            {% include "@atoms/logo/logo.twig" only %}
+          </div>
+          <div class="block lg:hidden" @click="open = !open">
+            {% include "@atoms/hamburger/hamburger.twig" only %}
+          </div>
+          <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': open, 'hidden': !open}">
+            {{ menu }}
+            <div>
+              {{ button }}
+            </div>
+          </div>
+        </div>
       {% endblock %}
-    </div>
-  </div>
-  {% endblock %}
-  {% endembed %}
-</header>
+    {% endembed %}
+    {# <hr class="border-b border-gray-100 opacity-25 my-0 py-0"> #}
+  </header>
+</div>

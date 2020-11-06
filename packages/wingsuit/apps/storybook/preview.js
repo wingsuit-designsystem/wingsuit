@@ -1,14 +1,17 @@
 import {
   configure,
   initDecorator,
+  isInitDecorator,
   attachBehaviorDecorator,
 } from '@wingsuit-designsystem/storybook';
 import { addDecorator, addParameters } from '@storybook/react';
 
 const namespaces = require('../../source/default/namespaces');
 
-initDecorator('Drupal');
-addDecorator(attachBehaviorDecorator);
+if (isInitDecorator() === false) {
+  initDecorator('Drupal');
+  addDecorator(attachBehaviorDecorator);
+}
 
 addParameters({
   options: {

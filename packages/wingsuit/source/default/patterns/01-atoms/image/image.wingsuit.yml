@@ -1,55 +1,30 @@
 image:
   use: "@atoms/image/image.twig"
   label: Image
-  description: Image component with flexible size, style and variant.
+  description: "Image with caption component."
   fields:
     image:
       type: text
-      label: The image field.
+      label: The image.
       description: The image provided by Drupal.
     caption:
       type: text
       label: The caption text.
   variants:
-    primary:
-      label: Primary
-    bg:
-      label: Background
+    image:
+      label: Image
+      description: Use variant "image" for drupal images or theme images. Use ws-assets:// for theme images. E.g. "ws-assets://images/logo.svg"
+    background:
+      label: Background image
+      description: Set the image url with setting "url" and control the display with setting "background_style"
   settings:
-    circle:
-      label: Circle
-      type: boolean
-      default_value: false
-    size:
-      label: Size
-      type: select
-      options:
-        w-4: "Width: Small"
-        w-8: "Width: Medium"
-        w-12: "Width: Large"
-        h-4: "Height: Small"
-        h-8: "Height: Medium"
-        h-12: "Height: Large"
-    placeholder:
-      label: Placeholder
-      type: boolean
-      default_value: true
-    src:
-      label: Src
+    url:
+      label: Url
       type: textfield
-    style:
-      label: Style
-      type: select
-      preview: 16x9_md_sc
-      options:
-        1x1_xxs_sc: XXSmall 1x1
-        8x7_xxs_sc: XSmall 8x7
-        8x7_xs_sc: Small 8x7
-        16x9_xxxs_sc: XXXSmall 16x9
-        16x9_xxs_sc: XXSmall 16x9
-        16x9_xs_sc: XSmall 16x9
-        16x9_sm_sc: SM 16x9
-        16x9_md_sc: LG 16x9
-        16x9_xl_sc: XL 16x9
-        16x9_xxl_sc: XXLL 16x9
-  visibility: storybook
+      description: Use "Url" if you don't have the rendered image tag. The component will generate an image tag.
+      preview: 'ws-assets://images/logo.svg'
+    background_style:
+      label: Background style
+      description: Classes applied to background image container.
+      type: textfield
+      preview: w-full h-20 bg-cover

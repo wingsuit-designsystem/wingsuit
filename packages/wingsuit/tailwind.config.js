@@ -1,45 +1,43 @@
+const customForms = require('@tailwindcss/custom-forms');
+const typography = require('@tailwindcss/typography');
+
 const rem = (px) => ({ [px]: `${px / 16}rem` });
 
 module.exports = {
   important: false,
+  future: {
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+  },
   purge: {
-    content: ['./source/**/*.twig', './apps/**/*.twig'],
-    options: {
-      whitelist: ['bg-red-500', 'px-4'],
-    },
+    layers: ['utilities'],
+    content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+    whitelist: ['bg-red-500', 'px-4'],
   },
   theme: {
+    extend: {
+      fill: {
+        current: 'currentColor',
+      },
+      colors: {
+        primary: '#ED64A6',
+        secondary: '#90CDF4',
+      },
+      height: {
+        18: '4.5rem',
+      },
+      maxWidth: {
+        none: 'none',
+        ...rem(120),
+        ...rem(800),
+        ...rem(1200),
+        ...rem(1600),
+        ...rem(1900),
+      },
+    },
     fontFamily: {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
       sans: ['Roboto', 'sans-serif'],
-    },
-    fontSize: {
-      // Final mobile:
-      ...rem(13),
-      ...rem(28),
-      ...rem(36),
-    },
-    maxWidth: {
-      none: 'none',
-      ...rem(800),
-      ...rem(1200),
-      ...rem(1600),
-    },
-    colors: {
-      transparent: 'transparent',
-      black: '#000000',
-      white: '#FFFFFF',
-      green: '#deede8',
-      blue: '#4299E1',
-      primary: '#fcaca9',
-      success: '#68D391',
-      yellow: '#F6E05E',
-      gray: {
-        xlight: '#EDF2F7',
-        light: '#CBD5E0',
-        medium: '#718096',
-        dark: '#2D3748',
-      },
     },
   },
   variants: {
@@ -49,5 +47,7 @@ module.exports = {
     textDecoration: ['responsive', 'hover', 'group-hover'],
     textColor: ['responsive', 'hover', 'group-hover'],
     fontFamily: ['responsive', 'hover', 'focus'],
+    fill: ['responsive', 'hover', 'focus'],
   },
+  plugins: [customForms, typography],
 };

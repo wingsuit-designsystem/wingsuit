@@ -9,6 +9,14 @@ export default class PatternVariant {
     return this.use;
   }
 
+  public getStoryId(): string {
+    return this.storyId;
+  }
+
+  public getId(): string {
+    return this.id;
+  }
+
   public getStorage(): IPatternStorage {
     return this.pattern.getStorage();
   }
@@ -39,6 +47,14 @@ export default class PatternVariant {
 
   public getFields(): Field[] {
     return this.fields;
+  }
+
+  public setConfiguration(configuration: any) {
+    this.configuration = configuration;
+  }
+
+  public getConfiguration(): any {
+    return this.configuration;
   }
 
   public addField(field: Field) {
@@ -92,7 +108,7 @@ export default class PatternVariant {
         for (let i = 0; i < preview.length; i += 1) {
           previewPatterns[`${key}--${i}`] = this.buildPreviewPattern(preview[i]);
         }
-      } else if (field.getType() === 'pattern' && preview.id !== null) {
+      } else if (field.getType() === 'pattern' && preview != null && preview.id != null) {
         previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });
@@ -102,7 +118,11 @@ export default class PatternVariant {
   public getVariables() {
     const values = {};
     Object.keys(this.settings).forEach((key) => {
-      values[key] = this.settings[key].getPreview();
+      if (this.settings[key].getType() === 'attributes') {
+        values[key] = new TwigAttribute(this.settings[key].getPreview());
+      } else {
+        values[key] = this.settings[key].getPreview();
+      }
     });
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
@@ -116,11 +136,17 @@ export default class PatternVariant {
       values['variant'] = this.variant;
     }
     // eslint-disable-next-line dot-notation
-    values['attributes'] = new TwigAttribute();
+    if (values['attributes'] == null) {
+      // eslint-disable-next-line dot-notation
+      values['attributes'] = new TwigAttribute();
+    }
+
     return values;
   }
 
   private pattern: Pattern;
+
+  private id: string;
 
   private use: string;
 
@@ -130,15 +156,40 @@ export default class PatternVariant {
 
   private description: string;
 
+  private storyId: string;
+
+  private configuration: any;
+
   private fields: Field[] = [];
 
   private settings: Setting[] = [];
 
-  constructor(pattern: Pattern, variant: string, use: string, label: string, description: string) {
+  private cleanStorybookString(string: string) {
+    return string.toLowerCase().replace(' ', '-').replace('/', '-');
+  }
+
+  constructor(
+    id: string,
+    pattern: Pattern,
+    variant: string,
+    use: string,
+    label: string,
+    description: string,
+    configuration: any
+  ) {
+    this.id = id;
     this.pattern = pattern;
     this.variant = variant;
     this.label = label;
     this.use = use;
     this.description = description;
+    this.configuration = configuration;
+    if (pattern.getNamespace() != null) {
+      this.storyId = this.cleanStorybookString(
+        `${pattern.getNamespace()}-${pattern.getLabel()}--${label}`
+      );
+    } else {
+      this.storyId = '';
+    }
   }
 }

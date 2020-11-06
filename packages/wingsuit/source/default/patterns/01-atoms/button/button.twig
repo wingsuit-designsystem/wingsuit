@@ -1,24 +1,43 @@
+{#
+  Defaults
+#}
 {% set tag_name = tag_name|default('div') %}
+{% set color = color|default('primary') %}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set svg_size = svg_size|default('default') %}
+{% set icon_size = icon_size|default('default') %}
+{% set icon_alignment = icon_alignment|default('right') %}
+
+{#
+  Classes
+#}
+{% set classes = [
+  'flex items-center justify-center inline-flex border-0 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
+  expanded ? 'w-full',
+  variant == 'outline' ? 'border-2',
+  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+  pattern_configuration('button', variant, 'colors')[color],
+  pattern_configuration('button', variant, 'size')['text'][size],
+] %}
+
+{% set icon_size = ([
+  icon_alignment == 'left' ? 'mr-2' : 'ml-2',
+  pattern_configuration('button', variant, 'size')['icon'][size],
+]) | sort | join(' ') | trim %}
+
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set tag_name = 'a' %}
 {% endif %}
 
-<{{ tag_name }} {{ attributes.addClass([
-  'button',
-  'font-sans',
-  'px-4', 'py-2', 'leading-18', 'font-serif', 'uppercase', 'inline-block',
-  variant == 'default' ? 'bg-' ~ color|default('primary') ~ ' border text-white transition-colors duration-150 hover:text-black hover:bg-white hover:border-' ~ color,
-  variant == 'hollow' ? 'bg-white border border-' ~ color ~ ' transition-colors duration-150 text-black hover:text-white hover:bg-' ~ color|default('primary'),
-] | sort | join(' ') | trim) }}>
-{{ text }}
-  {% if svg is not empty %}
+{#
+  Template
+#}
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+  {{ text }}
+  {% if icon is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
-      icon: svg,
-      size: size,
-      svg_classes: ['inline-block', 'align-middle', content|striptags ? 'ml-15', variant == 'outline' ? 'fill-red' : 'fill-white']
-    } %}
+      icon: icon,
+      size: icon_size,
+    } only %}
   {% endif %}
 </{{ tag_name }}>
