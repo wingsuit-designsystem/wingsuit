@@ -22,5 +22,4 @@ svg_icon:
   variants:
     icon:
       label: Sprite Map
-      description: Use a SVG Spritemap to display SVG Icons. This is prefered way to use SVGs.
   visibility: storybook

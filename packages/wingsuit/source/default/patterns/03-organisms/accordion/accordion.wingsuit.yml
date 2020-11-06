@@ -1,7 +1,7 @@
 accordion:
-  use: "@molecules/accordion/accordion.twig"
+  use: "@organisms/accordion/accordion.twig"
   label: Accordion
-  description: Pure CSS Collapsible / Accordion
+  description: Pure CSS collapsible accordion.
   fields:
     items:
       type: pattern

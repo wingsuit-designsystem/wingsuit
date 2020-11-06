@@ -1,7 +1,7 @@
 pagination:
   use: "@molecules/pagination/pagination.twig"
   label: Pagination
-  description: Primary and footer menu pattern.
+  description: Simple and functional pagination.
   fields:
     items:
       type: object

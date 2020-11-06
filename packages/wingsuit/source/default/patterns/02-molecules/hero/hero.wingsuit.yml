@@ -1,7 +1,7 @@
 hero:
   use: "@molecules/hero/hero.twig"
   label: Hero
-  description: Super Hero section to Sell yourself!
+  description: Hero section component, for all your presentation needs.
   fields:
     pre_headline:
       type: text
