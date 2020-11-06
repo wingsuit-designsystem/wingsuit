@@ -28,11 +28,6 @@
   {% include "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
 {% endset %}
 
-{# SECTION CLASSES #}
-{% set headline_classes = ([
-  'pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800',
-] | sort | join(' ') | trim )%}
-
 {# TEMPLATES #}
 {% embed "@organisms/container/container.twig" with {
   attributes: attributes,
@@ -46,7 +41,7 @@
 } only %}
   {% block content %}
   {% if headline is not empty %}
-    <h2 class="{{ headline_classes }}">{{ headline }}</h2>
+    <h2 class="pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ headline }}</h2>
   {% endif %}
   {{ content }}
   {% endblock %}
