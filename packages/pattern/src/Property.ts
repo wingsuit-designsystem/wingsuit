@@ -7,6 +7,14 @@ export default class Property {
     return this.description;
   }
 
+  public isEnable(): boolean {
+    return this.enable;
+  }
+
+  public setEnable(value: boolean) {
+    this.enable = value;
+  }
+
   public setDescription(value: string) {
     this.description = value;
   }
@@ -43,7 +51,7 @@ export default class Property {
     return this.preview;
   }
 
-  public setPreview(value: Preview) {
+  public setPreview(value: Preview | string) {
     this.preview = value;
   }
 
@@ -80,6 +88,8 @@ export default class Property {
   private description: string;
 
   private preview: any;
+
+  private enable = true;
 
   constructor(name: string, type: string, label: string, description: string, preview: any) {
     this.name = name;

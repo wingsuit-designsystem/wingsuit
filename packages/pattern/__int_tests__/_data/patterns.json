@@ -38,6 +38,37 @@
         }
       }
     },
+    "configuration": {
+      "use": "@molecules/tests/pattern_configuration.twig",
+      "label": "No properties",
+      "description": "Example description",
+      "configuration": {
+        "config": {
+          "value": "correct",
+          "value2": "wrong"
+        }
+      },
+      "variants": {
+        "variant": {
+          "label": "Variant",
+          "configuration": {
+            "config": {
+              "value": "correct",
+              "value2": "correct"
+            }
+          }
+        },
+        "variant2": {
+          "label": "Variant2",
+          "configuration": {
+            "config": {
+              "value": "correct",
+              "value2": "correct"
+            }
+          }
+        }
+      }
+    },
     "ref_correct": {
       "use": "@molecules/tests/ref.twig",
       "label": "No properties",

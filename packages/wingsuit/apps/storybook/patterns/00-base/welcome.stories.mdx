@@ -1,8 +1,17 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { storage } from '@wingsuit-designsystem/pattern';
 
-<Meta title="Base/Welcome" />
+<Meta title="Base/Welcome"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
 
 <div>
-  <img style={ { margin: "auto" } } src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px"/>
+  <a class="mx-auto flex flex-col title-font text-center font-medium items-center text-gray-900 mb-4 md:mb-0">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-20 h-20 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+    </svg>
+  </a>
+  <h1 style={ {textAlign: "center"} }>Tailblocks for Wingsuit</h1>
+  <p style={ {textAlign: "center"} }>Wingsuit demo page with components from <a href="https://mertjf.github.io/tailblocks/" target="_blank">Tailblocks</a> and <a href="https://www.tailwindtoolbox.com" target="_blank"> tailwindtoolbox.com</a>
+
+  </p>
 </div>

@@ -1,11 +1,19 @@
+{# SETTING #}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('div') %}
+{% set size = size|default('large') %}
 
-<{{ element }} {{ attributes.addClass([
+{%
+  set classes = ([
   'headline',
-  size == 'large' ? 'text-36',
-  size == 'medium' ? 'text-28',
-] | sort | join(' ') | trim) }}>
+  'font-serif',
+  size == 'large' ? 'text-4xl',
+  size == 'medium' ? 'text-xl',
+]) | sort | join(' ') | trim
+%}
+
+{# TEMPLATES #}
+<{{ element }} {{ attributes.addClass(classes) }}>
 {{ title_prefix }}
   {{ title_suffix }}
   {{ content }}

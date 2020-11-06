@@ -1,24 +1,31 @@
 article:
   use: "@templates/article/article.twig"
   label: Article
-  description: Use Article for your teasers
+  description: The article template.
   fields:
     headline:
       type: text
       label: Headline
       preview:
         faker: lorem.word
+    image:
+      type: pattern
+      label: Image
+      preview:
+        id: placeholder
+        variant: image
     text:
       type: text
       label: Text
       preview:
         faker: lorem.paragraph
     button:
-      type: text
+      type: pattern
       label: Button
       preview:
-        faker: lorem.word
+        id: button
+        variant: default
     more:
       type: text
-      label: More
+      label: More articles
   visibility: drupal

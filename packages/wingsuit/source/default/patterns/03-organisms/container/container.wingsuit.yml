@@ -6,7 +6,8 @@ container:
     content:
       type: text
       label: Content
-      preview: Text
+      preview:
+        faker: lorem.paragraphs
   settings:
     width:
       type: select
@@ -18,6 +19,7 @@ container:
         small: Small
         default: Default
         large: Large
+        xlarge: Xlarge
     bg:
       type: select
       label: Background color
@@ -35,7 +37,8 @@ container:
     padding_top:
       type: select
       label: Padding top
-      description: If previous element has spacing bottom, use default for normal or small for small spacing betweeen elements.
+      description: The spacing to the previous element.
+      default_value: default
       options:
         small: Small
         default: Default
@@ -43,9 +46,32 @@ container:
     padding_bottom:
       type: select
       label: Padding bottom
-      description: If next element has spacing top, use default for normal or small for small spacing betweeen elements.
+      description: The spacing to the next element.
       options:
         small: Small
         default: Default
         large: Large
+    classes:
+      type: textfield
+      label: Additional classes
+  configuration:
+    padding_x:
+      default: 'px-6'
+      large: 'px-10'
+    padding_top:
+      small: 'pt-4'
+      default: 'pt-10 md:pt-20'
+      large: 'pt-20 md:pt-24'
+    padding_bottom:
+      small: 'pb-4'
+      default: 'pb-10 md:pb-20'
+      large: 'pb-20 md:pb-24'
+    width:
+      small: 'max-w-800'
+      default: 'max-w-1200'
+      large: 'max-w-1600'
+      xlarge: 'max-w-1900'
+    bg:
+      gray-medium: 'bg-gray-500'
+      gray-light: 'bg-gray-300'
   visibility: storybook

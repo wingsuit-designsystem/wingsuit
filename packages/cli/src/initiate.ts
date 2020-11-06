@@ -62,11 +62,7 @@ export default function (options) {
         pkg.devDependencies[key] = `^${pkg.devDependencies[key]}`;
       }
     });
-    fs.writeFileSync(pkgFile, JSON.stringify(pkg, null, 4), function (err) {
-      if (err) {
-        console.log(err);
-      }
-    });
+    fs.writeFileSync(pkgFile, JSON.stringify(pkg, null, 4));
   };
 
   /*

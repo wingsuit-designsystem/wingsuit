@@ -1,15 +1,17 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
-  description: Amazing Cards
+  description: Amazing card component with image, titles, body and link.
   fields:
     image:
       label: Image
       type: pattern
       description: The image tag.
       preview:
-        id: image
-        variant: primary
+        id: placeholder
+        variant: image
+        settings:
+          style: 16x9_xxl_sc
     preheadline:
       type: text
       label: Preheadline
@@ -28,12 +30,12 @@ card:
       description: A long text under the headline.
       preview:
         faker: lorem.paragraph
-    button:
-      type: text
-      label: Button
+    link:
+      type: pattern
+      label: Link
       description: An optional button at the bottom of the card.
       preview:
-        faker: lorem.word
+        id: link
   settings:
     alignment:
       type: select
@@ -43,7 +45,12 @@ card:
       options:
         left: Left
         center: Center
+    bg_color:
+      type: select
+      label: Bg Color
+      options:
+        gray: Gray
+        blue: Blue
     url:
       type: token
       label: Url
-      preview: 'https://github.com/wingsuit-designsystem/wingsuit'

@@ -1,0 +1,21 @@
+accordion_item:
+  use: "@molecules/accordion-item/accordion-item.twig"
+  label: Accordion Item
+  description: A collapsible accordion item without javascript.
+  fields:
+    label:
+      type: text
+      label: Label
+      description: The accordion item label.
+      preview:
+        faker: lorem.word
+    content:
+      type: text
+      label: Content
+      description: The collapsed content.
+      preview:
+        faker: lorem.paragraph
+  settings:
+    id:
+      type: token
+      label: Id

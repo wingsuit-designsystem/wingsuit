@@ -6,6 +6,7 @@ import { Link as NewLink } from '../../../new-components/basics';
 import '../../Docs/Nav/style.css';
 import { UsedByBg } from '../UsedBy';
 import './style.css';
+import triangle from '../../../design/homepage/triangle.svg';
 
 class MainLinks extends React.Component {
   componentDidMount() {
@@ -21,18 +22,32 @@ class MainLinks extends React.Component {
     return (
       <div id="main-links">
         <div className="main-links-container bg-purple-100">
-          <div className="try-now">
-            <div className="row">
-              <div className="col-2 d-none d-sm-block triangle-container">
-                <svg
-                  viewBox="0 0 150 100"
-                  xmlns="http://www.w3.org/2000/svg"
+          <div className="try-now d-sm-none">
+            <div className="d-flex flex-row" style={{ height: '140px' }}>
+              <div style={{ flex: 1, position: 'relative' }}>
+                <img
                   className="svg-triangle"
-                >
-                  <polygon points="0,0 0,100 150,50" />
-                </svg>
+                  src={triangle}
+                  alt="SVG Triangle"
+                  style={{ paddingRight: '40px' }}
+                />
               </div>
-              <div className="col-12 col-sm-8">
+              <div style={{ flex: 1, position: 'relative' }}>
+                <img
+                  src={triangle}
+                  style={{ paddingRight: '40px' }}
+                  className="svg-triangle svg-triangle--rotate"
+                  alt="SVG Triangle"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="try-now" style={{ height: '140px' }}>
+            <div className="d-flex flex-row">
+              <div className="d-none d-sm-block" style={{ flex: 1, position: 'relative' }}>
+                <img className="svg-triangle" src={triangle} alt="SVG Triangle" />
+              </div>
+              <div className="flex-grow" style={{ margin: 'auto' }}>
                 <div>
                   <h2
                     style={{ marginBottom: '10px', marginTop: '20px' }}
@@ -40,7 +55,15 @@ class MainLinks extends React.Component {
                   >
                     Try it now!
                   </h2>
-                  <pre className="bg-purple-500" style={{ color: '#fff', height: '52px' }}>
+                  <pre
+                    className="bg-purple-500"
+                    style={{
+                      paddingLeft: '40px',
+                      paddingRight: '40px',
+                      color: '#fff',
+                      height: '52px',
+                    }}
+                  >
                     <code>
                       npx @wingsuit-designsystem/cli init
                       <br />
@@ -48,14 +71,12 @@ class MainLinks extends React.Component {
                   </pre>
                 </div>
               </div>
-              <div className="col-2 d-none d-sm-block triangle-container">
-                <svg
-                  viewBox="0 0 150 100"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="svg-triangle"
-                >
-                  <polygon points="150,0 150,100 0,50" />
-                </svg>
+              <div className="d-none d-sm-block" style={{ flex: 1, position: 'relative' }}>
+                <img
+                  src={triangle}
+                  className="svg-triangle svg-triangle--rotate"
+                  alt="SVG Triangle"
+                />
               </div>
             </div>
           </div>
@@ -69,7 +90,7 @@ class MainLinks extends React.Component {
                   position: 'relative',
                 }}
               >
-                <div className="col-xs-12 col-sm-12 read-docs">
+                <div className="col-xs-12 col-sm-12 read-docs" style={{ paddingBottom: '40px' }}>
                   <h2 style={{ color: '#000000' }}>Documentation</h2>
                 </div>
 

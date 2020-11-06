@@ -1,18 +1,29 @@
-{% set img_attributes = create_attribute().addClass([
-  size != '' ? size,
-] | sort | join(' ') | trim
-  ) %}
-{%- set image -%}
-{% if placeholder == true %}
-{%- include '@atoms/image/_image--placeholder.twig' -%}
-{% else %}
-{{- image -}}
-{%- endif -%}
-{%- endset -%}
+{#
+/**
+ * @file
+ * Image component for images and background images.
+ */
+#}
+{# SETTINGS #}
+{% set variant = variant|default('image') %}
 
-{% if variant == 'primary' %}
-  {% include '@atoms/image/_image--primary.twig' %}
-{% elseif variant == 'bg' %}
-  {% include '@atoms/image/_image--bg.twig' %}
+{# TEMPLATES #}
+{% if variant == 'image' %}
+  {%- set image -%}
+    {% if url is not empty %}
+      <img {{ img_attributes }} src="{{ file_url(url) }}" alt="{{ alt }}"/>
+    {% else %}
+      {{- image -}}
+    {%- endif -%}
+  {% endset %}
+
+  {% include '@atoms/image/_image--image.twig' with {
+    image: image,
+    caption: caption
+  } only %}
+{% elseif variant == 'background' %}
+  {% include '@atoms/image/_image--background.twig' with {
+    url: url,
+    background_style: background_style
+  } only %}
 {% endif %}
-

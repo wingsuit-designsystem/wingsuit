@@ -5,13 +5,11 @@
 }
 
 #nav h3 {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.1rem;
+  font-size: 16px;
+  font-weight: bold;
   text-transform: uppercase;
   margin: 10px 0;
-  padding: 0;
-  color: #4A5568;
+  color: #000000;
   padding: 6px;
 }
 

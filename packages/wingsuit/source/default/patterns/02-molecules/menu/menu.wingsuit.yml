@@ -1,7 +1,7 @@
 menu:
   use: "@molecules/menu/menu.twig"
   label: Menu
-  description: Primary and footer menu pattern.
+  description: Primary and footer menu component.
   fields:
     items:
       type: object
@@ -9,7 +9,6 @@ menu:
   variants:
     primary:
       label: Primary
-      description: The main menu on top of the page.
       fields:
         items:
           - title: galerie

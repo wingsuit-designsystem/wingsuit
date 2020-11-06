@@ -1,16 +1,12 @@
-{% set attributes = attributes|default(create_attribute()) %}
+<ul class="list-reset lg:flex justify-end flex-1 items-center">
+  {% for item in items %}
+    <li class="py-2 lg:py-0 border-b lg:border-b-0 border-black lg:mr-3">
+      {# {% if (item.in_active_trail) %}no-underline {% else %} hover:text-gray-900 hover:text-underline py-2 px-4{% endif %} #}
+      <a class="mr-5 text-gray-600 hover:text-gray-900"
+        href="{{ item.url }}">
+        {{ item.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
 
-<nav class="block lg:flex flex-col bg-gray-xlight lg:bg-transparent" role="navigation">
-  <ul {{ attributes.addClass([
-    variant == 'primary',
-    'block lg:flex flex-col md:flex-row md:items-center',
-  ] | sort | join(' ') | trim) }}>
-    {% for item in items %}
-      <li class="font-sans px-4 pt-4 lg:p-2 lg:px-4 lg:border-b-0 border-b-0 uppercase lg:text-center text-black">
-        <a class="hover:border-b text-base {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
-           {{ item.title }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>

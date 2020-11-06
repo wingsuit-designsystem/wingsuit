@@ -1,8 +1,0 @@
-{% if image is empty and src is not empty %}
-  <img {{ img_attributes }} src="{{ src }}" alt="{{ alt }}" />
-{% else %}
-  {{ image }}
-{% endif %}
-{% if caption is not empty %}
-<div>{{ caption }}</div>
-{% endif %}

@@ -10,16 +10,49 @@ export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
+export async function getPatternConfiguration(
+  patternId: string,
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  configuration: string
+) {
+  try {
+    const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+    return new Promise<string>((resolve, refuse) => {
+      const config = variant.getConfiguration();
+      resolve(config[configuration]);
+    });
+  } catch (e) {
+    return new Promise<string>((resolve, refuse) => {
+      // eslint-disable-next-line no-console
+      console.log(`Cannot load pattern configuration. Message: ${e.message}`);
+      resolve('');
+    });
+  }
+}
+
+export function twingMapToArray(variables): string[] {
+  const ary: string[] = [];
+  if (variables instanceof Map) {
+    variables.forEach((value, key) => {
+      ary.push(value);
+    });
+  }
+  return ary;
+}
+
 export async function renderPatternPreview(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
-  const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  if (variant == null) {
-    throw new Error(`Pattern ${patternId}:${variantId} not found.`);
+  let variant: PatternVariant;
+  try {
+    variant = storage.loadVariant(patternId, variantId);
+  } catch (err) {
+    return new Promise<string>((resolve, refuse) => {
+      resolve(err.message);
+    });
   }
-
   const previewPatterns = variant.getPreviewPatterns();
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];
