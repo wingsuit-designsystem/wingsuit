@@ -1,5 +1,5 @@
 accordion_item:
-  use: "@atoms/accordion-item/accordion-item.twig"
+  use: "@molecules/accordion-item/accordion-item.twig"
   label: Accordion Item
   description: A collapsible accordion item without javascript.
   fields:

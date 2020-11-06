@@ -1,4 +1,0 @@
-/**
- * accordion
- */
-import './accordion.css';
