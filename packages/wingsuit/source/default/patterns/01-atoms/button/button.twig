@@ -1,13 +1,21 @@
-{# SETTINGS #}
+{#
+  Defaults
+#}
 {% set tag_name = tag_name|default('div') %}
+{% set color = color|default('primary') %}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set icon_size = icon_size|default('default') %}
+{% set icon_alignment = icon_alignment|default('right') %}
 
+{#
+  Classes
+#}
 {% set classes = [
-  'flex items-center justify-center inline-flex border-0 py-1 px-2 focus:outline-none rounded',
+  'flex items-center justify-center inline-flex border-0 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
   expanded ? 'w-full',
+  variant == 'outline' ? 'border-2',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
-  pattern_configuration('button', variant, 'colors')[colors],
+  pattern_configuration('button', variant, 'colors')[color],
   pattern_configuration('button', variant, 'size')['text'][size],
 ] %}
 
@@ -21,7 +29,9 @@
   {% set tag_name = 'a' %}
 {% endif %}
 
-{# TEMPLATE #}
+{#
+  Template
+#}
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
   {{ text }}
   {% if icon is not empty %}

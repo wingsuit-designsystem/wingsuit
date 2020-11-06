@@ -3,12 +3,14 @@
 {% set element = element|default('div') %}
 {% set size = size|default('large') %}
 
-{% set classes = ([
+{%
+  set classes = ([
   'headline',
   'font-serif',
   size == 'large' ? 'text-4xl',
   size == 'medium' ? 'text-xl',
-]) | sort | join(' ') | trim %}
+]) | sort | join(' ') | trim
+%}
 
 {# TEMPLATES #}
 <{{ element }} {{ attributes.addClass(classes) }}>
