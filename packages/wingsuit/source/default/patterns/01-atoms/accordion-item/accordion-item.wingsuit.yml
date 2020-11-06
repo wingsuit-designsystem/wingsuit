@@ -1,7 +1,7 @@
 accordion_item:
   use: "@atoms/accordion-item/accordion-item.twig"
   label: Accordion Item
-  description: A collapsible accordion item without javascript from https://tailwindcomponents.com/component/collapsible-accordion.
+  description: A collapsible accordion item without javascript.
   fields:
     label:
       type: text

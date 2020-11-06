@@ -5,9 +5,9 @@ placeholder:
   variants:
     image:
       label: Image
-      description: "Placeholder images are very useful for prototype images.
-        You can configure your image styles in the placeholder.wingsuit.yml
-        and select the configured image style."
+      description: "Placeholder images are very useful for prototyping your site.
+        You can configure your image styles in the placeholder.wingsuit.yml,
+        and select the used image style."
       settings:
         background_classes: ""
     background:

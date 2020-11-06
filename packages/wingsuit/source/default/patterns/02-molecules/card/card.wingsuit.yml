@@ -1,7 +1,7 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
-  description: Amazing Cards
+  description: Amazing card component with image, titles, body and link.
   fields:
     image:
       label: Image

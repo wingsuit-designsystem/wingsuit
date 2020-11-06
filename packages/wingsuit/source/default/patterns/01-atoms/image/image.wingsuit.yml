@@ -1,7 +1,7 @@
 image:
   use: "@atoms/image/image.twig"
   label: Image
-  description: "Image with capture component."
+  description: "Image with caption component."
   fields:
     image:
       type: text

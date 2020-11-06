@@ -1,7 +1,7 @@
 video:
   use: "@atoms/video/video.twig"
   label: Video
-  description: Video component.
+  description: Component for displaying self hosted videos.
   fields:
     video:
       type: text

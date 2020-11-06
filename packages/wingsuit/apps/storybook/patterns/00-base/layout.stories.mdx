@@ -9,7 +9,7 @@ import dedent from 'ts-dedent';
 
 <div>
   <Title/>
-  <Subtitle>Use our mobile-first extreme flexible flexbox layout system to build all sorts of layouts. It consists of three components: <LinkTo story="container" kind="organisms-container"><b>container</b></LinkTo>, <LinkTo story="grid" kind="organisms-grid"><b>grid</b></LinkTo> and <LinkTo story="one-column" kind="organisms-section"><b>section</b></LinkTo></Subtitle>
+  <Subtitle>Use our mobile-first, extremely flexible flexbox layout system to build all sorts of layouts. It consists of three components: <LinkTo story="container" kind="organisms-container"><b>container</b></LinkTo>, <LinkTo story="grid" kind="organisms-grid"><b>grid</b></LinkTo> and <LinkTo story="one-column" kind="organisms-section"><b>section</b></LinkTo></Subtitle>
   <Heading>How it works</Heading>
   <Source format={false} language="twig" dark code={dedent`
     {% embed "@organisms/container/container.twig" with {width: 'default', 'padding_x': 'default', padding_top: 'default'} only %}
@@ -35,7 +35,7 @@ import dedent from 'ts-dedent';
     <li>The container adds padding [padding_x] to browser borders.</li>
     <li>The container adds padding [padding_top] to the parent container.</li>
     <li>The grid has two columns [columns].</li>
-    <li>The columns are 50% 50% [columns_width].</li>
+    <li>The columns are 50%:50% [columns_width].</li>
     <li>There is a default spacing between the cells [gutter].</li>
   </ul>
   <Heading>Section</Heading>
@@ -49,7 +49,7 @@ import dedent from 'ts-dedent';
     {% endblock %}
   {% endembed %}
   `} />
-  <p>A section is a combination of container and grid to simplify the usage. The sections knows the same settings as grid and container.
-  You can also use the section as a section in Drupal Layout Builder.
+  <p>A section is a combination of a container and a grid to simplify the usage. The section has the same settings as grid and container.
+  You can also use this pattern as a section in Drupal Layout Builder.
   </p>
 </div>
