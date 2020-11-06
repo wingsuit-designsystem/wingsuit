@@ -20,6 +20,7 @@
   pattern_configuration('container', variant, 'padding_bottom')[padding_bottom],
   pattern_configuration('container', variant, 'width')[width],
   'px-6',
+  classes,
   'mx-auto'
 ] | sort | join(' ') | trim )%}
 
@@ -29,11 +30,11 @@
 {% if bg %}
 <div {{ create_attribute().addClass(bg_classes) }}>
 {% endif %}
-<div {{ attributes.addClass(classes) }}>
-  {% block content %}
-  {{ content }}
-  {% endblock %}
-</div>
+  <div {{ attributes.addClass(classes) }}>
+    {% block content %}
+    {{ content }}
+    {% endblock %}
+  </div>
 {% if bg %}
 </div>
 {% endif %}

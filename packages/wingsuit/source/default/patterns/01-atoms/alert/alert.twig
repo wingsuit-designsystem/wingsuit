@@ -7,23 +7,6 @@
  */
 #}
 
-{# ALERT CLASSES #}
-{% set wrapper_classes = ([
-  'flex space-x-3'
-]) | sort | join(' ') | trim %}
-
-{% set icon_classes = ([
-  'flex-none'
-]) | sort | join(' ') | trim %}
-
-{% set content_wrapper = ([
-  'leading-tight flex flex-col space-y-2'
-]) | sort | join(' ') | trim %}
-
-{% set content_classes = ([
-  'flex-1 leading-snug text-sm'
-]) | sort | join(' ') | trim %}
-
 {# VARIANTS #}
 {% set classes = ([
   "p-5 w-full border-l-4",
@@ -36,18 +19,18 @@
 
 {# TEMPLATE #}
 <div {{ attributes }}>
-  <div class="{{ wrapper_classes }}">
-    <div class="{{ icon_classes }}">
+  <div class="flex space-x-3">
+    <div class="flex-none">
     {% include "@atoms/svg/svg.twig" with {
       "icon": "alert--" ~ variant,
       "size": "w-6 h-6"
     } only %}
     </div>
-    <div class="{{ content_wrapper }}">
+    <div class="leading-tight flex flex-col space-y-2">
       <div class="font-bold">
         {% block header %}{{ header }}{% endblock %}
       </div>
-      <div class="{{ content_classes }}">
+      <div class="flex-1 leading-snug text-sm">
         {% block content %}
           {{ content }}
         {% endblock %}

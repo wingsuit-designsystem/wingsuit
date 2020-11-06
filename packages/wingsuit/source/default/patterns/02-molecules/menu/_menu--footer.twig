@@ -1,24 +1,8 @@
-{# FOOTER-MENU CLASSES  #}
-{% set classes = ([
-  'list-reset mb-6 grid lg:block',
-] | sort | join(' ') | trim )%}
-
-{% set menu_items_classes = ([
-  'mt-2 inline-block mr-2 md:block md:mr-0',
-] | sort | join(' ') | trim )%}
-
-{% set menu_link_classes = ([
-  'text-gray-600 hover:text-gray-800',
-] | sort | join(' ') | trim )%}
-
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
-
-{# TEMPLATE #}
 <nav role="navigation">
-  <ul {{ attributes }} >
+  <ul class="list-reset mb-6 grid lg:block">
     {% for item in items %}
-      <li class="{{ menu_items_classes }}">
-        <a class="{{ menu_link_classes }} {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
+      <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+        <a class="text-gray-600 hover:text-gray-800 {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
           {{ item.title }}
         </a>
       </li>
