@@ -6,9 +6,8 @@ import { renderPattern, renderPatternPreview, getPatternConfiguration } from './
 import { storage } from './index';
 import Pattern from './Pattern';
 
-const { TwingEnvironment, TwingFilter, TwingFunction } = require('twing');
-const filters = require('twig-drupal-filters/filters');
-const functions = require('twig-drupal-filters/functions');
+const { TwingEnvironment, TwingFunction } = require('twing');
+const twingFilters = require('twing-drupal-filters');
 
 export class TwingRenderer implements IRenderer {
   private environment;
@@ -25,23 +24,9 @@ export class TwingRenderer implements IRenderer {
 
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
-    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: true });
+    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
     this.cache = {};
-    Object.keys(filters).forEach((filterName) => {
-      const filter = (arg1, arg2) => {
-        return Promise.resolve(filters[filterName](arg1, arg2));
-      };
-      this.environment.addFilter(new TwingFilter(filterName, filter));
-    });
-
-    Object.keys(functions).forEach((functionName) => {
-      if (functionName !== 'file_url') {
-        const func = (arg1, arg2) => {
-          return Promise.resolve(functions[functionName](arg1, arg2));
-        };
-        this.environment.addFunction(new TwingFunction(functionName, func));
-      }
-    });
+    twingFilters(this.environment);
 
     this.environment.addFunction(new TwingFunction('create_attribute', twigAttributeFunction));
     this.environment.addFunction(

@@ -10,16 +10,12 @@
 } %}
   {% block main %}
     {% set more %}
-      {% embed '@organisms/grid/grid.twig' with {config: 'equal', columns: 3, gap: 'default'} %}
-        {% block column_1 %}
-          {{ pattern_preview('card') }}
-        {% endblock %}
-        {% block column_2 %}
-          {{ pattern_preview('card') }}
-        {% endblock %}
-        {% block column_3 %}
-          {{ pattern_preview('card') }}
-        {% endblock %}
+      {% set cells = [
+        pattern_preview('card', null, {'image': null}),
+        pattern_preview('card'),
+        pattern_preview('card')
+        ] %}
+      {% embed '@organisms/grid/grid.twig' with {config: 'equal', columns: 3, gutter: 'default', cells: cells} %}
       {% endembed %}
     {% endset %}
     {{ pattern_preview('article', '', {more: more}) }}
