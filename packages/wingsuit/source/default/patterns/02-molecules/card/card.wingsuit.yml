@@ -11,7 +11,7 @@ card:
         id: placeholder
         variant: image
         settings:
-          style: 16x9_xxl_sc
+          style: card
     preheadline:
       type: text
       label: Preheadline

@@ -11,14 +11,14 @@
 {% set width = width|default('default') %}
 
 {% set bg_classes = ([
-  pattern_configuration('container', variant, 'bg')[bg],
+  pattern_configuration('container', '', 'bg')[bg],
 ] | sort | join(' ') | trim )%}
 
 {% set classes = ([
-  pattern_configuration('container', variant, 'padding_x')[padding_x],
-  pattern_configuration('container', variant, 'padding_top')[padding_top],
-  pattern_configuration('container', variant, 'padding_bottom')[padding_bottom],
-  pattern_configuration('container', variant, 'width')[width],
+  pattern_configuration('container', '', 'padding_x')[padding_x],
+  pattern_configuration('container', '', 'padding_top')[padding_top],
+  pattern_configuration('container', '', 'padding_bottom')[padding_bottom],
+  pattern_configuration('container', '', 'width')[width],
   'px-6',
   classes,
   'mx-auto'

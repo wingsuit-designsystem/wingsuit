@@ -36,36 +36,10 @@ section:
       preview:
         faker: lorem.paragraph
   settings:
-    width:
-      type: select
-      label: Width
-      default_value: default
-      required: true
-      preview: default
-      options:
-        small: Small
-        default: Default
-        large: Large
-        xlarge: Xlarge
-    bg:
-      type: select
-      label: Background color
-      options:
-        gray-medium: Medium gray
-        gray-light: Light gray
-    padding_x:
-      type: select
-      label: Padding left/right
-      required: true
-      default_value: default
-      options:
-        default: Default
-        large: Large
     padding_top:
       type: select
       label: Padding top
       description: The spacing to the previous element.
-      default_value: default
       options:
         small: Small
         default: Default
@@ -74,8 +48,17 @@ section:
       type: select
       label: Padding bottom
       description: The spacing to the next element..
+      default_value: default
       options:
         small: Small
+        default: Default
+        large: Large
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      default_value: default
+      options:
         default: Default
         large: Large
     gutter:
@@ -87,6 +70,17 @@ section:
         none: None
         default: Default
         large: Large
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+        xlarge: Xlarge
     columns:
       type: select
       label: Columns
@@ -135,6 +129,12 @@ section:
       required: true
       options:
         equal: 20%/20%/20%/20%
+    bg:
+      type: select
+      label: Background color
+      options:
+        gray-medium: Medium gray
+        gray-light: Light gray
   variants:
     1_column:
       label: One Column

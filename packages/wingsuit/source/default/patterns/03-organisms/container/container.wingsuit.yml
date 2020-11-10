@@ -74,4 +74,3 @@ container:
     bg:
       gray-medium: 'bg-gray-500'
       gray-light: 'bg-gray-300'
-  visibility: storybook
