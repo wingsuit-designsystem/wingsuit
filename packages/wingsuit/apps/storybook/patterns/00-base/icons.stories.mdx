@@ -11,6 +11,8 @@ parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
 
 <Subtitle>A collection of simply beautiful icons</Subtitle>
 
+When adding new icons keep in mind that by stripping `fill` inline attributes fron inside the svg file usually they can be styled using css rules.  This way an icon can serve in an color combination.
+
 <IconGallery>
   {
     icons.map((icon)=>{
