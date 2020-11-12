@@ -1,12 +1,52 @@
-<ul class="list-reset lg:flex justify-end flex-1 items-center">
-  {% for item in items %}
-    <li class="py-2 lg:py-0 border-b lg:border-b-0 border-black lg:mr-3">
-      {# {% if (item.in_active_trail) %}no-underline {% else %} hover:text-gray-900 hover:text-underline py-2 px-4{% endif %} #}
-      <a class="mr-5 text-gray-600 hover:text-gray-900"
-        href="{{ item.url }}">
-        {{ item.title }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{#
+/**
+ * @file
+ * menu
+ *
+ * Available variables for menu:
+ *  - menu.variable_name [variable_type]: Description of the variable. Example below.
+ *  - menu.invert [bool]: When set, colors will be inverted for light display on dark background.
+ */
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% import _self as menus %}
+{% macro menu_links(items, menu_level) %}
+  {% import _self as menus %}
+  <ul class="group primary-menu__item--{{ menu_level }} {% if menu_level == 0 %}lg:flex justify-between items-center{% endif%}
+      {% if menu_level != 0 %} -ml-100 lg:ml-0 w-full mt-6 bg-gray-400 lg:left-0 lg:absolute lg:mt-6{% endif%}"
+      {% if menu_level != 0 %}:class="{'block': subItem_open, 'hidden': !subItem_open}"{% endif %}>
+    {% for item in items %}
+      <li
+        class="flex justify-between border-b py-2 lg:py-2 lg:border-b-0 uppercase lg:text-center relative
+        {% if menu_level == 0 %}lg:px-8 lg:hover:text-white{% endif %}
+        {% if menu_level != 0 %} mx-4 lg:mx-0 lg:hover:text-white lg:hover:bg-gray-900 lg:px-2 first:border-t-0 lg:first:border-t-2 lg:first:border-gray-600 border-t-0 lg:border-t lg:border-white{% endif %}"
+        {% if menu_level == 0 %}@click="subItem_open = !subItem_open"{% endif %}
+      >
+        <a class="{{ in_active_trail ? "text-red-300" : "" }} text-gray-600  href="{{ item.url }}">
+          {{ item.title }}
+        </a>
+        {% if item.below is not empty %}
+          <div class="lg:ml-3 lg:group-hover:rotate-90 right-0 absolute lg:relative transition-transform duration-300 ease-linear transform h-30 cursor-pointer"
+               :class="{'-scale-y-100': subItem_open, 'scale-y-100': !subItem_open, 'rotate-90': subItem_open}">
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              size: 'w-5 h-5',
+              icon: 'menu_arrow'
+            } %}
+          </div>
+        {% endif %}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, menu_level + 1, item.title) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+<nav class="block lg:flex flex-col pb-4 lg:pb-0"
+     x-data="{ subItem_open: false }"
+     role="navigation">
+  <div class="relative">
+    {{ menus.menu_links(items, 0, '', 'Menu') }}
+  </div>
+</nav>
 

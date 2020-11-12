@@ -1,7 +1,12 @@
 menu:
   use: "@molecules/menu/menu.twig"
   label: Menu
-  description: Primary and footer menu component.
+  description: Primary and footer menu pattern.
+  settings:
+    is_active:
+      type: boolean
+      label: Is Active
+      default_value: true
   fields:
     items:
       type: object
@@ -9,17 +14,31 @@ menu:
   variants:
     primary:
       label: Primary
+      description: The main menu on top of the page.
       fields:
         items:
-          - title: galerie
-            url: "#"
+          1:
+            title: galerie
             in_active_trail: true
-          - title: kollektionen
+            below:
+              2:
+                title: kollektionen
+                url: '#'
+              3:
+                title: shop
+                url: '#'
+              4:
+                title: kontakt
+                url: '#'
+          33:
+            title: kollektionen
             url: "#"
-          - title: shop
+          35:
+            title: shop
             url: "#"
             icon: arrow-up
-          - title: kontakt
+          36:
+            title: kontakt
             url: "#"
     footer:
       label: Footer
@@ -27,7 +46,7 @@ menu:
       fields:
         items:
           - title: Datenschutz
-            link: "#"
+            url: "#"
           - title: Impressum
-            link: "#"
+            url: "#"
   visibility: storybook
