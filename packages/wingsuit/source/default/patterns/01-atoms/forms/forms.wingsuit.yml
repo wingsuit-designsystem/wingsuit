@@ -8,6 +8,14 @@ form_input:
       label: Textfield
       settings:
         attributes: "type=\"text\" placeholder=\"Placeholder\""
+    password:
+      label: Password
+      settings:
+        attributes: "type=\"password\" placeholder=\"Password\""
+    submit:
+      label: Submit
+      settings:
+        attributes: "type=\"text\" placeholder=\"Placeholder\""
     email:
       label: Email
       settings:

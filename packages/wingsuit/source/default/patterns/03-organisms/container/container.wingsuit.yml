@@ -70,7 +70,7 @@ container:
       small: 'max-w-800'
       default: 'max-w-1200'
       large: 'max-w-1600'
-      xlarge: 'max-w-1900'
+      xlarge: 'max-w-1920'
     bg:
       gray-medium: 'bg-gray-500'
       gray-light: 'bg-gray-300'

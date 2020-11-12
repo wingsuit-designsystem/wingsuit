@@ -45,16 +45,12 @@
  * @see html.html.twig
  */
 #}
-{% set content %}
-  {% block main %}{{ page.content }}{% endblock %}
-{% endset %}
-
-{{ page.tabs }}
-{% embed "@templates/site-container.twig" with {
-  primary_menu: page.primary_menu,
-  footer_menu: page.footer
-} %}
+{% extends "page.html.twig" %}
   {% block main %}
-    {{ content }}
+    X
+    {% embed "@organisms/container/container.twig" %}
+      {% block content %}
+        {{ page.content }}
+      {% endblock %}
+    {% endembed %}
   {% endblock %}
-{% endembed %}

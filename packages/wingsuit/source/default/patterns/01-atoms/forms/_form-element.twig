@@ -49,7 +49,10 @@
   set classes = [
     'js-form-item',
     'form-item',
-    'pb-4'
+    variant == 'textfield' or
+    variant == 'password' or
+    variant == 'radios'
+    ? 'block pb-5'
   ]
 %}
 {%
@@ -64,6 +67,7 @@
 
 {# TEMPLATE #}
 <label{{ attributes.addClass(classes) }}>
+  <div>
   {% if label_display in ['before', 'invisible'] %}
     <div class="pb-2">
     {{ label }}
@@ -94,4 +98,5 @@
       {{ description.content }}
     </div>
   {% endif %}
+  </div>
 </label>
