@@ -54,7 +54,7 @@ button:
         primary: Primary
         secondary: Secondary
     url:
-      type: token
+      type: url
       label: Url
       description: The action url of your button
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'

@@ -52,5 +52,5 @@ card:
         gray: Gray
         blue: Blue
     url:
-      type: token
+      type: url
       label: Url

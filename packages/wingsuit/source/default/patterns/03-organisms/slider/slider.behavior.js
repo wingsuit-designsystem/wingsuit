@@ -1,5 +1,6 @@
 // import Swiper JS
 import Swiper from 'swiper';
+import 'swiper/css/swiper.css';
 
 Drupal.behaviors.slider = {
   attach() {

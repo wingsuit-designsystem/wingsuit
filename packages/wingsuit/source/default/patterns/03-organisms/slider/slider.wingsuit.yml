@@ -7,7 +7,7 @@ slider:
     items:
       type: pattern
       label: Slider items
-      multi_value_type: field_items
+      multi_value_type: items
       preview:
         - id: banner
           variant: bottom_left
@@ -22,5 +22,8 @@ slider:
 
   libraries:
     - pattern_slider:
-       js:
-         ws-assets://behaviors/slider.js: {}
+        js:
+          ../behaviors/slider.js: {}
+        css:
+          component:
+            ../behaviors/slider.css: {}
