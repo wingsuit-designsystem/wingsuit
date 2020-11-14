@@ -12,7 +12,10 @@
     {{ pattern_preview('hero') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Section title"} %}
+    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
+      {% block header%}
+        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Section title</h2>" }%}
+      {% endblock %}
       {% block column_1 %}
         {{ pattern_preview('card') }}
       {% endblock %}
@@ -23,17 +26,27 @@
         {{ pattern_preview('card') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1, headline: "Accordion"} %}
+    {% embed "@organisms/section/section.twig" with { columns: 1 } %}
+      {% block header%}
+        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Accordion</h2>" }%}
+      {% endblock %}
+
       {% block column_1 %}
         {{ pattern_preview('accordion') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1, headline: "Banner"} %}
+    {% embed "@organisms/section/section.twig" with { columns: 1} %}
+      {% block header%}
+        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Banner</h2>" }%}
+      {% endblock %}
       {% block column_1 %}
         {{ pattern_preview('banner', 'center_left') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3, headline: "Section title"} %}
+    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
+      {% block header%}
+        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Cards</h2>" }%}
+      {% endblock %}
       {% block column_1 %}
         {{ pattern_preview('card', '', {'image': 'https://satyr.io/460x402'}) }}
       {% endblock %}

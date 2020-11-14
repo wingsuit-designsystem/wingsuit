@@ -12,7 +12,7 @@
   {% set padding_bottom = 'default' %}
 {% endif %}
 
-{%- set headline -%}{%- block headline -%}{{ headline }}{% endblock %}{% endset %}
+{%- set header -%}{%- block header -%}{{ header }}{% endblock %}{% endset %}
 
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
@@ -37,11 +37,11 @@
   padding_top: padding_top,
   padding_bottom: padding_bottom,
   bg: bg,
-  headline: headline
+  header: header
 } only %}
   {% block content %}
-  {% if headline is not empty %}
-    <h2 class="pb-6 font-serif w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ headline }}</h2>
+  {% if header is not empty %}
+    <div class="mb-5 md:mb-10">{{ header }}</div>
   {% endif %}
   {{ content }}
   {% endblock %}

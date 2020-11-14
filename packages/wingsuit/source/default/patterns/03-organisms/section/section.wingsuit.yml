@@ -4,12 +4,14 @@ section:
   description: "A section with a headline and maximum five columns. A combination of container and grid.
     You can use this pattern as a section in Drupal's Layout Builder."
   fields:
-    headline:
-      type: text
-      label: Section Headline
-      description: Optional centered headline
+    header:
+      type: pattern
+      label: Section Header
+      description: Optional header
       preview:
-        faker: lorem.word
+        id: rich_text
+        fields:
+          text: "<h2 class=text-center>Headline</h2>"
     column_1:
       type: text
       label: First Column

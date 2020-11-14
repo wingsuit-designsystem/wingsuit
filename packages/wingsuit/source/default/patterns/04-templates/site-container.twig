@@ -1,7 +1,10 @@
 {# Include this template inside the page.html.twig in drupal. #}
+
 {% block header %}
   {% include '@organisms/header/header.twig' with {menu: primary_menu, has_spacer: header_has_spacer, variant: "sticky"} only%}
 {% endblock header %}
+
+{{ highlighted }}
 
 <main class="main-content">
   {% block main %}

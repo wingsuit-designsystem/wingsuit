@@ -50,9 +50,11 @@
 {% endset %}
 
 {{ page.tabs }}
+
 {% embed "@templates/site-container.twig" with {
   primary_menu: page.primary_menu,
-  footer_menu: page.footer
+  footer_menu: page.footer,
+  highlighted: page.highlighted
 } %}
   {% block main %}
     {{ content }}

@@ -27,27 +27,39 @@
   'error': 'Error message'|t,
   'warning': 'Warning message'|t,
   'info': 'Informative message'|t,
-  }
-%}
+} %}
+{% set messages_attributes = attributes %}
+{% embed '@organisms/container/container.twig' with {
+  padding_top: '',
+  padding_bottom: 'default',
+  message_list: message_list,
+  messages_attributes: messages_attributes
+} only %}
 
-{% for type, messages in message_list %}
-
-  <div role="contentinfo" aria-label="{{ status_heading[type] }}"{{ attributes|without('role', 'aria-label') }}>
-    {% embed '@atoms/alert/alert.twig' %}
-      {% block header %}
-        {% if status_headings[type] %}
-          <h2 class="sr-only">{{ status_headings[type] }}</h2>
-        {% endif %}
-      {% endblock header %}
-      {% block content %}
-        {% if messages|length > 1 %}
-          {% for message in messages %}
-            <div>{{ message }}</div>
-          {% endfor %}
-        {% else %}
-          <div>{{ messages|first }}</div>
-        {% endif %}
-      {% endblock content %}
-    {% endembed %}
-  </div>
-{% endfor %}
+  {% block content %}
+    {% for type, messages in message_list %}
+      <div role="contentinfo" aria-label="{{ status_heading[type] }}"{{ messages_attributes|without('role', 'aria-label') }}>
+        {% embed '@atoms/alert/alert.twig' with {
+          variant: type,
+          status_headings: status_headings,
+          messages: messages }
+          only %}
+          {% block header %}
+            {% if status_headings[type] %}
+              <h2 class="sr-only">{{ status_headings[type] }}</h2>
+            {% endif %}
+          {% endblock header %}
+          {% block content %}
+            {% if messages|length > 1 %}
+              {% for message in messages %}
+                <div>{{ message }}</div>
+              {% endfor %}
+            {% else %}
+              <div>{{ messages|first }}</div>
+            {% endif %}
+          {% endblock content %}
+        {% endembed %}
+      </div>
+    {% endfor %}
+  {% endblock %}
+{% endembed %}
