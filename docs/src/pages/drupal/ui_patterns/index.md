@@ -3,8 +3,7 @@ id: 'ui_patterns'
 title: 'Wingsuit Kickstarter (with UI Patterns and Layout Builder)'
 ---
 
-[Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to get up with Wingsuit. 
-Follow the installation instruction in the project [README](https://github.com/wingsuit-designsystem/wingsuit_kickstarter). 
+[Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to get up with Wingsuit.  
 
 The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as distribution and [Acquia Blt](https://github.com/acquia/blt) for automation. 
 
@@ -17,9 +16,20 @@ The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as 
 ## Installation
 ```sh
 composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kickstarter --stability dev --no-interaction
-cd wingsuit-kickstarter 
-./vendor/bin/blt setup
 ```
+```
+cd wingsuit-kickstarter && ./vendor/bin/blt setup
+```
+### First steps
+Open the page and login with:
+
+Username: admin<br>
+Password: admin
+
+After login go to the front page and open the layout builder to add more blocks. Each block is mapped to a pattern. (Mostly molecules). Each section is a pattern. 
+Click on `configure` on a section to see all settings you can find in storybook. 
+
+<img src="images/kickstarter.png">
 
 ## Development
 The kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn build:drupal` to
