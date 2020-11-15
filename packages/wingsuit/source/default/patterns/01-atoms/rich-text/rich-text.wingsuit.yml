@@ -1,7 +1,7 @@
 rich_text:
   use: "@atoms/rich-text/rich-text.twig"
   label: Rich Text
-  description: Component for displaying rich text, for example from a WYSIWYG editor.
+  description: Component for displaying rich text, for example from a WYSIWYG editor. Check https://github.com/tailwindlabs/tailwindcss-typography for more informations.
   fields:
     text:
       type: text
