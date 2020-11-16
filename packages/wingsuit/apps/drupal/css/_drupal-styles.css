@@ -1,3 +1,25 @@
 #drupal-off-canvas {
   color: #ffffff;
 }
+.layout-builder-form-fixed {
+  background-color: #333333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+.layout-builder-form-fixed summary {
+  padding: 20px;
+  color: #eeeeee;
+  cursor: pointer;
+}
+.layout-builder-form-fixed summary:hover {
+  background-color: #222222;
+}
+
+.layout-builder-form-fixed .layout-builder__message {
+  margin-bottom: -5rem;
+  padding-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
