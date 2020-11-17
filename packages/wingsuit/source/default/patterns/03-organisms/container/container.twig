@@ -19,7 +19,7 @@
   pattern_configuration('container', '', 'padding_top')[padding_top],
   pattern_configuration('container', '', 'padding_bottom')[padding_bottom],
   pattern_configuration('container', '', 'width')[width],
-  'px-6',
+  padding_x != 'none'?'px-6',
   classes,
   'mx-auto'
 ] | sort | join(' ') | trim )%}

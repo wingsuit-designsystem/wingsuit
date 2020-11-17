@@ -61,6 +61,7 @@ section:
       required: true
       default_value: default
       options:
+        none: None
         default: Default
         large: Large
     gutter:
