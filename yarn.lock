@@ -20810,10 +20810,10 @@ twig@^1.10.5:
     minimatch "3.0.x"
     walk "2.3.x"
 
-twing-drupal-filters@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/twing-drupal-filters/-/twing-drupal-filters-0.0.1.tgz#880df41543492a83bbfbd11aa065a9dd34c61367"
-  integrity sha512-1lTSOaQEvuntV95GK6Cz3I33TiQR+fxhCQf6ZTAVVxzqSQgAbZcBTginodWa5TDdXd+xYtw1qYnE8+88MayWpg==
+twing-drupal-filters@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/twing-drupal-filters/-/twing-drupal-filters-0.0.2.tgz#ae485255288413cbe6a8e6639fe367a6b7b3f3d7"
+  integrity sha512-q7Iv+nW5OC9y0/zCPPhB2AKGhd8p+Hp9B8G21LDKCil3OPvvcng5aFNhm9XU4m0bMOZMJhULZrsdrraAKRXlBA==
   dependencies:
     object-keys "^1.1.1"
     twing "^5.0.1"

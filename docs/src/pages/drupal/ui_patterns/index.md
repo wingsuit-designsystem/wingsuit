@@ -29,7 +29,7 @@ Password: admin
 After login go to the front page and open the layout builder to add more blocks. Each block is mapped to a pattern. (Mostly molecules). Each section is a pattern. 
 Click on `configure` on a section to see all settings you can find in storybook. 
 
-<img src="images/kickstarter.png">
+<img src="/images/kickstarter.png">
 
 ## Development
 The kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn build:drupal` to

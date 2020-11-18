@@ -13,7 +13,7 @@
 {% endif %}
 
 {%- set header -%}{%- block header -%}{{ header }}{% endblock %}{% endset %}
-
+{% set region_attributes = region_attributes|default([]) %}
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
   {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
@@ -25,7 +25,18 @@
     {% set cells = cells|merge([_context['column_' ~ i ]]) %}
   {% endfor %}
   {% set columns_width = columns_width|default(_context['columns_width_' ~ columns ]) %}
-  {% include "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
+  {% embed "@organisms/grid/grid.twig" with {attributes: create_attribute(), cells: cells, columns_width: columns_width} %}
+    {#
+      Layout Builder regions attributes should be part of the section cell.
+    #}
+    {% block cell_outer %}
+      {% set column_name = 'column_' ~ column_i %}
+      {% set current_region_attributes = region_attributes[column_name]|default(create_attribute()) %}
+      <div class="{{ cell_attributes.class }} {{ current_region_attributes.class }}" {{ cell_attributes|without('class') }} {{ current_region_attributes|without('class') }}>
+          {{ cell }}
+      </div>
+    {% endblock %}
+  {% endembed %}
 {% endset %}
 
 {# TEMPLATES #}

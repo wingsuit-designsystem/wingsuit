@@ -8,6 +8,19 @@ export function twigFileUrl(url) {
   return Promise.resolve(url.replace('ws-assets://', ''));
 }
 
+export function without(element, ...args) {
+  if (!element) {
+    return [];
+  }
+  if (element instanceof TwigAttribute) {
+    args.forEach(key => {
+      element.removeAttribute(key);
+    })
+  }
+
+  return element;
+}
+
 export function twigItok() {
   const d = new Date();
   return Promise.resolve(d.getMinutes());

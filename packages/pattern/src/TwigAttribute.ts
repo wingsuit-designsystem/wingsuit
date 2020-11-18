@@ -5,6 +5,7 @@ const htmlAttributeParser = require('html-attribute-parser');
 export default class TwigAttribute {
   private attributes: Map<string, any>;
 
+
   constructor(attributes = '') {
     this.attributes = new Map();
     if (attributes !== '') {
@@ -17,6 +18,14 @@ export default class TwigAttribute {
         }
       });
     }
+  }
+
+  class () {
+    const classes = this.attributes.get('class');
+    if (Array.isArray(classes)) {
+      return this.attributes.get('class').join(' ');
+    }
+    return this.attributes.get('class') != null ? this.attributes.get('class') : '';
   }
 
   setAttribute(key, value) {
@@ -66,6 +75,10 @@ export default class TwigAttribute {
 
   render() {
     return this.toString();
+  }
+
+  toArray() {
+    return Array.from(this.attributes);
   }
 
   toString() {
