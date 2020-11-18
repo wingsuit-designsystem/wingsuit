@@ -5,7 +5,6 @@ const htmlAttributeParser = require('html-attribute-parser');
 export default class TwigAttribute {
   private attributes: Map<string, any>;
 
-
   constructor(attributes = '') {
     this.attributes = new Map();
     if (attributes !== '') {
@@ -20,7 +19,7 @@ export default class TwigAttribute {
     }
   }
 
-  class () {
+  class() {
     const classes = this.attributes.get('class');
     if (Array.isArray(classes)) {
       return this.attributes.get('class').join(' ');

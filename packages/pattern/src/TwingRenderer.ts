@@ -1,7 +1,7 @@
 import { TwingLoaderArray } from 'twing';
 import { TwingLoaderInterface } from 'twing/dist/types/lib/loader-interface';
 import IRenderer from './IRenderer';
-import {twigAttributeFunction, twigItok, twigFileUrl, twigUuid, without} from './twigExtensions';
+import { twigAttributeFunction, twigItok, twigFileUrl, twigUuid, without } from './twigExtensions';
 import { renderPattern, renderPatternPreview, getPatternConfiguration } from './twigRenderEngine';
 import { storage } from './index';
 import Pattern from './Pattern';
@@ -28,8 +28,8 @@ export class TwingRenderer implements IRenderer {
     this.cache = {};
     twingFilters(this.environment);
     const withoutFilter = (arg1, ...args) => {
-      return Promise.resolve(without(arg1, ...args))
-    }
+      return Promise.resolve(without(arg1, ...args));
+    };
     this.environment.addFunction(new TwingFunction('create_attribute', twigAttributeFunction));
     this.environment.addFilter(new TwingFilter('without', withoutFilter));
     this.environment.addFunction(

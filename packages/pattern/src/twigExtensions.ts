@@ -13,9 +13,9 @@ export function without(element, ...args) {
     return [];
   }
   if (element instanceof TwigAttribute) {
-    args.forEach(key => {
+    args.forEach((key) => {
       element.removeAttribute(key);
-    })
+    });
   }
 
   return element;
