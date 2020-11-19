@@ -57,7 +57,7 @@ section:
         default: Default
         large: Large
     padding_x:
-      type: select
+      type: radios
       label: Padding left/right
       required: true
       default_value: default

@@ -7,6 +7,16 @@ title: 'Wingsuit Kickstarter (with UI Patterns and Layout Builder)'
 
 The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as distribution and [Acquia Blt](https://github.com/acquia/blt) for automation. 
 
+#### Drupal blocks with a pattern. Mostly molecules.
+<img src="/images/add-blocks.png">
+
+#### Sections are also patterns
+<img src="/images/add-sections.png">
+
+#### Block Manage display with layout builder. Configure the pattern and assign fields.
+<img src="/images/configure-patterns.png">
+
+
 ## Prerequisites
 
 - [Node `^8`, `^10`](https://nodejs.org)
@@ -20,6 +30,7 @@ composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kick
 ```
 cd wingsuit-kickstarter && ./vendor/bin/blt setup
 ```
+
 ### First steps
 Open the page and login with:
 
@@ -28,8 +39,6 @@ Password: admin
 
 After login go to the front page and open the layout builder to add more blocks. Each block is mapped to a pattern. (Mostly molecules). Each section is a pattern. 
 Click on `configure` on a section to see all settings you can find in storybook. 
-
-<img src="/images/kickstarter.png">
 
 ## Development
 The kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn build:drupal` to

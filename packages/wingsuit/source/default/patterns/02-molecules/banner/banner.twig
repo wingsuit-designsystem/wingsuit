@@ -22,7 +22,7 @@
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {# TEMPLATES #}
-<div class="relative swiper-slide">
+<div class="relative">
   {{ image }}
   <div class="absolute top-0 left-0 w-full h-full flex">
     {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[variant]}  %}

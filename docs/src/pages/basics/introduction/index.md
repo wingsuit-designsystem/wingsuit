@@ -35,9 +35,19 @@ Wingsuit uses [tailblocks](https://mertjf.github.io/tailblocks/) for predefined 
 It takes around `1 second` from save to see your changes in Storybook. Wingsuit uses client side [twing](https://github.com/NightlyCommit/twing) and Postcss.
 Twing is nearly 100% compatible with PHP Twig. We had tested it with really large Drupal projects. 
 
-## Screenshots:
+## Workflow:
+
+### Storybook: Design your component in storybook with variants and settings
 #### Edit settings with Knobs:
 <img src="images/knobs.png">.
 
 #### Automatic generated Docs: 
 <img src="images/docs.png">
+
+### Drupal: 
+#### Map fields and configure your pattern in Manage Display with Layout builder.
+<img src="/images/configure-patterns.png">
+
+#### Use the mapped pattern as inline block in Layout tab
+<img src="images/add-blocks.png">
+
