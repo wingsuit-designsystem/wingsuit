@@ -1,8 +1,8 @@
 section:
   use: "@organisms/section/section.twig"
-  label: Section
+  label: Flexible columns section
   icon_path: ws-assets://images/section-icon.svg
-  description: "A section with a headline and maximum five columns. A combination of container and grid.
+  description: "A section with a header and maximum five columns. A combination of container and grid.
     You can use this pattern as a section in Drupal's Layout Builder."
   fields:
     header:
