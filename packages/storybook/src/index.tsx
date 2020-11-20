@@ -1,7 +1,7 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number, select, object } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, number, object, optionsKnob } from '@storybook/addon-knobs';
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
@@ -75,13 +75,20 @@ function getProps(variant) {
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
     if (setting.isEnable()) {
-      if (setting.getType() === 'select') {
-        knobsVariables[key] = select(
+      if (setting.getType() === 'select' || setting.getType() === 'radios') {
+
+        const displayType = setting.getType() === "radios" ? "inline-radio" as const : "select" as const;
+        const optionsObj = {
+          display: displayType,
+        };
+        knobsVariables[key] = optionsKnob(
           setting.getLabel(),
           getStorybookKnobsOptions(setting),
           setting.getPreview(),
+          optionsObj,
           groupSetting
         );
+
       } else if (setting.getType() === 'attributes') {
         knobsVariables[key] = new TwigAttribute(
           text(setting.getLabel(), setting.getPreview(), groupSetting)
