@@ -76,8 +76,8 @@ function getProps(variant) {
     const setting = variant.getSetting(key);
     if (setting.isEnable()) {
       if (setting.getType() === 'select' || setting.getType() === 'radios') {
-
-        const displayType = setting.getType() === "radios" ? "inline-radio" as const : "select" as const;
+        const displayType =
+          setting.getType() === 'radios' ? ('inline-radio' as const) : ('select' as const);
         const optionsObj = {
           display: displayType,
         };
@@ -88,7 +88,6 @@ function getProps(variant) {
           optionsObj,
           groupSetting
         );
-
       } else if (setting.getType() === 'attributes') {
         knobsVariables[key] = new TwigAttribute(
           text(setting.getLabel(), setting.getPreview(), groupSetting)

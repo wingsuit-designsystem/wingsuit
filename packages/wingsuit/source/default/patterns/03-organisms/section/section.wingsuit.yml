@@ -57,7 +57,7 @@ section:
         default: Default
         large: Large
     padding_x:
-      type: radios
+      type: select
       label: Padding left/right
       required: true
       default_value: default
@@ -96,14 +96,14 @@ section:
         4: Four columns
         5: Five columns
     columns_width_1:
-      type: select
+      type: radios
       label: Column widths
       default_value: equal
       required: true
       options:
         equal: 100%
     columns_width_2:
-      type: select
+      type: radios
       label: Column widths
       default_value: equal
       required: true
@@ -112,7 +112,7 @@ section:
         66x33: 66%/33%
         33x66: 33%/66%
     columns_width_3:
-      type: select
+      type: radios
       label: Column widths
       default_value: equal
       required: true
@@ -120,14 +120,14 @@ section:
         equal: 33%/33%/33%
         25x50x25: 25%/50%/25%
     columns_width_4:
-      type: select
+      type: radios
       label: Column widths
       default_value: equal
       required: true
       options:
         equal: 25%/25%/25%/25%
     columns_width_5:
-      type: select
+      type: radios
       label: Column widths
       default_value: equal
       required: true
