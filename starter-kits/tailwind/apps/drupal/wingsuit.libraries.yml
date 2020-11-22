@@ -1,0 +1,25 @@
+# Define Wingsuit theme's library CSS and JS assets along with dependencies
+core:
+  css:
+    theme:
+      css/_drupal-styles.css:
+        preprocess: false
+      ws-assets://tokens.css:
+        preprocess: true
+      ws-assets://typo.css:
+        preprocess: true
+      ws-assets://hamburger.css:
+        preprocess: true
+  js:
+    ws-assets://vendors/alpine.js:
+      preprocess: true
+
+  # see all in Drupal's `core/core.libraries.yml`
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - wingsuit/headerOffset
+
+headerOffset:
+  js:
+    js/header-offset.js: {}

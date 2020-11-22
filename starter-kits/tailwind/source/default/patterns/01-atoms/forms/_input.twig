@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{# VARIANTS #}
+{% set classes = ([
+  variant == 'textfield' or
+  variant == 'password' or
+  variant == 'email' or
+  variant == 'date' or
+  variant == 'tel' ? 'form-input w-full',
+  variant == 'radio' ? 'form-radio mr-1',
+  variant == 'checkbox' ? 'form-checkbox mr-1',
+  variant == 'submit' ? 'bg-primary text-white hover:bg-pink-600 px-2 py-1'
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATES #}
+<input {{ attributes }} />{{ children }}

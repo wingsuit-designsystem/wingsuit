@@ -20,8 +20,9 @@ export default class PresetManager {
       if (appConfig.presetsRegistry[name] != null) {
         presets.push(appConfig.presetsRegistry[name]);
       } else {
-        // eslint-disable-next-line no-console
-        console.log(`No preset ${name} found in registry.`);
+        // eslint-disable-next-line global-require,import/no-dynamic-require
+        const lpreset = require(name);
+        presets.push(lpreset);
       }
     });
     return presets;

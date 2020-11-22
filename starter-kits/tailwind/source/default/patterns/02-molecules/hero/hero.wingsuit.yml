@@ -1,0 +1,40 @@
+hero:
+  use: "@molecules/hero/hero.twig"
+  label: Hero
+  description: Hero section component, for all your presentation needs.
+  fields:
+    pre_headline:
+      type: text
+      label: Pre Headline
+      preview: "What business are you?"
+    headline:
+      type: text
+      label: Headline
+      preview: "Main Hero Message to sell yourself!"
+    text:
+      type: text
+      label: Text
+      preview: "Sub-hero message, not too long and not too short. Make it just right!"
+    button:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: default
+    button_second:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: outline
+        settings:
+          color: gray
+    image:
+      type: pattern
+      label: Image
+      preview:
+        id: image
+        variant: image
+        settings:
+          url: ws-assets://images/hero.png
+

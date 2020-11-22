@@ -1,0 +1,24 @@
+headline:
+  use: "@atoms/headline/headline.twig"
+  label: Headline
+  description: Flexible headline with options to choose size and tags.
+  fields:
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.word
+  settings:
+    element:
+      type: select
+      label: Element
+      required: true
+      options:
+        h1: h1
+        h2: h2
+    size:
+      type: select
+      label: Size
+      options:
+        large: Large
+        medium: Medium

@@ -1,0 +1,39 @@
+wingsuit.xsmall:
+  label: xSmall
+  mediaQuery: '(min-width: 0px) and (max-width: 459px)'
+  weight: 0
+  multipliers:
+    - 1x
+wingsuit.small:
+  label: Small
+  mediaQuery: '(min-width: 460px) and (max-width: 639px)'
+  weight: 0
+  multipliers:
+    - 1x
+wingsuit.medium:
+  label: Medium
+  mediaQuery: 'all and (min-width: 640px) and (max-width: 1023px)'
+  weight: 1
+  multipliers:
+    - 1x
+
+wingsuit.large:
+  label: Large
+  mediaQuery: 'all and (min-width: 1024px) and (max-width: 1199px)'
+  weight: 3
+  multipliers:
+    - 1x
+
+wingsuit.xlarge:
+  label: xLarge
+  mediaQuery: 'all and (min-width: 1200px) and (max-width: 1439px)'
+  weight: 4
+  multipliers:
+    - 1x
+
+wingsuit.xxlarge:
+  label: xxLarge
+  mediaQuery: 'all and (min-width: 1440px)'
+  weight: 5
+  multipliers:
+    - 1x

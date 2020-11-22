@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * hero
+ *
+ * See hero.wingsuit.yaml for documentation.
+ */
+#}
+
+{# TEMPLATE #}
+
+<section class="text-gray-700 body-font">
+  <div class="flex md:flex-row flex-col items-center">
+    <div
+      class="flex flex-col  items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left mb-16 md:mb-0 lg:flex-grow lg:pr-24">
+      <div class="uppercase tracking-loose w-full">{{ pre_headline }}</div>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ headline }}</h1>
+      <div class="mb-8 leading-relaxed">{{ text }}</div>
+      <div class="flex justify-center">
+        <div class="mr-5">{{ button }}</div>
+        <div>{{ button_second }}</div>
+      </div>
+    </div>
+    <div class="w-5/6 md:w-1/2 lg:max-w-lg lg:w-full">
+      {{ image }}
+    </div>
+  </div>
+</section>

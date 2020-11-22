@@ -1,0 +1,21 @@
+link:
+  use: "@atoms/link/link.twig"
+  label: Link
+  description: Simple link component with optional icon. You can use this either with an url to display a link, or without to just display text with an icon.
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: Read more
+  settings:
+    url:
+      type: token
+      label: Url
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+    icon:
+      type: select
+      label: Icon
+      default_value: right-arrow
+      options:
+        search: Search
+        right-arrow: Right-arrow

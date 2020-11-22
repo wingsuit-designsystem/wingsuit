@@ -2,6 +2,8 @@ import PresetManager from './server/PresetManager';
 
 import AppConfig from './AppConfig';
 
+export { default as AppConfig } from './AppConfig';
+
 export { resolveConfig } from './resolveConfig';
 
 export { default as PresetManager } from './server/PresetManager';

@@ -21,6 +21,7 @@ export default function (options) {
     gitFolder: path.join(folder, '../', tmpCheckoutFolder),
     targetFolder: folder,
     branch,
+    starterKit: options.starterKit != null ? options.starterKit : 'tailwind',
     smokeTest: options.smokeTest,
     skipInstall: options.skipInstall,
   };
@@ -55,7 +56,7 @@ export default function (options) {
       spawnSync('git', ['fetch', '--all'], gitOptions);
       spawnSync('git', ['checkout', npmOptions.branch], gitOptions);
     }
-    const pkgFile = `${npmOptions.gitFolder}/packages/wingsuit/package.json`;
+    const pkgFile = `${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}/package.json`;
     const pkg = JSON.parse(fs.readFileSync(pkgFile));
     Object.keys(pkg.devDependencies).forEach((key) => {
       if (key.indexOf('@wingsuit-designsystem/') === 0) {
@@ -72,7 +73,11 @@ export default function (options) {
   const setupWingsuit = () => {
     // This function must complete before the subsequent installs can be ran.
     checkoutLatestTag();
-    spawn('mv', [`${npmOptions.gitFolder}/packages/wingsuit`, npmOptions.targetFolder], cmdOptions);
+    spawn(
+      'mv',
+      [`${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`, npmOptions.targetFolder],
+      cmdOptions
+    );
     spawn('rm', ['-rf', npmOptions.gitFolder], cmdOptions);
 
     cmdOptions.cwd = npmOptions.targetFolder;

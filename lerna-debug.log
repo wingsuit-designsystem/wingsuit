@@ -1,5 +1,0 @@
-47 error Error: Command failed: git tag v1.0.0-beta.12 -m v1.0.0-beta.12
-47 error fatal: Tag 'v1.0.0-beta.12' existiert bereits
-47 error
-47 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
-47 error     at Promise.all.then.arr (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16)

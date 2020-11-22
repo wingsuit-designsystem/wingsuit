@@ -1,0 +1,76 @@
+container:
+  use: "@organisms/container/container.twig"
+  label: Container
+  description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
+  fields:
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.paragraphs
+  settings:
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+        xlarge: Xlarge
+    bg:
+      type: select
+      label: Background color
+      options:
+        gray-medium: Medium gray
+        gray-light: Light gray
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      default_value: default
+      options:
+        default: Default
+        large: Large
+    padding_top:
+      type: select
+      label: Padding top
+      description: The spacing to the previous element.
+      default_value: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      description: The spacing to the next element.
+      options:
+        small: Small
+        default: Default
+        large: Large
+    classes:
+      type: textfield
+      label: Additional classes
+  configuration:
+    padding_x:
+      default: 'px-6'
+      large: 'px-10'
+    padding_top:
+      small: 'pt-4'
+      default: 'pt-10 md:pt-20'
+      large: 'pt-20 md:pt-24'
+    padding_bottom:
+      small: 'pb-4'
+      default: 'pb-10 md:pb-20'
+      large: 'pb-20 md:pb-24'
+    width:
+      small: 'max-w-800'
+      default: 'max-w-1200'
+      large: 'max-w-1600'
+      xlarge: 'max-w-1920'
+    bg:
+      gray-medium: 'bg-gray-500'
+      gray-light: 'bg-gray-300'

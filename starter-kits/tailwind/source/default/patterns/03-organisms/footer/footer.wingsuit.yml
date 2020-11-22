@@ -1,0 +1,36 @@
+footer:
+  use: "@organisms/footer/footer.twig"
+  label: Footer
+  description: The footer pattern with copyright and menu.
+  fields:
+    logo:
+      type: pattern
+      label: Logo
+      preview:
+        id: logo
+    menu_1:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+    menu_2:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+    menu_3:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+    menu_4:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+
+  visibility: storybook
