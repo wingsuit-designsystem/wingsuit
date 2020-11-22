@@ -1,9 +1,10 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-bootstrap",
-  "version": "1.0.0-beta.22",
+  "version": "1.0.0-beta.23",
   "description": "Wingsuit Starter-Kit for Bootstap 4",
   "main": "",
   "license": "GPL-2.0",
+  "private": true,
   "author": {
     "name": "KEY-TEC",
     "url": "https://github.com/wingsuit-designsystem/"
@@ -43,10 +44,10 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.0-beta.22",
-    "@wingsuit-designsystem/core": "1.0.0-beta.22",
-    "@wingsuit-designsystem/pattern": "1.0.0-beta.22",
-    "@wingsuit-designsystem/storybook": "1.0.0-beta.22",
+    "@wingsuit-designsystem/cli": "1.0.0-beta.23",
+    "@wingsuit-designsystem/core": "1.0.0-beta.23",
+    "@wingsuit-designsystem/pattern": "1.0.0-beta.23",
+    "@wingsuit-designsystem/storybook": "1.0.0-beta.23",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -78,5 +79,5 @@
     "swiper": "^5.4.5",
     "tailwindcss": "^1.7.0"
   },
-  "gitHead": "c3da3714569f0e437fb99b3907323541226a44b6"
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }
