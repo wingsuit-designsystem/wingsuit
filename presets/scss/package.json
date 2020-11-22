@@ -1,0 +1,41 @@
+{
+  "name": "@wingsuit-designsystem/preset-scss",
+  "version": "1.0.0-beta.21",
+  "description": "Wingsuit SCSS preset.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@wingsuit-designsystem/core": "1.0.0-beta.21",
+    "fs-extra": "^9.0.0",
+    "jsondiffpatch": "^0.3.11"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "e4066a0eb082ae849ffdea0d64da9f2ddba5d193"
+}

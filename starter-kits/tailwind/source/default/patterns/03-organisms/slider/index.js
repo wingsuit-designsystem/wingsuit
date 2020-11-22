@@ -1,0 +1,5 @@
+/**
+ * slider
+ */
+
+import './slider.behavior';

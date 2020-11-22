@@ -1,0 +1,23 @@
+{% embed "@templates/site-container.twig"
+  with {
+  has_spacer: true,
+  primary_menu: pattern_preview('menu', 'primary'),
+  footer_menu_1: pattern_preview('menu', 'footer'),
+  footer_menu_2: pattern_preview('menu', 'footer'),
+  footer_menu_3: pattern_preview('menu', 'footer'),
+  footer_menu_4: pattern_preview('menu', 'footer')
+
+} %}
+  {% block main %}
+    {% set more %}
+      {% set cells = [
+        pattern_preview('card', null, {'image': null}),
+        pattern_preview('card'),
+        pattern_preview('card')
+        ] %}
+      {% embed '@organisms/grid/grid.twig' with {config: 'equal', columns: 3, gutter: 'default', cells: cells} %}
+      {% endembed %}
+    {% endset %}
+    {{ pattern_preview('article', '', {more: more}) }}
+  {% endblock %}
+{% endembed %}

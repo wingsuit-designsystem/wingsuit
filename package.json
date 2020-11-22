@@ -33,10 +33,11 @@
     "bootstrap": "node ./scripts/bootstrap.js",
     "build": "node ./scripts/build-package.js",
     "lint": "yarn lint:js . && yarn lint:md .",
-    "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives packages",
+    "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives packages starter-kits",
     "fix:js": "cross-env NODE_ENV=production eslint --fix --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:md": "remark -q",
     "fix:md": "remark . -o",
+    "lerna": "lerna",
     "publish:debug": "npm run publish:latest -- --npm-tag=debug --no-push",
     "publish:latest": "lerna publish --exact --concurrency 1 --force-publish",
     "publish:next": "npm run publish:latest -- --npm-tag=next",
@@ -58,6 +59,8 @@
   },
   "workspaces": [
     "packages/*",
+    "starter-kits/*",
+    "presets/*",
     "examples/*"
   ],
   "optionalDependencies": {
@@ -132,7 +135,6 @@
     "wait-on": "^4.0.0"
   },
   "dependencies": {
-    "tailwindcss-typography": "^3.1.0",
     "window-size": "^1.1.1"
   }
 }

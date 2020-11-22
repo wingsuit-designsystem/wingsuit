@@ -17,6 +17,7 @@ const config_1 = {
 };
 
 const config_2 = {
+  presets: ['BaseBundle'],
   apps: {
     storybook: {
       path: 'packages/core/__tests__',
@@ -33,16 +34,10 @@ const config_2 = {
 };
 
 const config_3 = {
-  extend: {
-    apps: {
-      storybook: {
-        presets: ['AddonBundle'],
-      },
-    },
-  },
   apps: {
     storybook: {
       path: 'packages/core/__tests__',
+      presets: ['AddonBundle'],
     },
   },
   designSystems: {
@@ -56,9 +51,9 @@ const config_3 = {
 
 describe('#Test config', () => {
   test.each([
-    [config_1, 7],
-    [config_2, 1],
-    [config_3, 8],
+    [config_1, 6],
+    [config_2, 8],
+    [config_3, 7],
   ])('Render pattern %p variant %p', (config: {}, presetsLength) => {
     const appConfig = resolveConfig('storybook', 'development', {}, config);
     expect(appConfig.environment).toBe('development');

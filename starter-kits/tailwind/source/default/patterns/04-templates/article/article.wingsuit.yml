@@ -1,0 +1,31 @@
+article:
+  use: "@templates/article/article.twig"
+  label: Article
+  description: The article template.
+  fields:
+    headline:
+      type: text
+      label: Headline
+      preview:
+        faker: lorem.word
+    image:
+      type: pattern
+      label: Image
+      preview:
+        id: placeholder
+        variant: image
+    text:
+      type: text
+      label: Text
+      preview:
+        faker: lorem.paragraph
+    button:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: default
+    more:
+      type: text
+      label: More articles
+  visibility: drupal

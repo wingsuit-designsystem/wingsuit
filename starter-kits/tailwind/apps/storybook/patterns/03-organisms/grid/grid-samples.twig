@@ -1,0 +1,83 @@
+{#
+/**
+ * @file
+ * Grid component
+ *
+ * See component.wingsuit.yml for usage.
+ */
+#}
+<h2 class="text-xl">Grid samples</h2>
+<p>Check storybook/patterns/03-organisms/grid-samples.twig</p>
+{% set cells = [
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>'
+] %}
+
+<h2 class="text-xl pt-8">Simple 2 Columns</h2>
+{% include "@organisms/grid/grid.twig" with {
+  attributes: create_attribute(),
+  cells: cells,
+  columns: 2,
+  columns_width: 'equal',
+  gutter: 'default'
+} only %}
+
+
+{% set cells = [
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>',
+  '<div class="w-full h-20 bg-primary"></div>'
+] %}
+
+<h2 class="text-xl">Cell Inner Example</h2>
+
+{% set cells = [
+  {content: '<div class="w-full h-20 bg-primary">1</div>'},
+  {content: '<div class="w-full h-20 bg-primary">2</div>'},
+  {content: '<div class="w-full h-20 bg-primary">3</div>'},
+  {content: '<div class="w-full h-20 bg-primary">4</div>'},
+  {content: '<div class="w-full h-20 bg-primary">5</div>'},
+  {content: '<div class="w-full h-20 bg-primary">6</div>'},
+] %}
+{% embed "@organisms/grid/grid.twig" with {
+  attributes: create_attribute(),
+  cells: cells,
+  columns: 2,
+  columns_width: 'equal',
+  gutter: 'default'
+} only %}
+  {% block cell_inner %}
+    {{ cell.content }}
+  {% endblock %}
+{% endembed %}
+
+<h2 class="text-xl">Cell Markup Example</h2>
+
+{% set cells = [
+  {content: '<div class="w-full h-20 bg-primary">1</div>'},
+  {content: '<div class="w-full h-20 bg-primary">2</div>'},
+  {content: '<div class="w-full h-20 bg-primary">3</div>'},
+  {content: '<div class="w-full h-20 bg-primary">4</div>'},
+  {content: '<div class="w-full h-20 bg-primary">5</div>'},
+  {content: '<div class="w-full h-20 bg-primary">6</div>'},
+] %}
+{% embed "@organisms/grid/grid.twig" with {
+  attributes: create_attribute(),
+  cells: cells,
+  columns: 2,
+  columns_width: 'equal',
+  gutter: 'default'
+} only %}
+  {% block cell_outer %}
+    <div {{ cell_attributes.addClass('additional-class') }}>
+    {{ cell.content }} + {{ cell_counter }}
+    </div>
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,63 @@
+<footer class="text-gray-700 body-font">
+  {% embed "@organisms/container/container.twig" %}
+    {% block content %}
+      <div class="block lg:flex py-24">
+        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center mb-6 md:text-left">
+          {% include "@atoms/logo/logo.twig" only %}
+          <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+        </div>
+        <div class="w-full flex flex-col md:flex-row">
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Links</h2>
+            {{ menu_1 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Legal</h2>
+            {{ menu_2 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Social</h2>
+            {{ menu_3 }}
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Company</h2>
+            {{ menu_4 }}
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+  <div class="bg-gray-200">
+    <div class="max-w-1200 mx-auto py-4 px-6 flex flex-wrap flex-col sm:flex-row">
+      <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
+        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          {% include "@atoms/svg/_svg--icon.twig" with {
+            icon: "facebook",
+            size: 'w-5 h-5',
+          } only %}
+        </a>
+        <a class="ml-3 text-gray-500">
+          {% include "@atoms/svg/_svg--icon.twig" with {
+            icon: "instagram",
+            size: 'w-5 h-5',
+          } only %}
+        </a>
+        <a class="ml-3 text-gray-500">
+          {% include "@atoms/svg/_svg--icon.twig" with {
+            icon: "twitter",
+            size: 'w-5 h-5',
+          } only %}
+        </a>
+        <a class="ml-3 text-gray-500">
+          {% include "@atoms/svg/_svg--icon.twig" with {
+            icon: "linkedin",
+            size: 'w-5 h-5',
+          } only %}
+        </a>
+      </span>
+    </div>
+  </div>
+</footer>

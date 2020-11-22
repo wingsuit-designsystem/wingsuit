@@ -1,0 +1,33 @@
+.tab-content {
+  max-height: 0;
+  transition: max-height .35s;
+}
+/* :checked - resize to full height */
+.tab input:checked ~ .tab-content {
+  @apply max-h-screen;
+}
+/* Label formatting when open */
+.tab input:checked + label{
+  @apply p-5 border-l-2 border-indigo-500 bg-gray-100 text-xl text-indigo-500;
+}
+/* Icon */
+.tab label::after {
+  @apply transition-all duration-300 w-6 h-6 float-right right-0 top-0 block text-xl leading-6 text-center;
+}
+/* Icon formatting - closed */
+.tab input[type=checkbox] + label::after {
+  content: "+";
+  @apply font-bold border border-gray-200 rounded-full;
+}
+.tab input[type=radio] + label::after {
+  content: "\25BE";
+  @apply font-bold border border-gray-200 rounded-full;
+}
+/* Icon formatting - open */
+.tab input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+  @apply bg-indigo-500 bg-gray-200;
+}
+.tab input[type=radio]:checked + label::after {
+  @apply transform rotate-180 bg-indigo-500 text-gray-200;
+}

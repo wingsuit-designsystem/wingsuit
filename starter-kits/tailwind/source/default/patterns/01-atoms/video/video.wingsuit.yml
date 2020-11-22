@@ -1,0 +1,13 @@
+video:
+  use: "@atoms/video/video.twig"
+  label: Video
+  description: Component for displaying self hosted videos.
+  fields:
+    video:
+      type: text
+      label: The video field.
+      description: The video provided by Drupal.
+    src:
+      type: text
+      label: The video src.
+      preview: sample.mp4

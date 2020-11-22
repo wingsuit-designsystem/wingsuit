@@ -10,6 +10,10 @@ program
   .description('Install Wingsuit.')
   .option('-f --folder <folder>', 'The target folder')
   .option('-s --skip-install', 'Skip installing deps')
+  .option(
+    '-k --starter-kit',
+    'Select your starter kit. Available starter kits are tailwind, bootstrap. Default is tailwind'
+  )
   .option('-N --use-npm', 'Use npm to install deps')
   .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')

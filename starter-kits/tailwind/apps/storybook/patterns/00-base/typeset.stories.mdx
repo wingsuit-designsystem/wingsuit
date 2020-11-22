@@ -1,0 +1,25 @@
+import { Meta, Typeset, Subtitle } from '@storybook/addon-docs/blocks';
+import { storage } from '@wingsuit-designsystem/pattern';
+const tailwindFile = require('../../config/silo/tailwind.json');
+const fontFamilies = tailwindFile.tailwind.theme.fontFamily;
+const fontSizes = tailwindFile.tailwind.theme.fontSize;
+
+<Meta title="Base/Typography"
+parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Typography
+<Subtitle>Choosed typefaces and font sizes</Subtitle>
+
+<div>
+{
+  Object.keys(fontFamilies).map((key,i)=>{
+    return (
+      <div key={key}>
+        <Subtitle><b>Font Family:</b> {fontFamilies[key][0]} ({key})</Subtitle>
+        <Typeset fontFamily={key} fontSizes={Object.values(fontSizes)} />
+      </div>
+    )
+  })
+}
+</div>

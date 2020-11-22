@@ -1,0 +1,42 @@
+.ui-hamburger-02 {
+  width: 20px;
+  height: 18px;
+  border: none;
+  position: relative;
+  background: linear-gradient(to bottom, #4a4a4a, #4a4a4a);
+  background-size: 100% 20%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-size 0.2s 0.25s ease;
+  cursor: pointer;
+}
+.ui-hamburger-02:before,
+.ui-hamburger-02:after {
+  height: 23%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #4a4a4a;
+  content: '';
+  transition: transform 0.3s ease;
+}
+.ui-hamburger-02:before {
+  top: 0;
+  transform-origin: 91% 150%;
+}
+.ui-hamburger-02:after {
+  bottom: 0;
+  transform-origin: 91% -50%;
+}
+.ui-hamburger-02.is-active {
+  background-size: 0 20%;
+  transition-delay: 0s;
+}
+.ui-hamburger-02.is-active:before {
+  transform: rotate(-45deg);
+  transition-delay: 0.15s;
+}
+.ui-hamburger-02.is-active:after {
+  transform: rotate(45deg);
+  transition-delay: 0.15s;
+}
