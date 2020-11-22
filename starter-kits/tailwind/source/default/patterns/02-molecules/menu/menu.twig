@@ -1,0 +1,6 @@
+{# VARIANT TEMPLATES #}
+{% if variant == "primary" %}
+  {% include '@molecules/menu/_menu--primary.twig' with {variant: 'primary', items: items} %}
+{% elseif variant == "footer" %}
+  {% include '@molecules/menu/_menu--footer.twig' with {variant: 'footer', items: items} %}
+{% endif %}

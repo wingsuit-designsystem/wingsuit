@@ -1,0 +1,82 @@
+{
+  "name": "@wingsuit-designsystem/starter-kit-bootstrap",
+  "version": "1.0.0-beta.21",
+  "description": "Wingsuit Starter-Kit for Bootstap 4",
+  "main": "",
+  "license": "GPL-2.0",
+  "author": {
+    "name": "KEY-TEC",
+    "url": "https://github.com/wingsuit-designsystem/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wingsuit-designsystem/wingsuit.git"
+  },
+  "keywords": [
+    "storybook",
+    "ui_patterns",
+    "prototyping"
+  ],
+  "scripts": {
+    "dev:storybook": "start-storybook --config-dir apps/storybook",
+    "build:storybook": "build-storybook --config-dir apps/storybook -o ./dist/app-storybook",
+    "build-storybook": "build-storybook",
+    "dev:drupal": "cross-env-shell NODE_ENV=development \"webpack --watch --config ./apps/drupal/webpack.config.js\"",
+    "build:drupal": "cross-env-shell NODE_ENV=production \"webpack  --config ./apps/drupal/webpack.config.js\"",
+    "lint:js": "eslint --ext .js ./",
+    "lint:css": "stylelint '**/*.css'",
+    "lint": "npm run lint:js; npm run lint:css;",
+    "fmt:js": "eslint --fix --ext .js,.vue ./",
+    "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
+    "fmt": "npm run fmt:js; npm run fmt:css",
+    "ci": "npm run lint && npm run build:drupal"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@storybook/addon-backgrounds": "^6.0.0",
+    "@storybook/addon-links": "^6.0.0",
+    "@storybook/addon-viewport": "^6.0.0",
+    "@storybook/addons": "^6.0.0",
+    "@storybook/linter-config": "^2.5.0",
+    "@storybook/react": "^6.0.0",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "lodash": "^4.17.20",
+    "@wingsuit-designsystem/cli": "1.0.0-beta.21",
+    "@wingsuit-designsystem/core": "1.0.0-beta.21",
+    "@wingsuit-designsystem/pattern": "1.0.0-beta.21",
+    "@wingsuit-designsystem/storybook": "1.0.0-beta.21",
+    "autoprefixer": "^9.7.4",
+    "core-js": "^3.4.1",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-webpack": "^0.12.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.0.1",
+    "postcss-nested": "^4.2.1",
+    "prettier": "^1.19.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "regenerator-runtime": "^0.13.3",
+    "require-context": "^1.1.0",
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^4.41.3",
+    "yo": "^3.1.1"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.2.0",
+    "alpinejs": "^2.7.0",
+    "svg4everybody": "^2.1.9",
+    "swiper": "^5.4.5",
+    "tailwindcss": "^1.7.0"
+  },
+  "gitHead": "c3da3714569f0e437fb99b3907323541226a44b6"
+}

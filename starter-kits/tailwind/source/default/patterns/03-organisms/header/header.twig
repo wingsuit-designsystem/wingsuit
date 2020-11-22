@@ -1,0 +1,29 @@
+{# SETTINGS #}
+{% set header_classes = ([
+  'header-offset bg-white w-full z-30 top-0 text-white',
+  variant == 'fixed'?'fixed h-18 w-full',
+  variant == 'sticky'?'sticky',
+]) | sort | join(' ') | trim %}
+
+{# TEMPLATE #}
+<header class="{{ header_classes }}">
+  {% embed "@organisms/container/container.twig" with {menu: menu, button: button} only%}
+    {% block content %}
+      <div class="flex flex-wrap py-5 justify-between md:flex-row">
+        <div class="flex items-center">
+          {% include "@atoms/logo/logo.twig" only %}
+        </div>
+        <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">
+          {% include "@atoms/hamburger/hamburger.twig" only %}
+        </div>
+        <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+          {{ menu }}
+          <div>
+            {{ button }}
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+  {# <hr class="border-b border-gray-100 opacity-25 my-0 py-0"> #}
+</header>

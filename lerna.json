@@ -1,7 +1,9 @@
 {
   "packages": [
     "packages/*",
-    "examples/*"
+    "presets/*",
+    "examples/*",
+    "starter-kits/*"
   ],
   "version": "1.0.0-beta.21",
   "registry": "https://registry.npmjs.org",

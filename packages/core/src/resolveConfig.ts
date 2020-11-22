@@ -15,37 +15,14 @@ export function resolveConfig(
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
-  let mergedConfig = merge(configStub.wingsuit, projectConfig);
+  const mergedConfig = merge(configStub.wingsuit, projectConfig);
 
-  if (projectConfig.webpack) {
-    mergedConfig.webpack = projectConfig.webpack;
-  }
-  if (projectConfig.webpackFinal) {
-    mergedConfig.webpackFinal = projectConfig.webpackFinal;
-  }
-
-  if (projectConfig.extend != null) {
-    mergedConfig = merge(mergedConfig, projectConfig.extend);
-  }
   let appConfig = mergedConfig.apps[appName];
-
-  if (
-    projectConfig.apps != null &&
-    projectConfig.apps[appName] != null &&
-    projectConfig.apps[appName].presets != null &&
-    projectConfig.apps[appName].presets.length !== 0
-  ) {
-    appConfig.presets = projectConfig.apps[appName].presets;
-  }
 
   const rootPath = process.cwd();
   if (appConfig == null) {
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
-  appConfig.presetsRegistry = {};
-  Object.keys(mergedConfig.presets).forEach((name) => {
-    appConfig.presetsRegistry[name] = mergedConfig.presets[name];
-  });
 
   if (mergedConfig.environments[environment] != null) {
     appConfig = merge(appConfig, mergedConfig.environments[environment]);
@@ -55,11 +32,28 @@ export function resolveConfig(
     appConfig = Object.assign(appConfig, projectConfig[appName]);
   }
   // Overwrite by parameter.
-  appConfig.webpack = mergedConfig.webpack;
-  appConfig.webpackFinal = mergedConfig.webpackFinal;
+  appConfig.presetsRegistry = mergedConfig.presetsRegistry;
+
+  mergedConfig.presets.forEach((preset) => {
+    appConfig.presets.push(preset);
+  });
+
+  appConfig.webpack =
+    mergedConfig.webpack !== null
+      ? mergedConfig.webpack
+      : (pappConfig: AppConfig) => {
+          return {};
+        };
+  appConfig.webpackFinal =
+    mergedConfig.webpackFinal !== null
+      ? mergedConfig.webpackFinal
+      : (pappConfig: AppConfig, config: any) => {
+          return config;
+        };
   appConfig = Object.assign(appConfig, configurationOverwrites);
   appConfig.absRootPath = rootPath;
   appConfig.environment = environment;
+
   appConfig.absAppPath = path.join(rootPath, appConfig.path);
   appConfig.absDistFolder =
     yargs.argv['output-dir'] != null

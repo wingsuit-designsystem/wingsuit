@@ -1,0 +1,267 @@
+form_input:
+  use: "@atoms/forms/_input.twig"
+  namespace: "Atoms/Forms"
+  label: Input
+  description: Input forms styled with Tailwind custom forms. Checkout https://tailwindcss-custom-forms.netlify.app/ for more infos.
+  variants:
+    textfield:
+      label: Textfield
+      settings:
+        attributes: "type=\"text\" placeholder=\"Placeholder\""
+    password:
+      label: Password
+      settings:
+        attributes: "type=\"password\" placeholder=\"Password\""
+    submit:
+      label: Submit
+      settings:
+        attributes: "type=\"text\" placeholder=\"Placeholder\""
+    email:
+      label: Email
+      settings:
+        attributes: "type=\"email\" placeholder=\"Email\""
+    file:
+      label: File
+      settings:
+        attributes: "type=\"file\""
+    tel:
+      label: Tel
+      settings:
+        attributes: "type=\"tel\""
+    date:
+      label: Date
+      settings:
+        attributes: "type=\"date\""
+    checkbox:
+      label: Checkbox
+      settings:
+        attributes: "type=\"checkbox\""
+    radio:
+      label: Radio
+      settings:
+        attributes: "type=\"radio\""
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  visibility: storybook
+
+form_label:
+  use: "@atoms/forms/_form-label.twig"
+  namespace: "Atoms/Forms"
+  label: Label
+  fields:
+    title:
+      type: text
+      label: Titel
+      preview:
+        faker: lorem.word
+  visibility: storybook
+
+form_textarea:
+  use: "@atoms/forms/_textarea.twig"
+  namespace: "Atoms/Forms"
+  label: Textarea
+  settings:
+    wrapper_attributes:
+      type: attributes
+      label: Wrapper attributes
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    value:
+      type: text
+      label: Value
+      preview:
+        faker: lorem.sentence
+  visibility: storybook
+
+form_select:
+  use: "@atoms/forms/_select.twig"
+  namespace: "Atoms/Forms"
+  label: Select
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    options:
+      type: object
+      label: Options
+      preview:
+        - label: Option 1
+          type: "option"
+          selected: true
+        - label: Option 2
+          type: "option"
+        - label: Option 3
+          type: "option"
+  visibility: storybook
+
+form_checkboxes:
+  use: "@atoms/forms/_checkboxes.twig"
+  namespace: "Atoms/Forms"
+  label: Checkboxes
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+  visibility: storybook
+
+form_radios:
+  use: "@atoms/forms/_radios.twig"
+  namespace: "Atoms/Forms"
+  label: Radios
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_element
+          variant: "radio"
+        - id: form_element
+          variant: "radio"
+        - id: form_element
+          variant: "radio"
+  visibility: storybook
+
+
+form_element:
+  use: "@atoms/forms/_form-element.twig"
+  namespace: "Atoms/Forms"
+  label: Form element
+  description: Wrapper around label and form element styled with Tailwind custom forms. Checkout https://tailwindcss-custom-forms.netlify.app/ for more infos.
+  variants:
+    textfield:
+      label: Textfield
+      fields:
+        children:
+          id: form_input
+          variant: "textfield"
+    email:
+      label: Email
+      fields:
+        children:
+          id: form_input
+          variant: "email"
+    file:
+      label: File
+      fields:
+        children:
+          id: form_input
+          variant: "file"
+    tel:
+      label: Tel
+      fields:
+        children:
+          id: form_input
+          variant: "tel"
+    date:
+      label: Date
+      fields:
+        children:
+          id: form_input
+          variant: "date"
+    checkbox:
+      label: Checkbox
+      fields:
+        children:
+          id: form_input
+          variant: "checkbox"
+    checkboxes:
+      label: Checkboxes
+      fields:
+        children:
+          id: form_checkboxes
+    radio:
+      label: Radio
+      settings:
+        label_display: after
+      fields:
+        children:
+          id: form_input
+          variant: "radio"
+    radios:
+      label: Radios
+      fields:
+        children:
+          id: form_radios
+    select:
+      label: Select
+      fields:
+        children:
+          id: form_select
+
+  settings:
+    label_display:
+      type: select
+      label: Label display
+      default_value: before
+      options:
+        before: Before
+        after: After
+        invisible: Invisible
+        hidden: Hidden
+    description_display:
+      type: select
+      label: Description display
+      options:
+        before: Before
+        after: After
+        invisible: Invisible
+        hidden: Hidden
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    label:
+      type: pattern
+      label: Label
+      description: The form label.
+      preview:
+        id: form_label
+    description_text:
+      type: text
+      label: Description
+      description: The form description.
+      preview:
+        faker: lorem.sentence
+    errors:
+      type: text
+      label: Errors
+      description: The error message.
+    children:
+      type: pattern
+      label: Children
+      preview:
+        id: form_input
+        variant: "textfield"
+
+  visibility: storybook

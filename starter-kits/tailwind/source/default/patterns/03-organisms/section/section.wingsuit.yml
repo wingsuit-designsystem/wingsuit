@@ -1,0 +1,196 @@
+section:
+  use: "@organisms/section/section.twig"
+  label: Flexible columns section
+  icon_path: ws-assets://images/section-icon.svg
+  description: "A section with a header and maximum five columns. A combination of container and grid.
+    You can use this pattern as a section in Drupal's Layout Builder."
+  fields:
+    header:
+      type: pattern
+      label: Section Header
+      description: Optional header
+      preview:
+        id: rich_text
+        fields:
+          text: "<h2 class=text-center>Headline</h2>"
+    column_1:
+      type: text
+      label: First Column
+      preview:
+        faker: lorem.paragraph
+    column_2:
+      type: text
+      label: Second Column
+      preview:
+        faker: lorem.paragraph
+    column_3:
+      type: text
+      label: Third Column
+      preview:
+        faker: lorem.paragraph
+    column_4:
+      type: text
+      label: Fourth Column
+      preview:
+        faker: lorem.paragraph
+    column_5:
+      type: text
+      label: Five Column
+      preview:
+        faker: lorem.paragraph
+  settings:
+    padding_top:
+      type: select
+      label: Padding top
+      description: The spacing to the previous element.
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      description: The spacing to the next element..
+      default_value: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      default_value: default
+      options:
+        none: None
+        default: Default
+        large: Large
+    gutter:
+      type: select
+      label: Gutter
+      required: true
+      default_value: default
+      options:
+        none: None
+        default: Default
+        large: Large
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+        xlarge: Xlarge
+    columns:
+      type: select
+      label: Columns
+      required: true
+      options:
+        1: One column
+        2: Two columns
+        3: Three columns
+        4: Four columns
+        5: Five columns
+    columns_width_1:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 100%
+    columns_width_2:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 50%/50%
+        66x33: 66%/33%
+        33x66: 33%/66%
+    columns_width_3:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 33%/33%/33%
+        25x50x25: 25%/50%/25%
+    columns_width_4:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 25%/25%/25%/25%
+    columns_width_5:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 20%/20%/20%/20%
+    bg:
+      type: select
+      label: Background color
+      options:
+        gray-medium: Medium gray
+        gray-light: Light gray
+  variants:
+    1_column:
+      label: One Column
+      fields:
+        column_2: ""
+        column_3: ""
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 1
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    2_column:
+      label: Two Columns
+      fields:
+        column_3: ""
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 2
+        columns_width_1: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    3_column:
+      label: Three Columns
+      fields:
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 3
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    4_column:
+      label: Four Columns
+      fields:
+        column_5: ""
+      settings:
+        columns: 4
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_5: ""
+    5_column:
+      label: Five Columns
+      settings:
+        columns: 5
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""

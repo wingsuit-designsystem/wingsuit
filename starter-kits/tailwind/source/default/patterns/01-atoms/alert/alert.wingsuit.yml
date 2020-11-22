@@ -1,0 +1,23 @@
+alert:
+  use: "@atoms/alert/alert.twig"
+  label: Alert
+  description: Colorful status, warning and error messages for every situation.
+  fields:
+    header:
+      type: text
+      label: Header
+      preview:
+        faker: lorem.word
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.text
+  variants:
+    status:
+      label: Status message
+    error:
+      label: Error message
+    warning:
+      label: Warning message
+  visibility: storybook
