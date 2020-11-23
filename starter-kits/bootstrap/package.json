@@ -73,11 +73,11 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.2.0",
-    "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",
     "swiper": "^5.4.5",
-    "tailwindcss": "^1.7.0"
+    "bootstrap": "^4.5.3",
+    "popper.js": "^1.16.1",
+    "jquery": "^3.5.1"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }
