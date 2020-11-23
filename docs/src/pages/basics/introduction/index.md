@@ -18,7 +18,10 @@ Wingsuit offers twig helper function to build complete pages for preview.
 * ### Demonstration helper
 Wingsuit offers a lot of additional helpers like [placeholder images with image styles](../../assets/images#placeholder-images), [faker](../../components/wingsuit#faker), [pattern lists]((../../components/wingsuit#faker)) to make it easy to generate demo patterns.
 * ## Frontend frameworks
-Wingsuit ships with [Tailwind CSS](https://tailwindcss.com/) and [Alpine.js](https://github.com/alpinejs/alpine).  
+Wingsuit has starterkits for: 
+ * [Tailwind CSS](https://tailwindcss.com/) with [Alpine.js](https://github.com/alpinejs/alpine).
+ * Bootstrap  
+
 You can [customize](../../configurations/custom-webpack-config) the webpack configuration and integrate your favorite frontend frameworks. 
 But checkout TailwindCSS! It is really great for large Drupal projects. 
 * ### Storybook documentation

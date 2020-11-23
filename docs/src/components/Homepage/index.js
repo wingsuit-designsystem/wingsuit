@@ -24,10 +24,9 @@ const Homepage = ({ users }) => (
         >
           <div className="col-12 col-sm-6 col-xl-9 text-center">
             <h1 className="sb-tagline">
-              <span className="sb-tagline-sm">Build</span> Components{' '}
+              <span className="sb-tagline-sm">Build bulletproof <br/>TWIG</span> Components{' '}
               <span className="sb-tagline-sm">in</span> Storybook{' '}
-              <span className="sb-tagline-sm">with</span> Tailwind CSS{' '}
-              <span className="sb-tagline-sm">and</span> UI Patterns for Drupal
+
               <br />
               <div className="sb-tagline__subline">You will ♥️ it!</div>
             </h1>
