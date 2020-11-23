@@ -24,10 +24,11 @@ const Homepage = ({ users }) => (
         >
           <div className="col-12 col-sm-6 col-xl-9 text-center">
             <h1 className="sb-tagline">
-              <span className="sb-tagline-sm">Build bulletproof <br/>TWIG</span> Components{' '}
-              <span className="sb-tagline-sm">in</span> Storybook{' '}
-
-              <br />
+              <span className="sb-tagline-sm">
+                Build bulletproof <br />
+                TWIG
+              </span>{' '}
+              Components <span className="sb-tagline-sm">in</span> Storybook <br />
               <div className="sb-tagline__subline">You will ♥️ it!</div>
             </h1>
             <div>
