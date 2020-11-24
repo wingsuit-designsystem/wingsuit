@@ -99,7 +99,6 @@ export function webpack(appConfig: AppConfig) {
           },
         }),
         new MiniCssExtractPlugin({
-          publicPath: '../',
           filename: '[name].css',
           chunkFilename: 'css/[id].css',
         }),

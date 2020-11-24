@@ -32,3 +32,4 @@ php_errors.log
 
 package-lock.json
 
+apps/drupal/config/silo/
