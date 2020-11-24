@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-bootstrap",
-  "version": "1.0.0-beta.24",
+  "version": "1.0.0-beta.25",
   "description": "Wingsuit Starter-Kit for Bootstap 4",
   "main": "",
   "license": "GPL-2.0",
@@ -44,10 +44,10 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.0-beta.24",
-    "@wingsuit-designsystem/core": "1.0.0-beta.24",
-    "@wingsuit-designsystem/pattern": "1.0.0-beta.24",
-    "@wingsuit-designsystem/storybook": "1.0.0-beta.24",
+    "@wingsuit-designsystem/cli": "1.0.0-beta.25",
+    "@wingsuit-designsystem/core": "1.0.0-beta.25",
+    "@wingsuit-designsystem/pattern": "1.0.0-beta.25",
+    "@wingsuit-designsystem/storybook": "1.0.0-beta.25",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -73,11 +73,11 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.2.0",
-    "alpinejs": "^2.7.0",
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
     "svg4everybody": "^2.1.9",
-    "swiper": "^5.4.5",
-    "tailwindcss": "^1.7.0"
+    "swiper": "^5.4.5"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }

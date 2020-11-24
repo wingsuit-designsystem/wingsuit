@@ -5,34 +5,13 @@ title: 'Configuration'
 
 Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts) of variables which fit most use cases.
 
-You can overwrite the preset in your `wingsuit.config.js`. 
-
 <b>The Wingsuit configuration file has three main sections</b>
 
-* `apps` for app-specific configuration. An typical app is drupal. You can configure here where your app is located, how you want to compile your assets and store your assets.   
+* `apps` for app-specific configuration. A typical app is drupal. Here you can configure where your app is located, how you want to compile your assets and store your assets.   
 
 * `designSystem` for design system configuration. The design system is where your patterns living. Here you can configure everything around your patterns.
 
 * `presets` list of loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
-
-### Extend the configuration
-With the `extend` key, you can extend the default configuration.  
-
-### Environment specific configuration
-With `environments` you can overwrite a configuration value for a specific environment.
-
-Here is an example of overwriting the cssMode for development:
-```js
-environments: {
-  ...
-      development: {
-        apps: {
-          storybook: {
-            cssMode: "extract"
-          }
-        }
-      }
-```
 
 ## App details
 Each app is configurable by following properties:
@@ -74,6 +53,22 @@ You can use namespaces in twig and javascript imports.
 <b>Javascript:</b>
 ```js
   import "atoms/button";
+```
+
+### Environment specific configuration
+With `environments` you can overwrite a configuration value for a specific environment.
+
+Here is an example of overwriting the cssMode for development:
+```js
+environments: {
+  ...
+      development: {
+        apps: {
+          storybook: {
+            cssMode: "extract"
+          }
+        }
+      }
 ```
 
 ## Presets details

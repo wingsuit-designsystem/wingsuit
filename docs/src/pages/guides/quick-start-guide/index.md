@@ -10,6 +10,15 @@ The demo page uses the atomic design principle to structure the patterns.
 npx @wingsuit-designsystem/cli init
 ```
 
+
+With the `-k` option you can install other starter kits than Tailwind. At the moment tailwind is the most complete starter kit.
+To install the (not ready) Bootstrap starter kit run: 
+
+```shell script
+npx @wingsuit-designsystem/cli init -k bootrap
+```
+
+
 After the installation succeeds, Storybook will open and you can browse the Wingsuit demo page.
 
 <img src="images/storybook.png">

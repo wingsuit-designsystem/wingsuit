@@ -11,8 +11,9 @@ program
   .option('-f --folder <folder>', 'The target folder')
   .option('-s --skip-install', 'Skip installing deps')
   .option(
-    '-k --starter-kit',
-    'Select your starter kit. Available starter kits are tailwind, bootstrap. Default is tailwind'
+    '-k --starter-kit <kit>',
+    'Select your starter kit. Available starter kits are tailwind, bootstrap. Default is tailwind',
+    'tailwind'
   )
   .option('-N --use-npm', 'Use npm to install deps')
   .option('-S --smoke-test', 'Exit after successful start')

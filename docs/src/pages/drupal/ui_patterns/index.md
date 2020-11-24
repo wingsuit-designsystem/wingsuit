@@ -7,13 +7,13 @@ title: 'Wingsuit Kickstarter (with UI Patterns and Layout Builder)'
 
 The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as distribution and [Acquia Blt](https://github.com/acquia/blt) for automation. 
 
-#### Drupal blocks with a pattern. Mostly molecules.
+* #### Drupal blocks with a pattern. 
 <img src="/images/add-blocks.png">
 
-#### Sections are also patterns
+* #### Sections are also patterns
 <img src="/images/add-sections.png">
 
-#### Block Manage display with layout builder. Configure the pattern and assign fields.
+* #### Block Manage display with layout builder. Configure the pattern and assign fields.
 <img src="/images/configure-patterns.png">
 
 
@@ -24,10 +24,10 @@ The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as 
 - [PHP `^7.0.0`](https://php.net)
 
 ## Installation
-```sh
+```sh dark
 composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kickstarter --stability dev --no-interaction
 ```
-```
+```sh dark
 cd wingsuit-kickstarter && ./vendor/bin/blt setup
 ```
 
