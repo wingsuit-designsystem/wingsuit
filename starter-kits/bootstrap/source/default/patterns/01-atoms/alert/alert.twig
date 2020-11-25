@@ -9,28 +9,26 @@
 
 {# VARIANTS #}
 {% set classes = ([
-  "alert border-left-4 p-5",
-  variant == 'status' ? "alert-primary border border-primary",
-  variant == 'error' ? "alert-danger border border-danger",
-  variant == 'warning' ? "alert-warning border border-warning"
-] | sort | join(' ') | trim )%}
+  "alert",
+  variant == 'status' ? "alert-primary",
+  variant == 'error' ? "alert-danger",
+  variant == 'warning' ? "alert-warning"
+] | sort | join(' ') | trim ) %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {# TEMPLATE #}
 <div {{ attributes }}>
-  <div class="d-flex space-x-3">
-    <div class="flex-none">
+  <div class="d-flex">
     {% include "@atoms/svg/svg.twig" with {
       "icon": "alert--" ~ variant,
       "size": "w-6 h-6"
     } only %}
-    </div>
-    <div class="leading-tight flex-col px-3">
+    <div class="ml-2">
       <div class="font-weight-bold">
         {% block header %}{{ header }}{% endblock %}
       </div>
-      <div class="flex-1 leading-snug text-sm">
+      <div>
         {% block content %}
           {{ content }}
         {% endblock %}

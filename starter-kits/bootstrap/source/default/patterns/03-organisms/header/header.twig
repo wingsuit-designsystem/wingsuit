@@ -1,22 +1,22 @@
 {# SETTINGS #}
 {% set header_classes = ([
-  'header-offset bg-white w-full z-30 top-0 text-white',
-  variant == 'fixed'?'fixed h-18 w-full',
-  variant == 'sticky'?'sticky',
+  'header-offset bg-white w-100 z-30 top-0 text-white',
+  variant == 'fixed'?'position-fixed h-18 w-100',
+  variant == 'sticky'?'position-sticky',
 ]) | sort | join(' ') | trim %}
 
 {# TEMPLATE #}
 <header class="{{ header_classes }}">
   {% embed "@organisms/container/container.twig" with {menu: menu, button: button} only%}
     {% block content %}
-      <div class="flex flex-wrap py-5 justify-between md:flex-row">
-        <div class="flex items-center">
+      <div class="d-flex flex-wrap py-5 justify-content-between flex-md-row">
+        <div class="d-flex align-items-center">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
-        <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">
+        <div class="d-block d-lg-hidden" @click="menuIsOpen = !menuIsOpen">
           {% include "@atoms/hamburger/hamburger.twig" only %}
         </div>
-        <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        <div class="w-100 flex-grow d-hidden text-black z-20 mt-2 bg-white d-lg-flex justify-content-lg-end align-items-lg-center w-lg-auto d-lg-block mt-lg-0 lg:bg-transparent" :class="{'d-block': menuIsOpen, 'd-hidden': !menuIsOpen}">
           {{ menu }}
           <div>
             {{ button }}
