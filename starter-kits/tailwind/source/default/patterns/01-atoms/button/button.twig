@@ -36,7 +36,7 @@
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
   {{ text }}
   {% if icon is not empty %}
-    {% include "@atoms/svg/_svg--icon.twig" with {
+    {% include "@components/svg/_svg--icon.twig" with {
       icon: icon,
       size: icon_size,
     } only %}
