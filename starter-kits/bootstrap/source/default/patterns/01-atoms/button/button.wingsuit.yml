@@ -24,9 +24,9 @@ button:
   configuration:
     size:
       text:
-        small: text-xs
-        medium: text-base
-        large: text-xl
+        small: btn-sm
+        medium: btn-md
+        large: btn-lg
       icon:
         small: w-4 h-4
         medium: w-5 h-5

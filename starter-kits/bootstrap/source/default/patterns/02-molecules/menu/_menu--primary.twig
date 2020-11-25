@@ -1,8 +1,8 @@
-<ul class="list-reset lg:flex justify-end flex-1 items-center">
+<ul class="nav">
   {% for item in items %}
-    <li class="py-2 lg:py-0 border-b lg:border-b-0 border-black lg:mr-3">
+    <li class="nav-item">
       {# {% if (item.in_active_trail) %}no-underline {% else %} hover:text-gray-900 hover:text-underline py-2 px-4{% endif %} #}
-      <a class="mr-5 text-gray-600 hover:text-gray-900"
+      <a class="nav-link"
         href="{{ item.url }}">
         {{ item.title }}
       </a>
