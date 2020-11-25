@@ -62,17 +62,18 @@ To develop Wingsuit you need `yarn`.
 
 ```bash
 git clone git@github.com:wingsuit-designsystem/wingsuit.git
+cd wingsuit
 yarn bootstrap
 yarn dev
 ```
 
-1. To start storybook `cd packages/wingsuit` and run:
+1. To start storybook `cd starter-kits/tailwind` and run:
 
 ```bash
 yarn dev:storybook
 ```
 
-1. To start drupal `cd packages/wingsuit` and run:
+1. To start drupal `cd starter-kits/tailwind` and run:
 
 ```bash
 yarn dev:drupal
