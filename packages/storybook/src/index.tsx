@@ -172,5 +172,6 @@ export {
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
+export { default as Spacing } from './docs/Spacing';
 export { default as wingsuitTheme } from './theme';
 export { PatternDoc, PatternProperties, PatternInclude };
