@@ -5,10 +5,15 @@ import { withKnobs, text, boolean, number, object, optionsKnob } from '@storyboo
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
+import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
+
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
+
+ReactSyntaxHighlighter.registerLanguage('twig', twig);
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -173,5 +178,6 @@ export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
 export { default as Spacing } from './docs/Spacing';
+export { default as Typeset } from './docs/Typeset';
 export { default as wingsuitTheme } from './theme';
 export { PatternDoc, PatternProperties, PatternInclude };

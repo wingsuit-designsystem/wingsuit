@@ -8,12 +8,18 @@ type Props = { variant: PatternVariant };
 
 export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
   const { variant } = props;
+  const variables = variant.getVariables();
+  // eslint-disable-next-line
+  delete variables['attributes'];
+
   const code = `{% include "${variant.getPattern().getUse()}" with ${JSON.stringify(
-    variant.getVariables()
+    variables,
+    null,
+    2
   )} %}`;
   return (
     <>
-      <Source dark code={code} />
+      <Source format={false} dark code={code} language="twig" />
     </>
   );
 };
