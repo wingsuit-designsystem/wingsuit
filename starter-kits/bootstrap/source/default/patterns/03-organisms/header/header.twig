@@ -1,29 +1,23 @@
 {# SETTINGS #}
 {% set header_classes = ([
-  'header-offset bg-white w-100 z-30 top-0 text-white',
+  'navbar-light bg-light',
   variant == 'fixed'?'position-fixed h-18 w-100',
   variant == 'sticky'?'position-sticky',
 ]) | sort | join(' ') | trim %}
 
 {# TEMPLATE #}
 <header class="{{ header_classes }}">
-  {% embed "@organisms/container/container.twig" with {menu: menu, button: button} only%}
-    {% block content %}
-      <div class="d-flex flex-wrap py-5 justify-content-between flex-md-row">
-        <div class="d-flex align-items-center">
-          {% include "@atoms/logo/logo.twig" only %}
-        </div>
-        <div class="d-block d-lg-hidden" @click="menuIsOpen = !menuIsOpen">
-          {% include "@atoms/hamburger/hamburger.twig" only %}
-        </div>
-        <div class="w-100 flex-grow d-hidden text-black z-20 mt-2 bg-white d-lg-flex justify-content-lg-end align-items-lg-center w-lg-auto d-lg-block mt-lg-0 lg:bg-transparent" :class="{'d-block': menuIsOpen, 'd-hidden': !menuIsOpen}">
-          {{ menu }}
-          <div>
-            {{ button }}
-          </div>
-        </div>
+  <nav class="navbar container navbar-expand-lg">
+    {% include "@atoms/logo/logo.twig" only %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
+      {{ menu }}
+      <div>
+        {{ button }}
       </div>
-    {% endblock %}
-  {% endembed %}
-  {# <hr class="border-b border-gray-100 opacity-25 my-0 py-0"> #}
+    </div>
+  </nav>
 </header>
