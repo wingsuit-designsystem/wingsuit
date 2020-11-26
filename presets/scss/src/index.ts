@@ -37,14 +37,14 @@ export function webpack(appConfig: AppConfig) {
       },
     },
     {
-      loader: 'sass-loader', // compiles Sass to CSS
-    },
-    {
       loader: 'resolve-url-loader',
       options: {
         sourceMap: true,
         root: '',
       },
+    },
+    {
+      loader: 'sass-loader', // compiles Sass to CSS
     },
   ];
 
