@@ -9,6 +9,7 @@ const assetsVideos = require('../server/presets/assetsVideos')
 export const wingsuit = {
   webpackFinal: null,
   webpack: null,
+
   presetsRegistry: {
     css,
     babel,
@@ -22,7 +23,7 @@ export const wingsuit = {
   designSystems: {
     default: {
       path: 'source/default',
-      patternPath: 'patterns',
+      patternFolder: 'patterns',
       namespaces: {},
     },
   },
