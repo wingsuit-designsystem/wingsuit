@@ -27,8 +27,6 @@ hero:
       preview:
         id: button
         variant: outline
-        settings:
-          color: gray
     image:
       type: pattern
       label: Image

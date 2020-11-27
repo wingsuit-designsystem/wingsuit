@@ -12,8 +12,8 @@ button:
       label: Default
       configuration:
         colors:
-          primary: 'bg-primary text-white hover:bg-pink-600'
-          secondary: 'bg-secondary text-black hover:bg-blue-600'
+          primary: 'border-primary bg-primary text-white hover:bg-pink-600'
+          secondary: 'border-secondary bg-secondary text-black hover:bg-blue-600'
     outline:
       label: Outline
       configuration:

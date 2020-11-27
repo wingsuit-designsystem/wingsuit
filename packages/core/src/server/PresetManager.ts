@@ -43,6 +43,7 @@ export default class PresetManager {
         shared.push(presets[key].webpack(appConfig));
       }
     });
+
     let config = merge.smartStrategy({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
