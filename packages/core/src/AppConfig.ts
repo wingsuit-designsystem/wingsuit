@@ -13,6 +13,8 @@ export default interface AppConfig {
 
   cssMode: string;
 
+  patternFolder: string;
+
   assetBundleFolder: string;
 
   assetAtomicFolder: string;
@@ -24,6 +26,8 @@ export default interface AppConfig {
   absAppPath: string;
 
   absDistFolder: string;
+
+  absPatternPath: string;
 
   webpack(appConfig: AppConfig);
 

@@ -6,7 +6,7 @@ import {
 } from '@wingsuit-designsystem/storybook';
 import { addDecorator, addParameters } from '@storybook/react';
 
-const namespaces = require('../../source/default/namespaces');
+const namespaces = require('wsdesignsystem/namespaces');
 
 if (isInitDecorator() === false) {
   initDecorator('Drupal');
@@ -19,7 +19,7 @@ addParameters({
       method: 'alphabetical',
       order: [
         'Base',
-        ['Welcome', 'Colors', 'Typeset'],
+        ['Welcome', 'Colors', 'Typography', 'Scales', 'Layout'],
         'Atoms',
         'Molecules',
         'Organisms',
@@ -35,9 +35,9 @@ configure(
   module,
   [
     require.context('./patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
-    require.context('../../source/default/patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
+    require.context('wspatterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
   ],
   require.context('./config', false, /\.json|\.ya?ml$/),
-  require.context('../../source/default/patterns', true, /\.twig$/),
+  require.context('wspatterns', true, /\.twig$/),
   namespaces
 );
