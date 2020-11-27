@@ -1,29 +1,32 @@
 <footer class="body-font mt-5">
-  <div class="container">
-    <div class="d-block d-lg-flex py-24">
-      <div class="flex-shrink-0 md:mx-0 mx-auto text-center mb-4">
-        {% include "@atoms/logo/logo.twig" only %}
-        <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+  {% embed "@organisms/container/container.twig" %}
+    {% block content %}
+      <div class="d-block d-lg-flex py-24">
+        <div class="flex-shrink-0 md:mx-0 mx-auto text-center mb-4">
+          {% include "@atoms/logo/logo.twig" only %}
+          <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
+        </div>
+        <div class="w-100 d-flex justify-content-around flex-column flex-md-row">
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Links</h5>
+            {{ menu_1 }}
+          </div>
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Legal</h5>
+            {{ menu_2 }}
+          </div>
+          <div class="flex-2 text-center mb-4">
+            <h5 class="mb-1">Social</h5>
+            {{ menu_3 }}
+          </div>
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Company</h5>
+            {{ menu_4 }}
+          </div>
+        </div>
       </div>
-      <div class="w-100 d-flex justify-content-around flex-column flex-md-row">
-        <div class="flex-1 text-center mb-4">
-          <h5 class="mb-1">Links</h5>
-          {{ menu_1 }}
-        </div>
-        <div class="flex-1 text-center mb-4">
-          <h5 class="mb-1">Legal</h5>
-          {{ menu_2 }}
-        </div>
-        <div class="flex-2 text-center mb-4">
-          <h5 class="mb-1">Social</h5>
-          {{ menu_3 }}
-        </div>
-        <div class="flex-1 text-center mb-4">
-          <h5 class="mb-1">Company</h5>
-          {{ menu_4 }}
-        </div>
-      </div>
-    </div>
+    {% endblock %}
+  {% endembed %}
   </div>
   <div class="bg-light">
     <div class="container py-4 px-6 d-flex flex-wrap flex-column flex-sm-row">

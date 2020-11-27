@@ -10,11 +10,21 @@
 {% set id = uuid() %}
 
 {# TEMPLATE #}
-<div class="tab w-full overflow-hidden border-t" data-children-count="1">
-  <input class="absolute opacity-0 " id="{{ id }}" type="checkbox" name="tabs">
-  <label class="block p-5 border-l-2 leading-normal text-xl cursor-pointer" for="{{ id }}">{{ label }}</label>
-  <div class="tab-content overflow-hidden border-l-2 border-indigo-500 leading-normal">
-    <div class="p-5">{{ content }}</div>
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="{{ id }}">
+      <h5 class="mb-0">
+        <button class="btn btn-block btn-link text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          {{ label }}
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="{{ id }}" data-parent="#accordion">
+      <div class="card-body">
+        {{ content }}
+      </div>
+    </div>
   </div>
 </div>
-

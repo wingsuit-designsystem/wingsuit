@@ -1,17 +1,17 @@
 {% embed "@organisms/container/container.twig" with { padding_top: 'small' } %}
   {% block content %}
-  <div class="text-center w-1/2 m-auto text-gray-dark">
+  <div class="text-center w-50 m-auto text-gray-dark">
     {% include "@atoms/headline/headline.twig" with {
-      content: headline
+      content: headline, element: "h1"
     } only %}
   </div>
-  <div class="block md:flex group hover:no-underline pt-10">
-    <div class="w-full md:w-1/2 pb-8">
+  <div class="d-block d-md-flex group row pt-10">
+    <div class="col-12 col-md-2 pb-8">
       {% block image %}
         {{ image }}
       {% endblock %}
     </div>
-    <div class="w-full md:w-1/2 md:pl-4">
+    <div class="col-12 col-md-2 pl-md-4">
       <div class="text-base mb-10 text-gray-dark font-sans">
         {% block text %}
           {{ text }}
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="block md:flex pt-10">
+  <div class="d-block d-md-flex pt-10">
     {% block more %}
       {{ more }}
     {% endblock %}
