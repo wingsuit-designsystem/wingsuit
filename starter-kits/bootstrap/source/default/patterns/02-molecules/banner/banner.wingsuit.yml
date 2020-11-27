@@ -31,7 +31,7 @@ banner:
         id: placeholder
         variant: image
         settings:
-          style: banner
+          style: article
     headline:
       type: text
       label: Headline

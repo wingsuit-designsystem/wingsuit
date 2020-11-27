@@ -9,9 +9,9 @@
 <header class="{{ header_classes }}">
   <nav class="navbar container navbar-expand-lg">
     {% include "@atoms/logo/logo.twig" only %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler btn-link" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      {% include "@atoms/hamburger/hamburger.twig" only %}
     </button>
     <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
       {{ menu }}

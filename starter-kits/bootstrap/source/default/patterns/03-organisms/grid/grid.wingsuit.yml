@@ -44,28 +44,28 @@ grid:
     columns:
       1:
         equal:
-          default: 'w-full'
+          default: 'col-12'
       2:
         equal:
-          default: 'w-full md:w-1/2 '
+          default: 'col-12 col-md-6'
         '66x33':
-          1: 'w-full md:w-2/3'
-          2: 'w-full md:w-1/3'
+          1: 'col-12 col-md-8'
+          2: 'col-12 col-md-4'
         '33x66':
-          1: 'w-full md:w-1/3'
-          2: 'w-full md:w-2/3'
+          1: 'col-12 col-md-4'
+          2: 'col-12 col-md-8'
       3:
         equal:
-          default: 'w-full md:w-1/3'
+          default: 'col-12 col-md-4'
         '25x50x25':
           default: 'w-full md:w-1/4'
-          2: 'w-full md:w-1/2'
+          2: 'col-12 col-md-6'
       4:
         equal:
-          default: 'w-full md:w-1/4'
+          default: 'col-12 col-md-3'
       5:
         equal:
-          default: 'w-full sm:w-1/2 md:w-1/5'
+          default: 'col-12 col-sm-6 col-md-2'
     gutter:
       none:
         container: ''
