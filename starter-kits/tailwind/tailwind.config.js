@@ -1,13 +1,8 @@
-const customForms = require('@tailwindcss/custom-forms');
-
-const rem = (px) => ({ [px]: `${px / 16}rem` });
+const forms = require('@tailwindcss/forms');
+const typography = require('@tailwindcss/typography');
 
 module.exports = {
   important: false,
-  future: {
-    purgeLayersByDefault: true,
-    removeDeprecatedGapUtilities: true,
-  },
   purge: {
     layers: ['utilities'],
     content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
@@ -27,11 +22,8 @@ module.exports = {
       },
       maxWidth: {
         none: 'none',
-        ...rem(120),
-        ...rem(800),
-        ...rem(1200),
-        ...rem(1600),
-        ...rem(1920),
+        '7xl': '100rem',
+        '8xl': '120rem',
       },
     },
     fontFamily: {
@@ -49,5 +41,5 @@ module.exports = {
     fill: ['responsive', 'hover', 'focus'],
     spacing: ['responsive', 'last'],
   },
-  plugins: [customForms],
+  plugins: [forms, typography],
 };

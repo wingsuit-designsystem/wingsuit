@@ -12,7 +12,7 @@
   "p-5 w-full border-l-4",
   variant == 'status' ? "bg-green-100 border-green-500 text-green-700",
   variant == 'error' ? "bg-red-100 border-red-500 text-red-700",
-  variant == 'warning' ? "bg-orange-100 border-orange-500 text-orange-700"
+  variant == 'warning' ? "bg-yellow-100 border-yellow-500 text-yellow-700"
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
