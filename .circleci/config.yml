@@ -5,7 +5,10 @@ aliases:
     working_directory: /tmp/storybook
     docker:
       - image: circleci/node:12-browsers
-
+  - &node10
+    working_directory: /tmp/storybook
+    docker:
+      - image: circleci/node:10-browsers
 jobs:
   install:
     <<: *defaults
@@ -183,7 +186,7 @@ jobs:
             cd examples/official-wingsuit
             yarn storybook --smoke-test --quiet
   docs:
-    <<: *defaults
+    <<: *node10
     steps:
       - checkout
       - run:
