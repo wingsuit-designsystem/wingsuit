@@ -18,8 +18,10 @@ addParameters({
     storySort: {
       method: 'alphabetical',
       order: [
-        'Base',
-        ['Welcome', 'Colors', 'Typography', 'Scales', 'Layout'],
+        'Welcome',
+        'Layout',
+        'Tokens',
+        ['Colors', 'Typography', 'Scales'],
         'Atoms',
         'Molecules',
         'Organisms',

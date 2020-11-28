@@ -15,9 +15,9 @@
 Check out the <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information.
 ## Prerequisites
 
-- [Node `^8`, `^10`](https://nodejs.org)
-- [NPM `^5`, `^6`](https://www.npmjs.com/)
-- [PHP `^7.0.0`](https://php.net)
+- [Node `^12`](https://nodejs.org)
+- [YARN `^1.19`](https://yarnpkg.com/)
+- [PHP `^7.3.0`](https://php.net)
 
 
 ## Quickstart
