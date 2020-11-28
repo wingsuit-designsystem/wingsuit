@@ -32,7 +32,7 @@ To adjust the way the blocks are printed use twig blocks.
 * cell_outer: <br/>Use block cell_outer to adjust the markup of each cell. Variables: `cell_attributes`, `cell`, `cell_counter`.
 * cell_inner:<br/>Use block cell_inner to print the cell variable. Variables: `cell`, `cell_counter`
 ### Example: cell_inner
-```twig
+```twig dark
   {% set cells = [
         {content: '<div class="w-full h-20 bg-primary">1</div>'},
         {content: '<div class="w-full h-20 bg-primary">2</div>'},
@@ -55,7 +55,7 @@ To adjust the way the blocks are printed use twig blocks.
 ```
 
 ### Example: cell_outer
-```twig
+```twig dark
   {% set cells = [
         {content: '<div class="w-full h-20 bg-primary">1</div>'},
         {content: '<div class="w-full h-20 bg-primary">2</div>'},
@@ -83,7 +83,7 @@ To adjust the way the blocks are printed use twig blocks.
 The pattern comes with most common column widths configurations like 50x50 or 33x66.
 If you need additional configuration you can extends the columns configuration inside the `grid.wingsuit.yml`.
 
-```yaml
+```yaml dark
 columns:
 2: << Columns count
   '66x33': << Name
@@ -96,7 +96,7 @@ columns:
 
 ## Gutter
 To configure the spacing between the columns use the gutter configuration in the grid.wingsuit.yml.
-```yaml
+```yaml dark
   gutter:
     ...
     default: << Name of
@@ -107,7 +107,7 @@ To configure the spacing between the columns use the gutter configuration in the
 
 ## Examples
 ### 4 equal columns.
-```twig
+```twig dark
   {% include "@organisms/grid/grid.twig" with {
     cells: cells,
     columns: 4,
@@ -120,14 +120,13 @@ To configure the spacing between the columns use the gutter configuration in the
 
 ### 3 Columns with 25% 50% 25%.
 
-```twig
+```twig dark
  {% include "@organisms/grid/grid.twig" with {
    cells: cells,
    columns: 3,
    columns_width: '25x50x25',
    gutter: 'default'
  } only %}
-`} />
 ```
 
 <PatternPreview variant={pattern.getDefaultVariant()} columns="3" columns_width="25x50x25"/>

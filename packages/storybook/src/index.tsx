@@ -149,7 +149,7 @@ function getStories(pattern: Pattern, module) {
             <Primary />
             <PatternProperties variant={variant} />
             <PatternInclude variant={variant} />
-            <PatternDoc pattern={pattern} />
+            <PatternDoc pattern={pattern} showInclude />
           </>
         ),
         storyDescription: variant.getDescription(),
