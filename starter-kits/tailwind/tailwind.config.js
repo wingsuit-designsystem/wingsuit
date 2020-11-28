@@ -1,5 +1,4 @@
 const customForms = require('@tailwindcss/custom-forms');
-const typography = require('@tailwindcss/typography');
 
 const rem = (px) => ({ [px]: `${px / 16}rem` });
 
@@ -50,5 +49,5 @@ module.exports = {
     fill: ['responsive', 'hover', 'focus'],
     spacing: ['responsive', 'last'],
   },
-  plugins: [customForms, typography],
+  plugins: [customForms],
 };
