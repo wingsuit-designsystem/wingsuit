@@ -10,9 +10,9 @@
 
 ## Prerequisites
 
-- [Node `^10`](https://nodejs.org)
-- [NPM `^5`, `^6`](https://www.npmjs.com/)
-- [PHP `^7.0.0`](https://php.net)
+- [Node `^12`](https://nodejs.org)
+- [YARN `^1.19`](https://yarnpkg.com/)
+- [PHP `^7.3.0`](https://php.net)
 
 
 #### NPM

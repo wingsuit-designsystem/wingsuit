@@ -28,11 +28,15 @@
     {% endblock %}
   {% endembed %}
   <div class="bg-gray-200">
-    <div class="max-w-1200 mx-auto py-4 px-6 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
-        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
-      </p>
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+    {% embed "@organisms/container/container.twig" %}
+      {% block content %}
+
+        <div class="py-4 px-6 flex flex-wrap flex-col sm:flex-row">
+          <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
+            <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
+               target="_blank">@knyttneve</a>
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
         <a class="text-gray-500">
           {% include "@atoms/svg/_svg--icon.twig" with {
             icon: "facebook",
@@ -58,6 +62,8 @@
           } only %}
         </a>
       </span>
-    </div>
+        </div>
+      {% endblock %}
+    {% endembed %}
   </div>
 </footer>
