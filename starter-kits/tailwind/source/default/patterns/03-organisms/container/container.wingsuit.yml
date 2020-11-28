@@ -67,10 +67,10 @@ container:
       default: 'pb-10 md:pb-20'
       large: 'pb-20 md:pb-24'
     width:
-      small: 'max-w-800'
-      default: 'max-w-1200'
-      large: 'max-w-1600'
-      xlarge: 'max-w-1920'
+      small: 'max-w-4xl'
+      default: 'max-w-6xl'
+      large: 'max-w-7xl'
+      xlarge: 'max-w-8xl'
     bg:
       gray-medium: 'bg-gray-500'
       gray-light: 'bg-gray-300'
