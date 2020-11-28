@@ -24,8 +24,12 @@ Each app is configurable by following properties:
 
 ## Design systems details
 In the `designSystems` section you define the folder structure of your design system. 
-Each design system uses `namespaces` to configure folder aliases.
-### Namespaces:
+Each designSystem is configurable by following properties:
+* `path` the path to the design system.
+* `patternFolder` the folder name under the designsystem folder for patterns.
+* `namespaces` to configure folder aliases.
+
+#### Namespaces:
 
 ```js
 const path = require('path' );
