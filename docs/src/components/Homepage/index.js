@@ -43,13 +43,13 @@ const Homepage = ({ users }) => (
                     Get Started
                   </a>
                   <a
-                    href="https://wingsuit.netlify.app/"
+                    href="https://wingsuit-designsystem.github.io/wingsuit/"
                     target="_blank"
                     rel="noreferrer"
                     className="mb-2 btn btn-lg bg-green-500 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Storybook on Netlify!
+                    Storybook Documentation!
                   </a>
                 </div>
               </div>
