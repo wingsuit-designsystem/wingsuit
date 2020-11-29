@@ -5,7 +5,7 @@ title: 'Introduction'
 Wingsuit is a design system for twig based UI components. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like drupal. 
 
  
-## Features:
+## Features
 * ### Define your component once
 The `wingsuit.yml`, an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html), is the heart of each component.
 Wingsuit reads the YAML to generate components, stories, fields and settings in Storybook. The same file is used by UI Patterns.  
@@ -32,23 +32,35 @@ Wingsuit solves this problem with a common component configuration `wingsuit.yml
 So there is no need to update the colors documentation if you change your colors in TailwindCSS.
 * ### Well predefined components
 Wingsuit uses [tailblocks](https://mertjf.github.io/tailblocks/) for predefined components. So it is very easy to adjust them and if you don't need them simple delete them.
-* ### Incredible Fast and compatible with PHP Twig
+* ### Incredible fast and compatible with PHP Twig
 It takes around `1 second` from save to see your changes in Storybook. Wingsuit uses client side [twing](https://github.com/NightlyCommit/twing) and Postcss.
 Twing is nearly 100% compatible with PHP Twig. We had tested it with really large Drupal projects. 
 
-## Workflow:
 
-### Storybook: Design your component in storybook with variants and settings
-#### Edit settings with Knobs:
-<img src="images/knobs.png">.
+<div class="next-title">NEXT</div>
+<div class="next">
+    <div class="next__content"><b>Quickstart guide</b></div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" href="../../guides/quick-start-guide">Continue</a>
+</div>
+<div class="next">
+    <div class="next__content"><b>Drupal Kickstarter</b><br>with UI Patterns and Layout Builder</div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" href="../../drupal/ui_patterns">Continue</a>
+</div>
 
-#### Automatic generated Docs: 
+
+## Screenshots
+### Storybook
+<img src="images/knobs.png">
+<div class="caption">Edit settings with Knobs</div>
+
 <img src="images/docs.png">
+<div class="caption">Automatic generated Docs</div>
 
-### Drupal: 
-#### Map fields and configure your pattern in Manage Display with Layout builder.
+### Drupal
+
 <img src="/images/configure-patterns.png">
+<div class="caption">Map fields and configure your pattern in Manage Display with Layout builder.</div>
 
-#### Use the mapped pattern as inline block in Layout tab
 <img src="images/add-blocks.png">
+<div class="caption">Use the mapped pattern as inline block in Layout tab</div>
 

@@ -49,7 +49,7 @@ const Homepage = ({ users }) => (
                     className="mb-2 btn btn-lg bg-green-500 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Storybook Documentation!
+                    Demo (Doc only)
                   </a>
                 </div>
               </div>

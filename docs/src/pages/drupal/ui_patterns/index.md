@@ -19,7 +19,7 @@ The kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as 
 
 ## Prerequisites
 
-- [Node `^8`, `^10`](https://nodejs.org)
+- [Node `^12`](https://nodejs.org)
 - [YARN `^1.22`](https://classic.yarnpkg.com/)
 - [PHP `^7.0.0`](https://php.net)
 
