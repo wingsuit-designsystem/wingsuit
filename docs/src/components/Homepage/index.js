@@ -43,7 +43,7 @@ const Homepage = ({ users }) => (
                     Get Started
                   </a>
                   <a
-                    href="https://wingsuit.netlify.app/?path=/story/base-welcome--page"
+                    href="https://wingsuit.netlify.app/"
                     target="_blank"
                     rel="noreferrer"
                     className="mb-2 btn btn-lg bg-green-500 font-weight-bold"

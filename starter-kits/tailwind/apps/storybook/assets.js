@@ -3,5 +3,5 @@ function requireAll(r) {
 }
 
 requireAll(
-  require.context('wsdesignsystem', true, /\.(mp4|svg|png|webp|jpg|jpeg|gif|woff|woff2|ttf)$/)
+  require.context('wsdesignsystem', true, /\.(svg|png|webp|jpg|jpeg|gif|woff|woff2)$/)
 );

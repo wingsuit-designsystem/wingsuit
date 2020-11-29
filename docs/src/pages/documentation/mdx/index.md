@@ -41,6 +41,8 @@ const template = require('./presentational.twig');
 
 ## Pattern documentation components
 
+<img src="images/grid-doc.png">
+
 ### PatternProperties
 Pattern properties shows `Fields` and `Settings` from your wingsuit.yml as a tabbed table.   
 ```jsx 
@@ -62,6 +64,7 @@ import { PatternDoc } from '@wingsuit-designsystem/storybook';
 
 <PatternDoc pattern={pattern} showInclude />
 ```
+
 
 ## Token documentation components
 
