@@ -56,21 +56,21 @@ container:
       label: Additional classes
   configuration:
     padding_x:
-      default: 'px-6'
-      large: 'px-10'
+      default: ''
+      large: 'px-20'
     padding_top:
-      small: 'pt-4'
-      default: 'pt-10 md:pt-20'
-      large: 'pt-20 md:pt-24'
+      small: 'pt-5'
+      default: 'pt-5 pt-md-16'
+      large: 'pt-5 pt-md-20'
     padding_bottom:
-      small: 'pb-4'
-      default: 'pb-10 md:pb-20'
-      large: 'pb-20 md:pb-24'
+      small: 'pb-5'
+      default: 'pb-5 pb-md-16'
+      large: 'pb-5 pb-md-20'
     width:
-      small: 'max-w-800'
-      default: 'max-w-1200'
-      large: 'max-w-1600'
-      xlarge: 'max-w-1920'
+      small: 'container-sm'
+      default: 'container-lg'
+      large: 'container-lg'
+      xlarge: 'container-xl'
     bg:
-      gray-medium: 'bg-gray-500'
-      gray-light: 'bg-gray-300'
+      gray-medium: 'bg-secondary'
+      gray-light: 'bg-light'

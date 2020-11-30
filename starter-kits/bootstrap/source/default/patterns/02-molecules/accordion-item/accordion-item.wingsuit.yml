@@ -19,3 +19,6 @@ accordion_item:
     id:
       type: token
       label: Id
+    id_collapse:
+      type: token
+      label: Id collapse

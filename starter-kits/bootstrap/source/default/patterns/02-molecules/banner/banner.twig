@@ -9,32 +9,32 @@
 {# SETTINGS #}
 {% set position_classes ={
   'top_left': '',
-  'top_center': 'text-center justify-center',
-  'top_right': 'text-right justify-end',
-  'center_left': 'items-center',
-  'center_center': 'text-center items-center justify-center',
-  'center_right': 'text-right items-center justify-end',
-  'bottom_left': 'items-end',
-  'bottom_center': 'text-center items-end justify-center',
-  'bottom_right': 'text-right items-end justify-end',
+  'top_center': 'text-center justify-content-center',
+  'top_right': 'text-right justify-content-end',
+  'center_left': 'align-items-center',
+  'center_center': 'text-center align-items-center justify-content-center',
+  'center_right': 'text-right align-items-center justify-content-end',
+  'bottom_left': 'align-items-end',
+  'bottom_center': 'text-center align-items-end justify-content-center',
+  'bottom_right': 'text-right align-items-end justify-content-end',
 } %}
 
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {# TEMPLATES #}
-<div class="relative">
+<div class="position-relative">
   {{ image }}
-  <div class="absolute top-0 left-0 w-full h-full flex">
-    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[variant]}  %}
+  <div class="position-absolute w-100 h-100 d-flex" style="top: 0; left: 0;">
+    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 d-flex ' ~ position_classes[variant]}  %}
       {% block content %}
         <div class="p-6">
-          <h2 class="text-3xl font-serif">
+          <h2 class="display-4">
             {{ headline }}
           </h2>
           {% if teaser is not empty %}
-            <div class="text-xl">
+            <p class="lead">
               {{ teaser }}
-            </div>
+            </p>
           {% endif %}
         </div>
       {% endblock %}

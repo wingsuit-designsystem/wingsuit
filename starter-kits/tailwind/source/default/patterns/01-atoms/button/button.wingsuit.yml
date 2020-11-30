@@ -44,6 +44,10 @@ button:
     expanded:
       type: boolean
       label: Expanded
+
+    round:
+      type: boolean
+      label: Round
     color:
       type: select
       required: true

@@ -1,7 +1,7 @@
 {#
   Defaults
 #}
-{% set tag_name = tag_name|default('div') %}
+{% set tag_name = tag_name|default('button') %}
 {% set color = color|default('primary') %}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set icon_size = icon_size|default('default') %}
@@ -12,9 +12,9 @@
 #}
 
 {% set classes = [
-  'flex items-center justify-center inline-flex border-0 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
-  expanded ? 'w-full',
-  variant == 'outline' ? 'border-2',
+  'btn d-flex align-items-center justify-content-center',
+  expanded ? 'btn-block',
+  variant == 'outline' ? 'btn-outline-primary',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
   pattern_configuration('button', variant, 'colors')[color],
   pattern_configuration('button', variant, 'size')['text'][size],
@@ -33,7 +33,7 @@
 {#
   Template
 #}
-<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }} type="button">
   {{ text }}
   {% if icon is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {

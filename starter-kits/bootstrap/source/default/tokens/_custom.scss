@@ -1,0 +1,16 @@
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+    (
+      0: 0,
+      1: ($spacer * .25),
+      2: ($spacer * .5),
+      3: $spacer,
+      4: ($spacer * 1.5),
+      5: ($spacer * 2.5),
+      10: ($spacer * 3),
+      16: ($spacer * 4),
+      20: ($spacer * 5)
+    ),
+    $spacers
+);

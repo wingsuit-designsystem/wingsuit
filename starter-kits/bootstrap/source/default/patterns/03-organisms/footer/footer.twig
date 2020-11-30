@@ -1,38 +1,39 @@
-<footer class="text-gray-700 body-font">
+<footer class="body-font mt-5">
   {% embed "@organisms/container/container.twig" %}
     {% block content %}
-      <div class="block lg:flex py-24">
-        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center mb-6 md:text-left">
+      <div class="d-block d-lg-flex py-20">
+        <div class="flex-shrink-0 mx-md-0 mx-auto text-center mb-4">
           {% include "@atoms/logo/logo.twig" only %}
           <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
         </div>
-        <div class="w-full flex flex-col md:flex-row">
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Links</h2>
+        <div class="w-100 d-flex justify-content-around flex-column flex-md-row">
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Links</h5>
             {{ menu_1 }}
           </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Legal</h2>
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Legal</h5>
             {{ menu_2 }}
           </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Social</h2>
+          <div class="flex-2 text-center mb-4">
+            <h5 class="mb-1">Social</h5>
             {{ menu_3 }}
           </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Company</h2>
+          <div class="flex-1 text-center mb-4">
+            <h5 class="mb-1">Company</h5>
             {{ menu_4 }}
           </div>
         </div>
       </div>
     {% endblock %}
   {% endembed %}
-  <div class="bg-gray-200">
-    <div class="max-w-1200 mx-auto py-4 px-6 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
-        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
+  </div>
+  <div class="bg-light">
+    <div class="container py-4 px-5 d-flex flex-wrap flex-column flex-sm-row">
+      <p class="text-gray-500 text-sm text-center text-lg-left">© 2020 tailblocks —
+        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@Wingsuit</a>
       </p>
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+      <span class="d-inline-flex ml-sm-auto mt-sm-0 mt-2 justify-content-center justify-content-sm-start">
         <a class="text-gray-500">
           {% include "@atoms/svg/_svg--icon.twig" with {
             icon: "facebook",
