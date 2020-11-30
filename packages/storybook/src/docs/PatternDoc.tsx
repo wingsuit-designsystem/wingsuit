@@ -14,7 +14,7 @@ interface StoriesProps {
 }
 
 export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps) => {
-  const { pattern, includePrimary } = props;
+  const { pattern, includePrimary, showInclude } = props;
 
   if (pattern == null) {
     return null;
@@ -29,8 +29,8 @@ export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps)
 
   return (
     <>
-      {variants.map((variant) => {
-        const included = props.showInclude ?? <PatternInclude variant={variant} />;
+      {variants.map(variant => {
+        const included = showInclude === true ? <PatternInclude variant={variant} /> : null;
         return (
           <div key={variant.getId()} id={`anchor--${variant.getStoryId()}`}>
             <Heading>{variant.getLabel()}</Heading>

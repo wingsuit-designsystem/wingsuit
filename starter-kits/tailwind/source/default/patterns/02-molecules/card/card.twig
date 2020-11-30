@@ -21,7 +21,7 @@
   alignment == 'center' ? 'text-center rounded': '',
   bg_color == 'gray' ? 'bg-gray-200',
   bg_color == 'blue' ? 'bg-blue-200',
-  'w-full flex flex-grow',
+  'w-full flex flex-grow max-w-xl',
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}

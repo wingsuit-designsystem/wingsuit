@@ -10,7 +10,8 @@ export function resolveConfig(
   appName: string,
   environment = 'development',
   configurationOverwrites: any = {},
-  wingsuitConfig: any = null
+  wingsuitConfig: any = null,
+  configPath: any = null
 ): AppConfig {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
@@ -19,7 +20,7 @@ export function resolveConfig(
 
   let appConfig = mergedConfig.apps[appName];
 
-  const rootPath = process.cwd();
+  const rootPath = configPath != null ? configPath : process.cwd();
   if (appConfig == null) {
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
@@ -34,7 +35,7 @@ export function resolveConfig(
   // Overwrite by parameter.
   appConfig.presetsRegistry = mergedConfig.presetsRegistry;
 
-  mergedConfig.presets.forEach((preset) => {
+  mergedConfig.presets.forEach(preset => {
     appConfig.presets.push(preset);
   });
 
@@ -66,7 +67,11 @@ export function resolveConfig(
     );
   }
   appConfig.name = appName;
-  appConfig.namespaces = designSystem.namespaces;
+  appConfig.patternFolder = designSystem.patternFolder;
   appConfig.absDesignSystemPath = path.join(appConfig.absRootPath, designSystem.path);
+  appConfig.absPatternPath = path.join(appConfig.absDesignSystemPath, appConfig.patternFolder);
+  appConfig.namespaces = designSystem.namespaces;
+  appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
+  appConfig.namespaces.wspatterns = appConfig.absPatternPath;
   return appConfig;
 }

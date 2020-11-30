@@ -3,7 +3,6 @@ id: 'images'
 title: 'Images & Icons'
 ---
 
-
 The `apps/[app]/assets.js` includes all images. Wingsuit will compile these files to `[dist]/assets/images`.
 
 ### Embedding images in twig:
@@ -24,9 +23,9 @@ To use images inside your CSS file, use the relative path to the image. Webpack 
 ### Placeholder images:
 Wingsuit supports image styles and responsive image styles for placeholder images in storybook. 
 
-You can configure your image styles in `apps/storybook/config/image.config.yml`
+You can configure your image styles in your `placeholder.wingsuit.yml`
 
-Sample `image.config.yml`
+Sample `placeholder.wingsuit.yml`
 ```yaml
 imageConfig:
   styles:
@@ -50,7 +49,7 @@ imageConfig:
 
 ```
 
-<b>The configuration file has 3 sections:</b>
+<b>Under configuration you find three sections:</b>
 * Basic image styles
 * Responsive image styles
 * Breakpoints

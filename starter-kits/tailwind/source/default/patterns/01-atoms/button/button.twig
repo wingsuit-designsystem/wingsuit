@@ -12,7 +12,7 @@
 #}
 
 {% set classes = [
-  'flex items-center justify-center inline-flex border-0 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
+  'flex items-center justify-center inline-flex border-2 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
   expanded ? 'w-full',
   variant == 'outline' ? 'border-2',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
@@ -36,7 +36,7 @@
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
   {{ text }}
   {% if icon is not empty %}
-    {% include "@atoms/svg/_svg--icon.twig" with {
+    {% include "@components/svg/_svg--icon.twig" with {
       icon: icon,
       size: icon_size,
     } only %}

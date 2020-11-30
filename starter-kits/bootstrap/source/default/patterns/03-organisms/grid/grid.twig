@@ -20,7 +20,7 @@
 
 {% set classes = ([
   gutter_container_classes,
-  'd-flex flex-wrap row'
+  'row'
 ]) | sort | join(' ') | trim %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
@@ -35,7 +35,6 @@
         {% set cell_attributes = create_attribute().
           addClass(
           [
-            'd-flex flex-column',
             column_classes,
             gutter_cell_classes
           ] | sort | join(' ') | trim) %}

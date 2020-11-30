@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Spacing } from '@wingsuit-designsystem/storybook';
+const tailwindFile = require('../../config/silo/tailwind.json');
+const spacing = tailwindFile.tailwind.theme.spacing;
+const width = tailwindFile.tailwind.theme.width;
+const height = tailwindFile.tailwind.theme.height;
+const maxWidth = tailwindFile.tailwind.theme.maxWidth;
+
+<Meta title="Tokens/Scales"
+parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Scaling
+
+## Tailwind `default` spacing scale
+<Spacing spacing={spacing}></Spacing>
+
+## Width scale
+<Spacing spacing={width} classNamePrefix="w-"></Spacing>
+
+## Max Width scale
+<Spacing spacing={maxWidth} classNamePrefix="w-"></Spacing>
+
+## Height scale
+<Spacing spacing={height} classNamePrefix="h-" direction="vertical"></Spacing>

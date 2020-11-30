@@ -5,10 +5,15 @@ import { withKnobs, text, boolean, number, object, optionsKnob } from '@storyboo
 import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
+import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
+
 import PatternPreview from './components/PatternPreview';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
+
+ReactSyntaxHighlighter.registerLanguage('twig', twig);
 
 function getStorybookKnobsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -19,7 +24,7 @@ function getStorybookKnobsOptions(setting) {
       Empty: '',
     };
   }
-  Object.keys(options).forEach((key) => {
+  Object.keys(options).forEach(key => {
     const paramKey = options[key] != null ? options[key] : key;
     knobsOption[paramKey] = key;
   });
@@ -41,7 +46,7 @@ export function configure(
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
-    patternIds.forEach((patternId) => {
+    patternIds.forEach(patternId => {
       const pattern = storage.loadPattern(patternId);
       if (pattern.isVisible('storybook')) {
         getStories(pattern, module);
@@ -51,14 +56,14 @@ export function configure(
     // Load stories form storybook app.
     const allExports: any = [];
     if (Array.isArray(storybookContext) === false) {
-      storybookContext.keys().forEach((key) => {
+      storybookContext.keys().forEach(key => {
         if (storybookContext(key).default !== null) {
           allExports.push(storybookContext(key));
         }
       });
     } else {
-      storybookContext.forEach((innerContext) => {
-        innerContext.keys().forEach((key) => {
+      storybookContext.forEach(innerContext => {
+        innerContext.keys().forEach(key => {
           if (innerContext(key).default != null) {
             allExports.push(innerContext(key));
           }
@@ -72,7 +77,7 @@ export function configure(
 function getProps(variant) {
   const knobsVariables = [];
   const groupSetting = 'Settings';
-  Object.keys(variant.getSettings()).forEach((key) => {
+  Object.keys(variant.getSettings()).forEach(key => {
     const setting = variant.getSetting(key);
     if (setting.isEnable()) {
       if (setting.getType() === 'select' || setting.getType() === 'radios') {
@@ -107,7 +112,7 @@ function getProps(variant) {
     }
   });
   const groupFields = 'Fields';
-  Object.keys(variant.getFields()).forEach((key) => {
+  Object.keys(variant.getFields()).forEach(key => {
     const field = variant.getField(key);
     if (field.isEnable()) {
       if (field.getType() === 'object') {
@@ -129,7 +134,7 @@ function getStories(pattern: Pattern, module) {
     })
   );
 
-  Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
+  Object.keys(pattern.getPatternVariants()).forEach(variantKey => {
     const variant = pattern.getVariant(variantKey);
     let parameters = {
       component: PatternPreview,
@@ -144,7 +149,7 @@ function getStories(pattern: Pattern, module) {
             <Primary />
             <PatternProperties variant={variant} />
             <PatternInclude variant={variant} />
-            <PatternDoc pattern={pattern} />
+            <PatternDoc pattern={pattern} showInclude />
           </>
         ),
         storyDescription: variant.getDescription(),
@@ -172,5 +177,7 @@ export {
 export { default as RenderTwig } from './components/RenderTwig';
 export { default as PatternPreview } from './components/PatternPreview';
 export { default as PatternLoad } from './docs/PatternLoad';
+export { default as Spacing } from './docs/Spacing';
+export { default as Typeset } from './docs/Typeset';
 export { default as wingsuitTheme } from './theme';
 export { PatternDoc, PatternProperties, PatternInclude };

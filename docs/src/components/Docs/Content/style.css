@@ -12,9 +12,11 @@
   margin-bottom: 0;
   line-height: 1.5;
 }
+
 .btn {
   border-bottom: 4px solid transparent;
 }
+
 .btn:hover {
   border-bottom: 4px solid black;
 }
@@ -39,23 +41,66 @@
   max-width: 100%;
 }
 
+.next {
+  display: flex;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.05) 0px 5px 15px 0px;
+  border-radius: 5px;
+  padding: 30px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media (min-width: 576px) {
+  .next {
+    flex-direction: row;
+  }
+}
+
+.next__button {
+  max-height: 45px;
+  color: #000000 !important;
+}
+
+.next__content {
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.next-title {
+  margin-top: 40px !important;
+  color: rgb(153, 153, 153) !important;
+  display: block;
+  margin-bottom: 1rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 13px !important;
+}
 #docs-content .markdown h2 {
   font-size: 24px;
   line-height: 150%;
+  font-weight: bold;
   margin-bottom: 16px;
 }
-
+#docs-content .caption {
+  margin-top: -15px !important;
+  position: relative;
+  color: #cecece;
+  text-align: center;
+}
 #docs-content .markdown h3 {
   font-size: 20px;
+  font-weight: bold;
   line-height: 150%;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 #docs-content .markdown h4 {
   font-size: 16px;
   line-height: 150%;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 #docs-content .code-hightlight {
@@ -71,7 +116,8 @@
 #docs-content .markdown a:hover,
 #docs-content .markdown a:active {
   text-decoration: none;
-  color: #1E88E5;
+  color: #8000FF;
+  font-weight: bold;
 }
 #docs-content ul {
   padding-left: 15px;

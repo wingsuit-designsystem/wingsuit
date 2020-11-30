@@ -101,7 +101,7 @@ export default class PatternVariant {
 
   public getPreviewPatterns() {
     const previewPatterns = {};
-    Object.keys(this.fields).forEach((key) => {
+    Object.keys(this.fields).forEach(key => {
       const field: Field = this.fields[key];
       const preview = field.getPreview();
       if (field.getType() === 'pattern' && Array.isArray(preview)) {
@@ -117,24 +117,24 @@ export default class PatternVariant {
 
   public getVariables() {
     const values = {};
-    Object.keys(this.settings).forEach((key) => {
+    if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
+      // eslint-disable-next-line dot-notation
+      values['variant'] = this.variant;
+    }
+
+    Object.keys(this.fields).forEach(key => {
+      const field: Field = this.fields[key];
+      if (field !== null && field.getType() !== 'pattern') {
+        values[key] = field.getPreview();
+      }
+    });
+    Object.keys(this.settings).forEach(key => {
       if (this.settings[key].getType() === 'attributes') {
         values[key] = new TwigAttribute(this.settings[key].getPreview());
       } else {
         values[key] = this.settings[key].getPreview();
       }
     });
-    Object.keys(this.fields).forEach((key) => {
-      const field: Field = this.fields[key];
-      if (field !== null && field.getType() !== 'pattern') {
-        values[key] = field.getPreview();
-      }
-    });
-
-    if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
-      // eslint-disable-next-line dot-notation
-      values['variant'] = this.variant;
-    }
     // eslint-disable-next-line dot-notation
     if (values['attributes'] == null) {
       // eslint-disable-next-line dot-notation
@@ -165,7 +165,10 @@ export default class PatternVariant {
   private settings: Setting[] = [];
 
   private cleanStorybookString(string: string) {
-    return string.toLowerCase().replace(' ', '-').replace('/', '-');
+    return string
+      .toLowerCase()
+      .replace(' ', '-')
+      .replace('/', '-');
   }
 
   constructor(

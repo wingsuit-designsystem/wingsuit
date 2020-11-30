@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-tailwind",
-  "version": "1.0.0-beta.26",
+  "version": "1.0.0-beta.28",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "private": true,
@@ -21,7 +21,9 @@
   "scripts": {
     "dev:storybook": "start-storybook --config-dir apps/storybook",
     "build:storybook": "build-storybook --config-dir apps/storybook -o ./dist/app-storybook",
-    "build-storybook": "build-storybook",
+    "docs:storybook": "build-storybook --docs --config-dir apps/storybook -o ./dist/app-storybook",
+    "build-storybook": "build-storybook ",
+    "deploy:storybook": "storybook-to-ghpages --existing-output-dir ./dist/app-storybook",
     "dev:drupal": "cross-env-shell NODE_ENV=development \"webpack --watch --config ./apps/drupal/webpack.config.js\"",
     "build:drupal": "cross-env-shell NODE_ENV=production \"webpack  --config ./apps/drupal/webpack.config.js\"",
     "lint:js": "eslint --ext .js ./",
@@ -35,20 +37,20 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "@storybook/addon-backgrounds": "^6.0.0",
-    "@storybook/addon-links": "^6.0.0",
-    "@storybook/addon-viewport": "^6.0.0",
-    "@storybook/addons": "^6.0.0",
+    "@storybook/addon-backgrounds": "^6.1.0",
+    "@storybook/addon-links": "^6.1.0",
+    "@storybook/addon-viewport": "^6.1.0",
+    "@storybook/addons": "^6.1.0",
     "@storybook/linter-config": "^2.5.0",
-    "@storybook/react": "^6.0.0",
-    "@tailwindcss/custom-forms": "^0.2.1",
+    "@storybook/react": "^6.1.0",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.0-beta.26",
-    "@wingsuit-designsystem/core": "1.0.0-beta.26",
-    "@wingsuit-designsystem/pattern": "1.0.0-beta.26",
-    "@wingsuit-designsystem/preset-tailwind": "1.0.0-beta.26",
-    "@wingsuit-designsystem/storybook": "1.0.0-beta.26",
+    "@wingsuit-designsystem/cli": "1.0.0-beta.28",
+    "@wingsuit-designsystem/core": "1.0.0-beta.28",
+    "@wingsuit-designsystem/pattern": "1.0.0-beta.28",
+    "@wingsuit-designsystem/preset-tailwind2": "1.0.0-beta.28",
+    "@wingsuit-designsystem/storybook": "1.0.0-beta.28",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -63,6 +65,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.0.1",
     "lodash": "^4.17.20",
+    "postcss": "^7",
     "postcss-nested": "^4.2.1",
     "prettier": "^1.19.1",
     "react": "^16.13.1",
@@ -74,11 +77,12 @@
     "yo": "^3.1.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.3.1",
     "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",
     "swiper": "^5.4.5",
-    "tailwindcss": "^1.7.0"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }

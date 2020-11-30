@@ -2,22 +2,22 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
-# Storybook for Drupal with Tailwind CSS and UI Patterns
-
-## Wingsuit is an open source design system to build [UI Patterns](https://www.drupal.org/project/ui_patterns) (and|or) Twig Components with [Storybook](https://storybook.js.org/) for Drupal.
+# Build bulletproof TWIG Components in Storybook
 
 1.  Describe, develop and test your Pattern in storybook with [twing](https://www.npmjs.com/package/twing).
 1.  Use the same pattern in Drupal with UI Patterns without any presenter pattern
-1.  Tailwind + Alpinejs for rapid development and 100% page speed
+1.  Starterkits for:
+    *  Tailwind + Alpinejs
+    *  Boostrap + jQuery
 1.  Bundled Webpack base configuration to keep everything up to date.
 
 ## Documentation
-Check out <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information.
+Check out the <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information.
 ## Prerequisites
 
-- [Node `^8`, `^10`](https://nodejs.org)
-- [NPM `^5`, `^6`](https://www.npmjs.com/)
-- [PHP `^7.0.0`](https://php.net)
+- [Node `^12`](https://nodejs.org)
+- [YARN `^1.19`](https://yarnpkg.com/)
+- [PHP `^7.3.0`](https://php.net)
 
 
 ## Quickstart
@@ -62,17 +62,18 @@ To develop Wingsuit you need `yarn`.
 
 ```bash
 git clone git@github.com:wingsuit-designsystem/wingsuit.git
+cd wingsuit
 yarn bootstrap
 yarn dev
 ```
 
-1. To start storybook `cd packages/wingsuit` and run:
+1. To start storybook `cd starter-kits/tailwind` and run:
 
 ```bash
 yarn dev:storybook
 ```
 
-1. To start drupal `cd packages/wingsuit` and run:
+1. To start drupal `cd starter-kits/tailwind` and run:
 
 ```bash
 yarn dev:drupal

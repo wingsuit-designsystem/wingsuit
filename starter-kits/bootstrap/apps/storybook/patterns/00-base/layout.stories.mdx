@@ -1,7 +1,5 @@
 import { Meta, Title, Subtitle, Heading, Subheading } from '@storybook/addon-docs/blocks';
-import { Source } from '@storybook/components';
 import LinkTo from '@storybook/addon-links/react';
-import dedent from 'ts-dedent';
 
 <Meta title="Base/Layout"
   parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
@@ -10,8 +8,10 @@ import dedent from 'ts-dedent';
 <div>
   <Title/>
   <Subtitle>Use our mobile-first, extremely flexible flexbox layout system to build all sorts of layouts. It consists of three components: <LinkTo story="container" kind="organisms-container"><b>container</b></LinkTo>, <LinkTo story="grid" kind="organisms-grid"><b>grid</b></LinkTo> and <LinkTo story="one-column" kind="organisms-section"><b>section</b></LinkTo></Subtitle>
-  <Heading>How it works</Heading>
-  <Source format={false} language="twig" dark code={dedent`
+
+## How it works
+
+  ```twig dark
     {% embed "@organisms/container/container.twig" with {width: 'default', 'padding_x': 'default', padding_top: 'default'} only %}
       {% block content %}
       {% set cells = [
@@ -27,7 +27,8 @@ import dedent from 'ts-dedent';
             } only %}
     {% endblock %}
   {% endembed %}
-  `} />
+  ```
+
   <p>This example above creates a two column grid inside a container. </p>
   <Subheading>Breaking it down, here’s how it works:</Subheading>
   <ul>
@@ -38,8 +39,10 @@ import dedent from 'ts-dedent';
     <li>The columns are 50%:50% [columns_width].</li>
     <li>There is a default spacing between the cells [gutter].</li>
   </ul>
-  <Heading>Section</Heading>
-  <Source format={false} language="twig" dark code={dedent`
+
+## Section
+
+  ```twig dark
   {% embed "@organisms/section/section.twig" with { columns: 2, headline: 'Section title', width: 'default', 'padding_x': 'default', padding_top: 'default'} %}
     {% block column_1 %}
       First column
@@ -48,7 +51,7 @@ import dedent from 'ts-dedent';
       Second column
     {% endblock %}
   {% endembed %}
-  `} />
+  ```
   <p>A section is a combination of a container and a grid to simplify the usage. The section has the same settings as grid and container.
   You can also use this pattern as a section in Drupal Layout Builder.
   </p>
