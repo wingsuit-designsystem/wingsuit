@@ -18,7 +18,7 @@
 
 {% set classes = ([
   alignment == 'center' ? 'text-center',
-  'card',
+  'card mb-4 mb-lg-0',
 ] | sort | join(' ') | trim ) %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
