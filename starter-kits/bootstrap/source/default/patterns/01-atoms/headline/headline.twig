@@ -1,14 +1,11 @@
 {# SETTING #}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('div') %}
-{% set size = size|default('large') %}
 
 {%
   set classes = ([
   'headline',
   'font-serif',
-  size == 'large' ? 'text-4xl',
-  size == 'medium' ? 'text-xl',
 ]) | sort | join(' ') | trim
 %}
 

@@ -7,7 +7,7 @@
   footer_menu_4: pattern_preview('menu', 'footer')
 } %}
   {% block main %}
-    {% embed "@organisms/section/section.twig" with { columns: 1 } %}
+    {% embed "@organisms/section/section.twig" with { columns: 1, padding_top: "large" } %}
       {% block column_1 %}
     {{ pattern_preview('hero') }}
       {% endblock %}
