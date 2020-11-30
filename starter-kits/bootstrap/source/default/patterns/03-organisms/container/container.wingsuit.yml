@@ -56,7 +56,7 @@ container:
       label: Additional classes
   configuration:
     padding_x:
-      default: 'px-16'
+      default: ''
       large: 'px-20'
     padding_top:
       small: 'pt-5'
