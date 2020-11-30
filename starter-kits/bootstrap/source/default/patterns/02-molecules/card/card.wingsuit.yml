@@ -30,12 +30,6 @@ card:
       description: A long text under the headline.
       preview:
         faker: lorem.paragraph
-    link:
-      type: pattern
-      label: Link
-      description: An optional button at the bottom of the card.
-      preview:
-        id: link
   settings:
     alignment:
       type: select

@@ -1,8 +1,8 @@
 <nav role="navigation">
-  <ul class="list-reset mb-6 grid lg:block">
+  <ul class="nav flex-column">
     {% for item in items %}
-      <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-        <a class="text-gray-600 hover:text-gray-800 {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
+      <li class="nav-item">
+        <a class="nav-link {% if (item.in_active_trail) %}active{% endif %}" href="{{ item.url }}">
           {{ item.title }}
         </a>
       </li>

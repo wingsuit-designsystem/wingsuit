@@ -12,21 +12,21 @@ button:
       label: Default
       configuration:
         colors:
-          primary: 'bg-primary text-white hover:bg-pink-600'
-          secondary: 'bg-secondary text-black hover:bg-blue-600'
+          primary: 'btn-primary'
+          secondary: 'btn-secondary'
     outline:
       label: Outline
       configuration:
         colors:
-          primary: 'border-primary text-black hover:bg-pink-600 hover:text-white'
-          secondary: 'border-secondary text-black hover:bg-blue-600 hover:text-white'
+          primary: 'btn-outline-primary'
+          secondary: 'btn-outline-secondary'
       description: Inverts colors
   configuration:
     size:
       text:
-        small: text-xs
-        medium: text-base
-        large: text-xl
+        small: btn-sm
+        medium: btn-md
+        large: btn-lg
       icon:
         small: w-4 h-4
         medium: w-5 h-5

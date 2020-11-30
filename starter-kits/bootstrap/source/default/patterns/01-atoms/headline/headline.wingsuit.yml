@@ -16,9 +16,6 @@ headline:
       options:
         h1: h1
         h2: h2
-    size:
-      type: select
-      label: Size
-      options:
-        large: Large
-        medium: Medium
+        h3: h3
+        h4: h4
+        h5: h5

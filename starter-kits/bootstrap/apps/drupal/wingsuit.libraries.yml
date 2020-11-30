@@ -4,22 +4,17 @@ core:
     theme:
       css/_drupal-styles.css:
         preprocess: false
-      ws-assets://tokens.css:
-        preprocess: true
-      ws-assets://typo.css:
+      ws-assets://main.css:
         preprocess: true
       ws-assets://hamburger.css:
         preprocess: true
+
   js:
-    ws-assets://vendors/alpine.js:
+    ws-assets://vendors/bootstrap.js:
       preprocess: true
 
   # see all in Drupal's `core/core.libraries.yml`
   dependencies:
     - core/drupal
+    - core/jquery
     - core/drupalSettings
-    - wingsuit/headerOffset
-
-headerOffset:
-  js:
-    js/header-offset.js: {}
