@@ -9,14 +9,14 @@ grid:
       label: Cells
       description: The cells of the grid.
       preview:
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
+        - "<div class='w-100 bg-primary' style='height: 100px'></div>"
   settings:
     gutter:
       type: select
@@ -68,12 +68,9 @@ grid:
           default: 'col-12 col-sm-6 col-md-2'
     gutter:
       none:
-        container: ''
+        container: 'no-gutters'
         cell: ''
       default:
-        container: -mx-6 -md:mx-25
-        cell: px-6 md:px-25 mb-6 last:mb-0
-      large:
-        container: -mx-10 -md:mx-35
-        cell: px-10 md:px-35 mb-10 last:mb-0
+        container: ''
+        cell: ''
 

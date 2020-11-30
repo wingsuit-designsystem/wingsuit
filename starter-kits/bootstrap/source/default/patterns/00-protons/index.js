@@ -2,6 +2,9 @@
  * Base css generation and global js logic.
  */
 
-import 'tokens/tokens.scss';
-import 'tokens/_custom.scss';
-import 'bootstrap';
+import 'tokens/main.scss';
+import jquery from 'jquery';
+import 'jquery-once';
+
+global.jQuery = jquery;
+global.$ = jquery;
