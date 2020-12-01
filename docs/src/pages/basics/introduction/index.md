@@ -2,7 +2,7 @@
 id: 'introduction'
 title: 'Introduction'
 ---
-Wingsuit is a design system for twig based UI components. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like drupal. 
+Wingsuit is a design system for Twig based UI components. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like Drupal. 
 
  
 ## Features
@@ -13,7 +13,7 @@ Wingsuit reads the YAML to generate components, stories, fields and settings in 
 Fields and settings are editable with [knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs). Knobs makes it easy to see your component in every state.
 * ### Child components
 Wingsuit supports child components out of the box. And child child components and so on.
-* ### Presentation templates.
+* ### Presentation templates
 Wingsuit offers twig helper function to build complete pages for preview.
 * ### Demonstration helper
 Wingsuit offers a lot of additional helpers like [placeholder images with image styles](../../assets/images#placeholder-images), [faker](../../components/wingsuit#faker), [pattern lists](../../components/wingsuit#pattern-list) to make it easy to generate demo patterns.
@@ -25,7 +25,7 @@ You can [customize](../../configurations/custom-webpack-config) the webpack conf
 * ### Storybook documentation
 Wingsuit generates a documentation page directly from the winguit.yml. For more detailed documentation use Storybook MDX. 
 * ### Drupal integration
-With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, patterns can be used with zero configuration in drupal. 
+With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, patterns can be used with zero configuration in Drupal. 
 * ### Stay in sync
 One big challenge for design systems is to stay in sync between documentation and implementation.
 Wingsuit solves this problem with a common component configuration `wingsuit.yml` and webpack plugins which provides framework data as variables.
