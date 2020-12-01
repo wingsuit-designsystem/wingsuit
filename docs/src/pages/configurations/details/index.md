@@ -3,11 +3,11 @@ id: 'details'
 title: 'Configuration'
 ---
 
-Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts) of variables which fit most use cases.
+Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts) of variables that are suitable for most use cases.
 
 <b>The Wingsuit configuration file has three main sections</b>
 
-* `apps` for app-specific configuration. A typical app is drupal. Here you can configure where your app is located, how you want to compile your assets and store your assets.   
+* `apps` for app-specific configuration. A typical app is Drupal. Here you can configure where your app is located and how you want to compile and store your assets.   
 
 * `designSystem` for design system configuration. The design system is where your patterns living. Here you can configure everything around your patterns.
 
