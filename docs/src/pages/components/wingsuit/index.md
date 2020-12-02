@@ -59,7 +59,7 @@ card:
 
 * Each `variant` is a storybook story. 
 * Each `field` is editable with knobs and passed to the Twig template.
-* Each `Setting` is editable with knobs and passed to the Twig template.
+* Each `setting` is editable with knobs and passed to the Twig template.
 
 
 ## The extensions</b>
@@ -68,7 +68,7 @@ To build better preview functionality Wingsuit adds additional YAML configuratio
 ### Faker
 The `faker` key generates automatic preview data with [faker.js](https://github.com/marak/Faker.js/).
 The value can be a string or a subobject. 
-* The string is passed to Faker.fake in '{{ }}' brakets;
+* The string is passed to Faker.fake in '{{ }}' brackets.
 * To pass a complete Faker sentences use:
 ```yaml
     preview:
@@ -141,7 +141,7 @@ You can control how Wingsuit will handle the resulting array of objects.
 {% endfor %}
 ```
 
-### type object
+### Type object
 ```yaml
 fields:  
   items:
@@ -153,10 +153,10 @@ fields:
       - title: Impressum
         link: "#"
 ```  
-With field type `object` you can pass any objects to the twig template. This is useful for the menu, for example. You can edit the JSON string with knobs.
+With field type `object` you can pass any objects to the Twig template. This is useful for the menu, for example. You can edit the JSON string with knobs.
 
 ### Visibility
-With the visibility property you can control in which app a pattern should be visible. If the property is not set the pattern is visible in every app. 
+With the visibility property you can control in which app a pattern should be visible. If the property is not set, the pattern is visible in every app. 
 ```yaml
 visibility: storybook | drupal | none
 ```
