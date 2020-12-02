@@ -13,7 +13,7 @@ To render the SVG icon, use the ws-assets stream wrapper:
 ## SVG Icons
 Wingsuit generates an SVG sprite map for every SVG located in an `icons` folder. 
 
-To render the icons include the `svg atom` in your twig template: 
+To render the icons include the `svg atom` in your Twig template: 
 
 ```twig
 {% include "@atoms/svg/svg.wig" with {"variant": 'icon', icon: "icon" }
