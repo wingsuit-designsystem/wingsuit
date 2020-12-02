@@ -1,6 +1,6 @@
 ---
 id: 'globals'
-title: 'Global variables.'
+title: 'Global variables'
 ---
 If you need variables with global scope inside your twig template you can place a YAML file to `apps/storybook/config`.
 
