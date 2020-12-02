@@ -5,10 +5,10 @@ title: 'Images & Icons'
 
 The `apps/[app]/assets.js` includes all images. Wingsuit will compile these files to `[dist]/assets/images`.
 
-### Embedding images in twig:
+### Embedding images in Twig:
 You can use the `ws-assets` stream wrapper to get a path to the asset folder. Ensure you have the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module enabled. 
 
-<b>Sample twig file with an image:</b>
+<b>Sample Twig file with an image:</b>
 ```twig
 <img src="{{ file_create_url('ws-assets://images/dummy.png')">
 ```
@@ -59,7 +59,7 @@ To render an image style include the `image atom`.
 {% include "@atoms/image/image.wig" with {"placeholder": true, style: "1x1_xxs" }
 ```
 
-Or use the `pattern_preview` twig function:
+Or use the `pattern_preview` Twig function:
 ```twig
     {{ pattern_preview('image', 'primary', {"placeholder": true, "style": "1x1_xxs"}) }}
 ```
