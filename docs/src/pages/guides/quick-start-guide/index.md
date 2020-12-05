@@ -37,7 +37,7 @@ composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kick
 
 
 ## Get an overview
-A good starting point is to have a look at the design system components, which you will find at `source/patterns/default`. Additional Storybook presentation templates are located at  `apps/storybook/patterns`.
+A good starting point is to take a look at the design system components, which you can find under `source/patterns/default`. Additional Storybook presentation templates are located at  `apps/storybook/patterns`.
 
 A typical component includes a `pattern.wingsuit.yml`, a `twig template`,  and optionally a `css file` and/or a `behavior javascript` file. 
 

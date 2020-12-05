@@ -33,7 +33,7 @@ import 'regenerator-runtime/runtime';
 import 'alpinejs';
 ```
 
-Wingsuit compiles every vendor file to a separate compiled vendor file so you can easily embed it in drupal. 
+Wingsuit compiles each vendor file into a separate compiled vendor file, so you can easily embed them in Drupal. 
 You can find your vendor file under `dist/app-[type]/vendors/[your-library].js`. 
 
 Check out the [webpack asset preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/server/presets/assets.ts) for more details! 

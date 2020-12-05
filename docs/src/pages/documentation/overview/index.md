@@ -4,7 +4,7 @@ title: 'Get started'
 ---
 Storybook supports powerful MDX documentation out of the box. 
 MDX is a standard file format that combines Markdown with JSX. 
-Wingsuit uses React components to render patterns and TWIG files which you use direct inside the MDX file. Additionally, Wingsuit offers components to make documentation more easy.    
+Wingsuit uses React components to render patterns and Twig files which you use direct inside the MDX file. Additionally, Wingsuit offers components to make documentation more easy.    
 
 And yes, storybook MDX is powerful, but in most cases you don't need it. Wingsuit uses the wingsuit.yml to generate an complete component documentation including fields, settings etc.
 

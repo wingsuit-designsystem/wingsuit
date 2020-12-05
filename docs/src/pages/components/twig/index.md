@@ -3,9 +3,9 @@ id: 'twig'
 title: 'Twig only'
 ---
 
-A twig only component works without any wingsuit YAML file. The patterns are useful if you don't need or don't want a UI Pattern integration.
+A Twig only component works without any wingsuit YAML file. The patterns are useful if you don't need or don't want a UI Pattern integration.
 
-A typical use case for twig only components are menu or header components. 
+A typical use case for Twig only components are menu or header components. 
 
 The data for these components can be provided as variables or defined globally inside YAML files in `apps/storybook/data`. So typically 
 
