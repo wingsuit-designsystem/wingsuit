@@ -54,7 +54,6 @@ export function resolveConfig(
   appConfig = Object.assign(appConfig, configurationOverwrites);
   appConfig.absRootPath = rootPath;
   appConfig.environment = environment;
-
   appConfig.absAppPath = path.join(rootPath, appConfig.path);
   appConfig.absDistFolder =
     yargs.argv['output-dir'] != null

@@ -19,13 +19,26 @@ export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
   return pack;
 }
 
+/**
+ * Returns true if a feature is supported by an extension.
+ *
+ * @param name
+ *   The feature name.
+ *
+ * @return boolean
+ *   True if feature is supported.
+ */
+export function supportFeature(name, appConfig: AppConfig) {
+  return presetManager.supportFeature(name, appConfig);
+}
+
 export function getAppNames(wingsuitConfig: any = null, type = '') {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
   const mergedConfig = merge(configStub.wingsuit, projectConfig);
   const names: string[] = [];
-  Object.keys(mergedConfig.apps).forEach((name) => {
+  Object.keys(mergedConfig.apps).forEach(name => {
     if (type === '' || type === mergedConfig.apps[name].type) {
       names.push(name);
     }

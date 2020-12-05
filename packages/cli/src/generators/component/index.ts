@@ -5,7 +5,7 @@
  *
  */
 
-import { resolveConfig, getAppNames } from '@wingsuit-designsystem/core';
+import { resolveConfig, getAppNames, supportFeature } from '@wingsuit-designsystem/core';
 
 const { relative, join } = require('path');
 const { readdirSync } = require('fs');
@@ -23,13 +23,14 @@ export default class extends Generator {
 
   // Reserved: present options to the user
   prompting() {
+    const storybookConfig = resolveConfig('storybook');
+    const supportsScss = supportFeature('scss', storybookConfig);
     this.log(
       `Hi! This will help you build a component folder with assets. Templates for this are in: ${relative(
         process.cwd(),
         __dirname
       )}`
     );
-
     // Prompts presented to user
     const prompts = [
       {
@@ -47,9 +48,9 @@ export default class extends Generator {
         choices({ app }) {
           const config = resolveConfig(app);
           // Return array of atomic folders within the app's design system
-          return readdirSync(`${config.absDesignSystemPath}/patterns`, {
+          return readdirSync(config.absPatternPath, {
             withFileTypes: true,
-          }).filter((folder) => folder.isDirectory());
+          }).filter(folder => folder.isDirectory());
         },
       },
       {
@@ -80,8 +81,17 @@ export default class extends Generator {
       {
         type: 'confirm',
         name: 'useCss',
-        message: 'Do you need a CSS file?',
+        message: `Do you need a CSS file?`,
         default: false,
+      },
+      {
+        type: 'confirm',
+        name: 'useScss',
+        message: `Do you need a SCSS file?`,
+        default: false,
+        when: answers => {
+          return supportsScss;
+        },
       },
       {
         type: 'confirm',
@@ -105,7 +115,7 @@ export default class extends Generator {
       },
     ];
 
-    return this.prompt(prompts).then((props) => {
+    return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
       this.props = {
@@ -135,12 +145,12 @@ export default class extends Generator {
   }
 
   writing() {
-    const { name, useCss, useDoc, useJs, componentType } = this.props;
+    const { name, useCss, useScss, useDoc, useJs, componentType } = this.props;
 
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
     this.registerTransformStream(
-      rename((path) => {
+      rename(path => {
         // Remove extension and replace pattern with pattern name
         path.basename = path.basename.replace('pattern', name);
         return path;
@@ -206,6 +216,14 @@ export default class extends Generator {
         // Copy and process all design system files
         this.fs.copyTpl(
           this.templatePath('ds/css/**/*.ejs'),
+          this.getDsComponentPath(),
+          this.props
+        );
+      }
+      if (useScss) {
+        // Copy and process all design system files
+        this.fs.copyTpl(
+          this.templatePath('ds/scss/**/*.ejs'),
           this.getDsComponentPath(),
           this.props
         );

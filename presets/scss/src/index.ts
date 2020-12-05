@@ -6,6 +6,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const glob = require('glob');
 
+export function supportFeature(name, appConfig: AppConfig) {
+  if (name === 'scss') {
+    return true;
+  }
+  return false;
+}
+
 export function webpack(appConfig: AppConfig) {
   const scssItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.scss`);
 
