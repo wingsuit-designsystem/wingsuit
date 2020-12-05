@@ -1,18 +1,37 @@
-import { configure, drupalAttachBehaviorDecorator } from '@wingsuit-designsystem/storybook';
+import { configure, initJsBehaviors } from '@wingsuit-designsystem/storybook';
+import { addParameters } from '@storybook/react';
 
-import { addDecorator } from '@storybook/react';
+const namespaces = require('wsdesignsystem/namespaces');
 
-const namespaces = require('../../source/default/namespaces');
+initJsBehaviors('Drupal');
 
-addDecorator(drupalAttachBehaviorDecorator);
+addParameters({
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: [
+        'Welcome',
+        'Layout',
+        'Tokens',
+        ['Colors', 'Typography', 'Scales'],
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Templates',
+        'Pages',
+      ],
+      locales: 'en-US',
+    },
+  },
+});
 
 configure(
   module,
   [
     require.context('./patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
-    require.context('../../source/default/patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
+    require.context('wspatterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
   ],
-  require.context('./config', true, /\.json|\.ya?ml$/),
-  require.context('../../source/default/patterns', true, /\.twig$/),
+  require.context('./config', false, /\.json|\.ya?ml$/),
+  require.context('wspatterns', true, /\.twig$/),
   namespaces
 );

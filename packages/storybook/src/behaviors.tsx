@@ -39,6 +39,12 @@ class BehaviorExecutor {
   }
 
   public static attachBehaviors(context: any, settings = {}) {
+    if (beahviorsInitialized === false) {
+      console.error(
+        "attachBehavior is not initialized. Call initJsBehaviors('Drupal'); in your preview.js."
+      );
+      return;
+    }
     // @ts-ignore
     const { behaviors } = window[behaviorName];
     Object.keys(behaviors).forEach(i => {

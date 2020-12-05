@@ -6,5 +6,6 @@ import 'protons';
 
 // Module template
 import './button.twig';
+import './button.behavior';
 
 export const name = 'button';
