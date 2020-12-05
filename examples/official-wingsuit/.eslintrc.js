@@ -4,10 +4,19 @@
  * Rule reference: http://eslint.org/docs/rules
  * Individual rule reference: http://eslint.org/docs/rules/NAME-OF-RULE
  */
-const path = require('path');
-const namespaces = require('./source/default/namespaces');
+const wingsuitCore = require('@wingsuit-designsystem/core');
+const wingsuitConfig = require('./wingsuit.config');
+
+const appConfig = wingsuitCore.resolveConfig(
+  'storybook',
+  'development',
+  {},
+  wingsuitConfig,
+  __dirname
+);
+const { namespaces } = appConfig;
 const aliasMap = [];
-Object.keys(namespaces).forEach((key)=>{
+Object.keys(namespaces).forEach((key) => {
   aliasMap.push([key, namespaces[key]]);
 });
 
@@ -18,7 +27,7 @@ module.exports = {
     'plugin:vue/recommended',
     'plugin:prettier/recommended',
     'prettier/vue',
-    "plugin:react/recommended"
+    'plugin:react/recommended',
   ],
   plugins: ['prettier'],
   root: true,
@@ -33,22 +42,25 @@ module.exports = {
     node: true,
   },
   rules: {
-    "react/jsx-uses-react": 1,
-    "prettier/prettier": ["error", {
-      "endOfLine":"auto"
-    }],
+    'react/jsx-uses-react': 1,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'no-console': [0], // turned off for now while we are console.logging everywhere.
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'import/prefer-default-export': [0]
+    'import/prefer-default-export': [0],
   },
-  "settings": {
-    "react": {
-      "version": "detect",
+  settings: {
+    react: {
+      version: 'detect',
     },
-    "import/resolver": {
-      "alias": {
-        map: aliasMap
-      }
-    }
-  }
+    'import/resolver': {
+      alias: {
+        map: aliasMap,
+      },
+    },
+  },
 };

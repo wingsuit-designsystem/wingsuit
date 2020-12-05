@@ -3,12 +3,7 @@ module.exports = {
   extends: ['@storybook/eslint-config-storybook'],
   overrides: [
     {
-      files: [
-        '**/__tests__/**',
-        '**/__testfixtures__/**',
-        '**/*.test.*',
-        '**/*.stories.*'
-      ],
+      files: ['**/__tests__/**', '**/__testfixtures__/**', '**/*.test.*', '**/*.stories.*'],
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'import/no-extraneous-dependencies': 'off',
@@ -34,6 +29,7 @@ module.exports = {
       rules: {
         'react/prop-types': 'off', // we should use types
         'no-dupe-class-members': 'off', // this is called overloads in typescript
+        'no-console': ["error", { allow: ["warn", "error"] }] ,
       },
     },
     {
