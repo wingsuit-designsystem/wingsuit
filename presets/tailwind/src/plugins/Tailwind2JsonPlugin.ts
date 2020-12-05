@@ -25,12 +25,10 @@ export default class Tailwind2JsonPlugin {
       // Plugins are null after restoring from file system.
       // Infinite loop.
       fs.readJson(filename, (readerr, existingJson) => {
-        // eslint-disable-next-line no-console
         if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
         // Only write output if there is a difference or non-existent target file
         if (jsondiff.diff(existingJson, output)) {
-          fs.outputJson(filename, output, (writeerr) => {
-            // eslint-disable-next-line no-console
+          fs.outputJson(filename, output, writeerr => {
             if (writeerr) console.error(writeerr);
           });
         }
