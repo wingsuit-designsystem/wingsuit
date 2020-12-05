@@ -29,6 +29,8 @@ export default interface AppConfig {
 
   absPatternPath: string;
 
+  features: Feature;
+
   webpack(appConfig: AppConfig);
 
   webpackFinal(appConfig: AppConfig, config: any);
@@ -47,5 +49,9 @@ export interface PresetItem {
 }
 
 export interface Namespace {
+  [key: string]: string;
+}
+
+export interface Feature {
   [key: string]: string;
 }

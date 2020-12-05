@@ -15,7 +15,7 @@
         option_1: Value 1
       preview: value_1<% if (useJs || useCss) { %>
   libraries:
-    - pattern_<%= underscoreName %>:<% if (useCss) { %>
+    - pattern_<%= underscoreName %>:<% if (useCss || useScss) { %>
        css:
          component:
            ../<%= name %>.css: {}<% } %><% if (useJs) { %>

@@ -17,15 +17,42 @@ export default class PresetManager {
   private getPresets(appConfig: AppConfig): Preset[] {
     const presets: Preset[] = [];
     appConfig.presets.forEach(name => {
-      if (appConfig.presetsRegistry[name] != null) {
-        presets.push(appConfig.presetsRegistry[name]);
+      if (typeof name === 'string') {
+        if (appConfig.presetsRegistry[name] != null) {
+          presets.push(appConfig.presetsRegistry[name]);
+        } else {
+          // eslint-disable-next-line global-require,import/no-dynamic-require
+          const lpreset = require(name);
+          presets.push(lpreset);
+        }
       } else {
-        // eslint-disable-next-line global-require,import/no-dynamic-require
-        const lpreset = require(name);
-        presets.push(lpreset);
+        presets.push(name);
       }
     });
     return presets;
+  }
+
+  /**
+   * Returns true if a feature is supported by an extension.
+   *
+   * @param name
+   *   The feature name.
+   *
+   * @return boolean
+   *   True if feature is supported.
+   */
+  public supportFeature(name, appConfig: AppConfig) {
+    const presets = this.getPresets(appConfig);
+    let support = false;
+    Object.keys(presets).forEach(key => {
+      if (presets[key] != null && presets[key].supportFeature != null) {
+        const presetSupport = presets[key].supportFeature(name);
+        if (presetSupport === true) {
+          support = true;
+        }
+      }
+    });
+    return support;
   }
 
   /**
