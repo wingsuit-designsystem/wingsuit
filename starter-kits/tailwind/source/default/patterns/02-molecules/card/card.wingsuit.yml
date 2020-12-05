@@ -36,6 +36,11 @@ card:
       description: An optional button at the bottom of the card.
       preview:
         id: link
+  variants:
+    default:
+      label: Default
+    horizontal:
+      label: Horizontal
   settings:
     alignment:
       type: select

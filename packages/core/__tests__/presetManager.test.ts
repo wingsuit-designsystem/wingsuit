@@ -2,7 +2,7 @@ import path from 'path';
 import { resolveConfig, PresetManager } from '../src/index';
 
 const config = {
-  webpack: (appConfig) => {
+  webpack: appConfig => {
     return { testWebpack: true };
   },
   webpackFinal: (appConfig, webpack) => {
@@ -25,4 +25,33 @@ test('Test generateWebpack.', () => {
   const webpack = presetManager.generateWebpack(appConfig);
   expect(webpack.testWebpack).toBe(true);
   expect(webpack.testWebpackFinal).toBe(true);
+});
+
+test('Test support feature.', () => {
+  const presetManager = new PresetManager();
+  let appConfig = resolveConfig('storybook', 'development', {}, {});
+  let supportFeature = presetManager.supportFeature('scss', appConfig);
+  expect(supportFeature).toBe(false);
+
+  appConfig = resolveConfig(
+    'storybook',
+    'development',
+    {},
+    {
+      presets: [
+        {
+          supportFeature: name => {
+            if (name === 'scss') {
+              return true;
+            }
+            return false;
+          },
+        },
+      ],
+    }
+  );
+  supportFeature = presetManager.supportFeature('scss', appConfig);
+  expect(supportFeature).toBe(true);
+  supportFeature = presetManager.supportFeature('scssnone', appConfig);
+  expect(supportFeature).toBe(false);
 });

@@ -172,6 +172,7 @@ export { drupalAttachBehaviorDecorator } from './drupal';
 export {
   isInit as isInitDecorator,
   init as initDecorator,
+  init as initJsBehaviors,
   attachBehaviorDecorator,
 } from './behaviors';
 export { default as RenderTwig } from './components/RenderTwig';

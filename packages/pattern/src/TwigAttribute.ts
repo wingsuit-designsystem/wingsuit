@@ -9,7 +9,7 @@ export default class TwigAttribute {
     this.attributes = new Map();
     if (attributes !== '') {
       const attrs = htmlAttributeParser(`<div ${attributes}></div>`).attributes;
-      Object.keys(attrs).forEach((key) => {
+      Object.keys(attrs).forEach(key => {
         if (key === 'class') {
           this.attributes.set(key, attrs[key].split(' '));
         } else {
@@ -82,7 +82,7 @@ export default class TwigAttribute {
 
   toString() {
     let output = '';
-    Array.from(this.attributes.keys()).forEach((key) => {
+    Array.from(this.attributes.keys()).forEach(key => {
       let attributeValue = null;
       if (typeof this.attributes.get(key) === 'object' && Array.isArray(this.attributes.get(key))) {
         attributeValue = this.attributes.get(key).join(' ');
