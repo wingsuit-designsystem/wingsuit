@@ -1,14 +1,15 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { renderer } from '@wingsuit-designsystem/pattern';
+import { attachBehaviors } from '../behaviors';
 
 type Props = { patternId?; variantId?; variant? };
 
 const PatternPreview: FunctionComponent<Props> = ({
-  patternId,
-  variantId,
-  variant,
-  ...variables
-}) => {
+                                                    patternId,
+                                                    variantId,
+                                                    variant,
+                                                    ...variables
+                                                  }) => {
   const [rendered, setRendered] = useState('');
   const finalPatternId = variant !== null ? variant.getPattern().getId() : patternId;
   const finalVariantId = variant !== null ? variant.getId() : variantId;
@@ -30,8 +31,14 @@ const PatternPreview: FunctionComponent<Props> = ({
     };
   }, [patternId, variantId, JSON.stringify(variables)]);
 
+  useEffect(() => {
+    if (!rendered) return;
+    attachBehaviors(global.window.document, {})
+  }, [rendered])
+
   // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
+  const element = <div dangerouslySetInnerHTML={{__html: rendered}}/>;
+  return element;
 };
 
 PatternPreview.displayName = 'PatternPreview';
