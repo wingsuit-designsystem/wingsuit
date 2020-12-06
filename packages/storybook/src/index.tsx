@@ -143,7 +143,9 @@ function getStories(pattern: Pattern, module) {
         page: () => (
           <>
             <Title />
-            <Subtitle><div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }}/></Subtitle>
+            <Subtitle>
+              <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
+            </Subtitle>
             <Primary />
             <PatternProperties variant={variant} />
             <PatternInclude variant={variant} />
