@@ -18728,6 +18728,11 @@ tinycolor2@^1.4.1:
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
   integrity sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==
 
+tiny-swiper@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/tiny-swiper/-/tiny-swiper-1.3.2.tgz#20fe0143dfa68451cb73ecac225907b5a535a316"
+  integrity sha512-HwTCSxuvWNy1fdBxR7kfEim7XAzWg5XDo6qSIx1NMFaUk+eQ0ye61cA4sGzp27js9ebNGiWFUHeuLFSuv5d9mg==
+
 titleize@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/titleize/-/titleize-1.0.1.tgz#21bc24fcca658eadc6d3bd3c38f2bd173769b4c5"
