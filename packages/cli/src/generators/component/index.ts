@@ -119,6 +119,7 @@ export default class extends Generator {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
       this.props = {
+        useScss: false,
         ...props,
         // 'name' already exists as kebab-case-name (dashes)
         capitalizeName: startCase(props.name),
