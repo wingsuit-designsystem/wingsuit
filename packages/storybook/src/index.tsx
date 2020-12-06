@@ -2,7 +2,7 @@ import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, number, object, optionsKnob } from '@storybook/addon-knobs';
-import { Title, Subtitle, Description, Primary } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Primary } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
