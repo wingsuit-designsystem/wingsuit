@@ -16,7 +16,7 @@ export default class PresetManager {
 
   private getPresets(appConfig: AppConfig): Preset[] {
     const presets: Preset[] = [];
-    appConfig.presets.forEach(name => {
+    appConfig.presets.forEach((name) => {
       if (typeof name === 'string') {
         if (appConfig.presetsRegistry[name] != null) {
           presets.push(appConfig.presetsRegistry[name]);
@@ -44,7 +44,7 @@ export default class PresetManager {
   public supportFeature(name, appConfig: AppConfig) {
     const presets = this.getPresets(appConfig);
     let support = false;
-    Object.keys(presets).forEach(key => {
+    Object.keys(presets).forEach((key) => {
       if (presets[key] != null && presets[key].supportFeature != null) {
         const presetSupport = presets[key].supportFeature(name);
         if (presetSupport === true) {
@@ -65,7 +65,7 @@ export default class PresetManager {
     const presets = this.getPresets(appConfig);
 
     const shared: any = [];
-    Object.keys(presets).forEach(key => {
+    Object.keys(presets).forEach((key) => {
       if (presets[key] != null) {
         shared.push(presets[key].webpack(appConfig));
       }
@@ -107,7 +107,7 @@ export default class PresetManager {
       ]
     );
 
-    Object.keys(presets).forEach(key => {
+    Object.keys(presets).forEach((key) => {
       if (presets[key].webpackFinal != null) {
         config = presets[key].webpackFinal(appConfig, config);
       }

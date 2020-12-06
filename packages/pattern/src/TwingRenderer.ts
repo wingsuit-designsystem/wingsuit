@@ -44,8 +44,8 @@ export class TwingRenderer implements IRenderer {
           if (this.cache[cacheKey]) {
             return Promise.resolve(this.cache[cacheKey]);
           }
-          return new Promise(resolve => {
-            renderPatternPreview(patternId, variantId, variables).then(output => {
+          return new Promise((resolve) => {
+            renderPatternPreview(patternId, variantId, variables).then((output) => {
               this.cache[cacheKey] = output;
               resolve(output);
             });

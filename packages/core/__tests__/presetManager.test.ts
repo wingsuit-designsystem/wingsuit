@@ -2,7 +2,7 @@ import path from 'path';
 import { resolveConfig, PresetManager } from '../src/index';
 
 const config = {
-  webpack: appConfig => {
+  webpack: (appConfig) => {
     return { testWebpack: true };
   },
   webpackFinal: (appConfig, webpack) => {
@@ -40,7 +40,7 @@ test('Test support feature.', () => {
     {
       presets: [
         {
-          supportFeature: name => {
+          supportFeature: (name) => {
             if (name === 'scss') {
               return true;
             }

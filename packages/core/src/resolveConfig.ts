@@ -35,7 +35,7 @@ export function resolveConfig(
   // Overwrite by parameter.
   appConfig.presetsRegistry = mergedConfig.presetsRegistry;
 
-  mergedConfig.presets.forEach(preset => {
+  mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);
   });
 
