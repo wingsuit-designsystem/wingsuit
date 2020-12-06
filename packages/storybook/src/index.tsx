@@ -139,13 +139,11 @@ function getStories(pattern: Pattern, module) {
     let parameters = {
       component: PatternPreview,
       notes: variant.getDescription(),
-      componentSubtitle: pattern.getDescription(),
       docs: {
         page: () => (
           <>
             <Title />
-            <Subtitle />
-            <Description />
+            <Subtitle><div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }}/></Subtitle>
             <Primary />
             <PatternProperties variant={variant} />
             <PatternInclude variant={variant} />
