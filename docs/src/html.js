@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 
-import favicon from './design/homepage/storybook-icon.png';
+import favicon from './design/homepage/favicon.svg';
 
 const HTML = ({ headComponents, body, postBodyComponents }) => {
   const title = DocumentTitle.rewind();

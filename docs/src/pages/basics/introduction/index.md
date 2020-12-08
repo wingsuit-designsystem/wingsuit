@@ -9,19 +9,20 @@ Wingsuit is a design system for Twig based UI components. You can develop your c
 * ### Define your component once
 The `wingsuit.yml`, an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html), is the heart of each component.
 Wingsuit reads the YAML to generate components, stories, fields and settings in Storybook. The same file is used by UI Patterns.  
+* ### Use UI Patterns or not
+With the  [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, your `wingsuit.yml` can be used with zero configuration in Drupal. Of course, you can use the wingsuit.yml only in Storybook and use presenter template in your CMS. Wingsuit works also with plain Twig files.
 * ### Editable settings and fields
 Fields and settings are editable with [knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs). Knobs makes it easy to see your component in every state.
-* ### Child components
-Wingsuit supports child components out of the box. And child child components and so on.
+* ### Subcomponents
+Wingsuit supports subcomponents out of the box. Reference your subcomponent in your wingsuit.yml.
 * ### Presentation templates
 Wingsuit offers twig helper function to build complete pages for preview.
 * ### Demonstration helper
 Wingsuit offers a lot of additional helpers like [placeholder images with image styles](../../assets/images#placeholder-images), [faker](../../components/wingsuit#faker), [pattern lists](../../components/wingsuit#pattern-list) to make it easy to generate demo patterns.
 * ### Starter kits for:
   * [Tailwind CSS](https://tailwindcss.com/) with [Alpine.js](https://github.com/alpinejs/alpine).
-  * Bootstrap  
-
-You can [customize](../../configurations/custom-webpack-config) the webpack configuration and integrate your favorite frontend frameworks. 
+  * [Bootstrap](https://getbootstrap.com/)  
+  You can [customize](../../configurations/custom-webpack-config) the webpack configuration and integrate your favorite frontend frameworks. 
 * ### Storybook documentation
 Wingsuit generates a documentation page directly from the winguit.yml. For more detailed documentation use Storybook MDX. 
 * ### Drupal integration
