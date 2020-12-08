@@ -40,6 +40,17 @@ export default class PatternStorage implements IPatternStorage {
     return Object.keys(this.definitions.patterns);
   }
 
+  loadPatternsByNamespace(namespace): Pattern[] {
+    const foundPatterns: Pattern[] = [];
+    Object.keys(this.definitions.patterns).forEach((key) => {
+      const pattern = this.loadPattern(key);
+      if (pattern.getNamespace() === namespace) {
+        foundPatterns.push(pattern);
+      }
+    });
+    return foundPatterns;
+  }
+
   loadPattern(patternId: string): Pattern {
     const definition: IPatternDefinition = this.definitions.patterns[patternId];
     if (definition == null) {

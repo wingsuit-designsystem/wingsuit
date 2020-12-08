@@ -23,5 +23,12 @@ describe('PatternStorage', () => {
       const variant: PatternVariant = storage.loadVariant('card', 'default');
       expect(variant).toBeInstanceOf(PatternVariant);
     });
+    test('Load patterns by Namespace', () => {
+      storage.createDefinitions(
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+      );
+      const patterns: Pattern[] = storage.loadPatternsByNamespace('atoms');
+      expect(patterns.length).toBe(2);
+    });
   });
 });

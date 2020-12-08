@@ -1,6 +1,7 @@
 {
   "patterns": {
     "simple": {
+      "namespace": "atoms",
       "use": "@molecules/tests/check.twig",
       "label": "Image",
       "description": "Example description",
@@ -20,6 +21,7 @@
       }
     },
     "default_value": {
+      "namespace": "atoms",
       "use": "@molecules/tests/check.twig",
       "label": "Default value",
       "description": "Example description",

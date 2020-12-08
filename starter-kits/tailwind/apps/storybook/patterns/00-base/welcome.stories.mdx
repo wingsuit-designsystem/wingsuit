@@ -1,17 +1,97 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Badge } from '@storybook/components';
+import { getStorybook, storiesOf} from '@storybook/react';
+import { storage } from '@wingsuit-designsystem/pattern';
+import LinkTo from '@storybook/addon-links/react';
+import './images/background.png';
+import './images/ws-tokens.svg';
+import './images/ws-atoms.svg';
+import './images/ws-molecules.svg';
+import './images/ws-organisms.svg';
+import './images/ws-templates.svg';
+
 
 <Meta title="Welcome"
   parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
 />
 
-<div>
-  <a class="mx-auto flex flex-col title-font text-center font-medium items-center text-gray-900 mb-4 md:mb-0">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-20 h-20 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-    </svg>
-  </a>
-  <h1 style={ {textAlign: "center"} }>Tailblocks for Wingsuit</h1>
-  <p style={ {textAlign: "center"} }>Wingsuit demo page with components from <a href="https://mertjf.github.io/tailblocks/" target="_blank">Tailblocks</a> and <a href="https://www.tailwindtoolbox.com" target="_blank"> tailwindtoolbox.com</a>
+<div style={{margin: 'auto', position: 'relative', marginBottom: '40px'}}>
+  <img src="images/background.png" style={{width: '100%' }}/>
+  <img src="images/logo.svg" style={{margin: 'auto', maxWidth: '200px', position: 'absolute', top: '40%', left: 0, right: 0}}/>
+</div>
 
-  </p>
+# Designsystem for Brand Example
+
+Wingsuit demo page with components from <a href="https://mertjf.github.io/tailblocks/" target="_blank">Tailblocks</a> and <a href="https://www.tailwindtoolbox.com" target="_blank"> tailwindtoolbox.com</a>
+
+<div style={{paddingTop: '40px'}}>
+
+  ## <img src="images/ws-tokens.svg" style={{width: '20px'}}/> Tokens
+  <Canvas>
+    <LinkTo story="page" kind="Tokens/Colors">
+      <Badge status="neutral">Colors</Badge>
+    </LinkTo>
+    <LinkTo story="page" kind="Tokens/Typography">
+      <Badge status="neutral">Typography</Badge>
+    </LinkTo>
+    <LinkTo story="page" kind="Tokens/Scale">
+      <Badge status="neutral">Scale</Badge>
+    </LinkTo>
+    <LinkTo story="page" kind="Tokens/Icons">
+      <Badge status="neutral">Icons</Badge>
+    </LinkTo>
+  </Canvas>
+
+  ## <img src="images/ws-atoms.svg" style={{width: '20px'}}/> Atoms
+  <Canvas>
+    {
+      storage.loadPatternsByNamespace('Atoms').map((pattern)=>{
+        return (
+          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+            <Badge status="neutral">{pattern.getLabel()}</Badge>
+          </LinkTo>
+        )
+      })
+    }
+  </Canvas>
+
+
+  ## <img src="images/ws-molecules.svg" style={{width: '20px'}}/> Molecules
+  <Canvas>
+    {
+      storage.loadPatternsByNamespace('Molecules').map((pattern)=>{
+        return (
+          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+            <Badge status="neutral">{pattern.getLabel()}</Badge>
+          </LinkTo>
+        )
+      })
+    }
+  </Canvas>
+
+  ## <img src="images/ws-organisms.svg" style={{width: '20px'}}/> Organisms
+  <Canvas>
+    {
+      storage.loadPatternsByNamespace('Organisms').map((pattern)=>{
+        return (
+          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+            <Badge status="neutral">{pattern.getLabel()}</Badge>
+          </LinkTo>
+        )
+      })
+    }
+  </Canvas>
+
+  ## <img src="images/ws-templates.svg" style={{width: '20px'}}/> Templates
+  <Canvas>
+    {
+      storage.loadPatternsByNamespace('Templates').map((pattern)=>{
+        return (
+          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+            <Badge status="neutral">{pattern.getLabel()}</Badge>
+          </LinkTo>
+        )
+      })
+    }
+  </Canvas>
 </div>
