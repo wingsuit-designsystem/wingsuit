@@ -36,6 +36,7 @@ jobs:
             - node_modules
             - examples
             - packages
+            - starter-kits
   build:
     <<: *defaults
     steps:
@@ -49,6 +50,7 @@ jobs:
           root: .
           paths:
             - packages
+            - starter-kits
             - examples
 
   packtracker:
@@ -257,7 +259,7 @@ workflows:
             - build
       - chromatic:
           requires:
-            - install
+            - build
       - e2e:
           requires:
             - examples
