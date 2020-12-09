@@ -265,9 +265,6 @@ workflows:
       - smoke-tests:
           requires:
             - build
-      - chromatic:
-          requires:
-            - build
       - packtracker:
           requires:
             - build
@@ -277,6 +274,9 @@ workflows:
       - coverage:
           requires:
             - test
+      - chromatic:
+          requires:
+            - examples
       - publish:
           requires:
             - build
