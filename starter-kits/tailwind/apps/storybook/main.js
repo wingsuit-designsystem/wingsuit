@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-viewport',
     '@storybook/addon-knobs',
     '@storybook/addon-links',
-    '@storybook/addon-backgrounds',
+    'storybook-addon-themes',
   ],
   webpackFinal: (config) => {
     const final = wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [config]);
