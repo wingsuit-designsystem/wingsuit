@@ -187,7 +187,7 @@ jobs:
       - run:
           name: Tailwind
           command: |
-            cd stater-kits/tailwind
+            cd starter-kits/tailwind
             npx chromatic --exit-zero-on-changes
   smoke-tests:
     <<: *defaults
