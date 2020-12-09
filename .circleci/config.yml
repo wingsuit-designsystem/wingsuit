@@ -259,13 +259,13 @@ workflows:
       - examples:
           requires:
             - build
-      - chromatic:
-          requires:
-            - build
       - e2e:
           requires:
             - examples
       - smoke-tests:
+          requires:
+            - build
+      - chromatic:
           requires:
             - build
       - packtracker:
