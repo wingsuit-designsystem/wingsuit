@@ -174,7 +174,7 @@ jobs:
           name: cypress run
           command: yarn test:e2e --record --key 2311d788-c8ef-458b-b009-4cd3aee65180
   chromatic:
-    executor: sb_node
+    <<: *defaults
     parallelism: 4
     steps:
       - checkout

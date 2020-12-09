@@ -24,9 +24,8 @@ const Homepage = ({ users }) => (
         >
           <div className="col-12 col-sm-6 col-xl-9 text-center">
             <h1 className="sb-tagline">
-
-                Build bulletproof <br />
-                Twig Components in Storybook <br />
+              Build bulletproof <br />
+              Twig Components in Storybook <br />
               You will ♥ using️ it!
             </h1>
             <div>
