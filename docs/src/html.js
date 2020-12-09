@@ -37,7 +37,10 @@ const HTML = ({ headComponents, body, postBodyComponents }) => {
         <link rel="icon" href={favicon} type="image/x-icon" />
         {css}
         {headComponents}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <div id="___gatsby" dangerouslySetInnerHTML={{ __html: body }} />
