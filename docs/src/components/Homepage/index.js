@@ -24,32 +24,37 @@ const Homepage = ({ users }) => (
         >
           <div className="col-12 col-sm-6 col-xl-9 text-center">
             <h1 className="sb-tagline">
-              <span className="sb-tagline-sm">
+
                 Build bulletproof <br />
-                TWIG
-              </span>{' '}
-              Components <span className="sb-tagline-sm">in</span> Storybook <br />
-              <div className="sb-tagline__subline">You will ♥️ it!</div>
+                Twig Components in Storybook <br />
+              You will ♥ using️ it!
             </h1>
             <div>
               <div className="bg-green-100 pt-5 pb-5">
+                <h2 className="font-weight-bold">Get started</h2>
                 <div role="group" aria-label="Basic example">
                   <a
-                    href="/basics/introduction"
+                    href="https://master--5fd0183aaf074f00213f79cc.chromatic.com"
+                    target="_blank"
                     rel="noreferrer"
                     className="mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Get Started
+                    Online Demo
                   </a>
                   <a
-                    href="https://wingsuit-designsystem.github.io/wingsuit/"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/basics/introduction"
+                    className="mr-2 mb-2 btn btn-lg bg-green-500 font-weight-bold"
+                    style={{ maxWidth: 300, margin: 'auto' }}
+                  >
+                    Quickstart guide
+                  </a>
+                  <a
+                    href="/drupal/ui_patterns"
                     className="mb-2 btn btn-lg bg-green-500 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Demo (Doc only)
+                    Drupal Kickstarter
                   </a>
                 </div>
               </div>

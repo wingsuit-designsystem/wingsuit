@@ -14,11 +14,11 @@
 }
 
 .btn {
-  border-bottom: 4px solid transparent;
+  border-radius: 0;
 }
 
 .btn:hover {
-  border-bottom: 4px solid black;
+  box-shadow: 4px 4px 0px 0px #000000;
 }
 
 #docs-content a.edit-link {
