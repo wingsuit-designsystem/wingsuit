@@ -176,19 +176,6 @@ jobs:
       - run:
           name: cypress run
           command: yarn test:e2e --record --key 2311d788-c8ef-458b-b009-4cd3aee65180
-  chromatic:
-    <<: *defaults
-    working_directory: /tmp/storybook
-    parallelism: 4
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: Tailwind
-          command: |
-            cd starter-kits/tailwind
-            npx chromatic --exit-zero-on-changes
   smoke-tests:
     <<: *defaults
     steps:
@@ -274,9 +261,6 @@ workflows:
       - coverage:
           requires:
             - test
-      - chromatic:
-          requires:
-            - examples
       - publish:
           requires:
             - build
