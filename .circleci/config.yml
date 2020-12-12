@@ -36,6 +36,8 @@ jobs:
             - node_modules
             - examples
             - packages
+            - presets
+            - starter-kits
   build:
     <<: *defaults
     steps:
@@ -50,6 +52,8 @@ jobs:
           paths:
             - packages
             - examples
+            - presets
+            - starter-kits
   packtracker:
     <<: *defaults
     steps:
