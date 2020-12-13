@@ -32,12 +32,14 @@ export function resolveConfig(
   if (projectConfig[appName] != null) {
     appConfig = Object.assign(appConfig, projectConfig[appName]);
   }
-  // Overwrite by parameter.
-  appConfig.presetsRegistry = mergedConfig.presetsRegistry;
 
   mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);
   });
+
+  appConfig.getParameters = (name) => {
+    return appConfig.parameters[name] != null ? appConfig.parameters[name] : {};
+  };
 
   appConfig.webpack =
     mergedConfig.webpack !== null
@@ -65,6 +67,7 @@ export function resolveConfig(
       `No designSystem found: ${appConfig.designSystem}. Please check your wingsuit.config.`
     );
   }
+  appConfig.parameters = mergedConfig.parameters;
   appConfig.name = appName;
   appConfig.patternFolder = designSystem.patternFolder;
   appConfig.absDesignSystemPath = path.join(appConfig.absRootPath, designSystem.path);

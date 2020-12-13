@@ -3,28 +3,32 @@ import AppConfig from '../../AppConfig';
 
 const glob = require('glob');
 
+export function name(appConfig: AppConfig) {
+  return 'drupal';
+}
+
 export function webpack(appConfig: AppConfig) {
   const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
 
   const behaviorObject = behaviorItems.reduce((acc, item) => {
-    const name = path.basename(item).replace('.behavior.js', '');
-    acc[`behaviors/${name}`] = item;
+    const filename = path.basename(item).replace('.behavior.js', '');
+    acc[`behaviors/${filename}`] = item;
     return acc;
   }, {});
 
   const vendorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.vendor.js`);
 
   const vendorObject = vendorItems.reduce((acc, item) => {
-    const name = path.basename(item).replace('.vendor.js', '');
-    acc[`vendors/${name}`] = item;
+    const filename = path.basename(item).replace('.vendor.js', '');
+    acc[`vendors/${filename}`] = item;
     return acc;
   }, {});
 
   const cssItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.css`);
 
   const cssObject = cssItems.reduce((acc, item) => {
-    const name = path.basename(item).replace('.css', '');
-    acc[`${name}`] = item;
+    const filename = path.basename(item).replace('.css', '');
+    acc[`${filename}`] = item;
     return acc;
   }, {});
 
