@@ -37,8 +37,12 @@ export default class PresetManager {
         });
       } else if (Array.isArray(item)) {
         const name = item[0];
-        // eslint-disable-next-line global-require,import/no-dynamic-require
-        const lpreset = require(name);
+        let lpreset = name;
+        if (typeof name === 'string') {
+          // @ts-ignore
+          // eslint-disable-next-line global-require,import/no-dynamic-require
+          lpreset = require(name);
+        }
         const parameters = item[1];
         presets.push({
           preset: lpreset,
