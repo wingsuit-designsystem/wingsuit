@@ -7,7 +7,7 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 interface SvgSource {
   sourceFolder: string;
   jsonFile: string;
-  spriteFilename: string
+  spriteFilename: string;
 }
 
 interface SvgConfig {
@@ -24,7 +24,7 @@ export function defaultConfig(appConfig: AppConfig): SvgConfig {
       {
         sourceFolder: 'icons',
         jsonFile: path.join(appConfig.absAppPath, '/config/silo/svgs.json'),
-        spriteFilename: 'images/spritemap.svg'
+        spriteFilename: 'images/spritemap.svg',
       },
     ],
   };
