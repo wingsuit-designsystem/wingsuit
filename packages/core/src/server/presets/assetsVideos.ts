@@ -3,6 +3,10 @@ import AppConfig from '../../AppConfig';
 
 const CopyPlugin = require('copy-webpack-plugin');
 
+export function name(appConfig: AppConfig) {
+  return 'assetsVideos';
+}
+
 export function webpack(appConfig: AppConfig) {
   return {
     plugins: [

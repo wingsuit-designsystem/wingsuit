@@ -31,16 +31,18 @@ export default interface AppConfig {
 
   features: Feature;
 
-  webpack(appConfig: AppConfig);
+  webpack(appConfig: AppConfig, config?: any);
 
-  webpackFinal(appConfig: AppConfig, config: any);
+  webpackFinal(appConfig: AppConfig, config?: any);
+
+  getParameters(name: string);
 
   presets: [];
-
-  presetsRegistry: PresetItem;
 }
 
 export interface Preset {
+  defaultConfig(appConfig: AppConfig): any;
+  name(appConfig: AppConfig): string;
   webpack(appConfig: AppConfig);
   webpackFinal(appConfig: AppConfig, config: any);
 }
@@ -54,4 +56,10 @@ export interface Namespace {
 
 export interface Feature {
   [key: string]: string;
+}
+
+export interface PresetDefinition {
+  preset: Preset;
+  name: string;
+  parameters: any;
 }

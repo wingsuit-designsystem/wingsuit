@@ -11,7 +11,9 @@ import './style.css';
 const Docs = ({ sections, selectedItem, selectedSectionId, selectedItemId }) => (
   <div>
     <div className="header-wrapper">
-      <Helmet title={`${selectedItem.title}`} />
+      <Helmet>
+        <title>{`${selectedItem.title} - Twig for Storybook`}</title>
+      </Helmet>
       <Header currentSection="docs" />
     </div>
     <div className="container">

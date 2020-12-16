@@ -1,5 +1,9 @@
 import AppConfig from '../../AppConfig';
 
+export function name(appConfig: AppConfig) {
+  return 'babel';
+}
+
 export function webpack(appConfig: AppConfig) {
   return {
     module: {
