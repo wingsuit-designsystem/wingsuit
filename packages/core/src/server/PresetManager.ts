@@ -2,7 +2,7 @@
  * Wingsuit PresetManager.
  */
 import { DefinePlugin } from 'webpack';
-import AppConfig, { Preset } from '../AppConfig';
+import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
@@ -14,19 +14,50 @@ merge.multiple();
 export default class PresetManager {
   private environment = 'production';
 
-  private getPresets(appConfig: AppConfig): Preset[] {
-    const presets: Preset[] = [];
-    appConfig.presets.forEach((name) => {
-      if (typeof name === 'string') {
-        if (appConfig.presetsRegistry[name] != null) {
-          presets.push(appConfig.presetsRegistry[name]);
-        } else {
+  private getPresetName(preset: Preset, appConfig: AppConfig): any {
+    return preset.name != null ? preset.name(appConfig) : Math.random();
+  }
+
+  private getPresetParameter(preset: Preset, appConfig: AppConfig, providedConfig: any): any {
+    const defaultConfig = preset.defaultConfig != null ? preset.defaultConfig(appConfig) : {};
+    const appParameter = appConfig.getParameters(this.getPresetName(preset, appConfig));
+    return Object.assign(defaultConfig, appParameter, providedConfig);
+  }
+
+  private getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+    const presets: PresetDefinition[] = [];
+    appConfig.presets.forEach((item) => {
+      if (typeof item === 'string') {
+        // eslint-disable-next-line global-require,import/no-dynamic-require
+        const lpreset = require(item);
+        presets.push({
+          preset: lpreset,
+          name: this.getPresetName(lpreset, appConfig),
+          parameters: this.getPresetParameter(lpreset, appConfig, {}),
+        });
+      } else if (Array.isArray(item)) {
+        const name = item[0];
+        let lpreset = name;
+        if (typeof name === 'string') {
+          // @ts-ignore
           // eslint-disable-next-line global-require,import/no-dynamic-require
-          const lpreset = require(name);
-          presets.push(lpreset);
+          lpreset = require(name);
         }
-      } else {
-        presets.push(name);
+        const parameters = item[1];
+        presets.push({
+          preset: lpreset,
+          name: this.getPresetName(lpreset, appConfig),
+          parameters: this.getPresetParameter(lpreset, appConfig, parameters),
+        });
+      } else if (typeof item === 'object') {
+        presets.push(
+          // @ts-ignore
+          {
+            preset: item,
+            name: this.getPresetName(item, appConfig),
+            parameters: this.getPresetParameter(item, appConfig, {}),
+          }
+        );
       }
     });
     return presets;
@@ -42,11 +73,12 @@ export default class PresetManager {
    *   True if feature is supported.
    */
   public supportFeature(name, appConfig: AppConfig) {
-    const presets = this.getPresets(appConfig);
+    const presetDefinitions = this.getPresetDefinitions(appConfig);
     let support = false;
-    Object.keys(presets).forEach((key) => {
-      if (presets[key] != null && presets[key].supportFeature != null) {
-        const presetSupport = presets[key].supportFeature(name);
+    Object.keys(presetDefinitions).forEach((key) => {
+      const { preset } = presetDefinitions[key];
+      if (preset != null && preset.supportFeature != null) {
+        const presetSupport = preset.supportFeature(name);
         if (presetSupport === true) {
           support = true;
         }
@@ -62,12 +94,12 @@ export default class PresetManager {
    */
   public generateWebpack(appConfig: AppConfig, webpackConfigs: [] = []) {
     this.environment = appConfig.environment;
-    const presets = this.getPresets(appConfig);
+    const presets = this.getPresetDefinitions(appConfig);
 
     const shared: any = [];
     Object.keys(presets).forEach((key) => {
       if (presets[key] != null) {
-        shared.push(presets[key].webpack(appConfig));
+        shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
     });
 
@@ -108,8 +140,8 @@ export default class PresetManager {
     );
 
     Object.keys(presets).forEach((key) => {
-      if (presets[key].webpackFinal != null) {
-        config = presets[key].webpackFinal(appConfig, config);
+      if (presets[key].preset.webpackFinal != null) {
+        config = presets[key].preset.webpackFinal(appConfig, config);
       }
     });
 

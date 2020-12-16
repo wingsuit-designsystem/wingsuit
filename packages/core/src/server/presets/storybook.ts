@@ -1,6 +1,8 @@
-import path from 'path';
-import Svg2JsonPlugin from '../plugins/Svg2JsonPlugin';
 import AppConfig from '../../AppConfig';
+
+export function name(appConfig: AppConfig) {
+  return 'storybook';
+}
 
 export function webpack(appConfig: AppConfig) {
   const resultWebpack = {
@@ -29,14 +31,5 @@ export function webpack(appConfig: AppConfig) {
       children: false,
     },
   };
-  if (appConfig.namespaces.atoms != null) {
-    // @ts-ignore
-    resultWebpack.plugins = [
-      new Svg2JsonPlugin(
-        path.resolve(appConfig.namespaces.atoms, 'svg/svg/icons'),
-        path.resolve(`${appConfig.absAppPath}/config/silo/svgs.json`)
-      ),
-    ];
-  }
   return resultWebpack;
 }

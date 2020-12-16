@@ -1,26 +1,35 @@
+import { glob } from 'glob';
+import { AppConfig } from '../../index';
+
 const fs = require('fs-extra');
 const path = require('path');
 const jsondiff = require('jsondiffpatch');
 
 export default class Svg2JsonPlugin {
-  private readonly svgFolderPath: string;
+  private readonly sourceFolder: string;
 
   private readonly targetJsonFlename: string;
 
   private plugin: {} = {};
 
-  constructor(svgFolderPath, targetJsonFlename) {
-    this.svgFolderPath = svgFolderPath;
-    this.targetJsonFlename = targetJsonFlename;
+  private appConfig: AppConfig;
+
+  constructor(sourceFolder, targetJsonFilename, appConfig: AppConfig) {
+    this.sourceFolder = sourceFolder;
+    this.targetJsonFlename = targetJsonFilename;
+    this.appConfig = appConfig;
     this.plugin = { name: 'Svg2JsonPlugin' };
   }
 
   public apply(compiler) {
     const beforeCompile = (compilation, callback) => {
       const filename = this.targetJsonFlename;
-      const { svgFolderPath } = this;
+      const { sourceFolder, appConfig } = this;
       const svgs: string[] = [];
-      fs.readdirSync(svgFolderPath).forEach((file) => {
+      const searchFiles = `${appConfig.absPatternPath}/**/${sourceFolder}/*.svg`;
+
+      const files = glob.sync(searchFiles);
+      files.forEach((file) => {
         svgs.push(path.basename(file, '.svg'));
       });
       const output = { svgs };

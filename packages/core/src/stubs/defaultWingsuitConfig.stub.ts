@@ -4,22 +4,14 @@ const assets = require('../server/presets/assets')
 const storybook = require('../server/presets/storybook')
 const drupal = require('../server/presets/drupal')
 const twing = require('../server/presets/twing')
+const svg = require('../server/presets/svg')
 const assetsVideos = require('../server/presets/assetsVideos')
 
 export const wingsuit = {
   webpackFinal: null,
   webpack: null,
-
-  presetsRegistry: {
-    css,
-    babel,
-    assets,
-    assetsVideos,
-    storybook,
-    drupal,
-    twing,
-  },
-  presets: ['babel', 'css', 'assets', 'assetsVideos'],
+  parameters: {},
+  presets: [babel, css, assets, assetsVideos, svg],
   designSystems: {
     default: {
       path: 'source/default',
@@ -39,7 +31,7 @@ export const wingsuit = {
       distFolder: 'dist/app-storybook',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: ['twing', 'storybook'],
+      presets: [twing, storybook],
     },
     drupal: {
       type: 'drupal',
@@ -49,7 +41,7 @@ export const wingsuit = {
       assetAtomicFolder: 'atomic',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: ['drupal'],
+      presets: [drupal],
     },
   },
 }

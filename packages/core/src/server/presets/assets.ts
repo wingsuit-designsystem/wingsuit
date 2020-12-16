@@ -2,7 +2,10 @@ import * as path from 'path';
 import AppConfig from '../../AppConfig';
 
 const CopyPlugin = require('copy-webpack-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
+export function name(appConfig: AppConfig) {
+  return 'assets';
+}
 
 export function webpack(appConfig: AppConfig) {
   // Storybook needs entries as array. For other apps assets keys are prefered.
@@ -16,7 +19,6 @@ export function webpack(appConfig: AppConfig) {
   return {
     entry: entryPoints,
     plugins: [
-      new SpriteLoaderPlugin(),
       new CopyPlugin([
         {
           from: 'images/*',
@@ -39,33 +41,6 @@ export function webpack(appConfig: AppConfig) {
           ],
         },
         {
-          test: /.*\/icons\/.*\.svg$/,
-          use: [
-            {
-              loader: 'svg-sprite-loader',
-              options: {
-                extract: true,
-                outputPath: `${appConfig.assetBundleFolder}/`,
-                spriteFilename: 'images/spritemap.svg',
-              },
-            },
-            'svg-transform-loader',
-            {
-              loader: 'svgo-loader',
-              options: {
-                plugins: [
-                  { convertFillsToCurrentColor: true },
-                  { removeTitle: true },
-                  { removeEditorsNSData: false },
-                  { convertColors: { shorthex: false } },
-                  { convertPathData: false },
-                ],
-              },
-            },
-          ],
-        },
-
-        {
           loader: 'file-loader',
           test: /.*\/images\/.*\.svg$/,
           options: {
@@ -84,17 +59,4 @@ export function webpack(appConfig: AppConfig) {
       ],
     },
   };
-}
-
-export function webpackFinal(appConfig: AppConfig, config: any): {} {
-  if (appConfig.type === 'storybook') {
-    // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map((data) => {
-      if (/svg\|ico\|jpg\|/.test(String(data.test)))
-        // eslint-disable-next-line no-param-reassign
-        data = {};
-      return data;
-    });
-  }
-  return config;
 }

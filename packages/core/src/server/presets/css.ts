@@ -3,6 +3,10 @@ import AppConfig from '../../AppConfig';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+export function name(appConfig: AppConfig) {
+  return 'css';
+}
+
 export function webpack(appConfig: AppConfig) {
   const loader = [
     {
