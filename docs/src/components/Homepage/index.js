@@ -13,7 +13,10 @@ import Footer from '../Footer';
 
 const Homepage = ({ users }) => (
   <div>
-    <Helmet title="Wingsuit - Twig for Storybook" />
+    <Helmet>
+      <title>Wingsuit - Twig for Storybook</title>
+      <meta name="description" content="Build bulletproof Twig Components in Storybook"></meta>
+    </Helmet>
     {/* <Header currentSection="home" /> */}
     <Heading />
     <div style={{ width: '100%' }} className="overflow-hidden">
