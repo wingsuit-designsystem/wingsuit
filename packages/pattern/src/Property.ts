@@ -32,6 +32,13 @@ export default class Property {
       token = `{{${_preview}}}`;
     }
     try {
+      if (process.env.STORYBOOK_WINGSUIT_FAKER_SEED != null) {
+        if (!Number.isNaN(process.env.STORYBOOK_WINGSUIT_FAKER_SEED)) {
+          faker.seed(parseInt(process.env.STORYBOOK_WINGSUIT_FAKER_SEED, 10));
+        } else {
+          console.error('STORYBOOK_WINGSUIT_FAKER_SEED must be numeric');
+        }
+      }
       return faker.fake(token);
     } catch (e) {
       return `Invalid faker configuration "${token}". ${e.message}`;
