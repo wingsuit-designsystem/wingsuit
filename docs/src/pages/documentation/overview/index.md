@@ -49,3 +49,13 @@ export const wingsuit = {
   },
 };
 ```
+<div class="next-title">NEXT</div>
+<div class="next">
+    <div class="next__content"><b>Extend Wingsuit component documentation</b></div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" href="../mdx">Continue</a>
+</div>
+<div class="next">
+    <div class="next__content"><b>Storybook MDX documentation</b></div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" target="_bland" href="https://storybook.js.org/docs/react/api/mdx">Continue</a>
+</div>
+

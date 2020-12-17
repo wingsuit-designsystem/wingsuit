@@ -22,7 +22,7 @@ module.exports = {
       assets: ['/assets/overview/', '/assets/images/', '/assets/svg/', '/assets/javascript/'],
       documentation: ['/documentation/overview/', '/documentation/mdx/'],
       drupal: ['/drupal/ui_patterns/'],
-      testing: ['/testing/manual-testing/'],
+      testing: ['/testing/visual-testing/'],
     },
   },
   plugins: [

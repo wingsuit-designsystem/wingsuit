@@ -38,6 +38,26 @@ It takes around `1 second` from save to see your changes in Storybook. Wingsuit 
 Twing is nearly 100% compatible with PHP Twig. We had tested it with really large Drupal projects. 
 
 
+<div class="next-title">FEEDBACK</div>
+<div class="next">
+    <div class="next__content"><b>Open an issue</b><br> if you miss something or something is not working. </div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" target="_blank" href="https://github.com/wingsuit-designsystem/wingsuit/issues">Issue</a>
+</div>
+<div class="next">
+    <div class="next__content"><b>Open an Pull Request</b><br> I am happy about new ideas! </div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" target="_blank" href="https://github.com/wingsuit-designsystem/wingsuit/pulls">Pull Request</a>
+</div>
+<div class="next">
+    <div class="next__content"><b>Join on Slack</b><br> </div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" target="_blank" href="https://drupaltwig.slack.com/archives/C01C82BH864">Slack</a>
+</div>
+<div class="next">
+    <div class="next__content"><b>Github star</b><br>If you like it let me know. It </div>
+    <a class="next__button mb-2 btn btn-lg bg-green-500 mr-2 font-weight-bold" target="_blank" href="https://github.com/wingsuit-designsystem/wingsuit/">Motivates me!</a>
+</div>
+
+
+
 <div class="next-title">NEXT</div>
 <div class="next">
     <div class="next__content"><b>Quickstart guide</b></div>
