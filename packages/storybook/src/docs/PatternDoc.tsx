@@ -29,7 +29,7 @@ export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps)
 
   return (
     <>
-      {variants.map(variant => {
+      {variants.map((variant) => {
         const included = showInclude === true ? <PatternInclude variant={variant} /> : null;
         return (
           <div key={variant.getId()} id={`anchor--${variant.getStoryId()}`}>

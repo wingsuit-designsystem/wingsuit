@@ -7,7 +7,7 @@
 
 {# TEMPLATE #}
 <header class="{{ header_classes }}">
-  {% embed "@organisms/container/container.twig" with {menu: menu, button: button} only%}
+  {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select} only%}
     {% block content %}
       <div class="flex flex-wrap py-5 justify-between md:flex-row">
         <div class="flex items-center">
@@ -19,7 +19,7 @@
         <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
           <div>
-            {{ button }}
+          {{ language_select }}
           </div>
         </div>
       </div>

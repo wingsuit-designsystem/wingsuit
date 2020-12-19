@@ -3,23 +3,17 @@ header:
   label: Header
   description: The header pattern with logo and menu.
   fields:
-    logo:
-      type: pattern
-      label: Logo
-      preview:
-        id: logo
     menu:
       type: pattern
       label: Menu
       preview:
         id: menu
         variant: primary
-    button:
+    language_select:
       type: pattern
-      label: Button
+      label: Language select
       preview:
-        id: button
-        variant: default
+        id: language_select
   variants:
     fixed:
       label: Fixed

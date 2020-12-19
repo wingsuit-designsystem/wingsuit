@@ -33,11 +33,11 @@ export function resolveConfig(
     appConfig = Object.assign(appConfig, projectConfig[appName]);
   }
 
-  mergedConfig.presets.forEach(preset => {
+  mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);
   });
 
-  appConfig.getParameters = name => {
+  appConfig.getParameters = (name) => {
     return appConfig.parameters[name] != null ? appConfig.parameters[name] : {};
   };
 

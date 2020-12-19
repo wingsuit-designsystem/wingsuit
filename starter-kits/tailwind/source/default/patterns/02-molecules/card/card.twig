@@ -38,11 +38,9 @@
         {{ preheadline }}
       {% endblock %}
     </div>
-    <h2 class="title-font text-2xl font-medium text-gray-900 mb-3">
-      {% block headline %}
-        {{ headline }}
-      {% endblock %}
-    </h2>
+    {% block headline %}
+      {{ headline }}
+    {% endblock %}
     <div class="leading-relaxed mb-3">
       {% block text %}
         {{ text }}

@@ -33,7 +33,7 @@
 
   </head>
   <body{{ attributes }}
-    x-data="{ isScrollDown: false, menuIsOpen: false }" x-on:drupalViewportOffsetChange.window="console.log('XX')" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; "
+    x-data="{ isScrollDown: false, menuIsOpen: false, languageSwitcherOpen: false }" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; "
   >
     {#
       Keyboard navigation/accessibility link to main content section in

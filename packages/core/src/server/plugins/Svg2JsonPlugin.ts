@@ -29,7 +29,7 @@ export default class Svg2JsonPlugin {
       const searchFiles = `${appConfig.absPatternPath}/**/${sourceFolder}/*.svg`;
 
       const files = glob.sync(searchFiles);
-      files.forEach(file => {
+      files.forEach((file) => {
         svgs.push(path.basename(file, '.svg'));
       });
       const output = { svgs };
@@ -39,7 +39,7 @@ export default class Svg2JsonPlugin {
         if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
         // Only write output if there is a difference or non-existent target file
         if (jsondiff.diff(existingJson, output)) {
-          fs.outputJson(filename, output, writeerr => {
+          fs.outputJson(filename, output, (writeerr) => {
             if (writeerr) console.error(writeerr);
           });
         }

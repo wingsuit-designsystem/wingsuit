@@ -122,19 +122,14 @@ function getProps(variant) {
       }
     }
   });
-  const groupPatterns = 'Patterns';
+  const groupPatterns = 'Linked patterns';
   const previewPatterns = variant.getPreviewPatterns();
 
   Object.keys(previewPatterns).forEach((key) => {
-    const referencedConfig = previewPatterns[key];
-    const referencedVariant = storage.loadVariant(
-      referencedConfig.patternId,
-      referencedConfig.variant
-    );
-    const shouldRender = boolean(referencedVariant.getLabel(), true, groupPatterns);
+    const fieldName = key.split('--')[0];
+    const shouldRender = boolean(variant.getField(fieldName).getLabel(), true, groupPatterns);
     if (!shouldRender) {
-      const variableKey = key.split('--')[0];
-      knobsVariables[variableKey] = null;
+      knobsVariables[fieldName] = null;
     }
   });
   return knobsVariables;

@@ -52,7 +52,7 @@ export const Typeset: FunctionComponent<TypesetProps> = ({
   ...props
 }) => (
   <Wrapper {...props} className="docblock-typeset">
-    {Object.keys(fontSizes).map(name => (
+    {Object.keys(fontSizes).map((name) => (
       <TypeSpecimen key={fontSizes[name]} style={{ alignItems: 'center' }}>
         <Label style={{ flexShrink: 0, width: '40px' }}>
           {classNamePrefix}

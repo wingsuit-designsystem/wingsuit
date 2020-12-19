@@ -8,17 +8,70 @@ headline:
       label: Content
       preview:
         faker: lorem.word
+  variants:
+    h1:
+      label: h1
+      configuration:
+        size:
+          h1: text-6xl font-montserrat font-bold md:text-9xl
+        spacing_bottom:
+          small: mb-10 md:mb-12
+          default: mb-10 md:mb-12
+    h2:
+      label: h2
+      configuration:
+        size:
+          h2: text-5xl font-montserrat font-bold md:text-8xl
+        spacing_bottom:
+          small: mb-9 md:mb-12
+          default: mb-9 md:mb-12
+    h3:
+      label: h3
+      configuration:
+        size:
+          h3: text-4xl font-montserrat font-bold md:text-7xl md:font-openSans font-bold
+        spacing_bottom:
+          small: mb-4 md:mb-10
+          default: mb-8 md:mb-11
+    h4:
+      label: h4
+      configuration:
+        size:
+          h4: text-3xl font-montserrat font-bold md:text-6xl md:font-openSans font-bold
+        spacing_bottom:
+          small: mb-2 md:mb-4
+          default: mb-8 md:mb-10
+    h5:
+      label: h5
+      configuration:
+        size:
+          h5: text-3xl font-openSans font-bold md:text-5xl md:font-montserrat font-bold
+        spacing_bottom:
+          small: mb-2.5 md:mb-3.5
+          default: mb-8 md:mb-9
+    h6:
+      label: h6
+      configuration:
+        size:
+          h6: text-4xl mb-8 font-openSans font-bold
+        spacing_bottom:
+          small: mb-8
+          default: mb-8
+    h7:
+      label: h7
+      configuration:
+        size:
+          h7: text-3xl font-openSans font-bold
+        spacing_bottom:
+          small: mb-8
+          default: mb-8
   settings:
-    element:
+    spacing_bottom:
       type: select
-      label: Element
+      label: Spacing bottom
       required: true
+      default_value: default
       options:
-        h1: h1
-        h2: h2
-    size:
-      type: select
-      label: Size
-      options:
-        large: Large
-        medium: Medium
+        none: None
+        small: Small
+        default: Default

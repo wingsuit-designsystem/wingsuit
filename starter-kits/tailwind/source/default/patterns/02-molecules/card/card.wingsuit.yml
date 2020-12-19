@@ -19,11 +19,14 @@ card:
       preview:
         faker: lorem.word
     headline:
-      type: text
+      type: pattern
       label: Headline
       description: The main headline.
       preview:
-        faker: lorem.word
+        id: headline
+        variant: h4
+        settings:
+          spacing_bottom: small
     text:
       type: text
       label: Text

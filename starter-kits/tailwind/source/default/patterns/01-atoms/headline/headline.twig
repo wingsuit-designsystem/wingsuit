@@ -5,10 +5,10 @@
 
 {%
   set classes = ([
-  'headline',
-  'font-serif',
-  size == 'large' ? 'text-4xl',
-  size == 'medium' ? 'text-xl',
+  'headline text-gray-500 dark:text-gray-50 font-serif',
+  pattern_configuration('headline', variant, 'size')[variant],
+  pattern_configuration('headline', variant, 'spacing_bottom')[spacing_bottom],
+  classes,
 ]) | sort | join(' ') | trim
 %}
 

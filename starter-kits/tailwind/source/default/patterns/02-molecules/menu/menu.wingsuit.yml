@@ -27,7 +27,7 @@ menu:
       fields:
         items:
           - title: Datenschutz
-            link: "#"
+            url: "#"
           - title: Impressum
-            link: "#"
+            url: "#"
   visibility: storybook

@@ -1,0 +1,31 @@
+language_select:
+  use: "@molecules/language-select/language-select.twig"
+  label: Language select
+  description: Colorful status, warning and error messages for every situation.
+  fields:
+    links:
+      type: object
+      label: Links
+      preview:
+        - text: Deutsch
+          link: "#"
+          langcode: de
+          icon: de-flag
+        - text: English
+          link: "#"
+          langcode: en
+          icon: en
+        - text: Français
+          link: "#"
+          langcode: fr
+          icon: fr-flag
+        - text: Italiano
+          link: "#"
+          icon: it-flag
+          langcode: it
+    language:
+      type: text
+      label: Language
+      preview: de
+
+  visibility: storybook
