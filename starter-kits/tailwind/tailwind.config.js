@@ -10,9 +10,6 @@ module.exports = {
   },
   theme: {
     extend: {
-      margin: {
-        ...rem(-100),
-      },
       fill: {
         current: 'currentColor',
       },
@@ -25,16 +22,8 @@ module.exports = {
       },
       maxWidth: {
         none: 'none',
-<<<<<<< HEAD:starter-kits/tailwind/tailwind.config.js
         '7xl': '100rem',
         '8xl': '120rem',
-=======
-        ...rem(120),
-        ...rem(800),
-        ...rem(1200),
-        ...rem(1600),
-        ...rem(1900),
->>>>>>> 77874fe... WS #00: menu dropdown added.:packages/wingsuit/tailwind.config.js
       },
     },
     fontFamily: {
