@@ -133,7 +133,8 @@ function getProps(variant) {
     );
     const shouldRender = boolean(referencedVariant.getLabel(), true, groupPatterns);
     if (!shouldRender) {
-      knobsVariables[key] = null;
+      const variableKey = key.split('--')[0];
+      knobsVariables[variableKey] = null;
     }
   });
   return knobsVariables;
