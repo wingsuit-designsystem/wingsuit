@@ -105,8 +105,12 @@ export async function renderPatternPreview(
         const finalVariables: {} = {
           ...patternVariables,
           ...buildBaseVariables(variables),
-          ...previewRenderedVariables,
         };
+        Object.keys(previewRenderedVariables).forEach((key) => {
+          if (finalVariables[key] === undefined) {
+            finalVariables[key] = previewRenderedVariables[key];
+          }
+        });
         renderPattern(patternId, variantId, finalVariables)
           .then((output) => {
             resolve(output);
