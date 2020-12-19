@@ -122,6 +122,18 @@ function getProps(variant) {
       }
     }
   });
+  const groupPatterns = 'Patterns';
+  const previewPatterns = variant.getPreviewPatterns();
+
+  Object.keys(previewPatterns).forEach(key => {
+    const referencedConfig = previewPatterns[key];
+    const referencedVariant = storage.loadVariant(referencedConfig.patternId, referencedConfig.variant);
+    const shouldRender = boolean(referencedVariant.getLabel(), true, groupPatterns);
+    if (!shouldRender) {
+      knobsVariables[key] = null;
+    }
+
+  });
   return knobsVariables;
 }
 

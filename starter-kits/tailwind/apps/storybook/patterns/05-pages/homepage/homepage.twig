@@ -23,7 +23,7 @@
         {{ pattern_preview('card', 'default', {'headline': ' Second Card'}) }}
       {% endblock %}
       {% block column_3 %}
-        {{ pattern_preview('card', 'default') }}
+        {{ pattern_preview('card', 'default', {'headline': 'Overwritten headline', 'image': null}) }}
       {% endblock %}
     {% endembed %}
     {% embed "@organisms/section/section.twig" with { columns: 1 } %}

@@ -104,9 +104,13 @@ export async function renderPatternPreview(
         }
         const finalVariables: {} = {
           ...patternVariables,
-          ...buildBaseVariables(variables),
-          ...previewRenderedVariables,
+          ...buildBaseVariables(variables)
         };
+        Object.keys(previewRenderedVariables).forEach((key)=>{
+          if (finalVariables[key] === undefined){
+            finalVariables[key] = previewRenderedVariables[key];
+          }
+        });
         renderPattern(patternId, variantId, finalVariables)
           .then((output) => {
             resolve(output);
@@ -144,6 +148,7 @@ export async function renderPattern(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
   variables: {} = {}
 ): Promise<string> {
+
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   if (variant == null) {
     throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
