@@ -44,7 +44,7 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
     );
 
     resultWebpack.plugins.push(new SpriteLoaderPlugin());
-    const rule = new RegExp(`.*/${svgConfig.sourceFolder}/.*.svg$`);
+    const rule = new RegExp(`.*[/|\\\\]${svgConfig.sourceFolder}[/|\\\\].*.svg$`);
     resultWebpack.module.rules.push({
       test: rule,
       use: [
