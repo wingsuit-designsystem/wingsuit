@@ -7,7 +7,7 @@ const npmApiBase = `https://api.npmjs.org/downloads/point/last-month`;
 
 export const metadata = {
   title: 'Wingsuit',
-  description: `Wingsuit is an open source tool for developing UI components in isolation for React, Vue, and Angular`,
+  description: `Wingsuit is an open source tool for developing UI components in Twig`,
   ogImage: '/images/social/open-graph.png',
   googleSiteVerification: '',
   latestVersion: 'v1.0',

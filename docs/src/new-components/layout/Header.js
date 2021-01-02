@@ -70,7 +70,7 @@ const NavItem = styled.div`
   height: 3rem;
   vertical-align: top;
 
-  ${(props) =>
+  ${props =>
     props.showDesktop &&
     css`
       display: none;
@@ -79,7 +79,7 @@ const NavItem = styled.div`
       }
     `};
 
-  ${(props) =>
+  ${props =>
     props.showMobile &&
     css`
       @media (min-width: ${breakpoint * 1.333}px) {
@@ -94,7 +94,7 @@ const NavGroup = styled.div`
   left: 0;
   z-index: 1;
 
-  ${(props) =>
+  ${props =>
     props.right &&
     css`
       left: auto;
@@ -133,8 +133,11 @@ export default function Header({ ...props }) {
       <Nav>
         <NavGroup>
           <NavItem>
-            <LogotypeWrapper href="/">
-              <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-inline.svg" alt="Wingsuit" />
+            <LogotypeWrapper href="/" style={{ pointerEvents: 'all' }}>
+              <img
+                src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-inline.svg"
+                alt="Wingsuit"
+              />
             </LogotypeWrapper>
             <Version href={url.gitHub.releases}>{metadata.latestVersion}</Version>
           </NavItem>

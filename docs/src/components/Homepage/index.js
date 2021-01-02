@@ -14,8 +14,8 @@ import Footer from '../Footer';
 const Homepage = ({ users }) => (
   <div>
     <Helmet>
-      <title>Wingsuit - Twig for Storybook</title>
-      <meta name="description" content="Build bulletproof Twig Components in Storybook"></meta>
+      <title>Twig for Storybook - Wingsuit</title>
+      <meta name="description" content="Build bulletproof Twig Components in Storybook" />
     </Helmet>
     {/* <Header currentSection="home" /> */}
     <Heading />
@@ -25,7 +25,10 @@ const Homepage = ({ users }) => (
           className="row no-gutters relative"
           style={{ position: 'relative', overflow: 'hidden' }}
         >
-          <div className="col-12 col-sm-6 col-xl-9 text-center">
+          <div className="column col-6 col-xl-2 d-none d-xl-block bg-red-100">
+            <div className="circle bg-blue-100" style={{ left: '-100%' }} />
+          </div>
+          <div className="col-12 col-xl-6 col-xl-8 text-center">
             <h1 className="sb-tagline">
               Build bulletproof <br />
               Twig Components in Storybook <br />
@@ -45,18 +48,18 @@ const Homepage = ({ users }) => (
                     Online Demo
                   </a>
                   <a
-                    href="/basics/introduction"
+                    href="/basics/introduction/"
                     className="mr-2 mb-2 btn btn-lg bg-green-500 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Quickstart guide
+                    Introduction
                   </a>
                   <a
-                    href="/drupal/ui_patterns"
+                    href="/basics/introduction/"
                     className="mb-2 btn btn-lg bg-green-500 font-weight-bold"
                     style={{ maxWidth: 300, margin: 'auto' }}
                   >
-                    Drupal Kickstarter
+                    Quick setup
                   </a>
                 </div>
               </div>
@@ -66,7 +69,7 @@ const Homepage = ({ users }) => (
             </div>
             <UsedBy users={users} />
           </div>
-          <div className="column col-6 col-xl-3 d-none d-sm-block bg-blue-100">
+          <div className="column col-6 col-xl-2 d-none d-xl-block bg-blue-100">
             <div className="circle bg-red-100" />
           </div>
         </div>

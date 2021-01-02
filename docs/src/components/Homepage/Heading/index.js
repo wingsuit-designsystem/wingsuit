@@ -6,7 +6,7 @@ import wingsuitLogo from '../../../design/homepage/wingsuit-logo.svg';
 const Heading = () => (
   <div id="heading">
     <div>
-      <img className="sb-title" src={wingsuitLogo} alt="Storybook Logo" />
+      <img className="sb-title" src={wingsuitLogo} alt="Wingsuit Logo" />
     </div>
   </div>
 );

@@ -2,7 +2,7 @@
 id: 'introduction'
 title: 'Introduction'
 ---
-Wingsuit is a design system for Twig based UI components. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like Drupal. 
+Wingsuit is an open source tool for developing UI components in Twig. You can develop your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like Drupal. 
 
  
 ## Features

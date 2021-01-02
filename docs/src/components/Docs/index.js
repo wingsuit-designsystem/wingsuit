@@ -14,7 +14,7 @@ const Docs = ({ sections, selectedItem, selectedSectionId, selectedItemId }) => 
       <Helmet>
         <title>{`${selectedItem.title} - Twig for Storybook`}</title>
       </Helmet>
-      <Header currentSection="docs" />
+      <Header currentSection="docs" style={{ pointerEvents: 'none' }} />
     </div>
     <div className="container">
       <Container

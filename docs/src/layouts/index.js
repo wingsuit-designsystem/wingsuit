@@ -25,6 +25,7 @@ const PageTemplate = ({ children }) => (
           top: 0,
           border: 0,
           right: 0,
+          zIndex: 10,
         }}
         aria-hidden="true"
       >
