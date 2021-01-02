@@ -29,7 +29,7 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          test: /.*\/fonts\/.*\.(svg|woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          test: /.*[/|\\\\]fonts[/|\\\\].*\.(svg|woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
           use: [
             {
               loader: 'file-loader',
@@ -42,7 +42,7 @@ export function webpack(appConfig: AppConfig) {
         },
         {
           loader: 'file-loader',
-          test: /.*\/images\/.*\.svg$/,
+          test: /.*[/|\\\\]images[/|\\\\].*\.svg$/,
           options: {
             outputPath: path.join(appConfig.assetBundleFolder, 'images'),
             name: '[name].[ext]',
