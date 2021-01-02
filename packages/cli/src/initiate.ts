@@ -4,11 +4,13 @@ import { hasYarn } from './has_yarn';
 
 const logger = console;
 
-const { spawn, spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');
 const clone = require('git-clone');
 const fs = require('fs');
+const mv = require('mv');
+const rimraf = require('rimraf');
 
-export default function (options) {
+export default function(options) {
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
@@ -28,10 +30,8 @@ export default function (options) {
   const cmdOptions = { stdio: 'inherit', cwd: npmOptions.checkoutFolder };
   const gitOptions = { cwd: npmOptions.gitFolder };
 
-  spawnSync('pwd', [], cmdOptions);
-
   // Removes the \n from the stringified buffer
-  const extractHash = (buffer) => {
+  const extractHash = buffer => {
     const arr = buffer.toString('utf8').split('\n');
     return arr[0];
   };
@@ -58,7 +58,7 @@ export default function (options) {
     }
     const pkgFile = `${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}/package.json`;
     const pkg = JSON.parse(fs.readFileSync(pkgFile));
-    Object.keys(pkg.devDependencies).forEach((key) => {
+    Object.keys(pkg.devDependencies).forEach(key => {
       if (key.indexOf('@wingsuit-designsystem/') === 0) {
         pkg.devDependencies[key] = `^${pkg.devDependencies[key]}`;
       }
@@ -73,34 +73,34 @@ export default function (options) {
   const setupWingsuit = () => {
     // This function must complete before the subsequent installs can be ran.
     checkoutLatestTag();
-    spawn(
-      'mv',
-      [`${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`, npmOptions.targetFolder],
-      cmdOptions
-    );
-    spawn('rm', ['-rf', npmOptions.gitFolder], cmdOptions);
-
-    cmdOptions.cwd = npmOptions.targetFolder;
-    if (!npmOptions.skipInstall) {
-      logger.log('Running Wingsuit dependency installation...');
-      if (useYarn) {
-        spawnSync('yarn', ['install'], cmdOptions);
-        logger.log('Running Wingsuit setup...');
-        const startArgs = ['dev:storybook'];
-        if (npmOptions.smokeTest) {
-          startArgs.push('--smoke-test');
+    mv(
+      `${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`,
+      npmOptions.targetFolder,
+      function(err) {
+        rimraf.sync(npmOptions.gitFolder);
+        cmdOptions.cwd = npmOptions.targetFolder;
+        if (!npmOptions.skipInstall) {
+          logger.log('Running Wingsuit dependency installation...');
+          if (useYarn) {
+            spawnSync('yarn', ['install'], cmdOptions);
+            logger.log('Running Wingsuit setup...');
+            const startArgs = ['dev:storybook'];
+            if (npmOptions.smokeTest) {
+              startArgs.push('--smoke-test');
+            }
+            spawnSync('yarn', startArgs, cmdOptions);
+          } else {
+            spawnSync('npm', ['install'], cmdOptions);
+            logger.log('Running Wingsuit setup...');
+            const startArgs = ['run', 'dev:storybook'];
+            if (npmOptions.smokeTest) {
+              startArgs.push('--smoke-test');
+            }
+            spawnSync('npm', startArgs, cmdOptions);
+          }
         }
-        spawnSync('yarn', startArgs, cmdOptions);
-      } else {
-        spawnSync('npm', ['install'], cmdOptions);
-        logger.log('Running Wingsuit setup...');
-        const startArgs = ['run', 'dev:storybook'];
-        if (npmOptions.smokeTest) {
-          startArgs.push('--smoke-test');
-        }
-        spawnSync('npm', startArgs, cmdOptions);
       }
-    }
+    );
   };
   logger.log(`Cloning Wingsuit repo ...`);
   clone(
