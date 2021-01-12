@@ -15,7 +15,7 @@ You can use the `ws-assets` stream wrapper to get a path to the asset folder. En
 
 or use the image component:
 ```twig
-{% include "@atoms/image/image.wig" with {"placeholder": false, path: "images/dummy.png" }
+{% include "@atoms/image/image.wig" with {path: "images/dummy.png" }
 ```
 ### Image in CSS:
 To use images inside your CSS file, use the relative path to the image. Webpack will replace the right output path.  
@@ -49,18 +49,33 @@ imageConfig:
 
 ```
 
-<b>Under configuration you find three sections:</b>
-* Basic image styles
-* Responsive image styles
-* Breakpoints
+#### Basic image styles
+Here you can define your width and heights. If you define an width and height the image will be cropped. 
+If you define only width the height will be differnt.   
+#### Breakpoints
+Under breakpoints you can define media queries which are used by responsive image styles. 
+#### Responsive image styles
+If you use a responsive image the placeholder component will generate a picture tag with a source for each breakpoint.
+This is done by a twig macro. You can find everything inside the placeholder component.
 
-To render an image style include the `image atom`. 
-```twig
-{% include "@atoms/image/image.wig" with {"placeholder": true, style: "1x1_xxs" }
+## Referencing a placeholder inside wingsuit.yml.
+You can use your placeholder by referencing the placeholder image in your wingsuit.yml
+
+```yaml
+image:
+  label: Image
+  type: pattern
+  preview:
+    id: placeholder
+    variant: image
+    settings:
+      style: card
 ```
+Example from `@molecules/card`.
 
-Or use the `pattern_preview` Twig function:
+## Using inside a presenter template.
+To render an image style in a presenter template. 
 ```twig
-    {{ pattern_preview('image', 'primary', {"placeholder": true, "style": "1x1_xxs"}) }}
+    {{ pattern_preview('placeholder', 'primary', {"style": "1x1_xxs"}) }}
 ```
 Image style works for simple image styles and responsive image styles.

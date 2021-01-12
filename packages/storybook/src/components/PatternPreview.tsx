@@ -22,7 +22,7 @@ const PatternPreview: FunctionComponent<Props> = ({
           setRendered(output);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         setRendered(`Error: ${error.message}`);
       });
     return () => {
@@ -37,8 +37,7 @@ const PatternPreview: FunctionComponent<Props> = ({
   }, [rendered]);
 
   // eslint-disable-next-line react/no-danger
-  const element = <div dangerouslySetInnerHTML={{ __html: rendered }} />;
-  return element;
+  return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
 PatternPreview.displayName = 'PatternPreview';

@@ -56,7 +56,7 @@ cd wingsuit-kickstarter && ./vendor/bin/blt setup
 With the `-k` option you can install other starter kits than Tailwind. 
 
 ```shell
-npx @wingsuit-designsystem/cli init -k bootrap
+npx @wingsuit-designsystem/cli init -k bootstrap
 ```
 
 ### Drupal 
