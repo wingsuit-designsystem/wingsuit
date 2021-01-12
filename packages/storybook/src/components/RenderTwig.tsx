@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { renderer } from '@wingsuit-designsystem/pattern';
-import {attachBehaviors} from "../behaviors";
+import { attachBehaviors } from '../behaviors';
 
 type Props = { data };
 
 const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
   const [rendered, setRendered] = useState('');
   useEffect(() => {
-    let mounted = true;
+    const mounted = true;
     renderer
       .renderData(Math.random().toString(), data.default, variables)
       .then((output: string) => {
@@ -15,7 +15,7 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
           setRendered(output);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         setRendered(error.message);
       });
   }, [data, JSON.stringify(variables)]);
