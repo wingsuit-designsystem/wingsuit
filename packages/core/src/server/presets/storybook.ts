@@ -6,6 +6,7 @@ export function name(appConfig: AppConfig) {
 
 export function webpack(appConfig: AppConfig) {
   const resultWebpack = {
+    devtool: appConfig.environment === 'development' ? 'eval' : 'source-map',
     node: {
       fs: 'empty',
     },

@@ -34,6 +34,7 @@ export function webpack(appConfig: AppConfig) {
 
   return {
     target: 'web',
+    devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
     entry: {
       ...behaviorObject,
       ...cssObject,

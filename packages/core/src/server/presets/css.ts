@@ -72,22 +72,30 @@ export function webpack(appConfig: AppConfig) {
           },
         ],
       },
-      plugins: [
-        new OptimizeCSSAssetsPlugin({
-          // Ensure css map file output
-          cssProcessorOptions: {
-            map: {
-              inline: false,
-              annotation: true,
-            },
-          },
-        }),
-        new MiniCssExtractPlugin({
-          filename: '[name].css',
-          chunkFilename: 'css/[id].css',
-        }),
-      ],
+      plugins: [],
     },
   };
+  if (appConfig.environment === 'production') {
+    cssModes.extract.plugins.push(
+      // @ts-ignore
+      new OptimizeCSSAssetsPlugin({
+        // Ensure css map file output
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true,
+          },
+        },
+      })
+    );
+  }
+
+  cssModes.extract.plugins.push(
+    // @ts-ignore
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: 'css/[id].css',
+    })
+  );
   return cssModes[appConfig.cssMode];
 }
