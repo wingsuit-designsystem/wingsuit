@@ -39,62 +39,9 @@ section:
       preview:
         faker: lorem.paragraph
   settings:
-    padding_top:
-      type: select
-      label: Padding top
-      description: The spacing to the previous element.
-      options:
-        small: Small
-        default: Default
-        large: Large
-    padding_bottom:
-      type: select
-      label: Padding bottom
-      description: The spacing to the next element..
-      default_value: default
-      options:
-        small: Small
-        default: Default
-        large: Large
-    padding_x:
-      type: select
-      label: Padding left/right
-      required: true
-      default_value: default
-      options:
-        none: None
-        default: Default
-        large: Large
-    gutter:
-      type: select
-      label: Gutter
-      required: true
-      default_value: default
-      options:
-        none: None
-        default: Default
-        large: Large
-    width:
-      type: select
-      label: Width
-      default_value: default
-      required: true
-      preview: default
-      options:
-        small: Small
-        default: Default
-        large: Large
-        xlarge: Xlarge
-    columns:
-      type: select
-      label: Columns
-      required: true
-      options:
-        1: One column
-        2: Two columns
-        3: Three columns
-        4: Four columns
-        5: Five columns
+    display_header_region:
+      type: boolean
+      label: Display header region
     columns_width_1:
       type: radios
       label: Column widths
@@ -133,12 +80,77 @@ section:
       required: true
       options:
         equal: 20%/20%/20%/20%
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+        xlarge: Xlarge
     bg:
       type: select
       label: Background color
       options:
         gray-medium: Medium gray
         gray-light: Light gray
+    tab_spacing:
+      label: Spacing
+      type: group
+      group_type: details
+      group: tabs
+    padding_top:
+      type: select
+      group: tab_spacing
+      label: Padding top
+      description: The spacing to the previous element.
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      description: The spacing to the next element..
+      default_value: default
+      group: tab_spacing
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      default_value: default
+      group: tab_spacing
+      options:
+        none: None
+        default: Default
+        large: Large
+    gutter:
+      type: select
+      label: Gutter
+      required: true
+      default_value: default
+      group: tab_spacing
+      options:
+        none: None
+        default: Default
+        large: Large
+    columns:
+      type: select
+      label: Columns
+      required: true
+      options:
+        1: One column
+        2: Two columns
+        3: Three columns
+        4: Four columns
+        5: Five columns
   variants:
     1_column:
       label: One Column

@@ -48,11 +48,13 @@
   padding_top: padding_top,
   padding_bottom: padding_bottom,
   bg: bg,
-  header: header
+  header: header,
+  region_attributes: region_attributes,
+  display_header_region: display_header_region
 } only %}
   {% block content %}
-  {% if header is not empty %}
-    <div class="mb-5 md:mb-10">{{ header }}</div>
+  {% if header is not empty and display_header_region == true %}
+    <div class="mb-5 md:mb-10 {{ region_attributes['header'].class }}">{{ header }}</div>
   {% endif %}
   {{ content }}
   {% endblock %}
