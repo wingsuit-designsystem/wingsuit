@@ -149,6 +149,7 @@ section:
         column_5: ""
       settings:
         columns: 1
+        columns_width_1: "equal"
         columns_width_2: ""
         columns_width_3: ""
         columns_width_4: ""
@@ -185,6 +186,7 @@ section:
         columns_width_1: ""
         columns_width_2: ""
         columns_width_3: ""
+        columns_width_4: "equal"
         columns_width_5: ""
     5_column:
       label: Five Columns
@@ -194,3 +196,4 @@ section:
         columns_width_2: ""
         columns_width_3: ""
         columns_width_4: ""
+        columns_width_5: "equal"
