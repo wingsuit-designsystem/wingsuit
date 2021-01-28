@@ -54,7 +54,7 @@
 } only %}
   {% block content %}
   {% if header is not empty and display_header_region == true %}
-    <div class="mb-5 md:mb-10 {{ region_attributes['header'].class }}">{{ header }}</div>
+    <div class="mb-5 md:mb-10 {{ region_attributes.header.class }}">{{ header }}</div>
   {% endif %}
   {{ content }}
   {% endblock %}
