@@ -42,7 +42,7 @@ export default class PatternStorage implements IPatternStorage {
 
   loadPatternsByNamespace(namespace): Pattern[] {
     const foundPatterns: Pattern[] = [];
-    Object.keys(this.definitions.patterns).forEach((key) => {
+    Object.keys(this.definitions.patterns).forEach(key => {
       const pattern = this.loadPattern(key);
       if (pattern.getNamespace() === namespace) {
         foundPatterns.push(pattern);
@@ -51,8 +51,55 @@ export default class PatternStorage implements IPatternStorage {
     return foundPatterns;
   }
 
+  private extendPatternDefinition(pattern: IPatternDefinition) {
+    const resultingPattern = pattern;
+    if (pattern.extend != null && pattern.extend.length !== 0) {
+      pattern.extend.forEach((extend: string) => {
+        const [basePattern, basePatternType, basePatternField] = extend.split('.');
+        if (this.definitions.patterns[basePattern] == null) {
+          throw new Error(
+            `Base pattern "${basePattern}" not found. Possible patterns ${Object.keys(
+              this.definitions.patterns
+            ).join(', ')}`
+          );
+        }
+        const basePatternDefinition = this.extendPatternDefinition(
+          this.definitions.patterns[basePattern]
+        );
+        let basePatternTypes: string[] = [];
+        if (basePatternType == null) {
+          basePatternTypes = ['fields', 'settings'];
+        } else {
+          basePatternTypes = [basePatternType];
+        }
+
+        Object.keys(basePatternTypes).forEach(key => {
+          const type: string = basePatternTypes[key];
+          if (basePatternField == null) {
+            if (basePatternDefinition[type] != null) {
+              resultingPattern[type] = {
+                ...resultingPattern[type],
+                ...basePatternDefinition[type],
+              };
+            }
+          } else if (basePatternDefinition[type] != null) {
+            if (resultingPattern[type] == null) {
+              resultingPattern[type] = [];
+            }
+            resultingPattern[type][basePatternField] =
+              basePatternDefinition[type][basePatternField];
+          }
+        });
+      });
+      resultingPattern.extend = [];
+    }
+    return resultingPattern;
+  }
+
   loadPattern(patternId: string): Pattern {
-    const definition: IPatternDefinition = this.definitions.patterns[patternId];
+    const definition: IPatternDefinition = this.extendPatternDefinition(
+      this.definitions.patterns[patternId]
+    );
     if (definition == null) {
       throw new Error(
         `Pattern definition "${patternId}" not found. Possible pattern ids are: "${Object.keys(
@@ -60,6 +107,7 @@ export default class PatternStorage implements IPatternStorage {
         ).join(' ,')}"`
       );
     }
+
     return new Pattern(patternId, definition, this);
   }
 
@@ -74,7 +122,7 @@ export default class PatternStorage implements IPatternStorage {
 
   createDefinitionsFromMultiContext(any): void {
     if (Array.isArray(any) === true) {
-      any.forEach((context) => {
+      any.forEach(context => {
         this.createDefinitionsFromContext(context);
       });
     } else {
@@ -86,7 +134,7 @@ export default class PatternStorage implements IPatternStorage {
     if (this.definitions.patterns == null) {
       this.definitions.patterns = {};
     }
-    context.keys().forEach((key) => {
+    context.keys().forEach(key => {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
         const data = context(key);
         if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
@@ -107,7 +155,7 @@ export default class PatternStorage implements IPatternStorage {
             }
           }
 
-          Object.keys(patternDefinition).forEach((pattern_key) => {
+          Object.keys(patternDefinition).forEach(pattern_key => {
             if (parameters !== null) {
               patternDefinition[pattern_key].parameters = parameters;
             }
@@ -123,7 +171,7 @@ export default class PatternStorage implements IPatternStorage {
 
   findTwigByNamespace(namespace): any | null {
     let foundResource = null;
-    Object.keys(this.twigResources).forEach((key) => {
+    Object.keys(this.twigResources).forEach(key => {
       if (key.trim() === namespace.trim()) {
         foundResource = this.twigResources[key];
       }
@@ -137,20 +185,20 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   createGlobalsFromContext(context): void {
-    context.keys().forEach((key) => {
+    context.keys().forEach(key => {
       const data = context(key);
-      Object.keys(data).forEach((valueKey) => {
+      Object.keys(data).forEach(valueKey => {
         this.addGlobal(valueKey, data[valueKey]);
       });
     });
   }
 
   createTwigStorageFromContext(context): void {
-    context.keys().forEach((key) => {
+    context.keys().forEach(key => {
       const pathAry = key.replace('./', '').split('/');
       const folderName = pathAry[0];
       let mappedNamespace = '';
-      Object.keys(this.namespaces).forEach((namespace) => {
+      Object.keys(this.namespaces).forEach(namespace => {
         const namespaceMap = this.namespaces[namespace].split('/');
         if (namespaceMap[namespaceMap.length - 1] === folderName) {
           mappedNamespace = namespace;
@@ -164,7 +212,7 @@ export default class PatternStorage implements IPatternStorage {
   getTwigResources(): {} {
     const resources = this.twigResources;
     const result = {};
-    Object.keys(resources).forEach((key) => {
+    Object.keys(resources).forEach(key => {
       result[key] = resources[key].default;
     });
     return result;

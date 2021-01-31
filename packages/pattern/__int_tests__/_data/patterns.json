@@ -3,7 +3,7 @@
     "simple": {
       "namespace": "atoms",
       "use": "@molecules/tests/check.twig",
-      "label": "Image",
+      "label": "Simple",
       "description": "Example description",
       "fields": {
         "field": {
@@ -19,6 +19,45 @@
           "preview": "correct"
         }
       }
+    },
+    "multi_settings": {
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple",
+      "description": "Example description",
+      "fields": {
+        "field": {
+          "type": "text",
+          "label": "Content",
+          "preview": "correct"
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
+        },
+        "setting2": {
+          "label": "Setting2",
+          "type": "textfield",
+          "preview": "correct"
+        }
+      }
+    },
+    "simple_extend": {
+      "extend": ["simple"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
+    },
+    "simple_extend_setting": {
+      "extend": ["simple.settings"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
+    },
+    "simple_extend_setting_setting": {
+      "extend": ["multi_settings.settings.setting"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
     },
     "default_value": {
       "namespace": "atoms",

@@ -40,6 +40,7 @@ export interface IPatternDefinition {
   fields: Properties;
   settings: Properties;
   variants: Variants;
+  extend: string[];
   configuration: any;
 }
 export interface IPatternDefinitionsPatterns {

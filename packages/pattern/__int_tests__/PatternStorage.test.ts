@@ -9,6 +9,25 @@ describe('PatternStorage', () => {
   beforeEach(() => {});
 
   describe('#createDefinitions', () => {
+    test('Test extend', () => {
+      storage.createDefinitions(
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+      );
+      const pattern: Pattern = storage.loadPattern('simple_extend_setting');
+      expect(pattern).toBeInstanceOf(Pattern);
+      expect(pattern.getDefaultVariant().getFields().length).toBe(0);
+      expect(Object.keys(pattern.getDefaultVariant().getSettings()).length).toBe(1);
+      expect(
+        pattern
+          .getDefaultVariant()
+          .getSetting('setting')
+          .getPreview()
+      ).toBe('correct');
+
+      const pattern2: Pattern = storage.loadPattern('simple_extend_setting_setting');
+      expect(pattern2.getDefaultVariant().getFields().length).toBe(0);
+      expect(Object.keys(pattern2.getDefaultVariant().getSettings()).length).toBe(1);
+    });
     test('Load Pattern Card', () => {
       storage.createDefinitions(
         JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
