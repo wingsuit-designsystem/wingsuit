@@ -2,32 +2,63 @@ card:
   use: "@molecules/card/card.twig"
   label: Card
   description: Amazing card component with image, titles, body and link.
-
   fields:
-    headline:
-      type: text
-      label: Headline
-      preview:
-        faker: lorem.text
     image:
-      type: pattern
       label: Image
+      type: pattern
+      description: The image tag.
       preview:
         id: placeholder
         variant: image
         settings:
           style: card
-    button:
-      type: pattern
-      label: Button
+    preheadline:
+      type: text
+      label: Preheadline
+      description: A short headline above the headline.
       preview:
-        id: button
-        variant: default
-
+        faker: lorem.word
+    headline:
+      type: pattern
+      label: Headline
+      description: The main headline.
+      preview:
+        id: headline
+        variant: h4
+        settings:
+          spacing_bottom: small
+    text:
+      type: text
+      label: Text
+      description: A long text under the headline.
+      preview:
+        faker: lorem.paragraph
+    link:
+      type: pattern
+      label: Link
+      description: An optional button at the bottom of the card.
+      preview:
+        id: link
+  variants:
+    default:
+      label: Default
+    horizontal:
+      label: Horizontal
   settings:
-    text_align:
-      label: Text align
+    alignment:
       type: select
+      label: Alignment
+      required: true
+      default: left
       options:
+        left: Left
         center: Center
-        right: Right
+    bg_color:
+      type: select
+      label: Bg Color
+      options:
+        gray: Gray
+        blue: Blue
+    url:
+      type: url
+      label: Url
