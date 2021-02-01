@@ -53,8 +53,8 @@ export default class PatternStorage implements IPatternStorage {
 
   private extendPatternDefinition(pattern: IPatternDefinition) {
     const resultingPattern = pattern;
-    if (pattern.extend != null && pattern.extend.length !== 0) {
-      pattern.extend.forEach((extend: string) => {
+    if (pattern.extends != null && pattern.extends.length !== 0) {
+      pattern.extends.forEach((extend: string) => {
         const [basePattern, basePatternType, basePatternField] = extend.split('.');
         if (this.definitions.patterns[basePattern] == null) {
           throw new Error(
@@ -91,7 +91,7 @@ export default class PatternStorage implements IPatternStorage {
           }
         });
       });
-      resultingPattern.extend = [];
+      resultingPattern.extends = [];
     }
     return resultingPattern;
   }

@@ -45,19 +45,24 @@
       }
     },
     "simple_extend": {
-      "extend": ["simple"],
+      "extends": ["simple"],
       "use": "@molecules/tests/check.twig",
       "label": "Simple Extend"
     },
     "simple_extend_setting": {
-      "extend": ["simple.settings"],
+      "extends": ["simple.settings"],
       "use": "@molecules/tests/check.twig",
       "label": "Simple Extend"
     },
     "simple_extend_setting_setting": {
-      "extend": ["multi_settings.settings.setting"],
+      "extends": ["multi_settings.settings.setting"],
       "use": "@molecules/tests/check.twig",
       "label": "Simple Extend"
+    },
+    "hierachy_extend_setting_setting": {
+      "extends": ["simple_extend_setting.settings"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Hierachy Extend"
     },
     "default_value": {
       "namespace": "atoms",

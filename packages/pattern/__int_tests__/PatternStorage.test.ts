@@ -27,6 +27,10 @@ describe('PatternStorage', () => {
       const pattern2: Pattern = storage.loadPattern('simple_extend_setting_setting');
       expect(pattern2.getDefaultVariant().getFields().length).toBe(0);
       expect(Object.keys(pattern2.getDefaultVariant().getSettings()).length).toBe(1);
+
+      const pattern_hierachy: Pattern = storage.loadPattern('hierachy_extend_setting_setting');
+      expect(pattern_hierachy.getDefaultVariant().getFields().length).toBe(0);
+      expect(Object.keys(pattern_hierachy.getDefaultVariant().getSettings()).length).toBe(1);
     });
     test('Load Pattern Card', () => {
       storage.createDefinitions(
