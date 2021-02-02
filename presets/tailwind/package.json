@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-tailwind",
-  "version": "1.0.0-beta.39",
+  "version": "1.0.0-beta.40",
   "description": "Wingsuit TailwindCSS preset.",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
-    "@wingsuit-designsystem/core": "1.0.0-beta.39",
+    "@wingsuit-designsystem/core": "1.0.0-beta.40",
     "fs-extra": "^9.0.0",
     "jsondiffpatch": "^0.3.11",
     "tailwindcss": "^1.4.6"
