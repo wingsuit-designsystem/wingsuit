@@ -26,10 +26,16 @@ container:
       options:
         gray-medium: Medium gray
         gray-light: Light gray
+    tab_spacing:
+      label: Spacing
+      type: group
+      group_type: details
+      group: tabs
     padding_x:
       type: select
       label: Padding left/right
       required: true
+      group: tab_spacing
       default_value: default
       options:
         default: Default
@@ -39,6 +45,7 @@ container:
       label: Padding top
       description: The spacing to the previous element.
       default_value: default
+      group: tab_spacing
       options:
         small: Small
         default: Default
@@ -47,6 +54,7 @@ container:
       type: select
       label: Padding bottom
       description: The spacing to the next element.
+      group: tab_spacing
       options:
         small: Small
         default: Default

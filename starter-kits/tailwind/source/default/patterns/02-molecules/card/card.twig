@@ -25,31 +25,31 @@
 
 {# TEMPLATE #}
 <{{ element }} {{ attributes }}>
-  {% if image is not empty %}
-    <div class="flex-1">
-      {% block image %}
-        {{ image }}
-      {% endblock %}
-    </div>
-  {% endif %}
-  <div class="p-6 flex-1">
-    <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
-      {% block preheadline %}
-        {{ preheadline }}
-      {% endblock %}
-    </div>
-    {% block headline %}
-      {{ headline }}
+{% if image is not empty %}
+  <div class="flex-1">
+    {% block image %}
+      {{ image }}
     {% endblock %}
-    <div class="leading-relaxed mb-3">
-      {% block text %}
-        {{ text }}
-      {% endblock %}
-    </div>
-    <div class="{{ link_classes }}">
-      {% block link %}
-        {{ link }}
-      {% endblock %}
-    </div>
   </div>
+{% endif %}
+<div class="p-6 flex-1">
+  <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
+    {% block preheadline %}
+      {{ preheadline }}
+    {% endblock %}
+  </div>
+  {% block headline %}
+    {{ headline }}
+  {% endblock %}
+  <div class="leading-relaxed mb-3">
+    {% block text %}
+      {{ text }}
+    {% endblock %}
+  </div>
+  <div class="{{ link_classes }}">
+    {% block link %}
+      {{ link }}
+    {% endblock %}
+  </div>
+</div>
 </{{ element }}>

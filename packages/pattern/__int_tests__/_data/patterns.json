@@ -3,7 +3,7 @@
     "simple": {
       "namespace": "atoms",
       "use": "@molecules/tests/check.twig",
-      "label": "Image",
+      "label": "Simple",
       "description": "Example description",
       "fields": {
         "field": {
@@ -19,6 +19,50 @@
           "preview": "correct"
         }
       }
+    },
+    "multi_settings": {
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple",
+      "description": "Example description",
+      "fields": {
+        "field": {
+          "type": "text",
+          "label": "Content",
+          "preview": "correct"
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
+        },
+        "setting2": {
+          "label": "Setting2",
+          "type": "textfield",
+          "preview": "correct"
+        }
+      }
+    },
+    "simple_extend": {
+      "extends": ["simple"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
+    },
+    "simple_extend_setting": {
+      "extends": ["simple.settings"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
+    },
+    "simple_extend_setting_setting": {
+      "extends": ["multi_settings.settings.setting"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Simple Extend"
+    },
+    "hierachy_extend_setting_setting": {
+      "extends": ["simple_extend_setting.settings"],
+      "use": "@molecules/tests/check.twig",
+      "label": "Hierachy Extend"
     },
     "default_value": {
       "namespace": "atoms",
