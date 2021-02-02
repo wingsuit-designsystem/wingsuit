@@ -8,7 +8,7 @@ const renderEngine = require('../src/twigRenderEngine');
 
 const renderer = new TwingRenderer();
 const loader = new TwingLoaderFilesystem();
-Object.keys(namespaces).forEach((namespace) => {
+Object.keys(namespaces).forEach(namespace => {
   loader.setPaths(namespaces[namespace], namespace);
 });
 
@@ -38,6 +38,7 @@ describe('TwigRenderEngine', () => {
     expect(output).toMatch(/setting:correct/);
   });
   test.each([
+    ['simple_extend', '__default'],
     ['configuration', 'variant'],
     ['patterns_field_items', '__default'],
     ['patterns_single_value', '__default'],
