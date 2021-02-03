@@ -21,11 +21,13 @@ container:
         large: Large
         xlarge: Xlarge
     bg:
-      type: select
+      type: colorwidget
       label: Background color
+      default_value: ""
       options:
-        gray-medium: Medium gray
-        gray-light: Light gray
+        "": Transparent
+        gray-medium: Medium gray/#6b7280
+        gray-light: Light gray/#d1d5db
     tab_spacing:
       label: Spacing
       type: group
