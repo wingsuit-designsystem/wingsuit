@@ -18,8 +18,3 @@ core:
   dependencies:
     - core/drupal
     - core/drupalSettings
-    - wingsuit/headerOffset
-
-headerOffset:
-  js:
-    js/header-offset.js: {}

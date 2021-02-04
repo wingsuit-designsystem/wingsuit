@@ -3,8 +3,8 @@ section:
   label: Flexible columns section
   icon_path: ws-assets://images/section-icon.svg
   extends:
-    - container.settings
     - grid.settings
+    - container.settings
   description: "A section with a header and maximum five columns. A combination of container and grid.
     You can use this pattern as a section in Drupal's Layout Builder."
   fields:
@@ -93,6 +93,7 @@ section:
         column_5: ""
       settings:
         columns: 1
+        gutter: default
         columns_width_1: "equal"
         columns_width_2: ""
         columns_width_3: ""

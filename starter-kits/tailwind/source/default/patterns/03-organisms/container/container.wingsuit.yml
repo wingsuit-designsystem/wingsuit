@@ -20,10 +20,15 @@ container:
         default: Default
         large: Large
         xlarge: Xlarge
+    tab_bg:
+      label: Background
+      type: group
+      group_type: details
     bg:
       type: colorwidget
       label: Background color
       default_value: ""
+      group: tab_bg
       options:
         "": Transparent
         gray-medium: Medium gray/#6b7280
@@ -32,7 +37,6 @@ container:
       label: Spacing
       type: group
       group_type: details
-      group: tabs
     padding_x:
       type: select
       label: Padding left/right
@@ -61,9 +65,14 @@ container:
         small: Small
         default: Default
         large: Large
+    tab_advanced:
+      label: Advanced
+      type: group
+      group_type: details
     classes:
       type: textfield
       label: Additional classes
+      group: tab_advanced
   configuration:
     padding_x:
       default: 'px-6'
