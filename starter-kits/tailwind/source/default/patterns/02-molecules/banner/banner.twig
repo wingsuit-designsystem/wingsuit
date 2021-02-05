@@ -25,9 +25,9 @@
 <div class="relative">
   {{ image }}
   <div class="absolute top-0 left-0 w-full h-full flex">
-    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[variant]}  %}
+    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position|default('center_center')]}  %}
       {% block content %}
-        <div class="p-6">
+        <div class="p-6 dark:text-white">
           <h2 class="text-3xl font-serif">
             {{ headline }}
           </h2>

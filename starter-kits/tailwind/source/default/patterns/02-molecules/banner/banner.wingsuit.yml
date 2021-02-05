@@ -3,25 +3,6 @@ banner:
   label: Banner
   description: Big image banner with text overlay.
   allow_variant_token: true
-  variants:
-    top_left:
-      label: Top left
-    top_center:
-      label: Top center
-    top_right:
-      label: Top right
-    center_left:
-      label: Center left
-    center_center:
-      label: Center
-    center_right:
-      label: Center right
-    bottom_left:
-      label: Bottom left
-    bottom_center:
-      label: Bottom center
-    bottom_right:
-      label: Bottom right
   fields:
     image:
       type: pattern
@@ -43,4 +24,18 @@ banner:
       label: Teaser
       description: Short optional teaser.
       preview: "<p>Nice and beautiful banner text.</p>"
-
+  settings:
+    position:
+      type: select
+      label: Position
+      default_value: center_center
+      options:
+        top_left: Top left
+        top_center: Top center
+        top_right: Top right
+        center_left: Center left
+        center_center: Center
+        center_right: Center right
+        bottom_left: Bottom left
+        bottom_center: Bottom center
+        bottom_right: Bottom right

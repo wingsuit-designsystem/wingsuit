@@ -1,8 +1,11 @@
 const forms = require('@tailwindcss/forms');
-const typography = require('@tailwindcss/typography');
+const typography = require('@tailwindcss/typography')({
+  modifiers: ['lg'],
+});
 
 module.exports = {
   important: false,
+  darkMode: 'class',
   purge: {
     layers: ['utilities'],
     content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
@@ -10,6 +13,34 @@ module.exports = {
   },
   theme: {
     extend: {
+      typography: (theme) => ({
+        dark: {
+          css: {
+            color: theme('colors.gray.100'),
+            '[class~="lead"]': {
+              color: theme('colors.gray.100'),
+            },
+            blockquote: {
+              color: theme('colors.gray.100'),
+            },
+            h2: {
+              color: theme('colors.gray.100'),
+            },
+            h3: {
+              color: theme('colors.gray.100'),
+            },
+            h4: {
+              color: theme('colors.gray.100'),
+            },
+            a: {
+              color: theme('colors.gray.100'),
+              '&:hover': {
+                color: theme('colors.gray.100'),
+              },
+            },
+          },
+        },
+      }),
       fill: {
         current: 'currentColor',
       },
@@ -36,10 +67,11 @@ module.exports = {
     borderWidth: ['responsive', 'hover', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'group-hover'],
     textDecoration: ['responsive', 'hover', 'group-hover'],
-    textColor: ['responsive', 'hover', 'group-hover'],
+    textColor: ['responsive', 'hover', 'group-hover', 'dark'],
     fontFamily: ['responsive', 'hover', 'focus'],
     fill: ['responsive', 'hover', 'focus'],
     spacing: ['responsive', 'last'],
+    typography: ['responsive', 'dark'],
   },
   plugins: [forms, typography],
 };

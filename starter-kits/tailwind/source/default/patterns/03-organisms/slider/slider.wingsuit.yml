@@ -1,29 +1,50 @@
 slider:
   use: "@organisms/slider/slider.twig"
   label: Slider
+  extends:
+    - container.settings
+  icon_path: ws-assets://images/slideshow.svg
   description: Javascript slider with swipperjs (https://swiperjs.com/).
     Change the slider behavior in slider.behavior.js.
   fields:
+    header:
+      type: pattern
+      label: Section Header
+      description: Optional header
+      preview:
+        id: rich_text
+        variant: default
+        fields:
+          text: '<h2 class="text-center section-header">Headline</h2>'
     items:
       type: pattern
       label: Slider items
       multi_value_type: items
       preview:
         - id: banner
-          variant: bottom_left
         - id: banner
-          variant: bottom_left
         - id: banner
-          variant: bottom_left
         - id: banner
-          variant: bottom_left
         - id: banner
-          variant: bottom_left
-
+  variants:
+    1:
+      label: Single slide
+    2:
+      label: Two slides
+    3:
+      label: Three slides
+    4:
+      label: Four slides
+  settings:
+    autoplay:
+      type: boolean
+      label: Autoplay
+      default_value: false
   libraries:
     - pattern_slider:
         js:
           ../behaviors/slider.js: {}
         css:
           component:
+            ../slider.css: {}
             ../behaviors/slider.css: {}

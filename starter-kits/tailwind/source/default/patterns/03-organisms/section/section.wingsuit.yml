@@ -1,6 +1,6 @@
 section:
   use: "@organisms/section/section.twig"
-  label: Flexible columns section
+  label: Columns section
   icon_path: ws-assets://images/section-icon.svg
   extends:
     - grid.settings

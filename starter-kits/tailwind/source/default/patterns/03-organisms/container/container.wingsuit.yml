@@ -20,6 +20,7 @@ container:
         default: Default
         large: Large
         xlarge: Xlarge
+        full: Full
     tab_bg:
       label: Background
       type: group
@@ -91,5 +92,5 @@ container:
       large: 'max-w-7xl'
       xlarge: 'max-w-8xl'
     bg:
-      gray-medium: 'bg-gray-500'
+      gray-medium: 'dark bg-gray-500'
       gray-light: 'bg-gray-300'

@@ -82,7 +82,7 @@
     "@tailwindcss/typography": "^0.3.1",
     "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",
-    "swiper": "^5.4.5",
+    "@glidejs/glide": "^3.4.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
