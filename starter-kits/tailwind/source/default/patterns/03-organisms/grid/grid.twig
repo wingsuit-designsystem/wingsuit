@@ -11,16 +11,16 @@
 {% set columns = columns|default(2) %}
 {% set columns_width = columns_width|default('equal') %}
 
+{# Gap #}
 {% set gutter = gutter|default('default') %}
-
-{% set gutter_cell_classes = pattern_configuration('grid', '', 'gutter')[gutter]['cell'] %}
-{% set gutter_container_classes = pattern_configuration('grid', '', 'gutter')[gutter]['container'] %}
-
+{% set gutter_classes = pattern_configuration('grid', '', 'gutter')[gutter] %}
+{# Container #}
 {% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
 
 {% set classes = ([
-  gutter_container_classes,
-  'flex flex-wrap'
+  'grid',
+  configuration,
+  gutter_classes,
 ]) | sort | join(' ') | trim %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
@@ -30,17 +30,8 @@
   <div {{ attributes }}>
     {% block cells %}
       {% for cell_counter, cell in cells %}
-        {% set column_i = (cell_counter % columns) + 1 %}
-        {% set column_classes = configuration[column_i] is not empty ? configuration[column_i] : configuration['default'] %}
-        {% set cell_attributes = create_attribute().
-          addClass(
-          [
-            'flex flex-col',
-            column_classes,
-            gutter_cell_classes
-          ] | sort | join(' ') | trim) %}
         {% block cell_outer %}
-          <div {{ cell_attributes }}>
+          <div>
             {% block cell_inner %}
               {{ cell }}
             {% endblock %}
