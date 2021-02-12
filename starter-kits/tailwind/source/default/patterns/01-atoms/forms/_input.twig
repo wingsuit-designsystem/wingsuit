@@ -20,7 +20,7 @@
   variant == 'tel' ? 'form-input w-full',
   variant == 'radio' ? 'form-radio mr-1',
   variant == 'checkbox' ? 'form-checkbox mr-1',
-  variant == 'submit' ? 'bg-primary text-white hover:bg-pink-600 px-2 py-1'
+  variant == 'submit' ? 'bg-teal-500 text-white hover:bg-teal-600 px-2 py-1'
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}

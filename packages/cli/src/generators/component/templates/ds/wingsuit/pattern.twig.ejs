@@ -10,8 +10,9 @@
 {#
   Defaults
 #}
-{% set attributes = create_attribute(attributes) %}
-{% set setting_1 = tag_name|default('value_1') %}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% set setting_1 = setting_1|default('value_1') %}
 
 {#
   Classes

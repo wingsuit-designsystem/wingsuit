@@ -47,7 +47,10 @@
 #}
 {% extends "page.html.twig" %}
   {% block main %}
-    {% embed "@organisms/container/container.twig" %}
+    {% embed "@templates/basic/basic.twig" with {width: 'small' } %}
+      {% block headline %}
+        Welcome to <br>the Peach Company!
+      {% endblock %}
       {% block content %}
         {{ page.content }}
       {% endblock %}
