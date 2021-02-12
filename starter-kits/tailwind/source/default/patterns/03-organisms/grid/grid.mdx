@@ -29,7 +29,7 @@ The pattern loops through a list of cells and print each cell.<br/>
 To adjust the way the blocks are printed use twig blocks.
 
 ## Blocks
-* cell_outer: <br/>Use block cell_outer to adjust the markup of each cell. Variables: `cell_attributes`, `cell`, `cell_counter`.
+* cell_outer: <br/>Use block cell_outer to adjust the markup of each cell. Variables: `cell`, `cell_counter`.
 * cell_inner:<br/>Use block cell_inner to print the cell variable. Variables: `cell`, `cell_counter`
 ### Example: cell_inner
 ```twig dark
@@ -72,7 +72,7 @@ To adjust the way the blocks are printed use twig blocks.
         gutter: 'default'
       } only %}
       {% block cell_outer %}
-        <div {{ cell_attributes.addClass('additional-class') }}>
+        <div>
         {{ cell.content }} + { cell_counter }
         </div>
       {% endblock %}
@@ -86,12 +86,9 @@ If you need additional configuration you can extends the columns configuration i
 ```yaml dark
 columns:
 2: << Columns count
-  '66x33': << Name
-    1: 'w-full md:w-2/3' << Every first column
-    2: 'w-full md:w-1/3' << Every second column
-3:
-  equal:
-    default: 'w-full md:w-1/3' << Default for every other column
+  equal: 'grid-cols-1 md:grid-cols-2' << Column width 50x50
+  '66x33': 'grid-cols-1 md:grid-cols-66/33' << Column width 66x33
+  '33x66': 'grid-cols-1 md:grid-cols-33/66' << Column width 33x66
 ```
 
 ## Gutter
@@ -99,9 +96,7 @@ To configure the spacing between the columns use the gutter configuration in the
 ```yaml dark
   gutter:
     ...
-    default: << Name of
-      container: -mx-6 -md:mx-25
-      cell: px-6 md:px-25 mb-6 last:mb-0
+    default: 'gap-4 md:gap-5 lg:gap-7'
     ...
 ```
 

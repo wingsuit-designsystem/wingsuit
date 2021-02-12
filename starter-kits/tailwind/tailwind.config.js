@@ -64,6 +64,11 @@ module.exports = {
         '7xl': '100rem',
         '8xl': '120rem',
       },
+      gridTemplateColumns: {
+        '33/66': '33% 66%',
+        '66/33': '66% 33%',
+        '25/50/25': '25% 50% 25%',
+      },
     },
     fontFamily: {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],

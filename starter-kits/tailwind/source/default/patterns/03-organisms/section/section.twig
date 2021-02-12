@@ -32,7 +32,7 @@
     {% block cell_outer %}
       {% set column_name = 'column_' ~ column_i %}
       {% set current_region_attributes = region_attributes[column_name]|default(create_attribute()) %}
-      <div class="{{ cell_attributes.class }} {{ current_region_attributes.class }}" {{ cell_attributes|without('class') }} {{ current_region_attributes|without('class') }}>
+      <div class="{{ current_region_attributes.class }}" {{ current_region_attributes|without('class') }}>
           {{ cell }}
       </div>
     {% endblock %}
