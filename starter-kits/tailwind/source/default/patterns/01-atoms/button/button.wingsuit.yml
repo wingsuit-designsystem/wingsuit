@@ -12,14 +12,14 @@ button:
       label: Default
       configuration:
         colors:
-          primary: 'border-primary bg-primary text-white hover:bg-pink-600'
-          secondary: 'border-secondary bg-secondary text-black hover:bg-blue-600'
+          primary: 'border-teal-300 bg-teal-300 text-white hover:bg-teal-600 hover:border-teal-600'
+          secondary: 'border-yellow-300 bg-yellow-300 text-black hover:bg-yellow-600 hover:border-yellow-600'
     outline:
       label: Outline
       configuration:
         colors:
-          primary: 'border-primary text-black hover:bg-pink-600 hover:text-white'
-          secondary: 'border-secondary text-black hover:bg-blue-600 hover:text-white'
+          primary: 'border-teal-300 text-black hover:bg-teal-600 hover:border-teal-600 hover:text-white'
+          secondary: 'border-yellow-600 text-black hover:bg-yellow-600 hover:text-white'
       description: Inverts colors
   configuration:
     size:
@@ -44,7 +44,6 @@ button:
     expanded:
       type: boolean
       label: Expanded
-
     round:
       type: boolean
       label: Round
@@ -67,6 +66,7 @@ button:
       label: Icon
       description: Go with an icon alongside your text.
       options:
+        plus: Plus
         search: Search
         right-arrow: Right-arrow
     icon_alignment:

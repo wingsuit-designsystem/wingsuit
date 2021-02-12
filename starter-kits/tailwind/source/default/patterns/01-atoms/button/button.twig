@@ -11,7 +11,7 @@
   Classes
 #}
 {% set classes = [
-  'flex items-center justify-center inline-flex border-2 py-2 px-5 focus:outline-none rounded transition-colors duration-500',
+  'flex items-center justify-center inline-flex border-2 py-1.5 px-3 focus:outline-none rounded transition-colors duration-500',
   expanded ? 'w-full',
   variant == 'outline' ? 'border-2',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
@@ -22,7 +22,7 @@
 ] %}
 
 {% set icon_size = ([
-  icon_alignment == 'left' ? 'mr-2' : 'ml-2',
+  icon_alignment == 'left' ? 'mr-4' : 'ml-4',
   pattern_configuration('button', variant, 'size')['icon'][size],
 ]) | sort | join(' ') | trim %}
 
@@ -37,7 +37,7 @@
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
   {{ text }}
   {% if icon is not empty %}
-    {% include "@components/svg/_svg--icon.twig" with {
+    {% include "@atoms/svg/_svg--icon.twig" with {
       icon: icon,
       size: icon_size,
     } only %}

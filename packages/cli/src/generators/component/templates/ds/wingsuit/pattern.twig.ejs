@@ -7,9 +7,24 @@
  */
 #}
 
-<div>
-  <h1><%= name %></h1>
-  <div>Wingsuit component!</div>
+{#
+  Defaults
+#}
+{% set attributes = create_attribute(attributes) %}
+{% set setting_1 = tag_name|default('value_1') %}
+
+{#
+  Classes
+#}
+{% set classes = [
+  setting_1 == 'value_1' ? 'w-full',
+] %}
+
+{#
+  Template
+#}
+<div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+  <div>New Wingsuit component</div>
   <div>Field variable: <code>{{ field_1 }}</code></div>
   <div>Setting variable: <code>{{ setting_1 }}</code></div>
 </div>

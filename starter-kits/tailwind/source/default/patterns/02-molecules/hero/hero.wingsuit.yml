@@ -21,12 +21,18 @@ hero:
       preview:
         id: button
         variant: default
+        settings:
+          icon: plus
     button_second:
       type: pattern
       label: Button
       preview:
         id: button
         variant: outline
+        fields:
+          text: Show Video
+        settings:
+          color: secondary
     image:
       type: pattern
       label: Image

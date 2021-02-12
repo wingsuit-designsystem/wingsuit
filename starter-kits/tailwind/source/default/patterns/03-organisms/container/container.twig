@@ -9,7 +9,6 @@
 
 {# SETTINGS #}
 {% set width = width|default('default') %}
-
 {% set bg_classes = ([
   pattern_configuration('container', '', 'bg')[bg],
 ] | sort | join(' ') | trim )%}

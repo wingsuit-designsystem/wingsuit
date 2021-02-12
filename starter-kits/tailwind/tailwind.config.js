@@ -1,4 +1,5 @@
 const forms = require('@tailwindcss/forms');
+const colors = require('tailwindcss/colors')
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg'],
 });
@@ -12,6 +13,17 @@ module.exports = {
     whitelist: ['bg-red-500', 'px-4'],
   },
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.trueGray,
+      teal: colors.teal,
+      red: colors.rose,
+      green: colors.green,
+      yellow: colors.amber,
+    },
     extend: {
       typography: (theme) => ({
         dark: {
@@ -44,10 +56,6 @@ module.exports = {
       fill: {
         current: 'currentColor',
       },
-      colors: {
-        primary: '#ED64A6',
-        secondary: '#90CDF4',
-      },
       height: {
         18: '4.5rem',
       },
@@ -59,7 +67,7 @@ module.exports = {
     },
     fontFamily: {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
-      sans: ['Roboto', 'sans-serif'],
+      sans: ['Poppins', 'Roboto', 'sans-serif'],
     },
   },
   variants: {

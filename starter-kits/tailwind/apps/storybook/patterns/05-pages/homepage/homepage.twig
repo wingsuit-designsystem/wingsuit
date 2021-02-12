@@ -27,7 +27,7 @@
         {{ pattern_preview('card', 'default', {'headline': 'Overwritten headline', 'image': null}) }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1 } %}
+    {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Accordion</h2>" }%}
       {% endblock %}
@@ -36,12 +36,12 @@
         {{ pattern_preview('accordion') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1} %}
+    {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Banner</h2>" }%}
       {% endblock %}
       {% block column_1 %}
-        {{ pattern_preview('banner', 'center_left') }}
+        {{ pattern_preview('banner', null) }}
       {% endblock %}
     {% endembed %}
     {% embed "@organisms/section/section.twig" with { columns: 3 } %}
@@ -49,13 +49,13 @@
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Cards</h2>" }%}
       {% endblock %}
       {% block column_1 %}
-        {{ pattern_preview('card', 'default', {'image': 'https://satyr.io/460x402'}) }}
+        {{ pattern_preview('card', 'default') }}
       {% endblock %}
       {% block column_2 %}
-        {{ pattern_preview('card', 'default', {'image': 'null'}) }}
+        {{ pattern_preview('card', 'default') }}
       {% endblock %}
       {% block column_3 %}
-        {{ pattern_preview('card', 'default', {'image': 'null'}) }}
+        {{ pattern_preview('card', 'default') }}
       {% endblock %}
     {% endembed %}
   {% endblock %}

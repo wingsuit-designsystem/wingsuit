@@ -1,35 +1,29 @@
-{% embed "@organisms/container/container.twig" with { padding_top: 'small' } %}
+{% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': 'small' } %}
   {% block content %}
-  <div class="text-center w-1/2 m-auto text-gray-dark">
-    {% include "@atoms/headline/headline.twig" with {
-      content: headline,
-      variant: 'h1'
-    } only %}
-  </div>
-  <div class="block md:flex group hover:no-underline pt-10">
-    <div class="w-full md:w-1/2 pb-8">
-      {% block image %}
-        {{ image }}
+    <div class="text-gray-dark">
+      {% include "@atoms/headline/headline.twig" with {
+        headline: headline,
+        variant: 'h1'
+      } only %}
+    </div>
+    <div class="pt-8">
+      {% block lead %}
+        {{ lead }}
       {% endblock %}
     </div>
-    <div class="w-full md:w-1/2 md:pl-4">
-      <div class="text-base mb-10 text-gray-dark font-sans">
-        {% block text %}
-          {{ text }}
-        {% endblock %}
-      </div>
-      <div>
-        {% block button %}
-          {{ button }}
-        {% endblock %}
-      </div>
-    </div>
-  </div>
-  <div class="block md:flex pt-10">
-    {% block more %}
-      {{ more }}
-    {% endblock %}
-  </div>
   {% endblock %}
 {% endembed %}
-
+{% embed "@organisms/container/container.twig" with { padding_top: 'default', width: 'default', image: image } only %}
+  {% block content %}
+    {% block image %}
+      {{ image }}
+    {% endblock %}
+  {% endblock %}
+{% endembed %}
+{% embed "@organisms/container/container.twig" with { padding_top: 'default', width: 'small', text: text } %}
+  {% block content %}
+    {% block text %}
+      {{ text }}
+    {% endblock %}
+  {% endblock %}
+{% endembed %}

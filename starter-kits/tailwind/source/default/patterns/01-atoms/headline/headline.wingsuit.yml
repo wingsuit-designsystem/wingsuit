@@ -3,69 +3,74 @@ headline:
   label: Headline
   description: Flexible headline with options to choose size and tags.
   fields:
-    content:
+    headline:
       type: text
-      label: Content
+      label: Headline
       preview:
         faker: lorem.word
   variants:
+    xl:
+      label: Xl
+      configuration:
+        size: text-4xl font-bold md:text-8xl
+        spacing_bottom:
+          small: mb-6 md:mb-12
+          default: mb-10 md:mb-16
     h1:
       label: h1
       configuration:
-        size:
-          h1: text-6xl font-montserrat font-bold md:text-9xl
-        spacing_bottom:
-          small: mb-10 md:mb-12
-          default: mb-10 md:mb-12
-    h2:
-      label: h2
-      configuration:
-        size:
-          h2: text-5xl font-montserrat font-bold md:text-8xl
+        size: text-3xl font-bold md:text-6xl leading-relaxed
         spacing_bottom:
           small: mb-9 md:mb-12
           default: mb-9 md:mb-12
-    h3:
-      label: h3
+    h2:
+      label: h2
       configuration:
-        size:
-          h3: text-4xl font-montserrat font-bold md:text-7xl md:font-openSans font-bold
+        size: text-2xl font-bold md:text-5xl leading-relaxed
         spacing_bottom:
           small: mb-4 md:mb-10
           default: mb-8 md:mb-11
-    h4:
-      label: h4
+    h3:
+      label: h3
       configuration:
-        size:
-          h4: text-3xl font-montserrat font-bold md:text-6xl md:font-openSans font-bold
+        size: text-xl md:text-4xl font-bold leading-relaxed
         spacing_bottom:
           small: mb-2 md:mb-4
           default: mb-8 md:mb-10
-    h5:
-      label: h5
+    h4:
+      label: h4
       configuration:
-        size:
-          h5: text-3xl font-openSans font-bold md:text-5xl md:font-montserrat font-bold
+        size: font-bold text-l md:text-2xl
         spacing_bottom:
           small: mb-2.5 md:mb-3.5
           default: mb-8 md:mb-9
-    h6:
-      label: h6
+    h5:
+      label: h5
       configuration:
-        size:
-          h6: text-4xl mb-8 font-openSans font-bold
+        size: text-l md:text-xl
         spacing_bottom:
           small: mb-8
           default: mb-8
-    h7:
-      label: h7
+    h6:
+      label: h6
       configuration:
-        size:
-          h7: text-3xl font-openSans font-bold
+        size: text-l
         spacing_bottom:
           small: mb-8
           default: mb-8
   settings:
+    tag_name:
+      type: select
+      label: Tag name
+      options:
+        xl: Xl
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+        h5: H5
+        h6: H6
+        div: Div
     spacing_bottom:
       type: select
       label: Spacing bottom
