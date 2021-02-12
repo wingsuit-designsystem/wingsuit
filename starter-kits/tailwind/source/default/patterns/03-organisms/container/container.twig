@@ -7,8 +7,11 @@
  */
 #}
 
-{# SETTINGS #}
+{# Defaults #}
 {% set width = width|default('default') %}
+{% set padding_x = width|default('padding_x') %}
+
+{# SETTINGS #}
 {% set bg_classes = ([
   pattern_configuration('container', '', 'bg')[bg],
 ] | sort | join(' ') | trim )%}

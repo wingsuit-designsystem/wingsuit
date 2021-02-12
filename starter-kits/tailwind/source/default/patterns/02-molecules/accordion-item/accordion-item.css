@@ -8,7 +8,7 @@
 }
 /* Label formatting when open */
 .tab input:checked + label{
-  @apply p-5 border-l-2 border-indigo-500 bg-gray-100 text-xl text-indigo-500;
+  @apply p-5 border-l-2 border-teal-500 bg-gray-100 text-xl text-teal-500;
 }
 /* Icon */
 .tab label::after {
@@ -26,8 +26,8 @@
 /* Icon formatting - open */
 .tab input[type=checkbox]:checked + label::after {
   transform: rotate(315deg);
-  @apply bg-indigo-500 bg-gray-200;
+  @apply bg-teal-500 bg-gray-200;
 }
 .tab input[type=radio]:checked + label::after {
-  @apply transform rotate-180 bg-indigo-500 text-gray-200;
+  @apply transform rotate-180 bg-teal-500 text-gray-200;
 }
