@@ -1,5 +1,5 @@
 const forms = require('@tailwindcss/forms');
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg'],
 });
