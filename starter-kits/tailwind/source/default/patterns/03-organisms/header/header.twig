@@ -9,14 +9,14 @@
 <header class="{{ header_classes }}">
   {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select} only%}
     {% block content %}
-      <div class="flex flex-wrap py-5 justify-between md:flex-row">
-        <div class="flex items-center">
+      <div class="flex py-5 justify-between md:flex-row">
+        <div class="max-w-xs md:max-w-7xl">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
         <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">
           {% include "@atoms/hamburger/hamburger.twig" only %}
         </div>
-        <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white absolute lg:static left-6 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
           <div>
           {{ language_select }}
