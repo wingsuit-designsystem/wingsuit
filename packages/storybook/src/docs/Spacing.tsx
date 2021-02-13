@@ -85,7 +85,7 @@ export const Spacing: FunctionComponent<SpacingProps> = (props: SpacingProps) =>
 
 Spacing.defaultProps = {
   classNamePrefix: null,
-  color: '#81E6D9',
+  color: '#a3a3a3',
   direction: 'horizontal',
 };
 

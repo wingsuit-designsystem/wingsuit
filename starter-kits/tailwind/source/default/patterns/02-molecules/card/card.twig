@@ -33,20 +33,21 @@
   </div>
 {% endif %}
 <div class="p-6 flex-1">
-  <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">
+  <div class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1 {{ region_attributes.preheadline.class }}">
     {% block preheadline %}
       {{ preheadline }}
     {% endblock %}
   </div>
+  <div{{ region_attributes.preheadline }}></div>
   {% block headline %}
     {{ headline }}
   {% endblock %}
-  <div class="leading-relaxed mb-3">
+  <div class="leading-relaxed mb-3 {{ region_attributes.text.class }}">
     {% block text %}
       {{ text }}
     {% endblock %}
   </div>
-  <div class="{{ link_classes }}">
+  <div class="{{ link_classes }} {{ region_attributes.link.class }}">
     {% block link %}
       {{ link }}
     {% endblock %}

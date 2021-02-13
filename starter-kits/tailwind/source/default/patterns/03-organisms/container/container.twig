@@ -9,7 +9,7 @@
 
 {# Defaults #}
 {% set width = width|default('default') %}
-{% set padding_x = width|default('padding_x') %}
+{% set padding_x = width != 'full' ? padding_x|default('default') : '' %}
 
 {# SETTINGS #}
 {% set bg_classes = ([
