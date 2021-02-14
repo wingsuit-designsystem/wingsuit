@@ -62,3 +62,5 @@ card:
     url:
       type: url
       label: Url
+  parameters:
+    layout: centered
