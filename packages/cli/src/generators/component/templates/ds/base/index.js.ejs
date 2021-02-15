@@ -3,6 +3,4 @@
  */
 import './<%= name %>.twig';
 import './<%= name %>.wingsuit.yml';
-<% if (useCss) { %>import './<%= name %>.css';<% } %>
-<% if (useScss) { %>import './<%= name %>.scss';<% } %><% if (useJs) { %>
-import './<%= name %>.behavior';<% } %>
+<% if (useCss) { %>import './<%= name %>.css';<%="\n"%><% } %><% if (useScss) { %>import './<%= name %>.scss';<%="\n"%><% } %><% if (useJs) { %>import './<%= name %>.behavior';<%="\n"%><% } %>

@@ -17,8 +17,13 @@
 {#
   Classes
 #}
+
 {% set classes = [
   setting_1 == 'value_1' ? 'w-full',
+] %}
+
+{% set field_1_classes = [
+   setting_1 == 'value_1' ? 'w-full',
 ] %}
 
 {#
@@ -26,6 +31,8 @@
 #}
 <div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
   <div>New Wingsuit component</div>
-  <div>Field variable: <code>{{ field_1 }}</code></div>
+  <div{{ region_attributes.field_1|default(create_attribute()).addClass(field_1_classes | sort) }}>
+    Field variable: <code>{{ field_1 }}</code>
+  </div>
   <div>Setting variable: <code>{{ setting_1 }}</code></div>
 </div>
