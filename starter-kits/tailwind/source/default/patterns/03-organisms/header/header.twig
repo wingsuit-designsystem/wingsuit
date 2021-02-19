@@ -1,8 +1,8 @@
 {# SETTINGS #}
 {% set header_classes = ([
   'header-offset bg-white w-full z-30 top-0 text-white',
-  variant == 'fixed'?'fixed h-18 w-full',
-  variant == 'sticky'?'sticky',
+  variant == 'fixed'? 'fixed h-18 w-full',
+  variant == 'sticky'? 'sticky',
 ]) | sort | join(' ') | trim %}
 
 {# TEMPLATE #}

@@ -7,10 +7,10 @@
  */
 #}
 {# SETTINGS #}
-{% set position_classes ={
+{% set position_classes = {
   'top_left': '',
-  'top_center': 'text-center justify-center',
-  'top_right': 'text-right justify-end',
+  'top_center': 'text-center justify-center ',
+  'top_right': 'text-right justify-end ',
   'center_left': 'items-center',
   'center_center': 'text-center items-center justify-center',
   'center_right': 'text-right items-center justify-end',
@@ -21,10 +21,10 @@
 
 {% set teaser %}{{- teaser -}}{% endset %}
 
-{# TEMPLATES #}
+{# Template #}
 <div class="relative">
   {{ image }}
-  <div class="absolute top-0 left-0 w-full h-full flex">
+  <div class="taiabsolute top-0 left-0 w-full h-full flex">
     {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position|default('center_center')]}  %}
       {% block content %}
         <div class="p-6 dark:text-white">

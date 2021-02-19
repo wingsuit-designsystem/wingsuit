@@ -42,12 +42,12 @@
   {% block headline %}
     {{ headline }}
   {% endblock %}
-  <div{{ region_attributes.text.addClass('leading-relaxed mb-3') }}>
+  <div{{ region_attributes.text|default(create_attribute()).addClass('leading-relaxed mb-3') }}>
     {% block text %}
       {{ text }}
     {% endblock %}
   </div>
-  <div{{ region_attributes.link.addClass(link_classes) }}>
+  <div{{ region_attributes.link|default(create_attribute()).addClass(link_classes) }}>
     {% block link %}
       {{ link }}
     {% endblock %}
