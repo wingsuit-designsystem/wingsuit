@@ -62,5 +62,8 @@ card:
     url:
       type: url
       label: Url
+    show_read_more:
+      label: Show read more
+      type: boolean
   parameters:
     layout: centered

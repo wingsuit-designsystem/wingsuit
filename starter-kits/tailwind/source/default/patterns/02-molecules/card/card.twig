@@ -9,7 +9,7 @@
 {# CARD CLASSES #}
 {% set link_classes = ([
   alignment == 'center' ? 'mx-auto': '',
-  'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0',
+  'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0', 'items-center', 'underline',
 ]) | sort | join(' ') | trim %}
 
 {% set classes = ([
@@ -25,32 +25,37 @@
 
 {# TEMPLATE #}
 <{{ element }} {{ attributes }}>
-{% if image is not empty %}
-  <div class="flex-1">
-    {% block image %}
-      {{ image }}
-    {% endblock %}
+  {% if image is not empty %}
+    <div class="flex-1">
+      {% block image %}
+        {{ image }}
+      {% endblock %}
+    </div>
+  {% endif %}
+  <div class="p-6 flex-1">
+    <div{{ region_attributes.preheadline|default(create_attribute()).addClass('tracking-widest text-lg title-font font-medium text-gray-500 mb-1') }}>
+      {% block preheadline %}
+        {{ preheadline }}
+      {% endblock %}
+    </div>
+    <{{ headline__element }}{{ region_attributes.headline|default(create_attribute()).addClass('font-bold text-l md:text-2xl headline dark:text-gray-50 font-sans mb-2.5 md:mb-3.5') }}>
+      {% block headline %}
+        {{ headline }}
+      {% endblock %}
+    </{{ headline__element }}>
+    <div{{ region_attributes.text|default(create_attribute()).addClass('leading-relaxed mb-3') }}>
+      {% block text %}
+        {{ text }}
+      {% endblock %}
+    </div>
+  {% if show_read_more %}
+    <div{{ region_attributes.link|default(create_attribute()).addClass(link_classes) }}>
+      {{ "Read more now"|t }}
+      {% include "@atoms/svg/_svg--icon.twig" with {
+        icon: 'arrow',
+        size: 'w-4 h-4 ml-2',
+      } only %}
+    </div>
+  {% endif %}
   </div>
-{% endif %}
-<div class="p-6 flex-1">
-  <div{{ region_attributes.preheadline|default(create_attribute()).addClass('tracking-widest text-lg title-font font-medium text-gray-500 mb-1') }}>
-    {% block preheadline %}
-      {{ preheadline }}
-    {% endblock %}
-  </div>
-  <div{{ region_attributes.preheadline }}></div>
-  {% block headline %}
-    {{ headline }}
-  {% endblock %}
-  <div{{ region_attributes.text|default(create_attribute()).addClass('leading-relaxed mb-3') }}>
-    {% block text %}
-      {{ text }}
-    {% endblock %}
-  </div>
-  <div{{ region_attributes.link|default(create_attribute()).addClass(link_classes) }}>
-    {% block link %}
-      {{ link }}
-    {% endblock %}
-  </div>
-</div>
 </{{ element }}>
