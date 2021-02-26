@@ -77,6 +77,7 @@ export function configure(
 function getProps(variant) {
   const knobsVariables = [];
   const groupSetting = 'Settings';
+
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
     if (setting.isEnable()) {
@@ -103,6 +104,7 @@ function getProps(variant) {
         );
       } else if (setting.getType() === 'boolean') {
         knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
+
       } else if (setting.getType() === 'number') {
         knobsVariables[key] = number(
           setting.getLabel(),
@@ -171,6 +173,7 @@ function getStories(pattern: Pattern, module) {
     };
 
     parameters = Object.assign(parameters, pattern.getParameters());
+
     story.add(
       variant.getLabel(),
       () => (
