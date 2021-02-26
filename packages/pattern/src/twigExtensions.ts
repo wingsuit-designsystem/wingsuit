@@ -23,7 +23,7 @@ export function without(element, ...args) {
 
 export function twigItok() {
   const d = new Date();
-  return Promise.resolve(d.getMinutes());
+  return Promise.resolve(d.getSeconds());
 }
 
 export function twigUuid() {
