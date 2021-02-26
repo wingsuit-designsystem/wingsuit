@@ -10,7 +10,7 @@
   {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select} only%}
     {% block content %}
       <div class="flex py-5 justify-between md:flex-row">
-        <div class="max-w-xs md:max-w-7xl">
+        <div class="w-3/6 md:w-2/6 max-w-xs md:max-w-7xl">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
         <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">

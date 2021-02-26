@@ -12,7 +12,7 @@ button:
       label: Default
       configuration:
         colors:
-          primary: 'border-teal-300 bg-teal-300 text-white hover:bg-teal-600 hover:border-teal-600'
+          primary: 'border-teal-600 bg-teal-600 text-white hover:bg-teal-300 hover:border-teal-300'
           secondary: 'border-yellow-300 bg-yellow-300 text-black hover:bg-yellow-600 hover:border-yellow-600'
     outline:
       label: Outline
