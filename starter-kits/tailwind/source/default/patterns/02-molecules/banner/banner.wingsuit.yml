@@ -26,7 +26,7 @@ banner:
       preview: "<p>Nice and beautiful banner text.</p>"
   settings:
     position:
-      type: select
+      type: token
       label: Position
       default_value: center_center
       options:

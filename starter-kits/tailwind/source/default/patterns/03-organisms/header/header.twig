@@ -13,6 +13,9 @@
         <div class="w-3/6 md:w-2/6 max-w-xs md:max-w-7xl">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
+        <ul class="list-reset flex justify-end flex-1 items-center mr-8 md:mr-0">
+          <li class="mr-4 md:mr-7">{{ language_select }}</li>
+        </ul>
         <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">
           {% include "@atoms/hamburger/hamburger.twig" only %}
         </div>

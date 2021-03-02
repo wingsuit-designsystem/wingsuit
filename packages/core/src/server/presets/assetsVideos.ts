@@ -35,7 +35,7 @@ export function webpack(appConfig: AppConfig) {
 export function webpackFinal(appConfig: AppConfig, config: any): {} {
   if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map((data) => {
+    config.module.rules = config.module.rules.map(data => {
       if (/mp4\|webm\|wav/.test(String(data.test)))
         // eslint-disable-next-line no-param-reassign
         data = {};
