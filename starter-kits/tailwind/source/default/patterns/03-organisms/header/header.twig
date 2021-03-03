@@ -13,18 +13,15 @@
         <div class="w-3/6 md:w-2/6 max-w-xs md:max-w-7xl">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
-        <ul class="list-reset flex justify-end flex-1 items-center mr-8 md:mr-0">
-          <li class="mr-4 md:mr-7">{{ language_select }}</li>
-        </ul>
         <div class="block lg:hidden" @click="menuIsOpen = !menuIsOpen">
           {% include "@atoms/hamburger/hamburger.twig" only %}
         </div>
         <div class="w-full flex-grow hidden text-black z-20 mt-2 bg-white absolute lg:static left-6 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
-          <div>
-          {{ language_select }}
-          </div>
         </div>
+        <ul class="list-reset flex justify-end flex-1 items-center mr-8 md:mr-0">
+          <li class="mr-4 md:mr-7">{{ language_select }}</li>
+        </ul>
       </div>
     {% endblock %}
   {% endembed %}
