@@ -37,10 +37,12 @@
   url('fonts/poppins/poppins-v15-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
   url('fonts/poppins/poppins-v15-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
 }
+html {
+  height: 100%;
+}
 
 body {
-  font-family: 'Poppins';
-  color: #4a4a4a;
+  height: 100%;
 }
 
 @tailwind base;
