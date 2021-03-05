@@ -10,6 +10,7 @@
   auto_classes: auto_classes,
   header: header,
   show_header: show_header,
+  padding_x: padding_x,
   padding_top: padding_top,
   padding_bottom: padding_bottom,
   bg: bg,
@@ -18,7 +19,6 @@
   autoplay: autoplay,
   columns: '1',
   column_1: column_1,
-  padding_x: 'none',
   items: items,
   width: 'default',
   columns_width_1: 'equal',
@@ -31,7 +31,7 @@
 
     <div id="splide" class="splide overflow-hidden {{ pagination_classes }}" data-slides-per-view="{{ variant }}" data-autoplay="{{ autoplay }}">
       <div class="splide__track">
-        <ul class="splide__list">
+        <ul class="splide__list flex">
           {% for key, item in items %}
             {%- set iterator -%}
               {{- key -}}

@@ -11,7 +11,7 @@ core:
       ws-assets://hamburger.css:
         preprocess: true
   js:
-    ../../dist/app-drupal/vendors/alpine.js:
+    ws-assets://vendors/alpine.js:
       preprocess: true
 
   # see all in Drupal's `core/core.libraries.yml`
