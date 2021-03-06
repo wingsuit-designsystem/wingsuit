@@ -9,14 +9,14 @@ grid:
       label: Cells
       description: The cells of the grid.
       preview:
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
-        - "<div class='w-full h-40 bg-primary'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
   settings:
     gutter:
       type: select
