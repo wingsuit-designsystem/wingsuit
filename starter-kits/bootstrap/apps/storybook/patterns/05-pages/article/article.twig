@@ -18,6 +18,6 @@
       {% embed '@organisms/grid/grid.twig' with {config: 'equal', columns: 3, gutter: 'default', cells: cells} %}
       {% endembed %}
     {% endset %}
-    {{ pattern_preview('article', '', {more: more}) }}
+    {{ pattern_preview('article', {more: more}) }}
   {% endblock %}
 {% endembed %}
