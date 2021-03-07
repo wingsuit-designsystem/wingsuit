@@ -10,7 +10,7 @@ headline:
         faker: lorem.word
   variants:
     xl:
-      label: Xl
+      label: XL
       configuration:
         size: text-4xl font-bold md:text-8xl
         spacing_bottom:
@@ -62,15 +62,15 @@ headline:
     tag_name:
       type: select
       label: Tag name
+      default_value: div
       options:
-        xl: Xl
         h1: H1
         h2: H2
         h3: H3
         h4: H4
         h5: H5
         h6: H6
-        div: Div
+        div: DIV
     spacing_bottom:
       type: select
       label: Spacing bottom
