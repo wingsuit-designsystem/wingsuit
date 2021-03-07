@@ -42,8 +42,8 @@ export function twingMapToArray(variables): string[] {
 
 export async function renderPatternPreview(
   patternId: string,
+  variables: {} = {},
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
-  variables: {} = {}
 ): Promise<string> {
   let variant: PatternVariant;
   try {
@@ -60,8 +60,8 @@ export async function renderPatternPreview(
   Object.keys(previewPatterns).forEach((key: string) => {
     promisedPreview[i] = renderPatternPreview(
       previewPatterns[key].patternId,
+      previewPatterns[key].variables,
       previewPatterns[key].variant,
-      previewPatterns[key].variables
     );
     promisedPreviewNames[i] = key;
     i += 1;
@@ -111,7 +111,7 @@ export async function renderPatternPreview(
             finalVariables[key] = previewRenderedVariables[key];
           }
         });
-        renderPattern(patternId, variantId, finalVariables)
+        renderPattern(patternId, finalVariables, variantId)
           .then((output) => {
             resolve(output);
           })
@@ -121,10 +121,10 @@ export async function renderPatternPreview(
       });
     });
   }
-  return renderPattern(patternId, variantId, {
+  return renderPattern(patternId, {
     ...patternVariables,
-    ...buildBaseVariables(variables, false),
-  });
+    ...buildBaseVariables(variables, false)
+  }, variantId);
 }
 
 function buildBaseVariables(variables, addGlobals = true) {
@@ -145,13 +145,10 @@ function buildBaseVariables(variables, addGlobals = true) {
 
 export async function renderPattern(
   patternId: string,
+  variables: {} = {},
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
-  variables: {} = {}
 ): Promise<string> {
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  if (variant == null) {
-    throw new Error(`Pattern "${patternId}:${variantId}" not found.`);
-  }
   const finalVariables = buildBaseVariables(variables);
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,

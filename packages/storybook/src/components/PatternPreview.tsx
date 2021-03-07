@@ -16,7 +16,7 @@ const PatternPreview: FunctionComponent<Props> = ({
   useEffect(() => {
     let mounted = true;
     renderer
-      .renderPatternPreview(finalPatternId, finalVariantId, variables)
+      .renderPatternPreview(finalPatternId, variables, finalVariantId)
       .then((output: string) => {
         if (mounted) {
           setRendered(output);
