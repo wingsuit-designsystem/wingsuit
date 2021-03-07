@@ -21,7 +21,7 @@ storage.createDefinitions(
 
 describe('TwigRenderEngine', () => {
   test('Render Pattern Card', async () => {
-    const output = await renderEngine.renderPattern('card', 'default');
+    const output = await renderEngine.renderPattern('card', {}, 'default');
     expect(output).toEqual('Card1');
   });
   test('Render Pattern render', async () => {
