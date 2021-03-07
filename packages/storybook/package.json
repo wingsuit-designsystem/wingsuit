@@ -31,8 +31,8 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@storybook/addon-docs": "^6.1.0",
-    "@storybook/addon-knobs": "^6.1.0",
     "@storybook/client-api": "^6.1.0",
+    "@storybook/addon-controls": "^6.1.0",
     "@storybook/components": "^6.1.0",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^6.1.0",

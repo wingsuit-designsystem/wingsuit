@@ -28,7 +28,7 @@
     {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position|default('center_center')]}  %}
       {% block content %}
         <div class="p-6 dark:text-white">
-          {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h2'} %}
+          {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h2'} only %}
           {% if teaser is not empty %}
             <div class="text-xl">
               {{ teaser }}

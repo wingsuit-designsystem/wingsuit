@@ -2,6 +2,15 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
+## Upgrade from BETA.41 to rc.1
+
+Breaking changes:
+* From knobs to controls: 
+Replace `@storybook/addon-knobs` to `@storybook/addon-controls` in your apps/storybook/main.js
+* Twig functions `pattern_preview` and `pattern` are now compatible with UI Patterns functions
+The arguments order changed from `pattern, variant, variables` to `pattern, variable, variant`.
+So search for all `pattern_preview` and `pattern` methods and reorder the variables.
+
 # Build bulletproof TWIG Components in Storybook
 
 1.  Describe, develop and test your Pattern in storybook with [twing](https://www.npmjs.com/package/twing).
