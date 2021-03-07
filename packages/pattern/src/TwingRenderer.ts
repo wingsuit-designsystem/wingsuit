@@ -35,10 +35,10 @@ export class TwingRenderer implements IRenderer {
         (
           patternId: string,
           variables: {} = {},
-          variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+          variantId: string = Pattern.DEFAULT_VARIANT_NAME
         ) => {
-          return new Promise(resolve => {
-            renderPatternPreview(patternId, variables, variantId).then(output => {
+          return new Promise((resolve) => {
+            renderPatternPreview(patternId, variables, variantId).then((output) => {
               resolve(output);
             });
           });

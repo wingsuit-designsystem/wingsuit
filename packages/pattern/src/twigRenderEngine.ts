@@ -43,7 +43,7 @@ export function twingMapToArray(variables): string[] {
 export async function renderPatternPreview(
   patternId: string,
   variables: {} = {},
-  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
   let variant: PatternVariant;
   try {
@@ -61,7 +61,7 @@ export async function renderPatternPreview(
     promisedPreview[i] = renderPatternPreview(
       previewPatterns[key].patternId,
       previewPatterns[key].variables,
-      previewPatterns[key].variant,
+      previewPatterns[key].variant
     );
     promisedPreviewNames[i] = key;
     i += 1;
@@ -121,10 +121,14 @@ export async function renderPatternPreview(
       });
     });
   }
-  return renderPattern(patternId, {
-    ...patternVariables,
-    ...buildBaseVariables(variables, false)
-  }, variantId);
+  return renderPattern(
+    patternId,
+    {
+      ...patternVariables,
+      ...buildBaseVariables(variables, false),
+    },
+    variantId
+  );
 }
 
 function buildBaseVariables(variables, addGlobals = true) {
@@ -146,7 +150,7 @@ function buildBaseVariables(variables, addGlobals = true) {
 export async function renderPattern(
   patternId: string,
   variables: {} = {},
-  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   const finalVariables = buildBaseVariables(variables);
