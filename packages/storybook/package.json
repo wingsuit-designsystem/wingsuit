@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/storybook",
-  "version": "1.0.0-beta.41",
+  "version": "1.0.0-rc.2",
   "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
+    "@storybook/addon-controls": "^6.1.0",
     "@storybook/addon-docs": "^6.1.0",
-    "@storybook/addon-knobs": "^6.1.0",
     "@storybook/client-api": "^6.1.0",
     "@storybook/components": "^6.1.0",
     "@storybook/preset-typescript": "^3.0.0",
@@ -39,7 +39,7 @@
     "@storybook/theming": "^6.1.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/pattern": "1.0.0-beta.41",
+    "@wingsuit-designsystem/pattern": "1.0.0-rc.2",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

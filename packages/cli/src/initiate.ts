@@ -76,7 +76,7 @@ export default function (options) {
     mv(
       `${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`,
       npmOptions.targetFolder,
-      function (err) {
+      (err) => {
         rimraf.sync(npmOptions.gitFolder);
         cmdOptions.cwd = npmOptions.targetFolder;
         if (!npmOptions.skipInstall) {

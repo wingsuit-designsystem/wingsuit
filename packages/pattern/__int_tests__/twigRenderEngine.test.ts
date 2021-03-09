@@ -21,7 +21,7 @@ storage.createDefinitions(
 
 describe('TwigRenderEngine', () => {
   test('Render Pattern Card', async () => {
-    const output = await renderEngine.renderPattern('card', 'default');
+    const output = await renderEngine.renderPattern('card', {}, 'default');
     expect(output).toEqual('Card1');
   });
   test('Render Pattern render', async () => {
@@ -53,7 +53,7 @@ describe('TwigRenderEngine', () => {
     ['variant', 'variant'],
   ])('Render pattern %p in variant %p', async (patternId: string, variantId: string) => {
     storage.addGlobal('global_1', 'correct');
-    const output = await renderEngine.renderPatternPreview(patternId, variantId, {});
+    const output = await renderEngine.renderPatternPreview(patternId, {}, variantId);
     expect(output).toMatch(/field:correct/);
     expect(output).toMatch(/setting:correct/);
   });

@@ -1,0 +1,24 @@
+0 silly argv {
+0 silly argv   _: [ 'exec' ],
+0 silly argv   scope: '@wingsuit-designsystem/*',
+0 silly argv   parallel: true,
+0 silly argv   args: [],
+0 silly argv   '--': [
+0 silly argv     'cross-env-shell',
+0 silly argv     'node',
+0 silly argv     '$LERNA_ROOT_PATH/scripts/watch-babel.js'
+0 silly argv   ],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath /home/cw/projects/wingsuit/wingsuit
+3 notice filter including "@wingsuit-designsystem/*"
+4 info filter [ '@wingsuit-designsystem/*' ]
+5 info Executing command in 9 packages: "cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js"
+6 error Error: Command failed: cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js
+6 error
+6 error Successfully compiled 1 file with Babel (894ms).
+6 error
+6 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
+6 error     at /home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16

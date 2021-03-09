@@ -1,8 +1,7 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number, object, optionsKnob } from '@storybook/addon-knobs';
-import { Title, Subtitle, Primary } from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
@@ -15,7 +14,7 @@ import { PatternInclude } from './docs/PatternInclude';
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
 
-function getStorybookKnobsOptions(setting) {
+function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
   let knobsOption = {};
 
@@ -73,84 +72,153 @@ export function configure(
     return allExports;
   }, module);
 }
-
-function getProps(variant) {
-  const knobsVariables = [];
-  const groupSetting = 'Settings';
+function getArgs(defaultArgs, variant) {
+  const previewPatterns = variant.getPreviewPatterns();
+  const resultArgs = { ...defaultArgs };
+  const settings = variant.getSettings();
+  Object.keys(settings).forEach((key) => {
+    if (settings[key].getType() === 'attributes') {
+      resultArgs[key] = new TwigAttribute(resultArgs[key]);
+    }
+  });
+  Object.keys(previewPatterns).forEach((key) => {
+    const fieldName = key.split('--')[0];
+    if (resultArgs[fieldName] === false) {
+      resultArgs[fieldName] = null;
+    } else {
+      delete resultArgs[fieldName];
+    }
+  });
+  return resultArgs;
+}
+function getArgTypes(variant) {
+  const argTypes: any = {
+    SETTINGS: {
+      name: 'SETTINGS:',
+      type: 'string',
+      table: {
+        defaultValue: { summary: null },
+      },
+      control: null,
+    },
+  };
+  let hasSettings = false;
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
-    if (setting.isEnable()) {
+
+    if (setting.isEnable() && setting.getType() !== 'group') {
+      hasSettings = true;
+      argTypes[key] = {
+        name: setting.getLabel(),
+        type: {
+          required: setting.isRequired(),
+        },
+        table: {
+          defaultValue: { summary: setting.getPreview() },
+        },
+        defaultValue: setting.getPreview(),
+        description: setting.getDescription(),
+      };
       if (
         setting.getType() === 'select' ||
         setting.getType() === 'radios' ||
         setting.getType() === 'colorwidget'
       ) {
-        const displayType =
-          setting.getType() === 'radios' ? ('inline-radio' as const) : ('select' as const);
-        const optionsObj = {
-          display: displayType,
+        argTypes[key].type.name = 'enum';
+        argTypes[key].control = {
+          options: getStorybookControlsOptions(setting),
+          type: setting.getType() === 'radio' ? 'radio' : 'select',
         };
-        knobsVariables[key] = optionsKnob(
-          setting.getLabel(),
-          getStorybookKnobsOptions(setting),
-          setting.getPreview(),
-          optionsObj,
-          groupSetting
-        );
-      } else if (setting.getType() === 'attributes') {
-        knobsVariables[key] = new TwigAttribute(
-          text(setting.getLabel(), setting.getPreview(), groupSetting)
-        );
       } else if (setting.getType() === 'boolean') {
-        knobsVariables[key] = boolean(setting.getLabel(), setting.getPreview(), groupSetting);
+        argTypes[key].type.name = 'boolean';
+        argTypes[key].control = {
+          type: 'boolean',
+        };
       } else if (setting.getType() === 'number') {
-        knobsVariables[key] = number(
-          setting.getLabel(),
-          setting.getPreview(),
-          undefined,
-          groupSetting
-        );
-      } else if (setting.getType() !== 'group') {
-        knobsVariables[key] = text(setting.getLabel(), setting.getPreview(), groupSetting);
+        argTypes[key].type.name = 'number';
+        argTypes[key].control = {
+          type: 'number',
+        };
+      } else {
+        argTypes[key].type.name = 'string';
+        argTypes[key].control = {
+          type: 'text',
+        };
       }
     }
   });
-  const groupFields = 'Fields';
+  if (hasSettings === false) {
+    delete argTypes.SETTINGS;
+  } else {
+    argTypes.SEP = {
+      type: 'string',
+      name: '',
+      table: {
+        defaultValue: { summary: null },
+      },
+      control: null,
+    };
+  }
+  argTypes.FIELDS = {
+    name: 'FIELDS:',
+    description: null,
+    type: 'string',
+    table: {
+      defaultValue: { summary: null },
+    },
+    control: {
+      type: '',
+    },
+  };
+  let hasFields = false;
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
     if (field.isEnable()) {
+      hasFields = true;
+      argTypes[key] = {
+        name: field.getLabel(),
+        type: {
+          required: false,
+        },
+        defaultValue: field.getPreview(),
+        description: field.getDescription(),
+      };
       if (field.getType() === 'object') {
-        knobsVariables[key] = object(field.getLabel(), field.getPreview(), groupFields);
-      } else if (field.getType() !== 'pattern') {
-        knobsVariables[key] = text(field.getLabel(), field.getPreview(), groupFields);
+        argTypes[key].type.name = 'object';
+        argTypes[key].control = {
+          type: 'object',
+        };
+      } else if (field.getType() === 'pattern') {
+        argTypes[key].name = `Display "${argTypes[key].name}"`;
+        argTypes[key].type.name = 'boolean';
+        argTypes[key].defaultValue = true;
+        argTypes[key].control = {
+          type: 'boolean',
+        };
+      } else {
+        argTypes[key].type.name = 'string';
+        argTypes[key].control = {
+          type: 'text',
+        };
       }
     }
   });
-  const groupPatterns = 'Linked patterns';
-  const previewPatterns = variant.getPreviewPatterns();
-
-  Object.keys(previewPatterns).forEach((key) => {
-    const fieldName = key.split('--')[0];
-    const shouldRender = boolean(variant.getField(fieldName).getLabel(), true, groupPatterns);
-    if (!shouldRender) {
-      knobsVariables[fieldName] = null;
-    }
-  });
-  return knobsVariables;
+  if (hasFields === false) {
+    delete argTypes.FIELDS;
+    delete argTypes.SEP;
+  }
+  return argTypes;
 }
 
 function getStories(pattern: Pattern, module) {
   const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
   const story = storiesOf(patternLabel, module);
-  story.addDecorator(
-    withKnobs({
-      escapeHTML: false,
-    })
-  );
 
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
+    const argTypes = getArgTypes(variant);
     let parameters = {
+      argTypes,
       component: PatternPreview,
       notes: variant.getDescription(),
       docs: {
@@ -161,9 +229,8 @@ function getStories(pattern: Pattern, module) {
               <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
             </Subtitle>
             <Primary />
-            <PatternProperties variant={variant} />
+            <ArgsTable story={PRIMARY_STORY} />
             <PatternInclude variant={variant} />
-            <PatternDoc pattern={pattern} showInclude />
           </>
         ),
         storyDescription: variant.getDescription(),
@@ -171,11 +238,13 @@ function getStories(pattern: Pattern, module) {
     };
 
     parameters = Object.assign(parameters, pattern.getParameters());
+
     story.add(
       variant.getLabel(),
-      () => (
-        <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...getProps(variant)} />
-      ),
+      (args) => {
+        const vars = getArgs(args, variant);
+        return <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...vars} />;
+      },
       parameters
     );
   });

@@ -12,8 +12,6 @@ const twingFilters = require('twing-drupal-filters');
 export class TwingRenderer implements IRenderer {
   private environment;
 
-  private cache: {} = {};
-
   addTemplate(path, template) {
     this.environment.getLoader().setTemplate(path, template);
   }
@@ -25,7 +23,6 @@ export class TwingRenderer implements IRenderer {
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
     this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
-    this.cache = {};
     twingFilters(this.environment);
     const withoutFilter = (arg1, ...args) => {
       return Promise.resolve(without(arg1, ...args));
@@ -37,16 +34,11 @@ export class TwingRenderer implements IRenderer {
         'pattern_preview',
         (
           patternId: string,
-          variantId: string = Pattern.DEFAULT_VARIANT_NAME,
-          variables: {} = {}
+          variables: {} = {},
+          variantId: string = Pattern.DEFAULT_VARIANT_NAME
         ) => {
-          const cacheKey = JSON.stringify({ patternId, variantId, variables });
-          if (this.cache[cacheKey]) {
-            return Promise.resolve(this.cache[cacheKey]);
-          }
           return new Promise((resolve) => {
-            renderPatternPreview(patternId, variantId, variables).then((output) => {
-              this.cache[cacheKey] = output;
+            renderPatternPreview(patternId, variables, variantId).then((output) => {
               resolve(output);
             });
           });

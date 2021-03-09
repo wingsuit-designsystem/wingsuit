@@ -37,7 +37,12 @@
     #}
     {% block cell_outer %}
       {% set column_name = 'column_' ~ (cell_counter + 1) %}
-      {% set current_region_attributes = region_attributes[column_name]|default(create_attribute()) %}
+      {% set cell_classes = [
+        cell_option == 'flex' ? 'flex section-cell-flex'
+      ]
+      %}
+      {% set current_region_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
+
       <div{{ current_region_attributes }}>
           {{ cell }}
       </div>

@@ -6,10 +6,9 @@ describe('Wingsuit Component', () => {
   });
 
   it('[text] it should change field value.', () => {
-    clickAddon('Knobs');
-    cy.get('#tabbutton-fields').click();
+    clickAddon('Controls');
 
-    cy.get('#Content_Fields').clear().type('John Doe');
+    cy.get('#content').clear().type('John Doe');
     cy.wait(1000);
     cy.getStoryElement()
       .find('.wsc-component')

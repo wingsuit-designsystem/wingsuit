@@ -3,8 +3,8 @@ const wingsuitCore = require('@wingsuit-designsystem/core');
 module.exports = {
   addons: [
     '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-viewport',
-    '@storybook/addon-knobs',
     '@storybook/addon-links',
     'storybook-addon-themes',
   ],
