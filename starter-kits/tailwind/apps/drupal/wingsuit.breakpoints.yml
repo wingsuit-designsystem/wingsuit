@@ -4,18 +4,21 @@ wingsuit.xsmall:
   weight: 0
   multipliers:
     - 1x
+    - 2x
 wingsuit.small:
   label: Small
   mediaQuery: '(min-width: 460px) and (max-width: 639px)'
   weight: 0
   multipliers:
     - 1x
+    - 2x
 wingsuit.medium:
   label: Medium
   mediaQuery: 'all and (min-width: 640px) and (max-width: 1023px)'
   weight: 1
   multipliers:
     - 1x
+    - 2x
 
 wingsuit.large:
   label: Large
@@ -23,6 +26,7 @@ wingsuit.large:
   weight: 3
   multipliers:
     - 1x
+    - 2x
 
 wingsuit.xlarge:
   label: xLarge
@@ -30,6 +34,7 @@ wingsuit.xlarge:
   weight: 4
   multipliers:
     - 1x
+    - 2x
 
 wingsuit.xxlarge:
   label: xxLarge
@@ -37,3 +42,4 @@ wingsuit.xxlarge:
   weight: 5
   multipliers:
     - 1x
+    - 2x
