@@ -24,10 +24,14 @@ banner:
       label: Teaser
       description: Short optional teaser.
       preview: "<p>Nice and beautiful banner text.</p>"
+    link_attributes:
+      type: text
+      label: Link
   settings:
     position:
       type: select
       label: Position
+      allow_token: true
       default_value: center_center
       options:
         top_left: Top left

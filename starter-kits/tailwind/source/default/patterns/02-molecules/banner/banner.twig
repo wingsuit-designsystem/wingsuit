@@ -30,9 +30,12 @@
         <div class="p-6 dark:text-white">
           {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h2'} only %}
           {% if teaser is not empty %}
-            <div class="text-xl">
+            <div class="text-xl pb-4">
               {{ teaser }}
             </div>
+          {% endif %}
+          {% if link_attributes is not empty %}
+            {{ link_attributes }}
           {% endif %}
         </div>
       {% endblock %}
