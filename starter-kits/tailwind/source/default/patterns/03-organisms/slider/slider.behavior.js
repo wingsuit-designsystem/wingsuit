@@ -1,33 +1,34 @@
-import '@glidejs/glide/dist/css/glide.core.min.css';
-import Glide, {
-  Controls,
-  Breakpoints,
-  Swipe,
-  Autoplay,
-} from '@glidejs/glide/dist/glide.modular.esm';
+import Splide from '@splidejs/splide';
 
 Drupal.behaviors.slider = {
   attach() {
-    const sliders = document.querySelectorAll('.glide');
+    const sliders = document.querySelectorAll('.splide');
     sliders.forEach((slider) => {
-      if (!slider.classList.contains('glide--processed')) {
+      if (!slider.classList.contains('splide--processed')) {
         const autoplay = slider.attributes['data-autoplay'].value;
         const slidesPerView = slider.attributes['data-slides-per-view'].value;
-        new Glide(slider, {
-          type: 'carousel',
-          perView: slidesPerView,
-          autoplay: autoplay === '1' ? 2000 : false,
+        const splide = new Splide(slider, {
+          type: 'slide',
+          arrows: false,
+          perPage: slidesPerView,
+          perMove: slidesPerView,
+          autoplay: autoplay === '1',
+          interval: 5000,
+          rewind: autoplay === '1',
           gap: 30,
           breakpoints: {
             640: {
-              perView: 1,
+              perPage: 1,
+              perMove: 1,
             },
             768: {
-              perView: slidesPerView === '4' ? 2 : 1,
+              perPage: slidesPerView === '4' ? 2 : 1,
+              perMove: slidesPerView === '4' ? 2 : 1,
             },
           },
-        }).mount({ Controls, Breakpoints, Swipe, Autoplay });
-        slider.classList.add('glide--processed');
+        });
+        splide.mount();
+        slider.classList.add('splide--processed');
       }
     });
   },

@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative text-gray-600">
   <div class="flex items-center cursor-pointer" @click="languageSwitcherOpen = !languageSwitcherOpen">
     <div class="mr-2 uppercase dark:text-white">{{ language }}</div>
     <div class="mr-2.5">
@@ -13,7 +13,7 @@
       size: 'w-2.5 h-2.5',
     } only %}
   </div>
-  <ul class="absolute left-1/2 p-4 top-10 bg-gray-600 box-shadow rounded transform -translate-x-1/2 hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
+  <ul class="absolute left-1/2 p-4 top-10 bg-gray-400 box-shadow rounded transform -translate-x-1/2 hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
     {%- for key, item in links -%}
       {%- if item.link and item.langcode != language -%}
         <li class="last:mb-0 mb-4 group">

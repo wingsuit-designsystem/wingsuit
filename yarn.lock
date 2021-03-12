@@ -2654,6 +2654,11 @@
   dependencies:
     type-detect "4.0.8"
 
+"@splidejs/splide@^2.4.21":
+  version "2.4.21"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-2.4.21.tgz#ad1954d8d8822c9bfea0d3dc6a119358b88581ad"
+  integrity sha512-LdIwSnmNsGybCCnA3QG2dOeRv/rQl46jf7FflXxMGX0ADYWyL6UJHWJbMZvHBi5I67uRJY1ga/W+CvJ39nH26A==
+
 "@storybook/addon-backgrounds@^6.0.0":
   version "6.1.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-6.1.21.tgz#ada6c0a8a375855f99da0a7de770dd2c245d536d"
