@@ -8,6 +8,7 @@ libraries:
 regions:
   primary_menu: Primary menu
   highlighted: Highlighted
+  language_switcher: Language switcher
   breadcrumb: Breadcrumb
   content: Content
   footer_menu: Footer menu

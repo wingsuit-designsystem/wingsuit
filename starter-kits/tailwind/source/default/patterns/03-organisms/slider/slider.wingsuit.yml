@@ -22,10 +22,15 @@ slider:
       multi_value_type: items
       preview:
         - id: banner
+          position: bottom_left
         - id: banner
+          position: bottom_left
         - id: banner
+          position: bottom_left
         - id: banner
+          position: bottom_left
         - id: banner
+          position: bottom_left
   variants:
     1:
       label: Single slide
@@ -40,6 +45,24 @@ slider:
       type: boolean
       label: Autoplay
       default_value: false
+    bullet_spacing:
+      type: select
+      label: Bullet spacing
+      default_value: none
+      options:
+        none: None
+        default: Default
+    pagination_spacing:
+      type: select
+      label: Pagination spacing
+      default_value: none
+      options:
+        none: None
+        default: Default
+  configuration:
+    pagination_spacing:
+      none: ''
+      default: 'splide__pagination__spacing-default'
   libraries:
     - pattern_slider:
         js:
@@ -47,4 +70,4 @@ slider:
         css:
           component:
             ../slider.css: {}
-            ../behaviors/slider.css: {}
+            ../../../node_modules/@splidejs/splide/dist/css/splide-core.min.css: {}

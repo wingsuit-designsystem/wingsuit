@@ -6,32 +6,41 @@
  * See slider.wingsuit.yaml for documentation.
  */
 #}
-{% embed "@organisms/container/container.twig" with {
+{% embed "@organisms/section/section.twig" with {
+  auto_classes: auto_classes,
+  header: header,
+  show_header: show_header,
+  padding_x: padding_x,
   padding_top: padding_top,
   padding_bottom: padding_bottom,
   bg: bg,
   variant: variant,
+  pagination_spacing: pagination_spacing,
   autoplay: autoplay,
-  content: items,
-  width: width,
+  columns: '1',
+  column_1: column_1,
+  items: items,
+  width: 'default',
+  columns_width_1: 'equal',
 } only %}
-  {% block content %}
-    <div class="glide overflow-hidden" data-slides-per-view="{{ variant }}" data-autoplay="{{ autoplay }}">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-        {% for key, item in content %}
-          {% if key != "region_label" %}
-            <li class="glide__slide flex-shrink-0">{{ item }}</li>
-          {% endif %}
-        {% endfor %}
+  {% block column_1 %}
+
+    {% set pagination_classes = ([
+      pattern_configuration('slider', '', 'pagination_spacing')[pagination_spacing],
+    ] | sort | join(' ') | trim ) %}
+
+    <div id="splide" class="splide overflow-hidden {{ pagination_classes }}" data-slides-per-view="{{ variant }}" data-autoplay="{{ autoplay }}">
+      <div class="splide__track">
+        <ul class="splide__list flex">
+          {% for key, item in items %}
+            {%- set iterator -%}
+              {{- key -}}
+            {% endset %}
+            {% if iterator != "region_label" %}
+              <li class="splide__slide flex-shrink-0">{{ item }}</li>
+            {% endif %}
+          {% endfor %}
         </ul>
-      </div>
-      <div class="glide__bullets" data-glide-el="controls[nav]">
-        {% for key in content|keys %}
-          {% if key != "region_label" %}
-            <button class="glide__bullet" data-glide-dir="={{ loop.index0 -1 }}"></button>
-          {% endif %}
-        {% endfor %}
       </div>
     </div>
   {% endblock %}
