@@ -4,6 +4,9 @@ const faker = require('faker');
 
 export default class Property {
   public getDescription(): string {
+    if (this.description === undefined) {
+      return '';
+    }
     return this.description;
   }
 

@@ -1,7 +1,13 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
+import {
+  Title,
+  Subtitle,
+  DocsStory,
+  ArgsTable,
+  CURRENT_SELECTION,
+} from '@storybook/addon-docs/blocks';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
@@ -109,7 +115,7 @@ function getArgTypes(variant) {
     if (setting.isEnable() && setting.getType() !== 'group') {
       hasSettings = true;
       argTypes[key] = {
-        name: setting.getLabel(),
+        name: key,
         type: {
           required: setting.isRequired(),
         },
@@ -117,7 +123,9 @@ function getArgTypes(variant) {
           defaultValue: { summary: setting.getPreview() },
         },
         defaultValue: setting.getPreview(),
-        description: setting.getDescription(),
+        description: `${setting.getLabel()} ${
+          setting.getDescription() !== '' ? ` - ${setting.getDescription()}` : ''
+        }`,
       };
       if (
         setting.getType() === 'select' ||
@@ -176,12 +184,14 @@ function getArgTypes(variant) {
     if (field.isEnable()) {
       hasFields = true;
       argTypes[key] = {
-        name: field.getLabel(),
+        name: key,
         type: {
           required: false,
         },
         defaultValue: field.getPreview(),
-        description: field.getDescription(),
+        description: `${field.getLabel()} ${
+          field.getDescription() !== '' ? ` - ${field.getDescription()}` : ''
+        }`,
       };
       if (field.getType() === 'object') {
         argTypes[key].type.name = 'object';
@@ -189,7 +199,7 @@ function getArgTypes(variant) {
           type: 'object',
         };
       } else if (field.getType() === 'pattern') {
-        argTypes[key].name = `Display "${argTypes[key].name}"`;
+        argTypes[key].description = `Display "${argTypes[key].name}"`;
         argTypes[key].type.name = 'boolean';
         argTypes[key].defaultValue = true;
         argTypes[key].control = {
@@ -228,8 +238,8 @@ function getStories(pattern: Pattern, module) {
             <Subtitle>
               <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
             </Subtitle>
-            <Primary />
-            <ArgsTable story={PRIMARY_STORY} />
+            <DocsStory id={CURRENT_SELECTION} />
+            <ArgsTable story={CURRENT_SELECTION} />
             <PatternInclude variant={variant} />
           </>
         ),
