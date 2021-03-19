@@ -32,6 +32,10 @@ export function supportFeature(name, appConfig: AppConfig) {
   return presetManager.supportFeature(name, appConfig);
 }
 
+export function getDefaultPreset(name) {
+  return presetManager.getDefaultPreset(name);
+}
+
 export function getAppNames(wingsuitConfig: any = null, type = '') {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require

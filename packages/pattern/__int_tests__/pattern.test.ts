@@ -7,7 +7,7 @@ import { storage } from '../src';
 describe('Pattern parsing', () => {
   beforeEach(() => {
     storage.createDefinitions(
-      JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+      JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
     );
   });
   test.each([

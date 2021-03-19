@@ -9,10 +9,35 @@ const merge = require('webpack-merge');
 const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const css = require('./presets/css')
+const babel = require('./presets/babel')
+const assets = require('./presets/assets')
+const storybook = require('./presets/storybook')
+const drupal = require('./presets/drupal')
+const twing = require('./presets/twing')
+const svg = require('./presets/svg')
+const assetsVideos = require('./presets/assetsVideos')
+
+const defaultPresets:{} = {
+  css,
+  babel,
+  assets,
+  storybook,
+  drupal,
+  twing,
+  svg,
+  assetsVideos
+};
+
+
 merge.multiple();
 
 export default class PresetManager {
   private environment = 'production';
+
+  public getDefaultPreset(name:string):Preset {
+    return defaultPresets[name]
+  }
 
   private getPresetName(preset: Preset, appConfig: AppConfig): any {
     return preset.name != null ? preset.name(appConfig) : Math.random();

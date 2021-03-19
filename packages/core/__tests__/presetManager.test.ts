@@ -55,6 +55,11 @@ test('Test parameters in wingsuit.config.', () => {
   expect(webpack.testWebpackFalse).toBe(undefined);
 });
 
+test('Test getDefaultPreset.', () => {
+  const presetManager = new PresetManager();
+  const css = presetManager.getDefaultPreset('css');
+  expect(css).not.toBe(null);
+});
 test('Test defaultConfig.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(

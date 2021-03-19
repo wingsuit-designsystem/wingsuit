@@ -16,7 +16,7 @@ renderer.setLoader(loader);
 renderEngine.setRenderer(renderer);
 
 storage.createDefinitions(
-  JSON.parse(fs.readFileSync(path.join(__dirname, '/_data/patterns.json')))
+  JSON.parse(fs.readFileSync(path.join(__dirname, '/_data/patterns.json'))).patterns
 );
 
 describe('TwigRenderEngine', () => {
