@@ -9,16 +9,16 @@ const merge = require('webpack-merge');
 const { ProgressPlugin, ProvidePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const css = require('./presets/css')
-const babel = require('./presets/babel')
-const assets = require('./presets/assets')
-const storybook = require('./presets/storybook')
-const drupal = require('./presets/drupal')
-const twing = require('./presets/twing')
-const svg = require('./presets/svg')
-const assetsVideos = require('./presets/assetsVideos')
+const css = require('./presets/css');
+const babel = require('./presets/babel');
+const assets = require('./presets/assets');
+const storybook = require('./presets/storybook');
+const drupal = require('./presets/drupal');
+const twing = require('./presets/twing');
+const svg = require('./presets/svg');
+const assetsVideos = require('./presets/assetsVideos');
 
-const defaultPresets:{} = {
+const defaultPresets: {} = {
   css,
   babel,
   assets,
@@ -26,17 +26,16 @@ const defaultPresets:{} = {
   drupal,
   twing,
   svg,
-  assetsVideos
+  assetsVideos,
 };
-
 
 merge.multiple();
 
 export default class PresetManager {
   private environment = 'production';
 
-  public getDefaultPreset(name:string):Preset {
-    return defaultPresets[name]
+  public getDefaultPreset(name: string): Preset {
+    return defaultPresets[name];
   }
 
   private getPresetName(preset: Preset, appConfig: AppConfig): any {
@@ -51,7 +50,7 @@ export default class PresetManager {
 
   private getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
-    appConfig.presets.forEach(item => {
+    appConfig.presets.forEach((item) => {
       if (typeof item === 'string') {
         // eslint-disable-next-line global-require,import/no-dynamic-require
         const lpreset = require(item);
@@ -100,7 +99,7 @@ export default class PresetManager {
   public supportFeature(name, appConfig: AppConfig) {
     const presetDefinitions = this.getPresetDefinitions(appConfig);
     let support = false;
-    Object.keys(presetDefinitions).forEach(key => {
+    Object.keys(presetDefinitions).forEach((key) => {
       const { preset } = presetDefinitions[key];
       if (preset != null && preset.supportFeature != null) {
         const presetSupport = preset.supportFeature(name);
@@ -122,7 +121,7 @@ export default class PresetManager {
     const presets = this.getPresetDefinitions(appConfig);
 
     const shared: any = [];
-    Object.keys(presets).forEach(key => {
+    Object.keys(presets).forEach((key) => {
       if (presets[key] != null) {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
@@ -163,7 +162,7 @@ export default class PresetManager {
       ]
     );
 
-    Object.keys(presets).forEach(key => {
+    Object.keys(presets).forEach((key) => {
       if (presets[key].preset.webpackFinal != null) {
         config = presets[key].preset.webpackFinal(appConfig, config);
       }

@@ -63,9 +63,7 @@ export default class PatternStorage implements IPatternStorage {
             ).join(', ')}`
           );
         }
-        const basePatternDefinition = this.extendPatternDefinition(
-          this.definitions[basePattern]
-        );
+        const basePatternDefinition = this.extendPatternDefinition(this.definitions[basePattern]);
         let basePatternTypes: string[] = [];
         if (basePatternType == null) {
           basePatternTypes = ['fields', 'settings'];
