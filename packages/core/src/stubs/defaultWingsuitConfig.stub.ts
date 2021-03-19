@@ -11,6 +11,16 @@ export const wingsuit = {
   webpackFinal: null,
   webpack: null,
   parameters: {},
+  defaultPresets: {
+    babel,
+    css,
+    assets,
+    assetsVideos,
+    svg,
+    twing,
+    storybook,
+    drupal,
+  },
   presets: [babel, css, assets, assetsVideos, svg],
   designSystems: {
     default: {

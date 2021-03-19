@@ -37,12 +37,12 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   getPatternIds(): string[] {
-    return Object.keys(this.definitions.patterns);
+    return Object.keys(this.definitions);
   }
 
   loadPatternsByNamespace(namespace): Pattern[] {
     const foundPatterns: Pattern[] = [];
-    Object.keys(this.definitions.patterns).forEach((key) => {
+    Object.keys(this.definitions).forEach((key) => {
       const pattern = this.loadPattern(key);
       if (pattern.getNamespace() === namespace) {
         foundPatterns.push(pattern);
@@ -53,19 +53,17 @@ export default class PatternStorage implements IPatternStorage {
 
   private extendPatternDefinition(pattern: IPatternDefinition) {
     const resultingPattern = pattern;
-    if (pattern.extends != null && pattern.extends.length !== 0) {
+    if (pattern != null && pattern.extends != null && pattern.extends.length !== 0) {
       pattern.extends.forEach((extend: string) => {
         const [basePattern, basePatternType, basePatternField] = extend.split('.');
-        if (this.definitions.patterns[basePattern] == null) {
+        if (this.definitions[basePattern] == null) {
           throw new Error(
             `Base pattern "${basePattern}" not found. Possible patterns ${Object.keys(
-              this.definitions.patterns
+              this.definitions
             ).join(', ')}`
           );
         }
-        const basePatternDefinition = this.extendPatternDefinition(
-          this.definitions.patterns[basePattern]
-        );
+        const basePatternDefinition = this.extendPatternDefinition(this.definitions[basePattern]);
         let basePatternTypes: string[] = [];
         if (basePatternType == null) {
           basePatternTypes = ['fields', 'settings'];
@@ -98,12 +96,12 @@ export default class PatternStorage implements IPatternStorage {
 
   loadPattern(patternId: string): Pattern {
     const definition: IPatternDefinition = this.extendPatternDefinition(
-      this.definitions.patterns[patternId]
+      this.definitions[patternId]
     );
     if (definition == null) {
       throw new Error(
         `Pattern definition "${patternId}" not found. Possible pattern ids are: "${Object.keys(
-          this.definitions.patterns
+          this.definitions
         ).join(' ,')}"`
       );
     }
@@ -131,9 +129,6 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   createDefinitionsFromContext(context): void {
-    if (this.definitions.patterns == null) {
-      this.definitions.patterns = {};
-    }
     context.keys().forEach((key) => {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
         const data = context(key);
@@ -162,7 +157,7 @@ export default class PatternStorage implements IPatternStorage {
             if (patternDefinition[pattern_key].namespace == null) {
               patternDefinition[pattern_key].namespace = namespace;
             }
-            this.definitions.patterns[pattern_key] = patternDefinition[pattern_key];
+            this.definitions[pattern_key] = patternDefinition[pattern_key];
           });
         }
       }

@@ -11,7 +11,7 @@ describe('PatternStorage', () => {
   describe('#createDefinitions', () => {
     test('Test extend', () => {
       storage.createDefinitions(
-        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
       );
       const pattern: Pattern = storage.loadPattern('simple_extend_setting');
       expect(pattern).toBeInstanceOf(Pattern);
@@ -29,21 +29,21 @@ describe('PatternStorage', () => {
     });
     test('Load Pattern Card', () => {
       storage.createDefinitions(
-        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
       );
       const pattern: Pattern = storage.loadPattern('card');
       expect(pattern).toBeInstanceOf(Pattern);
     });
     test('Load Card Variant', () => {
       storage.createDefinitions(
-        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
       );
       const variant: PatternVariant = storage.loadVariant('card', 'default');
       expect(variant).toBeInstanceOf(PatternVariant);
     });
     test('Load patterns by Namespace', () => {
       storage.createDefinitions(
-        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json')))
+        JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
       );
       const patterns: Pattern[] = storage.loadPatternsByNamespace('atoms');
       expect(patterns.length).toBe(2);
