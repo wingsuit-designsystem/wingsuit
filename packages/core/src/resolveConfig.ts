@@ -1,5 +1,6 @@
 import path from 'path';
 import AppConfig from './AppConfig';
+import PresetManager from './server/PresetManager';
 
 const merge = require('merge-deep');
 const yargs = require('yargs');
@@ -16,15 +17,26 @@ export function resolveConfig(
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
-  const mergedConfig = merge(configStub.wingsuit, projectConfig);
+  let mergedConfig = merge(configStub.wingsuit, projectConfig);
+  mergedConfig.absAppPath = '';
+
+  // Extend wingsuit base config with preset configs.
+  const presetManager = new PresetManager();
+  const presets = presetManager.getPresetDefinitions(mergedConfig);
+
+  Object.keys(presets).forEach((key) => {
+    if (presets[key] != null && presets[key].preset.wingsuitConfig != null) {
+      const presetWingsuitConfig = presets[key].preset.wingsuitConfig();
+      mergedConfig = merge(mergedConfig, presetWingsuitConfig);
+    }
+  });
 
   let appConfig = mergedConfig.apps[appName];
-
-  const rootPath = configPath != null ? configPath : process.cwd();
   if (appConfig == null) {
     throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
   }
 
+  const rootPath = configPath != null ? configPath : process.cwd();
   if (mergedConfig.environments[environment] != null) {
     appConfig = merge(appConfig, mergedConfig.environments[environment]);
   }
@@ -75,5 +87,6 @@ export function resolveConfig(
   appConfig.namespaces = designSystem.namespaces;
   appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
   appConfig.namespaces.wspatterns = appConfig.absPatternPath;
+
   return appConfig;
 }

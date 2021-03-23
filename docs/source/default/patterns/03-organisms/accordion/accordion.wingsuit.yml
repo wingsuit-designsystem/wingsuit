@@ -1,0 +1,15 @@
+accordion:
+  use: "@organisms/accordion/accordion.twig"
+  label: Accordion
+  description: Pure CSS collapsible accordion.
+  fields:
+    items:
+      type: pattern
+      label: Items
+      preview:
+        -
+          id: accordion_item
+        -
+          id: accordion_item
+        -
+          id: accordion_item

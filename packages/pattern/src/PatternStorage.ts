@@ -121,7 +121,9 @@ export default class PatternStorage implements IPatternStorage {
   createDefinitionsFromMultiContext(any): void {
     if (Array.isArray(any) === true) {
       any.forEach((context) => {
-        this.createDefinitionsFromContext(context);
+        if (context != null) {
+          this.createDefinitionsFromContext(context);
+        }
       });
     } else {
       this.createDefinitionsFromContext(any);

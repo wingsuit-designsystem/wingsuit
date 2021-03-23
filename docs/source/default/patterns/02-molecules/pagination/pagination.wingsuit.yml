@@ -1,0 +1,26 @@
+pagination:
+  use: "@molecules/pagination/pagination.twig"
+  label: Pagination
+  description: Simple and functional pagination.
+  fields:
+    items:
+      type: object
+      label: Items
+      preview:
+        - title: 1
+          link: "#"
+          in_active_trail: true
+        - title: 2
+          link: "#"
+        - title: ...
+          link: "#"
+        - title: 6
+          link: "#"
+  settings:
+    previous_url:
+      type: link
+      label: Previous url
+    next_url:
+      type: link
+      label: Next url
+  visibility: storybook

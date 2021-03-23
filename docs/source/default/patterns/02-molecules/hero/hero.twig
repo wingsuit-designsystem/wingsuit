@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * hero
+ *
+ * See hero.wingsuit.yaml for documentation.
+ */
+#}
+
+{# TEMPLATE #}
+
+<section class="text-gray-700 body-font">
+  <div class="flex md:flex-row flex-col">
+
+    <div class="flex flex-col pt-8 items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left mb-16 md:mb-0 lg:flex-grow lg:pr-24">
+      <div{{ region_attributes.pre_headline|default(create_attribute()).addClass('uppercase tracking-loose font-medium w-full mb-4') }}>{{ pre_headline }}</div>
+      {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h3', tag_name: 'h1', attributes: region_attributes.headline } %}
+      <div{{ region_attributes.text|default(create_attribute()).addClass('mb-8 font-medium leading-relaxed text-l max-w-sm ') }}>{{ text }}</div>
+      <div class="flex justify-center">
+        <div{{ region_attributes.button|default(create_attribute()).addClass('mr-5') }}>{{ button }}</div>
+        <div{{ region_attributes.button_second }}>{{ button_second }}</div>
+      </div>
+    </div>
+
+    <div {{ region_attributes.image|default(create_attribute()).addClass('w-5/6 md:w-1/2 lg:max-w-lg lg:w-full') }}>
+      {{ image }}
+    </div>
+  </div>
+</section>

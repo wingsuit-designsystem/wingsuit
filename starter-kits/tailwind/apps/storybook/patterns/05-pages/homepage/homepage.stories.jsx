@@ -1,4 +1,4 @@
-import { RenderTwig } from '@wingsuit-designsystem/storybook';
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';
 import React from 'react';
 import 'atoms/hamburger';
 import 'molecules/card';
@@ -17,4 +17,6 @@ export default {
 
 const template = require('./homepage.twig');
 
-export const Homepage = () => <RenderTwig data={template}></RenderTwig>;
+export const Homepage = () => {
+  return <RenderTwig data={template}></RenderTwig>;
+};

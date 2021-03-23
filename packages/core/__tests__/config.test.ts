@@ -17,7 +17,7 @@ const config_1 = {
 };
 
 const config_2 = {
-  presets: ['BaseBundle'],
+  presets: ['babel'],
   apps: {
     storybook: {
       path: 'packages/core/__tests__',

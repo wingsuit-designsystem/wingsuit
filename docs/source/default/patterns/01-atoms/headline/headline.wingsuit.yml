@@ -1,0 +1,82 @@
+headline:
+  use: "@atoms/headline/headline.twig"
+  label: Headline
+  description: Flexible headline with options to choose size and tags.
+  fields:
+    headline:
+      type: text
+      label: Headline
+      preview:
+        faker: lorem.word
+  variants:
+    xl:
+      label: XL
+      configuration:
+        size: text-4xl font-bold md:text-8xl
+        spacing_bottom:
+          small: mb-6 md:mb-12
+          default: mb-10 md:mb-16
+    h1:
+      label: h1
+      configuration:
+        size: text-3xl font-bold md:text-6xl leading-relaxed
+        spacing_bottom:
+          small: mb-9 md:mb-12
+          default: mb-9 md:mb-12
+    h2:
+      label: h2
+      configuration:
+        size: text-2xl font-bold md:text-5xl leading-relaxed
+        spacing_bottom:
+          small: mb-4 md:mb-10
+          default: mb-8 md:mb-11
+    h3:
+      label: h3
+      configuration:
+        size: text-xl md:text-4xl font-bold leading-relaxed
+        spacing_bottom:
+          small: mb-2 md:mb-4
+          default: mb-8 md:mb-10
+    h4:
+      label: h4
+      configuration:
+        size: font-bold text-l md:text-2xl
+        spacing_bottom:
+          small: mb-2.5 md:mb-3.5
+          default: mb-8 md:mb-9
+    h5:
+      label: h5
+      configuration:
+        size: text-l md:text-xl
+        spacing_bottom:
+          small: mb-8
+          default: mb-8
+    h6:
+      label: h6
+      configuration:
+        size: text-l
+        spacing_bottom:
+          small: mb-8
+          default: mb-8
+  settings:
+    tag_name:
+      type: select
+      label: Tag name
+      default_value: div
+      options:
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+        h5: H5
+        h6: H6
+        div: DIV
+    spacing_bottom:
+      type: select
+      label: Spacing bottom
+      required: true
+      default_value: default
+      options:
+        none: None
+        small: Small
+        default: Default

@@ -58,6 +58,7 @@
     "drupal-demo:update-theme": "./scripts/rsync_theme.sh;"
   },
   "workspaces": [
+    "docs",
     "packages/*",
     "starter-kits/*",
     "presets/*",

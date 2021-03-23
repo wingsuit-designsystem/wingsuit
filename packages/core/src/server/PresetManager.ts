@@ -44,16 +44,20 @@ export default class PresetManager {
 
   private getPresetParameter(preset: Preset, appConfig: AppConfig, providedConfig: any): any {
     const defaultConfig = preset.defaultConfig != null ? preset.defaultConfig(appConfig) : {};
-    const appParameter = appConfig.getParameters(this.getPresetName(preset, appConfig));
+    const appParameter =
+      appConfig.getParameters != null
+        ? appConfig.getParameters(this.getPresetName(preset, appConfig))
+        : {};
     return Object.assign(defaultConfig, appParameter, providedConfig);
   }
 
-  private getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+  public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
     appConfig.presets.forEach((item) => {
       if (typeof item === 'string') {
-        // eslint-disable-next-line global-require,import/no-dynamic-require
-        const lpreset = require(item);
+        const lpreset =
+          // eslint-disable-next-line global-require,import/no-dynamic-require
+          this.getDefaultPreset(item) != null ? this.getDefaultPreset(item) : require(item);
         presets.push({
           preset: lpreset,
           name: this.getPresetName(lpreset, appConfig),

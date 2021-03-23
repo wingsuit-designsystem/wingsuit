@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>{{ meta_title }}</title>
+    {% for file in css %}
+    <link rel="stylesheet" href="/{{ file }}">
+    {% endfor %}
+  </head>
+  <body>
+    {{ content }}
+    {% for file in js %}
+
+    {% endfor %}
+  </body>
+</html>

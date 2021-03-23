@@ -1,0 +1,44 @@
+{
+  "name": "@wingsuit-designsystem/pattern-react",
+  "version": "1.0.0-rc.3",
+  "description": "Wingsuit Pattern for React.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./client.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@wingsuit-designsystem/pattern": "1.0.0-rc.3",
+    "polished": "^4.0.5",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+}

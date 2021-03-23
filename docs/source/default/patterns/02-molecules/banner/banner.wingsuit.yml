@@ -1,0 +1,41 @@
+banner:
+  use: "@molecules/banner/banner.twig"
+  label: Banner
+  description: Big image banner with text overlay.
+  fields:
+    image:
+      type: pattern
+      label: Image
+      description: The background image.
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: banner
+    headline:
+      type: text
+      label: Headline
+      description: The large headline.
+      preview:
+        faker: lorem.word
+    teaser:
+      type: text
+      label: Teaser
+      description: Short optional teaser.
+      preview: "<p>Nice and beautiful banner text.</p>"
+  settings:
+    position:
+      type: select
+      allow_token: true
+      label: Position
+      default_value: center_center
+      options:
+        top_left: Top left
+        top_center: Top center
+        top_right: Top right
+        center_left: Center left
+        center_center: Center
+        center_right: Center right
+        bottom_left: Bottom left
+        bottom_center: Bottom center
+        bottom_right: Bottom right

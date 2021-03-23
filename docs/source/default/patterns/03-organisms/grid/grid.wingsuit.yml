@@ -1,0 +1,62 @@
+grid:
+  use: "@organisms/grid/grid.twig"
+  label: Grid
+  description:
+    "A flexible mobile-first flexbox grid pattern, ensuring consistency across layouts."
+  fields:
+    cells:
+      type: object
+      label: Cells
+      description: The cells of the grid.
+      preview:
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+        - "<div class='w-full h-40 bg-gray-500'></div>"
+  settings:
+    gutter:
+      type: select
+      label: Gutter
+      required: true
+      default_value: default
+      description: The gutter between the cells.
+      options:
+        none: None
+        default: Default
+        large: Large
+    columns:
+      type: select
+      label: Columns
+      description: The number of grid columns
+      required: true
+      preview: 4
+      options:
+        1: One column
+        2: Two columns
+        3: Three columns
+        4: Four columns
+        5: Five columns
+  configuration:
+    columns:
+      1:
+        equal: 'grid-cols-1'
+      2:
+        equal: 'grid-cols-1 md:grid-cols-2'
+        '66x33': 'grid-cols-1 md:grid-cols-66/33'
+        '33x66': 'grid-cols-1 md:grid-cols-33/66'
+      3:
+        equal: 'grid-cols-1 md:grid-cols-3'
+        '25x50x25': 'grid-cols-1 md:grid-cols-25/50/25'
+      4:
+        equal: 'grid-cols-1 md-grid-cols-2 lg:grid-cols-4'
+      5:
+        equal: 'grid-cols-1 md:grid-cols-5'
+    gutter:
+      none: ''
+      default: 'gap-4 md:gap-5 lg:gap-7'
+      large: 'gap-10 md:gap-20'
+

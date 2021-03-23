@@ -9,7 +9,7 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          test: /\.(js)$/,
+          test: /\.(js|jsx)$/,
           enforce: 'pre',
           exclude: /node_modules/,
           loader: 'eslint-loader',
@@ -18,7 +18,7 @@ export function webpack(appConfig: AppConfig) {
           },
         },
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           // @babel runtime and core must NOT be transformed by babel
           exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
           use: {

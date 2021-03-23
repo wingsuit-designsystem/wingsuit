@@ -1,0 +1,15 @@
+basic:
+  use: "@templates/basic/basic.twig"
+  label: Basic
+  description: Basic page template
+  fields:
+    headline:
+      type: text
+      label: Headline
+      preview:
+        faker: lorem.sentence
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.text

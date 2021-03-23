@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * slider
+ *
+ * See slider.wingsuit.yaml for documentation.
+ */
+#}
+{% embed "@organisms/section/section.twig" with {
+  auto_classes: auto_classes,
+  header: header,
+  show_header: show_header,
+  padding_x: padding_x,
+  padding_top: padding_top,
+  padding_bottom: padding_bottom,
+  bg: bg,
+  variant: variant,
+  pagination_spacing: pagination_spacing,
+  autoplay: autoplay,
+  columns: '1',
+  column_1: column_1,
+  items: items,
+  width: 'default',
+  columns_width_1: 'equal',
+} only %}
+  {% block column_1 %}
+
+    {% set pagination_classes = ([
+      pattern_configuration('slider', '', 'pagination_spacing')[pagination_spacing],
+    ] | sort | join(' ') | trim ) %}
+
+    <div id="splide" class="splide overflow-hidden {{ pagination_classes }}" data-slides-per-view="{{ variant }}" data-autoplay="{{ autoplay }}">
+      <div class="splide__track">
+        <ul class="splide__list flex">
+          {% for key, item in items %}
+            {%- set iterator -%}
+              {{- key -}}
+            {% endset %}
+            {% if iterator != "region_label" %}
+              <li class="splide__slide flex-shrink-0">{{ item }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

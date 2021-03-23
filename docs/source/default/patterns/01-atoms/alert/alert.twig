@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * alert
+ *here we have different types of alert with different colors for every situation.
+ * See _alert.wingsuit.yaml for documentation.
+ */
+#}
+
+{# VARIANTS #}
+{% set classes = ([
+  "p-5 w-full border-l-4",
+  variant == 'status' ? "bg-green-100 border-green-500 text-green-700",
+  variant == 'error' ? "bg-red-100 border-red-500 text-red-700",
+  variant == 'warning' ? "bg-yellow-100 border-yellow-500 text-yellow-700"
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<div {{ attributes }}>
+  <div class="flex space-x-3">
+    <div class="flex-none">
+    {% include "@atoms/svg/svg.twig" with {
+      "icon": "alert--" ~ variant,
+      "size": "w-6 h-6"
+    } only %}
+    </div>
+    <div class="leading-tight flex flex-col space-y-2">
+      <div class="font-bold">
+        {% block header %}{{ header }}{% endblock %}
+      </div>
+      <div class="flex-1 leading-snug text-sm">
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -44,6 +44,7 @@ export interface Preset {
   defaultConfig(appConfig: AppConfig): any;
   name(appConfig: AppConfig): string;
   webpack(appConfig: AppConfig);
+  defaultAppConfig(): AppConfig;
   webpackFinal(appConfig: AppConfig, config: any);
 }
 export interface PresetItem {

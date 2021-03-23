@@ -1,0 +1,30 @@
+image:
+  use: "@atoms/image/image.twig"
+  label: Image
+  description: "Image with caption component."
+  fields:
+    image:
+      type: text
+      label: The image.
+      description: The image provided by Drupal.
+    caption:
+      type: text
+      label: The caption text.
+  variants:
+    image:
+      label: Image
+      description: Use variant "image" for drupal images or theme images. Use ws-assets:// for theme images. E.g. "ws-assets://images/logo.svg"
+    background:
+      label: Background image
+      description: Set the image url with setting "url" and control the display with setting "background_style"
+  settings:
+    url:
+      label: Url
+      type: textfield
+      description: Use "Url" if you don't have the rendered image tag. The component will generate an image tag.
+      preview: 'ws-assets://images/logo.svg'
+    background_style:
+      label: Background style
+      description: Classes applied to background image container.
+      type: textfield
+      preview: w-full h-20 bg-cover
