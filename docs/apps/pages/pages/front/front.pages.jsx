@@ -5,7 +5,6 @@ import 'protons';
 import MDX from './front.mdx';
 
 export default {
-  title: 'Pages/Article',
   path: '/',
 };
 

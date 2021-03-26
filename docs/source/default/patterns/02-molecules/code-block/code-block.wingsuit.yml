@@ -1,0 +1,11 @@
+Code-block:
+  use: "@molecules/code-block/code-block.twig"
+  label: Code-block
+  description: Amazing code-block component.
+  fields:
+    content:
+      type: text
+      label: Content
+      description: A code example e.g. in html.
+      preview:
+        faker: lorem.paragraph
