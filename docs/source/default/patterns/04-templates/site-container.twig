@@ -1,14 +1,31 @@
 {# Include this template inside the page.html.twig in drupal. #}
 
 {% block header %}
-  {% include '@organisms/header/header.twig' with {menu: primary_menu, has_spacer: header_has_spacer, variant: "sticky", language_select: language_select,} only%}
+  {% include '@organisms/header/header.twig' with {menu: primary_menu, has_spacer: header_has_spacer, variant: "sticky", language_select: language_select,} only %}
 {% endblock header %}
 
 {{ highlighted }}
+{% set content %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+{% endset %}
 
 <main class="main-content">
   {% block main %}
-    <p>Main content</p>
+    {% if menu is not empty %}
+      {% embed "@organisms/section/section.twig" with { columns_width_2: '25x75', columns: 2, width: 'default', padding_top: 'default'} %}
+        {% block column_1 %}
+          {{ menu }}
+        {% endblock %}
+        {% block column_2 %}
+          {{ content }}
+        {% endblock %}
+      {% endembed %}
+
+    {% else %}
+      {{ content }}
+    {% endif %}
   {% endblock %}
 </main>
 

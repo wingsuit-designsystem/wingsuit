@@ -34,6 +34,9 @@ container:
         "": Transparent
         gray-medium: Medium gray/#6b7280
         gray-light: Light gray/#d1d5db
+        purple-light: Light purple
+        green-light: Light green
+        blue-light: Light blue
     tab_spacing:
       label: Spacing
       type: group
@@ -78,7 +81,7 @@ container:
       large: 'px-10'
     padding_top:
       small: 'pt-4'
-      default: 'pt-10 md:pt-20'
+      default: 'mt-10 md:mt-20'
       large: 'pt-20 md:pt-24'
     padding_bottom:
       small: 'pb-4'
@@ -92,3 +95,6 @@ container:
     bg:
       gray-medium: 'dark bg-gray-500'
       gray-light: 'bg-gray-300'
+      purple-light: 'bg-purple-200'
+      green-light: 'bg-green-200'
+      blue-light: 'bg-blue-200'

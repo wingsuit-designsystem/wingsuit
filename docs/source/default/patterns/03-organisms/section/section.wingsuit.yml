@@ -61,6 +61,7 @@ section:
         equal: 50%/50%
         66x33: 66%/33%
         33x66: 33%/66%
+        25x75: 25%/75%
     columns_width_3:
       type: radios
       label: Column widths

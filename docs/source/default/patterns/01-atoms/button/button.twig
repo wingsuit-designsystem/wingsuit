@@ -12,14 +12,13 @@
   Classes
 #}
 {% set classes = [
-  'flex items-center justify-center inline-flex border-2 py-1.5 px-3 focus:outline-none rounded transition-colors duration-500',
+  'flex items-center justify-center inline-flex border-2 py-1 focus:outline-none transition-colors duration-500',
   expanded ? 'w-full',
   variant == 'outline' ? 'border-2',
+  variant == 'rounded' ? 'border-2',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
   pattern_configuration('button', variant, 'colors')[color],
   pattern_configuration('button', variant, 'size')['text'][size],
-  round ? 'rounded-2xl'
-
 ] %}
 
 {% set icon_size = ([

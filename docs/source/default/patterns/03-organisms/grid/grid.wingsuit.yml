@@ -48,6 +48,7 @@ grid:
         equal: 'grid-cols-1 md:grid-cols-2'
         '66x33': 'grid-cols-1 md:grid-cols-66/33'
         '33x66': 'grid-cols-1 md:grid-cols-33/66'
+        '25x75': 'grid-cols-1 md:grid-cols-25/75'
       3:
         equal: 'grid-cols-1 md:grid-cols-3'
         '25x50x25': 'grid-cols-1 md:grid-cols-25/50/25'

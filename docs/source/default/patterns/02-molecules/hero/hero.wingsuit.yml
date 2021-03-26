@@ -20,19 +20,31 @@ hero:
       label: Button
       preview:
         id: button
-        variant: default
+        variant: rounded
         settings:
-          icon: plus
+          size: text-xs
     button_second:
       type: pattern
-      label: Button
+      label: Button seco
       preview:
         id: button
-        variant: outline
+        variant: rounded
         fields:
           text: Show Video
         settings:
-          color: secondary
+          color: primary
+          size: text-xs
+    button_third:
+      type: pattern
+      label: Button third
+      preview:
+        id: button
+        variant: rounded
+        fields:
+          text: Show Video
+        settings:
+          color: primary
+          size: text-xs
     image:
       type: pattern
       label: Image

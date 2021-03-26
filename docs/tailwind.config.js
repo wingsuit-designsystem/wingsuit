@@ -19,10 +19,27 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.trueGray,
-      teal: colors.teal,
+      blue: {
+        200: '#ebf4ff',
+      },
+      green: {
+        200: '#f0fff4',
+        500: '#319795',
+      },
       red: colors.rose,
-      green: colors.green,
-      yellow: colors.amber,
+      teal: {
+        200: '#e6fffa',
+        300: '#b2f5ea',
+        500: '#00ffd1',
+      },
+      purple: {
+        200: '#faf5ff',
+        500: '#8000ff',
+      },
+      yellow: '#fffff0',
+    },
+    boxShadow: {
+      md: '4px 4px 0 0 rgba(0, 0, 0)',
     },
     extend: {
       typography: (theme) => ({
@@ -68,11 +85,12 @@ module.exports = {
         '33/66': '33% 66%',
         '66/33': '66% 33%',
         '25/50/25': '25% 50% 25%',
+        '25/75': '25% 75%',
       },
     },
     fontFamily: {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
-      sans: ['Poppins', 'Roboto', 'sans-serif'],
+      sans: ['Inter', 'Roboto', 'sans-serif'],
     },
   },
   variants: {
@@ -85,6 +103,7 @@ module.exports = {
     fill: ['responsive', 'hover', 'focus'],
     spacing: ['responsive', 'last'],
     typography: ['responsive', 'dark'],
+    boxShadow: ['active', 'hover'],
   },
   plugins: [forms, typography],
 };

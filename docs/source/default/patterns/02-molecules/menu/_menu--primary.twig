@@ -1,7 +1,7 @@
-<ul class="list-reset lg:flex justify-end flex-1 items-center">
+<ul class="list-reset lg:flex flex-col flex-1">
   {% for item in items %}
-    <li class="py-2 lg:py-0 border-b lg:border-b-0 border-black lg:mr-3">
-      <a class="mr-5 text-gray-600 hover:text-gray-900 {% if (item.in_active_trail) %}border-b-4 border-teal-600 {% endif %}" href="{{ item.url }}">
+    <li class="mb-4 lg:py-0">
+      <a class="p-2 text-gray-600 hover:text-gray-900 hover:underline {% if (item.in_active_trail) %} bg-teal-300 {% endif %}" href="{{ item.url }}">
         {{ item.title }}
       </a>
     </li>
