@@ -1,0 +1,52 @@
+---
+id: 'svg'
+title: 'SVGs'
+---
+### SVG images
+If you need SVG files as images instead of icons, put your images in an `images` folder.
+To render the SVG icon, use the ws-assets stream wrapper:
+
+```twig
+<img src="{{ file_create_url('ws-assets://images/icon.svg')">
+```
+
+## SVG Icons
+Wingsuit generates an SVG sprite map for every SVG located in an `icons` folder. 
+
+To render the icons include the `svg atom` in your Twig template: 
+
+```twig
+{% include "@atoms/svg/svg.wig" with {"variant": 'icon', icon: "icon" }
+```
+
+## Multiple SVG spritemaps.
+If you need more than one spritemap you can put your icons in a separate folder and extend the preset configuration in `wingsuit.yml`.
+For example, you need a spritemap for your language icons. Put all the icons in a folder called `icons-languages`.
+Now you need to configure the [svg preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/server/presets/svg.ts) with multiple svg folders.
+
+Here the configuration for our `icons-languages` example:
+
+ ```js
+   module.exports = {
+     parameters: {
+       'svg': {
+         sources: [
+               {
+                 sourceFolder: 'icons',
+                 jsonFile: path.join(appConfig.absAppPath, '/config/silo/svgs.json'),
+                 spriteFilename: 'images/spritemap.svg',
+               },
+               {
+                 sourceFolder: 'icons-languages',
+                 jsonFile: path.join(appConfig.absAppPath, '/config/silo/svgs-languages.json'),
+                 spriteFilename: 'images/spritemap-languages.svg',
+               },
+             ],
+       }
+     }, 
+     ...
+   };
+ 
+ ```
+ 
+After that you need to adjust `icons.mdx` file to read the new svg-languages.json.

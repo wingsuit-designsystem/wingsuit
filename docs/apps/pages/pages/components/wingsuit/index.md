@@ -1,0 +1,162 @@
+---
+id: 'wingsuit'
+title: 'Wingsuit (UI Patterns)'
+---
+The wingsuit pattern is defined inside a `pattern.wingsuit.yml`. 
+
+<b>A Wingsuit component contains:</b>
+* index.js
+* pattern.stories.jsx
+* pattern.wingsuit.yml
+* css file (optional)
+* javascript file. (optional)
+
+Expose the reference to the `wingsuit.yml` file inside the `pattern.stories.jsx` file.
+
+```js
+const patternDefinition = require('./pattern.wingsuit.yml');
+
+export const wingsuit = {
+  patternDefinition,
+};
+
+```
+### The pattern.wingsuit.yml
+The `pattern.wingsuit.yml` is a extended version of the UI Patterns yaml. Check out the [UI Patterns documentation](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html) with additions of [UI Patterns Settings](https://www.drupal.org/project/ui_patterns_settings)
+
+A typical pattern definition file looks like this:
+ 
+```yaml
+card:
+  use: "@molecules/card/card.twig"
+  label: Card
+  description: Amazing Cards
+  fields:
+    headline:
+      type: text
+      label: Headline
+      preview:
+        faker: lorem.word
+    image:
+      type: pattern
+      preview:
+        id: image
+        variant: primary
+  variants:
+    default:
+      label: Default
+    horizontal:
+      label: Horizontal
+  settings:
+    headline_color:
+      type: select
+      label: Headline color
+      required: false
+      options:
+        blue: Blue
+        black: Black
+```
+
+* Each `variant` is a storybook story. 
+* Each `field` is editable with knobs and passed to the Twig template.
+* Each `setting` is editable with knobs and passed to the Twig template.
+
+
+## The extensions</b>
+To build better preview functionality Wingsuit adds additional YAML configuration. This extensions are _not_ compatible with UI Patterns Library.   
+
+### Faker
+The `faker` key generates automatic preview data with [faker.js](https://github.com/marak/Faker.js/).
+The value can be a string or a subobject. 
+* The string is passed to Faker.fake in '{{ }}' brackets.
+* To pass a complete Faker sentences use:
+```yaml
+    preview:
+      faker:
+        token: "{{ name.lastName }} {{ name.firstName }}
+```
+
+### Type: pattern
+With field type `pattern` you can render patterns inside the pattern:
+```yaml
+fields:  
+  image:
+    type: pattern
+    preview:
+      id: image
+      variant: primary
+      settings:
+        style: medium
+      fields:
+        field: value
+```  
+* `id` The id of the pattern.
+* `variant` The variant of the pattern.
+* `fields` Overwrites fields preview values of the pattern.
+* `settings` Overwrites setting preview values of the pattern.
+
+### Pattern list
+This works also with a list of patterns. 
+```yaml
+fields:  
+  images:
+    type: pattern
+    multi_value_type: single_value
+    preview:
+      -
+        id: image
+        variant: primary
+        settings:
+          style: medium
+        fields:
+          field: value
+      -
+        id: image
+        variant: primary
+        settings:
+          style: medium
+        fields:
+          field: value
+```  
+You can control how Wingsuit will handle the resulting array of objects.
+
+#### Following options are available:
+* `single_value`: All patterns will rendered into a single value. The resulting variable is a string not a array. This useful if you to add multiple objects into one area.
+<br>Your pattern.twig looks like:
+```twig
+{{ images }}
+```
+* `items` provides a list of patterns. The resulting variable is an array you can loop through.
+   #### Your pattern.twig looks like:
+```twig
+{% for item in images %}
+{{ item }}
+{% endfor %}
+```
+
+* `field_items` provides a list of objects. The rendered pattern is inside the content key. This is useful to emulate multi value field templates in drupal.
+```twig
+{% for item in images %}
+{{ item.content }}
+{% endfor %}
+```
+
+### Type object
+```yaml
+fields:  
+  items:
+    type: object
+    preview:
+      - title: Datenschutz
+        link: "#"
+        in_active_trail: true
+      - title: Impressum
+        link: "#"
+```  
+With field type `object` you can pass any objects to the Twig template. This is useful for the menu, for example. You can edit the JSON string with knobs.
+
+### Visibility
+With the visibility property you can control in which app a pattern should be visible. If the property is not set, the pattern is visible in every app. 
+```yaml
+visibility: storybook | drupal | none
+```
