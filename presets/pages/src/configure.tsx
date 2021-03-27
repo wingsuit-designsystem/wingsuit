@@ -18,17 +18,16 @@ export function configure(
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
   const twigRenderer = new TwingRenderer();
-  twigRenderer.addFunction('file_url', (url)=>{
+  twigRenderer.addFunction('file_url', url => {
     return Promise.resolve(url.replace('ws-assets://', '/'));
   });
   renderer.setRenderer(twigRenderer);
 
-
   const assets = Object.keys(locals.webpackStats.compilation.assets);
-  const css = assets != null ? assets.filter((value) => value.match(/\.css$/)) : {};
-  const js = assets != null ? assets.filter((value) => value.match(/\.js$/)) : {};
+  const css = assets != null ? assets.filter(value => value.match(/\.css$/)) : {};
+  const js = assets != null ? assets.filter(value => value.match(/\.js$/)) : {};
 
-  const renderHtmlTwig = async (variables) => {
+  const renderHtmlTwig = async variables => {
     const template = htmlTemplate.default;
     return renderer.renderData('html.twig', template, variables);
   };

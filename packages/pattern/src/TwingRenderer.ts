@@ -15,29 +15,29 @@ export class TwingRenderer implements IRenderer {
   private initializeEnvironment = false;
 
   private filters: {} = {
-    'without':  (arg1, ...args) => {
+    without: (arg1, ...args) => {
       return Promise.resolve(without(arg1, ...args));
-    }
-  }
+    },
+  };
 
-  private functions:{} = {
-    'ws_itok': twigItok,
-    'uuid': twigUuid,
-    'file_url': twigFileUrl,
-    'pattern': renderPattern,
-    'create_attribute': twigAttributeFunction,
-    'pattern_configuration': getPatternConfiguration,
-    'pattern_preview':  (
+  private functions: {} = {
+    ws_itok: twigItok,
+    uuid: twigUuid,
+    file_url: twigFileUrl,
+    pattern: renderPattern,
+    create_attribute: twigAttributeFunction,
+    pattern_configuration: getPatternConfiguration,
+    pattern_preview: (
       patternId: string,
       variables: {} = {},
       variantId: string = Pattern.DEFAULT_VARIANT_NAME
     ) => {
-      return new Promise((resolve) => {
-        renderPatternPreview(patternId, variables, variantId).then((output) => {
+      return new Promise(resolve => {
+        renderPatternPreview(patternId, variables, variantId).then(output => {
           resolve(output);
         });
       });
-    }
+    },
   };
 
   addFilter(name, func) {
@@ -56,25 +56,23 @@ export class TwingRenderer implements IRenderer {
     this.environment.getLoader().setTemplate(path, template);
   }
 
-
   setLoader(loader: TwingLoaderInterface) {
     this.environment.setLoader(loader);
   }
 
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
-    this.environment = new TwingEnvironment(loader, {autoescape: false, debug: false});
+    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
   }
 
   private initialize() {
     twingFilters(this.environment);
-    Object.keys(this.functions).forEach((key)=>{
+    Object.keys(this.functions).forEach(key => {
       this.environment.addFunction(new TwingFunction(key, this.functions[key]));
-    })
-    Object.keys(this.filters).forEach((key)=>{
+    });
+    Object.keys(this.filters).forEach(key => {
       this.environment.addFilter(new TwingFilter(key, this.filters[key]));
-    })
-
+    });
   }
 
   async render(id: string, include: string, variables: {}): Promise<string> {
