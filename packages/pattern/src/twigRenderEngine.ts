@@ -16,8 +16,10 @@ export async function getPatternConfiguration(
   configuration: string
 ) {
   try {
+
     const variant: PatternVariant = storage.loadVariant(patternId, variantId);
     return new Promise<string>((resolve, refuse) => {
+
       const config = variant.getConfiguration();
       resolve(config[configuration]);
     });
@@ -154,6 +156,7 @@ export async function renderPattern(
 ): Promise<string> {
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   const finalVariables = buildBaseVariables(variables);
+  finalVariables.variant = variantId;
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),

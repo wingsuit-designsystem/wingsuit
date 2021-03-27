@@ -7,5 +7,6 @@
  */
 #}
 {% include "@templates/site-container.twig" with {
-  content: content
+  menu: pattern('menu', {items: primary_menu.items}, 'primary'),
+  content: pattern('rich_text', {text: content})
 } %}

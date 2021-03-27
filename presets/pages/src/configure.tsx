@@ -17,7 +17,12 @@ export function configure(
   storage.createDefinitionsFromMultiContext(patternContext);
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
-  renderer.setRenderer(new TwingRenderer());
+  const twigRenderer = new TwingRenderer();
+  twigRenderer.addFunction('file_url', (url)=>{
+    return Promise.resolve(url.replace('ws-assets://', '/'));
+  });
+  renderer.setRenderer(twigRenderer);
+
 
   const assets = Object.keys(locals.webpackStats.compilation.assets);
   const css = assets != null ? assets.filter((value) => value.match(/\.css$/)) : {};
@@ -27,9 +32,10 @@ export function configure(
     const template = htmlTemplate.default;
     return renderer.renderData('html.twig', template, variables);
   };
-  const renderTwig = (element) => {
+  const renderTwig = (element, path) => {
     const template = element.props.data.default;
     const variables = element.props;
+    storage.addGlobal('current_path', path);
     return renderer.renderData('main.twig', template, variables);
   };
   const resultPages = {};
@@ -41,7 +47,7 @@ export function configure(
         try {
           const component: RenderTwig = data.render();
           // eslint-disable-next-line no-await-in-loop
-          const rendered = await renderTwig(component);
+          const rendered = await renderTwig(component, data.default.path);
 
           if (rendered != null) {
             // eslint-disable-next-line no-await-in-loop

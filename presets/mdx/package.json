@@ -27,8 +27,10 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
+    "@mdx-js/loader": "^1.6.22",
     "@wingsuit-designsystem/core": "1.0.0-rc.3",
-    "@mdx-js/loader": "^1.6.22"
+    "highlight.js": "^10.7.1",
+    "remark-highlight.js": "^6.0.0"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
@@ -37,5 +39,4 @@
     "access": "public"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
-
 }

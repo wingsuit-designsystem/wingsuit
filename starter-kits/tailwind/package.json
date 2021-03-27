@@ -9,6 +9,10 @@
     "name": "KEY-TEC",
     "url": "https://github.com/wingsuit-designsystem/"
   },
+  "engines": {
+    "node": ">=12.13.0",
+    "yarn": ">=1.3.2"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:wingsuit-designsystem/wingsuit.git"

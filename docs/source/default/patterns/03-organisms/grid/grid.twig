@@ -15,7 +15,6 @@
 {% set gutter_classes = pattern_configuration('grid', '', 'gutter')[gutter] %}
 {# Container #}
 {% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
-
 {% set classes = ([
   'grid',
   configuration,
@@ -40,5 +39,5 @@
     {% endblock %}
   </div>
 {% else %}
-  No configuration found for "{{ columns }}/{{ config }}".
+  No configuration found for "{{ columns }}/{{ configuration }}".
 {% endif %}

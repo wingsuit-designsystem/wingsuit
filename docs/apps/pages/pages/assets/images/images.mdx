@@ -6,6 +6,7 @@ The `apps/[app]/assets.js` includes all images. Wingsuit will compile these file
 You can use the `ws-assets` stream wrapper to get a path to the asset folder. Ensure you have the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module enabled.
 
 <b>Sample Twig file with an image:</b>
+
 ```twig
 <img src="{{ file_create_url('ws-assets://images/dummy.png') }}"/>
 ```

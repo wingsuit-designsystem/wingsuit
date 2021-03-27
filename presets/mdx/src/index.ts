@@ -1,5 +1,7 @@
 import { AppConfig } from '@wingsuit-designsystem/core';
 
+const remarkHighlight = require('remark-highlight.js')
+
 interface MdxConfig {
   remarkOptions: {
     plugins: any[];
@@ -30,7 +32,17 @@ export function webpack(appConfig: AppConfig, mdxConfig: MdxConfig) {
       rules: [
         {
           test: /\.mdx?$/,
-          use: ['babel-loader', '@mdx-js/loader'],
+          use: [
+            'babel-loader',
+            {
+              loader: '@mdx-js/loader',
+              options: {
+                remarkPlugins: [
+                  [remarkHighlight]
+                ],
+              },
+            },
+          ],
         },
       ],
     },

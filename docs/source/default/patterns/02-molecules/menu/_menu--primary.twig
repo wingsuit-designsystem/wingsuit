@@ -1,7 +1,7 @@
 <ul class="list-reset lg:flex flex-col flex-1">
   {% for item in items %}
     <li class="mb-4 lg:py-0">
-      <a class="p-2 text-gray-600 hover:text-gray-900 hover:underline {% if (item.in_active_trail) %} bg-teal-300 {% endif %}" href="{{ item.url }}">
+      <a class="p-2 text-gray-600 hover:text-gray-900 hover:underline {% if (current_path == item.url) %} bg-teal-300 {% endif %}" href="{{ item.url }}">
         {{ item.title }}
       </a>
     </li>
