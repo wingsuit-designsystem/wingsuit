@@ -11,23 +11,102 @@ menu:
       label: Primary
       fields:
         items:
-          - title: galerie
+          - title: BASICS
+            url: "#"
+            below:
+              - title: Introduction
+                url: "#"
+                in_active_trail: true
+          - title: GUIDES
+            url: "#"
+            below:
+              - title: Quickstart guide
+                url: "#"
+              - title: Create new component
+                url: "#"
+          - title: CONFIGURATIONS
+            url: "#"
+            below:
+              - title: Configuration
+                url: "#"
+              - title: Custom webpack configuration
+                url: "#"
+              - title: Presets
+                url: "#"
+          - title: COMPONENTS
+            url: "#"
+            below:
+              - title: Overview
+                url: "#"
+              - title: Global variables
+                url: "#"
+              - title: Wingsuit (UI Patterns)
+                url: "#"
+              - title: Presentation
+                url: "#"
+          - title: ASSETS
+            url: "#"
+            below:
+              - title: Overview
+                url: "#"
+              - title: Images & Icons
+                url: "#"
+              - title: SVGs
+                url: "#"
+              - title: Javascript
+                url: "#"
+          - title: DRUPAL
+            url: "#"
+            below:
+              - title: Wingsuit Kickstarter (with UI Patterns and Layout Builder)
+                url: "#"
+          - title: DOCUMENTATION
+            url: "#"
+            below:
+              - title: Get started
+                url: "#"
+              - title: MDX
+                url: "#"
+          - title: TESTING
+            url: "#"
+            below:
+              - title: Visual Testing
+                url: "#"
+    top:
+      label: Top
+      fields:
+        items:
+          - title: Documentaion
             url: "#"
             in_active_trail: true
-          - title: kollektionen
-            url: "#"
-          - title: shop
-            url: "#"
-            icon: arrow-up
-          - title: kontakt
+          - title: Search
             url: "#"
     footer:
       label: Footer
       description: The footer menu.
       fields:
         items:
-          - title: Datenschutz
+          - title: BASICS
             url: "#"
-          - title: Impressum
+            below:
+              - title: Introduction
+                url: "#"
+          - title: CONFIGURATIONS
             url: "#"
+            below:
+              - title: Configuration
+                url: "#"
+              - title: Custom webpack configuration
+                url: "#"
+              - title: Presets
+                url: "#"
+          - title: CONFIGURATIONS
+            url: "#"
+            below:
+              - title: Configuration
+                url: "#"
+              - title: Custom webpack configuration
+                url: "#"
+              - title: Presets
+                url: "#"
   visibility: storybook

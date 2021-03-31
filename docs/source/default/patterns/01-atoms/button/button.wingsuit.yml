@@ -25,7 +25,7 @@ button:
       label: Rounded
       configuration:
         colors:
-          primary: 'border-teal-500 bg-teal-500 px-12 rounded-3xl text-black'
+          primary: 'border-teal-500 bg-teal-500 px-12 w-full lg:w-auto rounded-3xl text-black'
           secondary: 'border-yellow-300 bg-yellow-300 px-12 rounded-3xl text-black hover:bg-yellow-600 hover:border-yellow-600'
   configuration:
     size:

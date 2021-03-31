@@ -81,7 +81,7 @@ container:
       large: 'px-10'
     padding_top:
       small: 'pt-4'
-      default: 'mt-10 md:mt-20'
+      default: 'pt-10 md:pt-20'
       large: 'pt-20 md:pt-24'
     padding_bottom:
       small: 'pb-4'

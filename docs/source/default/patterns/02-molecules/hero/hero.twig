@@ -29,9 +29,9 @@
       </div>
     {% endif %}
     {% if button is not empty %}
-      <div class="flex justify-center pt-6">
-        <div{{ region_attributes.button|default(create_attribute()).addClass('mr-5') }}>{{ button }}</div>
-        <div{{ region_attributes.button_second|default(create_attribute()).addClass('mr-5') }}>{{ button_second }}</div>
+      <div class="flex justify-center  flex-col lg:flex-row pt-6">
+        <div{{ region_attributes.button|default(create_attribute()).addClass('mr-0 lg:mr-5 mb-6') }}>{{ button }}</div>
+        <div{{ region_attributes.button_second|default(create_attribute()).addClass('mr-0 lg:mr-5 mb-6') }}>{{ button_second }}</div>
         <div{{ region_attributes.button_third }}>{{ button_third }}</div>
       </div>
     {% endif %}

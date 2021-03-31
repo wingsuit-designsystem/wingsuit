@@ -1,61 +1,48 @@
 {% embed "@templates/site-container.twig"
   with {
-  primary_menu: pattern_preview('menu', {}, 'primary'),
   language_select: pattern_preview('language_select'),
-  footer_menu_1: pattern_preview('menu', {}, 'footer'),
-  footer_menu_2: pattern_preview('menu', {}, 'footer'),
-  footer_menu_3: pattern_preview('menu', {}, 'footer'),
-  footer_menu_4: pattern_preview('menu', {}, 'footer')
+  menu_top: pattern_preview('menu', {}, 'top'),
+  footer_menu: pattern_preview('menu', {}, 'footer'),
 } %}
-  {% block main %}
+  {% set image %}
+    <img src="./images/hero.png" alt="">
+  {% endset %}
+  {% set button %}
+    {% include '@atoms/button/button.twig' with {variant: 'rounded', text: 'Online Demo' } %}
+  {% endset %}
+  {% set button_second %}
+    {% include '@atoms/button/button.twig' with {variant: 'rounded', text: 'Instraction' } %}
+  {% endset %}
+  {% set button_third %}
+    {% include '@atoms/button/button.twig' with {variant: 'rounded', text: 'Quick Setup' } %}
+  {% endset %}
+  {% block content %}
     {% embed "@organisms/section/section.twig" with { columns: 1 } %}
       {% block column_1 %}
-    {{ pattern_preview('hero') }}
+        {% include '@molecules/hero/hero.twig' with {
+          headline: 'A design sytem for rapid pattern development. You will love to use.',
+          image: image,
+          sub_headline: 'Get started',
+          button: button,
+          button_second: button_second,
+          button_third: button_third
+        } %}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
-      {% block header%}
-        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Section title</h2>" }%}
-      {% endblock %}
+    {% set header %}
+      {% embed "@atoms/rich-text/rich-text.twig" %}
+        {% block text %}
+          <h2 class="h3">Define your components</h2>
+          <p>Fields and settings are editable with knobs <br>make it easy to see your components in every state.</p>
+        {% endblock %}
+      {% endembed %}
+    {% endset %}
+    {% embed "@organisms/section/section.twig" with { columns: 2, bg: 'purple-light', header: header, display_header_region: true, padding_top: 'default' } %}
       {% block column_1 %}
-        {{ pattern_preview('card', {}, 'default') }}
+        <img src="./images/hero.png" alt="">
       {% endblock %}
       {% block column_2 %}
-        {{ pattern_preview('card', {'headline': ' Second Card'}, 'default') }}
-      {% endblock %}
-      {% block column_3 %}
-        {{ pattern_preview('card', {'headline': 'Overwritten headline', 'image': null}, 'default') }}
-      {% endblock %}
-    {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
-      {% block header%}
-        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Accordion</h2>" }%}
-      {% endblock %}
-
-      {% block column_1 %}
-        {{ pattern_preview('accordion') }}
-      {% endblock %}
-    {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
-      {% block header%}
-        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Banner</h2>" }%}
-      {% endblock %}
-      {% block column_1 %}
-        {{ pattern_preview('banner') }}
-      {% endblock %}
-    {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
-      {% block header%}
-        {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Cards</h2>" }%}
-      {% endblock %}
-      {% block column_1 %}
-        {{ pattern_preview('card', {}, 'default') }}
-      {% endblock %}
-      {% block column_2 %}
-        {{ pattern_preview('card', {}, 'default') }}
-      {% endblock %}
-      {% block column_3 %}
-        {{ pattern_preview('card', {}, 'default') }}
+        {% include "@molecules/code-block/code-block.twig" %}
       {% endblock %}
     {% endembed %}
   {% endblock %}
