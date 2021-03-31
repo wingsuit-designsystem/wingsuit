@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "build-storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true build-storybook -c ./apps/storybook",
-    "packtracker": "yarn storybook -c ./apps/storybook --smoke-test --quiet && cross-env PT_PROJECT_TOKEN=945a7723-9fe2-4318-ae53-6ee806cd9e86 packtracker-upload --stats=./node_modules/.cache/storybook/public/preview-stats.json",
-    "storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true start-storybook -p 9011 -c ./apps/storybook --no-dll"
+    "packtracker": "yarn storybook -c ./apps/storybook  --webpack-stats-json /tmp --smoke-test --ci --no-manager-cache --quiet && cross-env PT_PROJECT_TOKEN=945a7723-9fe2-4318-ae53-6ee806cd9e86 packtracker-upload --stats=/tmp/manager-stats.json",
+    "storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true start-storybook  -p 9011 -c ./apps/storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
