@@ -1,8 +1,5 @@
----
-id: 'svg'
-title: 'SVGs'
----
-### SVG images
+# SVGs
+## SVG images
 If you need SVG files as images instead of icons, put your images in an `images` folder.
 To render the SVG icon, use the ws-assets stream wrapper:
 
@@ -11,9 +8,9 @@ To render the SVG icon, use the ws-assets stream wrapper:
 ```
 
 ## SVG Icons
-Wingsuit generates an SVG sprite map for every SVG located in an `icons` folder. 
+Wingsuit generates an SVG sprite map for every SVG located in an `icons` folder.
 
-To render the icons include the `svg atom` in your Twig template: 
+To render the icons include the `svg atom` in your Twig template:
 
 ```twig
 {% include "@atoms/svg/svg.wig" with {"variant": 'icon', icon: "icon" }
@@ -43,10 +40,10 @@ Here the configuration for our `icons-languages` example:
                },
              ],
        }
-     }, 
+     },
      ...
    };
- 
+
  ```
- 
+
 After that you need to adjust `icons.mdx` file to read the new svg-languages.json.

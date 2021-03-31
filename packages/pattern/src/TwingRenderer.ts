@@ -32,8 +32,8 @@ export class TwingRenderer implements IRenderer {
       variables: {} = {},
       variantId: string = Pattern.DEFAULT_VARIANT_NAME
     ) => {
-      return new Promise(resolve => {
-        renderPatternPreview(patternId, variables, variantId).then(output => {
+      return new Promise((resolve) => {
+        renderPatternPreview(patternId, variables, variantId).then((output) => {
           resolve(output);
         });
       });
@@ -67,10 +67,10 @@ export class TwingRenderer implements IRenderer {
 
   private initialize() {
     twingFilters(this.environment);
-    Object.keys(this.functions).forEach(key => {
+    Object.keys(this.functions).forEach((key) => {
       this.environment.addFunction(new TwingFunction(key, this.functions[key]));
     });
-    Object.keys(this.filters).forEach(key => {
+    Object.keys(this.filters).forEach((key) => {
       this.environment.addFilter(new TwingFilter(key, this.filters[key]));
     });
   }

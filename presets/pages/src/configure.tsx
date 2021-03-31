@@ -1,5 +1,7 @@
+import ReactDOMServer from 'react-dom/server';
+import React from 'react';
 import { renderer, storage, TwingRenderer } from '@wingsuit-designsystem/pattern';
-import { RenderTwig } from '@wingsuit-designsystem/pattern-react/server';
+import Page from './Page';
 
 export function configure(
   module: NodeModule,
@@ -31,27 +33,23 @@ export function configure(
     const template = htmlTemplate.default;
     return renderer.renderData('html.twig', template, variables);
   };
-  const renderTwig = (element, path) => {
-    const template = element.props.data.default;
-    const variables = element.props;
-    storage.addGlobal('current_path', path);
-    return renderer.renderData('main.twig', template, variables);
-  };
   const resultPages = {};
   const renderAll = async () => {
     for (let index = 0; index < pagesContext.keys().length; index += 1) {
-      let htmlRendered = '';
       try {
         const data = pagesContext(pagesContext.keys()[index]);
         try {
-          const component: RenderTwig = data.render();
+          storage.addGlobal('current_path', data.default.path);
+          const props =
+            data.getProps != null
+              // eslint-disable-next-line no-await-in-loop
+              ? await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
+              : {};
+          const RoutePage = data.Page !== undefined ? data.Page : Page;
+          const rendered = ReactDOMServer.renderToStaticMarkup(<RoutePage {...props} />);
+          // const rendered = ReactDOMServer.renderToStaticMarkup(component);
           // eslint-disable-next-line no-await-in-loop
-          const rendered = await renderTwig(component, data.default.path);
-
-          if (rendered != null) {
-            // eslint-disable-next-line no-await-in-loop
-            htmlRendered = await renderHtmlTwig({ content: rendered, css, js });
-          }
+          const htmlRendered = await renderHtmlTwig({ content: rendered, css, js });
           resultPages[data.default.path] = htmlRendered;
         } catch (e) {
           resultPages[data.default.path] = e.message;

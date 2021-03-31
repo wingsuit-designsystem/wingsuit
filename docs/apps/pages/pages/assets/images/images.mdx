@@ -1,3 +1,4 @@
+
 # Images & Icons
 
 The `apps/[app]/assets.js` includes all images. Wingsuit will compile these files to `[dist]/assets/images`.
@@ -10,7 +11,6 @@ You can use the `ws-assets` stream wrapper to get a path to the asset folder. En
 ```twig
 <img src="{{ file_create_url('ws-assets://images/dummy.png') }}"/>
 ```
-
 or use the image component:
 ```twig
 {% include "@atoms/image/image.wig" with {path: "images/dummy.png" }

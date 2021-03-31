@@ -1,12 +1,12 @@
 import React from 'react';
 import 'protons';
-import MDX from './images.mdx';
-
-const template = require('../../docs.twig');
+import MDX from './javascript.mdx';
 
 export default {
-  path: '/assets/images',
+  path: '/assets/javascript',
 };
+
+const template = require('../../docs.twig');
 
 export const getProps = async (ctx, renderer, renderToStaticMarkup) => {
   const props = {};

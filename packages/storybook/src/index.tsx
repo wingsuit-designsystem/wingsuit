@@ -29,7 +29,7 @@ function getStorybookControlsOptions(setting) {
       Empty: '',
     };
   }
-  Object.keys(options).forEach(key => {
+  Object.keys(options).forEach((key) => {
     const paramKey = options[key] != null ? options[key] : key;
     knobsOption[paramKey] = key;
   });
@@ -51,7 +51,7 @@ export function configure(
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
-    patternIds.forEach(patternId => {
+    patternIds.forEach((patternId) => {
       const pattern = storage.loadPattern(patternId);
       if (pattern.isVisible('storybook')) {
         getStories(pattern, module);
@@ -61,14 +61,14 @@ export function configure(
     // Load stories form storybook app.
     const allExports: any = [];
     if (Array.isArray(storybookContext) === false) {
-      storybookContext.keys().forEach(key => {
+      storybookContext.keys().forEach((key) => {
         if (storybookContext(key).default !== null) {
           allExports.push(storybookContext(key));
         }
       });
     } else {
-      storybookContext.forEach(innerContext => {
-        innerContext.keys().forEach(key => {
+      storybookContext.forEach((innerContext) => {
+        innerContext.keys().forEach((key) => {
           if (innerContext(key).default != null) {
             allExports.push(innerContext(key));
           }
@@ -82,12 +82,12 @@ function getArgs(defaultArgs, variant) {
   const previewPatterns = variant.getPreviewPatterns();
   const resultArgs = { ...defaultArgs };
   const settings = variant.getSettings();
-  Object.keys(settings).forEach(key => {
+  Object.keys(settings).forEach((key) => {
     if (settings[key].getType() === 'attributes') {
       resultArgs[key] = new TwigAttribute(resultArgs[key]);
     }
   });
-  Object.keys(previewPatterns).forEach(key => {
+  Object.keys(previewPatterns).forEach((key) => {
     const fieldName = key.split('--')[0];
     if (resultArgs[fieldName] === false) {
       resultArgs[fieldName] = null;
@@ -109,7 +109,7 @@ function getArgTypes(variant) {
     },
   };
   let hasSettings = false;
-  Object.keys(variant.getSettings()).forEach(key => {
+  Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
 
     if (setting.isEnable() && setting.getType() !== 'group') {
@@ -179,7 +179,7 @@ function getArgTypes(variant) {
     },
   };
   let hasFields = false;
-  Object.keys(variant.getFields()).forEach(key => {
+  Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
     if (field.isEnable()) {
       hasFields = true;
@@ -224,7 +224,7 @@ function getStories(pattern: Pattern, module) {
   const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
   const story = storiesOf(patternLabel, module);
 
-  Object.keys(pattern.getPatternVariants()).forEach(variantKey => {
+  Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const argTypes = getArgTypes(variant);
     let parameters = {
@@ -251,7 +251,7 @@ function getStories(pattern: Pattern, module) {
 
     story.add(
       variant.getLabel(),
-      args => {
+      (args) => {
         const vars = getArgs(args, variant);
         return <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...vars} />;
       },

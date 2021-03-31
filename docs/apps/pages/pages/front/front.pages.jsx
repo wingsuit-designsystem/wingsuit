@@ -1,5 +1,3 @@
-import { RenderTwig } from '@wingsuit-designsystem/pattern-react/server';
-import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import 'protons';
 import MDX from './front.mdx';
@@ -10,6 +8,10 @@ export default {
 
 const template = require('./front.twig');
 
-const mdxData = ReactDOMServer.renderToStaticMarkup(<MDX />);
-
-export const render = () => <RenderTwig data={template} content={mdxData}></RenderTwig>;
+export const getProps = async (ctx, renderer, renderToStaticMarkup) => {
+  const props = {};
+  props.page = await renderer.renderData(ctx.path, template.default, {
+    content: renderToStaticMarkup(<MDX />),
+  });
+  return props;
+};

@@ -91,6 +91,7 @@
     "alpinejs": "^2.7.0",
     "buffer": "^6.0.3",
     "highlight.js": "^10.7.1",
+    "react-ssr-prepass": "^1.4.0",
     "svg4everybody": "^2.1.9",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },

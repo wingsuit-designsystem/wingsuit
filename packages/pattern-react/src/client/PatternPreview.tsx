@@ -36,7 +36,6 @@ const PatternPreview: FunctionComponent<Props> = ({
     attachBehaviors(global.window.document, {});
   }, [rendered]);
 
-  // eslint-disable-next-line react/no-danger
   return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 
