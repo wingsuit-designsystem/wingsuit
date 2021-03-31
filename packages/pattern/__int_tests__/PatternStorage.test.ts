@@ -17,7 +17,12 @@ describe('PatternStorage', () => {
       expect(pattern).toBeInstanceOf(Pattern);
       expect(pattern.getDefaultVariant().getFields().length).toBe(0);
       expect(Object.keys(pattern.getDefaultVariant().getSettings()).length).toBe(1);
-      expect(pattern.getDefaultVariant().getSetting('setting').getPreview()).toBe('correct');
+      expect(
+        pattern
+          .getDefaultVariant()
+          .getSetting('setting')
+          .getPreview()
+      ).toBe('correct');
 
       const pattern2: Pattern = storage.loadPattern('simple_extend_setting_setting');
       expect(pattern2.getDefaultVariant().getFields().length).toBe(0);

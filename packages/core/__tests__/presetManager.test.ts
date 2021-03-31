@@ -2,7 +2,7 @@ import path from 'path';
 import { resolveConfig, PresetManager } from '../src/index';
 
 const config = {
-  webpack: (appConfig) => {
+  webpack: appConfig => {
     return { testWebpack: true };
   },
   webpackFinal: (appConfig, webpack) => {
@@ -33,7 +33,7 @@ test('Test parameters in wingsuit.config.', () => {
       },
       presets: [
         {
-          name: (appConfig) => {
+          name: appConfig => {
             return 'param';
           },
           webpack: (appConfig, pconfig) => {
@@ -69,12 +69,12 @@ test('Test defaultConfig.', () => {
     {
       presets: [
         {
-          defaultConfig: (appConfig) => {
+          defaultConfig: appConfig => {
             return {
               param1: true,
             };
           },
-          name: (appConfig) => {
+          name: appConfig => {
             return 'param';
           },
           webpack: (appConfig, pconfig) => {
@@ -105,12 +105,12 @@ test('Test initial parameters.', () => {
       presets: [
         [
           {
-            defaultConfig: (appConfig) => {
+            defaultConfig: appConfig => {
               return {
                 param1: false,
               };
             },
-            name: (appConfig) => {
+            name: appConfig => {
               return 'param';
             },
             webpack: (appConfig, pconfig) => {
@@ -149,12 +149,12 @@ test('Test parameter overwrite defaultConfig.', () => {
       },
       presets: [
         {
-          defaultConfig: (appConfig) => {
+          defaultConfig: appConfig => {
             return {
               param1: false,
             };
           },
-          name: (appConfig) => {
+          name: appConfig => {
             return 'param';
           },
           webpack: (appConfig, pconfig) => {
@@ -183,7 +183,7 @@ test('Test generateWebpack.', () => {
     'development',
     {},
     {
-      webpack: (appConfig) => {
+      webpack: appConfig => {
         return { testWebpack: true };
       },
       webpackFinal: (appConfig, webpack) => {
@@ -218,7 +218,7 @@ test('Test support feature.', () => {
     {
       presets: [
         {
-          supportFeature: (name) => {
+          supportFeature: name => {
             if (name === 'scss') {
               return true;
             }
