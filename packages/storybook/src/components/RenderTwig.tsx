@@ -15,7 +15,7 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
           setRendered(output);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         setRendered(error.message);
       });
   }, [data, JSON.stringify(variables)]);
@@ -23,7 +23,6 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
     if (!rendered) return;
     attachBehaviors(global.window.document, {});
   }, [rendered]);
-  // eslint-disable-next-line react/no-danger
   return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 

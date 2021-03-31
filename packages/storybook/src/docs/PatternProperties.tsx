@@ -18,7 +18,7 @@ export const PatternProperties: FC<Props> = (props: Props) => {
   const { variant } = props;
   const fields = variant.getFields();
   properties.Fields = { name: 'Fields', rows: {} };
-  Object.keys(fields).forEach(key => {
+  Object.keys(fields).forEach((key) => {
     const field = fields[key];
     if (field.isEnable()) {
       properties.Fields.rows[key] = {
@@ -32,7 +32,7 @@ export const PatternProperties: FC<Props> = (props: Props) => {
   });
   const settings = variant.getSettings();
   properties.Settings = { name: 'Settings', rows: {} };
-  Object.keys(settings).forEach(key => {
+  Object.keys(settings).forEach((key) => {
     const setting = settings[key];
     if (setting.isEnable()) {
       properties.Settings.rows[key] = {

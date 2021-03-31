@@ -38,7 +38,7 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
     },
   };
 
-  config.sources.forEach(svgConfig => {
+  config.sources.forEach((svgConfig) => {
     resultWebpack.plugins.push(
       new Svg2JsonPlugin(svgConfig.sourceFolder, svgConfig.jsonFile, appConfig)
     );
@@ -78,7 +78,7 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
 export function webpackFinal(appConfig: AppConfig, config: any): {} {
   if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map(data => {
+    config.module.rules = config.module.rules.map((data) => {
       if (/svg\|ico\|jpg\|/.test(String(data.test)))
         // eslint-disable-next-line no-param-reassign
         data = {};

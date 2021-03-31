@@ -12,7 +12,7 @@ export default class Setting extends Property {
 
   public getOptionKeyByLabel(label): string {
     let optionKey = '';
-    Object.keys(this.options).forEach(key => {
+    Object.keys(this.options).forEach((key) => {
       if (this.options[key] === label) {
         optionKey = key;
       }

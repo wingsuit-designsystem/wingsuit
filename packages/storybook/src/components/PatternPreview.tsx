@@ -22,7 +22,7 @@ const PatternPreview: FunctionComponent<Props> = ({
           setRendered(output);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         setRendered(`Error: ${error.message}`);
       });
     return () => {
@@ -36,7 +36,6 @@ const PatternPreview: FunctionComponent<Props> = ({
     attachBehaviors(global.window.document, {});
   }, [rendered]);
 
-  // eslint-disable-next-line react/no-danger
   return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 

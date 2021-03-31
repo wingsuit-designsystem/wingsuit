@@ -8,7 +8,7 @@ const renderEngine = require('../src/twigRenderEngine');
 
 const renderer = new TwingRenderer();
 const loader = new TwingLoaderFilesystem();
-Object.keys(namespaces).forEach(namespace => {
+Object.keys(namespaces).forEach((namespace) => {
   loader.setPaths(namespaces[namespace], namespace);
 });
 

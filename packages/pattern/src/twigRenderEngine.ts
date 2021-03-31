@@ -106,16 +106,16 @@ export async function renderPatternPreview(
           ...patternVariables,
           ...buildBaseVariables(variables),
         };
-        Object.keys(previewRenderedVariables).forEach(key => {
+        Object.keys(previewRenderedVariables).forEach((key) => {
           if (finalVariables[key] === undefined) {
             finalVariables[key] = previewRenderedVariables[key];
           }
         });
         renderPattern(patternId, finalVariables, variantId)
-          .then(output => {
+          .then((output) => {
             resolve(output);
           })
-          .catch(error => {
+          .catch((error) => {
             resolve(error);
           });
       });
