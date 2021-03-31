@@ -42,8 +42,8 @@ export function configure(
           storage.addGlobal('current_path', data.default.path);
           const props =
             data.getProps != null
-              // eslint-disable-next-line no-await-in-loop
-              ? await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
+              ? // eslint-disable-next-line no-await-in-loop
+                await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
               : {};
           const RoutePage = data.Page !== undefined ? data.Page : Page;
           const rendered = ReactDOMServer.renderToStaticMarkup(<RoutePage {...props} />);
