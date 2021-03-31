@@ -18,18 +18,7 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: {
-        50: '#fafafa',
-        100: '#f5f5f5',
-        200: '#e5e5e5',
-        300: '#d4d4d4',
-        400: '#a3a3a3',
-        500: '#737373',
-        600: '#525252',
-        700: '#333842',
-        800: '#21252B',
-        900: '#171717',
-      },
+      gray: colors.trueGray,
       blue: {
         200: '#ebf4ff',
       },
@@ -47,7 +36,7 @@ module.exports = {
         200: '#faf5ff',
         500: '#8000ff',
       },
-      yellow: colors.amber,
+      yellow: '#fffff0',
     },
     boxShadow: {
       md: '4px 4px 0 0 rgba(0, 0, 0)',
@@ -83,6 +72,9 @@ module.exports = {
       }),
       fill: {
         current: 'currentColor',
+      },
+      height: {
+        18: '4.5rem',
       },
       maxWidth: {
         none: 'none',

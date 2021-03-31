@@ -1,24 +1,11 @@
 <footer class="text-gray-700 body-font">
   <div class="bg-yellow">
-    {% if menu_1 is not empty %}
+    {% if footer_menu is not empty %}
       {% embed "@organisms/container/container.twig" %}
         {% block content %}
           <div class="mt-2 pt-24 pb-10 text-3xl font-bold text-black">Documentation</div>
           <div class="block lg:flex pb-24">
-            <div class="w-full flex flex-col md:flex-row">
-              <div class="flex-1 mb-8">
-                <h2 class="uppercase font-bold text-black tracking-widest text-base mb-1">BASIC</h2>
-                {{ menu_1 }}
-              </div>
-              <div class="flex-1 mb-8">
-                <h2 class="uppercase font-bold text-black tracking-widest text-base mb-1">CONFIGURATION</h2>
-                {{ menu_2 }}
-              </div>
-              <div class="flex-1 mb-8">
-                <h2 class="uppercase font-bold text-black tracking-widest text-base mb-1">COMPONENTS</h2>
-                {{ menu_3 }}
-              </div>
-            </div>
+            {{ footer_menu }}
           </div>
         {% endblock %}
       {% endembed %}
@@ -26,35 +13,34 @@
   </div>
   <div class="bg-black py-6 flex items-center">
     {% embed "@organisms/container/container.twig" %}
-    {% block content %}
-    <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        <a class="text-gray-500">
-          {% include "@atoms/svg/_svg--icon.twig" with {
-            icon: "facebook",
-            size: 'w-5 h-5',
-          } only %}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {% include "@atoms/svg/_svg--icon.twig" with {
-            icon: "instagram",
-            size: 'w-5 h-5',
-          } only %}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {% include "@atoms/svg/_svg--icon.twig" with {
-            icon: "twitter",
-            size: 'w-5 h-5',
-          } only %}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {% include "@atoms/svg/_svg--icon.twig" with {
-            icon: "linkedin",
-            size: 'w-5 h-5',
-          } only %}
-        </a>
-      </span>
-  </div>
-  {% endblock %}
-  {% endembed %}
+      {% block content %}
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a class="text-gray-500">
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              icon: "facebook",
+              size: 'w-5 h-5',
+            } only %}
+          </a>
+          <a class="ml-3 text-gray-500">
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              icon: "instagram",
+              size: 'w-5 h-5',
+            } only %}
+          </a>
+          <a class="ml-3 text-gray-500">
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              icon: "twitter",
+              size: 'w-5 h-5',
+            } only %}
+          </a>
+          <a class="ml-3 text-gray-500">
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              icon: "linkedin",
+              size: 'w-5 h-5',
+            } only %}
+          </a>
+        </span>
+      {% endblock %}
+    {% endembed %}
   </div>
 </footer>

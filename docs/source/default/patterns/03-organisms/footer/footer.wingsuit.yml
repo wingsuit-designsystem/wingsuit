@@ -8,25 +8,7 @@ footer:
       label: Logo
       preview:
         id: logo
-    menu_1:
-      type: pattern
-      label: Menu
-      preview:
-        id: menu
-        variant: footer
-    menu_2:
-      type: pattern
-      label: Menu
-      preview:
-        id: menu
-        variant: footer
-    menu_3:
-      type: pattern
-      label: Menu
-      preview:
-        id: menu
-        variant: footer
-    menu_4:
+    footer_menu:
       type: pattern
       label: Menu
       preview:

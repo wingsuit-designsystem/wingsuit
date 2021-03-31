@@ -1,5 +1,5 @@
 {#
-  Defaults
+Defaults
 #}
 {% set tag_name = tag_name|default('div') %}
 {% set color = color|default('primary') %}
@@ -9,7 +9,7 @@
 {% set icon_alignment = icon_alignment|default('right') %}
 
 {#
-  Classes
+Classes
 #}
 {% set classes = [
   'flex items-center justify-center inline-flex border-2 py-1 focus:outline-none transition-colors duration-500',
@@ -32,10 +32,10 @@
 {% endif %}
 
 {#
-  Template
+Template
 #}
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
-  {{ text }}
+{{ text }}
   {% if icon is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: icon,
