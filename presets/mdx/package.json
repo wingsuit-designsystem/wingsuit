@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-mdx",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "Wingsuit Mdx support.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
-    "@wingsuit-designsystem/core": "1.0.0-rc.3",
+    "@wingsuit-designsystem/core": "1.0.0-rc.4",
     "highlight.js": "^10.7.1",
     "remark-highlight.js": "^6.0.0"
   },

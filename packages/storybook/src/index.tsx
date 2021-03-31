@@ -79,7 +79,7 @@ export function configure(
   }, module);
 }
 function getArgs(defaultArgs, variant) {
-  const previewPatterns = variant.getPreviewPatterns();
+  const fields = variant.getFields();
   const resultArgs = { ...defaultArgs };
   const settings = variant.getSettings();
   Object.keys(settings).forEach((key) => {
@@ -87,12 +87,14 @@ function getArgs(defaultArgs, variant) {
       resultArgs[key] = new TwigAttribute(resultArgs[key]);
     }
   });
-  Object.keys(previewPatterns).forEach((key) => {
-    const fieldName = key.split('--')[0];
-    if (resultArgs[fieldName] === false) {
-      resultArgs[fieldName] = null;
-    } else {
-      delete resultArgs[fieldName];
+  Object.keys(fields).forEach((key) => {
+    const field = fields[key];
+    if (field.getType() === 'pattern') {
+      if (resultArgs[key] === false) {
+        resultArgs[key] = null;
+      } else {
+        delete resultArgs[key];
+      }
     }
   });
   return resultArgs;
