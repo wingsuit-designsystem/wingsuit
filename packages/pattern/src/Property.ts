@@ -48,6 +48,19 @@ export default class Property {
     }
   }
 
+  private cleanString(input) {
+    let output = '';
+    for (let i = 0; i < input.length; i += 1) {
+      if (
+        input.charCodeAt(i) <= 127 ||
+        (input.charCodeAt(i) >= 160 && input.charCodeAt(i) <= 255)
+      ) {
+        output += input.charAt(i);
+      }
+    }
+    return output;
+  }
+
   public getPreview(): any {
     if (typeof this.preview === 'object') {
       if (this.preview.faker != null) {
@@ -58,7 +71,11 @@ export default class Property {
       }
       return JSON.stringify(this.preview);
     }
-    return this.preview;
+    let value = this.preview;
+    if (typeof value === 'string' || value instanceof String) {
+      value = this.cleanString(value);
+    }
+    return value;
   }
 
   public setPreview(value: Preview | string) {
