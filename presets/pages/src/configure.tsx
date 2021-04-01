@@ -20,16 +20,16 @@ export function configure(
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
   const twigRenderer = new TwingRenderer();
-  twigRenderer.addFunction('file_url', url => {
+  twigRenderer.addFunction('file_url', (url) => {
     return Promise.resolve(url.replace('ws-assets://', '/'));
   });
   renderer.setRenderer(twigRenderer);
 
   const assets = Object.keys(locals.webpackStats.compilation.assets);
-  const css = assets != null ? assets.filter(value => value.match(/\.css$/)) : {};
-  const js = assets != null ? assets.filter(value => value.match(/\.js$/)) : {};
+  const css = assets != null ? assets.filter((value) => value.match(/\.css$/)) : {};
+  const js = assets != null ? assets.filter((value) => value.match(/\.js$/)) : {};
 
-  const renderHtmlTwig = async variables => {
+  const renderHtmlTwig = async (variables) => {
     const template = htmlTemplate.default;
     return renderer.renderData('html.twig', template, variables);
   };
@@ -45,8 +45,7 @@ export function configure(
               ? // eslint-disable-next-line no-await-in-loop
                 await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
               : {};
-          const RoutePage = data.Page !== undefined ? data.Page : Page;
-          const rendered = ReactDOMServer.renderToStaticMarkup(<RoutePage {...props} />);
+          const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
           // const rendered = ReactDOMServer.renderToStaticMarkup(component);
           // eslint-disable-next-line no-await-in-loop
           const htmlRendered = await renderHtmlTwig({ content: rendered, css, js });
