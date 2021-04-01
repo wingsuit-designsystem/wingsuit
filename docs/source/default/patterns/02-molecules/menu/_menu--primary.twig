@@ -8,7 +8,7 @@
         {% if item.below is not empty %}
           <ul class="list-reset mb-7">
             {% for sub_item in item.below %}
-              <li class="mb-4">
+              <li class="mb-2">
                 <a class="p-2 inline-block text-gray-600 hover:text-gray-900 hover:underline {% if (sub_item.in_active_trail) %} bg-teal-300 {% endif %}" href="{{ sub_item.url }}">{{ sub_item.title }}</a>
               </li>
             {% endfor %}

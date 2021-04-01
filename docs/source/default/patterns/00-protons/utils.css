@@ -1,0 +1,14 @@
+.visible-height {
+  height: calc(100vh - 80px);
+}
+
+.wingsuit-root > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
