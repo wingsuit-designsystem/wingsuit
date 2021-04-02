@@ -209,10 +209,21 @@ jobs:
             cd starter-kits/tailwind
             yarn dev:storybook --smoke-test --quiet
       - run:
+          name: Run Tailwind (drupal smoke test)
+          command: |
+            cd starter-kits/tailwind
+            yarn build:drupal
+
+      - run:
           name: Run Bootstrap (smoke test)
           command: |
             cd starter-kits/bootstrap
             yarn dev:storybook --smoke-test --quiet
+      - run:
+          name: Run Bootstrap (drupal smoke test)
+          command: |
+            cd starter-kits/bootstrap
+            yarn build:drupal
 
   docs:
     <<: *node10
