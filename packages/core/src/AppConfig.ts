@@ -41,6 +41,8 @@ export default interface AppConfig {
 
   getParameters(name: string);
 
+  postCssConfig: any;
+
   presets: [];
 }
 
@@ -101,5 +103,13 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
       return {};
     },
     presets: [],
+    postCssConfig: {
+      options: {
+        postcssOptions: {
+          plugins: []
+        },
+        sourceMap: true,
+      },
+    },
   };
 }

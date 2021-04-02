@@ -8,7 +8,6 @@ export function name(appConfig: AppConfig) {
 }
 
 interface CssConfig {
-  postCssConfig: any;
   cssLoaderConfig: any;
 }
 
@@ -17,17 +16,6 @@ export function defaultConfig(appConfig: AppConfig): CssConfig {
     cssLoaderConfig: {
       options: {
         sourceMap: true,
-      },
-    },
-    postCssConfig: {
-      postcssOptions: {
-        config: {
-          path: 'postcss.config.js',
-        },
-      },
-      options: {
-        sourceMap: true,
-        ident: 'postcss',
       },
     },
   };
@@ -42,7 +30,7 @@ export function webpack(appConfig: AppConfig, config: CssConfig) {
     {
       // PostCSS config at ./postcss.config.js
       loader: 'postcss-loader',
-      ...config.postCssConfig,
+      ... appConfig.postCssConfig,
     },
     {
       loader: 'resolve-url-loader',

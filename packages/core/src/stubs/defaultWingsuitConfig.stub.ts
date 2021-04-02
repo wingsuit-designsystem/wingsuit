@@ -14,7 +14,6 @@ export const wingsuit = {
   parameters: {},
   defaultPresets: {
     babel,
-    css,
     assets,
     assetsVideos,
     svg,

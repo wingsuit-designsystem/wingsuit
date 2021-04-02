@@ -3354,15 +3354,6 @@
   resolved "https://registry.yarnpkg.com/@stroncium/procfs/-/procfs-1.2.1.tgz#6b9be6fd20fb0a4c20e99a8695e083c699bb2b45"
   integrity sha512-X1Iui3FUNZP18EUvysTHxt+Avu2nlVzyf90YM8OYgP6SGzTzzX/0JgObfO1AQQDzuZtNNz29bVh8h5R97JrjxA==
 
-"@tailwindcss/custom-forms@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/custom-forms/-/custom-forms-0.2.1.tgz#40e5ed1fff6d29d8ed1c508a0b2aaf8da96962e0"
-  integrity sha512-XdP5XY6kxo3x5o50mWUyoYWxOPV16baagLoZ5uM41gh6IhXzhz/vJYzqrTb/lN58maGIKlpkxgVsQUNSsbAS3Q==
-  dependencies:
-    lodash "^4.17.11"
-    mini-svg-data-uri "^1.0.3"
-    traverse "^0.6.6"
-
 "@tailwindcss/forms@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.2.1.tgz#3244b185854fae1a7cbe8d2456314d8b2d98cf43"
@@ -14487,7 +14478,7 @@ mini-css-extract-plugin@^1.3.1:
     schema-utils "^3.0.0"
     webpack-sources "^1.1.0"
 
-mini-svg-data-uri@^1.0.3, mini-svg-data-uri@^1.2.3:
+mini-svg-data-uri@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.2.3.tgz#e16baa92ad55ddaa1c2c135759129f41910bc39f"
   integrity sha512-zd6KCAyXgmq6FV1mR10oKXYtvmA9vRoB6xPSTUJTbFApCtkefDnYueVR1gkof3KcdLZo1Y8mjF2DFmQMIxsHNQ==
