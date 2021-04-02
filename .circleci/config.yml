@@ -49,6 +49,7 @@ jobs:
           root: .
           paths:
             - packages
+            - presets
             - examples
   packtracker:
     <<: *defaults
@@ -200,12 +201,12 @@ jobs:
           name: Run Tailwind (smoke test)
           command: |
             cd starter-kits/tailwind
-            yarn storybook --smoke-test --quiet
+            yarn dev:storybook --smoke-test --quiet
       - run:
           name: Run Bootstrap (smoke test)
           command: |
             cd starter-kits/bootstrap
-            yarn storybook --smoke-test --quiet
+            yarn dev:storybook --smoke-test --quiet
 
   docs:
     <<: *node10
