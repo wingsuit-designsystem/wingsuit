@@ -20,12 +20,14 @@ export function defaultConfig(appConfig: AppConfig): CssConfig {
       },
     },
     postCssConfig: {
-      options: {
-        sourceMap: true,
-        ident: 'postcss',
+      postcssOptions: {
         config: {
           path: 'postcss.config.js',
         },
+      },
+      options: {
+        sourceMap: true,
+        ident: 'postcss',
       },
     },
   };

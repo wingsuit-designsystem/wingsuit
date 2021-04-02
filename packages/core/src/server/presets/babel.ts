@@ -9,7 +9,7 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js)$/,
           enforce: 'pre',
           exclude: /node_modules/,
           loader: 'eslint-loader',
