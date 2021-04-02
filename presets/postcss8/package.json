@@ -1,7 +1,7 @@
 {
-  "name": "@wingsuit-designsystem/preset-tailwind2",
+  "name": "@wingsuit-designsystem/preset-postcss8",
   "version": "1.0.0-rc.6",
-  "description": "Wingsuit TailwindCSS 2 preset.",
+  "description": "Wingsuit PostCss 8 support.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
@@ -26,11 +26,8 @@
     "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
-  "devDependencies": {
-    "tailwindcss": "^2.0.1-compat",
-    "@wingsuit-designsystem/core": "1.0.0-rc.6",
-    "fs-extra": "^9.0.0",
-    "jsondiffpatch": "^0.3.11"
+  "dependencies": {
+    "postcss": "^8"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

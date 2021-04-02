@@ -1,5 +1,5 @@
 import path from 'path';
-import { resolveConfig } from '../src/index';
+import {resolveConfig} from '../src/index';
 
 const config_1 = {
   apps: {
@@ -17,7 +17,7 @@ const config_1 = {
 };
 
 const config_2 = {
-  presets: ['BaseBundle'],
+  presets: [{}],
   apps: {
     storybook: {
       path: 'packages/core/__tests__',
@@ -35,7 +35,12 @@ const config_2 = {
 
 const config_3 = {
   apps: {
+
     storybook: {
+      path: 'packages/core/__tests__',
+      presets: ['AddonBundle'],
+    },
+    storybook2: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
     },
@@ -49,12 +54,12 @@ const config_3 = {
   },
 };
 
-describe('#Test config', () => {
+describe('#Test storybook config', () => {
   test.each([
     [config_1, 7],
     [config_2, 9],
     [config_3, 8],
-  ])('Render pattern %p variant %p', (config: {}, presetsLength) => {
+  ])('Check resolve config', (config: {}, presetsLength) => {
     const appConfig = resolveConfig('storybook', 'development', {}, config);
     expect(appConfig.environment).toBe('development');
     expect(appConfig.absAppPath).toBe(__dirname);
@@ -62,4 +67,22 @@ describe('#Test config', () => {
     expect(appConfig.presets.length).toBe(presetsLength);
     expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
   });
+});
+
+test('#Test config type', () => {
+  const appConfig = resolveConfig('storybook2:storybook', 'development', {}, config_3);
+  expect(appConfig.environment).toBe('development');
+  expect(appConfig.absAppPath).toBe(__dirname);
+  expect(appConfig.absRootPath).toBe(process.cwd());
+  expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+});
+
+test('#Test default config', () => {
+  const name = 'undefined';
+  const appConfig = resolveConfig(name, 'development', {}, config_3);
+  expect(appConfig.environment).toBe('development');
+  expect(appConfig.absAppPath).toBe(`${process.cwd()}/apps/${name}`);
+  expect(appConfig.absRootPath).toBe(process.cwd());
+  expect(appConfig.absDistFolder).toBe(`${process.cwd()}/dist/app-${name}`);
+  expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
 });
