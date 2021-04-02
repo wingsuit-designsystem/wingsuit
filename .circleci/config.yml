@@ -196,6 +196,17 @@ jobs:
           command: |
             cd examples/official-wingsuit
             yarn storybook --smoke-test --quiet
+      - run:
+          name: Run Tailwind (smoke test)
+          command: |
+            cd starter-kits/tailwind
+            yarn storybook --smoke-test --quiet
+      - run:
+          name: Run Bootstrap (smoke test)
+          command: |
+            cd starter-kits/bootstrap
+            yarn storybook --smoke-test --quiet
+
   docs:
     <<: *node10
     steps:
