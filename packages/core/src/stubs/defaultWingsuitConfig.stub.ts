@@ -54,6 +54,6 @@ export const wingsuit = {
       assetBundleFolder: '',
       designSystem: 'default',
       presets: [drupal],
-    }
+    },
   },
 }

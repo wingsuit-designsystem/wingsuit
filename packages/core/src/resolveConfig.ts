@@ -1,5 +1,5 @@
 import path from 'path';
-import AppConfig, {defaultAppConfig} from './AppConfig';
+import AppConfig, { defaultAppConfig } from './AppConfig';
 import PresetManager from './server/PresetManager';
 
 const merge = require('merge-deep');
@@ -76,14 +76,9 @@ export function resolveConfig(
   }
 
   // Overrule hooks.
-  appConfig.webpack =
-    mergedConfig.webpack !== null
-      ? mergedConfig.webpack
-      : appConfig.webpack;
+  appConfig.webpack = mergedConfig.webpack !== null ? mergedConfig.webpack : appConfig.webpack;
   appConfig.webpackFinal =
-    mergedConfig.webpackFinal !== null
-      ? mergedConfig.webpackFinal
-      : appConfig.webpackFinal;
+    mergedConfig.webpackFinal !== null ? mergedConfig.webpackFinal : appConfig.webpackFinal;
 
   mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);

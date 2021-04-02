@@ -1,4 +1,4 @@
-import path from "path";
+import path from 'path';
 
 export default interface AppConfig {
   type: string;
@@ -69,14 +69,14 @@ export interface PresetDefinition {
   parameters: any;
 }
 
-export function defaultAppConfig(type, absRootPath):AppConfig {
+export function defaultAppConfig(type, absRootPath): AppConfig {
   return {
     type,
     name: type,
     distFolder: `dist/app-${type}`,
     namespaces: {
       wsdesignsystem: path.join(absRootPath, 'source/default'),
-      wspatterns: path.join(absRootPath, 'source/default/patterns')
+      wspatterns: path.join(absRootPath, 'source/default/patterns'),
     },
     cssMode: 'extract',
     designSystem: 'default',
@@ -89,18 +89,17 @@ export function defaultAppConfig(type, absRootPath):AppConfig {
     absPatternPath: path.join(absRootPath, `'source/default/patterns`),
     features: {},
     absRootPath,
-    environment: "development",
+    environment: 'development',
     path: `./apps/${type}`,
     webpack: (appConfig: AppConfig, config?: any) => {
-      return {}
+      return {};
     },
-    webpackFinal: (appConfig: AppConfig, config?: any)=> {
+    webpackFinal: (appConfig: AppConfig, config?: any) => {
       return config;
     },
     getParameters: () => {
-      return {}
+      return {};
     },
-    presets: []
-  }
+    presets: [],
+  };
 }
-

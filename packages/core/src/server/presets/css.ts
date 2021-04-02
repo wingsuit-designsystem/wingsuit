@@ -27,20 +27,20 @@ export function defaultConfig(appConfig: AppConfig): CssConfig {
           path: 'postcss.config.js',
         },
       },
-    }
-  }
+    },
+  };
 }
 
 export function webpack(appConfig: AppConfig, config: CssConfig) {
   const loader = [
     {
       loader: 'css-loader',
-      ...config.cssLoaderConfig
+      ...config.cssLoaderConfig,
     },
     {
       // PostCSS config at ./postcss.config.js
       loader: 'postcss-loader',
-      ...config.postCssConfig
+      ...config.postCssConfig,
     },
     {
       loader: 'resolve-url-loader',

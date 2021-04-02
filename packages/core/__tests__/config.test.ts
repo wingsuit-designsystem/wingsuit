@@ -1,5 +1,5 @@
 import path from 'path';
-import {resolveConfig} from '../src/index';
+import { resolveConfig } from '../src/index';
 
 const config_1 = {
   apps: {
@@ -35,7 +35,6 @@ const config_2 = {
 
 const config_3 = {
   apps: {
-
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
