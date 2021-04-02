@@ -106,7 +106,7 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     postCssConfig: {
       options: {
         postcssOptions: {
-          plugins: []
+          plugins: [],
         },
         sourceMap: true,
       },

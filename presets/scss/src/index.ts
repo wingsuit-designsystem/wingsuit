@@ -35,7 +35,7 @@ export function webpack(appConfig: AppConfig) {
     {
       // PostCSS config at ./postcss.config.js
       loader: 'postcss-loader',
-      ... appConfig.postCssConfig,
+      ...appConfig.postCssConfig,
     },
     {
       loader: 'resolve-url-loader',

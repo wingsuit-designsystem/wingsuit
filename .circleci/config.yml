@@ -52,6 +52,7 @@ jobs:
             - presets
             - starter-kits
             - examples
+            - /root/.cache/Cypress
   packtracker:
     <<: *defaults
     steps:
