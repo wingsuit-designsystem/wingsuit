@@ -50,6 +50,7 @@ jobs:
           paths:
             - packages
             - presets
+            - starter-kits
             - examples
   packtracker:
     <<: *defaults
