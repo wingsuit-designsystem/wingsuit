@@ -20,8 +20,12 @@ with:
 
 ```
 Step 2:
-* Add `@wingsuit-designsystem/preset-postcss8` to your `wingsuit.yml`
+* Add `@wingsuit-designsystem/preset-postcss8` to your `wingsuit.config.js`
 * Follow PostCss instructions from https://storybook.js.org/addons/@storybook/addon-postcss
+
+Step 3:
+
+Adjust your postcss config. See https://github.com/wingsuit-designsystem/wingsuit/blob/master/starter-kits/tailwind/postcss.config.js
 ## Upgrade from BETA.41 to rc.1
 
 Breaking changes:
