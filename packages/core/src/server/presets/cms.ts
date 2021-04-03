@@ -56,7 +56,19 @@ export function webpack(appConfig: AppConfig) {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
-            outputPath: appConfig.assetAtomicFolder,
+            outputPath: (url, resourcePath, context) => {
+              const { namespaces } = appConfig;
+              delete namespaces.wsdesignsystem;
+              delete namespaces.wspatterns;
+              let outputPath = url;
+              Object.keys(namespaces).forEach((key) => {
+                const namespacePath = namespaces[key];
+                if (resourcePath.substring(0, namespacePath.length) === namespacePath) {
+                  outputPath = `${appConfig.assetAtomicFolder}/${key}/${resourcePath.substring(namespacePath.length)}`
+                }
+              });
+              return outputPath;
+            },
             context: appConfig.absDesignSystemPath,
             emit: true,
           },

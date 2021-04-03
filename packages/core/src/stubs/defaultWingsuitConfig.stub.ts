@@ -43,6 +43,11 @@ export const wingsuit = {
       presets: [twing, storybook],
     },
     cms: {
+      path: './apps/cms',
+      cssMode: 'hot',
+      distFolder: 'dist/app-cms',
+      assetBundleFolder: '',
+      designSystem: 'default',
       presets: [cms],
     },
     drupal: {
