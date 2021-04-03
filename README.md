@@ -93,6 +93,5 @@ yarn dev:drupal
 yarn dev:drupal
 ```
 
-
 ## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 

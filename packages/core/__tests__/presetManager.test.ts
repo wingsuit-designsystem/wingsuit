@@ -1,24 +1,6 @@
 import path from 'path';
 import { resolveConfig, PresetManager } from '../src/index';
 
-const config = {
-  webpack: (appConfig) => {
-    return { testWebpack: true };
-  },
-  webpackFinal: (appConfig, webpack) => {
-    // eslint-disable-next-line no-param-reassign
-    webpack.testWebpackFinal = true;
-    return webpack;
-  },
-  designSystems: {
-    default: {
-      namespaces: {
-        atoms: path.resolve(__dirname, '../source/atoms'),
-      },
-    },
-  },
-};
-
 test('Test parameters in wingsuit.config.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
@@ -60,6 +42,7 @@ test('Test getDefaultPreset.', () => {
   const css = presetManager.getDefaultPreset('css');
   expect(css).not.toBe(null);
 });
+
 test('Test defaultConfig.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
