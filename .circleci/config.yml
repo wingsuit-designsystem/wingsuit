@@ -3,12 +3,15 @@ version: 2.1
 aliases:
   - &defaults
     working_directory: /tmp/storybook
+    CYPRESS_CACHE_FOLDER:
     docker:
       - image: circleci/node:12-browsers
   - &node10
     working_directory: /tmp/storybook
     docker:
       - image: circleci/node:10-browsers
+        environment:
+          CYPRESS_CACHE_FOLDER: '/tmp/storybook/.cache/Cypress'
 jobs:
   install:
     <<: *defaults
@@ -36,6 +39,7 @@ jobs:
             - node_modules
             - examples
             - packages
+            - .cache
   build:
     <<: *defaults
     steps:
@@ -49,7 +53,10 @@ jobs:
           root: .
           paths:
             - packages
+            - presets
+            - starter-kits
             - examples
+            - .cache
   packtracker:
     <<: *defaults
     steps:
@@ -196,6 +203,28 @@ jobs:
           command: |
             cd examples/official-wingsuit
             yarn storybook --smoke-test --quiet
+      - run:
+          name: Run Tailwind (smoke test)
+          command: |
+            cd starter-kits/tailwind
+            yarn dev:storybook --smoke-test --quiet
+      - run:
+          name: Run Tailwind (drupal smoke test)
+          command: |
+            cd starter-kits/tailwind
+            yarn build:drupal
+
+      - run:
+          name: Run Bootstrap (smoke test)
+          command: |
+            cd starter-kits/bootstrap
+            yarn dev:storybook --smoke-test --quiet
+      - run:
+          name: Run Bootstrap (drupal smoke test)
+          command: |
+            cd starter-kits/bootstrap
+            yarn build:drupal
+
   docs:
     <<: *node10
     steps:

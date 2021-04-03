@@ -32,10 +32,7 @@
 
   &.splide__pagination__spacing-default .splide__pagination {
      @apply mt-8;
-
-    @screen md {
-      @apply mt-12;
-    }
+     @apply md:mt-12;
   }
 }
 
