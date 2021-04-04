@@ -20,6 +20,7 @@ export const wingsuit = {
     twing,
     storybook,
     drupal,
+    cms,
   },
   presets: [babel, css, assets, assetsVideos, svg],
   designSystems: {

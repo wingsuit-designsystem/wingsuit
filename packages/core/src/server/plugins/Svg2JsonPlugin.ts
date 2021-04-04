@@ -1,5 +1,5 @@
-import { glob } from 'glob';
-import { AppConfig } from '../../index';
+import {glob} from 'glob';
+import {AppConfig} from '../../index';
 
 const fs = require('fs-extra');
 const path = require('path');
@@ -18,13 +18,13 @@ export default class Svg2JsonPlugin {
     this.sourceFolder = sourceFolder;
     this.targetJsonFlename = targetJsonFilename;
     this.appConfig = appConfig;
-    this.plugin = { name: 'Svg2JsonPlugin' };
+    this.plugin = {name: 'Svg2JsonPlugin'};
   }
 
   public apply(compiler) {
     const beforeCompile = (compilation, callback) => {
       const filename = this.targetJsonFlename;
-      const { sourceFolder, appConfig } = this;
+      const {sourceFolder, appConfig} = this;
       const svgs: string[] = [];
       const searchFiles = `${appConfig.absPatternPath}/**/${sourceFolder}/*.svg`;
 
@@ -32,7 +32,7 @@ export default class Svg2JsonPlugin {
       files.forEach((file) => {
         svgs.push(path.basename(file, '.svg'));
       });
-      const output = { svgs };
+      const output = {svgs};
       // Plugins are null after restoring from file system.
       // Infinite loop.
       fs.readJson(filename, (readerr, existingJson) => {

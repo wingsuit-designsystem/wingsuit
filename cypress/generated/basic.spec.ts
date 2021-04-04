@@ -5,31 +5,31 @@ describe('Basic Flow', () => {
     visit();
   });
 
-  it('should load welcome flow', () => {
+  it('should load welcome page', () => {
     // assert url changes
-    cy.url().should('include', 'path=/story/welcome--to-storybook');
+    cy.url().should('include', 'path=/story/welcome--page');
 
     // check for selected element
-    cy.get('#welcome--to-storybook').should('have.class', 'selected');
+    // cy.get('#welcome--page').should('have.class', 'selected');
 
     // check for content
-    cy.getStoryElement().should('contain.text', 'Welcome to storybook');
+    cy.getStoryElement().should('contain.text', 'Design system');
   });
 
   describe('Button story', () => {
     before(() => {
-      cy.get('#button').click();
+      cy.get('#atoms-button').click();
     });
 
     it('should be visited succesfully', () => {
       // assert url changes
-      cy.url().should('include', 'path=/story/button--text');
+      // cy.url().should('include', 'path=/story/button--text');
 
       // check for selected element
-      cy.get('#button--text').should('have.class', 'selected');
+      // cy.get('#atoms-button').should('have.class', 'selected');
 
       // check for content
-      cy.getStoryElement().find('button').should('contain.text', 'Hello Button');
+      cy.getStoryElement().find('.border-teal-600').should('contain.text', 'More');
     });
   });
 });

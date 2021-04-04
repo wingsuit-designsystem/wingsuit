@@ -64,7 +64,9 @@ export function webpack(appConfig: AppConfig) {
               Object.keys(namespaces).forEach((key) => {
                 const namespacePath = namespaces[key];
                 if (resourcePath.substring(0, namespacePath.length) === namespacePath) {
-                  outputPath = `${appConfig.assetAtomicFolder}/${key}/${resourcePath.substring(namespacePath.length)}`
+                  outputPath = `${appConfig.assetAtomicFolder}/${key}/${resourcePath.substring(
+                    namespacePath.length
+                  )}`;
                 }
               });
               return outputPath;

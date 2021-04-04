@@ -35,7 +35,7 @@ const siblingDir = path.join(__dirname, '..', '..', 'wingsuit-e2e-testing');
 
 const prepareDirectory = async ({
   cwd,
-  ensureDir: ensureDirOption = true,
+  ensureDir: ensureDirOption = false,
 }: Options): Promise<boolean> => {
   const siblingExists = await pathExists(siblingDir);
 
@@ -61,20 +61,16 @@ const prepareDirectory = async ({
 
 const cleanDirectory = async ({ cwd }: Options): Promise<void> => {
   await remove(cwd);
-  await remove(path.join(siblingDir, 'node_modules'));
-
-  // TODO: Move this somewhere else
-  //   Remove Yarn 2 specific stuffs generated
-  await shell.rm('-rf', [path.join(siblingDir, '.yarn'), path.join(siblingDir, '.yarnrc.yml')]);
 };
 
 const generate = async ({ cwd, name, version, generator }: Options) => {
   const command = generator.replace(/{{name}}/g, name).replace(/{{version}}/g, version);
   logger.info(`🏗  Bootstrapping ${name} project`);
-  logger.debug(command);
+  const execCommand = `${command} --folder ${name}-v${version}`;
+  logger.debug(execCommand);
 
   try {
-    await exec(command, { cwd });
+    await exec(execCommand, { cwd });
   } catch (e) {
     logger.error(`🚨 Bootstrapping ${name} failed`);
     throw e;
@@ -134,6 +130,19 @@ const addRequiredDeps = async ({ cwd, additionalDeps }: Options) => {
   }
 };
 
+const buildDrupal = async ({ cwd, preBuildCommand }: Options) => {
+  logger.info(`👷 Building Drupal`);
+  try {
+    if (preBuildCommand) {
+      await exec(preBuildCommand, { cwd });
+    }
+    await exec(`yarn build:drupal`, { cwd });
+  } catch (e) {
+    logger.error(`🚨 Drupal build failed`);
+    throw e;
+  }
+};
+
 const buildStorybook = async ({ cwd, preBuildCommand }: Options) => {
   logger.info(`👷 Building Storybook`);
   try {
@@ -148,7 +157,7 @@ const buildStorybook = async ({ cwd, preBuildCommand }: Options) => {
 };
 
 const serveStorybook = async ({ cwd }: Options, port: string) => {
-  const staticDirectory = path.join(cwd, 'wingsuit-static');
+  const staticDirectory = path.join(cwd, 'dist/app-storybook');
   logger.info(`🌍 Serving ${staticDirectory} on http://localhost:${port}`);
 
   return serve(staticDirectory, port);
@@ -187,17 +196,21 @@ const runTests = async ({ name, version, ...rest }: Parameters) => {
     await generate({ ...options, cwd: siblingDir });
     logger.log();
 
-    await initStorybook(options);
-    logger.log();
+    // await initStorybook(options);
+    // logger.log();
 
-    await setResolutions(options);
-    logger.log();
+//    await setResolutions(options);
+//    logger.log();
 
-    await addRequiredDeps(options);
-    logger.log();
+//    await addRequiredDeps(options);
+//    logger.log();
 
     await buildStorybook(options);
     logger.log();
+
+    await buildDrupal(options);
+    logger.log();
+
   }
 
   const server = await serveStorybook(options, '4000');

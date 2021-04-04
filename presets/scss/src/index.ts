@@ -27,25 +27,25 @@ export function webpack(appConfig: AppConfig) {
 
   const loader = [
     {
-      loader: 'css-loader',
+      loader: require.resolve('css-loader'),
       options: {
         sourceMap: true,
       },
     },
     {
       // PostCSS config at ./postcss.config.js
-      loader: 'postcss-loader',
+      loader: require.resolve('postcss-loader'),
       ...appConfig.postCssConfig,
     },
     {
-      loader: 'resolve-url-loader',
+      loader: require.resolve('resolve-url-loader'),
       options: {
         sourceMap: true,
         root: '',
       },
     },
     {
-      loader: 'sass-loader', // compiles Sass to CSS
+      loader: require.resolve('sass-loader'), // compiles Sass to CSS
     },
   ];
 
@@ -63,7 +63,7 @@ export function webpack(appConfig: AppConfig) {
         rules: [
           {
             test: /\.scss$/,
-            use: [{ loader: 'style-loader' }, ...loader],
+            use: [{ loader: require.resolve('style-loader') }, ...loader],
           },
         ],
       },
