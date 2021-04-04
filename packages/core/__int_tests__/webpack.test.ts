@@ -1,7 +1,7 @@
-import {PresetManager, resolveConfig} from "../src";
-import path from "path";
-const webpack = require('webpack');
+import path from 'path';
+import { PresetManager, resolveConfig } from '../src';
 
+const webpack = require('webpack');
 
 test('Test CMS Preset.', () => {
   const presetManager = new PresetManager();
@@ -22,8 +22,7 @@ test('Test CMS Preset.', () => {
   );
   const webpackConfig = presetManager.generateWebpack(resolvedConfig);
   const compiler = webpack(webpackConfig);
-  compiler.run((err, stats) => { // [Stats Object](#stats-object)
-
+  compiler.run((err, stats) => {
+    // [Stats Object](#stats-object)
   });
-
 });
