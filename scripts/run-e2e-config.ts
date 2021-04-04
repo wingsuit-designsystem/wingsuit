@@ -10,11 +10,19 @@ const fromDeps = (...args: string[]): string =>
     .join(' && ');
 
 
-export const cliInit: Parameters = {
-  name: 'cliInit',
+export const skTailwindInit: Parameters = {
+  name: 'sk-tailwind',
   version: 'latest',
   generator: [
     `npx @wingsuit-designsystem/cli init --smoke-test`,
+  ].join(' && '),
+};
+
+export const skBootstrapInit: Parameters = {
+  name: 'sk-bootstrap',
+  version: 'latest',
+  generator: [
+    `npx @wingsuit-designsystem/cli init -k bootstrap --smoke-test`,
   ].join(' && '),
 };
 
