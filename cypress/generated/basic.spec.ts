@@ -29,7 +29,7 @@ describe('Basic Flow', () => {
       // cy.get('#atoms-button').should('have.class', 'selected');
 
       // check for content
-      cy.getStoryElement().find('.border-teal-600').should('contain.text', 'More');
+      cy.getStoryElement().find('.btn').should('contain.text', 'More');
     });
   });
 });
