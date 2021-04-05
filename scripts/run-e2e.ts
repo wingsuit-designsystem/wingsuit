@@ -66,7 +66,8 @@ const cleanDirectory = async ({ cwd }: Options): Promise<void> => {
 const generate = async ({ cwd, name, version, generator }: Options) => {
   const command = generator.replace(/{{name}}/g, name).replace(/{{version}}/g, version);
   logger.info(`🏗  Bootstrapping ${name} project`);
-  const execCommand = `${command} --folder ${name}-v${version}`;
+  const branch =  process.env.CIRCLE_BRANCH != null  ? process.env.CIRCLE_BRANCH : 'master';
+  const execCommand = `${command} --folder ${name}-v${version} --branch ${branch}`;
   logger.debug(execCommand);
 
   try {
