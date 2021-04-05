@@ -1,0 +1,4 @@
+{% set config_1 = pattern_configuration('configuration', variant, 'config')['value'] %}
+{% set config_2 = pattern_configuration('configuration', variant, 'config')['value2'] %}
+field:{{ config_1 }}
+setting:{{ config_2 }}

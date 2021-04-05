@@ -24,16 +24,16 @@ export function defaultConfig(appConfig: AppConfig): CssConfig {
 export function webpack(appConfig: AppConfig, config: CssConfig) {
   const loader = [
     {
-      loader: 'css-loader',
+      loader: require.resolve('css-loader'),
       ...config.cssLoaderConfig,
     },
     {
       // PostCSS config at ./postcss.config.js
-      loader: 'postcss-loader',
+      loader: require.resolve('postcss-loader'),
       ...appConfig.postCssConfig,
     },
     {
-      loader: 'resolve-url-loader',
+      loader: require.resolve('resolve-url-loader'),
       options: {
         sourceMap: true,
         root: '',
