@@ -2,6 +2,7 @@ import { Meta, Subtitle } from '@storybook/addon-docs/blocks';
 import { Typeset } from '@wingsuit-designsystem/storybook';
 const tailwindFile = require('../../config/silo/tailwind.json');
 const fontFamilies = tailwindFile.tailwind.theme.fontFamily;
+console.log(fontFamilies);
 const intFontSizes = tailwindFile.tailwind.theme.fontSize;
 const fontSizes = {}
 Object.keys(intFontSizes).forEach((key)=>{
@@ -21,7 +22,7 @@ parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
     return (
       <div key={key}>
         <Subtitle><b>Font Family:</b> {fontFamilies[key][0]} ({key})</Subtitle>
-        <Typeset fontFamily={key} classNamePrefix="text-" fontSizes={fontSizes} />
+        <Typeset fontFamily={fontFamilies[key][0]} classNamePrefix="text-" fontSizes={fontSizes} />
       </div>
     )
   })
