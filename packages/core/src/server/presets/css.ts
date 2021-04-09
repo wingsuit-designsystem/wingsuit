@@ -7,27 +7,33 @@ export function name(appConfig: AppConfig) {
   return 'css';
 }
 
-export function webpack(appConfig: AppConfig) {
-  const loader = [
-    {
-      loader: 'css-loader',
+interface CssConfig {
+  cssLoaderConfig: any;
+}
+
+export function defaultConfig(appConfig: AppConfig): CssConfig {
+  return {
+    cssLoaderConfig: {
       options: {
         sourceMap: true,
       },
+    },
+  };
+}
+
+export function webpack(appConfig: AppConfig, config: CssConfig) {
+  const loader = [
+    {
+      loader: require.resolve('css-loader'),
+      ...config.cssLoaderConfig,
     },
     {
       // PostCSS config at ./postcss.config.js
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-        ident: 'postcss',
-        config: {
-          path: 'postcss.config.js',
-        },
-      },
+      loader: require.resolve('postcss-loader'),
+      ...appConfig.postCssConfig,
     },
     {
-      loader: 'resolve-url-loader',
+      loader: require.resolve('resolve-url-loader'),
       options: {
         sourceMap: true,
         root: '',

@@ -1,5 +1,5 @@
 import path from 'path';
-import AppConfig from './AppConfig';
+import AppConfig, { defaultAppConfig } from './AppConfig';
 import PresetManager from './server/PresetManager';
 
 const merge = require('merge-deep');
@@ -7,20 +7,49 @@ const yargs = require('yargs');
 
 const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
+/**
+ * Resolves wingsuit config.
+ *
+ * @param appNameId
+ *   The appNameId can contain app type and app id seperated by ":".
+ *   Example:
+ *     drupal:cms - drupal is app folder name. CMS is the preset app type
+ *
+ * @param environment
+ *   The current environment.
+ * @param configurationOverwrites
+ *   Overrule the config.
+ * @param wingsuitConfig
+ *   The provided config.
+ * @param configPath
+ *   The path to the config.
+ */
 export function resolveConfig(
-  appName: string,
+  appNameId: string,
   environment = 'development',
   configurationOverwrites: any = {},
   wingsuitConfig: any = null,
   configPath: any = null
 ): AppConfig {
+  let appName = appNameId;
+  let type = appNameId;
+  if (appNameId.split(':').length === 2) {
+    [appName, type] = appNameId.split(':');
+  }
+
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
   let mergedConfig = merge(configStub.wingsuit, projectConfig);
   mergedConfig.absAppPath = '';
 
-  // Extend wingsuit base config with preset configs.
+  // Overrule logic.
+  // 1. Merge config stub with presets configs.
+  // 2. Overrule default config with merged config.
+  // 3. Overrule with environment config.
+  // 4. Overrule with project config.
+
+  // Overrule with preset configs.
   const presetManager = new PresetManager();
   const presets = presetManager.getPresetDefinitions(mergedConfig);
 
@@ -31,19 +60,25 @@ export function resolveConfig(
     }
   });
 
-  let appConfig = mergedConfig.apps[appName];
-  if (appConfig == null) {
-    throw new Error(`No config found for app: ${appName}. Please check your wingsuit.config.`);
-  }
-
   const rootPath = configPath != null ? configPath : process.cwd();
+
+  // Overrule default config with merged config.
+  let appConfig = merge(defaultAppConfig(type, rootPath), mergedConfig.apps[type]);
+
+  // Overrule environment config.
   if (mergedConfig.environments[environment] != null) {
     appConfig = merge(appConfig, mergedConfig.environments[environment]);
   }
-  // Overwrite by project config.
+
+  // Overrule project config.
   if (projectConfig[appName] != null) {
-    appConfig = Object.assign(appConfig, projectConfig[appName]);
+    appConfig = merge(appConfig, projectConfig[appName]);
   }
+
+  // Overrule hooks.
+  appConfig.webpack = mergedConfig.webpack !== null ? mergedConfig.webpack : appConfig.webpack;
+  appConfig.webpackFinal =
+    mergedConfig.webpackFinal !== null ? mergedConfig.webpackFinal : appConfig.webpackFinal;
 
   mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);
@@ -53,20 +88,7 @@ export function resolveConfig(
     return appConfig.parameters[name] != null ? appConfig.parameters[name] : {};
   };
 
-  appConfig.webpack =
-    mergedConfig.webpack !== null
-      ? mergedConfig.webpack
-      : (pappConfig: AppConfig) => {
-          return {};
-        };
-  appConfig.webpackFinal =
-    mergedConfig.webpackFinal !== null
-      ? mergedConfig.webpackFinal
-      : (pappConfig: AppConfig, config: any) => {
-          return config;
-        };
   appConfig = Object.assign(appConfig, configurationOverwrites);
-  appConfig.absRootPath = rootPath;
   appConfig.environment = environment;
   appConfig.absAppPath = path.join(rootPath, appConfig.path);
   appConfig.absDistFolder =
@@ -74,6 +96,7 @@ export function resolveConfig(
       ? path.resolve(yargs.argv['output-dir'])
       : path.join(appConfig.absRootPath, appConfig.distFolder);
   const designSystem = mergedConfig.designSystems[appConfig.designSystem];
+
   if (designSystem == null) {
     throw new Error(
       `No designSystem found: ${appConfig.designSystem}. Please check your wingsuit.config.`
@@ -87,6 +110,8 @@ export function resolveConfig(
   appConfig.namespaces = designSystem.namespaces;
   appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
   appConfig.namespaces.wspatterns = appConfig.absPatternPath;
-
+  if (mergedConfig.postCssConfig != null) {
+    appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
+  }
   return appConfig;
 }

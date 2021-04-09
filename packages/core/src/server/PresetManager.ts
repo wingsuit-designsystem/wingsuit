@@ -126,7 +126,7 @@ export default class PresetManager {
 
     const shared: any = [];
     Object.keys(presets).forEach((key) => {
-      if (presets[key] != null) {
+      if (presets[key] != null && presets[key].preset.webpack != null) {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
     });

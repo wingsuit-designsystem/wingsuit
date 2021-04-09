@@ -2,6 +2,30 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
+## Tailwind Jit and Postcss 8
+In Version`Wingsuit V1 PostCss8 and Jit compiler becomes default. 
+
+To upgrade your existing project:
+
+Step 1:
+```
+yarn add -D @storybook/addon-postcss
+yarn add -D @wingsuit-designsystem/preset-postcss8
+yarn add @tailwindcss/jit
+
+# Replace
+"tailwindcss": "npm:@tailwindcss/postcss7-compat"
+with:
+"tailwindcss": "^2.0.4"
+
+```
+Step 2:
+* Add `@wingsuit-designsystem/preset-postcss8` to your `wingsuit.config.js`
+* Follow PostCss instructions from https://storybook.js.org/addons/@storybook/addon-postcss
+
+Step 3:
+
+Adjust your postcss config. See https://github.com/wingsuit-designsystem/wingsuit/blob/master/starter-kits/tailwind/postcss.config.js
 ## Upgrade from BETA.41 to rc.1
 
 Breaking changes:
@@ -92,7 +116,6 @@ yarn dev:drupal
 ```bash
 yarn dev:drupal
 ```
-
 
 ## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
 

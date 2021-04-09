@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-tailwind",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.1",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "private": true,
@@ -37,25 +37,27 @@
     "fmt:js": "eslint --fix --ext .js,.vue ./",
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
     "fmt": "npm run fmt:js; npm run fmt:css",
-    "ci": "npm run lint && npm run build:drupal",
-    "chromatic": "npx chromatic --project-token 56g60sdfr38"
+    "ci": "npm run lint && npm run build:drupal"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@storybook/addon-links": "^6.1.0",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-viewport": "^6.1.0",
     "@storybook/addons": "^6.1.0",
     "@storybook/linter-config": "^2.5.0",
     "@storybook/react": "^6.1.0",
     "@storybook/storybook-deployer": "^2.8.7",
+    "@tailwindcss/jit": "^0.1.18",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.0-rc.4",
-    "@wingsuit-designsystem/core": "1.0.0-rc.4",
-    "@wingsuit-designsystem/pattern": "1.0.0-rc.4",
-    "@wingsuit-designsystem/preset-tailwind2": "1.0.0-rc.4",
-    "@wingsuit-designsystem/storybook": "1.0.0-rc.4",
+    "@wingsuit-designsystem/cli": "1.0.1",
+    "@wingsuit-designsystem/core": "1.0.1",
+    "@wingsuit-designsystem/pattern": "1.0.1",
+    "@wingsuit-designsystem/preset-postcss8": "1.0.1",
+    "@wingsuit-designsystem/preset-tailwind2": "1.0.1",
+    "@wingsuit-designsystem/storybook": "1.0.1",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -70,7 +72,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.0.1",
     "lodash": "^4.17.20",
-    "postcss": "^7",
+    "postcss": "^8",
     "postcss-nested": "^4.2.1",
     "prettier": "^1.19.1",
     "react": "^16.13.1",
@@ -89,7 +91,7 @@
     "@tailwindcss/typography": "^0.3.1",
     "alpinejs": "^2.7.0",
     "svg4everybody": "^2.1.9",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "^2.0.4"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }

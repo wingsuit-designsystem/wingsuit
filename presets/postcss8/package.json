@@ -1,0 +1,39 @@
+{
+  "name": "@wingsuit-designsystem/preset-postcss8",
+  "version": "1.0.1",
+  "description": "Wingsuit PostCss 8 support.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "postcss": "^8"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+}
