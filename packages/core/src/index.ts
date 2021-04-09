@@ -43,7 +43,7 @@ export function getAppNames(wingsuitConfig: any = null, type = '') {
   const mergedConfig = merge(configStub.wingsuit, projectConfig);
   const names: string[] = [];
   Object.keys(mergedConfig.apps).forEach((name) => {
-    if (type === '' || type === mergedConfig.apps[name].type) {
+    if (type === '' || type === mergedConfig.apps[name].type || name === type) {
       names.push(name);
     }
   });
