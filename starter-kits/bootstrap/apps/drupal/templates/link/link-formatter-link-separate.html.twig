@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override of a link with separate title and URL elements.
+ *
+ * Available variables:
+ * - link: The link that has already been formatted by l().
+ * - title: (optional) A descriptive or alternate title for the link, which may
+ *   be different than the actual link text.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_link_formatter_link_separate()
+ */
+#}
+{% set link_attributes = url.getOption('attributes') %}
+{% set variant = link_attributes.variant %}
+{% set color = link_attributes.color %}
+{% set target = link_attributes.target %}
+{% set icon = link_attributes.icon != 'none' ? link_attributes.icon : '' %}
+{% apply spaceless %}
+  {% include "@atoms/button/button.twig" with {'text': title, 'target': target, 'url': link, 'variant': variant, 'color': color, 'icon': icon, 'size': 'medium', 'icon_alignment': 'left'} only %}
+{% endapply %}

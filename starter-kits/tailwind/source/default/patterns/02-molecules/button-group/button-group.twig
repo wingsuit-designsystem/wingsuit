@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * button-group
+ *
+ * See button-group.wingsuit.yaml for documentation.
+ */
+#}
+
+{#
+  Defaults
+#}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% set align = align|default('center') %}
+
+{#
+  Classes
+#}
+
+{% set classes = [
+  'flex flex-col md:flex-row pt-8',
+  'space-y-2 md:space-x-2 md:space-y-0',
+  align == 'center' ? 'justify-center',
+  align == 'right' ? 'justify-end',
+] %}
+
+{#
+  Template
+#}
+<div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+  {{ buttons }}
+</div>
