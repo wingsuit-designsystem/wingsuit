@@ -8,5 +8,6 @@
 #}
 {% include "@templates/site-container.twig" with {
   menu: pattern('menu', {items: primary_menu.items}, 'primary'),
+  show_hamburger: true,
   content: pattern('rich_text', {text: content})
 } %}

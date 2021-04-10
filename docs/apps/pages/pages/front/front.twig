@@ -6,5 +6,7 @@
  * See component.wingsuit.yml for usage.
  */
 #}
-{{ pattern_preview('button', {}, 'default') }}
-{{ content }}
+{% include "@templates/site-container.twig" with {
+  menu: pattern('menu', {items: primary_menu.items}, 'primary'),
+  content: 'TEST'
+} %}
