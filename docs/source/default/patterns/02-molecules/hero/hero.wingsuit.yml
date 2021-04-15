@@ -3,18 +3,14 @@ hero:
   label: Hero
   description: Hero section component, for all your presentation needs.
   fields:
-    pre_headline:
-      type: text
-      label: Pre Headline
-      preview: "What business are you?"
     headline:
       type: text
       label: Headline
-      preview: "Main Hero Message to sell yourself!"
+      preview: "Build bulletproof Twig Components in Storybook"
     text:
       type: text
       label: Text
-      preview: "Sub-hero message, not too long and not too short. Make it just right!"
+      preview: "You will ♥ using️ it!"
     button:
       type: pattern
       label: Button

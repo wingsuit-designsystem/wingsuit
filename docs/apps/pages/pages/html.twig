@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/{{ file }}">
     {% endfor %}
   </head>
-  <body x-data="{ isScrollDown: false, menuIsOpen: false, languageSwitcherOpen: false }" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; ">
+  <body x-data="{ isScrollDown: false, menuIsOpen: false }">
     {{ content }}
     {% for file in js %}
       {% if file != 'pages.js' %}

@@ -115,26 +115,31 @@ export default class PatternVariant {
     return previewPatterns;
   }
 
-  public getVariables() {
+  public getVariables(includeFields = true, includeSettings = true) {
     const values = {};
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
+    if (includeFields) {
+      Object.keys(this.fields).forEach((key) => {
+        const field: Field = this.fields[key];
+        if (field !== null && field.getType() !== 'pattern') {
+          values[key] = field.getPreview();
+        }
+      });
+    }
 
-    Object.keys(this.fields).forEach((key) => {
-      const field: Field = this.fields[key];
-      if (field !== null && field.getType() !== 'pattern') {
-        values[key] = field.getPreview();
-      }
-    });
-    Object.keys(this.settings).forEach((key) => {
-      if (this.settings[key].getType() === 'attributes') {
-        values[key] = new TwigAttribute(this.settings[key].getPreview());
-      } else {
-        values[key] = this.settings[key].getPreview();
-      }
-    });
+    if (includeSettings) {
+      Object.keys(this.settings).forEach((key) => {
+        if (this.settings[key].getType() === 'attributes') {
+          values[key] = new TwigAttribute(this.settings[key].getPreview());
+        } else {
+          values[key] = this.settings[key].getPreview();
+        }
+      });
+    }
+
     // eslint-disable-next-line dot-notation
     if (values['attributes'] == null) {
       // eslint-disable-next-line dot-notation

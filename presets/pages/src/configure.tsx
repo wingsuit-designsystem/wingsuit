@@ -2,6 +2,7 @@ import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import { renderer, storage, TwingRenderer } from '@wingsuit-designsystem/pattern';
 import Page from './Page';
+import { getProps } from './props';
 
 export function configure(
   module: NodeModule,
@@ -44,7 +45,8 @@ export function configure(
             data.getProps != null
               ? // eslint-disable-next-line no-await-in-loop
                 await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
-              : {};
+              // eslint-disable-next-line no-await-in-loop
+              : await getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup);
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
           // const rendered = ReactDOMServer.renderToStaticMarkup(component);
           // eslint-disable-next-line no-await-in-loop

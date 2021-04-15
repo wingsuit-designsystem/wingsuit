@@ -15,63 +15,62 @@ menu:
             url: "#"
             below:
               - title: Introduction
-                url: "#"
-                in_active_trail: true
+                url: "/basics/introduction"
           - title: GUIDES
-            url: "#"
+            url: "/guides/quick-start-guide"
             below:
               - title: Quickstart guide
-                url: "#"
+                url: "/guides/quick-start-guide"
               - title: Create new component
-                url: "#"
+                url: "/guides/create-component-guide"
           - title: CONFIGURATIONS
             url: "#"
             below:
               - title: Configuration
-                url: "#"
+                url: "/configurations/details"
               - title: Custom webpack configuration
-                url: "#"
+                url: "/configurations/custom-webpack-config"
               - title: Presets
-                url: "#"
+                url: "/configurations/preset-webpack"
           - title: COMPONENTS
             url: "#"
             below:
               - title: Overview
-                url: "#"
+                url: "/components/overview"
               - title: Global variables
-                url: "#"
+                url: "/components/globals"
               - title: Wingsuit (UI Patterns)
-                url: "#"
+                url: "/components/wingsuit"
               - title: Presentation
-                url: "#"
+                url: "/components/presentation"
           - title: ASSETS
             url: "#"
             below:
               - title: Overview
-                url: "#"
+                url: "/assets/overview"
               - title: Images & Icons
-                url: "#"
+                url: "/assets/images"
               - title: SVGs
-                url: "#"
+                url: "/assets/svg"
               - title: Javascript
-                url: "#"
+                url: "/assets/javascript"
           - title: DRUPAL
-            url: "#"
+            url: "/drupal/ui_patterns"
             below:
               - title: Wingsuit Kickstarter (with UI Patterns and Layout Builder)
-                url: "#"
+                url: "/drupal/ui_patterns"
           - title: DOCUMENTATION
             url: "#"
             below:
               - title: Get started
-                url: "#"
+                url: "/documentation/overview"
               - title: MDX
-                url: "#"
+                url: "/documentation/mdx"
           - title: TESTING
             url: "#"
             below:
               - title: Visual Testing
-                url: "#"
+                url: "/testing/visual-testing"
     top:
       label: Top
       fields:
@@ -87,26 +86,31 @@ menu:
       fields:
         items:
           - title: BASICS
-            url: "#"
+            url: "/basics/introduction"
             below:
               - title: Introduction
-                url: "#"
+                url: "/basics/introduction"
+              - title: Quick setup
+                url: "/guides/quick-start-guide"
+              - title: Create new component
+                url: "/guides/create-component-guide"
+
           - title: CONFIGURATIONS
-            url: "#"
+            url: "/configurations/details"
             below:
               - title: Configuration
-                url: "#"
+                url: "/configurations/details"
               - title: Custom webpack configuration
-                url: "#"
+                url: "/configurations/custom-webpack-config"
               - title: Presets
-                url: "#"
-          - title: CONFIGURATIONS
-            url: "#"
+                url: "/configurations/preset-webpack"
+          - title: COMPONENTS
+            url: "/components/overview"
             below:
-              - title: Configuration
-                url: "#"
-              - title: Custom webpack configuration
-                url: "#"
-              - title: Presets
-                url: "#"
+              - title: Wingsuit/UI Patterns
+                url: "/components/wingsuit"
+              - title: Twig only
+                url: "/components/twig"
+              - title: Presentation
+                url: "/components/presentation"
   visibility: storybook

@@ -6,7 +6,14 @@
  * See component.wingsuit.yml for usage.
  */
 #}
-{% include "@templates/site-container.twig" with {
-  menu: pattern('menu', {items: primary_menu.items}, 'primary'),
-  content: 'TEST'
+{% embed "@templates/site-container.twig" with {
+  menu: null,
+  footer_menu: pattern_preview('menu', {}, 'footer'),
+  show_hamburger: false,
 } %}
+  {% block content %}
+    {{ pattern('section', {'column_1':
+    pattern_preview('hero')
+    }, '1_column')  }}
+  {% endblock %}
+{% endembed %}

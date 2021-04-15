@@ -125,7 +125,7 @@ export async function renderPatternPreview(
     patternId,
     {
       ...patternVariables,
-      ...buildBaseVariables(variables, false),
+      ...buildBaseVariables(variables, true),
     },
     variantId
   );
@@ -153,7 +153,11 @@ export async function renderPattern(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  const finalVariables = buildBaseVariables(variables);
+  const patternVariables = variant.getVariables(false);
+  const finalVariables = {
+  ...patternVariables,
+  ...buildBaseVariables(variables, true),
+  }
   finalVariables.variant = variantId;
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,

@@ -1,7 +1,3 @@
-.visible-height {
-  height: calc(100vh - 80px);
-}
-
 .wingsuit-root > div {
   display: flex;
   flex-direction: column;

@@ -1,13 +1,10 @@
----
-id: 'details'
-title: 'Configuration'
----
+# Configuration
 
 Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/stubs/defaultWingsuitConfig.stub.ts) of variables that are suitable for most use cases.
 
 <b>The Wingsuit configuration file has three main sections</b>
 
-* `apps` for app-specific configuration. A typical app is Drupal. Here you can configure where your app is located and how you want to compile and store your assets.   
+* `apps` for app-specific configuration. A typical app is Drupal. Here you can configure where your app is located and how you want to compile and store your assets.
 
 * `designSystem` for design system configuration. The design system is where your patterns living. Here you can configure everything around your patterns.
 
@@ -23,7 +20,7 @@ Each app is configurable by following properties:
 * `assetBundleFolder` the folder name under the dist folder for assets.
 
 ## Design systems details
-In the `designSystems` section you define the folder structure of your design system. 
+In the `designSystems` section you define the folder structure of your design system.
 Each designSystem is configurable by following properties:
 * `path` the path to the design system.
 * `patternFolder` the folder name under the designsystem folder for patterns.
@@ -50,11 +47,13 @@ module.exports = {
 You can use namespaces in twig and javascript imports.
 
 <b>TWIG:</b>
+
 ```js
-  {% include "@atoms/button/button.twig" %}
+  {{ include "@atoms/button/button.twig" }}
 ```
 
 <b>Javascript:</b>
+
 ```js
   import "atoms/button";
 ```

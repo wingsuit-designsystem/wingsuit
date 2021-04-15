@@ -1,10 +1,11 @@
 import 'protons';
-import MDX from './svg.mdx';
+import MDX from './index.mdx';
+import './images/add-blocks.png';
 
 const template = require('../../docs.twig');
 
 export default {
-  path: '/assets/svg',
+  path: '/basics/introduction',
   template,
   MDX,
 };

@@ -5,7 +5,7 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 export function name(appConfig: AppConfig) {
-  return 'ssg';
+  return 'pages';
 }
 
 export function wingsuitConfig(): {} {

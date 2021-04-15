@@ -12,9 +12,6 @@
 <section class="text-gray-700 body-font">
   <div class="flex flex-col">
     <div class="flex flex-col pt-8 items-center text-center md:items-start md:text-left mb-16 md:mb-0 lg:flex-grow">
-      {% if pre_headline is not empty %}
-        <div{{ region_attributes.pre_headline|default(create_attribute()).addClass('uppercase tracking-loose font-medium w-full mb-4') }}>{{ pre_headline }}</div>
-      {% endif %}
       {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h1', tag_name: 'h1', attributes: region_attributes.headline } %}
       {% if text is not empty %}
         <div{{ region_attributes.text|default(create_attribute()).addClass('mb-8 font-medium leading-relaxed text-l max-w-sm ') }}>{{ text }}</div>
@@ -23,11 +20,6 @@
     <div {{ region_attributes.image|default(create_attribute()).addClass('w-full') }}>
       {{ image }}
     </div>
-    {% if sub_headline is not empty %}
-      <div class="text-center pt-8">
-        {% include "@atoms/headline/headline.twig" with {headline: sub_headline, variant: 'h4', tag_name: 'h3', attributes: region_attributes.headline } %}
-      </div>
-    {% endif %}
     {% if button is not empty %}
       <div class="flex justify-center  flex-col lg:flex-row pt-6">
         <div{{ region_attributes.button|default(create_attribute()).addClass('mr-0 lg:mr-5 mb-6') }}>{{ button }}</div>
