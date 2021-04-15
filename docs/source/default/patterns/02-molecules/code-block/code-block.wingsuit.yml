@@ -1,4 +1,4 @@
-Code-block:
+code_block:
   use: "@molecules/code-block/code-block.twig"
   label: Code-block
   description: Amazing code-block component.

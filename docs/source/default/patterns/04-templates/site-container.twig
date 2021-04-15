@@ -1,7 +1,7 @@
 {# Include this template inside the page.html.twig in drupal. #}
 
 {% block header %}
-  {% include '@organisms/header/header.twig' with {show_hamburger: show_hamburger, menu_top: menu_top, has_spacer: header_has_spacer, variant: "fixed", language_select: language_select } only %}
+  {% include '@organisms/header/header.twig' with {show_hamburger: show_hamburger, menu_top: menu_top, has_spacer: header_has_spacer, variant: "fixed" } only %}
 {% endblock header %}
 
 {{ highlighted }}
@@ -11,7 +11,7 @@
   {% endblock %}
 {% endset %}
 
-<main class="main-content flex-1 mt-10">
+<main class="main-content flex-1 mt-16">
   {% block main %}
     {% if menu is not empty %}
       {% embed "@organisms/section/section.twig" with { columns_width_2: '25x75', columns: 2, width: 'default', padding_top: 'default'} %}

@@ -16,7 +16,7 @@ hero:
       label: Button
       preview:
         id: button
-        variant: rounded
+        variant: default
         settings:
           size: text-xs
     button_second:
@@ -24,7 +24,7 @@ hero:
       label: Button seco
       preview:
         id: button
-        variant: rounded
+        variant: default
         fields:
           text: Show Video
         settings:
@@ -35,7 +35,7 @@ hero:
       label: Button third
       preview:
         id: button
-        variant: rounded
+        variant: default
         fields:
           text: Show Video
         settings:

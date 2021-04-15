@@ -9,31 +9,24 @@ headline:
       preview:
         faker: lorem.word
   variants:
-    xl:
-      label: XL
-      configuration:
-        size: text-4xl font-bold md:text-8xl
-        spacing_bottom:
-          small: mb-6 md:mb-12
-          default: mb-10 md:mb-16
     h1:
       label: h1
       configuration:
-        size: text-3xl font-bold md:text-6xl leading-relaxed
+        size: text-3xl font-medium md:text-7xl leading-relaxed
         spacing_bottom:
           small: mb-9 md:mb-12
           default: mb-9 md:mb-12
     h2:
       label: h2
       configuration:
-        size: text-2xl font-bold md:text-5xl leading-relaxed
+        size: text-2xl font-bold md:text-3xl leading-relaxed
         spacing_bottom:
           small: mb-4 md:mb-10
           default: mb-8 md:mb-11
     h3:
       label: h3
       configuration:
-        size: text-xl md:text-4xl font-bold leading-relaxed
+        size: text-xl md:text-2xl font-bold leading-relaxed
         spacing_bottom:
           small: mb-2 md:mb-4
           default: mb-8 md:mb-10
@@ -59,6 +52,9 @@ headline:
           small: mb-8
           default: mb-8
   settings:
+    center:
+      type: boolean
+      label: Center
     tag_name:
       type: select
       label: Tag name

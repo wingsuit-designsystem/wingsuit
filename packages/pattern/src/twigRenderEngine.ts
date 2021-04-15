@@ -155,9 +155,9 @@ export async function renderPattern(
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
   const patternVariables = variant.getVariables(false);
   const finalVariables = {
-  ...patternVariables,
-  ...buildBaseVariables(variables, true),
-  }
+    ...patternVariables,
+    ...buildBaseVariables(variables, true),
+  };
   finalVariables.variant = variantId;
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,

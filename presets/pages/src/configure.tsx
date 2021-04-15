@@ -45,8 +45,8 @@ export function configure(
             data.getProps != null
               ? // eslint-disable-next-line no-await-in-loop
                 await data.getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup)
-              // eslint-disable-next-line no-await-in-loop
-              : await getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup);
+              : // eslint-disable-next-line no-await-in-loop
+                await getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup);
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
           // const rendered = ReactDOMServer.renderToStaticMarkup(component);
           // eslint-disable-next-line no-await-in-loop

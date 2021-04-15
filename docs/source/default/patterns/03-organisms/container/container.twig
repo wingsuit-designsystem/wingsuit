@@ -22,7 +22,7 @@
   pattern_configuration('container', '', 'padding_bottom')[padding_bottom],
   pattern_configuration('container', '', 'width')[width],
   classes,
-  'mx-auto'
+  'mx-auto w-full'
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()) %}

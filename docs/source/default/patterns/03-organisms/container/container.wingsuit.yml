@@ -80,11 +80,11 @@ container:
       default: 'px-6'
       large: 'px-10'
     padding_top:
-      small: 'pt-4'
+      small: 'pt-8'
       default: 'pt-10 md:pt-20'
       large: 'pt-20 md:pt-24'
     padding_bottom:
-      small: 'pb-4'
+      small: 'pb-8'
       default: 'pb-10 md:pb-20'
       large: 'pb-20 md:pb-24'
     width:

@@ -9,23 +9,26 @@
 
 {# TEMPLATE #}
 
-<section class="text-gray-700 body-font">
-  <div class="flex flex-col">
-    <div class="flex flex-col pt-8 items-center text-center md:items-start md:text-left mb-16 md:mb-0 lg:flex-grow">
-      {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h1', tag_name: 'h1', attributes: region_attributes.headline } %}
-      {% if text is not empty %}
-        <div{{ region_attributes.text|default(create_attribute()).addClass('mb-8 font-medium leading-relaxed text-l max-w-sm ') }}>{{ text }}</div>
-      {% endif %}
-    </div>
-    <div {{ region_attributes.image|default(create_attribute()).addClass('w-full') }}>
+<section class="pt-16">
+
+  {% embed "@organisms/container/container.twig" %}
+    {% block content %}
+      {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h1', tag_name: 'h1' } only %}
+    {% endblock %}
+  {% endembed %}
+  {% embed "@organisms/container/container.twig" with {width: 'large', padding_bottom: 'default'}%}
+    {% block content %}
       {{ image }}
-    </div>
-    {% if button is not empty %}
-      <div class="flex justify-center  flex-col lg:flex-row pt-6">
-        <div{{ region_attributes.button|default(create_attribute()).addClass('mr-0 lg:mr-5 mb-6') }}>{{ button }}</div>
-        <div{{ region_attributes.button_second|default(create_attribute()).addClass('mr-0 lg:mr-5 mb-6') }}>{{ button_second }}</div>
-        <div{{ region_attributes.button_third }}>{{ button_third }}</div>
+    {% endblock %}
+  {% endembed %}
+  {% embed "@organisms/container/container.twig" %}
+    {% block content %}
+      {% include "@atoms/headline/headline.twig" with {center: true, headline: 'Get started', variant: 'h3', tag_name: 'h3', spacing_bottom: 'small' } only %}
+      <div class="flex space-x-4 justify-center">
+        {{ button }} {{ button_second }} {{ button_third }}
       </div>
-    {% endif %}
-  </div>
+    {% endblock %}
+  {% endembed %}
+
 </section>
+

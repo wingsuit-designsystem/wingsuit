@@ -21,12 +21,6 @@ button:
           primary: 'border-teal-300 text-black px-6 hover:bg-teal-600 hover:border-teal-600 hover:text-white'
           secondary: 'border-yellow-600 text-black px-6 hover:bg-yellow-600 hover:text-white'
       description: Inverts colors
-    rounded:
-      label: Rounded
-      configuration:
-        colors:
-          primary: 'border-teal-500 bg-teal-500 px-12 w-full lg:w-auto rounded-3xl text-black'
-          secondary: 'border-yellow-300 bg-yellow-300 px-12 rounded-3xl text-black hover:bg-yellow-600 hover:border-yellow-600'
   configuration:
     size:
       text:

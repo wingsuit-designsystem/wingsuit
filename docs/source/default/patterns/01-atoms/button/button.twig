@@ -15,7 +15,7 @@ Classes
   'flex items-center justify-center inline-flex border-2 py-1 focus:outline-none transition-colors duration-500',
   expanded ? 'w-full',
   variant == 'outline' ? 'border-2',
-  variant == 'rounded' ? 'border-2',
+  round ? 'border-2 rounded-3xl',
   icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
   pattern_configuration('button', variant, 'colors')[color],
   pattern_configuration('button', variant, 'size')['text'][size],

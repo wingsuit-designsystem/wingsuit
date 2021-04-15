@@ -1,0 +1,47 @@
+{% embed "@organisms/container/container.twig"
+  with {
+  width: 'default',
+  padding_top: 'small',
+  padding_bottom: 'small',
+  bg: bg
+} %}
+  {% block content %}
+    <div x-data="{key: '{{ data|first.key }}'}">
+      <div class="pb-10">
+        {% include "@atoms/rich-text/rich-text.twig" with {text: content} %}
+      </div>
+      {% set code_block %}
+        {% include "@molecules/code-block/code-block.twig"
+          with {content: '<div x-html="$refs[\'code_\' + key].innerHTML"></div>'} %}
+      {% endset %}
+      <div class="space-x-3 flex">
+        {% for item in data %}
+          {% include "@atoms/button/button.twig" with {
+            text: item.title, variant: 'default',
+            round: true,
+            attributes: create_attribute().setAttribute(
+              '@click', 'key=\'' ~ item.key ~'\''
+            ).setAttribute (
+              ':class', "{ 'shadow-md': key === '" ~ item.key ~ "' }"
+            )
+          } only %}
+
+        {% endfor %}
+      </div>
+      <div class="hidden">
+        {% for item in data %}
+          <div x-ref="code_{{ item.key }}">{{ item.code }}</div>
+          <div x-ref="content_{{ item.key }}">{{ item.content }}</div>
+        {% endfor %}
+      </div>
+      {% embed "@organisms/grid/grid.twig" with {
+        columns: 2,
+        cells: [
+          '<div x-html="$refs[\'content_\' + key].innerHTML"></div>',
+          code_block
+        ]
+      } %}
+      {% endembed %}
+    </div>
+  {% endblock %}
+{% endembed %}

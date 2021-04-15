@@ -1,0 +1,29 @@
+{% embed "@templates/site-container.twig"
+  with {
+  menu_top: null,
+  header_has_spacer: true,
+  footer_menu: pattern_preview('menu', {}, 'footer'),
+} %}
+
+  {% block content %}
+    {{ pattern_preview('hero') }}
+
+    {{ pattern_preview('code_tabs', {
+      data: [
+        {
+          title: 'BASICS',
+          key: "basics",
+          content: 'CONTENT',
+          code: 'Code'
+        },
+        {
+          title: 'CONTENT 2',
+          key: "content",
+          content: 'XY',
+          code: 'TEXT'
+        }
+      ]
+    }) }}
+  {% endblock %}
+
+{% endembed %}
