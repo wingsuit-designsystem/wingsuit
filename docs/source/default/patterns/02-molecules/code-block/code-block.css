@@ -1,0 +1,12 @@
+.code-block__feature {
+  @apply border;
+  @apply border-dashed;
+  @apply cursor-pointer;
+  @apply block;
+  @apply my-2;
+}
+
+.code-block__feature--active {
+  @apply bg-white;
+  @apply bg-opacity-20;
+}

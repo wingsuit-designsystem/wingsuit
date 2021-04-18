@@ -2641,6 +2641,13 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@ryangjchandler/spruce@^2.6.3":
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@ryangjchandler/spruce/-/spruce-2.6.3.tgz#c9a42c6009385af279ba229a8950f63a45feeadb"
+  integrity sha512-sWeh9y+N4O86hq96PMjqhH6Bj215f903q9+SV8ofucjtH17/gYJ9AmaFJhA0TvkPAxGrRHVrYaO+KaCrNL8PJQ==
+  dependencies:
+    alpinejs "^2.5"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.1.tgz#a21117b19ee9be70c379ec1877537ef2e1c63301"
@@ -4319,7 +4326,7 @@ alpinejs@^1.10.1:
   resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-1.12.0.tgz#d252d94cab899bf2674619b41b81308c6ed5415c"
   integrity sha512-0Kd2RjnIb2xynGn3VNy36pzz23NK2MUXba9bsP9LSZY0BkIX58P7YxMadPGye0pZIGywiiw6L4z47X/t3mPurA==
 
-alpinejs@^2.7.0:
+alpinejs@^2.5, alpinejs@^2.7.0:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.8.2.tgz#b14ec21ae3cd78dcee4aed0a78ed0f01b676dac4"
   integrity sha512-5yOUtckn4CBp0qsHpo2qgjZyZit84uXvHbB7NJ27sn4FA6UlFl2i9PGUAdTXkcbFvvxDJBM+zpOD8RuNYFvQAw==
@@ -8733,7 +8740,7 @@ escalade@^3.0.2, escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=

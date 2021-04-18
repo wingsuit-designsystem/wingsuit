@@ -1,0 +1,76 @@
+{% embed "@organisms/container/container.twig"
+  with {
+  width: 'large',
+  padding_top: 'default',
+  padding_bottom: 'default',
+  bg: bg
+} %}
+  {% block content %}
+    <div x-data="{feature: null, key: '{{ data|first.key }}'}">
+      <div class="pb-10">
+        {% include "@atoms/rich-text/rich-text.twig" with {text: content} %}
+      </div>
+      <div
+      {{ create_attribute().addClass([
+      'space-x-3 flex',
+        data|length == 1 ? 'hidden'
+      ]) }}
+      >
+        {% for item in data %}
+          {% include "@atoms/button/button.twig" with {
+            text: item.title, variant: 'default',
+            round: true,
+            attributes: create_attribute().setAttribute(
+              '@click', 'key=\'' ~ item.key ~'\''
+            ).setAttribute (
+              ':class', "{ 'shadow-md': key === '" ~ item.key ~ "' }"
+            )
+          } only %}
+
+        {% endfor %}
+      </div>
+      {% for item in data %}
+        {% set code_block %}
+            {% include "@molecules/code-block/code-block.twig"
+              with {
+              codes: item.codes
+            } %}
+        {% endset %}
+        {% set content %}
+          <div x-data="{key: '{{ item.contents|first.key }}'}">
+            <div {{ create_attribute().addClass([
+              'pb-4',
+              item.contents|length == 1 ? 'hidden'
+            ]) }}>
+          {% for content in item.contents %}
+            {% include "@atoms/button/button.twig" with {
+              text: content.title, variant: 'default',
+              round: true,
+              attributes: create_attribute().setAttribute(
+                '@click', 'key=\'' ~ content.key ~'\''
+              ).setAttribute (
+                ':class', "{ 'shadow-md': key === '" ~ content.key ~ "' }"
+              )
+            } only %}
+          {% endfor %}
+            </div>
+          {% for content in item.contents %}
+            <div x-show="key === '{{ content.key }}'">{{ content.content }}</div>
+          {% endfor %}
+          </div>
+        {% endset %}
+        <div class="pt-10" x-show="key === '{{ item.key }}'">
+          {% embed "@organisms/grid/grid.twig" with {
+            columns: 2,
+            cells: [
+              content,
+              code_block
+            ]
+          } only %}
+          {% endembed %}
+        </div>
+
+      {% endfor %}
+    </div>
+  {% endblock %}
+{% endembed %}

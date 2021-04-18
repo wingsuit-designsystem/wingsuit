@@ -7,6 +7,7 @@ import 'molecules/hero';
 import 'atoms/image';
 import 'organisms/header';
 import 'organisms/footer';
+import 'organisms/section-code';
 
 export default {
   title: 'Pages/Homepage',

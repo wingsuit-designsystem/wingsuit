@@ -3,9 +3,41 @@ code_block:
   label: Code-block
   description: Amazing code-block component.
   fields:
-    content:
-      type: text
-      label: Content
-      description: A code example e.g. in html.
+    codes:
+      type: object
+      label: Data
+      description: The format of the code.
       preview:
-        faker: lorem.paragraph
+        - key: code1
+          format: yaml
+          title: Code 1
+          code_length: 12
+          code: "<code>use: @molecules/avatar/avatar.twig \n
+                  \tlabel: Avatar\n
+                  \tdescription: An avatar represents an ....\n</code><code>
+                  fields:\n
+                  <code class='highlight-feature highlight-feature--active'>\timage:\n
+                      \t\ttype: pattern\n
+                      label: Image\n
+                      preview:\n
+                        id: placeholder\n
+                        variant: image\n
+                        settings:\n
+                          style: 1x1_xs_sc\n</code></code>"
+        - key: code3
+          title: Code 2
+          format: yaml
+          code: "<code>use: @molecules/avatar/avatar.twig \n
+                  \tlabel: Avatar 2\n
+                  \tdescription: An avatar represents an ....\n</code><code>
+                  fields:\n
+                  \timage:\n
+                      \t\ttype: pattern\n
+                      label: Image\n
+                      preview:\n
+                        id: placeholder\n
+                        variant: image\n
+                        settings:\n
+                          style: 1x1_xs_sc\n</code>"
+
+

@@ -8,20 +8,111 @@
   {% block content %}
     {{ pattern_preview('hero') }}
 
-    {{ pattern_preview('code_tabs', {
+    {{ pattern_preview('section_code', {
+      bg: 'purple-light',
+      content: '<h2>2. Build your components</h2><p>
+      Fields and settings are editable with Storybook controls. Controls make it easy to see your component in every state. </p>
+      ',
       data: [
         {
-          title: 'BASICS',
-          key: "basics",
-          content: 'CONTENT',
-          code: 'Code'
+          title: 'Base',
+          key: "base",
+          contents: [
+          {
+            key: 'canvas',
+            title: 'Canvas',
+            content: '
+            <div class="relative">
+            <div class="code-block__feature absolute" style="right:0; top: 76%; height: 21%; width: 67.5%"
+            :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}"
+            @click="$store.component_feature = \'fields\'"
+            ></div>
+            <div class="code-block__feature absolute" style="right:0; top: 61%; height: 12%; width: 67.5%"
+            :class="{\'code-block__feature--active\':$store.component_feature ==\'settings\'}"
+            @click="$store.component_feature = \'settings\'"
+            ></div>
+            <div class="code-block__feature absolute" style="top: 28%; height: 10%; width: 33.5%"
+            :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}"
+            @click="$store.component_feature = \'variants\'"
+            ></div>
+            <img src="/images/component_avatar.png">
+            </div>
+            '
+          },
+          {
+            key: 'docs',
+            title: 'Docs',
+            content: '
+            <div class="relative">
+            <img src="/images/component_avatar.png">
+            </div>
+            '
+          }
+        ],
+          codes: [
+          {
+            key: 'yaml',
+            title: 'avatar.wingsuit.yml',
+            format: 'yaml',
+            code_length: 31,
+            code: 'use: "@molecules/avatar/avatar.twig"
+label: Avatar
+description: "An avatar represents an ...."
+<div @click="$store.component_feature = \'fields\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">fields:
+  image:
+    type: pattern
+    label: Image
+    preview:
+      id: placeholder
+      variant: image
+      settings:
+        style: 1x1_xs_sc
+  text:
+    type: text
+    label: Text
+    preview:
+      faker: lorem.paragraph</div><div @click="$store.component_feature = \'settings\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'settings\'}">settings:
+  text_align:
+    type: select
+    label: Text align
+    options:
+      left: Left
+      center: Center</div><div @click="$store.component_feature = \'variants\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}">variants:
+  default:
+    label: Default
+  horizontal:
+    label: Horizontal</div>
+'
+          },
+          {
+            key: 'twig',
+            title: 'avatar.twig',
+            format: 'twig',
+            code_length: 35,
+            code: '{% set classes = [
+  text_align == \'center\' ? \'text-center\',
+  \'bg-gray-100 rounded-xl overflow-hidden p-8\',
+  variant == \'horizontal\' ? \'flex flex-row\'
+] %}
+
+{% set image_classes = [
+  \'relative overflow-hidden flex-none w-48\',<div @click="$store.component_feature = \'variants\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}">variant == \'default\'? \'h-48 rounded-full mx-auto\',
+variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
+
+&lt;figure {{ attributes.addClass(classes) }} &gt;
+  &lt;div {{ image_attributes.addClass(image_classes) }}&gt;<div @click="$store.component_feature = \'fields\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">     {{ image }}   </div>  &lt;/div&gt;
+  &lt;div class="pt-6 space-y-4 flex-1"&gt;
+    &lt;blockquote&gt;
+      &lt;p class="text-lg font-semibold"&gt;<div @click="$store.component_feature = \'fields\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">        {{ text }}        </div>      &lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;figcaption&gt;
+      &lt;p class="text-teal-600"&gt;<div @click="$store.component_feature = \'fields\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">        {{ full_name }}       </div>     &lt;/p&gt;
+    &lt;/figcaption&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;'
+          }
+        ],
         },
-        {
-          title: 'CONTENT 2',
-          key: "content",
-          content: 'XY',
-          code: 'TEXT'
-        }
       ]
     }) }}
   {% endblock %}
