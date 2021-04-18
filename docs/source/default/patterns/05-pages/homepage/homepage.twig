@@ -9,6 +9,171 @@
     {{ pattern_preview('hero') }}
 
     {{ pattern_preview('section_code', {
+      bg: 'green-light',
+      content: '<h2>1. Define your Design Tokens</h2><p>
+      </p>
+      ',
+      data: [
+        {
+          title: 'TailwindCSS',
+          key: "tailwind",
+          contents: [
+          {
+            key: 'colors',
+            title: 'Colors',
+            content: '
+            <div>
+            <img src="/images/colors_export.png">
+            </div>
+            '
+          },
+        ],
+          codes: [
+          {
+            key: 'yaml',
+            title: 'tailwind.config.js',
+            format: 'javascript',
+            code_length: 31,
+            code: "
+module.exports = {
+  ...
+  theme: {
+    colors: {
+      red: colors.rose,
+      teal: {
+        200: '#e6fffa',
+        300: '#b2f5ea',
+        500: '#00ffd1',
+      },
+      purple: {
+        200: '#faf5ff',
+        500: '#8000ff',
+      },
+    },
+    extend: {
+      gridTemplateColumns: {
+        '33/66': '33% 66%',
+        '66/33': '66% 33%',
+        '25/50/25': '25% 50% 25%',
+        '25/75': '25% 75%',
+      },
+      fontFamily: {
+        serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
+        sans: ['Inter', 'Roboto', 'sans-serif'],
+      },
+    },
+  };
+"
+          },
+          {
+            key: 'mdx',
+            title: 'colors.mdx',
+            format: 'javascript',
+            code: '
+import { Meta, ColorPalette, ColorItem, Subtitle } from \'@storybook/addon-docs/blocks\';
+const tailwindConfig = require(\'../../config/silo/tailwind.json\');
+const colors = tailwindConfig.tailwind.theme.colors;
+
+&lt;Meta title="Tokens/Colors" /&gt;
+
+# Colors Matter
+
+## A palette of great-looking, well-balanced colors.
+&lt;ColorPalette&gt;
+  {
+    Object.keys(colors).map((key)=>{
+      const color = typeof colors[key] === \'string\' ? [colors[key]] : colors[key];
+      const title = `.${key}`;
+      return (
+        &lt;ColorItem key={key} title={title} colors={color} /&gt;
+      )
+    })
+  }
+&lt;/ColorPalette&gt;
+'
+          }
+        ],
+        },
+        {
+          title: 'SCSS',
+          key: "scss",
+          contents: [
+          {
+            key: 'colors',
+            title: 'Colors',
+            content: '
+            <div>
+            <img src="/images/colors_export.png">
+            </div>
+            '
+          },
+        ],
+          codes: [
+          {
+            key: 'variables',
+            title: 'variabels.scss',
+            format: 'scss',
+            code_length: 31,
+            code: '
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+
+'
+          },
+          {
+            key: 'mdx',
+            title: 'colors.mdx',
+            format: 'javascript',
+            code: '
+import { Meta, ColorPalette, ColorItem, Subtitle } from \'@storybook/addon-docs/blocks\';
+const colors = require(\'tokens/exports/_colors.scss\');
+
+&lt;Meta title="Tokens/Colors" /&gt;
+
+# Colors Matter
+
+## A palette of great-looking, well-balanced colors.
+&lt;ColorPalette&gt;
+  {
+    Object.keys(colors).map((key)=>{
+      const color = typeof colors[key] === \'string\' ? [colors[key]] : colors[key];
+      const title = `.${key}`;
+      return (
+        &lt;ColorItem key={key} title={title} colors={color} /&gt;
+      )
+    })
+  }
+&lt;/ColorPalette&gt;
+'
+          }
+        ],
+        },
+      ]
+    }) }}
+
+
+    {{ pattern_preview('section_code', {
       bg: 'purple-light',
       content: '<h2>2. Build your components</h2><p>
       Fields and settings are editable with Storybook controls. Controls make it easy to see your component in every state. </p>
@@ -39,15 +204,6 @@
             </div>
             '
           },
-          {
-            key: 'docs',
-            title: 'Docs',
-            content: '
-            <div class="relative">
-            <img src="/images/component_avatar.png">
-            </div>
-            '
-          }
         ],
           codes: [
           {
@@ -111,6 +267,122 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
   &lt;/div&gt;
 &lt;/figure&gt;'
           }
+        ],
+        },
+      ]
+    }) }}
+
+
+    {{ pattern_preview('section_code', {
+      bg: 'blue-light',
+      content: '<h2>3. Document your components</h2><p>
+      </p>
+      ',
+      data: [
+        {
+          title: 'Automatic',
+          key: "automatic",
+          contents: [
+          {
+            key: 'automatic',
+            title: 'Automatic',
+            content: '
+            <div class="overflow-auto relative" style="max-height:600px">
+              <img src="/images/docs_export.png">
+            </div>
+            '
+          },
+        ],
+          codes: [
+          {
+            key: 'yaml',
+            title: 'avatar.wingsuit.yml',
+            format: 'yaml',
+            code: 'avatar:
+  use: "@molecules/avatar/avatar.twig"
+  label: Avatar
+  description: "An avatar represent a user, and displays the profile picture."
+  fields:
+    image:
+      type: pattern
+      label: Image
+      description: The profile picture.
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: 1x1_xs_sc
+    text:
+      type: text
+      label: Text
+      description: A short description of the avatar.
+      preview:
+        faker: lorem.paragraph
+    full_name:
+      type: text
+      label: Full name
+      description: The full name of the profile.
+      preview:
+        faker: name.findName
+    button:
+      type: pattern
+      label: Button
+      description: Button with link to profile detail page.
+      preview:
+        id: button
+        variant: default
+        settings:
+          expanded: true
+
+  settings:
+    text_align:
+      type: select
+      label: Text align
+      description: Align the text of the avatar.
+      options:
+        left: Left
+        center: Center
+
+  variants:
+    default:
+      label: Default
+      description: Show
+    horizontal:
+      label: Horizontal
+      fields:
+        image:
+          id: placeholder
+          variant: image
+          settings:
+            style: 1x2_xs_sc
+
+'
+          },
+        ],
+        },
+        {
+          title: 'MDX',
+          key: "mdx",
+          contents: [
+          {
+            key: 'mdx',
+            title: 'MDX',
+            content: '
+            <div class="relative">
+              <img src="/images/docs_export.png">
+            </div>
+            '
+          },
+        ],
+          codes: [
+          {
+            key: 'yaml',
+            title: 'avatar.wingsuit.yml',
+            format: 'yaml',
+            code: '
+
+'
+          },
         ],
         },
       ]

@@ -7,10 +7,20 @@
   </head>
   <body x-data="{ isScrollDown: false, menuIsOpen: false }">
     {{ content }}
+
+    <script type="text/javascript">
+      Drupal = {};
+      Drupal.behaviors = {};
+    </script>
     {% for file in js %}
       {% if file != 'pages.js' %}
       <script type="text/javascript" src="/{{ file }}"></script>
       {% endif %}
     {% endfor %}
+    <script type="text/javascript">
+      Object.keys(Drupal.behaviors).forEach((key)=>{
+        Drupal.behaviors[key].attach(document);
+      });
+    </script>
   </body>
 </html>

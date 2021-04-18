@@ -23,8 +23,9 @@
       </li>
       {% endfor %}
     </ul>
-    <div class="relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col">
-      <div class="hidden md:block absolute inset-y-0 left-0 bg-gray-700" style="width:50px"></div>
+    <div class="relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col"
+         style="max-height: 450px"
+    >
       <div class="w-full flex-auto flex min-h-0 overflow-auto">
         {%- for code_item in codes -%}
           <div class="w-full relative flex-auto"
@@ -32,7 +33,7 @@
           >
           <pre class="flex text-xs md:text-sm">
             <div class="flex relative block text-white pt-4 pb-4 px-4 overflow-auto js-hightlight-container">
-              <code style="padding-top:0 !important;" class="code-block language-{{ code_item.format }}">{{- code_item.code|trim -}}</code>
+              <code class="code-block language-{{ code_item.format }}">{{- code_item.code|trim -}}</code>
             </div>
           </pre>
           </div>

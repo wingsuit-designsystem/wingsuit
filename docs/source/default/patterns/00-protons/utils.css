@@ -3,8 +3,3 @@
   flex-direction: column;
   width: 100%;
 }
-
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}

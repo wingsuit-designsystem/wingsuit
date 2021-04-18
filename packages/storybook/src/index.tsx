@@ -135,6 +135,7 @@ function getArgTypes(variant) {
         setting.getType() === 'colorwidget'
       ) {
         argTypes[key].type.name = 'enum';
+        argTypes[key].description += `<br>Option keys: ${Object.keys(setting.getOptions()).join(', ')}`;
         argTypes[key].control = {
           options: getStorybookControlsOptions(setting),
           type: setting.getType() === 'radio' ? 'radio' : 'select',
@@ -201,7 +202,6 @@ function getArgTypes(variant) {
           type: 'object',
         };
       } else if (field.getType() === 'pattern') {
-        argTypes[key].description = `Display "${argTypes[key].name}"`;
         argTypes[key].type.name = 'boolean';
         argTypes[key].defaultValue = true;
         argTypes[key].control = {

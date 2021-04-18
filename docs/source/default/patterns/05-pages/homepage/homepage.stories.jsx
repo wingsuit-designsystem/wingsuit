@@ -1,4 +1,4 @@
-import { RenderTwig } from '@wingsuit-designsystem/storybook';
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';
 import React from 'react';
 import 'atoms/hamburger';
 import 'molecules/card';
@@ -8,6 +8,9 @@ import 'atoms/image';
 import 'organisms/header';
 import 'organisms/footer';
 import 'organisms/section-code';
+import './images/docs_export.png';
+import './images/colors_export.png';
+import './images/component_avatar.png';
 
 export default {
   title: 'Pages/Homepage',
