@@ -4,7 +4,7 @@ import './index';
 import mdx from './<%= name %>.mdx';
 <% } %>
 
-const <%= name %>Template = require('./<%= name %>.twig');
+const template = require('./<%= name %>.twig');
 
 export default {
   title: '<%= capitalizeCleanPatternType %>/<%= capitalizeName %>',<% if (useDoc == 'mdx') { %>
@@ -15,4 +15,4 @@ export default {
   },<% } %>
 };
 
-export const <%= capitalizeName %> = () => <RenderTwig data={<%= name %>Template} />;
+export const <%= camelCaseName %> = () => <RenderTwig data={template} />;
