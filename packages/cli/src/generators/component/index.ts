@@ -118,13 +118,16 @@ export default class extends Generator {
     return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
+      const cleanName = props.name.replace(/-/g, '');
       this.props = {
         useScss: false,
+        useWingsuit:
+          props.componentType === 'wingsuit' || props.componentType === 'wingsuit_presenter',
         ...props,
         // 'name' already exists as kebab-case-name (dashes)
         capitalizeName: startCase(props.name),
         underscoreName: snakeCase(props.name),
-        camelCaseName: camelCase(props.name),
+        camelCaseName: camelCase(cleanName),
         cleanPatternType,
         capitalizeCleanPatternType: startCase(cleanPatternType),
       };
@@ -182,7 +185,7 @@ export default class extends Generator {
         );
       }
 
-      if (componentType === 'plain') {
+      if (componentType === 'plain' || componentType === 'plain_presenter') {
         this.fs.copyTpl(
           this.templatePath('ds/plain_only/**/*.ejs'),
           this.getDsComponentPath(),

@@ -21,7 +21,7 @@ parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
     return (
       <div key={key}>
         <Subtitle><b>Font Family:</b> {fontFamilies[key][0]} ({key})</Subtitle>
-        <Typeset fontFamily={key} classNamePrefix="text-" fontSizes={fontSizes} />
+        <Typeset fontFamily={fontFamilies[key][0]} classNamePrefix="text-" fontSizes={fontSizes} />
       </div>
     )
   })

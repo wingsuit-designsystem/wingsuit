@@ -42,7 +42,7 @@ export default class PatternStorage implements IPatternStorage {
 
   loadPatternsByNamespace(namespace): Pattern[] {
     const foundPatterns: Pattern[] = [];
-    Object.keys(this.definitions).forEach(key => {
+    Object.keys(this.definitions).forEach((key) => {
       const pattern = this.loadPattern(key);
       if (pattern.getNamespace() === namespace) {
         foundPatterns.push(pattern);
@@ -71,7 +71,7 @@ export default class PatternStorage implements IPatternStorage {
           basePatternTypes = [basePatternType];
         }
 
-        Object.keys(basePatternTypes).forEach(key => {
+        Object.keys(basePatternTypes).forEach((key) => {
           const type: string = basePatternTypes[key];
           if (basePatternField == null) {
             if (basePatternDefinition[type] != null) {
@@ -133,34 +133,39 @@ export default class PatternStorage implements IPatternStorage {
   createDefinitionsFromContext(context): void {
     context.keys().forEach(key => {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
-        const data = context(key);
-        if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
-          const { patternDefinition } = data.wingsuit;
-          let { namespace } = data.wingsuit;
-          const { parameters } = data.wingsuit;
-          if (namespace == null) {
-            const hierachy = key.split('/');
-            if (hierachy.length > 2) {
-              // eslint-disable-next-line prefer-destructuring
-              namespace = hierachy[1];
-              const namespaceParts = namespace.split('-');
-              if (namespaceParts.length > 1 && namespaceParts[0].length === 2) {
-                namespaceParts.shift();
-                namespace = namespaceParts.join('-');
-                namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1);
+        try {
+          const data = context(key);
+          if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
+            const { patternDefinition } = data.wingsuit;
+            let { namespace } = data.wingsuit;
+            const { parameters } = data.wingsuit;
+            if (namespace == null) {
+              const hierachy = key.split('/');
+              if (hierachy.length > 2) {
+                // eslint-disable-next-line prefer-destructuring
+                namespace = hierachy[1];
+                const namespaceParts = namespace.split('-');
+                if (namespaceParts.length > 1 && namespaceParts[0].length === 2) {
+                  namespaceParts.shift();
+                  namespace = namespaceParts.join('-');
+                  namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1);
+                }
               }
             }
-          }
 
-          Object.keys(patternDefinition).forEach(pattern_key => {
-            if (parameters !== null) {
-              patternDefinition[pattern_key].parameters = parameters;
-            }
-            if (patternDefinition[pattern_key].namespace == null) {
-              patternDefinition[pattern_key].namespace = namespace;
-            }
-            this.definitions[pattern_key] = patternDefinition[pattern_key];
-          });
+            Object.keys(patternDefinition).forEach((pattern_key) => {
+              if (parameters !== null) {
+                patternDefinition[pattern_key].parameters = parameters;
+              }
+              if (patternDefinition[pattern_key].namespace == null) {
+                patternDefinition[pattern_key].namespace = namespace;
+              }
+              this.definitions[pattern_key] = patternDefinition[pattern_key];
+            });
+          }
+        } catch (e) {
+          console.error('Loading failed.');
+          console.error(e);
         }
       }
     });
