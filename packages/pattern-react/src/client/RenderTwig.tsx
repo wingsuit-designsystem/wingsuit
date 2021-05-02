@@ -15,7 +15,7 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
           setRendered(output);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         setRendered(error.message);
       });
   }, [data, JSON.stringify(variables)]);

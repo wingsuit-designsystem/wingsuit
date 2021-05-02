@@ -45,8 +45,7 @@ hero:
       type: pattern
       label: Image
       preview:
-        id: image
-        variant: image
+        id: video
         settings:
-          url: ws-assets://images/hero.png
+          src: front.mp4
 

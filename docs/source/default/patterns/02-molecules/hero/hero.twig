@@ -11,17 +11,17 @@
 
 <section class="pt-16">
 
-  {% embed "@organisms/container/container.twig" %}
+  {% embed "@organisms/container/container.twig" with {headline: headline, padding_bottom: 'small'} only %}
     {% block content %}
       {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h1', tag_name: 'h1' } only %}
     {% endblock %}
   {% endembed %}
-  {% embed "@organisms/container/container.twig" with {width: 'large', padding_bottom: 'default'}%}
+  {% embed "@organisms/container/container.twig" with {image:image, width: 'large', padding_bottom: 'default'} only %}
     {% block content %}
       {{ image }}
     {% endblock %}
   {% endembed %}
-  {% embed "@organisms/container/container.twig" %}
+  {% embed "@organisms/container/container.twig" with {button: button, button_second: button_second, button_third: button_third, padding_bottom: 'default' } only%}
     {% block content %}
       {% include "@atoms/headline/headline.twig" with {center: true, headline: 'Get started', variant: 'h3', tag_name: 'h3', spacing_bottom: 'small' } only %}
       <div class="flex space-x-4 justify-center">

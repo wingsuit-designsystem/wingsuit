@@ -1,0 +1,4 @@
+extend: "docs"
+fields:
+  content:
+    - data: content

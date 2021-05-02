@@ -4,4 +4,4 @@
 
 // Module template
 import './video.twig';
-import './videos/sample.mp4';
+import './videos/front.mp4';
