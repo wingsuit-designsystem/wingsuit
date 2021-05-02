@@ -1,7 +1,7 @@
 import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
-import {IPatternDefinition, IPatternDefinitions} from './definition';
+import { IPatternDefinition, IPatternDefinitions } from './definition';
 
 export default class PatternStorage implements IPatternStorage {
   private definitions: IPatternDefinitions = {} as IPatternDefinitions;
@@ -134,9 +134,9 @@ export default class PatternStorage implements IPatternStorage {
         try {
           const data = context(key);
           if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
-            const {patternDefinition} = data.wingsuit;
-            let {namespace} = data.wingsuit;
-            const {parameters} = data.wingsuit;
+            const { patternDefinition } = data.wingsuit;
+            let { namespace } = data.wingsuit;
+            const { parameters } = data.wingsuit;
             if (namespace == null) {
               const hierachy = key.split('/');
               if (hierachy.length > 2) {
@@ -161,9 +161,8 @@ export default class PatternStorage implements IPatternStorage {
               this.definitions[pattern_key] = patternDefinition[pattern_key];
             });
           }
-        }
-        catch (e) {
-          console.error('Loading failed.')
+        } catch (e) {
+          console.error('Loading failed.');
           console.error(e);
         }
       }

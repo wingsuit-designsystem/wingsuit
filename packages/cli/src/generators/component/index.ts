@@ -121,7 +121,8 @@ export default class extends Generator {
       const cleanName = props.name.replace(/-/g, '');
       this.props = {
         useScss: false,
-        useWingsuit: (props.componentType === 'wingsuit' || props.componentType === 'wingsuit_presenter'),
+        useWingsuit:
+          props.componentType === 'wingsuit' || props.componentType === 'wingsuit_presenter',
         ...props,
         // 'name' already exists as kebab-case-name (dashes)
         capitalizeName: startCase(props.name),
