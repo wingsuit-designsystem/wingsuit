@@ -101,7 +101,7 @@ export default class PatternVariant {
 
   public getPreviewPatterns() {
     const previewPatterns = {};
-    Object.keys(this.fields).forEach(key => {
+    Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
       const preview = field.getPreview();
       if (field.getType() === 'pattern' && Array.isArray(preview)) {
@@ -122,7 +122,7 @@ export default class PatternVariant {
       values['variant'] = this.variant;
     }
     if (includeFields) {
-      Object.keys(this.fields).forEach(key => {
+      Object.keys(this.fields).forEach((key) => {
         const field: Field = this.fields[key];
         if (field !== null && field.getType() !== 'pattern') {
           values[key] = field.getPreview();
@@ -131,7 +131,7 @@ export default class PatternVariant {
     }
 
     if (includeSettings) {
-      Object.keys(this.settings).forEach(key => {
+      Object.keys(this.settings).forEach((key) => {
         if (this.settings[key].getType() === 'attributes') {
           values[key] = new TwigAttribute(this.settings[key].getPreview());
         } else {
@@ -170,10 +170,7 @@ export default class PatternVariant {
   private settings: Setting[] = [];
 
   private cleanStorybookString(string: string) {
-    return string
-      .toLowerCase()
-      .replace(' ', '-')
-      .replace('/', '-');
+    return string.toLowerCase().replace(' ', '-').replace('/', '-');
   }
 
   constructor(

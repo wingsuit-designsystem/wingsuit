@@ -22,7 +22,7 @@ const PatternPreview: FunctionComponent<Props> = ({
           setRendered(output);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         setRendered(`Error: ${error.message}`);
       });
     return () => {
