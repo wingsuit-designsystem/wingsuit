@@ -1,5 +1,6 @@
 .code-block__feature {
   @apply border;
+  @apply border-teal-500;
   @apply border-dashed;
   @apply cursor-pointer;
   @apply block;
@@ -7,6 +8,6 @@
 }
 
 .code-block__feature--active {
-  @apply bg-white;
+  @apply bg-teal-500;
   @apply bg-opacity-20;
 }

@@ -1,7 +1,12 @@
+{% set variant = variant|default('dark') %}
+{% set content = pattern_configuration('code_block', variant, 'content') %}
+{% set frame = pattern_configuration('code_block', variant, 'frame') %}
+{% set active_tab = pattern_configuration('code_block', variant, 'active_tab') %}
+
 <div
   x-data="{key: '{{ codes|first.key }}'}"
-  class="relative overflow-hidden md:rounded-xl shadow-2xl flex bg-light-blue-500 pb-6 md:pb-0">
-  <div class="absolute inset-0 bg-code-500"></div>
+  class="border border-gray-200 relative overflow-hidden rounded-xl shadow-2xl flex w-full">
+  <div class="absolute inset-0 {{ frame }}"></div>
   <div class="relative w-full flex flex-col"
   >
     <div class="flex-none h-11 flex items-center px-4">
@@ -11,19 +16,19 @@
         <div class="w-3 h-3 border-2 rounded-full border-green-500"></div>
       </div>
     </div>
-    <ul class="flex text-sm bg-code-700" style="transform:translateY(0%) translateZ(0)">
+    <ul class="flex text-sm {{ frame }} {{ codes|length == 1 ? 'hidden' }}" style="transform:translateY(0%) translateZ(0)">
       {%- for code_item in codes -%}
       <li class="flex-none">
         <button type="button"
                 @click="key='{{ code_item.key }}'"
                 class="border border-transparent py-2 px-4 font-medium focus:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-code-700 text-white"
-              :class="{'bg-code-500' : key === '{{ code_item.key }}'}">
+              :class="{'{{ active_tab }}' : key === '{{ code_item.key }}'}">
           {{ code_item.title }}
         </button>
       </li>
       {% endfor %}
     </ul>
-    <div class="relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col"
+    <div class="{{ content }} relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col"
          style="max-height: 450px"
     >
       <div class="w-full flex-auto flex min-h-0 overflow-auto">
@@ -31,11 +36,19 @@
           <div class="w-full relative flex-auto"
           x-show="key === '{{ code_item.key }}'"
           >
+            {% if code_item.code is not empty %}
           <pre class="flex text-xs md:text-sm">
             <div class="flex relative block text-white pt-4 pb-4 px-4 overflow-auto js-hightlight-container">
               <code class="code-block language-{{ code_item.format }}">{{- code_item.code|trim -}}</code>
             </div>
           </pre>
+            {% endif %}
+            {% if code_item.image_url is not empty %}
+              <img src="{{ file_url('ws-assets://' ~ code_item.image_url) }}" class="w-full">
+            {% endif %}
+            {% if code_item.content is not empty %}
+              {{ code_item.content }}
+            {% endif %}
           </div>
         {% endfor %}
       </div>

@@ -10,22 +10,18 @@
 
     {{ pattern_preview('section_code', {
       bg: 'green-light',
-      content: '<h2>1. Define your Design Tokens</h2><p>
-      </p>
-      ',
+      badge_headline: 'Choose your toolset',
+      content: '<h2>1. Define your Design Tokens</h2>',
       data: [
         {
           title: 'TailwindCSS',
+          intro: 'Configure your tailwind.config.js',
           key: "tailwind",
           contents: [
           {
             key: 'colors',
             title: 'Colors',
-            content: '
-            <div>
-            <img src="/images/colors_export.png">
-            </div>
-            '
+            image_url: 'images/colors_export.png'
           },
         ],
           codes: [
@@ -175,13 +171,12 @@ const colors = require(\'tokens/exports/_colors.scss\');
 
     {{ pattern_preview('section_code', {
       bg: 'purple-light',
-      content: '<h2>2. Build your components</h2><p>
-      Fields and settings are editable with Storybook controls. Controls make it easy to see your component in every state. </p>
-      ',
+      content: '<h2>2. Build your components</h2>',
       data: [
         {
           title: 'Base',
           key: "base",
+          intro: 'Fields and settings are editable with Storybook controls. Controls make it easy to see your component in every state.',
           contents: [
           {
             key: 'canvas',
@@ -275,9 +270,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
 
     {{ pattern_preview('section_code', {
       bg: 'blue-light',
-      content: '<h2>3. Document your components</h2><p>
-      </p>
-      ',
+      content: '<h2>3. Document your components</h2>',
       data: [
         {
           title: 'Automatic',
@@ -287,9 +280,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
             key: 'automatic',
             title: 'Automatic',
             content: '
-            <div class="overflow-auto relative" style="max-height:600px">
               <img src="/images/docs_export.png">
-            </div>
             '
           },
         ],
@@ -354,9 +345,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
           id: placeholder
           variant: image
           settings:
-            style: 1x2_xs_sc
-
-'
+            style: 1x2_xs_sc'
           },
         ],
         },
@@ -379,9 +368,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
             key: 'yaml',
             title: 'avatar.wingsuit.yml',
             format: 'yaml',
-            code: '
-
-'
+            code: ''
           },
         ],
         },

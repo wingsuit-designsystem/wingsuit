@@ -1,12 +1,11 @@
 const forms = require('@tailwindcss/forms');
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
-  modifiers: ['lg'],
+  modifiers: ['lg', '2xl'],
 });
 
 module.exports = {
   important: false,
-  darkMode: 'class',
   purge: {
     layers: ['utilities'],
     content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
@@ -22,7 +21,7 @@ module.exports = {
       blue: {
         200: '#ebf4ff',
       },
-      code: {
+      dark: {
         500: '#282c34',
         700: '#21252b',
       },
@@ -46,34 +45,6 @@ module.exports = {
       md: '4px 4px 0 0 rgba(0, 0, 0)',
     },
     extend: {
-      typography: (theme) => ({
-        dark: {
-          css: {
-            color: theme('colors.gray.100'),
-            '[class~="lead"]': {
-              color: theme('colors.gray.100'),
-            },
-            blockquote: {
-              color: theme('colors.gray.100'),
-            },
-            h2: {
-              color: theme('colors.gray.100'),
-            },
-            h3: {
-              color: theme('colors.gray.100'),
-            },
-            h4: {
-              color: theme('colors.gray.100'),
-            },
-            a: {
-              color: theme('colors.gray.100'),
-              '&:hover': {
-                color: theme('colors.gray.100'),
-              },
-            },
-          },
-        },
-      }),
       fill: {
         current: 'currentColor',
       },

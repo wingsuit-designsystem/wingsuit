@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * badge
+ *
+ * See badge.wingsuit.yaml for documentation.
+ */
+#}
+
+{#
+  Defaults
+#}
+
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+  Classes
+#}
+
+{#
+  Template
+#}
+<div {{ attributes.addClass(['font-sans font-medium cursor-pointer border px-2 text-center py-1 inline-block rounded-full border-black'] | sort | join(' ') | trim) }}>
+  {{ text }}
+</div>

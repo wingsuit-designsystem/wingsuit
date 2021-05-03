@@ -7,9 +7,16 @@
  * See rich-text.wingsuit.yaml for documentation.
  */
 #}
-
+{% set variant = variant|default('default') %}
 {# TEMPLATE #}
-<div class="prose dark:prose-dark lg:prose-lg">
+<div
+{{ attributes|default(create_attribute()).addClass(
+  [
+    variant == 'default' ? 'prose lg:prose-lg',
+    variant == 'large' ? 'prose prose-lg md:prose-2xl'
+  ]
+) }}
+>
   {% block text %}
     {{ text }}
   {% endblock %}
