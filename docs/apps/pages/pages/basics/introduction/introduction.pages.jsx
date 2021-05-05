@@ -8,4 +8,14 @@ export default {
   path: '/basics/introduction',
   template,
   MDX,
+  vars: {
+    next: [
+      {
+        title: 'Quickstart guide',
+        text: 'Lets to the 5 minute quickstart guide!',
+        href: 'quickstart',
+        link_title: 'Quickstart',
+      },
+    ],
+  },
 };

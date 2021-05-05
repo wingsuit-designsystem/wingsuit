@@ -2,9 +2,8 @@ import React from 'react';
 
 export const getProps = async (ctx, renderer, renderToStaticMarkup) => {
   const props = { page: '' };
-  props.page = await renderer.renderData(ctx.path, ctx.template.default, {
-    // @ts-ignore
-    content: renderToStaticMarkup(<ctx.MDX />),
-  });
+  const { vars } = ctx;
+  vars.content = renderToStaticMarkup(<ctx.MDX />);
+  props.page = await renderer.renderData(ctx.path, ctx.template.default, vars);
   return props;
 };

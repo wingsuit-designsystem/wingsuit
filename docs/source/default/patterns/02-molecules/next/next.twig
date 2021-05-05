@@ -1,0 +1,13 @@
+{% for item in items %}
+<div class="shadow-xl rounded-lg flex py-3 px-6 w-full border-black">
+  <div class="flex-grow"><b>{{ item.title }}</b><br>{{item.text }}</div>
+  {% include "@atoms/button/button.twig" with {
+    "variant": "default",
+    "text": item.link_title,
+    "size": "medium",
+    "color": "primary",
+    "url": item.href,
+    "icon_alignment": "right"
+  } %}
+</div>
+{% endfor %}

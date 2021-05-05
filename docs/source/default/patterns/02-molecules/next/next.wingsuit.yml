@@ -1,0 +1,15 @@
+next:
+  use: "@molecules/next/next.twig"
+  label: Next
+  description: Next block
+  fields:
+    items:
+      type: object
+      label: Items
+      description: The next items.
+      preview:
+        - title: 'Quickstart'
+          text: 'Do the 5 minute quickstart guide!'
+          href: '#'
+          link_title: 'Quickstart'
+
