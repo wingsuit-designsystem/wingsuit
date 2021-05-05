@@ -17,5 +17,5 @@ export default {
         link_title: 'Quickstart',
       },
     ],
-  }
+  },
 };
