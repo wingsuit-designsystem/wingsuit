@@ -1,7 +1,7 @@
 # Javascript
 ## Custom javascript
 Drupal javascript behaviors are working out of the box in Wingsuit.
-Put your custom javascript code in a `component.behavior.js` file inside your component.
+Put your custom javascript code in a `pattern.behavior.js` file inside your pattern.
 
 Wingsuit will load the file automatically and call the `attach` function after component initialization.
 
@@ -15,7 +15,7 @@ Drupal.behaviors.button = {
 };
 ```
 
-Wingsuit supports ES6 and compiles (babel) every behavior file to a separately compiled behavior file.
+Wingsuit supports ES6 and compiles (babel) every behavior file to a separate compiled behavior file.
 You can find the compiled files in `dist/behaviors/*.behavior.js`.
 
 ## Vendor libraries
@@ -31,7 +31,7 @@ import 'regenerator-runtime/runtime';
 import 'alpinejs';
 ```
 
-Wingsuit compiles each vendor file into a separate compiled vendor file, so you can easily embed them in Drupal.
+Wingsuit compiles each vendor file into a separate compiled vendor file, so you can easily embed them in your application.
 You can find your vendor file under `dist/app-[type]/vendors/[your-library].js`.
 
 Check out the [webpack asset preset](https://github.com/wingsuit-designsystem/wingsuit/blob/master/packages/core/src/server/presets/assets.ts) for more details!

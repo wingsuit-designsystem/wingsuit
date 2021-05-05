@@ -6,24 +6,24 @@ Wingsuit comes with a [preset](https://github.com/wingsuit-designsystem/wingsuit
 
 * `apps` for app-specific configuration. A typical app is Drupal. Here you can configure where your app is located and how you want to compile and store your assets.
 
-* `designSystem` for design system configuration. The design system is where your patterns living. Here you can configure everything around your patterns.
+* `designSystem` for design system configuration. The design system is where your patterns are living. Here you can configure everything around them.
 
-* `presets` list of loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
+* `presets` is a list of loaded webpack presets. [Here you can find more information](../preset-webpack) about webpack bundles.
 
 ## App details
-Each app is configurable by following properties:
+Each app has the following configurable properties:
 * `type` the type of the app.
 * `path` the path to the app.
-* `cssMode` extract CSS or not.
-* `designSystem` The name to the design system.
+* `cssMode` whether to extract CSS or not.
+* `designSystem` the name of the design system.
 * `distFolder` the path to the dist folder.
-* `assetBundleFolder` the folder name under the dist folder for assets.
+* `assetBundleFolder` the folder to use for assets, under the dist folder.
 
 ## Design systems details
 In the `designSystems` section you define the folder structure of your design system.
-Each designSystem is configurable by following properties:
+Each design system has the following configurable properties:
 * `path` the path to the design system.
-* `patternFolder` the folder name under the designsystem folder for patterns.
+* `patternFolder` the folder to use for patterns, under the design system folder.
 * `namespaces` to configure folder aliases.
 
 #### Namespaces:

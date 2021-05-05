@@ -11,9 +11,9 @@ export default {
   vars: {
     next: [
       {
-        title: 'Quickstart guide',
-        text: 'Lets to the 5 minute quickstart guide!',
-        href: 'quickstart',
+        title: 'Did we catch your interest?',
+        text: 'Do the 10 minute quickstart guide!',
+        href: '/guides/quick-start-guide',
         link_title: 'Quickstart',
       },
     ],

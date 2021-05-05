@@ -1,8 +1,9 @@
 # Wingsuit (UI Patterns)
 
-The wingsuit pattern is defined inside a `pattern.wingsuit.yml`.
+A wingsuit pattern is defined inside a `pattern.wingsuit.yml`.
 
 <b>A Wingsuit component contains:</b>
+
 * index.js
 * pattern.stories.jsx
 * pattern.wingsuit.yml
@@ -20,7 +21,7 @@ export const wingsuit = {
 
 ```
 ### The pattern.wingsuit.yml
-The `pattern.wingsuit.yml` is a extended version of the UI Patterns yaml. Check out the [UI Patterns documentation](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html) with additions of [UI Patterns Settings](https://www.drupal.org/project/ui_patterns_settings)
+The `pattern.wingsuit.yml` is a extended version of the UI Patterns yaml. Check out the [UI Patterns documentation](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html), with additions of [UI Patterns Settings](https://www.drupal.org/project/ui_patterns_settings).
 
 A typical pattern definition file looks like this:
 
@@ -61,13 +62,13 @@ card:
 
 
 ## The extensions
-To build better preview functionality Wingsuit adds additional YAML configuration. This extensions are _not_ compatible with UI Patterns Library.
+To build better preview functionality, Wingsuit adds additional YAML configuration. These extensions are _not_ compatible with UI Patterns Library.
 
 ### Faker
 The `faker` key generates automatic preview data with [faker.js](https://github.com/marak/Faker.js/).
 The value can be a string or a subobject.
 * The string is passed to Faker.fake in '{{ }}' brackets.
-* To pass a complete Faker sentences use:
+* To pass a complete Faker sentence use:
 ```yaml
     preview:
       faker:
@@ -75,7 +76,7 @@ The value can be a string or a subobject.
 ```
 
 ### Type: pattern
-With field type `pattern` you can render patterns inside the pattern:
+With field type `pattern` you can render other patterns inside the pattern:
 ```yaml
 fields:
   image:
@@ -90,7 +91,7 @@ fields:
 ```
 * `id` The id of the pattern.
 * `variant` The variant of the pattern.
-* `fields` Overwrites fields preview values of the pattern.
+* `fields` Overwrites field preview values of the pattern.
 * `settings` Overwrites setting preview values of the pattern.
 
 ### Pattern list
@@ -119,7 +120,7 @@ fields:
 You can control how Wingsuit will handle the resulting array of objects.
 
 #### Following options are available:
-* `single_value`: All patterns will rendered into a single value. The resulting variable is a string not a array. This useful if you to add multiple objects into one area.
+* `single_value`: All patterns will be rendered into a single value. The resulting variable is a string not a array. This useful if you want to add multiple objects into one area.
 <br/>Your pattern.twig looks like:
 ```twig
 {{ images }}

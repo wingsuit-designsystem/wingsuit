@@ -2,7 +2,7 @@
 
 [Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to start with Wingsuit.
 
-The Kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as distribution and [Acquia Blt](https://github.com/acquia/blt) for automation.
+The Kickstarter uses [Acquia Lightning](https://github.com/acquia/lightning) as the base distribution and [Acquia Blt](https://github.com/acquia/blt) for automation.
 
 * #### Drupal blocks with a pattern.
 <img src="/images/add-blocks.png"/>
@@ -34,24 +34,24 @@ Open the page and login with:
 Username: admin<br/>
 Password: admin
 
-After login go to the front page and open the Layout Builder to add more blocks. Each block is mapped to a pattern (mostly molecules). Each section is a pattern.
-Click on `configure` in a section to see all settings you will find in storybook.
+After login, edit the front page and open the layout builder to add more blocks. Each block is mapped to a pattern (mostly molecules), each section is also a pattern.
+Click on `configure` in a section to see all settings you find in storybook.
 
 ## Development
-The Kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn build:drupal` to
-`docroot/themes/custom/wingsuit/dist/app-drupal` (check `blt/blt.yml` to see build process).
+The kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn build:drupal` to
+`docroot/themes/custom/wingsuit/dist/app-drupal` (check `blt/blt.yml` to see the build process).
 
-You can run webpack in watch mode with `yarn dev:drupal` (if your changes don't appear you probably forget to start `yarn dev:drupal`).
+You can run webpack in watch mode with `yarn dev:drupal`. (If your changes don't appear, you probably forgot to start `yarn dev:drupal`).
 
-The theme takes css js and patterns from the dist folder and not from `source` folder.
+The theme loads css, js and patterns from the `dist` folder, not from `source` folder.
 
 You can configure the path of your dist folder. See [Configuration details](../../configurations/details/index.md) to configure the webpack part. Open "Wingsuit settings" under Configuration in Drupal and adjust the path to the dist folder.
 
 ### Storybook
-To develop your patterns start storybook `yarn dev:storybook`.
+To edit your patterns, start storybook: `yarn dev:storybook`.
 
-## Module overview:
-Following modules are used to map Wingsuit patterns to Drupal:
+## Module overview
+The following modules are used to make Wingsuit patterns available to Drupal:
 
 * [components](https://www.drupal.org/project/components): Registers folders of components defined by your theme or module as Twig namespaces.
 * [ui\_patterns](https://www.drupal.org/project/ui_patterns): Does the mapping magic.
