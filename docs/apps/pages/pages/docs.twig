@@ -6,9 +6,16 @@
  * See component.wingsuit.yml for usage.
  */
 #}
+
+{% set body %}
+  {{ pattern('rich_text', {text: content}, 'default') }}
+  {{ dump() }}
+{% endset %}
+
 {% include "@templates/site-container.twig" with {
   menu: pattern_preview('menu', {}, 'primary'),
   footer_menu: null,
   show_hamburger: true,
-  content: pattern('rich_text', {text: content}, 'default')
+  content: body,
 } %}
+
