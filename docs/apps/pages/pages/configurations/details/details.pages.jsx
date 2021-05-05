@@ -21,6 +21,6 @@ export default {
         link_title: 'continue',
         href: '/configurations/preset-webpack',
       },
-    ]
-  }
+    ],
+  },
 };

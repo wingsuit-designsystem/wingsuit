@@ -20,7 +20,7 @@ export default {
         text: 'Learn how to use wingsuit by building a new component.',
         link_title: 'continue',
         href: '/guides/create-component-guide',
-      }
-    ]
-  }
+      },
+    ],
+  },
 };

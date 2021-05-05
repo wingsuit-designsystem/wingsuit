@@ -15,6 +15,6 @@ export default {
         link_title: 'Component types',
         href: '/components/overview',
       },
-    ]
-  }
+    ],
+  },
 };

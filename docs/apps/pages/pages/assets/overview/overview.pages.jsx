@@ -27,6 +27,6 @@ export default {
         link_title: 'continue',
         href: '/assets/javascript',
       },
-    ]
-  }
+    ],
+  },
 };
