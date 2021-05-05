@@ -7,4 +7,20 @@ export default {
   path: '/components/globals',
   template,
   MDX,
+  vars: {
+    next: [
+      {
+        title: 'UI Patterns',
+        text: 'Learn how wingsuit leverages UI patterns.',
+        link_title: 'continue',
+        href: '/components/wingsuit',
+      },
+      {
+        title: 'Presentation templates',
+        text: 'Learn how to create storybook preview pages for your components.',
+        link_title: 'continue',
+        href: '/components/presentation',
+      },
+    ]
+  }
 };

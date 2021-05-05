@@ -9,7 +9,7 @@
 
 {% set body %}
   {{ pattern('rich_text', {text: content}, 'default') }}
-  {{ dump() }}
+  {{ pattern('next', {items: next}) }}
 {% endset %}
 
 {% include "@templates/site-container.twig" with {
