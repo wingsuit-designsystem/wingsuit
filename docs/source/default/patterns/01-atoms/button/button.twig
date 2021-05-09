@@ -3,7 +3,7 @@ Defaults
 #}
 {% set tag_name = tag_name|default('div') %}
 {% set color = color|default('primary') %}
-{% set size = size|default('default') %}
+{% set size = size|default('medium') %}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set icon_size = icon_size|default('default') %}
 {% set icon_alignment = icon_alignment|default('right') %}
@@ -12,7 +12,7 @@ Defaults
 Classes
 #}
 {% set classes = [
-  'cursor-pointer flex items-center justify-center inline-flex border-2 focus:outline-none transition-colors duration-500',
+  'cursor-pointer items-center justify-center inline-flex border-2 focus:outline-none transition-colors duration-500',
   expanded ? 'w-full',
   variant == 'outline' ? 'border-2',
   round ? 'border-2 rounded-xl',

@@ -3,13 +3,22 @@ next:
   label: Next
   description: Next block
   fields:
-    items:
-      type: object
-      label: Items
-      description: The next items.
+    title:
+      type: textfield
+      label: Title
       preview:
-        - title: 'Quickstart'
-          text: 'Do the 5 minute quickstart guide!'
-          href: '#'
-          link_title: 'Quickstart'
-
+        faker: lorem.sentence
+    text:
+      type: textfield
+      label: Text
+      preview:
+        faker: lorem.text
+    button:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: default
+        settings:
+          size: medium
+          round: true

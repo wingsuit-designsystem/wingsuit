@@ -41,10 +41,10 @@ module.exports = {
       },
       yellow: '#fffff0',
     },
-    boxShadow: {
-      md: '4px 4px 0 0 rgba(0, 0, 0)',
-    },
     extend: {
+      boxShadow: {
+        button: '4px 4px 0 0 rgba(0, 0, 0)',
+      },
       fill: {
         current: 'currentColor',
       },

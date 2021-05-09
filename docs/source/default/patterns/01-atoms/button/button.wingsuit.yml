@@ -12,7 +12,7 @@ button:
       label: Default
       configuration:
         colors:
-          primary: 'border-teal-500 bg-teal-500 px-6 font-bold text-black hover:shadow-md'
+          primary: 'border-teal-500 bg-teal-500 px-6 font-bold text-black hover:shadow-button'
           secondary: 'border-yellow-300 bg-yellow-300 px-6 text-black hover:bg-yellow-600 hover:border-yellow-600'
     outline:
       label: Outline
@@ -25,7 +25,7 @@ button:
     size:
       padding:
         small: py-1 px-2
-        medium: py-1 px-2
+        medium: py-2 px-2
         large: py-2 px-4 md:py-4 md:px-8
       text:
         small: text-xs

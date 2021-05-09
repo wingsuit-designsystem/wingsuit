@@ -1,4 +1,6 @@
 import 'protons';
+import './images/storybook.png';
+
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
