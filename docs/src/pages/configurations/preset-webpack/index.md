@@ -38,7 +38,7 @@ module.exports = {
 * `webpackFinal` is optional and should only be implemented if the preset needs to make changes to the final webpack.
 
 ## Install a preset
-To install a preset add your preset to your `package.json` and add it to your `wingsuit.yml`:
+To install a preset add your preset to your `package.json` and add it to your `wingsuit.config.yml`:
 ```js
   module.exports = {
     ... 
@@ -52,7 +52,7 @@ To install a preset add your preset to your `package.json` and add it to your `w
 
 ## Configure a preset
 Every presets should work with zero configuration out of the box. A preset ship with a default configuration by the defaultConfiguration method.
-You can overwrite the configuration with the parameters key in your `wingsuit.yml`.
+You can overwrite the configuration with the parameters key in your `wingsuit.config.yml`.
 
 ```js
   module.exports = {
