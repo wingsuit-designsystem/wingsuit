@@ -38,8 +38,16 @@ const config_3 = {
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
+      startup: appConfig => {
+        return 'startup';
+      },
     },
     storybook2: {
+      path: 'packages/core/__tests__',
+      presets: ['AddonBundle'],
+    },
+    storybook3: {
+      type: 'storybook',
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
     },
@@ -74,6 +82,19 @@ test('#Test config type', () => {
   expect(appConfig.absAppPath).toBe(__dirname);
   expect(appConfig.absRootPath).toBe(process.cwd());
   expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+
+  const appConfigWithType = resolveConfig('storybook3:storybook', 'development', {}, config_3);
+  expect(appConfigWithType.environment).toBe('development');
+  expect(appConfigWithType.absAppPath).toBe(__dirname);
+  expect(appConfigWithType.startup(appConfig)).toBe('start-storybook --config-dir apps/storybook');
+  expect(appConfigWithType.absRootPath).toBe(process.cwd());
+  expect(appConfigWithType.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+});
+
+test('#Test startup()', () => {
+  const appConfig = resolveConfig('storybook', 'development', {}, config_3);
+  expect(appConfig.environment).toBe('development');
+  expect(appConfig.startup(appConfig)).toBe('startup');
 });
 
 test('#Test default config', () => {

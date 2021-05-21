@@ -35,6 +35,8 @@ export default interface AppConfig {
 
   features: Feature;
 
+  startup(appConfig: AppConfig);
+
   webpack(appConfig: AppConfig, config?: any);
 
   webpackFinal(appConfig: AppConfig, config?: any);
@@ -93,6 +95,9 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     absRootPath,
     environment: 'development',
     path: `./apps/${type}`,
+    startup: (app: AppConfig) => {
+      return `cross-env-shell NODE_ENV=${app.environment} "webpack --watch --config ${app.path}/webpack.config.js"`;
+    },
     webpack: (appConfig: AppConfig, config?: any) => {
       return {};
     },
