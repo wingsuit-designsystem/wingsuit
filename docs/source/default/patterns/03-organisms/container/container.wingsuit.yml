@@ -94,6 +94,7 @@ container:
       xlarge: 'max-w-8xl'
     bg:
       gray-medium: 'dark bg-gray-500'
+      video: 'bg-video-500'
       gray-light: 'bg-gray-300'
       purple-light: 'bg-purple-200'
       green-light: 'bg-green-200'

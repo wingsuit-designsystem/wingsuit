@@ -7,6 +7,10 @@
   @apply my-2;
 }
 
+.code-block {
+  @apply bg-transparent !important;
+}
+
 .code-block__feature--active {
   @apply bg-teal-500;
   @apply bg-opacity-20;

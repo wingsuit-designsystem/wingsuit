@@ -11,11 +11,11 @@ menu:
       label: Primary
       fields:
         items:
-          - title: BASICS
+          - title: Get Started
             url: "#"
             below:
-              - title: Introduction
-                url: "/basics/introduction"
+              - title: Tailwind
+                url: "/quick-start/tailwind"
           - title: GUIDES
             url: "/guides/quick-start-guide"
             below:

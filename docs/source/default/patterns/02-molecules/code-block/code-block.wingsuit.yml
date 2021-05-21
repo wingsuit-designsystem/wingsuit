@@ -31,13 +31,13 @@ code_block:
     dark:
       label: Dark
       configuration:
-        frame: bg-dark-700
+        frame: bg-code-dark
         content: bg-dark-500
         active_tab: bg-dark-500
     light:
       label: Light
       configuration:
-        frame: bg-gray-200
+        frame: bg-code-light
         content: bg-white
         active_tab: bg-gray-300
 

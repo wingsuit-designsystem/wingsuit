@@ -35,13 +35,14 @@
         {% endfor %}
       </div>
       {% for item in data %}
-
         {% set code_block %}
+          {% if item.codes|length > 0 %}
           {% include "@molecules/code-block/code-block.twig"
             with {
             variant: 'dark',
             codes: item.codes
           } %}
+          {% endif %}
         {% endset %}
         {% set content %}
           <div x-data="{key: '{{ item.contents|first.key }}'}">
@@ -61,7 +62,14 @@
               {% endfor %}
             </div>
             {% for content in item.contents %}
+
               <div x-show="key === '{{ content.key }}'">
+                {% if content.intro is not empty %}
+                  <div class="pb-8 pt-4">
+                {{ content.intro }}
+                  </div>
+                {% endif %}
+              {% if content.showCodeBlock is not defined or content.showCodeBlock == true %}
                 {% include "@molecules/code-block/code-block.twig"
                   with {
                   variant: 'light',
@@ -73,7 +81,11 @@
                   ]
 
                 } %}
+              {% else %}
+                {{ content.content }}
+              {% endif %}
               </div>
+
             {% endfor %}
           </div>
         {% endset %}
@@ -85,7 +97,7 @@
           {% endif %}
           <div class="pt-8">
             {% embed "@organisms/grid/grid.twig" with {
-              columns: 2,
+              columns: code_block|trim is not empty ? 2 : 1,
               cells: [
                 content,
                 code_block

@@ -1,6 +1,6 @@
 {% embed "@templates/site-container.twig"
   with {
-  menu_top: null,
+  menu_top: pattern_preview('menu', {}, 'top'),
   header_has_spacer: true,
   footer_menu: pattern_preview('menu', {}, 'footer'),
 } %}
@@ -10,12 +10,13 @@
 
     {{ pattern_preview('section_code', {
       bg: 'green-light',
-      badge_headline: 'Choose your toolset',
-      content: '<h2>1. Define your Design Tokens</h2>',
+      content: '<h2>1. Define your Design Tokens</h2><p>Everything starts with well defined Design Tokens. <br>
+      Collect all your spaces colors typography from your design before you start coding components. Good Design Tokens are a big timesaver!</p>
+        ',
       data: [
         {
           title: 'TailwindCSS',
-          intro: 'Configure your tailwind.config.js',
+          intro: '<p>TailwindCSS is the <b>API</b> for your design system. All tailwind.config.js settings are automaticly documented in Storybook. </p>',
           key: "tailwind",
           contents: [
           {
@@ -93,6 +94,7 @@ const colors = tailwindConfig.tailwind.theme.colors;
         {
           title: 'SCSS',
           key: "scss",
+          intro: "Not every SCSS variable is a Design Token. Collect your Tokens in SCSS collections and export them. Wingsuit will document automaticly exported SCSS variables.",
           contents: [
           {
             key: 'colors',
@@ -171,7 +173,11 @@ const colors = require(\'tokens/exports/_colors.scss\');
 
     {{ pattern_preview('section_code', {
       bg: 'purple-light',
-      content: '<h2>2. Build your components</h2>',
+      content: '<h2>2. Build your components</h2>
+      <p> The wingsuit.yml has three main sections:<br>
+      The <b>fields</b> which means the data from the cms,
+      the <b>settings</b> which means a configuration setting like the color of the component and variants. Variants are a set of settings which changes the behavior of the component.
+      </p>',
       data: [
         {
           title: 'Base',
@@ -275,6 +281,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
         {
           title: 'Automatic',
           key: "automatic",
+          intro: 'Wingsuit provides Storybook DocBlocks as the building blocks to create full featured documentation right away from the wingsuit.yml.',
           contents: [
           {
             key: 'automatic',
@@ -352,6 +359,7 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
         {
           title: 'MDX',
           key: "mdx",
+          intro: "You want to tell more about your component. With Wingsuit you can render your Twig component in your Storyboook MDX documentantion file.",
           contents: [
           {
             key: 'mdx',
@@ -365,9 +373,217 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
         ],
           codes: [
           {
-            key: 'yaml',
-            title: 'avatar.wingsuit.yml',
-            format: 'yaml',
+            key: 'mdx',
+            title: 'grid.mdx',
+            format: 'jsx',
+            code: 'import { Meta, Title, Subtitle } from \'@storybook/addon-docs/blocks\';
+import { PatternLoad, PatternPreview } from \'@wingsuit-designsystem/pattern-react/server\';
+
+&lt;PatternLoad patternId="grid"&gt;
+  {(pattern) =&gt; (
+  &lt;&gt;
+    &lt;Title /&gt;
+    &lt;Subtitle /&gt;
+
+## Simple usage
+
+```twig dark
+  {% set cells = [
+    \'Cell 1\',
+    \'Cell 2\'
+  ] %}
+  {% include "@organisms/grid/grid.twig" with {
+    attributes: create_attribute(),
+    cells: cells,
+    columns: 2,
+    columns_width: \'equal\',
+    gutter: \'default\'
+  } only %}
+`} /&gt;
+```
+
+## Cells
+The pattern loops through a list of cells and print each cell.&lt;br/&gt;
+To adjust the way the blocks are printed use twig blocks.
+
+## Blocks
+* cell_outer: &lt;br/&gt;Use block cell_outer to adjust the markup of each cell. Variables: `cell`, `cell_counter`.
+* cell_inner:&lt;br/&gt;Use block cell_inner to print the cell variable. Variables: `cell`, `cell_counter`
+### Example: cell_inner
+```twig dark
+  {% set cells = [
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;1&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;2&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;3&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;4&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;5&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;6&lt;/div&gt;\'},
+      ] %}
+      {% embed "@organisms/grid/grid.twig" with {
+        attributes: create_attribute(),
+        cells: cells,
+        columns: 2,
+        columns_width: \'equal\',
+        gutter: \'default\'
+      } only %}
+        {% block cell_inner %}
+          {{ cell.content }}
+        {% endblock %}
+      {% endembed %}
+```
+
+### Example: cell_outer
+```twig dark
+  {% set cells = [
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;1&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;2&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;3&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;4&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;5&lt;/div&gt;\'},
+        {content: \'&lt;div class="w-full h-20 bg-primary"&gt;6&lt;/div&gt;\'},
+      ] %}
+      {% embed "@organisms/grid/grid.twig" with {
+        attributes: create_attribute(),
+        cells: cells,
+        columns: 2,
+        columns_width: \'equal\',
+        gutter: \'default\'
+      } only %}
+      {% block cell_outer %}
+        &lt;div&gt;
+        {{ cell.content }} + { cell_counter }
+        &lt;/div&gt;
+      {% endblock %}
+      {% endembed %}
+```
+
+## Column widths
+The pattern comes with most common column widths configurations like 50x50 or 33x66.
+If you need additional configuration you can extends the columns configuration inside the `grid.wingsuit.yml`.
+
+```yaml dark
+columns:
+2: &lt;&lt; Columns count
+  equal: \'grid-cols-1 md:grid-cols-2\' &lt;&lt; Column width 50x50
+  \'66x33\': \'grid-cols-1 md:grid-cols-66/33\' &lt;&lt; Column width 66x33
+  \'33x66\': \'grid-cols-1 md:grid-cols-33/66\' &lt;&lt; Column width 33x66
+```
+
+## Gutter
+To configure the spacing between the columns use the gutter configuration in the grid.wingsuit.yml.
+```yaml dark
+  gutter:
+    ...
+    default: \'gap-4 md:gap-5 lg:gap-7\'
+    ...
+```
+
+## Examples
+### 4 equal columns.
+```twig dark
+  {% include "@organisms/grid/grid.twig" with {
+    cells: cells,
+    columns: 4,
+    columns_width: \'equal\',
+    gutter: \'default\'
+  } only %}
+```
+
+&lt;PatternPreview variant={pattern.getDefaultVariant()} columns="4" config="equal"/&gt;
+
+### 3 Columns with 25% 50% 25%.
+
+```twig dark
+ {% include "@organisms/grid/grid.twig" with {
+   cells: cells,
+   columns: 3,
+   columns_width: \'25x50x25\',
+   gutter: \'default\'
+ } only %}
+```
+
+&lt;PatternPreview variant={pattern.getDefaultVariant()} columns="3" columns_width="25x50x25"/&gt;
+
+  &lt;/&gt;
+  )}
+&lt;/PatternLoad&gt;
+'
+          },
+        ],
+        },
+      ]
+    }) }}
+
+{% set presenter_code %}
+  {% include "@molecules/code-block/code-block.twig" with {
+    "codes": [
+      {
+        "key": "presenter",
+        "format": "twig",
+        "code": '{% set button %}
+{% include "@atoms/button/button.twig" with {
+  "text": "More"|t,
+  "link": content.url
+} %}
+{% endset %}
+
+{% include "@molecules/avatar/avatar.twig" with {
+  "full_name": content.field_full_name,
+  "text": content.body,
+  "button": button
+} %}'
+      }
+    ]
+  } %}
+{% endset %}
+    {{ pattern_preview('section_code', {
+      bg: 'blue-light',
+      content: '<h2>4. Use your components in your CMS.</h2>',
+      data: [
+        {
+          title: 'Drupal',
+          key: "drupal",
+          intro: '',
+          contents: [
+          {
+            key: 'ui_patterns',
+            title: 'UI Patterns',
+            intro: '<p>With UI Patterns no code is needed.</p>',
+            content: '
+            <div class="relative">
+              <img src="/images/docs_export.png">
+            </div>
+            '
+          },
+          {
+            key: 'presenter',
+            title: 'Presenter template',
+            content: presenter_code,
+            showCodeBlock: false,
+          },
+        ],
+          codes: [],
+        },
+        {
+          title: 'CraftCMS',
+          key: "craftcms",
+          intro: "",
+          contents: [
+          {
+            key: 'mdx',
+            title: 'MDX',
+            content: '
+            <div class="relative">
+              <img src="/images/docs_export.png">
+            </div>
+            '
+          },
+        ],
+          codes: [
+          {
+            key: 'mdx',
+            title: 'grid.mdx',
+            format: 'jsx',
             code: ''
           },
         ],

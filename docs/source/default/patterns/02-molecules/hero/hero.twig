@@ -9,8 +9,7 @@
 
 {# TEMPLATE #}
 
-<section class="pt-16">
-
+<section class="pt-28">
   {% embed "@organisms/container/container.twig" with {button: button, text: text, padding_bottom: 'small'} only %}
     {% block content %}
       {% include "@atoms/rich-text/rich-text.twig" with {text: text, variant: 'large' } only %}
@@ -21,7 +20,9 @@
   {% endembed %}
   {% embed "@organisms/container/container.twig" with {image:image, width: 'large'} only %}
     {% block content %}
+      <div class="bg-video-500 p-4 mb-16">
       {{ image }}
+      </div>
     {% endblock %}
   {% endembed %}
 

@@ -17,7 +17,14 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.trueGray,
+      gray: colors.gray,
+      code: {
+        light: '#f2f2f2',
+        dark: '#21252b',
+      },
+      video: {
+        500: '#eef1f8',
+      },
       blue: {
         200: '#ebf4ff',
       },
@@ -39,9 +46,33 @@ module.exports = {
         200: '#faf5ff',
         500: '#8000ff',
       },
-      yellow: '#fffff0',
+      orange: colors.orange,
+      yellow: colors.yellow,
     },
     extend: {
+      typography: (theme) => ({
+        '2xl': {
+          css: {
+            p: {
+              fontWeight: 500,
+            },
+            h2: {
+              fontSize: '3rem',
+            },
+            h1: {
+              fontWeight: 600,
+            },
+          },
+        },
+        DEFAULT: {
+          css: {
+            color: theme('colors.black'),
+            '[class~="lead"]': {
+              color: theme('colors.black'),
+            },
+          },
+        },
+      }),
       boxShadow: {
         button: '4px 4px 0 0 rgba(0, 0, 0)',
       },
@@ -61,6 +92,9 @@ module.exports = {
         '66/33': '66% 33%',
         '25/50/25': '25% 50% 25%',
         '25/75': '25% 75%',
+      },
+      spacing: {
+        18: '4.5rem',
       },
     },
     fontFamily: {

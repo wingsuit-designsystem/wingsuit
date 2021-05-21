@@ -1,16 +1,19 @@
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import twig from 'highlight.js/lib/languages/twig';
-import yaml from 'highlight.js/lib/languages/yaml';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-scss';
+import 'prismjs/plugins/keep-markup/prism-keep-markup';
 
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('twig', twig);
-hljs.registerLanguage('yaml', yaml);
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-twig';
+import 'prismjs/components/prism-bash';
+
 window.Spruce.store('component_feature', null);
 Drupal.behaviors.code_block = {
   attach() {
     document.querySelectorAll('.code-block').forEach((container) => {
-      hljs.highlightElement(container);
+      Prism.highlightElement(container);
     });
   },
 };
