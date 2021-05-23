@@ -86,7 +86,6 @@ test('#Test config type', () => {
   const appConfigWithType = resolveConfig('storybook3:storybook', 'development', {}, config_3);
   expect(appConfigWithType.environment).toBe('development');
   expect(appConfigWithType.absAppPath).toBe(__dirname);
-  expect(appConfigWithType.startup(appConfig)).toBe('start-storybook --config-dir apps/storybook');
   expect(appConfigWithType.absRootPath).toBe(process.cwd());
   expect(appConfigWithType.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
 });
@@ -97,12 +96,12 @@ test('#Test startup()', () => {
   expect(appConfig.startup(appConfig)).toBe('startup');
 });
 
-test('#Test default config', () => {
-  const name = 'undefined';
-  const appConfig = resolveConfig(name, 'development', {}, config_3);
-  expect(appConfig.environment).toBe('development');
-  expect(appConfig.absAppPath).toBe(`${process.cwd()}/apps/${name}`);
-  expect(appConfig.absRootPath).toBe(process.cwd());
-  expect(appConfig.absDistFolder).toBe(`${process.cwd()}/dist/app-${name}`);
-  expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+test('#Test unknown config', () => {
+  function unknownApp() {
+    const name = 'undefined';
+    resolveConfig(name, 'development',
+      {}, config_3);
+  }
+
+  expect(unknownApp).toThrowError(new Error('App undefined not found. Check your apps section in your wingsuit.config.js'));
 });

@@ -78,6 +78,7 @@ test('Test defaultConfig.', () => {
   expect(webpack.testWebpack).toBe(true);
   expect(webpack.testWebpackFalse).toBe(undefined);
 });
+
 test('Test initial parameters.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
@@ -118,6 +119,7 @@ test('Test initial parameters.', () => {
   expect(webpack.testWebpack).toBe(true);
   expect(webpack.testWebpackFalse).toBe(undefined);
 });
+
 test('Test parameter overwrite defaultConfig.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
