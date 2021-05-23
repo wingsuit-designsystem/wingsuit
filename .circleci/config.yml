@@ -238,7 +238,7 @@ jobs:
           name: Build docs
           command: |
             cd docs
-            yarn build
+            yarn build:pages
   lint:
     <<: *defaults
     steps:
