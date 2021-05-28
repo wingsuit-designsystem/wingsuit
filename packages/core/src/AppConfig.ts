@@ -37,6 +37,8 @@ export default interface AppConfig {
 
   startup(appConfig: AppConfig);
 
+  generator(appConfig: AppConfig, type: string);
+
   webpack(appConfig: AppConfig, config?: any);
 
   webpackFinal(appConfig: AppConfig, config?: any);
@@ -55,6 +57,7 @@ export interface Preset {
   defaultAppConfig(): AppConfig;
   webpackFinal(appConfig: AppConfig, config: any);
 }
+
 export interface PresetItem {
   [key: string]: Preset;
 }
@@ -95,6 +98,9 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     absRootPath,
     environment: 'development',
     path: `./apps/${type}`,
+    generator: (app: AppConfig) => {
+      return null;
+    },
     startup: (app: AppConfig) => {
       return `cross-env-shell NODE_ENV=${app.environment} "webpack --watch --config ${app.path}/webpack.config.js"`;
     },

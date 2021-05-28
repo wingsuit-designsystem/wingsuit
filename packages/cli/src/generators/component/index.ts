@@ -147,7 +147,8 @@ export default class extends Generator {
 
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
-    this.registerTransformStream(
+
+    this.queueTransformStream(
       rename(path => {
         // Remove extension and replace pattern with pattern name
         path.basename = path.basename.replace('pattern', name);

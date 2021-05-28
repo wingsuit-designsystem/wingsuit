@@ -50,7 +50,7 @@ export function getConfigBase(wingsuitConfig: any = null) {
  * @param appNameId
  *   The appNameId can contain app type and app id seperated by ":".
  *   Example:
- *     drupal:cms - drupal is app folder name. CMS is the preset app type
+ *     drupal:cms - drupal is app name. CMS is the preset app type
  *
  * @param environment
  *   The current environment.
@@ -109,18 +109,22 @@ export function resolveConfig(
     appConfig = merge(appConfig, projectConfig.apps[appName]);
   }
 
-  if (mergedConfig.apps[type]) {
-    appConfig.startup =
-      mergedConfig.apps[type].startup != null ? mergedConfig.apps[type].startup : appConfig.startup;
-  }
+  const overloadedFunctions = ['startup', 'generator'];
+  overloadedFunctions.forEach((funcName)=>{
+    if (mergedConfig.apps[type]) {
+      appConfig[funcName] =
+        mergedConfig.apps[type][funcName] != null ? mergedConfig.apps[type][funcName] : appConfig[funcName];
+    }
 
-  if (
-    projectConfig.apps != null &&
-    projectConfig.apps[appName] != null &&
-    projectConfig.apps[appName].startup !== undefined
-  ) {
-    appConfig.startup = projectConfig.apps[appName].startup;
-  }
+    if (
+      projectConfig.apps != null &&
+      projectConfig.apps[appName] != null &&
+      projectConfig.apps[appName][funcName] !== undefined
+    ) {
+      appConfig[funcName] = projectConfig.apps[appName][funcName];
+    }
+  })
+
 
   // Overrule hooks.
   appConfig.webpack = mergedConfig.webpack !== null ? mergedConfig.webpack : appConfig.webpack;
@@ -162,3 +166,4 @@ export function resolveConfig(
   }
   return appConfig;
 }
+

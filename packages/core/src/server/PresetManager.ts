@@ -51,7 +51,7 @@ export default class PresetManager {
     return Object.assign(defaultConfig, appParameter, providedConfig);
   }
 
-  public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+  public getPresetDefinitions(appConfig: AppConfig ): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
     appConfig.presets.forEach((item) => {
       if (typeof item === 'string') {

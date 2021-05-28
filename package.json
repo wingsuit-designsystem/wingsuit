@@ -62,6 +62,7 @@
     "packages/*",
     "starter-kits/*",
     "presets/*",
+    "presets/examples/*",
     "examples/*"
   ],
   "optionalDependencies": {

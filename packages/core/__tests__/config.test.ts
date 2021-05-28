@@ -38,7 +38,7 @@ const config_3 = {
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
-      startup: appConfig => {
+      startup: (appConfig) => {
         return 'startup';
       },
     },
@@ -99,9 +99,10 @@ test('#Test startup()', () => {
 test('#Test unknown config', () => {
   function unknownApp() {
     const name = 'undefined';
-    resolveConfig(name, 'development',
-      {}, config_3);
+    resolveConfig(name, 'development', {}, config_3);
   }
 
-  expect(unknownApp).toThrowError(new Error('App undefined not found. Check your apps section in your wingsuit.config.js'));
+  expect(unknownApp).toThrowError(
+    new Error('App undefined not found. Check your apps section in your wingsuit.config.js')
+  );
 });

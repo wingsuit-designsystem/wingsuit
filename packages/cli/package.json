@@ -68,8 +68,8 @@
     "query-ast": "^1.0.3",
     "rimraf": "^3.0.2",
     "typescript": "^3.4.0",
-    "yeoman-environment": "^2.10.2",
-    "yeoman-generator": "^4.10.1",
+    "yeoman-environment": "^3.4.0",
+    "yeoman-generator": "^5.2.0",
     "yosay": "^2.0.1"
   },
   "repository": {

@@ -3,6 +3,7 @@
     "docs",
     "packages/*",
     "presets/*",
+    "presets/examples/*",
     "examples/*",
     "starter-kits/*"
   ],
