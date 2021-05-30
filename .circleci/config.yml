@@ -308,3 +308,5 @@ workflows:
   deploy:
     jobs:
       - docs
+        requires:
+          - build
