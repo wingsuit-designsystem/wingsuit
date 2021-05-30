@@ -2,7 +2,7 @@ import PresetManager from './server/PresetManager';
 
 import AppConfig from './AppConfig';
 
-import { getConfigBase } from './resolveConfig';
+import { getConfigBase, resolveConfig } from './resolveConfig';
 
 export { default as AppConfig } from './AppConfig';
 
@@ -37,18 +37,26 @@ export function getDefaultPreset(name) {
 export function getAppTypes(wingsuitConfig: any = null) {
   const { mergedConfig } = getConfigBase();
   const names: string[] = [];
-  Object.keys(mergedConfig.apps).forEach(name => {
+  Object.keys(mergedConfig.apps).forEach((name) => {
     if (mergedConfig.apps[name].type === name) {
       names.push(name);
     }
   });
   return names;
 }
-
+export function getApps(wingsuitConfig: any = null, environment = 'development'): AppConfig[] {
+  const { mergedConfig } = getConfigBase();
+  const apps: AppConfig[] = [];
+  Object.keys(mergedConfig.apps).forEach((name) => {
+    const app = resolveConfig(name, environment, null, wingsuitConfig);
+    apps.push(app);
+  });
+  return apps;
+}
 export function getAppNames(wingsuitConfig: any = null, type = '') {
   const { mergedConfig } = getConfigBase();
   const names: string[] = [];
-  Object.keys(mergedConfig.apps).forEach(name => {
+  Object.keys(mergedConfig.apps).forEach((name) => {
     if (type === '' || type === mergedConfig.apps[name].type || name === type) {
       names.push(name);
     }

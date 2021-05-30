@@ -37,7 +37,7 @@ export default interface AppConfig {
 
   startup(appConfig: AppConfig);
 
-  generator(appConfig: AppConfig, type: string);
+  generator(appConfig: AppConfig, generatorType, rootGenerator);
 
   webpack(appConfig: AppConfig, config?: any);
 
@@ -98,7 +98,7 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     absRootPath,
     environment: 'development',
     path: `./apps/${type}`,
-    generator: (app: AppConfig) => {
+    generator: (app: AppConfig, generatorType, rootGenerator) => {
       return null;
     },
     startup: (app: AppConfig) => {

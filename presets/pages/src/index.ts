@@ -1,6 +1,8 @@
 import { AppConfig, getDefaultPreset } from '@wingsuit-designsystem/core';
 import path from 'path';
 
+const Generator = require('yeoman-generator');
+
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -19,10 +21,32 @@ export function wingsuitConfig(): {} {
         presets: [getDefaultPreset('twing'), getDefaultPreset('storybook')],
         designSystem: 'default',
         assetBundleFolder: '',
+        generator: (appConfig: AppConfig, type, sourceGenerator) => {
+          if (type === 'ws:app') {
+            return {
+              path: path.join(__dirname),
+              Generator: class extends Generator {
+                writing() {
+                  const props = sourceGenerator.getProps();
+                  const { appType } = props;
+                  if (appType === 'pages') {
+                    this.fs.copyTpl(
+                      this.templatePath(`app-${appType}/**/*.ejs`),
+                      sourceGenerator.getTaretFolder(),
+                      props
+                    );
+                  }
+                }
+              },
+            };
+          }
+          return null;
+        },
       },
     },
   };
 }
+
 export function webpack(appConfig: AppConfig) {
   if (appConfig.type !== 'pages') {
     return {};

@@ -1,0 +1,13 @@
+import 'protons';
+import MDX from './front.mdx';
+
+const template = require('./front.twig');
+
+export default {
+  path: '/',
+  template,
+  MDX,
+  vars: {
+    sample: 'data',
+  },
+};
