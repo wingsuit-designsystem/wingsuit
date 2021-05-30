@@ -307,6 +307,10 @@ workflows:
 #            - publish
   deploy:
     jobs:
+      - install
+      - build:
+          requires:
+            - install
       - docs:
           requires:
             - build
