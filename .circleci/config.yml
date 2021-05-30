@@ -5,13 +5,8 @@ aliases:
     working_directory: /tmp/storybook
     CYPRESS_CACHE_FOLDER:
     docker:
-      - image: circleci/node:12-browsers
-  - &node10
-    working_directory: /tmp/storybook
-    docker:
-      - image: circleci/node:10-browsers
-        environment:
-          CYPRESS_CACHE_FOLDER: '/tmp/storybook/.cache/Cypress'
+      - image: circleci/node:14-browsers
+
 jobs:
   install:
     <<: *defaults
@@ -226,7 +221,7 @@ jobs:
             yarn build:drupal
 
   docs:
-    <<: *node10
+    <<: *defaults
     steps:
       - checkout
       - run:
