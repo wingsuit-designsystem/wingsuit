@@ -1,0 +1,14 @@
+{# SETTINGS #}
+{% set fill_color = fill_color|default('fill-current') %}
+{% set classes = ([
+  'svg',
+  fill_color,
+  size,
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<svg {{ attributes }}>
+    <use xlink:href="{{ file_url('ws-assets://images/spritemap.svg') }}#{{ icon }}"></use>
+</svg>

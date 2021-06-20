@@ -88,9 +88,9 @@
     "@splidejs/splide": "^2.4.21",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.3.1",
-    "alpinejs": "^2.7.0",
+    "alpinejs": "^3.0.9",
     "svg4everybody": "^2.1.9",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.2.2"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }

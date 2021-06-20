@@ -1,0 +1,148 @@
+section:
+  use: "@organisms/section/section.twig"
+  label: Columns section
+  icon_path: ws-assets://images/section-icon.svg
+  extends:
+    - grid.settings
+    - container.settings
+  description: "A section with a header and maximum five columns. A combination of container and grid.
+    You can use this pattern as a section in Drupal's Layout Builder."
+  fields:
+    header:
+      type: pattern
+      label: Section Header
+      description: Optional header
+      preview:
+        id: rich_text
+        fields:
+          text: "<h2 class=text-center>Headline</h2>"
+    column_1:
+      type: text
+      label: First Column
+      preview:
+        faker: lorem.paragraph
+    column_2:
+      type: text
+      label: Second Column
+      preview:
+        faker: lorem.paragraph
+    column_3:
+      type: text
+      label: Third Column
+      preview:
+        faker: lorem.paragraph
+    column_4:
+      type: text
+      label: Fourth Column
+      preview:
+        faker: lorem.paragraph
+    column_5:
+      type: text
+      label: Five Column
+      preview:
+        faker: lorem.paragraph
+  settings:
+    display_header_region:
+      type: boolean
+      label: Display header region
+    columns_width_1:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 100%
+    columns_width_2:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 50%/50%
+        66x33: 66%/33%
+        33x66: 33%/66%
+    columns_width_3:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 33%/33%/33%
+        25x50x25: 25%/50%/25%
+    columns_width_4:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 25%/25%/25%/25%
+    columns_width_5:
+      type: radios
+      label: Column widths
+      default_value: equal
+      required: true
+      options:
+        equal: 20%/20%/20%/20%
+    equal_height:
+      type: boolean
+      group: advanced
+      label: Equal height
+  variants:
+    1_column:
+      label: One Column
+      fields:
+        column_2: ""
+        column_3: ""
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 1
+        gutter: default
+        columns_width_1: "equal"
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    2_column:
+      label: Two Columns
+      fields:
+        column_3: ""
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 2
+        columns_width_1: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    3_column:
+      label: Three Columns
+      fields:
+        column_4: ""
+        column_5: ""
+      settings:
+        columns: 3
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_4: ""
+        columns_width_5: ""
+    4_column:
+      label: Four Columns
+      fields:
+        column_5: ""
+      settings:
+        columns: 4
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: "equal"
+        columns_width_5: ""
+    5_column:
+      label: Five Columns
+      settings:
+        columns: 5
+        columns_width_1: ""
+        columns_width_2: ""
+        columns_width_3: ""
+        columns_width_4: ""
+        columns_width_5: "equal"

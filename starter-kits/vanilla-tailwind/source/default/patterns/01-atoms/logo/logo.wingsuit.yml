@@ -1,0 +1,4 @@
+logo:
+  use: "@atoms/logo/logo.twig"
+  label: Logo
+  description: Simple component to display the site logo.
