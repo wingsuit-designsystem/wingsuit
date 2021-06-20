@@ -32,7 +32,7 @@ export default class extends Generator {
         name: 'app',
         message: 'Which app should be used?',
         choices() {
-          return getAppNames(null, 'storybook');
+          return getAppNames(null);
         },
       },
       {
@@ -59,17 +59,17 @@ export default class extends Generator {
         name: 'componentType',
         message: 'What type of component would you like to create?',
         default: 'wingsuit',
-        choices() {
-          return [
-            { value: 'wingsuit', name: 'Wingsuit component (UI Pattern)' },
-            {
-              value: 'wingsuit_presenter',
-              name: 'Wingsuit component (UI Pattern) with presentation template',
-            },
-            { value: 'plain', name: 'Twig only component' },
-            { value: 'plain_presenter', name: 'Twig only component with presentation template' },
-            { value: 'presenter', name: 'Presentation template' },
-          ];
+        choices({ app }) {
+          const config = resolveConfig(app);
+          const types = config.componentTypes;
+          const choices: any = [];
+          Object.keys(types).forEach((key) => {
+            choices.push({
+              value: key,
+              name: types[key],
+            });
+          });
+          return choices;
         },
       },
       {

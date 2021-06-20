@@ -1,29 +1,9 @@
 import path from 'path';
 
-export default interface AppConfig {
-  type: string;
+export default interface AppConfig extends AppInitConfig {
+  absDesignSystemPath: string;
 
   name: string;
-
-  path: string;
-
-  distFolder: string;
-
-  environment: string;
-
-  namespaces: Namespace;
-
-  cssMode: string;
-
-  patternFolder: string;
-
-  designSystem: string;
-
-  assetBundleFolder: string;
-
-  assetAtomicFolder: string;
-
-  absDesignSystemPath: string;
 
   absRootPath: string;
 
@@ -33,29 +13,80 @@ export default interface AppConfig {
 
   absPatternPath: string;
 
-  features: Feature;
+  namespaces: Namespace;
 
-  startup(appConfig: AppConfig);
+  assetAtomicFolder: string;
 
-  generator(appConfig: AppConfig, generatorType, rootGenerator);
+  componentTypes: ComponentType;
 
-  webpack(appConfig: AppConfig, config?: any);
+  startup();
+}
 
-  webpackFinal(appConfig: AppConfig, config?: any);
+export interface AppInitConfig {
+  type: string;
 
-  getParameters(name: string);
+  name?: string;
 
-  postCssConfig: any;
+  path: string;
 
-  presets: [];
+  distFolder: string;
+
+  environment?: string;
+
+  namespaces?: Namespace;
+
+  cssMode: string;
+
+  patternFolder?: string;
+
+  designSystem: string;
+
+  assetBundleFolder: string;
+
+  assetAtomicFolder?: string;
+
+  features?: Feature;
+
+  listeners?: Event;
+
+  componentTypes?: ComponentType;
+
+  startup?();
+
+  generator?(type, rootGenerator: any);
+
+  webpack?(appConfig: AppConfig, config?: any);
+
+  webpackFinal?(appConfig: AppConfig, config?: any);
+
+  getParameters?(name: string);
+
+  postCssConfig?: any;
+
+  presets?: Preset[];
+
+  absDesignSystemPath?: string;
+
+  absRootPath?: string;
+
+  absAppPath?: string;
+
+  absDistFolder?: string;
+
+  absPatternPath?: string;
 }
 
 export interface Preset {
-  defaultConfig(appConfig: AppConfig): any;
-  name(appConfig: AppConfig): string;
-  webpack(appConfig: AppConfig);
-  defaultAppConfig(): AppConfig;
-  webpackFinal(appConfig: AppConfig, config: any);
+  defaultConfig?(appConfig: AppConfig): any;
+  name?(appConfig: AppConfig): string;
+  webpack?(appConfig: AppConfig);
+  defaultAppConfig?(): AppConfig;
+  webpackFinal?(appConfig: AppConfig, config: any);
+  commands?(appConfig: AppConfig, config: any);
+}
+
+export interface ComponentType {
+  [key: string]: string;
 }
 
 export interface PresetItem {
@@ -68,6 +99,14 @@ export interface Namespace {
 
 export interface Feature {
   [key: string]: string;
+}
+
+export interface Event {
+  [key: string]: EventFunction[];
+}
+
+interface EventFunction {
+  (...args): void;
 }
 
 export interface PresetDefinition {
@@ -98,16 +137,16 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     absRootPath,
     environment: 'development',
     path: `./apps/${type}`,
-    generator: (app: AppConfig, generatorType, rootGenerator) => {
-      return null;
+    componentTypes: {
+      wingsuit: 'Wingsuit component (UI Pattern)',
     },
-    startup: (app: AppConfig) => {
-      return `cross-env-shell NODE_ENV=${app.environment} "webpack --watch --config ${app.path}/webpack.config.js"`;
+    startup() {
+      return `cross-env-shell NODE_ENV=${this.environment} "webpack --watch --config ${this.path}/webpack.config.js"`;
     },
-    webpack: (appConfig: AppConfig, config?: any) => {
+    webpack(appConfig: AppConfig, config?: any) {
       return {};
     },
-    webpackFinal: (appConfig: AppConfig, config?: any) => {
+    webpackFinal(appConfig: AppConfig, config?: any) {
       return config;
     },
     getParameters: () => {

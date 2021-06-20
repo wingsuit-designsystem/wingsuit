@@ -1,16 +1,16 @@
 import { AppConfig, getDefaultPreset } from '@wingsuit-designsystem/core';
 import path from 'path';
 
-const Generator = require('yeoman-generator');
-
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
+const Generator = require('yeoman-generator');
 
 export function name(appConfig: AppConfig) {
   return 'pages';
 }
 
-export function wingsuitConfig(): {} {
+export function wingsuitConfig(): any {
   return {
     apps: {
       pages: {
@@ -21,7 +21,7 @@ export function wingsuitConfig(): {} {
         presets: [getDefaultPreset('twing'), getDefaultPreset('storybook')],
         designSystem: 'default',
         assetBundleFolder: '',
-        generator: (appConfig: AppConfig, type, sourceGenerator) => {
+        generator: (type, sourceGenerator) => {
           if (type === 'ws:app') {
             return {
               path: path.join(__dirname),
@@ -32,7 +32,7 @@ export function wingsuitConfig(): {} {
                   if (appType === 'pages') {
                     this.fs.copyTpl(
                       this.templatePath(`app-${appType}/**/*.ejs`),
-                      sourceGenerator.getTaretFolder(),
+                      sourceGenerator.getTargetFolder(),
                       props
                     );
                   }
@@ -57,7 +57,7 @@ export function webpack(appConfig: AppConfig) {
       libraryTarget: 'umd',
     },
     entry: {
-      pages: path.join(appConfig.absAppPath, 'preview.js'),
+      pages: path.join(appConfig.absAppPath ? appConfig.absAppPath : '', 'preview.js'),
     },
     module: {
       rules: [

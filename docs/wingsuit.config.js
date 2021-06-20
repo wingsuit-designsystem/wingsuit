@@ -12,4 +12,14 @@ module.exports = {
       namespaces,
     },
   },
+  apps: {
+    fff: {
+      type: 'pages',
+      path: 'apps/fff',
+    },
+    bbb: {
+      type: 'pages',
+      path: 'apps/bbb',
+    },
+  },
 };

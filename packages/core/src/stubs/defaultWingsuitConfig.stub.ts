@@ -1,4 +1,4 @@
-import AppConfig from '../AppConfig'
+import Config from '../Config'
 
 const css = require('../server/presets/css')
 const babel = require('../server/presets/babel')
@@ -10,7 +10,7 @@ const twing = require('../server/presets/twing')
 const svg = require('../server/presets/svg')
 const assetsVideos = require('../server/presets/assetsVideos')
 
-export const wingsuit = {
+export const wingsuit: Config = {
   webpackFinal: null,
   webpack: null,
   parameters: {},
@@ -45,8 +45,14 @@ export const wingsuit = {
       assetBundleFolder: '',
       designSystem: 'default',
       presets: [twing, storybook],
-      startup: (app: AppConfig) => {
-        return `start-storybook --config-dir ${app.absAppPath}`
+      componentTypes: {
+        wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
+        plain: 'Twig only component',
+        plain_presenter: 'Twig only component with presentation template',
+        presenter: 'Presentation template',
+      },
+      startup() {
+        return `start-storybook --config-dir ${this.absAppPath}`
       },
     },
     cms: {

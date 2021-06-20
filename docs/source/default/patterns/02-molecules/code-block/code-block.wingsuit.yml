@@ -40,4 +40,8 @@ code_block:
         frame: bg-code-light
         content: bg-white
         active_tab: bg-gray-300
-
+  settings:
+    hide_toolbar:
+      type: boolean
+      label: Hide Toolbar
+      default_value: false

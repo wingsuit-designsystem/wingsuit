@@ -34,6 +34,7 @@ module.exports = {
   globals: {
     Drupal: true,
     jQuery: true,
+    Spruce: true,
     _: true,
     BUILD_TARGET: true,
   },

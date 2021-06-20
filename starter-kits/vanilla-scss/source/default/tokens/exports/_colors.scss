@@ -1,0 +1,7 @@
+@import "../_tokens";
+
+@each $color, $value in $theme-colors {
+  :export{
+  #{$color}: $value;
+  }
+}

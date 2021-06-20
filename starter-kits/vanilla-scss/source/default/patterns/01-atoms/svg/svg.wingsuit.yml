@@ -1,0 +1,25 @@
+svg_icon:
+  use: "@atoms/svg/svg.twig"
+  label: Svg Icon
+  description: Flexible SVG icon component. Choose between SVG spritemap, CSS classes or inline SVGs.
+  settings:
+    fill_color:
+      label: Fill color
+      type: textfield
+      preview: fill-current
+    size:
+      preview: w-4
+      label: Size
+      type: select
+      options:
+        w-4: Small
+        w-8: Medium
+        w-12: Large
+    icon:
+      type: token
+      label: Icon
+      preview: search
+  variants:
+    icon:
+      label: Sprite Map
+  visibility: storybook

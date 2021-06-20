@@ -89,7 +89,7 @@ container:
       large: 'pb-20 md:pb-24'
     width:
       small: 'max-w-3xl'
-      default: 'max-w-5xl'
+      default: 'max-w-6xl'
       large: 'max-w-7xl'
       xlarge: 'max-w-8xl'
     bg:

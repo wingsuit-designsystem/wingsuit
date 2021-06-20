@@ -6,7 +6,7 @@ const { spawn } = require('child_process');
 
 const logger = console;
 
-export default function(options, environment) {
+export default function (options, environment) {
   const getAppName = async () => {
     if (options.args.length > 0) {
       return Promise.resolve(options.args[0]);
@@ -25,12 +25,12 @@ export default function(options, environment) {
     const appName = await getAppName();
     try {
       const appConfig = resolveConfig(appName, environment);
-      const console = appConfig.startup(appConfig);
+      const console = appConfig.startup();
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);
       logger.info('');
       const command = spawn(console, [], { shell: true, stdio: 'inherit' });
-      command.on('close', code => {
+      command.on('close', (code) => {
         logger.log(`${code}`);
       });
     } catch (e) {

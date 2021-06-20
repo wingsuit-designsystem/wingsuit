@@ -1,6 +1,8 @@
 import program from 'commander';
 import leven from 'leven';
 
+import { invokePreset } from '@wingsuit-designsystem/core';
+
 import startApp from './startApps';
 import initiate from './initiate';
 import component from './component';
@@ -8,6 +10,7 @@ import app from './app';
 import version from './version';
 
 const logger = console;
+
 program
   .command('init')
   .description('Install Wingsuit.')
@@ -21,40 +24,42 @@ program
   .option('-N --use-npm', 'Use npm to install deps')
   .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')
-  .action(options => initiate(options));
+  .action((options) => initiate(options));
 
 program
   .command('version')
   .description('Shows Wingsuit version.')
-  .action(options => version(options));
+  .action((options) => version(options));
 
 program
   .command('generate-component')
   .description('Generate Wingsuit component.')
   .option('-N --use-npm', 'Use npm to install deps')
-  .action(options => component(options));
+  .action((options) => component(options));
 
 program
   .command('generate-app')
   .description('Generate Wingsuit app.')
   .option('-N --use-npm', 'Use npm to install deps')
-  .action(options => app(options));
+  .action((options) => app(options));
 
 program
   .command('dev')
   .description('Start Wingsuit App in dev mode.')
-  .action(options => startApp(options, 'development'));
+  .action((options) => startApp(options, 'development'));
 program
   .command('build')
   .description('Build Wingsuit App.')
-  .action(options => startApp(options, 'production'));
+  .action((options) => startApp(options, 'production'));
+
+invokePreset('commands', { program });
 
 program.command('*', '').action(() => {
   const [, , invalidCmd] = process.argv;
   logger.error(' Invalid command: %s.\n See --help for a list of available commands.', invalidCmd);
   // eslint-disable-next-line
     const availableCommands = program.commands.map(cmd => cmd._name);
-  const suggestion = availableCommands.find(cmd => leven(cmd, invalidCmd) < 3);
+  const suggestion = availableCommands.find((cmd) => leven(cmd, invalidCmd) < 3);
   if (suggestion) {
     logger.log(`\n Did you mean ${suggestion}?`);
   }
@@ -62,10 +67,7 @@ program.command('*', '').action(() => {
   process.exit(1);
 });
 
-program
-  .usage('<command> [options]')
-  .version('1')
-  .parse(process.argv);
+program.usage('<command> [options]').version('1').parse(process.argv);
 
 if (program.rawArgs.length < 3) {
   program.help();

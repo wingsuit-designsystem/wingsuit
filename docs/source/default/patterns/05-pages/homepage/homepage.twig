@@ -1,6 +1,6 @@
 {% embed "@templates/site-container.twig"
   with {
-  menu_top: pattern_preview('menu', {}, 'top'),
+  menu_top: null,
   header_has_spacer: true,
   footer_menu: pattern_preview('menu', {}, 'footer'),
 } %}
@@ -12,7 +12,8 @@
       bg: 'green-light',
       content: '<h2>1. Define your Design Tokens</h2><p>Everything starts with well defined Design Tokens. <br>
       Collect all your spaces colors typography from your design before you start coding components. Good Design Tokens are a big timesaver!</p>
-        ',
+       ',
+      badge_headline: 'Choose your technology:',
       data: [
         {
           title: 'TailwindCSS',
@@ -22,7 +23,11 @@
           {
             key: 'colors',
             title: 'Colors',
-            image_url: 'images/colors_export.png'
+            content: '
+            <div class="p-6">
+            <img src="/images/colors_tailwind.svg">
+            </div>
+            '
           },
         ],
           codes: [
@@ -47,25 +52,14 @@ module.exports = {
         500: '#8000ff',
       },
     },
-    extend: {
-      gridTemplateColumns: {
-        '33/66': '33% 66%',
-        '66/33': '66% 33%',
-        '25/50/25': '25% 50% 25%',
-        '25/75': '25% 75%',
-      },
-      fontFamily: {
-        serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
-        sans: ['Inter', 'Roboto', 'sans-serif'],
-      },
-    },
+  ...
   };
 "
           },
           {
             key: 'mdx',
             title: 'colors.mdx',
-            format: 'javascript',
+            format: 'jsx',
             code: '
 import { Meta, ColorPalette, ColorItem, Subtitle } from \'@storybook/addon-docs/blocks\';
 const tailwindConfig = require(\'../../config/silo/tailwind.json\');
@@ -94,14 +88,14 @@ const colors = tailwindConfig.tailwind.theme.colors;
         {
           title: 'SCSS',
           key: "scss",
-          intro: "Not every SCSS variable is a Design Token. Collect your Tokens in SCSS collections and export them. Wingsuit will document automaticly exported SCSS variables.",
+          intro: "<p>Not every SCSS variable is a Design Token. Collect your Tokens in SCSS collections and export them. Wingsuit will document automaticly exported SCSS variables.</p>",
           contents: [
           {
             key: 'colors',
             title: 'Colors',
             content: '
-            <div>
-            <img src="/images/colors_export.png">
+            <div class="p-6">
+            <img src="/images/colors_scss.svg">
             </div>
             '
           },
@@ -142,7 +136,7 @@ $theme-colors: map-merge(
           {
             key: 'mdx',
             title: 'colors.mdx',
-            format: 'javascript',
+            format: 'jsx',
             code: '
 import { Meta, ColorPalette, ColorItem, Subtitle } from \'@storybook/addon-docs/blocks\';
 const colors = require(\'tokens/exports/_colors.scss\');
@@ -170,34 +164,68 @@ const colors = require(\'tokens/exports/_colors.scss\');
       ]
     }) }}
 
+{% set components_intro %}
+  {% set data =[
+    {
+      'title': 'Fields',
+      'key': 'fields',
+      'content': '<p>A field holds your data from your CMS.</p>',
+    },
+    {
+      'title': 'Settings',
+      'key': 'settings',
+      'content': '<p>Define settings to make your pattern configurable. Typical settings are colors, alignment or sizes.</p>',
+    },
+    {
+      'title': 'Variants',
+      'key': 'variants',
+      'content': '<p>A variant is a <b>configuration</b> of the pattern.</p>',
+    }
+  ] %}
+  {% for item in data %}
+    {% include "@atoms/badge/badge.twig" with {
+      text: item.title, variant: 'default',
+      round: true,
+      attributes: create_attribute().setAttribute(
+        '@click', '$store.component_feature=\'' ~ item.key ~'\''
+      ).setAttribute (
+        ':class', "{ 'bg-black text-white': $store.component_feature === '" ~ item.key ~ "' }"
+      )
+    } only %}
+  {% endfor %}
+  {% for item in data %}
+    <div x-show="$store.component_feature === '{{ item.key }}'"
+    <p>{{ item.content }}</p>
+    </div>
+  {% endfor %}
+{% endset %}
 
     {{ pattern_preview('section_code', {
       bg: 'purple-light',
-      content: '<h2>2. Build your components</h2>
-      <p> The wingsuit.yml has three main sections:<br>
-      The <b>fields</b> which means the data from the cms,
-      the <b>settings</b> which means a configuration setting like the color of the component and variants. Variants are a set of settings which changes the behavior of the component.
-      </p>',
+      content: '<h2>2.1. Build your UI Patterns</h2>
+      <p>When you are done with your <b>design tokens</b> you can continue with building your patterns. Start with your smallest components first, followed by the larger ones. <br/>
+        </p>',
+      badge_headline: 'wingsuit.yml sections:',
       data: [
         {
           title: 'Base',
           key: "base",
-          intro: 'Fields and settings are editable with Storybook controls. Controls make it easy to see your component in every state.',
+          intro: components_intro,
           contents: [
           {
             key: 'canvas',
             title: 'Canvas',
             content: '
             <div class="relative">
-            <div class="code-block__feature absolute" style="right:0; top: 76%; height: 21%; width: 67.5%"
+            <div class="code-block__feature absolute component-feature--fields" style="right:2%; top: 70%; height: 21%; width: 64.5%"
             :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}"
             @click="$store.component_feature = \'fields\'"
             ></div>
-            <div class="code-block__feature absolute" style="right:0; top: 61%; height: 12%; width: 67.5%"
+            <div class="code-block__feature absolute component-feature--settings" style="right:2%; top: 58%; height: 12%; width: 64.5%"
             :class="{\'code-block__feature--active\':$store.component_feature ==\'settings\'}"
             @click="$store.component_feature = \'settings\'"
             ></div>
-            <div class="code-block__feature absolute" style="top: 28%; height: 10%; width: 33.5%"
+            <div class="component-feature--variants code-block__feature absolute" style="top: 56.6%; height: 6.5%; width: 33.5%"
             :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}"
             @click="$store.component_feature = \'variants\'"
             ></div>
@@ -215,7 +243,7 @@ const colors = require(\'tokens/exports/_colors.scss\');
             code: 'use: "@molecules/avatar/avatar.twig"
 label: Avatar
 description: "An avatar represents an ...."
-<div @click="$store.component_feature = \'fields\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">fields:
+<div @click="$store.component_feature = \'fields\'" class=\'component-feature--fields code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'fields\'}">fields:
   image:
     type: pattern
     label: Image
@@ -228,13 +256,13 @@ description: "An avatar represents an ...."
     type: text
     label: Text
     preview:
-      faker: lorem.paragraph</div><div @click="$store.component_feature = \'settings\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'settings\'}">settings:
+      faker: lorem.paragraph</div><div @click="$store.component_feature = \'settings\'" class=\'component-feature--settings code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'settings\'}">settings:
   text_align:
     type: select
     label: Text align
     options:
       left: Left
-      center: Center</div><div @click="$store.component_feature = \'variants\'" class=\'code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}">variants:
+      center: Center</div><div @click="$store.component_feature = \'variants\'" class=\'component-feature--variants code-block__feature\' :class="{\'code-block__feature--active\':$store.component_feature ==\'variants\'}">variants:
   default:
     label: Default
   horizontal:
@@ -276,18 +304,20 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
 
     {{ pattern_preview('section_code', {
       bg: 'blue-light',
-      content: '<h2>3. Document your components</h2>',
+      content: '<h2>2.2. Document your components</h2>',
       data: [
         {
           title: 'Automatic',
           key: "automatic",
-          intro: 'Wingsuit provides Storybook DocBlocks as the building blocks to create full featured documentation right away from the wingsuit.yml.',
+          intro: '<p>Wingsuit provides Storybook DocBlocks as the building blocks to create full featured documentation right away from the wingsuit.yml.</p>',
           contents: [
           {
             key: 'automatic',
             title: 'Automatic',
             content: '
-              <img src="/images/docs_export.png">
+              <div class="p-14">
+              <img src="/images/docs_export.png" class="w-full">
+              </div>
             '
           },
         ],
@@ -359,14 +389,14 @@ variant == \'horizontal\' ? \'h-auto -m-8 mr-8\'</div>] %}
         {
           title: 'MDX',
           key: "mdx",
-          intro: "You want to tell more about your component. With Wingsuit you can render your Twig component in your Storyboook MDX documentantion file.",
+          intro: "<p>You want to tell more about your component. With Wingsuit you can render your Twig component in your Storyboook MDX documentantion file.</p>",
           contents: [
           {
             key: 'mdx',
             title: 'MDX',
             content: '
-            <div class="relative">
-              <img src="/images/docs_export.png">
+            <div class="px-14 pt-2 relative">
+              <img src="/images/docs_mdx.png">
             </div>
             '
           },
@@ -538,7 +568,7 @@ To configure the spacing between the columns use the gutter configuration in the
 {% endset %}
     {{ pattern_preview('section_code', {
       bg: 'blue-light',
-      content: '<h2>4. Use your components in your CMS.</h2>',
+      content: '<h2>3. Connect your component with your CMS.</h2>',
       data: [
         {
           title: 'Drupal',
@@ -549,9 +579,13 @@ To configure the spacing between the columns use the gutter configuration in the
             key: 'ui_patterns',
             title: 'UI Patterns',
             intro: '<p>With UI Patterns no code is needed.</p>',
+            showCodeBlock: false,
             content: '
-            <div class="relative">
-              <img src="/images/docs_export.png">
+            <div class="relative" style="padding-top: 81.81818181818181%">
+              <iframe class="absolute inset-0 w-full h-full"
+src="https://www.youtube-nocookie.com/embed/Fe5DHtqhEF0">
+
+</iframe>
             </div>
             '
           },
@@ -590,6 +624,6 @@ To configure the spacing between the columns use the gutter configuration in the
         },
       ]
     }) }}
+    {{ pattern_preview('download') }}
   {% endblock %}
-
 {% endembed %}

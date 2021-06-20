@@ -9,8 +9,11 @@ import 'organisms/header';
 import 'organisms/footer';
 import 'organisms/section-code';
 import './images/docs_export.png';
-import './images/colors_export.png';
+import './images/docs_mdx.png';
+import './images/colors_tailwind.svg';
+import './images/colors_scss.svg';
 import './images/component_avatar.png';
+import './homepage.behavior';
 
 export default {
   title: 'Pages/Homepage',

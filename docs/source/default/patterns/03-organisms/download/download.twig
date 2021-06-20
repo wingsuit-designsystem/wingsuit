@@ -1,0 +1,67 @@
+{% embed "@organisms/container/container.twig"
+  with {
+  width: 'default',
+  padding_top: 'default',
+  padding_bottom: 'default',
+  bg: 'blue-light'
+} %}
+  {% block content %}
+    <div class="text-center">
+    {% include "@atoms/rich-text/rich-text.twig" with {text: intro, variant: 'large'} only %}
+    </div>
+    {% set codes =[
+      {
+        'title': 'Tailwind',
+        'key': 'wingsuit_tailwind',
+        'format': 'bash',
+        'buttons': 'copy-to-clipboard',
+        'code': 'npx @wingsuit-designsystem/cli init -k tailwind',
+      },
+      {
+        'title': 'Bootstrap',
+        'key': 'wingsuit_bootstrap',
+        'format': 'bash',
+        'buttons': 'copy-to-clipboard',
+        'code': 'npx @wingsuit-designsystem/cli init -k bootstrap',
+      }
+    ] %}
+    {% set codes_drupal =[
+      {
+        'title': 'Tailwind',
+        'key': 'drupal_tailwind',
+        'format': 'bash',
+        'buttons': 'copy-to-clipboard',
+        'code': 'npx @wingsuit-designsystem/cli init -k tailwind',
+      },
+      {
+        'title': 'Bootstrap',
+        'key': 'drupal_bootstrap',
+        'format': 'bash',
+        'buttons': 'copy-to-clipboard',
+        'code': 'npx @wingsuit-designsystem/cli init -k bootstrap',
+      }
+    ] %}
+
+    <div class="{{ pattern_configuration('container', null, 'padding_top')['default'] }}">
+      {% include "@molecules/code-block/code-block.twig"
+        with {
+        hide_toolbar: true,
+        variant: 'dark',
+        codes: codes
+      } %}
+    </div>
+    <div class="text-center pt-14">
+      {% include "@atoms/rich-text/rich-text.twig" with {
+        text: intro_drupal, variant: 'large'
+      } only %}
+    </div>
+    <div class="{{ pattern_configuration('container', null, 'padding_top')['default'] }}">
+      {% include "@molecules/code-block/code-block.twig"
+        with {
+        hide_toolbar: true,
+        variant: 'dark',
+        codes: codes_drupal
+      } %}
+    </div>
+  {% endblock %}
+{% endembed %}

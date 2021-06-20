@@ -53,41 +53,43 @@ export default class PresetManager {
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
-    appConfig.presets.forEach((item) => {
-      if (typeof item === 'string') {
-        const lpreset =
-          // eslint-disable-next-line global-require,import/no-dynamic-require
-          this.getDefaultPreset(item) != null ? this.getDefaultPreset(item) : require(item);
-        presets.push({
-          preset: lpreset,
-          name: this.getPresetName(lpreset, appConfig),
-          parameters: this.getPresetParameter(lpreset, appConfig, {}),
-        });
-      } else if (Array.isArray(item)) {
-        const name = item[0];
-        let lpreset = name;
-        if (typeof name === 'string') {
-          // @ts-ignore
-          // eslint-disable-next-line global-require,import/no-dynamic-require
-          lpreset = require(name);
-        }
-        const parameters = item[1];
-        presets.push({
-          preset: lpreset,
-          name: this.getPresetName(lpreset, appConfig),
-          parameters: this.getPresetParameter(lpreset, appConfig, parameters),
-        });
-      } else if (typeof item === 'object') {
-        presets.push(
-          // @ts-ignore
-          {
-            preset: item,
-            name: this.getPresetName(item, appConfig),
-            parameters: this.getPresetParameter(item, appConfig, {}),
+    if (appConfig.presets !== undefined) {
+      appConfig.presets.forEach((item) => {
+        if (typeof item === 'string') {
+          const lpreset =
+            // eslint-disable-next-line global-require,import/no-dynamic-require
+            this.getDefaultPreset(item) != null ? this.getDefaultPreset(item) : require(item);
+          presets.push({
+            preset: lpreset,
+            name: this.getPresetName(lpreset, appConfig),
+            parameters: this.getPresetParameter(lpreset, appConfig, {}),
+          });
+        } else if (Array.isArray(item)) {
+          const name = item[0];
+          let lpreset = name;
+          if (typeof name === 'string') {
+            // @ts-ignore
+            // eslint-disable-next-line global-require,import/no-dynamic-require
+            lpreset = require(name);
           }
-        );
-      }
-    });
+          const parameters = item[1];
+          presets.push({
+            preset: lpreset,
+            name: this.getPresetName(lpreset, appConfig),
+            parameters: this.getPresetParameter(lpreset, appConfig, parameters),
+          });
+        } else if (typeof item === 'object') {
+          presets.push(
+            // @ts-ignore
+            {
+              preset: item,
+              name: this.getPresetName(item, appConfig),
+              parameters: this.getPresetParameter(item, appConfig, {}),
+            }
+          );
+        }
+      });
+    }
     return presets;
   }
 
@@ -121,7 +123,7 @@ export default class PresetManager {
    * @returns {*} - Fully merged and customized webpack config
    */
   public generateWebpack(appConfig: AppConfig, webpackConfigs: [] = []) {
-    this.environment = appConfig.environment;
+    this.environment = appConfig.environment ? appConfig.environment : 'development';
     const presets = this.getPresetDefinitions(appConfig);
 
     const shared: any = [];
@@ -139,7 +141,7 @@ export default class PresetManager {
       ...shared,
       ...webpackConfigs,
       ...[
-        appConfig.webpack(appConfig),
+        appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
             alias: appConfig.namespaces,
@@ -172,7 +174,7 @@ export default class PresetManager {
       }
     });
 
-    config = appConfig.webpackFinal(appConfig, config);
+    config = appConfig.webpackFinal ? appConfig.webpackFinal(appConfig, config) : config;
     return config;
   }
 }
