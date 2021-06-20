@@ -5,13 +5,15 @@ const typography = require('@tailwindcss/typography')({
 });
 
 module.exports = {
+  mode: 'jit',
   important: false,
   darkMode: 'class',
-  purge: {
-    layers: ['utilities'],
-    content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
-    whitelist: ['bg-red-500', 'px-4'],
-  },
+  purge: [
+    './safelist.txt',
+    './source/**/*.twig',
+    './source/**/*.yml',
+    './apps/**/*.twig'
+  ],
   theme: {
     colors: {
       transparent: 'transparent',
