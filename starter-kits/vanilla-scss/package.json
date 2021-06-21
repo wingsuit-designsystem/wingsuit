@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-vanilla-scss",
-  "version": "1.0.3",
+  "version": "1.1.0-alpha.0",
   "description": "Vanilla Wingsuit Starter-Kit",
   "main": "",
   "license": "GPL-2.0",
@@ -44,11 +44,11 @@
     "@storybook/react": "^6.0.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.0.3",
-    "@wingsuit-designsystem/core": "1.0.3",
-    "@wingsuit-designsystem/pattern": "1.0.3",
-    "@wingsuit-designsystem/preset-scss": "1.0.3",
-    "@wingsuit-designsystem/storybook": "1.0.3",
+    "@wingsuit-designsystem/cli": "1.1.0-alpha.0",
+    "@wingsuit-designsystem/core": "1.1.0-alpha.0",
+    "@wingsuit-designsystem/pattern": "1.1.0-alpha.0",
+    "@wingsuit-designsystem/preset-scss": "1.1.0-alpha.0",
+    "@wingsuit-designsystem/storybook": "1.1.0-alpha.0",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
@@ -75,8 +75,6 @@
     "stylelint-scss": "^3.17.2",
     "webpack": "^4.41.3",
     "yo": "^3.1.1"
-  },
-  "dependencies": {
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }
