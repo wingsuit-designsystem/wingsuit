@@ -1,37 +1,3 @@
 # Introduction
 Wingsuit is an open source tool for creating UI components with Twig. You can write your components independently in [Storybook](https://storybook.js.org/). After finalizing your component, you can use it in other apps like Drupal.
 
-
-## Features
-* ### Define your component once
-The `wingsuit.yml`, an extended variant of the [ui_patterns.yml](https://ui-patterns.readthedocs.io/en/8.x-1.x/content/patterns-definition.html), is the heart of each component.
-Wingsuit reads the YAML to generate components, stories, fields and settings in Storybook. If you use Drupal, the same file is used by UI Patterns.
-* ### Use UI Patterns or not
-With the  [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, your `wingsuit.yml` can be used with zero configuration in Drupal. Of course, you can use the wingsuit.yml only in Storybook and use presenter templates in your CMS. Wingsuit also works with plain Twig files.
-* ### Editable settings and fields
-Fields and settings are editable with [knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs). Knobs makes it easy to see your component in different states.
-* ### Subcomponents
-Wingsuit supports subcomponents out of the box. Reference your subcomponent in your wingsuit.yml.
-* ### Presentation templates
-Wingsuit offers twig helper function to build complete pages for preview.
-* ### Prototyping
-Wingsuit offers a lot of additional helpers like [placeholder images with image styles](../../assets/images#placeholder-images), [faker](../../components/wingsuit#faker), [pattern lists](../../components/wingsuit#pattern-list) to make it easy to generate demo patterns.
-* ### Starter kits for:
-  * [Tailwind CSS](https://tailwindcss.com/) with [Alpine.js](https://github.com/alpinejs/alpine).
-  * [Bootstrap](https://getbootstrap.com/)
-
-  You can [customize](../../configurations/custom-webpack-config) the webpack configuration and integrate your favorite frontend frameworks.
-* ### Storybook documentation
-Wingsuit automatically generates documentation pages directly from the winguit.yml. For more detailed documentation use Storybook MDX.
-* ### Drupal integration
-With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, patterns can be used with zero configuration in Drupal.
-* ### Stay in sync
-One big challenge for design systems is to stay in sync between documentation and implementation.
-Wingsuit solves this problem with a common component configuration `wingsuit.yml` and webpack plugins which provides framework data as variables.
-So there is no need to update the colors documentation if you change your colors in TailwindCSS.
-* ### Predefined components
-Wingsuit uses [tailblocks](https://mertjf.github.io/tailblocks/) for predefined components. So it is very easy to adjust them and if you don't need them simple delete them.
-* ### Incredible fast and compatible with PHP Twig
-It takes around `1 second` from save to see your changes in Storybook. Wingsuit uses client side [twing](https://github.com/NightlyCommit/twing) and Postcss.
-Twing is nearly 100% compatible with PHP Twig. We tested it with really large Drupal projects.
-

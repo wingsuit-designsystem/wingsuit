@@ -1,7 +1,7 @@
 import 'protons';
 import MDX from './index.mdx';
 
-const template = require('../../docs.twig');
+const template = require('./index.twig');
 
 export default {
   path: '/drupal/ui_patterns',

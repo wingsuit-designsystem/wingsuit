@@ -1,10 +1,13 @@
 section_code:
   extends:
-    - container.settings.bg
+    - container.settings
   use: "@organisms/section-code/section-code.twig"
   label: "Section: Code"
   description: Amazing section-code component.
   fields:
+    content_bottom:
+      type: text
+      label: Content bottom
     content:
       type: text
       label: Content

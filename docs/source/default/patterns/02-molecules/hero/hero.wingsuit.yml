@@ -7,42 +7,31 @@ hero:
       type: text
       label: Headline
       preview: "<h1 class='font-medium'>Build CMS independent Twig Components in Storybook</h1><p class='lead font-medium'>
-        Wingsuit is a free, open source tool to build and document Twig components and Design Tokens for your Design System. <br>
-
+        A modern way of building, maintaining and documenting your visual driven twig components in storybook with an automated and opinionated integration workflow for your CMS. <br>
         </p>"
-    button:
+
+    buttons:
       type: pattern
       label: Button
       preview:
-        id: button
-        variant: default
-        fields:
-          text: Get started
-        settings:
-          size: large
-          round: true
-    button_second:
-      type: pattern
-      label: Button seco
-      preview:
-        id: button
-        variant: default
-        fields:
-          text: Show Video
-        settings:
-          color: primary
-          size: text-xs
-    button_third:
-      type: pattern
-      label: Button third
-      preview:
-        id: button
-        variant: default
-        fields:
-          text: Show Video
-        settings:
-          color: primary
-          size: text-xs
+        -
+          id: button
+          variant: default
+          fields:
+            text: Quickstart
+          settings:
+            size: large
+            round: true
+            url: /guides/quick-start-guide
+        -
+          id: button
+          variant: default
+          fields:
+            text: Online Demo
+          settings:
+            size: large
+            round: true
+            url: #
     image:
       type: pattern
       label: Image

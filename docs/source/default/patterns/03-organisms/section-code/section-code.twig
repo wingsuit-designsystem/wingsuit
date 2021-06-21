@@ -1,8 +1,8 @@
 {% embed "@organisms/container/container.twig"
   with {
-  width: 'default',
-  padding_top: 'default',
-  padding_bottom: 'default',
+  width: width|default('default'),
+  padding_top: padding_top|default('default'),
+  padding_bottom: padding_bottom|default('default'),
   bg: bg
 } %}
   {% block content %}
@@ -40,11 +40,13 @@
           {% include "@molecules/code-block/code-block.twig"
             with {
             variant: 'dark',
+            hide_toolbar: item.hide_code_toolbar is defined ? item.hide_code_toolbar : false,
             codes: item.codes
           } %}
           {% endif %}
         {% endset %}
         {% set content %}
+          {% if item.contents|length > 0 %}
           <div x-data="{key: '{{ item.contents|first.key }}'}">
             <div {{ create_attribute().addClass([
               'pb-4',
@@ -69,7 +71,7 @@
                     {{ pattern('rich_text', { text: content.intro }, 'large') }}
                   </div>
                 {% endif %}
-              {% if content.showCodeBlock is not defined or content.showCodeBlock == true %}
+              {% if content.show_code_block is not defined or content.show_code_block == true %}
                 {% include "@molecules/code-block/code-block.twig"
                   with {
                   variant: 'light',
@@ -88,6 +90,7 @@
 
             {% endfor %}
           </div>
+          {% endif %}
         {% endset %}
         <div x-show="key === '{{ item.key }}'">
           {% if item.intro is not empty %}
@@ -97,7 +100,7 @@
           {% endif %}
           <div class="pt-8">
             {% embed "@organisms/grid/grid.twig" with {
-              columns: code_block|trim is not empty ? 2 : 1,
+              columns: code_block|trim and content|trim is not empty ? 2 : 1,
               cells: [
                 content,
                 code_block
@@ -109,5 +112,6 @@
 
       {% endfor %}
     </div>
+    {{ content_bottom }}
   {% endblock %}
 {% endembed %}

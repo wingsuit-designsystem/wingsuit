@@ -568,18 +568,21 @@ To configure the spacing between the columns use the gutter configuration in the
 {% endset %}
     {{ pattern_preview('section_code', {
       bg: 'blue-light',
-      content: '<h2>3. Connect your component with your CMS.</h2>',
+      content: '<h2>3. Make Love.</h2>',
+      badge_headline: 'Choose your flavor:',
       data: [
         {
-          title: 'Drupal',
+          title: 'Drupal opinionated',
           key: "drupal",
           intro: '',
           contents: [
           {
             key: 'ui_patterns',
             title: 'UI Patterns',
-            intro: '<p>With UI Patterns no code is needed.</p>',
-            showCodeBlock: false,
+            intro: '<p>With UI Patterns no code is needed. The UI Patterns ecosystem offers a lot of modules that help you to manage the mapping without presenter templates. But there are still corners in drupal where you need a presenter templates.</p>
+<p>Don\'t forget to run <code class="language-bash">yarn ws dev drupal</code></p>
+',
+            show_code_block: false,
             content: '
             <div class="relative" style="padding-top: 81.81818181818181%">
               <iframe class="absolute inset-0 w-full h-full"
@@ -591,39 +594,34 @@ src="https://www.youtube-nocookie.com/embed/Fe5DHtqhEF0">
           },
           {
             key: 'presenter',
+            intro: '<p>A presenter template is a drupal theme template which includes the pattern and provides all necassary variables to the pattern.
+
+            </p>',
             title: 'Presenter template',
             content: presenter_code,
-            showCodeBlock: false,
+            show_code_block: false,
           },
         ],
           codes: [],
         },
         {
-          title: 'CraftCMS',
-          key: "craftcms",
-          intro: "",
+          title: 'Vanilla',
+          key: "other_cms",
+          intro: '<div class="relative">
+          <p>If your don\'t use drupal install the cms app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev cms</code> to compile your CSS and templates.</p><p> You can also install the drupal app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev drupal</code> </p>
+          </div>' ,
           contents: [
           {
-            key: 'mdx',
-            title: 'MDX',
-            content: '
-            <div class="relative">
-              <img src="/images/docs_export.png">
-            </div>
-            '
-          },
-        ],
-          codes: [
-          {
-            key: 'mdx',
-            title: 'grid.mdx',
-            format: 'jsx',
-            code: ''
+            key: 'presenter',
+            title: 'Presenter',
+            content: presenter_code,
+            show_code_block: false,
           },
         ],
         },
       ]
     }) }}
-    {{ pattern_preview('download') }}
+    {{ pattern_preview('download', {}) }}
   {% endblock %}
+
 {% endembed %}

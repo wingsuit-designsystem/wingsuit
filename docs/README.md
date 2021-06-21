@@ -28,11 +28,11 @@ npm run dev:drupal
 #### YARN (prefered)
 To start storybook
 ```bash
-yarn dev:storybook
+yarn ws dev storybook
 ```
 To start drupal
 ```bash
-yarn dev:drupal
+yarn ws dev drupal
 ```
 
 

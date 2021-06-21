@@ -12,8 +12,8 @@
 <div
 {{ attributes|default(create_attribute()).addClass(
   [
-    variant == 'default' ? 'prose lg:prose-lg',
-    variant == 'large' ? 'prose prose-lg md:prose-2xl'
+    variant == 'default' ? 'max-w-none prose lg:prose-lg',
+    variant == 'large' ? 'max-w-none prose prose-lg md:prose-2xl'
   ]
 ) }}
 >

@@ -10,11 +10,11 @@
 {# TEMPLATE #}
 
 <section class="pt-28">
-  {% embed "@organisms/container/container.twig" with {button: button, text: text, padding_bottom: 'small'} only %}
+  {% embed "@organisms/container/container.twig" with {buttons: buttons, text: text, padding_bottom: 'small'} only %}
     {% block content %}
       {% include "@atoms/rich-text/rich-text.twig" with {text: text, variant: 'large' } only %}
       <div class="flex space-x-4 py-8 lg:py-14">
-        {{ button }}
+        {{ buttons }}
       </div>
     {% endblock %}
   {% endembed %}
