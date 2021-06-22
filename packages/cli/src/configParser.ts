@@ -38,7 +38,7 @@ export function addApp(appName, appType, appProperties: AppProperties[], source)
       if (path.node.type === 'ObjectProperty' && path.node.key.name === 'apps') {
         const properties: any[] = [];
         properties.push(t.objectProperty(t.identifier('type'), t.stringLiteral(appType)));
-        appProperties.forEach((property) => {
+        appProperties.forEach(property => {
           properties.push(
             t.objectProperty(t.identifier(property.name), t.stringLiteral(property.value))
           );

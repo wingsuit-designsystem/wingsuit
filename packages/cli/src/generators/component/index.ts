@@ -44,7 +44,7 @@ export default class extends Generator {
           // Return array of atomic folders within the app's design system
           return readdirSync(config.absPatternPath, {
             withFileTypes: true,
-          }).filter((folder) => folder.isDirectory());
+          }).filter(folder => folder.isDirectory());
         },
       },
       {
@@ -63,7 +63,7 @@ export default class extends Generator {
           const config = resolveConfig(app);
           const types = config.componentTypes;
           const choices: any = [];
-          Object.keys(types).forEach((key) => {
+          Object.keys(types).forEach(key => {
             choices.push({
               value: key,
               name: types[key],
@@ -83,7 +83,7 @@ export default class extends Generator {
         name: 'useScss',
         message: `Do you need a SCSS file?`,
         default: false,
-        when: (answers) => {
+        when: answers => {
           return supportsScss;
         },
       },
@@ -109,7 +109,7 @@ export default class extends Generator {
       },
     ];
 
-    return this.prompt(prompts).then((props) => {
+    return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
       const cleanName = props.name.replace(/-/g, '');
@@ -149,7 +149,7 @@ export default class extends Generator {
     // a reserved method to which Yeoman provides all file streams from copyTpl()
 
     this.queueTransformStream(
-      rename((path) => {
+      rename(path => {
         // Remove extension and replace pattern with pattern name
         path.basename = path.basename.replace('pattern', name);
         return path;

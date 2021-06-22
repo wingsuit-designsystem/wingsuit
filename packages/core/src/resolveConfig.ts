@@ -35,7 +35,7 @@ export function getConfigBase(wingsuitConfig: any = null) {
   const presetManager = new PresetManager();
   const presets = presetManager.getPresetDefinitions(mergedConfig);
 
-  Object.keys(presets).forEach((key) => {
+  Object.keys(presets).forEach(key => {
     if (presets[key] != null && presets[key].preset.wingsuitConfig != null) {
       const presetWingsuitConfig = presets[key].preset.wingsuitConfig();
       mergedConfig = merge(mergedConfig, presetWingsuitConfig);
@@ -110,7 +110,7 @@ export function resolveConfig(
   }
 
   const overloadedFunctions = ['startup', 'generator'];
-  overloadedFunctions.forEach((funcName) => {
+  overloadedFunctions.forEach(funcName => {
     if (mergedConfig.apps[type]) {
       appConfig[funcName] =
         mergedConfig.apps[type][funcName] != null
@@ -132,11 +132,11 @@ export function resolveConfig(
   appConfig.webpackFinal =
     mergedConfig.webpackFinal !== null ? mergedConfig.webpackFinal : appConfig.webpackFinal;
 
-  mergedConfig.presets.forEach((preset) => {
+  mergedConfig.presets.forEach(preset => {
     appConfig.presets.push(preset);
   });
 
-  appConfig.getParameters = (name) => {
+  appConfig.getParameters = name => {
     return appConfig.parameters[name] != null ? appConfig.parameters[name] : {};
   };
 

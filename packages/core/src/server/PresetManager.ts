@@ -54,7 +54,7 @@ export default class PresetManager {
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
     if (appConfig.presets !== undefined) {
-      appConfig.presets.forEach((item) => {
+      appConfig.presets.forEach(item => {
         if (typeof item === 'string') {
           const lpreset =
             // eslint-disable-next-line global-require,import/no-dynamic-require
@@ -105,7 +105,7 @@ export default class PresetManager {
   public supportFeature(name, appConfig: AppConfig) {
     const presetDefinitions = this.getPresetDefinitions(appConfig);
     let support = false;
-    Object.keys(presetDefinitions).forEach((key) => {
+    Object.keys(presetDefinitions).forEach(key => {
       const { preset } = presetDefinitions[key];
       if (preset != null && preset.supportFeature != null) {
         const presetSupport = preset.supportFeature(name);
@@ -127,7 +127,7 @@ export default class PresetManager {
     const presets = this.getPresetDefinitions(appConfig);
 
     const shared: any = [];
-    Object.keys(presets).forEach((key) => {
+    Object.keys(presets).forEach(key => {
       if (presets[key] != null && presets[key].preset.webpack != null) {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
@@ -168,7 +168,7 @@ export default class PresetManager {
       ]
     );
 
-    Object.keys(presets).forEach((key) => {
+    Object.keys(presets).forEach(key => {
       if (presets[key].preset.webpackFinal != null) {
         config = presets[key].preset.webpackFinal(appConfig, config);
       }

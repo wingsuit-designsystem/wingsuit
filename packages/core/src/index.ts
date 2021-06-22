@@ -38,9 +38,9 @@ export function invokePreset(funcName, config) {
   const apps = getApps();
   const result = {};
   const executed = {};
-  apps.forEach((appConfig) => {
+  apps.forEach(appConfig => {
     const definitions = presetManager.getPresetDefinitions(appConfig);
-    definitions.forEach((def) => {
+    definitions.forEach(def => {
       if (def.preset[funcName] !== undefined && executed[def.name] === undefined) {
         const defaultConfig =
           def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
@@ -56,7 +56,7 @@ export function invokePreset(funcName, config) {
 export function getAppTypes(wingsuitConfig: any = null) {
   const { mergedConfig } = getConfigBase();
   const names: string[] = [];
-  Object.keys(mergedConfig.apps).forEach((name) => {
+  Object.keys(mergedConfig.apps).forEach(name => {
     if (mergedConfig.apps[name].type === name) {
       names.push(name);
     }
@@ -67,7 +67,7 @@ export function getAppTypes(wingsuitConfig: any = null) {
 export function getApps(wingsuitConfig: any = null, environment = 'development'): AppConfig[] {
   const { mergedConfig } = getConfigBase();
   const apps: AppConfig[] = [];
-  Object.keys(mergedConfig.apps).forEach((name) => {
+  Object.keys(mergedConfig.apps).forEach(name => {
     const app = resolveConfig(name, environment, null, wingsuitConfig);
     apps.push(app);
   });
@@ -77,7 +77,7 @@ export function getApps(wingsuitConfig: any = null, environment = 'development')
 export function getAppNames(wingsuitConfig: any = null, type = '') {
   const { mergedConfig } = getConfigBase();
   const names: string[] = [];
-  Object.keys(mergedConfig.apps).forEach((name) => {
+  Object.keys(mergedConfig.apps).forEach(name => {
     if (type === '' || type === mergedConfig.apps[name].type || name === type) {
       names.push(name);
     }

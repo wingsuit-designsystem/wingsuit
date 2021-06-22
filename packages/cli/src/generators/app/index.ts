@@ -11,7 +11,7 @@ export default class extends Generator {
   initializing() {
     this.env.adapter.promptModule.registerPrompt('fs', inqfs);
     const apps = getApps();
-    apps.forEach((app) => {
+    apps.forEach(app => {
       if (app.generator !== undefined) {
         const generatorInfo = app.generator('ws:app', this);
         if (generatorInfo != null) {
@@ -52,7 +52,7 @@ export default class extends Generator {
         },
       },
     ];
-    return this.prompt(prompts).then((props) => {
+    return this.prompt(prompts).then(props => {
       this.props = props;
     });
   }

@@ -61,7 +61,7 @@ export function webpack(appConfig: AppConfig) {
               delete namespaces.wsdesignsystem;
               delete namespaces.wspatterns;
               let outputPath = url;
-              Object.keys(namespaces).forEach((key) => {
+              Object.keys(namespaces).forEach(key => {
                 const namespacePath = namespaces[key];
                 if (resourcePath.substring(0, namespacePath.length) === namespacePath) {
                   outputPath = `${appConfig.assetAtomicFolder}/${key}/${resourcePath.substring(

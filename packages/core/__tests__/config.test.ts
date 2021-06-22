@@ -38,7 +38,7 @@ const config_3 = {
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
-      startup: (appConfig) => {
+      startup: appConfig => {
         return 'startup';
       },
     },
