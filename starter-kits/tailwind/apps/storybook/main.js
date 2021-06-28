@@ -8,6 +8,7 @@ module.exports = {
     '@storybook/addon-viewport',
     '@storybook/addon-links',
     'storybook-addon-themes',
+    '@storybook/addon-measure',
     '@storybook/addon-postcss',
     {
       name: '@storybook/addon-postcss',

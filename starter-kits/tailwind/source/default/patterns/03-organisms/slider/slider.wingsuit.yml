@@ -4,7 +4,7 @@ slider:
   extends:
     - container.settings
   icon_path: ws-assets://images/slideshow.svg
-  description: Javascript slider with swipperjs (https://swiperjs.com/).
+  description: Javascript slider with splide (https://splidejs.com/).
     Change the slider behavior in slider.behavior.js.
   fields:
     header:
@@ -70,4 +70,3 @@ slider:
         css:
           component:
             ../slider.css: {}
-            ../../../node_modules/@splidejs/splide/dist/css/splide-core.min.css: {}
