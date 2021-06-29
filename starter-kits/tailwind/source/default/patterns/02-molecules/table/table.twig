@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * table
+ *
+ * See table.wingsuit.yaml for documentation.
+ */
+
+#}
+{% set classes = ([
+  "h-1"
+] | sort | join(' ') | trim )%}
+
+<div class="">
+  <table class="table-list flex-1 flex md:table w-full text-gray-900">
+    <thead>
+      {% for column in columns %}
+        <tr class="grid md:table-row">
+          <th class="h-1"></th>
+          {% for head in column.heads %}
+            <th class="border-b border-black text-center {% if head is empty %} pb-4 pt-6 {% else %} pt-2 pb-1{% endif %}">{{ head }}</th>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </thead>
+    <tbody class="flex flex-1 md:table-row-group overflow-auto">
+      {% for row in rows %}
+        <tr class="grid flex-1 md:table-row">
+          <td class="{{ classes }}"></td>
+          {% for cell in row.cells %}
+            <td class="font-sans text-center md:text-left border-b pt-2 pb-1">
+              {{ cell }}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
