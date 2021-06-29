@@ -13,7 +13,7 @@
     {{ pattern_preview('hero') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
+    {% embed "@organisms/section/section.twig" with { columns: 3, equal_height: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Section title</h2>" }%}
       {% endblock %}
@@ -33,7 +33,7 @@
       {% endblock %}
 
       {% block column_1 %}
-        {{ pattern_preview('accordion') }}
+        {{ pattern_preview('accordion_item') }}
       {% endblock %}
     {% endembed %}
     {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
@@ -44,7 +44,7 @@
         {{ pattern_preview('banner') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3 } %}
+    {% embed "@organisms/section/section.twig" with { columns: 3, equal_height: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Cards</h2>" }%}
       {% endblock %}

@@ -56,7 +56,6 @@ container:
     padding_top:
       type: select
       label: Padding top
-      default_value: default
       group: tab_spacing
       options:
         small: Small
@@ -66,6 +65,7 @@ container:
       type: select
       label: Padding bottom
       group: tab_spacing
+      default_value: default
       options:
         small: Small
         default: Default

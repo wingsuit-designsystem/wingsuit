@@ -8,49 +8,37 @@ table:
       type: object
       preview:
         - cells:
-            - Kalorien
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - <a href="#">anmelden</a>
-          color: 'green'
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
         - cells:
-            - Kalorien
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - <a href="#">anmelden</a>
-          color: 'yellow'
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
         - cells:
-            - Kalorien
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - <a href="#">anmelden</a>
-          color: 'yellow'
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
         - cells:
-            - Kalorien
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - 33,5 G
-            - <a href="#">anmelden</a>
-          color: 'red'
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
     columns:
       type: object
+      label: Columns
       preview:
         - heads:
-            - Kurs
-            - Datum
-            - Uhrzeit
-            - Ort
-            - Preis
+            - Cell 1
+            - Cell 2
+            - Cell 3
+            - Cell 4
+            - Cell 4
             -
-  settings:
-    url:
-      type: link
-      label: Url
-      preview: '#'

@@ -30,7 +30,14 @@
     {% block cells %}
       {% for cell_counter, cell in cells %}
         {% block cell_outer %}
-          <div>
+          {% set column_name = 'column_' ~ (cell_counter + 1) %}
+          {% set cell_classes = [
+            equal_height == true ? 'flex flex-col'
+          ]
+          %}
+          {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
+
+          <div{{ cell_attributes }}>
             {% block cell_inner %}
               {{ cell }}
             {% endblock %}

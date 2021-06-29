@@ -83,10 +83,6 @@ section:
       required: true
       options:
         equal: 20%/20%/20%/20%
-    equal_height:
-      type: boolean
-      group: advanced
-      label: Equal height
   variants:
     1_column:
       label: One Column
