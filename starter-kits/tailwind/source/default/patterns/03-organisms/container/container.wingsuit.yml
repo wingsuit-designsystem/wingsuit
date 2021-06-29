@@ -34,6 +34,12 @@ container:
         "": Transparent
         gray-medium: Medium gray/#6b7280
         gray-light: Light gray/#d1d5db
+    bg_image:
+      type: media_library
+      label: Background image
+      view_mode: drimage_background
+      group: tab_bg
+      description: The background image
     tab_spacing:
       label: Spacing
       type: group
