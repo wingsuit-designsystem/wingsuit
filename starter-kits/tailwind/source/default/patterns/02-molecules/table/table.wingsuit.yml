@@ -54,11 +54,3 @@ table:
       type: link
       label: Url
       preview: '#'
-    color:
-      type: select
-      label: Color
-      options:
-        green: Green
-        red: Red
-        yellow: Yellow
-      preview: green
