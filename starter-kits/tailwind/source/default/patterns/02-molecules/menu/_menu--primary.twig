@@ -1,9 +1,75 @@
-<ul class="list-reset lg:flex justify-end flex-1 items-center">
+{% set menu_level = 0 %}
+
+{% import _self as menus %}
+{% macro create_dropdownIndicator(menu_level) %}
+  <span class="{{ menu_level == 1 ? 'float-right transform center-origin transition duration-100 ease-in lg:-rotate-90 lg:px-3' : 'float-right lg:hidden transform center-origin transition duration-100 ease-in' }}"
+        :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
+      {% include "@atoms/svg/_svg--icon.twig" with {
+        fill_color: menu_level == 1 ? 'white lg:hover:text-black' : 'white',
+        size: 'w-5 h-5',
+        icon: 'sort-down'
+      } only %}
+    </span>
+{% endmacro %}
+
+{% macro create_submenu(items, menu_level) %}
+  {% import _self as menus %}
+  {% set container_classes = ([
+    'submenu',
+    menu_level == 1 ? 'lg:bg-gray-300 lg:absolute bg-teal-700 lg:pt-2' : 'lg:absolute lg:top-0',
+  ] | sort | join(' ') | trim ) %}
+  {% set link_classes = ([
+    menu_level == 1 ? 'font-bold px-7 py-4 border-b w-full block cursor-pointer lg:flex lg:space-x-15 lg:px-2 lg:py-3 lg:hover:text-black lg:hover:bg-yellow-300',
+    menu_level == 2 ? 'font-bold px-7 py-4 border-b w-full block cursor-pointer lg:font-normal lg:text-sm lg:px-0 lg:py-1 lg:whitespace-nowrap lg:hover:text-gray-500'
+  ] | sort | join(' ') | trim ) %}
+
+  <div class="{{ container_classes }}"
+       :class="{'block lg:hidden': submenuIsOpen, 'hidden': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
+       data-menu="submenu">
+    <div {{ menu_level == 2 ? 'class="lg:flex lg:space-x-7 lg:bg-gray-300 lg:px-3 lg:py-3"' }}>
+      {% set row_numbers = items|length/2 %}
+      {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
+        <ul>
+          {% for item in row %}
+            <li {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()" @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);" @mouseleave="processed = false" {% endif %}
+              :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu" data-menu-level="{{ menu_level }}">
+              <a href="{{ item.url }}" class="{{ link_classes }}" {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}>
+                <span>{{ item.title }}</span>
+                {% if item.below %} {{ menus.create_dropdownIndicator(menu_level) }}{% endif %}
+              </a>
+              {% if item.below %}
+                {{ menus.create_submenu(item.below, menu_level + 1) }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}
+
+{% set list_classes = ([
+  'lg:flex lg:justify-end lg:space-x-7 lg:items-center xl:space-x-11 2xl:space-x-15'
+] | sort | join(' ') | trim ) %}
+
+<ul class="{{ list_classes }}">
   {% for item in items %}
-    <li class="py-2 lg:py-0 border-b lg:border-b-0 border-black lg:mr-3">
-      <a class="mr-5 text-gray-600 hover:text-gray-900 {% if (item.in_active_trail) %}border-b-4 border-teal-600 {% endif %}" href="{{ item.url }}">
+    {% set link_classes = ([
+      'font-bold px-7 py-4 border-b w-full block cursor-pointer lg:px-0 lg:py-0 lg:border-0 lg:inline-block',
+      item.asCta ? "lg:font-display lg:font-bold lg:bg-yellow-300 lg:text-gray-900 lg:uppercase lg:!py-2 lg:!px-3",
+    ] | sort | join(' ') | trim ) %}
+    <li {% if item.below %}
+      x-data="Drupal.behaviors.wingsuitMenu()"
+      data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
+      <a href="{{ item.url }}" class="{{ link_classes }}" {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}>
         {{ item.title }}
+        {% if item.below %}
+          {{ menus.create_dropdownIndicator(menu_level) }}
+        {% endif %}
       </a>
+      {% if item.below %}
+        {{ menus.create_submenu(item.below, menu_level + 1) }}
+      {% endif %}
     </li>
   {% endfor %}
 </ul>
