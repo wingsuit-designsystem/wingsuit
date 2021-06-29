@@ -11,8 +11,7 @@ export default {
     next: [
       {
         title: 'Configure your app?',
-        text:
-          'Check the parameters under the "App details" section and extend your wingsuit.config.js',
+        text: 'Check the parameters under the "App details" section and extend your wingsuit.config.js',
         link_title: 'Details',
         href: '/configurations/details',
       },
