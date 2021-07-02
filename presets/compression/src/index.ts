@@ -50,7 +50,7 @@ export function webpack(appConfig: AppConfig, config: CompressionConfig) {
             },
             compressionOptions: {
               numiterations: 15,
-              level: 9
+              level: 9,
             },
             deleteOriginalAssets: false,
             filename: `${config.fileName}.gz`,
