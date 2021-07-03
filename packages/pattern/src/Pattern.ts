@@ -198,12 +198,12 @@ export default class Pattern {
           fields[key].description,
           fields[key].preview
         );
-        if (Array.isArray(fields[key].preview)) {
-          if (fields[key].multi_value_type != null) {
-            field.setMultiValueType(MultiValueTypes[fields[key].multi_value_type]);
-          } else {
-            field.setMultiValueType(MultiValueTypes.single_value);
-          }
+
+        field.setMultiValueType(MultiValueTypes.single_value);
+        if (fields[key].multi_value_type != null) {
+          field.setMultiValueType(MultiValueTypes[fields[key].multi_value_type]);
+        } else if (Array.isArray(fields[key].preview)) {
+          field.setMultiValueType(MultiValueTypes.single_value);
         }
         variant.addField(field);
       });

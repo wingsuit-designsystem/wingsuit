@@ -239,18 +239,7 @@
         "items": {
           "type": "pattern",
           "label": "Items",
-          "multi_value_type": "single_value",
-          "preview": [
-            {
-              "id": "pr_leaf",
-              "fields": {
-                "leaf_field": "correct"
-              },
-              "settings": {
-                "leaf_setting": "correct"
-              }
-            }
-          ]
+          "multi_value_type": "single_value"
         }
       }
     },

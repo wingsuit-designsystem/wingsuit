@@ -107,7 +107,7 @@ export async function renderPatternPreview(
                 previewRenderedVariables[nameKeys[0]] += promisedPreviewValues[j];
               }
             } else {
-              previewRenderedVariables[nameKeys[0]] = 'ERROR';
+              previewRenderedVariables[nameKeys[0]] = `No multi value type for field: '${variant.getPattern().getId()}:${fieldName}:${variant.getField(fieldName).multiValueType()}'`;
             }
           }
         }
@@ -116,7 +116,10 @@ export async function renderPatternPreview(
           ...buildBaseVariables(variables),
         };
         Object.keys(previewRenderedVariables).forEach((key) => {
-          finalVariables[key] = previewRenderedVariables[key];
+          // Allow overwriting
+          if (finalVariables[key] !== null) {
+            finalVariables[key] = previewRenderedVariables[key];
+          }
         });
         renderPattern(patternId, finalVariables, variantId)
           .then((output) => {
