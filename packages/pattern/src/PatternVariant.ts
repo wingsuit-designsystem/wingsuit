@@ -103,7 +103,7 @@ export default class PatternVariant {
     if (preview.fields !== undefined) {
       Object.keys(preview.fields).forEach((key) => {
         const field = preview.fields[key];
-        if (field.id !== undefined) {
+        if (field != null && field.id !== undefined) {
           if (parentVariables.children === undefined) {
             // eslint-disable-next-line no-param-reassign
             parentVariables.children = {};

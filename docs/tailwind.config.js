@@ -6,6 +6,7 @@ const typography = require('@tailwindcss/typography')({
 
 module.exports = {
   important: false,
+  mode: 'jit',
   purge: {
     layers: ['utilities'],
     content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],

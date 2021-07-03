@@ -107,7 +107,9 @@ export async function renderPatternPreview(
                 previewRenderedVariables[nameKeys[0]] += promisedPreviewValues[j];
               }
             } else {
-              previewRenderedVariables[nameKeys[0]] = `No multi value type for field: '${variant.getPattern().getId()}:${fieldName}:${variant.getField(fieldName).multiValueType()}'`;
+              previewRenderedVariables[nameKeys[0]] = `No multi value type for field: '${variant
+                .getPattern()
+                .getId()}:${fieldName}:${variant.getField(fieldName).multiValueType()}'`;
             }
           }
         }
