@@ -1,0 +1,42 @@
+{
+  "name": "@wingsuit-designsystem/preset-compression",
+  "version": "1.1.0-alpha.0",
+  "description": "Wingsuit Compression preset.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Pascal Glass",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@gfx/zopfli": "^1.0.15",
+    "@wingsuit-designsystem/core": "1.1.0-alpha.0",
+    "compression-webpack-plugin": "^6.1.1",
+    "zlib": "^1.0.5"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+}
