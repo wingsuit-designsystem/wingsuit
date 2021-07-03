@@ -17,7 +17,7 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
       delete variables[key];
     }
   });
-  Object.keys(variant.getPreviewPatterns()).forEach((key) => {
+  Object.keys(variant.getRenderInfo()).forEach((key) => {
     variables[key] = null;
   });
   const code = `{% include "${variant.getPattern().getUse()}" with ${JSON.stringify(
