@@ -218,6 +218,78 @@
         }
       }
     },
+    "pr_leaf": {
+      "use": "@molecules/tests/leaf.twig",
+      "label": "Leaf",
+      "fields": {
+        "leaf_field": {
+          "type": "text"
+        }
+      },
+      "settings": {
+        "leaf_setting": {
+          "type": "textfield"
+        }
+      }
+    },
+    "pr_sub": {
+      "use": "@molecules/tests/sub.twig",
+      "label": "Patterns",
+      "fields": {
+        "items": {
+          "type": "pattern",
+          "label": "Items",
+          "multi_value_type": "single_value",
+          "preview": [
+            {
+              "id": "pr_leaf",
+              "fields": {
+                "leaf_field": "correct"
+              },
+              "settings": {
+                "leaf_setting": "correct"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "pr_root": {
+      "use": "@molecules/tests/root.twig",
+      "label": "Patterns",
+      "fields": {
+        "items": {
+          "type": "pattern",
+          "multi_value_type": "single_value",
+          "label": "Content",
+          "preview": [
+            {
+              "id": "pr_sub",
+              "fields": {
+                "items": [
+                  {
+                    "id": "pr_leaf",
+                    "fields": {
+                      "leaf_field": "correct"
+                    },
+                    "settings": {
+                      "leaf_setting": "correct"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "settings": {
+        "setting": {
+          "label": "Setting",
+          "type": "textfield",
+          "preview": "correct"
+        }
+      }
+    },
     "patterns_items": {
       "use": "@molecules/tests/check_items.twig",
       "label": "Patterns",

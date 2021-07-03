@@ -85,21 +85,58 @@ export default class PatternVariant {
     this.settings[setting.getName()] = setting;
   }
 
-  private buildPreviewPattern(preview) {
-    const patternId = preview.id;
-
-    const variant = preview.variant !== null ? preview.variant : null;
-    const fields = preview.fields != null ? preview.fields : {};
-    const settings = preview.settings != null ? preview.settings : {};
+  private handleFieldItem(fieldItem) {
+    const variant = fieldItem.variant !== null ? fieldItem.variant : null;
+    const fields = fieldItem.fields != null ? fieldItem.fields : {};
+    const settings = fieldItem.settings != null ? fieldItem.settings : {};
     const objects = Object.assign(fields, settings);
     return {
-      patternId,
+      patternId: fieldItem.id,
       variant,
+      fields,
+      settings,
       variables: objects,
     };
   }
 
-  public getPreviewPatterns() {
+  private handleSubPreviewPattern(preview, parentVariables) {
+    if (preview.fields !== undefined) {
+      Object.keys(preview.fields).forEach((key) => {
+        const field = preview.fields[key];
+        if (field.id !== undefined) {
+          if (parentVariables.children === undefined) {
+            // eslint-disable-next-line no-param-reassign
+            parentVariables.children = {};
+          }
+          // eslint-disable-next-line no-param-reassign
+          parentVariables.children[key] = this.handleFieldItem(field);
+          this.handleSubPreviewPattern(field, parentVariables.sub[key]);
+        } else if (Array.isArray(field)) {
+          let i = 0;
+          if (parentVariables.children === undefined) {
+            // eslint-disable-next-line no-param-reassign
+            parentVariables.children = {};
+          }
+          field.forEach((item) => {
+            if (item.id !== undefined) {
+              // eslint-disable-next-line no-param-reassign
+              parentVariables.children[`${key}--${i}`] = this.handleFieldItem(item);
+              this.handleSubPreviewPattern(item, parentVariables.children[`${key}--${i}`]);
+              i += 1;
+            }
+          });
+        }
+      });
+    }
+  }
+
+  private buildPreviewPattern(preview) {
+    const rootVariables = this.handleFieldItem(preview);
+    this.handleSubPreviewPattern(preview, rootVariables);
+    return rootVariables;
+  }
+
+  public getRenderInfo() {
     const previewPatterns = {};
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
