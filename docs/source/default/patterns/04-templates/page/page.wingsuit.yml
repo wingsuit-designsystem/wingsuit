@@ -1,0 +1,15 @@
+page:
+  use: "@templates/page/page.twig"
+  label: Page
+  description: Page
+  fields:
+    content:
+      type: pattern
+      label: Content
+      multi_value_type: 'single_value'
+    menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: primary

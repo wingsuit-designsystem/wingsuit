@@ -63,7 +63,7 @@ export default class Property {
 
   public getPreview(): any {
     if (typeof this.preview === 'object') {
-      if (this.preview.faker != null) {
+      if (this.preview?.faker != null) {
         return this.generateFake(this.preview.faker);
       }
       if (this.type === 'pattern' || this.type === 'object') {
