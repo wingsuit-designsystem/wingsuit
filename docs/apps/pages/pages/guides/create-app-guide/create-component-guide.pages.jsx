@@ -1,12 +1,10 @@
 import 'protons';
-import MDX from './index.mdx';
-
-const template = require('../../docs.twig');
+// import MDX from './index.mdx';
+import pattern from './index.yml';
 
 export default {
   path: '/guides/create-app-guide',
-  template,
-  MDX,
+  pattern,
   vars: {
     next: [
       {
