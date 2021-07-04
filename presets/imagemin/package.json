@@ -1,0 +1,45 @@
+{
+  "name": "@wingsuit-designsystem/preset-imagemin",
+  "version": "1.1.0-alpha.0",
+  "description": "Wingsuit image optimization preset.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Pascal Glass",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "dependencies": {
+    "@wingsuit-designsystem/core": "1.1.0-alpha.0",
+    "imagemin-gifsicle": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^6.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "imagemin-webp-webpack-plugin": "^3.1.0",
+    "imagemin-webpack-plugin": "^2.4.2"
+  },
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+}
