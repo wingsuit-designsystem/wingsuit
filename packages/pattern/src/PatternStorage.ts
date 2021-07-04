@@ -51,6 +51,37 @@ export default class PatternStorage implements IPatternStorage {
     return foundPatterns;
   }
 
+  /**
+   * Performs a deep merge of objects and returns new object. Does not modify
+   * objects (immutable) and merges arrays via concatenation.
+   *
+   * @param {...object} objects - Objects to merge
+   * @returns {object} New object with merged key/values
+   */
+  private mergeDeep(...objects) {
+    const isObject = (obj) => obj && typeof obj === 'object';
+
+    return objects.reduce((prev, obj) => {
+      Object.keys(obj).forEach((key) => {
+        const pVal = prev[key];
+        const oVal = obj[key];
+
+        if (Array.isArray(pVal) && Array.isArray(oVal)) {
+          // eslint-disable-next-line no-param-reassign
+          prev[key] = pVal.concat(...oVal);
+        } else if (isObject(pVal) && isObject(oVal)) {
+          // eslint-disable-next-line no-param-reassign
+          prev[key] = this.mergeDeep(pVal, oVal);
+        } else {
+          // eslint-disable-next-line no-param-reassign
+          prev[key] = oVal;
+        }
+      });
+
+      return prev;
+    }, {});
+  }
+
   private extendPatternDefinition(pattern: IPatternDefinition) {
     const resultingPattern = pattern;
     if (pattern != null && pattern.extends != null && pattern.extends.length !== 0) {
@@ -67,6 +98,9 @@ export default class PatternStorage implements IPatternStorage {
         let basePatternTypes: string[] = [];
         if (basePatternType == null) {
           basePatternTypes = ['fields', 'settings'];
+          if (resultingPattern.use === undefined) {
+            resultingPattern.use = basePatternDefinition.use;
+          }
         } else {
           basePatternTypes = [basePatternType];
         }
@@ -75,10 +109,10 @@ export default class PatternStorage implements IPatternStorage {
           const type: string = basePatternTypes[key];
           if (basePatternField == null) {
             if (basePatternDefinition[type] != null) {
-              resultingPattern[type] = {
-                ...resultingPattern[type],
-                ...basePatternDefinition[type],
-              };
+              resultingPattern[type] = this.mergeDeep(
+                basePatternDefinition[type],
+                resultingPattern[type]
+              );
             }
           } else if (basePatternDefinition[type] != null) {
             if (resultingPattern[type] == null) {
@@ -160,7 +194,7 @@ export default class PatternStorage implements IPatternStorage {
               if (patternDefinition[pattern_key].namespace == null) {
                 patternDefinition[pattern_key].namespace = namespace;
               }
-              this.definitions[pattern_key] = patternDefinition[pattern_key];
+              this.addDefinition(pattern_key, patternDefinition[pattern_key]);
             });
           }
         } catch (e) {
@@ -169,6 +203,10 @@ export default class PatternStorage implements IPatternStorage {
         }
       }
     });
+  }
+
+  addDefinition(id: string, pattern: IPatternDefinition) {
+    this.definitions[id] = pattern;
   }
 
   findTwigByNamespace(namespace): any | null {
