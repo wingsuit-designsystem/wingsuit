@@ -43,6 +43,8 @@ export interface AppInitConfig {
 
   assetBundleFolder: string;
 
+  dataFolder: string;
+
   assetAtomicFolder?: string;
 
   features?: Feature;
@@ -74,6 +76,8 @@ export interface AppInitConfig {
   absDistFolder?: string;
 
   absPatternPath?: string;
+
+  absDataPath?: string;
 }
 
 export interface Preset {
@@ -120,6 +124,7 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     type,
     name: type,
     distFolder: `dist/app-${type}`,
+    dataFolder: 'apps/data',
     namespaces: {
       wsdesignsystem: path.join(absRootPath, 'source/default'),
       wspatterns: path.join(absRootPath, 'source/default/patterns'),
@@ -132,6 +137,7 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     absDesignSystemPath: path.join(absRootPath, 'source/default'),
     absDistFolder: path.join(absRootPath, `dist/app-${type}`),
     absAppPath: path.join(absRootPath, `apps/${type}`),
+    absDataPath: path.join(absRootPath, `apps/data`),
     absPatternPath: path.join(absRootPath, `'source/default/patterns`),
     features: {},
     absRootPath,

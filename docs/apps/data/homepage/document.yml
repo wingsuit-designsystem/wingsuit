@@ -1,0 +1,223 @@
+bg: 'blue-light'
+content: '<h2>2.2. Document your components</h2>'
+badge_headline: 'wingsuit.yml sections:'
+data:
+  - title: 'Automatic'
+    key: "automatic"
+    intro: '<p>Wingsuit provides Storybook DocBlocks as the building blocks to create full featured documentation right away from the wingsuit.yml.</p>'
+    contents:
+      - key: 'automatic'
+        title: 'Automatic'
+        content: |
+          <div class="p-14">
+            <img src="/images/docs_export.png" class="w-full">
+          </div>
+    codes:
+      - key: 'yaml'
+        title: 'avatar.wingsuit.yml'
+        format: 'yaml'
+        code: |
+          avatar:
+            use: "@molecules/avatar/avatar.twig"
+            label: Avatar
+            description: "An avatar represent a user, and displays the profile picture."
+            fields:
+              image:
+                type: pattern
+                label: Image
+                description: The profile picture.
+                preview:
+                  id: placeholder
+                  variant: image
+                  settings:
+                    style: 1x1_xs_sc
+              text:
+                type: text
+                label: Text
+                description: A short description of the avatar.
+                preview:
+                  faker: lorem.paragraph
+              full_name:
+                type: text
+                label: Full name
+                description: The full name of the profile.
+                preview:
+                  faker: name.findName
+              button:
+                type: pattern
+                label: Button
+                description: Button with link to profile detail page.
+                preview:
+                  id: button
+                  variant: default
+                  settings:
+                    expanded: true
+
+            settings:
+              text_align:
+                type: select
+                label: Text align
+                description: Align the text of the avatar.
+                options:
+                  left: Left
+                  center: Center
+
+            variants:
+              default:
+                label: Default
+                description: Show
+              horizontal:
+                label: Horizontal
+                fields:
+                  image:
+                    id: placeholder
+                    variant: image
+                    settings:
+                      style: 1x2_xs_sc'
+
+  - title: 'MDX'
+    key: "mdx"
+    intro: '<p>You want to tell more about your component. With Wingsuit you can render your Twig component in your Storyboook MDX documentantion file.</p>'
+    contents:
+      - key: 'mdx'
+        title: 'MDX'
+        content: |
+          <div class="px-14 pt-2 relative">
+            <img src="/images/docs_mdx.png">
+          </div>
+    codes:
+      - key: 'mdx'
+        title: 'grid.mdx'
+        format: 'jsx'
+        code: |
+          import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks';
+          import { PatternLoad, PatternPreview } from '@wingsuit-designsystem/pattern-react/server';
+
+          &lt;PatternLoad patternId="grid"&gt;
+            {(pattern) =&gt; (
+            &lt;&gt;
+              &lt;Title /&gt;
+              &lt;Subtitle /&gt;
+
+          ## Simple usage
+
+          ```twig dark
+            {% set cells = [
+              'Cell 1',
+              'Cell 2'
+            ] %}
+            {% include "@organisms/grid/grid.twig" with {
+              attributes: create_attribute(),
+              cells: cells,
+              columns: 2,
+              columns_width: 'equal',
+              gutter: 'default'
+            } only %}
+          `} /&gt;
+          ```
+
+          ## Cells
+          The pattern loops through a list of cells and print each cell.&lt;br/&gt;
+          To adjust the way the blocks are printed use twig blocks.
+
+          ## Blocks
+          * cell_outer: &lt;br/&gt;Use block cell_outer to adjust the markup of each cell. Variables: `cell`, `cell_counter`.
+          * cell_inner:&lt;br/&gt;Use block cell_inner to print the cell variable. Variables: `cell`, `cell_counter`
+          ### Example: cell_inner
+          ```twig dark
+            {% set cells = [
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;1&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;2&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;3&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;4&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;5&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;6&lt;/div&gt;'},
+                ] %}
+                {% embed "@organisms/grid/grid.twig" with {
+                  attributes: create_attribute(),
+                  cells: cells,
+                  columns: 2,
+                  columns_width: 'equal',
+                  gutter: 'default'
+                } only %}
+                  {% block cell_inner %}
+                    {{ cell.content }}
+                  {% endblock %}
+                {% endembed %}
+          ```
+
+          ### Example: cell_outer
+          ```twig dark
+            {% set cells = [
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;1&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;2&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;3&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;4&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;5&lt;/div&gt;'},
+                  {content: '&lt;div class="w-full h-20 bg-primary"&gt;6&lt;/div&gt;'},
+                ] %}
+                {% embed "@organisms/grid/grid.twig" with {
+                  attributes: create_attribute(),
+                  cells: cells,
+                  columns: 2,
+                  columns_width: 'equal',
+                  gutter: 'default'
+                } only %}
+                {% block cell_outer %}
+                  &lt;div&gt;
+                  {{ cell.content }} + { cell_counter }
+                  &lt;/div&gt;
+                {% endblock %}
+                {% endembed %}
+          ```
+
+          ## Column widths
+          The pattern comes with most common column widths configurations like 50x50 or 33x66.
+          If you need additional configuration you can extends the columns configuration inside the `grid.wingsuit.yml`.
+
+          ```yaml dark
+          columns:
+          2: &lt;&lt; Columns count
+            equal: 'grid-cols-1 md:grid-cols-2' &lt;&lt; Column width 50x50
+            '66x33': 'grid-cols-1 md:grid-cols-66/33' &lt;&lt; Column width 66x33
+            '33x66': 'grid-cols-1 md:grid-cols-33/66' &lt;&lt; Column width 33x66
+          ```
+
+          ## Gutter
+          To configure the spacing between the columns use the gutter configuration in the grid.wingsuit.yml.
+          ```yaml dark
+            gutter:
+              ...
+              default: 'gap-4 md:gap-5 lg:gap-7'
+              ...
+          ```
+
+          ## Examples
+          ### 4 equal columns.
+          ```twig dark
+            {% include "@organisms/grid/grid.twig" with {
+              cells: cells,
+              columns: 4,
+              columns_width: 'equal',
+              gutter: 'default'
+            } only %}
+          ```
+
+          &lt;PatternPreview variant={pattern.getDefaultVariant()} columns="4" config="equal"/&gt;
+
+          ### 3 Columns with 25% 50% 25%.
+
+          ```twig dark
+           {% include "@organisms/grid/grid.twig" with {
+             cells: cells,
+             columns: 3,
+             columns_width: '25x50x25',
+             gutter: 'default'
+           } only %}
+          ```
+
+          &lt;PatternPreview variant={pattern.getDefaultVariant()} columns="3" columns_width="25x50x25"/&gt;
+
+            &lt;/&gt;
+            )}
+          &lt;/PatternLoad&gt;
