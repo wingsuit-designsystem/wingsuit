@@ -2,6 +2,9 @@ const wingsuitCore = require('@wingsuit-designsystem/core');
 const postCss = require('postcss');
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-controls',

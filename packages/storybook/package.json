@@ -30,13 +30,13 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
-    "@storybook/addon-controls": "^6.1.0",
-    "@storybook/addon-docs": "^6.1.0",
-    "@storybook/client-api": "^6.1.0",
-    "@storybook/components": "^6.1.0",
+    "@storybook/addon-controls": "^6.3.2",
+    "@storybook/addon-docs": "^6.3.2",
+    "@storybook/client-api": "^6.3.2",
+    "@storybook/components": "^6.3.2",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.1.0",
-    "@storybook/theming": "^6.1.0",
+    "@storybook/react": "^6.3.2",
+    "@storybook/theming": "^6.3.2",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/pattern": "1.1.0-alpha.0",
@@ -45,10 +45,15 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-syntax-highlighter": "^15.3.1s"
+    "react-syntax-highlighter": "^15.3.1s",
+    "webpack": "^5.42.1"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
   },
-  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4",
+  "devDependencies": {
+    "@storybook/builder-webpack5": "^6.4.0-alpha.11",
+    "@storybook/manager-webpack5": "^6.4.0-alpha.11"
+  }
 }

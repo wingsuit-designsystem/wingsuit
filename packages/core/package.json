@@ -61,7 +61,7 @@
     "stylelint": "^12.0.0",
     "stylelint-config-prettier": "^8.0.0",
     "stylelint-webpack-plugin": "^1.2.3",
-    "svg-sprite-loader": "^4.1.6",
+    "svg-sprite-loader": "^6.0.9",
     "svg-transform-loader": "^2.0.8",
     "svgo": "^1.3.2",
     "svgo-loader": "^2.2.1",
