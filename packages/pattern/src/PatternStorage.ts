@@ -109,6 +109,9 @@ export default class PatternStorage implements IPatternStorage {
           const type: string = basePatternTypes[key];
           if (basePatternField == null) {
             if (basePatternDefinition[type] != null) {
+              if (resultingPattern[type] == null) {
+                resultingPattern[type] = {};
+              }
               resultingPattern[type] = this.mergeDeep(
                 basePatternDefinition[type],
                 resultingPattern[type]
