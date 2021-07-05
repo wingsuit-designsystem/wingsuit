@@ -71,6 +71,9 @@
                     {{ pattern('rich_text', { text: content.intro }, 'large') }}
                   </div>
                 {% endif %}
+                {% if content.intro_pattern.id is not empty %}
+                  {{ pattern_preview(content.intro_pattern.id, content.intro_pattern.data|default({}), content.intro_pattern.variant) }}
+                {% endif %}
               {% if content.show_code_block is not defined or content.show_code_block == true %}
                 {% include "@molecules/code-block/code-block.twig"
                   with {

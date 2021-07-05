@@ -162,6 +162,8 @@ export function resolveConfig(
   appConfig.namespaces = designSystem.namespaces;
   appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
   appConfig.namespaces.wspatterns = appConfig.absPatternPath;
+  appConfig.namespaces.wsapp = appConfig.absAppPath;
+  appConfig.namespaces.wsdata = appConfig.absDataPath;
   if (mergedConfig.postCssConfig != null) {
     appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
   }
