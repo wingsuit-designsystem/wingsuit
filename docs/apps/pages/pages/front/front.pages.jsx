@@ -1,17 +1,35 @@
-import React from 'react';
 import 'protons';
-import MDX from './front.mdx';
+
+const tokens = require('wsdata/homepage/tokens.yml');
+const component = require('wsdata/homepage/component.yml');
+const document = require('wsdata/homepage/document.yml');
 
 export default {
   path: '/',
-};
-
-const template = require('./front.twig');
-
-export const getProps = async (ctx, renderer, renderToStaticMarkup) => {
-  const props = {};
-  props.page = await renderer.renderData(ctx.path, template.default, {
-    content: renderToStaticMarkup(<MDX />),
-  });
-  return props;
+  pattern: {
+    label: 'Homepage',
+    extends: ['page'],
+    fields: {
+      menu: {
+        preview: '',
+      },
+      content: {
+        preview: [
+          { id: 'hero' },
+          {
+            id: 'section_code',
+            fields: tokens,
+          },
+          {
+            id: 'section_code',
+            fields: component,
+          },
+          {
+            id: 'section_code',
+            fields: document,
+          },
+        ],
+      },
+    },
+  },
 };
