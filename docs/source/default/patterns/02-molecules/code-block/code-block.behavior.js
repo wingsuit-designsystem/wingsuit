@@ -8,7 +8,7 @@ import 'prismjs/components/prism-jsx';
 
 import 'prismjs/plugins/keep-markup/prism-keep-markup';
 import 'prismjs/plugins/toolbar/prism-toolbar';
-import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+// import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 
 window.Spruce.store('component_feature', null);
 Drupal.behaviors.code_block = {
