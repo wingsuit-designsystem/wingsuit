@@ -24,8 +24,7 @@
         {{ pattern_preview('card', {'headline': ' Second Card'}, 'default') }}
       {% endblock %}
       {% block column_3 %}
-        Image null
-        {{ pattern_preview('card', {'headline': 'Overwritten headline', 'image': null}, 'default') }}
+        {{ pattern('card', {'headline': 'Overwritten headline', 'image': null}, 'horizontal') }}
       {% endblock %}
     {% endembed %}
     {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
