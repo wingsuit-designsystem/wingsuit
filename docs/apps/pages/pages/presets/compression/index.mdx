@@ -1,0 +1,62 @@
+# Compression Preset
+
+The official wingsuit compression preset adds support for gzip and brotli compression of your css, js & html files.
+
+## Installing the compression preset
+
+For most real-world projects, we recommend using this preset. In order to do so, you'll want to install the preset as a dev-dependency via `yarn` or `npm`:
+
+```js
+yarn add @wingsuit-designsystem/preset-compression -D
+```
+
+After that, you'll need wingsuit to consume the preset by loading it via your wingsuit.config.js:
+
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: [
+    '@wingsuit-designsystem/preset-compression',
+  ],
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
+
+## Default behavior & customizations
+The default behavior compresses your css, js & html files with both gzip and brotli algorithm <b> only </b> when the build process is executed. The following properties, however, are exposed and can be
+altered by using the parameters object within your wingsuit.config.js:
+
+| Prop          | Type                                | Desc                                                                                                                                 |
+|---------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| gzipEnabled   | {boolean \| default: true}          | use gzip compression algorithm/function                                                                                              |
+| brotliEnabled | {boolean \| default: true}          | use brotli compression algorithm/function                                                                                            |
+| fileName      | {string \| default: '[path][base]'} | target asset filename [see for more information](https://github.com/webpack-contrib/compression-webpack-plugin/tree/v6.1.1#filename) |
+
+Example configuration:
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: ['@wingsuit-designsystem/preset-compression'],
+  parameters: {
+    compression: {
+      // enable gzip algorithm (default: true)
+      gzipEnabled: true,
+      // disable brotli algorithm (default: true)
+      brotliEnabled: false,
+      // alter filename (default: [path][base])
+      fileName: '[path][base][file]',
+    },
+  },
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```

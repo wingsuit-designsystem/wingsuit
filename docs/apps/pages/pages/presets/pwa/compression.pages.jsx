@@ -4,16 +4,16 @@ import MDX from './index.mdx';
 const template = require('../../docs.twig');
 
 export default {
-  path: '/configurations/preset-webpack',
+  path: '/presets/pwa',
   template,
   MDX,
   vars: {
     next: [
       {
-        title: 'Configure webpack',
-        text: 'Learn how to add custom webpack configuration, or alter the existing one.',
+        title: 'UI Patterns',
+        text: 'Learn how wingsuit leverages UI patterns.',
         link_title: 'continue',
-        href: '/configurations/custom-webpack-config',
+        href: '/components/wingsuit',
       },
       {
         title: 'Components',

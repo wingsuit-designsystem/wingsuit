@@ -1,0 +1,59 @@
+# Imagemin Preset
+
+The official wingsuit imagemin preset optimizes your images and creates .webp variants of all JPEG and PNG files in your project.
+
+## Installing the imagemin preset
+
+For most real-world projects, we recommend using this preset. In order to do so, you'll want to install the preset as a dev-dependency via `yarn` or `npm`:
+
+```js
+yarn add @wingsuit-designsystem/preset-imagemin -D
+```
+
+After that, you'll need wingsuit to consume the preset by loading it via your wingsuit.config.js:
+
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: [
+    '@wingsuit-designsystem/preset-imagemin',
+  ],
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
+
+## Default behavior & customizations
+By default, the imagemin preset takes care of all of your images, which are imported or targeted in your `apps/[app]/assets.js` (.e.g.: `/source/default/***/**/images/*.{jpg|png}`).
+When automatic webp creation is set to true, webp variants will also be created during development to ensure we can use them in storybook while developing a picture element for example.
+All further optimizations only run during  production builds alongside a specific .cache directory, which will be created at the root level of your application ensuring less performance loss.
+
+To deactivate the automatic webp creation, merely use the following exposed property within the parameters object of your `wingsuit.config.js`:
+
+| Prop        | Type                       | Desc                             |
+|-------------|----------------------------|----------------------------------|
+| webpEnabled | {Boolean \| default: true} | Generate webP variants of images |
+
+Example configuration:
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: ['@wingsuit-designsystem/preset-imagemin'],
+  parameters: {
+    imagemin: {
+      // automatic webp creation (default: true)
+      webpEnabled: false,
+    },
+  },
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
