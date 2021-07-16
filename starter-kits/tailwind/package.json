@@ -55,7 +55,6 @@
     "@wingsuit-designsystem/cli": "1.1.0-alpha.0",
     "@wingsuit-designsystem/core": "1.1.0-alpha.0",
     "@wingsuit-designsystem/pattern": "1.1.0-alpha.0",
-    "@wingsuit-designsystem/preset-imagemin": "1.1.0-alpha.0",
     "@wingsuit-designsystem/preset-postcss8": "1.1.0-alpha.0",
     "@wingsuit-designsystem/preset-tailwind2": "1.1.0-alpha.0",
     "@wingsuit-designsystem/storybook": "1.1.0-alpha.0",
