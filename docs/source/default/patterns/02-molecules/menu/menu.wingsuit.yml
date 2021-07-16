@@ -32,8 +32,6 @@ menu:
                 url: "/configurations/details"
               - title: Custom webpack configuration
                 url: "/configurations/custom-webpack-config"
-              - title: Presets
-                url: "/configurations/preset-webpack"
           - title: APPS
             url: "#"
             below:
@@ -45,7 +43,17 @@ menu:
                 url: "/apps/cms"
               - title: Paes
                 url: "/apps/pages"
-
+          - title: PRESETS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/presets/overview"
+              - title: Compression Preset
+                url: "/presets/compression"
+              - title: Imagemin Preset
+                url: "/presets/imagemin"
+              - title: Pwa Preset
+                url: "/presets/pwa"
           - title: COMPONENTS
             url: "#"
             below:
