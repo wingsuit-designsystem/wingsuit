@@ -32,8 +32,17 @@ menu:
                 url: "/configurations/details"
               - title: Custom webpack configuration
                 url: "/configurations/custom-webpack-config"
-              - title: Presets
-                url: "/configurations/preset-webpack"
+          - title: PRESETS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/presets/overview"
+              - title: Compression Preset
+                url: "/presets/compression"
+              - title: Imagemin Preset
+                url: "/presets/imagemin"
+              - title: Pwa Preset
+                url: "/presets/pwa"
           - title: COMPONENTS
             url: "#"
             below:
