@@ -34,6 +34,18 @@ menu:
                 url: "/configurations/custom-webpack-config"
               - title: Presets
                 url: "/configurations/preset-webpack"
+          - title: APPS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/apps/overview"
+              - title: Drupal
+                url: "/apps/drupal"
+              - title: CMS
+                url: "/apps/cms"
+              - title: Paes
+                url: "/apps/pages"
+
           - title: COMPONENTS
             url: "#"
             below:

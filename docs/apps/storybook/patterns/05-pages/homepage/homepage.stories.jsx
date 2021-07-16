@@ -31,6 +31,9 @@ export const wingsuit = {
               id: 'section_code',
               fields: document,
             },
+            {
+              id: 'download',
+            },
           ],
         },
       },
