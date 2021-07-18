@@ -47,7 +47,7 @@ export function webpack(appConfig: AppConfig, config: ImageminConfig) {
           }),
         ],
       }),
-      config.webpEnabled && (
+      config.webpEnabled &&
         new ImageminWebpWebpackPlugin({
           config: [
             {
@@ -56,8 +56,7 @@ export function webpack(appConfig: AppConfig, config: ImageminConfig) {
           ],
           silent: false,
           detailedLogs: true,
-        })
-      )
+        }),
     ].filter(Boolean),
   };
 }

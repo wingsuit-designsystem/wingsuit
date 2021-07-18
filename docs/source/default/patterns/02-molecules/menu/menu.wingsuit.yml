@@ -61,7 +61,7 @@ menu:
                 url: "/components/overview"
               - title: Global variables
                 url: "/components/globals"
-              - title: Wingsuit (UI Patterns)
+              - title: Wingsuit Pattern
                 url: "/components/wingsuit"
               - title: Presentation
                 url: "/components/presentation"

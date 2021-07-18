@@ -2,7 +2,6 @@ import { AppConfig } from '@wingsuit-designsystem/core';
 
 // node modules
 const zlib = require('zlib');
-const zopfli = require('@gfx/zopfli');
 
 // webpack plugins
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -11,9 +10,13 @@ const CompressionPlugin = require('compression-webpack-plugin');
  * Exposing options, which can be changed in the wingsuit.config.js.
  */
 interface CompressionConfig {
-  gzipEnabled: boolean;
-  brotliEnabled: boolean;
+  compression: Compression;
   fileName: string;
+}
+
+enum Compression {
+  Brotli = 0,
+  Gzip = 1,
 }
 
 /**
@@ -32,8 +35,7 @@ export function name(appConfig: AppConfig) {
  */
 export function defaultConfig(appConfig: AppConfig): CompressionConfig {
   return {
-    gzipEnabled: true,
-    brotliEnabled: true,
+    compression: Compression.Brotli,
     fileName: '[path][base]',
   };
 }
@@ -43,9 +45,11 @@ export function webpack(appConfig: AppConfig, config: CompressionConfig) {
     return {
       // Allow falsy values in plugins array see https://github.com/webpack/webpack/issues/5493#issuecomment-321705298
       plugins: [
-        config.gzipEnabled && (
+        config.compression === Compression.gzip &&
           new CompressionPlugin({
             algorithm(input, compressionOptions, callback) {
+              // eslint-disable-next-line global-require
+              const zopfli = require('@gfx/zopfli');
               return zopfli.gzip(input, compressionOptions, callback);
             },
             compressionOptions: {
@@ -53,12 +57,11 @@ export function webpack(appConfig: AppConfig, config: CompressionConfig) {
               level: 9,
             },
             deleteOriginalAssets: false,
-            filename: `${config.fileName}.gz`,
+            filename: `${config.fileName}`,
             minRatio: 0.8,
             test: /\.(js|css|html)$/,
-          })
-        ),
-        config.brotliEnabled && (
+          }),
+        config.compression === Compression.Brotli &&
           new CompressionPlugin({
             algorithm: 'brotliCompress',
             compressionOptions: {
@@ -67,11 +70,10 @@ export function webpack(appConfig: AppConfig, config: CompressionConfig) {
               },
             },
             deleteOriginalAssets: false,
-            filename: `${config.fileName}.br`,
+            filename: `${config.fileName}`,
             minRatio: 0.8,
             test: /\.(js|css|html)$/,
-          })
-        ),
+          }),
       ].filter(Boolean),
     };
   }

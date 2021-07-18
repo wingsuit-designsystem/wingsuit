@@ -2,6 +2,7 @@ import 'protons';
 
 const tokens = require('wsdata/homepage/tokens.yml');
 const component = require('wsdata/homepage/component.yml');
+const love = require('wsdata/homepage/love.yml');
 const document = require('wsdata/homepage/document.yml');
 
 export default {
@@ -27,6 +28,10 @@ export default {
           {
             id: 'section_code',
             fields: document,
+          },
+          {
+            id: 'section_code',
+            fields: love,
           },
           {
             id: 'download',

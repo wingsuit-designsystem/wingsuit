@@ -13,3 +13,9 @@ page:
       preview:
         id: menu
         variant: primary
+    footer_menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer

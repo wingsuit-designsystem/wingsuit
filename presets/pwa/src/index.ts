@@ -37,9 +37,9 @@ export function name(appConfig: AppConfig) {
  */
 export function defaultConfig(appConfig: AppConfig): Pwa {
   return {
-    logo: path.resolve(`${appConfig.absDesignSystemPath}/favicon-src.png`),
-    prefix: 'images/favicons/',
-    publicPath: 'images/favicons',
+    logo: path.resolve(`${appConfig.absDesignSystemPath}/favicon.png`),
+    prefix: 'favicons/',
+    publicPath: 'favicons',
     appName: null,
     appDescription: null,
     developerName: null,

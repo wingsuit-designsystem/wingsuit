@@ -32,7 +32,7 @@
 
 {% include "@templates/site-container.twig" with {
   menu: pattern_preview('menu', {}, 'primary'),
-  footer_menu: null,
+  footer_menu: pattern_preview('menu', {}, 'footer'),
   show_hamburger: true,
   content: body,
 } %}

@@ -1,8 +1,8 @@
-# Wingsuit (UI Patterns)
+# Wingsuit Pattern
 
-A wingsuit pattern is defined inside a `pattern.wingsuit.yml`.
+A Wingsuit pattern is defined inside a `pattern.wingsuit.yml`.
 
-<b>A Wingsuit component contains:</b>
+<b>A Wingsuit pattern contains:</b>
 
 * index.js
 * pattern.stories.jsx
@@ -139,7 +139,27 @@ You can control how Wingsuit will handle the resulting array of objects.
 {{ item.content }}
 {% endfor %}
 ```
+### Composing patterns (Since V1.1):
+Composition allows you to embed patterns into patterns.
+```YAML
+fields:
+  container:
+    label: Container
+    type: pattern
+    preview:
+      id: container
+      fields:
+        content:
+          - id: rich_text
+            fields:
+              text: Lorem ipsum
+          - id: button
+            fields:
+              text: Read more
+            settings:
+              url: https://www.readmore.de
 
+```
 ### Type object
 ```yaml
 fields:
