@@ -45,7 +45,7 @@ export function webpack(appConfig: AppConfig, config: CompressionConfig) {
     return {
       // Allow falsy values in plugins array see https://github.com/webpack/webpack/issues/5493#issuecomment-321705298
       plugins: [
-        config.compression === Compression.gzip &&
+        config.compression === Compression.Gzip &&
           new CompressionPlugin({
             algorithm(input, compressionOptions, callback) {
               // eslint-disable-next-line global-require
