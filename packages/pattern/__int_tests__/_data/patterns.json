@@ -223,12 +223,14 @@
       "label": "Leaf",
       "fields": {
         "leaf_field": {
-          "type": "text"
+          "type": "text",
+          "preview": "wrong"
         }
       },
       "settings": {
         "leaf_setting": {
-          "type": "textfield"
+          "type": "textfield",
+          "preview": "wrong"
         }
       }
     },

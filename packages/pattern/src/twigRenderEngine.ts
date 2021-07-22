@@ -54,8 +54,7 @@ export async function renderPatternPreview(
       resolve(err.message);
     });
   }
-  const renderInfo = Object.assign(renderInfoContext, variant.getRenderInfo());
-
+  const renderInfo = { ...variant.getRenderInfo(), ...renderInfoContext};
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];
   let i = 0;
@@ -64,7 +63,7 @@ export async function renderPatternPreview(
       renderInfo[key].patternId,
       renderInfo[key].variables,
       renderInfo[key].variant,
-      renderInfoContext[key].children !== undefined ? renderInfoContext[key].children : {}
+      renderInfo[key]?.children || {}
     );
 
     promisedPreviewNames[i] = key;

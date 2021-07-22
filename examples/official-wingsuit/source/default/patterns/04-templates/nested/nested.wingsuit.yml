@@ -1,0 +1,103 @@
+nested_child:
+  namespace: "Templates/Tests"
+  use: "@templates/tests/_child.twig"
+  label: Child A
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: "Hi - I'm a child"
+
+nested_child_b:
+  namespace: "Templates/Tests"
+  use: "@templates/tests/_child.twig"
+  label: Child B
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: "Hi - I'm a child B"
+
+nested_parent:
+  namespace: "Templates/Tests"
+  use: "@templates/tests/_parent.twig"
+  label: Parent
+  fields:
+    child_a:
+      type: pattern
+      label: 'Child A'
+      preview:
+        id: 'nested_child'
+    child_b:
+      type: pattern
+      label: 'Child B'
+      preview:
+        id: 'nested_child'
+  variants:
+    __default:
+      label: "Default"
+    happy_children:
+      label: "Happy children"
+      fields:
+        child_a:
+          id: 'nested_child'
+          fields:
+            text: "I am happy"
+        child_b:
+          id: 'nested_child'
+          fields:
+            text: "I am happy too"
+    sad_children:
+      label: "Sad children"
+      fields:
+        child_a:
+          id: 'nested_child'
+          fields:
+            text: "I'm so sad"
+        child_b:
+          id: 'nested_child'
+          fields:
+            text: "Yeh, me too :("
+
+nested_grand_parent:
+  namespace: "Templates/Tests"
+  use: "@templates/tests/_grand_parent.twig"
+  label: Grand parent
+  fields:
+    parent:
+      type: pattern
+      label: 'Parent'
+      preview:
+        id: 'nested_parent'
+        fields:
+          child_a:
+            id: 'nested_child'
+            fields:
+              text: "I'm am crep"
+          child_b:
+            id: 'nested_child_b'
+  variants:
+    __default:
+      label: "Default"
+
+
+    happy_grand_children:
+      label: "Happy grand children"
+      fields:
+        parent:
+          id: 'nested_parent'
+          variant: 'happy_children'
+    blue_grand_children:
+      label: "Blue grand children"
+      fields:
+        parent:
+          id: 'nested_parent'
+          fields:
+            child_a:
+              id: 'nested_child'
+              fields:
+                text: "I'm am blue"
+            child_b:
+              id: 'nested_child_b'
+              fields:
+                text: "Soo blue"

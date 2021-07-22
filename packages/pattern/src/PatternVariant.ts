@@ -110,7 +110,7 @@ export default class PatternVariant {
           }
           // eslint-disable-next-line no-param-reassign
           parentVariables.children[key] = this.handleFieldItem(field);
-          this.handleSubPreviewPattern(field, parentVariables.sub[key]);
+          this.handleSubPreviewPattern(field, parentVariables.children[key]);
         } else if (Array.isArray(field)) {
           let i = 0;
           if (parentVariables.children === undefined) {
