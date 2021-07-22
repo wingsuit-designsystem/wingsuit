@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-imagemin",
-  "version": "1.1.0-alpha.2",
+  "version": "1.1.0-y.0",
   "description": "Wingsuit image optimization preset.",
   "repository": {
     "type": "git",
@@ -41,5 +41,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+  "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc"
 }
