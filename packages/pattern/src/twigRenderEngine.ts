@@ -54,7 +54,7 @@ export async function renderPatternPreview(
       resolve(err.message);
     });
   }
-  const renderInfo = { ...variant.getRenderInfo(), ...renderInfoContext};
+  const renderInfo = { ...variant.getRenderInfo(), ...renderInfoContext };
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];
   let i = 0;
