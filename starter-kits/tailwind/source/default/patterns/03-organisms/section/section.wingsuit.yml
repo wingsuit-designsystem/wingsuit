@@ -1,7 +1,7 @@
 section:
   use: "@organisms/section/section.twig"
   label: Columns section
-  icon_path: ws-assets://images/section-icon.svg
+  icon_path: ws-assets://images/section-icon.png
   extends:
     - grid.settings
     - container.settings

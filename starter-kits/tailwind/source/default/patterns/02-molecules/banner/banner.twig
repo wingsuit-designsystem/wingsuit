@@ -33,7 +33,7 @@
       {% block content %}
         <div class="p-6 dark:text-white">
           {% if teaser is not empty %}
-            <div{{ region_attributes.teaser|default(create_attribute()).addClass('text-xl') }}>
+            <div{{ region_attributes.teaser|default(create_attribute()).addClass('bg-white p-4') }}>
               {{ teaser }}
             </div>
           {% endif %}

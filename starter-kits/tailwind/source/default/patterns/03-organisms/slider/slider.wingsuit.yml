@@ -3,7 +3,7 @@ slider:
   label: Slider
   extends:
     - container.settings
-  icon_path: ws-assets://images/slideshow.svg
+  icon_path: ws-assets://images/slider-icon.png
   description: Javascript slider with splide (https://splidejs.com/).
     Change the slider behavior in slider.behavior.js.
   fields:

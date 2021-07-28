@@ -16,13 +16,13 @@ placeholder:
     placeholder_url:
       label: Placeholder service
       type: select
-      preview: https://satyr.io/[width]x[height]
+      preview: https://placeimg.com/[width]/[height]/people
       required: true
       options:
         "https://satyr.io/[width]x[height]": https://satyr.io/
         "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
         "https://fakeimg.pl/[width]x[height]": https://fakeimg.pl/
-        "https://placeimg.com/[width]/[height]/tech/grayscale": https://placeimg/
+        "https://placeimg.com/[width]/[height]/people": https://placeimg/
     background_classes:
       label: Classes
       description: Classes applied to background image container.
