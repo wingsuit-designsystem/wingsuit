@@ -1,5 +1,5 @@
 bg: 'green-light'
-content: '<h2>3. Make Love.</h2>'
+content: '<h2>3. Make Love.</h2><p>After finalizing your component, you can easily use it in other apps like Drupal.</p>'
 badge_headline: 'Choose your flavor:'
 data:
   - title: 'Drupal opinionated'

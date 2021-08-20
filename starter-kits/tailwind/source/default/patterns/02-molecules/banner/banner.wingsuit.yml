@@ -29,6 +29,7 @@ banner:
       allow_token: true
       label: Position
       default_value: center_center
+      allow_expose: true
       options:
         top_left: Top left
         top_center: Top center

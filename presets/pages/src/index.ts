@@ -78,16 +78,6 @@ export function webpack(appConfig: AppConfig) {
         globals: {
           window: {},
           self: {},
-          MutationObserver: () => {},
-          document: {
-            querySelectorAll: () => {
-              return [];
-            },
-            querySelector: () => {
-              return null;
-            },
-            addEventListener: () => {},
-          },
           Drupal: {
             behaviors: {},
           },

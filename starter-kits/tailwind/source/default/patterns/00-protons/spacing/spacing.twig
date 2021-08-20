@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * container
+ *
+ * See spacing.wingsuit.yaml for documentation.
+ */
+#}
+
+{% set classes = ([
+  pattern_configuration('spacing', '', 'padding_x')[padding_x],
+  pattern_configuration('spacing', '', 'padding_top')[padding_top],
+  pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
+] | sort | join(' ') | trim )%}
+
+<div style="background: rgb(163, 163, 163);box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0;">
+  <div class="{{ classes }}">
+    <div>
+    Sample Content
+    </div>
+  </div>
+</div>

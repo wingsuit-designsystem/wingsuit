@@ -2,6 +2,8 @@ container:
   use: "@organisms/container/container.twig"
   label: Container
   description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
+  extends:
+    - spacing.settings
   fields:
     content:
       type: text
@@ -10,7 +12,7 @@ container:
         faker: lorem.paragraphs
   settings:
     width:
-      type: select
+      type: radios
       label: Width
       default_value: default
       required: true
@@ -25,6 +27,7 @@ container:
       label: Background
       type: group
       group_type: details
+      weight: 80
     bg:
       type: colorwidget
       label: Background color
@@ -40,56 +43,16 @@ container:
       view_mode: drimage_background
       group: tab_bg
       description: The background image
-    tab_spacing:
-      label: Spacing
-      type: group
-      group_type: details
-    padding_x:
-      type: select
-      label: Padding left/right
-      required: true
-      group: tab_spacing
-      default_value: default
-      options:
-        default: Default
-        large: Large
-    padding_top:
-      type: select
-      label: Padding top
-      group: tab_spacing
-      options:
-        small: Small
-        default: Default
-        large: Large
-    padding_bottom:
-      type: select
-      label: Padding bottom
-      group: tab_spacing
-      default_value: default
-      options:
-        small: Small
-        default: Default
-        large: Large
     tab_advanced:
       label: Advanced
       type: group
       group_type: details
+      weight: 100
     classes:
       type: textfield
       label: Additional classes
       group: tab_advanced
   configuration:
-    padding_x:
-      default: 'px-6'
-      large: 'px-10'
-    padding_top:
-      small: 'pt-4'
-      default: 'pt-10 md:pt-20'
-      large: 'pt-20 md:pt-24'
-    padding_bottom:
-      small: 'pb-4'
-      default: 'pb-10 md:pb-20'
-      large: 'pb-20 md:pb-24'
     width:
       small: 'max-w-3xl'
       default: 'max-w-5xl'

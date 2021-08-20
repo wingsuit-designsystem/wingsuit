@@ -14,8 +14,8 @@ menu:
           - title: Get Started
             url: "#"
             below:
-              - title: Tailwind
-                url: "/quick-start/tailwind"
+              - title: Introduction
+                url: "/basics/introduction"
           - title: GUIDES
             url: "/guides/quick-start-guide"
             below:
@@ -97,10 +97,9 @@ menu:
       label: Top
       fields:
         items:
-          - title: Documentaion
-            url: "#"
-            in_active_trail: true
-          - title: Search
+          - title: Documentation
+            url: "/guides/quick-start-guide/"
+          - title: What's new in Version 1.1?
             url: "#"
     footer:
       label: Footer

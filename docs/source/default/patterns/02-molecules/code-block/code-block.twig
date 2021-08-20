@@ -2,7 +2,6 @@
 {% set content = pattern_configuration('code_block', variant, 'content') %}
 {% set frame = pattern_configuration('code_block', variant, 'frame') %}
 {% set active_tab = pattern_configuration('code_block', variant, 'active_tab') %}
-
 <div
   x-data="{key: '{{ codes|first.key }}'}"
   class="border border-gray-300 relative overflow-hidden rounded-xl flex w-full">

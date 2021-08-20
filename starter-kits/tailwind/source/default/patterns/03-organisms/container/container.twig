@@ -19,10 +19,10 @@
 ] | sort | join(' ') | trim )%}
 
 {% set classes = ([
-  is_layout_builder == false ? pattern_configuration('container', '', 'margin_top')[margin_top],
-  pattern_configuration('container', '', 'padding_x')[padding_x],
-  pattern_configuration('container', '', 'padding_top')[padding_top],
-  pattern_configuration('container', '', 'padding_bottom')[padding_bottom],
+  is_layout_builder == false ? pattern_configuration('spacing', '', 'margin_top')[margin_top],
+  pattern_configuration('spacing', '', 'padding_x')[padding_x],
+  pattern_configuration('spacing', '', 'padding_top')[padding_top],
+  pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
   pattern_configuration('container', '', 'width')[width],
   classes,
   'mx-auto'

@@ -16,6 +16,12 @@ export default {
         href: '/guides/quick-start-guide',
         link_title: 'Quickstart',
       },
+      {
+        title: 'Drupal Kickstarter',
+        text: 'Drupal Kickstarter with Layout Builder',
+        href: '/drupal/ui_patterns/',
+        link_title: 'Kickstarter',
+      },
     ],
   },
 };

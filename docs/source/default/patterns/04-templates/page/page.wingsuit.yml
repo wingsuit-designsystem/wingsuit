@@ -7,6 +7,12 @@ page:
       type: pattern
       label: Content
       multi_value_type: 'single_value'
+    top_menu:
+      type: pattern
+      label: Top Menu
+      preview:
+        id: menu
+        variant: top
     menu:
       type: pattern
       label: Menu

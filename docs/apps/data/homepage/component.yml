@@ -2,7 +2,7 @@ bg: 'purple-light'
 content: '<h2>2.1. Build your UI Patterns</h2>
       <p>When you are done with your <b>design tokens</b> you can continue with building your patterns. Start with your smallest components first, followed by the larger ones. <br/>
         </p>'
-badge_headline: 'wingsuit.yml sections:'
+badge_headline: 'Choose your wingsuit.yml sections:'
 data:
   - title: 'Base'
     key: "base"

@@ -1,6 +1,6 @@
 bg: 'blue-light'
 content: '<h2>2.2. Document your components</h2>'
-badge_headline: 'wingsuit.yml sections:'
+badge_headline: 'Choose your documentation way:'
 data:
   - title: 'Automatic'
     key: "automatic"

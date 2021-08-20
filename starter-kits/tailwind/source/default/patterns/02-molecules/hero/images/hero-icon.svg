@@ -1,0 +1,49 @@
+<svg width="195" height="102" viewBox="0 0 195 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)" filter="url(#filter0_d)">
+<rect width="191" height="99" transform="translate(2 1)" fill="#F3F4F6"/>
+<g filter="url(#filter1_d)">
+<path d="M23 16.0003C23 13.791 24.791 12 27.0003 12H169C171.209 12 173 13.791 173 16.0003V128C173 130.209 171.209 132 169 132H27.0003C24.791 132 23 130.209 23 128V16.0003Z" fill="white"/>
+<path d="M173 26H23V16C23 13.7909 24.7909 12 27 12H169C171.209 12 173 13.7909 173 16V26Z" fill="white"/>
+<line x1="23" y1="25.5" x2="173" y2="25.5" stroke="#F3F4F6"/>
+<circle cx="29.8777" cy="18.8758" r="1.87575" fill="#FF6159"/>
+<circle cx="36.1302" cy="18.8759" r="1.87575" fill="#FFBF2F"/>
+<circle cx="42.3828" cy="18.8759" r="1.87575" fill="#25CC3E"/>
+<path d="M27.0003 13H169V11H27.0003V13ZM172 16.0003V128H174V16.0003H172ZM169 131H27.0003V133H169V131ZM24 128V16.0003H22V128H24ZM27.0003 131C25.3433 131 24 129.657 24 128H22C22 130.761 24.2387 133 27.0003 133V131ZM172 128C172 129.657 170.657 131 169 131V133C171.761 133 174 130.761 174 128H172ZM169 13C170.657 13 172 14.3433 172 16.0003H174C174 13.2387 171.761 11 169 11V13ZM27.0003 11C24.2387 11 22 13.2387 22 16.0003H24C24 14.3433 25.3433 13 27.0003 13V11Z" fill="#E7E8EA"/>
+</g>
+<path d="M164.5 76.5H108.5V39.5H164.5V76.5Z" fill="url(#paint0_linear)" stroke="#E7E8EA"/>
+<rect x="31" y="63" width="20" height="3" rx="1.5" fill="#D1D5DB"/>
+<rect x="55" y="63" width="35" height="3" rx="1.5" fill="#D1D5DB"/>
+<rect x="31" y="72" width="30" height="9" rx="2" fill="#3B82F6"/>
+<rect x="36" y="76" width="20" height="1" rx="0.5" fill="white"/>
+<rect x="65.5" y="72.5" width="19" height="8" rx="1.5" stroke="#D1D5DB"/>
+<rect x="68" y="76" width="14" height="1" rx="0.5" fill="#D1D5DB"/>
+<text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="8" font-weight="500" letter-spacing="0em"><tspan x="31" y="44.9091">This is the main &#x2028;</tspan><tspan x="31" y="54.9091">hero message!</tspan></text>
+</g>
+<defs>
+<filter id="filter0_d" x="0.731481" y="0.365741" width="193.537" height="101.537" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.634259"/>
+<feGaussianBlur stdDeviation="0.634259"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<filter id="filter1_d" x="20" y="10" width="156" height="126" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feGaussianBlur stdDeviation="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="108" y1="77.3423" x2="159.973" y2="33.0952" gradientUnits="userSpaceOnUse">
+<stop offset="0.557292" stop-color="#F9FAFB"/>
+<stop offset="0.557392" stop-color="#F3F4F6"/>
+</linearGradient>
+<clipPath id="clip0">
+<rect width="191" height="99" fill="white" transform="translate(2 1)"/>
+</clipPath>
+</defs>
+</svg>
