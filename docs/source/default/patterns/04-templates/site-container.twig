@@ -13,7 +13,7 @@
 
 <main class="main-content flex-1 mt-16">
   {% block main %}
-    {% if menu is not empty %}
+    {% if menu is not empty and display_menu %}
       {% embed "@organisms/section/section.twig" with { columns_width_2: '25x75', columns: 2, width: 'default', padding_top: 'default'} %}
         {% block column_1 %}
           {{ menu }}
@@ -24,6 +24,11 @@
       {% endembed %}
 
     {% else %}
+      {% if display_menu == false %}
+        <div class="hidden md:hidden" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        {{ menu }}
+        </div>
+      {% endif %}
       {{ content }}
     {% endif %}
   {% endblock %}

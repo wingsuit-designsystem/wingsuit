@@ -100,7 +100,7 @@ menu:
           - title: Documentation
             url: "/guides/quick-start-guide/"
           - title: What's new in Version 1.1?
-            url: "#"
+            url: "/releases/onedotone"
     footer:
       label: Footer
       description: The footer menu.

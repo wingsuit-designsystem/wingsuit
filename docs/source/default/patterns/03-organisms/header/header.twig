@@ -15,7 +15,7 @@
     <div class="w-3/6 md:w-2/6 max-w-xs md:max-w-7xl ml-3">
       <div class="flex items-center">
         {% include "@atoms/logo/logo.twig" only %}
-        <span class="text-xs text-gray-300">v1.0</span>
+        <span class="text-xs text-gray-300">v1.1</span>
       </div>
     </div>
     {% if show_hamburger == true %}
@@ -39,7 +39,7 @@
     </div>
 
     {% if top_menu is not empty %}
-      <div class="hidden md:flex flex-1">
+      <div class="hidden lg:flex flex-1">
         {{ top_menu }}
       </div>
     {% endif %}

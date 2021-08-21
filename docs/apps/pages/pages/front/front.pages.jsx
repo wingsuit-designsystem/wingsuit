@@ -11,9 +11,6 @@ export default {
     label: 'Homepage',
     extends: ['page'],
     fields: {
-      menu: {
-        preview: '',
-      },
       content: {
         preview: [
           { id: 'hero' },

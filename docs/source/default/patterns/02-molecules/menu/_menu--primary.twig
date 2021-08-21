@@ -1,5 +1,5 @@
-<div class="w-full flex-grow text-black z-20 mt-2 md:mt-0 md:-mt-2.5  bg-white h-full overflow-y-scroll md:overflow-y-visible fixed md:static left-0 top-11 bg-yellow md:bg-transparent" :class="{'block': menuIsOpen, 'hidden md:inline-block': !menuIsOpen}">
-  <ul class="list-reset text-center md:text-left">
+<div class="w-full flex-grow text-black z-20 mt-2 md:mt-0 md:-mt-2.5  bg-white h-full overflow-y-scroll md:overflow-y-visible fixed md:static left-0 top-11 bg-yellow md:bg-transparent hidden md:block" :class="{'block': menuIsOpen, 'hidden md:inline-block': !menuIsOpen}">
+  <ul class="list-reset text-center md:text-left mt-20 md:mt-0">
     {% for item in items %}
       <li>
         <div class="p-2 my-2.5 uppercase font-bold">

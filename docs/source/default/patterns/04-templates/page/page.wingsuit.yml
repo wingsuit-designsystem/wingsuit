@@ -25,3 +25,7 @@ page:
       preview:
         id: menu
         variant: footer
+  settings:
+    display_menu:
+      type: boolean
+      default_value: false
