@@ -32,7 +32,7 @@
     <js-placeholder token="{{ placeholder_token|raw }}">
 
   </head>
-  <body{{ attributes.addClass('flex flex-col') }}
+  <body{{ attributes.addClass('flex flex-col overflow-x-hidden') }}
     x-data="{ isScrollDown: false, menuIsOpen: false, languageSwitcherOpen: false }" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; "
   >
     {#

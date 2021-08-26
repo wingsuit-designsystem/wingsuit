@@ -36,11 +36,6 @@
  * @see template_preprocess_field()
  */
 #}
-{%
-  set title_classes = [
-  label_display == 'visually_hidden' ? 'visually-hidden',
-]
-%}
 
 {% for item in items %}
   {{ item.content }}

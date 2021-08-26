@@ -21,6 +21,13 @@ button:
           primary: 'border-teal-300 text-black hover:bg-teal-600 hover:border-teal-600 hover:text-white'
           secondary: 'border-yellow-600 text-black hover:bg-yellow-600 hover:text-white'
       description: Inverts colors
+    link:
+      label: Link
+      configuration:
+        colors:
+          primary: 'text-teal-600 hover:text-teal-300'
+          secondary: 'text-yellow-300 hover:text-yellow-600'
+
   configuration:
     size:
       text:

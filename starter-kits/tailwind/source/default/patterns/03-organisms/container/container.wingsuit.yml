@@ -12,7 +12,7 @@ container:
         faker: lorem.paragraphs
   settings:
     width:
-      type: radios
+      type: select
       label: Width
       default_value: default
       required: true
