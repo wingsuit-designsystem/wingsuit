@@ -23,11 +23,12 @@ button:
       description: Inverts colors
     link:
       label: Link
+      settings:
+        round: false
       configuration:
         colors:
           primary: 'text-teal-600 hover:text-teal-300'
           secondary: 'text-yellow-300 hover:text-yellow-600'
-
   configuration:
     size:
       text:
@@ -43,7 +44,7 @@ button:
       type: select
       required: true
       label: Size
-      preview: medium
+      default_value: medium
       options:
         small: Small
         medium: Medium
@@ -58,7 +59,7 @@ button:
       type: select
       required: true
       label: Color
-      preview: primary
+      default_value: primary
       description: Choose your color
       options:
         primary: Primary
