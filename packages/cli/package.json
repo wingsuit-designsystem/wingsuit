@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/cli",
-  "version": "1.0.3",
+  "version": "1.1.0-y.0",
   "description": "The Wingsuit CLI",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit",
   "author": {
@@ -32,34 +32,44 @@
     "eslint-config-xo": "^0.27.2",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.0.9",
-    "lint-staged": "^9.4.3",
-    "prettier": "^1.19.1"
+    "lint-staged": "^9.4.3"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js",
-    "test": "cd test && ./run_tests.sh"
+    "test": "cd test && ./run_tests.sh",
+    "test_jest": "jest"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
-    "@wingsuit-designsystem/core": "1.0.3",
+    "@wingsuit-designsystem/core": "1.1.0-y.0",
+    "assign-deep": "^1.0.1",
+    "ast-query": "^2.0.0",
+    "babel-generator": "^6.26.1",
+    "babel-traverse": "^6.26.0",
+    "babel-types": "^6.26.0",
+    "babylon": "^6.18.0",
     "chalk": "^2.1.0",
     "commander": "^5.1.0",
     "cross-spawn": "^7.0.3",
     "eslint-plugin-react": "^7.15.1",
     "git-clone": "^0.1.0",
     "gulp-rename": "<=1.2.2",
+    "inquirer": "^8.0.0",
+    "inquirer-fs-selector": "^1.2.0",
     "lerna": "^3.20.2",
     "leven": "^3.1.0",
     "lodash": "^4.17.15",
     "mv": "^2.1.1",
+    "prettier": "^2.3.0",
+    "query-ast": "^1.0.3",
     "rimraf": "^3.0.2",
     "typescript": "^3.4.0",
-    "yeoman-environment": "^2.10.2",
-    "yeoman-generator": "^4.10.1",
+    "yeoman-environment": "^3.4.0",
+    "yeoman-generator": "^5.2.0",
     "yosay": "^2.0.1"
   },
   "repository": {
@@ -67,5 +77,5 @@
     "url": "git@github.com:wingsuit-designsystem/wingsuit.git",
     "directory": "packages/cli"
   },
-  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+  "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc"
 }

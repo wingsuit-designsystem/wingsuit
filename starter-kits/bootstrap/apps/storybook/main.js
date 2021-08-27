@@ -1,4 +1,5 @@
 const wingsuitCore = require('@wingsuit-designsystem/core');
+const postCss = require('postcss');
 
 module.exports = {
   addons: [
@@ -7,7 +8,14 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-links',
     '@storybook/addon-backgrounds',
-    '@storybook/addon-postcss',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: postCss,
+        },
+      },
+    },
   ],
   webpackFinal: (config) => {
     const final = wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [config]);

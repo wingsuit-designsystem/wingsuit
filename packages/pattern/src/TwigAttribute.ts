@@ -1,6 +1,7 @@
 import { twingMapToArray } from './twigRenderEngine';
 
 const htmlAttributeParser = require('html-attribute-parser');
+const escapeHtml = require('escape-html');
 
 export default class TwigAttribute {
   private attributes: Map<string, any>;
@@ -90,7 +91,7 @@ export default class TwigAttribute {
         attributeValue = this.attributes.get(key);
       }
       if (attributeValue !== null) {
-        output += `${key}="${attributeValue}" `;
+        output += `${key}="${escapeHtml(attributeValue)}" `;
       }
     });
     return ` ${output.trim()}`;

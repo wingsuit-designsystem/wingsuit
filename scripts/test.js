@@ -61,7 +61,7 @@ const tasks = {
     name: `Command Line Interface ${chalk.gray('(cli)')}`,
     defaultValue: false,
     option: '--cli',
-    projectLocation: './lib/cli',
+    projectLocation: './packages/cli',
   }),
   watchmode: createOption({
     name: `Run in watch-mode ${chalk.gray('(watchmode)')}`,

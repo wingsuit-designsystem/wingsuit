@@ -1,0 +1,22 @@
+header:
+  use: "@organisms/header/header.twig"
+  label: Header
+  description: The header pattern with logo and menu.
+  fields:
+    menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: primary
+    language_select:
+      type: pattern
+      label: Language select
+      preview:
+        id: language_select
+  variants:
+    fixed:
+      label: Fixed
+    sticky:
+      label: Sticky
+  visibility: storybook

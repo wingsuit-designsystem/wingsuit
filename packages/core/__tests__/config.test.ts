@@ -38,8 +38,16 @@ const config_3 = {
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
+      startup: (appConfig) => {
+        return 'startup';
+      },
     },
     storybook2: {
+      path: 'packages/core/__tests__',
+      presets: ['AddonBundle'],
+    },
+    storybook3: {
+      type: 'storybook',
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
     },
@@ -74,14 +82,33 @@ test('#Test config type', () => {
   expect(appConfig.absAppPath).toBe(__dirname);
   expect(appConfig.absRootPath).toBe(process.cwd());
   expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+
+  const appConfigWithType = resolveConfig('storybook3:storybook', 'development', {}, config_3);
+  expect(appConfigWithType.environment).toBe('development');
+  expect(appConfigWithType.absAppPath).toBe(__dirname);
+  expect(appConfigWithType.absRootPath).toBe(process.cwd());
+  expect(appConfigWithType.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
 });
 
-test('#Test default config', () => {
-  const name = 'undefined';
-  const appConfig = resolveConfig(name, 'development', {}, config_3);
+test('#Test startup()', () => {
+  const appConfig = resolveConfig('storybook', 'development', {}, config_3);
   expect(appConfig.environment).toBe('development');
-  expect(appConfig.absAppPath).toBe(`${process.cwd()}/apps/${name}`);
-  expect(appConfig.absRootPath).toBe(process.cwd());
-  expect(appConfig.absDistFolder).toBe(`${process.cwd()}/dist/app-${name}`);
-  expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
+  expect(appConfig.startup()).toBe('startup');
+});
+
+test('#Test component types', () => {
+  const appConfig = resolveConfig('storybook', 'development', {}, config_3);
+  expect(Object.keys(appConfig.componentTypes).length).toBe(5);
+  expect(appConfig.startup()).toBe('startup');
+});
+
+test('#Test unknown config', () => {
+  function unknownApp() {
+    const name = 'undefined';
+    resolveConfig(name, 'development', {}, config_3);
+  }
+
+  expect(unknownApp).toThrowError(
+    new Error('App undefined not found. Check your apps section in your wingsuit.config.js')
+  );
 });

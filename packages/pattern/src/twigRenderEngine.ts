@@ -43,7 +43,8 @@ export function twingMapToArray(variables): string[] {
 export async function renderPatternPreview(
   patternId: string,
   variables: {} = {},
-  variantId: string = Pattern.DEFAULT_VARIANT_NAME
+  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  renderInfoContext: {} = {}
 ): Promise<string> {
   let variant: PatternVariant;
   try {
@@ -53,16 +54,18 @@ export async function renderPatternPreview(
       resolve(err.message);
     });
   }
-  const previewPatterns = variant.getPreviewPatterns();
+  const renderInfo = { ...variant.getRenderInfo(), ...renderInfoContext };
   const promisedPreview: Promise<string>[] = [];
   const promisedPreviewNames: string[] = [];
   let i = 0;
-  Object.keys(previewPatterns).forEach((key: string) => {
+  Object.keys(renderInfo).forEach((key: string) => {
     promisedPreview[i] = renderPatternPreview(
-      previewPatterns[key].patternId,
-      previewPatterns[key].variables,
-      previewPatterns[key].variant
+      renderInfo[key].patternId,
+      renderInfo[key].variables,
+      renderInfo[key].variant,
+      renderInfo[key]?.children || {}
     );
+
     promisedPreviewNames[i] = key;
     i += 1;
   });
@@ -81,24 +84,31 @@ export async function renderPatternPreview(
           } else {
             const fieldName = nameKeys[0];
             const delta: number = Number.parseInt(nameKeys[1], 10);
+
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.items) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
               }
               previewRenderedVariables[nameKeys[0]][delta] = promisedPreviewValues[j];
-            }
-            if (variant.getField(fieldName).multiValueType() === MultiValueTypes.field_items) {
+            } else if (
+              variant.getField(fieldName).multiValueType() === MultiValueTypes.field_items
+            ) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
               }
               previewRenderedVariables[nameKeys[0]][delta] = { content: promisedPreviewValues[j] };
-            }
-            if (variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value) {
+            } else if (
+              variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value
+            ) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = promisedPreviewValues[j];
               } else {
                 previewRenderedVariables[nameKeys[0]] += promisedPreviewValues[j];
               }
+            } else {
+              previewRenderedVariables[nameKeys[0]] = `No multi value type for field: '${variant
+                .getPattern()
+                .getId()}:${fieldName}:${variant.getField(fieldName).multiValueType()}'`;
             }
           }
         }
@@ -107,7 +117,8 @@ export async function renderPatternPreview(
           ...buildBaseVariables(variables),
         };
         Object.keys(previewRenderedVariables).forEach((key) => {
-          if (finalVariables[key] === undefined) {
+          // Allow overwriting
+          if (finalVariables[key] !== null) {
             finalVariables[key] = previewRenderedVariables[key];
           }
         });
@@ -125,7 +136,7 @@ export async function renderPatternPreview(
     patternId,
     {
       ...patternVariables,
-      ...buildBaseVariables(variables, false),
+      ...buildBaseVariables(variables, true),
     },
     variantId
   );
@@ -153,7 +164,12 @@ export async function renderPattern(
   variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
   const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  const finalVariables = buildBaseVariables(variables);
+  const patternVariables = variant.getVariables(false);
+  const finalVariables = {
+    ...patternVariables,
+    ...buildBaseVariables(variables, true),
+  };
+  finalVariables.variant = variantId;
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),

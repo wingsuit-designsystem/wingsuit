@@ -85,21 +85,58 @@ export default class PatternVariant {
     this.settings[setting.getName()] = setting;
   }
 
-  private buildPreviewPattern(preview) {
-    const patternId = preview.id;
-
-    const variant = preview.variant !== null ? preview.variant : null;
-    const fields = preview.fields != null ? preview.fields : {};
-    const settings = preview.settings != null ? preview.settings : {};
+  private handleFieldItem(fieldItem) {
+    const variant = fieldItem.variant !== null ? fieldItem.variant : null;
+    const fields = fieldItem.fields != null ? fieldItem.fields : {};
+    const settings = fieldItem.settings != null ? fieldItem.settings : {};
     const objects = Object.assign(fields, settings);
     return {
-      patternId,
+      patternId: fieldItem.id,
       variant,
+      fields,
+      settings,
       variables: objects,
     };
   }
 
-  public getPreviewPatterns() {
+  private handleSubPreviewPattern(preview, parentVariables) {
+    if (preview.fields !== undefined) {
+      Object.keys(preview.fields).forEach((key) => {
+        const field = preview.fields[key];
+        if (field != null && field.id !== undefined) {
+          if (parentVariables.children === undefined) {
+            // eslint-disable-next-line no-param-reassign
+            parentVariables.children = {};
+          }
+          // eslint-disable-next-line no-param-reassign
+          parentVariables.children[key] = this.handleFieldItem(field);
+          this.handleSubPreviewPattern(field, parentVariables.children[key]);
+        } else if (Array.isArray(field)) {
+          let i = 0;
+          if (parentVariables.children === undefined) {
+            // eslint-disable-next-line no-param-reassign
+            parentVariables.children = {};
+          }
+          field.forEach((item) => {
+            if (item.id !== undefined) {
+              // eslint-disable-next-line no-param-reassign
+              parentVariables.children[`${key}--${i}`] = this.handleFieldItem(item);
+              this.handleSubPreviewPattern(item, parentVariables.children[`${key}--${i}`]);
+              i += 1;
+            }
+          });
+        }
+      });
+    }
+  }
+
+  private buildPreviewPattern(preview) {
+    const rootVariables = this.handleFieldItem(preview);
+    this.handleSubPreviewPattern(preview, rootVariables);
+    return rootVariables;
+  }
+
+  public getRenderInfo() {
     const previewPatterns = {};
     Object.keys(this.fields).forEach((key) => {
       const field: Field = this.fields[key];
@@ -115,26 +152,31 @@ export default class PatternVariant {
     return previewPatterns;
   }
 
-  public getVariables() {
+  public getVariables(includeFields = true, includeSettings = true) {
     const values = {};
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
+    if (includeFields) {
+      Object.keys(this.fields).forEach((key) => {
+        const field: Field = this.fields[key];
+        if (field !== null && field.getType() !== 'pattern') {
+          values[key] = field.getPreview();
+        }
+      });
+    }
 
-    Object.keys(this.fields).forEach((key) => {
-      const field: Field = this.fields[key];
-      if (field !== null && field.getType() !== 'pattern') {
-        values[key] = field.getPreview();
-      }
-    });
-    Object.keys(this.settings).forEach((key) => {
-      if (this.settings[key].getType() === 'attributes') {
-        values[key] = new TwigAttribute(this.settings[key].getPreview());
-      } else {
-        values[key] = this.settings[key].getPreview();
-      }
-    });
+    if (includeSettings) {
+      Object.keys(this.settings).forEach((key) => {
+        if (this.settings[key].getType() === 'attributes') {
+          values[key] = new TwigAttribute(this.settings[key].getPreview());
+        } else {
+          values[key] = this.settings[key].getPreview();
+        }
+      });
+    }
+
     // eslint-disable-next-line dot-notation
     if (values['attributes'] == null) {
       // eslint-disable-next-line dot-notation

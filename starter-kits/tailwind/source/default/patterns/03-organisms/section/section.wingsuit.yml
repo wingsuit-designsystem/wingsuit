@@ -45,11 +45,13 @@ section:
     display_header_region:
       type: boolean
       label: Display header region
+      weight: 30
     columns_width_1:
       type: radios
       label: Column widths
       default_value: equal
       required: true
+      weight: 10
       options:
         equal: 100%
     columns_width_2:
@@ -57,6 +59,7 @@ section:
       label: Column widths
       default_value: equal
       required: true
+      weight: 10
       options:
         equal: 50%/50%
         66x33: 66%/33%
@@ -66,6 +69,7 @@ section:
       label: Column widths
       default_value: equal
       required: true
+      weight: 10
       options:
         equal: 33%/33%/33%
         25x50x25: 25%/50%/25%
@@ -74,6 +78,7 @@ section:
       label: Column widths
       default_value: equal
       required: true
+      weight: 10
       options:
         equal: 25%/25%/25%/25%
     columns_width_5:
@@ -81,12 +86,9 @@ section:
       label: Column widths
       default_value: equal
       required: true
+      weight: 10
       options:
         equal: 20%/20%/20%/20%
-    equal_height:
-      type: boolean
-      group: advanced
-      label: Equal height
   variants:
     1_column:
       label: One Column

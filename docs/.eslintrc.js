@@ -1,18 +1,67 @@
-const warn = 1;
+/**
+ * Use AirBnB ES6 linting standards, as well as a Jest plugin for tests
+ *
+ * Rule reference: http://eslint.org/docs/rules
+ * Individual rule reference: http://eslint.org/docs/rules/NAME-OF-RULE
+ */
+const wingsuitCore = require('@wingsuit-designsystem/core');
+const wingsuitConfig = require('./wingsuit.config');
+
+const appConfig = wingsuitCore.resolveConfig(
+  'storybook',
+  'development',
+  {},
+  wingsuitConfig,
+  __dirname
+);
+const { namespaces } = appConfig;
+const aliasMap = [];
+Object.keys(namespaces).forEach((key) => {
+  aliasMap.push([key, namespaces[key]]);
+});
 
 module.exports = {
+  extends: [
+    'airbnb-base',
+    'plugin:jest/recommended',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
+    'prettier/vue',
+    'plugin:react/recommended',
+  ],
+  plugins: ['prettier'],
+  root: true,
   globals: {
-    graphql: false,
+    Drupal: true,
+    jQuery: true,
+    Spruce: true,
+    _: true,
+    BUILD_TARGET: true,
+  },
+  env: {
+    browser: true,
+    node: true,
   },
   rules: {
-    'import/no-unresolved': [warn, { commonjs: true, caseSensitive: true }],
-    'import/extensions': [
-      // because of highlight.js
-      warn,
-      'always',
+    'react/jsx-uses-react': 1,
+    'prettier/prettier': [
+      'error',
       {
-        js: 'never',
+        endOfLine: 'auto',
       },
     ],
+    'no-console': [0], // turned off for now while we are console.logging everywhere.
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/prefer-default-export': [0],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      alias: {
+        map: aliasMap,
+      },
+    },
   },
 };

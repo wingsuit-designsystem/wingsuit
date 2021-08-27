@@ -10,6 +10,13 @@ describe('Pattern parsing', () => {
       JSON.parse(fs.readFileSync(path.join(__dirname, '_data/patterns.json'))).patterns
     );
   });
+  test('Test recursive Render Info', async () => {
+    const pattern: Pattern = storage.loadPattern('pr_root');
+    const variant = pattern.getDefaultVariant();
+    const renderInfo = variant.getRenderInfo();
+    expect(renderInfo['items--0'].children['items--0'].fields.leaf_field).toEqual('correct');
+    expect(renderInfo['items--0'].children['items--0'].fields.leaf_setting).toEqual('correct');
+  });
   test.each([
     ['blank', 1, 0, 0],
     ['card', 2, 3, 2],

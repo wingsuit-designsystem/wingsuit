@@ -1,0 +1,42 @@
+{% set video = pattern('video', {'src': 'layout-builder.mp4'}) %}
+{#
+/**
+ * @file
+ * Grid component
+ *
+ * See component.wingsuit.yml for usage.
+ */
+#}
+
+{% set body %}
+  {% set video = pattern('video', {'src': 'layout-builder.mp4'}) %}
+  {{ pattern('rich_text', {text: '<h1>Wingsuit Kickstarter (with UI Patterns and Layout Builder)</h1>' ~ video ~  content}, 'default') }}
+
+  {% if next|length > 0 %}
+    <div class="pt-6 md:pt-14">
+      <div class="p-2 my-2.5 uppercase font-bold">NEXT</div>
+      {% for item in next %}
+        {{ pattern('next', {
+          title: item.title,
+          text: item.text,
+          button: pattern('button',{
+            text: item.link_title,
+            round: true,
+            size: 'medium',
+            url: item.href,
+          }, 'default')
+        }) }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endset %}
+
+
+{% include "@templates/site-container.twig" with {
+  menu: pattern_preview('menu', {}, 'primary'),
+  footer_menu: null,
+  show_hamburger: true,
+  content: body,
+  display_menu: true
+} %}
+

@@ -1,0 +1,78 @@
+# PWA Preset
+
+Wingsuit also ships with a pwa preset, which uses `WebappWebpackPlugin` under the hood to automatically generate all of your site favicons in multiple formats, as well as your webapp `manifest.json`
+and other PWA niceties.
+
+## Installing the pwa preset
+
+To use this preset, firstly you install it as a dev-dependency via `yarn`or `npm`:
+
+```js
+yarn add @wingsuit-designsystem/preset-pwa -D
+```
+
+After that, you'll need wingsuit to consume the preset by loading it via your wingsuit.config.js:
+
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: [
+    '@wingsuit-designsystem/preset-pwa',
+  ],
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
+
+## Default behavior & customizations
+Out of the box the preset will generate multiple formats of your favicons and your `manifest.json` <b>only</b> when running a production build of <b>drupal</b>.
+It will look for a `favicon.png` in your `source` folder. The generated files will be placed into `/dist/[app]/favicons` by default. You have, however, the possibility to modify all of this by using a special `pwa` object within the `paremeters` object in your `wingsuit.config.js`.
+You'll also want to define your project specific pwa values there, because their default value are set to `null`. Following props are exposed:
+
+| Prop           | Type                                            | Desc                                                                    |
+|----------------|-------------------------------------------------|-------------------------------------------------------------------------|
+| logo           | {string \| default: './source/favicon.png'}     | Path to your source logo. Logo can be either png or svg                 |
+| prefix         | {string \| default: 'favicons/'}                | Prefix which gets injected into your webapp.html                        |
+| publicPath     | {string \| default: 'favicons/'}                | Destination of your favicons (will mostly be the same as your `prefix`) |
+| appName        | {string \| default: 'null'}                     | Your application's name                                                 |
+| appDescription | {string \| default: 'null'}                     | Your application's description                                          |
+| developerName  | {string \| default: 'null'}                     | Your (or your developer's) name                                         |
+| developerURL   | {string \| default: 'null'}                     | Your (or your developer's) URL                                          |
+
+Example configuration:
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: ['@wingsuit-designsystem/preset-pwa'],
+  parameters: {
+    pwa: {
+      // path to source (default: './source/favicon.png')
+      logo: './source/favicon.png',
+      // injected prefix (default: '/favicons/')
+      prefix: '/favicons',
+      // destination (default: '/favicons/')
+      publicPath: '/favicons',
+      // App Name (default: 'null')
+      appName: 'My awesome app',
+      // App Description (default: 'null')
+      appDescription: 'App developed with the awesome wingsuit package',
+      // Developer Name (default: 'null')
+      developerName: 'Steve Jobs',
+      // Developer URL (default: 'null')
+      developerURL: 'https://wingsuit-designsystem.github.io/',
+    },
+  },
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
+## Integration into your CMS
+To integrate your favicon into your CMS copy the content of `app-TYPE/webapp.html` into your html TWIG template.

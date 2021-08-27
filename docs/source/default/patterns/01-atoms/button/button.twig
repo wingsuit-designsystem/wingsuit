@@ -1,0 +1,46 @@
+{#
+Defaults
+#}
+{% set tag_name = tag_name|default('div') %}
+{% set color = color|default('primary') %}
+{% set size = size|default('medium') %}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set icon_size = icon_size|default('default') %}
+{% set icon_alignment = icon_alignment|default('right') %}
+
+{#
+Classes
+#}
+{% set classes = [
+  'cursor-pointer items-center justify-center inline-flex border-2 focus:outline-none transition-colors duration-500',
+  expanded ? 'w-full',
+  variant == 'outline' ? 'border-2',
+  round ? 'border-2 rounded-xl',
+  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+  pattern_configuration('button', variant, 'colors')[color],
+  pattern_configuration('button', variant, 'size')['text'][size],
+  pattern_configuration('button', variant, 'size')['padding'][size],
+] %}
+
+{% set icon_size = ([
+  icon_alignment == 'left' ? 'mr-4' : 'ml-4',
+  pattern_configuration('button', variant, 'size')['icon'][size],
+]) | sort | join(' ') | trim %}
+
+{% if url is not empty %}
+  {% set attributes = attributes.setAttribute('href', url) %}
+  {% set tag_name = 'a' %}
+{% endif %}
+
+{#
+Template
+#}
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+{{ text }}
+  {% if icon is not empty %}
+    {% include "@atoms/svg/_svg--icon.twig" with {
+      icon: icon,
+      size: icon_size,
+    } only %}
+  {% endif %}
+</{{ tag_name }}>

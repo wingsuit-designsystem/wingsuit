@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * rich-text
+ * with the rich-text we can use to creat different types of text as you can see in storybook.
+ * Ex. headlines, list and more.
+ * See rich-text.wingsuit.yaml for documentation.
+ */
+#}
+{% set variant = variant|default('default') %}
+{# TEMPLATE #}
+<div
+{{ attributes|default(create_attribute()).addClass(
+  [
+    variant == 'default' ? 'max-w-none prose lg:prose-lg',
+    variant == 'large' ? 'max-w-none prose prose-lg md:prose-2xl'
+  ]
+) }}
+>
+  {% block text %}
+    {{ text }}
+  {% endblock %}
+</div>

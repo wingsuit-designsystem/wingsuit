@@ -1,54 +1,38 @@
-# Documentation
+<p align="center">
+<img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
+</p>
 
-### Usage
+# Build bulletproof TWIG Components in [Storybook](https://storybook.js.org/) with TailwindCSS and AlpineJS
 
-```sh
-yarn
-yarn dev
+1.  Describe, develop and test your Twig Components in storybook with [twing](https://www.npmjs.com/package/twing).
+1.  Use this components with zero configuration Drupal with UI Patterns
+1.  Bundled Webpack configuration to keep everything up to date.
+1.  Tailwind 2 support.
+
+## Prerequisites
+
+- [Node `^12`](https://nodejs.org)
+- [YARN `^1.19`](https://yarnpkg.com/)
+- [PHP `^7.3.0`](https://php.net)
+
+
+#### NPM
+To start storybook
+```bash
+npm run dev:storybook
+```
+To start drupal
+```bash
+npm run dev:drupal
+```
+#### YARN (prefered)
+To start storybook
+```bash
+yarn ws dev storybook
+```
+To start drupal
+```bash
+yarn ws dev drupal
 ```
 
-There may be problems loading libpng under linux:
 
-    loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
-
-To fix that problem run:
-
-      sudo add-apt-repository ppa:linuxuprising/libpng12
-
-On Linux there may be problems installing libpng. 
-
-### Edit Documentation
-
-Documentation is written in Markdown and located inside the [`docs/src/pages`](https://github.com/wingsuit-designsystem/wingsuit/tree/master/docs/src/pages) directory.
-
-### Guidelines for Writing Good Documentation
-
-0.  Explain **why** in addition to **how**. If something is designed a certain way for a reason, provide that reason.
-1.  Provide examples of code snippets whenever possible - showing is always better than telling.
-2.  Avoid simplifying problems - this frustrates users even more when they don't understand something "simple".
-
--   Bad examples:
-    -   `All you need to do is apply...`
-    -   `Simply add...`
-    -   `The object is just...`
-
-3.  Use concise language - The less time users spend on reading and understanding docs, the better.
-
--   Avoid using passive voice.
-    -   Passive (bad): `It is believed by Storybook that empowering component builders is important.`
-    -   Active (good): `Storybook believes in empowering component builders.`
--   Place action in the verb.
-    -   Indirect action (bad): `A refactor of this code is necessary`.
-    -   Direct action (good): `This code needs to be refactored`.
-
-4.  Avoid the use of pronouns - documentation should not address the reader because not everything applies to the person reading our docs.
-
--   Don't use `you` to refer to the user or a third party.
-    -   Pronoun (bad): `You can also...`
-    -   Without pronoun (good): `Users can also...`
--   Don't use `we` to refer to Storybook, contributors, or Storybook users.
-    -   Pronoun (bad): `We can create this component...`
-    -   Without pronoun (good): `The component can be created...`
--   Don't use `he`, `she`, `him`, `her`, etc. to refer to a third party unless referring to a specific person.
--   Refer to contributors and the product as `Storybook`.
--   Refer to users as `users`.

@@ -8,12 +8,7 @@ module.exports = {
   mode: 'jit',
   important: false,
   darkMode: 'class',
-  purge: [
-    './safelist.txt',
-    './source/**/*.twig',
-    './source/**/*.yml',
-    './apps/**/*.twig'
-  ],
+  purge: ['./safelist.txt', './source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -35,6 +30,9 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             blockquote: {
+              color: theme('colors.gray.100'),
+            },
+            strong: {
               color: theme('colors.gray.100'),
             },
             h2: {

@@ -34,10 +34,12 @@ describe('TwigRenderEngine', () => {
       '@molecules/tests/global.twig',
       storage.getGlobals()
     );
+
     expect(output).toMatch(/field:correct/);
     expect(output).toMatch(/setting:correct/);
   });
   test.each([
+    ['pr_root', '__default'],
     ['simple_extend', '__default'],
     ['configuration', 'variant'],
     ['patterns_field_items', '__default'],

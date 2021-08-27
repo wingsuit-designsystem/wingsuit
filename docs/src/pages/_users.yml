@@ -1,6 +1,0 @@
-slack:
-  logo: slack.svg
-  title: Slack Emoji Picker
-  description: Slack improves performance and maintainability with Storybook!
-  demo: https://slack.engineering/rebuilding-slacks-emoji-picker-in-react-bfbd8ce6fbfe
-  site: http://slack.com

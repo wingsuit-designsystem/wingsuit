@@ -11,7 +11,19 @@
 {% if padding_bottom is not defined %}
   {% set padding_bottom = 'default' %}
 {% endif %}
+{% set is_relative = bg_align != '' ? true: false %}
+{%- set bg_column_1 -%}
+  {%- if bg_align == 'left' -%}
+    <div class="relative md:absolute left-0 top-0 min-h-[10rem] h-full w-full md:w-1/2">{{- bg_image -}}</div>
+  {%- endif -%}
+{%- endset -%}
+{%- set bg_column_2 -%}
+  {%- if bg_align == 'right' -%}
+    <div class="relative md:absolute md:left-1/2 top-0 min-h-[10rem] h-full w-full md:w-1/2">{{- bg_image -}}</div>
+  {%- endif -%}
+{%- endset -%}
 
+{% set bg_full = bg_align == '' ? bg_image %}
 {%- set header -%}{%- block header -%}{{ header }}{% endblock %}{% endset %}
 {% set region_attributes = region_attributes|default(create_attribute()) %}
 {% set grid %}
@@ -32,21 +44,6 @@
     region_attributes: region_attributes
   }
   %}
-    {#
-      Layout Builder regions attributes should be part of the section cell.
-    #}
-    {% block cell_outer %}
-      {% set column_name = 'column_' ~ (cell_counter + 1) %}
-      {% set cell_classes = [
-        cell_option == 'flex' ? 'flex section-cell-flex'
-      ]
-      %}
-      {% set current_region_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
-
-      <div{{ current_region_attributes }}>
-          {{ cell }}
-      </div>
-    {% endblock %}
   {% endembed %}
 {% endset %}
 
@@ -61,7 +58,9 @@
   bg: bg,
   header: header,
   region_attributes: region_attributes,
-  display_header_region: display_header_region
+  display_header_region: display_header_region,
+  bg_image: bg_full,
+  is_relative: is_relative
 } only %}
   {% block content %}
   {% if header is not empty and display_header_region == true %}

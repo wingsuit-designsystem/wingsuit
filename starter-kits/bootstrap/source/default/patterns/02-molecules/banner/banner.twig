@@ -25,7 +25,7 @@
 <div class="position-relative">
   {{ image }}
   <div class="position-absolute w-100 h-100 d-flex" style="top: 0; left: 0;">
-    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 d-flex ' ~ position_classes[variant]}  %}
+    {% embed "@organisms/container/container.twig" with { teaser: teaser, headline: headline, classes: 'flex-1 d-flex ' ~ position_classes[position]}  %}
       {% block content %}
         <div class="p-6">
           <h2 class="display-4">

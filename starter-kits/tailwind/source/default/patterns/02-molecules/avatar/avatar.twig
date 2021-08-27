@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * avatar
+ *
+ * See avatar.wingsuit.yaml for documentation.
+ */
+#}
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set image_attributes = image_attributes|default(create_attribute()) %}
+
+{#
+  Classes
+#}
+{% set classes = [
+  text_align == 'center' ? 'text-center',
+  'bg-gray-100 rounded-xl overflow-hidden p-8',
+  variant == 'horizontal' ? 'flex flex-row'
+] %}
+
+{% set image_classes = [
+  'relative overflow-hidden flex-none w-48',
+  variant == 'default'? 'h-48 rounded-full mx-auto',
+  variant == 'horizontal' ? 'h-auto -m-8 mr-8'
+] %}
+
+{#
+  Template
+#}
+<figure{{attributes.addClass(classes)}}>
+  <div{{ image_attributes.addClass(image_classes) }}>
+    {{ image }}
+  </div>
+  <div class="pt-6 space-y-4 flex-1">
+    <blockquote>
+      <div class="text-lg font-semibold">
+        {{ text }}
+      </div>
+    </blockquote>
+    <figcaption>
+      <div class="text-teal-600">
+        {{ full_name }}
+      </div>
+    </figcaption>
+    <div class="pt-4">
+      {{ button }}
+    </div>
+  </div>
+</figure>

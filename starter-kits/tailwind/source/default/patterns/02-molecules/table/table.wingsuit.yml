@@ -1,0 +1,44 @@
+table:
+  use: "@molecules/table/table.twig"
+  label: Table
+  description: Table includes items with color label on them.
+  fields:
+    rows:
+      label: Rows
+      type: object
+      preview:
+        - cells:
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
+        - cells:
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
+        - cells:
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
+        - cells:
+            - Value 1
+            - Value 2
+            - Value 3
+            - Value 4
+            - Value 5
+    columns:
+      type: object
+      label: Columns
+      preview:
+        - heads:
+            - Cell 1
+            - Cell 2
+            - Cell 3
+            - Cell 4
+            - Cell 4
+            -

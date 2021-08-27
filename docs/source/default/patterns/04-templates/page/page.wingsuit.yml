@@ -1,0 +1,31 @@
+page:
+  use: "@templates/page/page.twig"
+  label: Page
+  description: Page
+  fields:
+    content:
+      type: pattern
+      label: Content
+      multi_value_type: 'single_value'
+    top_menu:
+      type: pattern
+      label: Top Menu
+      preview:
+        id: menu
+        variant: top
+    menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: primary
+    footer_menu:
+      type: pattern
+      label: Menu
+      preview:
+        id: menu
+        variant: footer
+  settings:
+    display_menu:
+      type: boolean
+      default_value: false

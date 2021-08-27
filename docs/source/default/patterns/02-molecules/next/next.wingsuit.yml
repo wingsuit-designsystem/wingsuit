@@ -1,0 +1,24 @@
+next:
+  use: "@molecules/next/next.twig"
+  label: Next
+  description: Next block
+  fields:
+    title:
+      type: textfield
+      label: Title
+      preview:
+        faker: lorem.sentence
+    text:
+      type: textfield
+      label: Text
+      preview:
+        faker: lorem.text
+    button:
+      type: pattern
+      label: Button
+      preview:
+        id: button
+        variant: default
+        settings:
+          size: medium
+          round: true

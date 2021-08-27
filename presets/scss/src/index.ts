@@ -106,5 +106,5 @@ export function webpack(appConfig: AppConfig) {
       ],
     },
   };
-  return cssModes[appConfig.cssMode];
+  return cssModes[appConfig.cssMode ? appConfig.cssMode : 'extract'];
 }

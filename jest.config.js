@@ -18,17 +18,12 @@ module.exports = {
     'core-js/es7/(.*)': `core-js/proposals/$1`,
     'core-js/object$/': `core-js/es/object`,
     'core-js/object/(.*)': `core-js/es/object/$1`,
-    'babel-runtime/core-js/(.*)': `core-js/es/$1`,
+    // 'babel-runtime/core-js/(.*)': `core-js/es/$1`,
     // 'babel-runtime/core-js/object/assign'
     'core-js/library/fn/object/assign': 'core-js/es/object/assign',
   },
-  projects: [
-    '<rootDir>',
-  ],
-  roots: [
-    '<rootDir>/packages/pattern',
-    '<rootDir>/packages/core'
-  ],
+  projects: ['<rootDir>'],
+  roots: ['<rootDir>/packages/pattern', '<rootDir>/packages/core', '<rootDir>/packages/cli'],
   transform: {
     '^.+\\.[jt]sx?$': '<rootDir>/scripts/babel-jest.js',
   },
@@ -44,9 +39,7 @@ module.exports = {
     '/examples/angular-cli/src/app/*',
   ],
   collectCoverage: false,
-  collectCoverageFrom: [
-    'packages/**/*.{js,jsx,ts,tsx}',
-  ],
+  collectCoverageFrom: ['packages/**/*.{js,jsx,ts,tsx}'],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/cli/test/',

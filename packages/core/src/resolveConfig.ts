@@ -8,35 +8,17 @@ const yargs = require('yargs');
 const configStub = require('./stubs/defaultWingsuitConfig.stub');
 
 /**
- * Resolves wingsuit config.
+ * Returns the wingsuit base config.
  *
- * @param appNameId
- *   The appNameId can contain app type and app id seperated by ":".
- *   Example:
- *     drupal:cms - drupal is app folder name. CMS is the preset app type
- *
- * @param environment
- *   The current environment.
- * @param configurationOverwrites
- *   Overrule the config.
  * @param wingsuitConfig
  *   The provided config.
- * @param configPath
- *   The path to the config.
+ *
+ * @return {mergedObject, projectConfig}
+ *   Returns two objects
+ *    - The complete merged configuration including all presets.
+ *    - The wingsuit.config.js
  */
-export function resolveConfig(
-  appNameId: string,
-  environment = 'development',
-  configurationOverwrites: any = {},
-  wingsuitConfig: any = null,
-  configPath: any = null
-): AppConfig {
-  let appName = appNameId;
-  let type = appNameId;
-  if (appNameId.split(':').length === 2) {
-    [appName, type] = appNameId.split(':');
-  }
-
+export function getConfigBase(wingsuitConfig: any = null) {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
@@ -59,9 +41,61 @@ export function resolveConfig(
       mergedConfig = merge(mergedConfig, presetWingsuitConfig);
     }
   });
+  return { mergedConfig, projectConfig };
+}
+
+/**
+ * Resolves wingsuit config.
+ *
+ * @param appNameId
+ *   The appNameId can contain app type and app id seperated by ":".
+ *   Example:
+ *     drupal:cms - drupal is app name. CMS is the preset app type
+ *
+ * @param environment
+ *   The current environment.
+ * @param configurationOverwrites
+ *   Overrule the config.
+ * @param wingsuitConfig
+ *   The provided config.
+ * @param configPath
+ *   The path to the config.
+ *
+ * @return AppConfig
+ *   The appConfig
+ */
+export function resolveConfig(
+  appNameId: string,
+  environment = 'development',
+  configurationOverwrites: any = {},
+  wingsuitConfig: any = null,
+  configPath: any = null
+): AppConfig {
+  let appName = appNameId;
+  let type = appNameId;
+  let typeOverwritten = false;
+  if (appNameId.split(':').length === 2) {
+    [appName, type] = appNameId.split(':');
+    typeOverwritten = true;
+  }
+  const { mergedConfig, projectConfig } = getConfigBase(wingsuitConfig);
+
+  if (projectConfig.apps === undefined) {
+    projectConfig.apps = {};
+  }
+
+  if (projectConfig.apps[appName] == null && mergedConfig.apps[appName] == null) {
+    throw new Error(`App ${appName} not found. Check your apps section in your wingsuit.config.js`);
+  }
+  if (
+    typeOverwritten === false &&
+    projectConfig.apps[appName] != null &&
+    projectConfig.apps[appName].type != null
+  ) {
+    type = projectConfig.apps[appName].type;
+  }
 
   const rootPath = configPath != null ? configPath : process.cwd();
-
   // Overrule default config with merged config.
   let appConfig = merge(defaultAppConfig(type, rootPath), mergedConfig.apps[type]);
 
@@ -71,9 +105,27 @@ export function resolveConfig(
   }
 
   // Overrule project config.
-  if (projectConfig[appName] != null) {
-    appConfig = merge(appConfig, projectConfig[appName]);
+  if (projectConfig.apps != null && projectConfig.apps[appName] != null) {
+    appConfig = merge(appConfig, projectConfig.apps[appName]);
   }
+
+  const overloadedFunctions = ['startup', 'generator'];
+  overloadedFunctions.forEach((funcName) => {
+    if (mergedConfig.apps[type]) {
+      appConfig[funcName] =
+        mergedConfig.apps[type][funcName] != null
+          ? mergedConfig.apps[type][funcName]
+          : appConfig[funcName];
+    }
+
+    if (
+      projectConfig.apps != null &&
+      projectConfig.apps[appName] != null &&
+      projectConfig.apps[appName][funcName] !== undefined
+    ) {
+      appConfig[funcName] = projectConfig.apps[appName][funcName];
+    }
+  });
 
   // Overrule hooks.
   appConfig.webpack = mergedConfig.webpack !== null ? mergedConfig.webpack : appConfig.webpack;
@@ -110,6 +162,8 @@ export function resolveConfig(
   appConfig.namespaces = designSystem.namespaces;
   appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
   appConfig.namespaces.wspatterns = appConfig.absPatternPath;
+  appConfig.namespaces.wsapp = appConfig.absAppPath;
+  appConfig.namespaces.wsdata = appConfig.absDataPath;
   if (mergedConfig.postCssConfig != null) {
     appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
   }

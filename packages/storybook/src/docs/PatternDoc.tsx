@@ -3,9 +3,9 @@ import React, { FunctionComponent } from 'react';
 import { Heading, Preview } from '@storybook/addon-docs/blocks';
 import { Pattern } from '@wingsuit-designsystem/pattern';
 
+import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 import { PatternInclude } from './PatternInclude';
 import { PatternProperties } from './PatternProperties';
-import PatternPreview from '../components/PatternPreview';
 
 interface StoriesProps {
   includePrimary?: boolean;

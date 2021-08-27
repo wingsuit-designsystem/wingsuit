@@ -5,30 +5,33 @@
     @apply h-0.5;
     @apply w-2/3;
     @apply mx-auto;
+    @apply mt-4;
   }
+
   .splide__pagination li:only-child {
     @apply hidden;
   }
+
   .splide__pagination > li {
     @apply flex-1;
     @apply h-full;
 
-  .is-active {
-    @apply bg-gray-400;
-    @apply rounded-sm;
-  }
+    .is-active {
+      @apply bg-gray-400;
+      @apply rounded-sm;
+    }
 
-  button {
-    @apply bg-gray-50;
-    @apply block;
-    @apply w-full;
-    @apply h-full;
+    button {
+      @apply bg-gray-50;
+      @apply block;
+      @apply w-full;
+      @apply h-full;
 
-    &:focus {
-       @apply outline-none;
-     }
+      &:focus {
+         @apply outline-none;
+       }
+    }
   }
-}
 
   &.splide__pagination__spacing-default .splide__pagination {
      @apply mt-8;

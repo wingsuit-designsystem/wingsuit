@@ -10,16 +10,19 @@
 {# Defaults #}
 {% set width = width|default('default') %}
 {% set padding_x = width != 'full' ? padding_x|default('default') : '' %}
+{% set padding_bottom = padding_bottom|default('default') %}
 
 {# SETTINGS #}
 {% set bg_classes = ([
-  pattern_configuration('container', '', 'bg')[bg],
+  'relative',
+  pattern_configuration('container', '', 'bg')[bg]
 ] | sort | join(' ') | trim )%}
 
 {% set classes = ([
-  pattern_configuration('container', '', 'padding_x')[padding_x],
-  pattern_configuration('container', '', 'padding_top')[padding_top],
-  pattern_configuration('container', '', 'padding_bottom')[padding_bottom],
+  is_layout_builder == false ? pattern_configuration('spacing', '', 'margin_top')[margin_top],
+  pattern_configuration('spacing', '', 'padding_x')[padding_x],
+  pattern_configuration('spacing', '', 'padding_top')[padding_top],
+  pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
   pattern_configuration('container', '', 'width')[width],
   classes,
   'mx-auto'
@@ -28,14 +31,15 @@
 {% set attributes = attributes|default(create_attribute()) %}
 
 {# TEMPLATE #}
-{% if bg %}
+{% if bg or bg_image or is_relative%}
 <div {{ create_attribute().addClass(bg_classes) }}>
-{% endif %}
+  {{ bg_image }}
+  {% endif %}
   <div {{ attributes.addClass(classes) }}>
     {% block content %}
-    {{ content }}
+      {{ content }}
     {% endblock %}
   </div>
-{% if bg %}
+  {% if bg or bg_image or is_relative%}
 </div>
 {% endif %}

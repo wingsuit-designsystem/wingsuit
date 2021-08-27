@@ -1,0 +1,40 @@
+import { Meta, Subtitle } from '@storybook/addon-docs/blocks';
+import { Typeset } from '@wingsuit-designsystem/storybook';
+const fontFamilies = require('tokens/exports/_font-families.scss');
+const fontHeadingSizes = require('tokens/exports/_font-sizes-heading.scss');
+const fontDisplaySizes = require('tokens/exports/_font-sizes-display.scss');;
+
+<Meta title="Tokens/Typography"
+parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Typography
+<Subtitle>Choosed typefaces and font sizes</Subtitle>
+
+## Headings (h1-h6)
+<div>
+{
+  Object.keys(fontFamilies).map((key)=>{
+    return (
+      <div key={key}>
+        <Subtitle><b>Font Family:</b> {key} </Subtitle>
+        <Typeset fontFamily={key} classNamePrefix="." fontSizes={fontHeadingSizes} />
+      </div>
+    )
+  })
+}
+</div>
+
+## Display Headings
+<div>
+{
+  Object.keys(fontFamilies).map((key)=>{
+    return (
+      <div key={key}>
+        <Subtitle><b>Font Family:</b> {key}</Subtitle>
+        <Typeset fontFamily={key} classNamePrefix="." fontSizes={fontDisplaySizes} />
+      </div>
+    )
+  })
+}
+</div>

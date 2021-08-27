@@ -1,0 +1,24 @@
+import { Meta, ColorPalette, ColorItem, Subtitle } from '@storybook/addon-docs/blocks';
+const colors = require('tokens/exports/_colors.scss');
+
+<Meta title="Tokens/Colors"
+parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Colors Matter
+
+<Subtitle>
+A palette of great-looking, well-balanced colors.
+</Subtitle>
+
+<ColorPalette>
+  {
+    Object.keys(colors).map((key)=>{
+      const color = typeof colors[key] === 'string' ? [colors[key]] : colors[key];
+      const title = `.${key}`;
+      return (
+        <ColorItem key={key} title={title} colors={color} />
+      )
+    })
+  }
+</ColorPalette>

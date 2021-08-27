@@ -1,0 +1,81 @@
+{% set content_bottom %}
+
+<div class="text-center pt-10">
+  {{ pattern('rich_text', {'text': '<h2>Or try...</h2>'}, 'large' ) }}
+  <div class="pt-8">
+  {{ pattern_preview('button', {'size': 'large', 'round': true, 'text': 'Drupal Kickstarter', 'url': '/drupal/ui_patterns/'}, 'default') }}
+  </div>
+</div>
+{% endset %}
+{{ pattern_preview('section_code', {
+  bg: bg|default('gray-lighter'),
+  width: width|default('default'),
+  padding_top: padding_top|default('default'),
+  content: intro,
+  content_bottom: content_bottom,
+  badge_headline: 'Choose your flavor:',
+  data: [
+    {
+      title: 'Drupal opinionated',
+      key: "drupal",
+      intro: '',
+      hide_code_toolbar: true,
+      contents: [],
+      codes: [{
+      'title': 'Tailwind',
+      'key': 'wingsuit_tailwind',
+      'format': 'bash',
+      'buttons': 'copy-to-clipboard',
+      'code': 'npx @wingsuit-designsystem/cli init -k tailwind',
+    },
+      {
+        'title': 'Bootstrap',
+        'key': 'wingsuit_bootstrap',
+        'format': 'bash',
+        'buttons': 'copy-to-clipboard',
+        'code': 'npx @wingsuit-designsystem/cli init -k bootstrap',
+      }],
+    },
+    {
+      title: 'Vanilla',
+      key: "other",
+      intro: "",
+      contents: [],
+      hide_code_toolbar: true,
+      codes: [
+      {
+        'title': 'Tailwind',
+        'key': 'vanilla_tailwind',
+        'format': 'bash',
+        'buttons': '',
+        'code': '
+npx @wingsuit-designsystem/cli init -k vanilla-tailwind
+
+# Add "cms" app and configure the `distFolder`, `assetAtomicFolder` to
+# your template folder in your `wingsuit.config.js`:
+yarn ws generate-app
+
+# Start your app:
+yarn ws dev cms
+',
+      },
+      {
+        'title': 'SCSS',
+        'key': 'vanilla_scss',
+        'format': 'bash',
+        'buttons': '',
+        'code': '
+npx @wingsuit-designsystem/cli init -k vanilla-scss
+
+# Add "cms" app and configure the `distFolder`, `assetAtomicFolder` to
+# your template folder in your `wingsuit.config.js`:
+yarn ws generate-app
+
+# Start your app:
+yarn ws dev cms
+',
+      }
+    ],
+    },
+  ]
+}) }}

@@ -1,0 +1,41 @@
+{# Include this template inside the page.html.twig in drupal. #}
+
+{% block header %}
+  {% include '@organisms/header/header.twig' with {show_hamburger: show_hamburger, top_menu: top_menu, has_spacer: header_has_spacer, variant: "fixed" } only %}
+{% endblock header %}
+
+{{ highlighted }}
+{% set content %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+{% endset %}
+
+<main class="main-content flex-1 mt-16">
+  {% block main %}
+    {% if menu is not empty and display_menu %}
+      {% embed "@organisms/section/section.twig" with { columns_width_2: '25x75', columns: 2, width: 'default', padding_top: 'default'} %}
+        {% block column_1 %}
+          {{ menu }}
+        {% endblock %}
+        {% block column_2 %}
+          {{ content }}
+        {% endblock %}
+      {% endembed %}
+
+    {% else %}
+      {% if display_menu == false %}
+        <div class="hidden md:hidden" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        {{ menu }}
+        </div>
+      {% endif %}
+      {{ content }}
+    {% endif %}
+  {% endblock %}
+</main>
+
+{% block footer %}
+  {% include "@organisms/footer/footer.twig" with {
+    footer_menu: footer_menu
+  } %}
+{% endblock footer %}

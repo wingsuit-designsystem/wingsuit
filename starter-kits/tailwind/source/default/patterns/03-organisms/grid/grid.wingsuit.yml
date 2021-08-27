@@ -18,6 +18,10 @@ grid:
         - "<div class='w-full h-40 bg-gray-500'></div>"
         - "<div class='w-full h-40 bg-gray-500'></div>"
   settings:
+    equal_height:
+      type: boolean
+      label: Equal height
+      weight: 20
     gutter:
       type: select
       label: Gutter

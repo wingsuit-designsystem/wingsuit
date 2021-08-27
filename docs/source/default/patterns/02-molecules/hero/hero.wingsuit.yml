@@ -1,0 +1,42 @@
+hero:
+  use: "@molecules/hero/hero.twig"
+  label: Hero
+  description: Hero section component, for all your presentation needs.
+  fields:
+    text:
+      type: text
+      label: Headline
+      preview: "<h1 class='font-medium'>Build CMS independent Twig Components in Storybook</h1><p class='lead font-medium'>
+        A modern way of building, maintaining and documenting your visual driven twig components in storybook with an automated and opinionated integration workflow for your CMS. <br>
+        </p>"
+
+    buttons:
+      type: pattern
+      label: Button
+      preview:
+        -
+          id: button
+          variant: default
+          fields:
+            text: Quickstart
+          settings:
+            size: large
+            round: true
+            url: /guides/quick-start-guide
+        -
+          id: button
+          variant: default
+          fields:
+            text: Online Demo
+          settings:
+            size: large
+            round: true
+            url: #
+    image:
+      type: pattern
+      label: Image
+      preview:
+        id: video
+        settings:
+          src: front.mp4
+

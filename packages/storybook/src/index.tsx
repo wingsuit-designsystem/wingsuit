@@ -13,7 +13,7 @@ import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
-import PatternPreview from './components/PatternPreview';
+import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
@@ -135,6 +135,9 @@ function getArgTypes(variant) {
         setting.getType() === 'colorwidget'
       ) {
         argTypes[key].type.name = 'enum';
+        argTypes[key].description += `<br>Option keys: ${Object.keys(setting.getOptions()).join(
+          ', '
+        )}`;
         argTypes[key].control = {
           options: getStorybookControlsOptions(setting),
           type: setting.getType() === 'radio' ? 'radio' : 'select',
@@ -201,7 +204,6 @@ function getArgTypes(variant) {
           type: 'object',
         };
       } else if (field.getType() === 'pattern') {
-        argTypes[key].description = `Display "${argTypes[key].name}"`;
         argTypes[key].type.name = 'boolean';
         argTypes[key].defaultValue = true;
         argTypes[key].control = {
@@ -265,13 +267,12 @@ function getStories(pattern: Pattern, module) {
 
 export { drupalAttachBehaviorDecorator } from './drupal';
 export {
-  isInit as isInitDecorator,
-  init as initDecorator,
-  init as initJsBehaviors,
+  isInitDecorator,
+  initDecorator,
+  initJsBehaviors,
   attachBehaviorDecorator,
-} from './behaviors';
-export { default as RenderTwig } from './components/RenderTwig';
-export { default as PatternPreview } from './components/PatternPreview';
+} from '@wingsuit-designsystem/pattern-react/client';
+export { RenderTwig, PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 export { default as PatternLoad } from './docs/PatternLoad';
 export { default as Spacing } from './docs/Spacing';
 export { default as Typeset } from './docs/Typeset';

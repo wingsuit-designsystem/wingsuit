@@ -22,13 +22,14 @@ banner:
       type: text
       label: Teaser
       description: Short optional teaser.
-      preview: "<p>Nice and beautiful banner text.</p>"
+      preview: "<div class='prose'><h1>Lorem ipsum dolor sit.</h1></div>"
   settings:
     position:
       type: select
       allow_token: true
       label: Position
       default_value: center_center
+      allow_expose: true
       options:
         top_left: Top left
         top_center: Top center

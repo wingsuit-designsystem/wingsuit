@@ -16,13 +16,13 @@ placeholder:
     placeholder_url:
       label: Placeholder service
       type: select
-      preview: https://satyr.io/[width]x[height]
+      preview: https://placeimg.com/[width]/[height]/people
       required: true
       options:
         "https://satyr.io/[width]x[height]": https://satyr.io/
         "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
         "https://fakeimg.pl/[width]x[height]": https://fakeimg.pl/
-        "https://placeimg.com/[width]/[height]/tech/grayscale": https://placeimg/
+        "https://placeimg.com/[width]/[height]/people": https://placeimg/
     background_classes:
       label: Classes
       description: Classes applied to background image container.
@@ -33,9 +33,11 @@ placeholder:
       type: select
       preview: 16x9_md_sc
       options:
+        1x1_xs_sc: XSmall 1x1
         1x1_xxs_sc: XXSmall 1x1
         8x7_xxs_sc: XSmall 8x7
         8x7_xs_sc: Small 8x7
+        4x6_xs_sc: Small 4x6
         16x9_xxxs_sc: XXXSmall 16x9
         16x9_xxs_sc: XXSmall 16x9
         16x9_xs_sc: XSmall 16x9
@@ -50,6 +52,14 @@ placeholder:
   configuration:
     image_config:
       styles:
+        1x2_xs_sc:
+          label: XSmall 1x2
+          width: 400
+          height: 800
+        1x1_xs_sc:
+          label: XSmall 1x1
+          width: 400
+          height: 400
         1x1_xxs_sc:
           label: Small 1x1
           width: 80

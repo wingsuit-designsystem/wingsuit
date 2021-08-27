@@ -12,6 +12,46 @@ const twingFilters = require('twing-drupal-filters');
 export class TwingRenderer implements IRenderer {
   private environment;
 
+  private initializeEnvironment = false;
+
+  private filters: {} = {
+    without: (arg1, ...args) => {
+      return Promise.resolve(without(arg1, ...args));
+    },
+  };
+
+  private functions: {} = {
+    ws_itok: twigItok,
+    uuid: twigUuid,
+    file_url: twigFileUrl,
+    pattern: renderPattern,
+    create_attribute: twigAttributeFunction,
+    pattern_configuration: getPatternConfiguration,
+    pattern_preview: (
+      patternId: string,
+      variables: {} = {},
+      variantId: string = Pattern.DEFAULT_VARIANT_NAME
+    ) => {
+      return new Promise((resolve) => {
+        renderPatternPreview(patternId, variables, variantId).then((output) => {
+          resolve(output);
+        });
+      });
+    },
+  };
+
+  addFilter(name, func) {
+    this.filters[name] = func;
+  }
+
+  addFunction(name, func) {
+    this.functions[name] = func;
+  }
+
+  getEnvironment() {
+    return this.environment;
+  }
+
   addTemplate(path, template) {
     this.environment.getLoader().setTemplate(path, template);
   }
@@ -23,39 +63,23 @@ export class TwingRenderer implements IRenderer {
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
     this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
-    twingFilters(this.environment);
-    const withoutFilter = (arg1, ...args) => {
-      return Promise.resolve(without(arg1, ...args));
-    };
-    this.environment.addFunction(new TwingFunction('create_attribute', twigAttributeFunction));
-    this.environment.addFilter(new TwingFilter('without', withoutFilter));
-    this.environment.addFunction(
-      new TwingFunction(
-        'pattern_preview',
-        (
-          patternId: string,
-          variables: {} = {},
-          variantId: string = Pattern.DEFAULT_VARIANT_NAME
-        ) => {
-          return new Promise((resolve) => {
-            renderPatternPreview(patternId, variables, variantId).then((output) => {
-              resolve(output);
-            });
-          });
-        }
-      )
-    );
-    this.environment.addFunction(new TwingFunction('ws_itok', twigItok));
-    this.environment.addFunction(new TwingFunction('uuid', twigUuid));
+  }
 
-    this.environment.addFunction(new TwingFunction('file_url', twigFileUrl));
-    this.environment.addFunction(new TwingFunction('pattern', renderPattern));
-    this.environment.addFunction(
-      new TwingFunction('pattern_configuration', getPatternConfiguration)
-    );
+  private initialize() {
+    twingFilters(this.environment);
+    Object.keys(this.functions).forEach((key) => {
+      this.environment.addFunction(new TwingFunction(key, this.functions[key]));
+    });
+    Object.keys(this.filters).forEach((key) => {
+      this.environment.addFilter(new TwingFilter(key, this.filters[key]));
+    });
   }
 
   async render(id: string, include: string, variables: {}): Promise<string> {
+    if (this.initializeEnvironment === false) {
+      this.initializeEnvironment = true;
+      this.initialize();
+    }
     return this.environment.render(include, variables);
   }
 }

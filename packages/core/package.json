@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "1.0.3",
+  "version": "1.1.0-y.0",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.0",
     "@types/webpack": "^4.41.12",
-    "@wingsuit-designsystem/pattern": "1.0.3",
-    "@wingsuit-designsystem/storybook": "1.0.3",
+    "@wingsuit-designsystem/pattern": "1.1.0-y.0",
+    "@wingsuit-designsystem/storybook": "1.1.0-y.0",
     "autoprefixer": "^9.7.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
@@ -54,6 +54,7 @@
     "postcss-nested": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-replace": "^1.1.0",
+    "prettier": "^2.3.0",
     "reflect-metadata": "^0.1.13",
     "resolve-url-loader": "^3.1.1",
     "style-loader": "^1.0.2",
@@ -78,5 +79,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
+  "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc"
 }

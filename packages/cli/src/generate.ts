@@ -1,10 +1,16 @@
 import program from 'commander';
 import leven from 'leven';
+
+import { invokePreset } from '@wingsuit-designsystem/core';
+
+import startApp from './startApps';
 import initiate from './initiate';
 import component from './component';
+import app from './app';
 import version from './version';
 
 const logger = console;
+
 program
   .command('init')
   .description('Install Wingsuit.')
@@ -30,6 +36,23 @@ program
   .description('Generate Wingsuit component.')
   .option('-N --use-npm', 'Use npm to install deps')
   .action((options) => component(options));
+
+program
+  .command('generate-app')
+  .description('Generate Wingsuit app.')
+  .option('-N --use-npm', 'Use npm to install deps')
+  .action((options) => app(options));
+
+program
+  .command('dev')
+  .description('Start Wingsuit App in dev mode.')
+  .action((options) => startApp(options, 'development'));
+program
+  .command('build')
+  .description('Build Wingsuit App.')
+  .action((options) => startApp(options, 'production'));
+
+invokePreset('commands', { program });
 
 program.command('*', '').action(() => {
   const [, , invalidCmd] = process.argv;

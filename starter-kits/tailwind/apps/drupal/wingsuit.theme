@@ -18,6 +18,7 @@ include 'includes/content.theme.inc';
 include 'includes/form.theme.inc';
 include 'includes/layout.theme.inc';
 include 'includes/media.theme.inc';
+include 'includes/link.theme.inc';
 include 'includes/misc.theme.inc';
 include 'includes/navigation.theme.inc';
 include 'includes/layout_builder.theme.inc';

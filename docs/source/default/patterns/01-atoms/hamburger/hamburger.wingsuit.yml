@@ -1,0 +1,5 @@
+hamburger:
+  use: "@atoms/hamburger/hamburger.twig"
+  label: Hamburger
+  description: Simple animated hamburger icon.
+  visibility: storybook

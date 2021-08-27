@@ -1,0 +1,7 @@
+body {
+  @apply text-black;
+}
+
+img {
+  max-width: 100%;
+}

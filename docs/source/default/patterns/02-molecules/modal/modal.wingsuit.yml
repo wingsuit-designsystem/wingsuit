@@ -1,0 +1,10 @@
+modal:
+  use: "@molecules/modal/modal.twig"
+  label: Modal
+  description: A simple modal.
+  fields:
+    content:
+      type: textfield
+      label: Text
+      preview:
+        faker: lorem.paragraph

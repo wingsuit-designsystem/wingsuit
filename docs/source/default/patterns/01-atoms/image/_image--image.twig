@@ -1,0 +1,10 @@
+{% if caption is not empty %}
+  <figure>
+    {{ image }}
+    {% if caption is not empty %}
+      <figcaption>{{ caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% else %}
+  {{ image }}
+{% endif %}

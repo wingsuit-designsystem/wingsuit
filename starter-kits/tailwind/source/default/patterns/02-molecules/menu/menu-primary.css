@@ -1,0 +1,7 @@
+[data-menu-target="submenu"][data-menu-level="0"]:hover > .submenu {
+  @apply lg:block;
+}
+
+.menu-processed:hover > .submenu {
+  @apply lg:block;
+}
