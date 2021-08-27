@@ -59,7 +59,7 @@ Following modules are used to map Wingsuit patterns to Drupal:
 * [components](https://www.drupal.org/project/components): Registers folders of components defined by your theme or module as Twig namespaces.
 * [ui\_patterns](https://www.drupal.org/project/ui_patterns): Does the mapping magic.
 * [ui\_patterns\_layout\_builder](https://www.drupal.org/project/ui_patterns_layout_builder): To use UI Patterns with Layout Builder.
-* [ui\_patterns_settings](https://www.drupal.org/project/ui_patterns_layout_settings): Make patterns configurable.
+* [ui\_patterns_settings](https://www.drupal.org/project/ui_patterns_settings): Make patterns configurable.
 * [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion). Locate templates inside the wingsuit `dist` folder.
 
 

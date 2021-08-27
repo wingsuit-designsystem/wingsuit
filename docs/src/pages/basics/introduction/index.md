@@ -24,7 +24,7 @@ Wingsuit offers a lot of additional helpers like [placeholder images with image 
   * [Bootstrap](https://getbootstrap.com/)  
   You can [customize](../../configurations/custom-webpack-config) the webpack configuration and integrate your favorite frontend frameworks. 
 * ### Storybook documentation
-Wingsuit generates a documentation page directly from the winguit.yml. For more detailed documentation use Storybook MDX. 
+Wingsuit generates a documentation page directly from the wingsuit.yml. For more detailed documentation use Storybook MDX. 
 * ### Drupal integration
 With the [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion) module, patterns can be used with zero configuration in Drupal. 
 * ### Stay in sync
