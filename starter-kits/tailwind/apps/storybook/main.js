@@ -9,7 +9,6 @@ module.exports = {
     '@storybook/addon-links',
     'storybook-addon-themes',
     '@storybook/addon-measure',
-    '@storybook/addon-postcss',
     {
       name: '@storybook/addon-postcss',
       options: {
