@@ -1,8 +1,6 @@
 import program from 'commander';
 import leven from 'leven';
 
-import { invokePreset } from '@wingsuit-designsystem/core';
-
 import startApp from './startApps';
 import initiate from './initiate';
 import component from './component';
@@ -51,8 +49,6 @@ program
   .command('build')
   .description('Build Wingsuit App.')
   .action((options) => startApp(options, 'production'));
-
-// invokePreset('commands', { program });
 
 program.command('*', '').action(() => {
   const [, , invalidCmd] = process.argv;
