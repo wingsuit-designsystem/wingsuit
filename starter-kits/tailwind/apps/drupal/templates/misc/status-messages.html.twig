@@ -30,8 +30,8 @@
 } %}
 {% set messages_attributes = attributes %}
 {% embed '@organisms/container/container.twig' with {
-  padding_top: '',
-  padding_bottom: 'default',
+  padding_top: 'default',
+  padding_bottom: 'small',
   message_list: message_list,
   messages_attributes: messages_attributes
 } only %}

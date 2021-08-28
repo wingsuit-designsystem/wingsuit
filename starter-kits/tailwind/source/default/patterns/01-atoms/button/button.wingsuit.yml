@@ -52,6 +52,15 @@ button:
     expanded:
       type: boolean
       label: Expanded
+    target:
+      type: select
+      label: Target
+      options:
+        _blank: Blank
+        _top: Top
+    title:
+      type: textfield
+      label: Title
     round:
       type: boolean
       label: Round
