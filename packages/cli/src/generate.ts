@@ -52,7 +52,7 @@ program
   .description('Build Wingsuit App.')
   .action((options) => startApp(options, 'production'));
 
-invokePreset('commands', { program });
+// invokePreset('commands', { program });
 
 program.command('*', '').action(() => {
   const [, , invalidCmd] = process.argv;
