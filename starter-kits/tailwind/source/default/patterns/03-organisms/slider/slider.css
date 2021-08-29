@@ -1,4 +1,5 @@
 .splide {
+
   .splide__pagination {
     @apply cursor-pointer;
     @apply flex;

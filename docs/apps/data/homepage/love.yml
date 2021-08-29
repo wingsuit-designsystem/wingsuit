@@ -38,11 +38,11 @@ data:
                     "button": button
                   } %}
         show_code_block: false
-  - title: 'Vanilla'
+  - title: 'Other CMS'
     key: "other_cms"
     intro: |
             <div class="relative">
-            <p>If your don't use Drupal install the cms app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev cms</code> to compile your CSS and templates.</p><p> You can also install the drupal app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev drupal</code> </p>
+            <p>If you don't use Drupal install the cms app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev cms</code> to compile your CSS and templates.</p><p> You can also install the drupal app with <code class="language-bash">yarn ws generate-app</code> and run <code class="language-bash">yarn ws dev drupal</code> </p>
             </div>
     contents:
       - key: 'vanilla'

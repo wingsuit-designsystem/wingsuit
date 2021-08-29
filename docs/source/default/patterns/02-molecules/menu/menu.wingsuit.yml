@@ -41,7 +41,7 @@ menu:
                 url: "/apps/drupal"
               - title: CMS
                 url: "/apps/cms"
-              - title: Paes
+              - title: Pages
                 url: "/apps/pages"
           - title: PRESETS
             url: "#"

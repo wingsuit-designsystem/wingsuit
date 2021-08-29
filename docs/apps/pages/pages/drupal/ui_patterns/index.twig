@@ -9,8 +9,10 @@
 #}
 
 {% set body %}
-  {% set video = pattern('video', {'src': 'layout-builder.mp4'}) %}
-  {{ pattern('rich_text', {text: '<h1>Wingsuit Kickstarter (with UI Patterns and Layout Builder)</h1>' ~ video ~  content}, 'default') }}
+  {% set media = pattern('image', {'url': 'ws-assets://images/kickstarter.png'}, 'image') %}
+  {% set button = '<div class="text-center">' ~ pattern('button', {'target': '_blank', 'size': 'large', 'round': true,'text': 'Online demo', 'url': 'http://demo.wingsuit.dev.key-tec.de/user/login'}, 'default') ~ '</div>' %}
+
+  {{ pattern('rich_text', {text: '<h1>Drupal Kickstarter</h1>' ~ media ~ button ~  content}, 'default') }}
 
   {% if next|length > 0 %}
     <div class="pt-6 md:pt-14">

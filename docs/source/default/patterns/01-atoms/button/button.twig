@@ -35,7 +35,7 @@ Classes
 {#
 Template
 #}
-<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target) }}>
 {{ text }}
   {% if icon is not empty %}
     {% include "@atoms/svg/_svg--icon.twig" with {

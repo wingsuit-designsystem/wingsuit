@@ -9,7 +9,7 @@
 
 {# TEMPLATE #}
 
-<section class="pt-28">
+<section class="pt-16 md:pt-28">
   {% embed "@organisms/container/container.twig" with {buttons: buttons, text: text, padding_bottom: 'small'} only %}
     {% block content %}
       {% include "@atoms/rich-text/rich-text.twig" with {text: text, variant: 'large' } only %}

@@ -18,20 +18,22 @@ hero:
           id: button
           variant: default
           fields:
-            text: Quickstart
+            text: Online Demo
           settings:
             size: large
+            target: _blank
             round: true
-            url: /guides/quick-start-guide
+            url: https://master--5fd0183aaf074f00213f79cc.chromatic.com/
         -
           id: button
           variant: default
           fields:
-            text: Online Demo
+            text: Drupal Kickstarter
           settings:
             size: large
             round: true
-            url: #
+            url: /drupal/ui_patterns
+
     image:
       type: pattern
       label: Image

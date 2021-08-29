@@ -1,11 +1,13 @@
+## Demo
+<b>Login with:</b><br/>
+Username: demo<br/>
+Password: demo
 
-[Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to start with Wingsuit.
-
-The Kickstarter uses [Acquia Blt](https://github.com/acquia/blt) for automation.
-
-
+After login navigate to [layout builder](http://demo.wingsuit.dev.key-tec.de/en/node/1/layout) and start to build your page.
 
 ## Prerequisites
+[Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to start with Wingsuit.
+The Kickstarter uses UI Patterns to map Patterns to Drupal and [Acquia Blt](https://github.com/acquia/blt) for automation.
 
 - [Node `^12`](https://nodejs.org)
 - [YARN `^1.22`](https://classic.yarnpkg.com/)
@@ -16,7 +18,10 @@ The Kickstarter uses [Acquia Blt](https://github.com/acquia/blt) for automation.
 composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kickstarter --stability dev --no-interaction
 ```
 ```bash
-cd wingsuit-kickstarter && ./vendor/bin/blt setup
+
+cd wingsuit-kickstarter
+./vendor/bin/blt source:build:settings
+./vendor/bin/blt setup
 ```
 
 ### First steps
