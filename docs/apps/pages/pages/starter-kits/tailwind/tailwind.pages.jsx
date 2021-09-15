@@ -4,10 +4,12 @@ import MDX from './index.mdx';
 const template = require('../../docs.twig');
 
 export default {
-  path: '/quick-start/tailwind',
+  path: '/starter-kits/tailwind-drupal',
   template,
   MDX,
   vars: {
+    meta_title: 'Drupal loves TailwindCSS',
+    meta_description: 'Wingsuit starter kit for TailwindCSS.',
     next: [
       {
         title: 'Did we catch your interest?',

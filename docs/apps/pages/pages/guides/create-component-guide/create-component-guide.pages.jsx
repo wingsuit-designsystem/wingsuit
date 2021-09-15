@@ -8,6 +8,9 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Create new component',
+    meta_description:
+      'The wizard will guide you through all possible pattern types, including documentation.',
     next: [
       {
         title: 'Not sure which component type you need?',

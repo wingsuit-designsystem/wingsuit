@@ -8,6 +8,9 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Compression preset',
+    meta_description:
+      'The official Wingsuit compression preset adds support for gzip and brotli compression',
     next: [
       {
         title: 'Imagemin Preset',

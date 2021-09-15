@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Globals',
+    meta_description: 'global scope variables inside your twig template.',
     next: [
       {
         title: 'UI Patterns',

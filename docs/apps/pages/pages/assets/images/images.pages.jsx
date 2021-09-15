@@ -8,6 +8,8 @@ export default {
   MDX,
   template,
   vars: {
+    meta_title: 'Images & Icons',
+    meta_description: 'Wingsuit images and icons.',
     next: [
       {
         title: 'SVG',

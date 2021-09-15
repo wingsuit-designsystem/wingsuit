@@ -8,6 +8,10 @@ export default {
   template,
   MDX,
   vars: {
+    vars: {
+      meta_title: 'Documents Overview',
+      meta_description: 'Wingsuit supports powerful MDX documentation out of the box.',
+    },
     next: [
       {
         title: 'Extend Wingsuit component documentation',

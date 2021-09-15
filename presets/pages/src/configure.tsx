@@ -48,9 +48,13 @@ export function configure(
               : // eslint-disable-next-line no-await-in-loop
                 await getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup);
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
-          // const rendered = ReactDOMServer.renderToStaticMarkup(component);
           // eslint-disable-next-line no-await-in-loop
-          const htmlRendered = await renderHtmlTwig({ content: rendered, css, js });
+          const htmlRendered = await renderHtmlTwig({
+            ...data?.default?.vars,
+            content: rendered,
+            css,
+            js,
+          });
           resultPages[data.default.path] = htmlRendered;
         } catch (e) {
           resultPages[data.default.path] = e.message;

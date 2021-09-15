@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Configuration',
+    meta_description: 'Custom webpack configuration.',
     next: [
       {
         title: 'Presets',

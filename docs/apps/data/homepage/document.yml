@@ -10,7 +10,7 @@ data:
         title: 'Automatic'
         content: |
           <div class="p-14">
-            <img src="/images/docs_export.png" class="w-full">
+            <img src="/images/docs_export.png" class="w-full" width="648" height="1719">
           </div>
     codes:
       - key: 'yaml'
@@ -83,7 +83,7 @@ data:
         title: 'MDX'
         content: |
           <div class="px-14 pt-2 relative">
-            <img src="/images/docs_mdx.png">
+            <img src="/images/docs_mdx.png" width="521" height="4970">
           </div>
     codes:
       - key: 'mdx'

@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Presentation templates',
+    meta_description: 'Useful to present a combination of components',
     next: [
       {
         title: 'UI Patterns',

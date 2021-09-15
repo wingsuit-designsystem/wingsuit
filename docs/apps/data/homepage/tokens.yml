@@ -12,7 +12,7 @@ data:
         title: 'Colors'
         content: |
           <div class="p-6">
-          <img src="/images/colors_tailwind.svg">
+          <img src="/images/colors_tailwind.svg" width="235" height="208" class="w-full">
           </div>
     codes:
       - key: 'yaml'

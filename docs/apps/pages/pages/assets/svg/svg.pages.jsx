@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'SVGs',
+    meta_description: 'Render SVGs as icons or images.',
     next: [
       {
         title: 'Images & Icons',

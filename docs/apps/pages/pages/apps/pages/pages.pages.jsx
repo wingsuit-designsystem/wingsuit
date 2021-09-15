@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Wingsuit Pages',
+    meta_description: 'Wingsuit Preset to generate static pages from patterns.',
     next: [
       {
         title: 'UI Patterns',

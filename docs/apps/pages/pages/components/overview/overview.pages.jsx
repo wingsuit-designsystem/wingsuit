@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Components overview',
+    meta_description: 'Component types overview.',
     next: [
       {
         title: 'UI Patterns',

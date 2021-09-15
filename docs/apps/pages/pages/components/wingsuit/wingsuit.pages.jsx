@@ -8,6 +8,10 @@ export default {
   template,
   MDX,
   vars: {
+    vars: {
+      meta_title: 'Wingsuit Pattern',
+      meta_description: 'The Wingsuit component definition.',
+    },
     next: [
       {
         title: 'Presentation templates',

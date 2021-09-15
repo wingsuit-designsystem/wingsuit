@@ -8,6 +8,8 @@ export default {
   MDX,
   template,
   vars: {
+    meta_title: 'Javascript',
+    meta_description: 'Drupal javascript behaviors are working out of the box in Wingsuit.',
     next: [
       {
         title: 'Images & Icons',

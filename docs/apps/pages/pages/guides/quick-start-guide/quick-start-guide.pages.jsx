@@ -10,6 +10,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Automated command line tool',
+    meta_description: 'This command creates a Wingsuit demo project.',
     next: [
       {
         title: 'Create a new component',

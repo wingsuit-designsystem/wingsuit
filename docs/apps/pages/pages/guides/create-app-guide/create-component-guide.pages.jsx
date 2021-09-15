@@ -8,6 +8,9 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Create new app',
+    meta_description: 'The wizard will guide you through app generation.',
+
     next: [
       {
         title: 'Configure your app?',

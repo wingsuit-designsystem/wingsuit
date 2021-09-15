@@ -8,6 +8,9 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Presets',
+    meta_description:
+      'Wingsuit uses presets to make webpack configurations reusable across different apps.',
     next: [
       {
         title: 'Compression Preset',

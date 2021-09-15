@@ -1,17 +1,11 @@
----
-id: 'overview'
-title: 'Component-Based Theming in Drupal'
----
+# Component-Based Theming in Drupal'
 
-Drupal theming without a component based solution can be very frustrating, prone to errors and hard to maintain.
+Drupal theming without a component based solution increase the productivity
 
 It is very likely that you need to theme the same component more than once. Once you need your button inside as a field, next time you need the same button inside your node template. The solution most developer took is to copy the template and adjust them to their needs.
-You distribute your component markup across the project and changes to a component must be done on several places inside your project.  
+You distribute your component markup across the project and changes to a component must be done on several places inside your project.
 
-This get even more worse if you use a modern CSS framework like tailwind where everything is configured through classes directly on the element.
-Using tailwind without a component based architecture can you lead to the hell.
-
-Thinking in components makes it much easier to structure your layout. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) or others helps you to structure your layout and makes it easier for every developer to follow the same path.    
+Thinking in components makes it much easier to structure your layout. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) or others helps you to structure your layout and makes it easier for every developer to follow the same path.
 
 ### Presenter template
 The presenter template is a drupal theme template which `includes` the component template and provides all need variables.
@@ -19,7 +13,7 @@ If you need to theme your link field with the button component you create a fiel
 
 ```twig
 
-{% 
+{%
   include "@atoms/button/button.twig" with {"text": item.content['#title'], "url": item.content['#url'].toString() }
 %}
 ```

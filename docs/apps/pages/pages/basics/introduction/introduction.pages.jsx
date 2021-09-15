@@ -9,6 +9,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Wingsuit introduction',
+    meta_description: 'Wingsuit is a toolset to build CMS independent TWIG components.',
     next: [
       {
         title: 'Did we catch your interest?',

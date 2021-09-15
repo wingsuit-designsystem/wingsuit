@@ -4,12 +4,12 @@ import MDX from './index.mdx';
 const template = require('../../docs.twig');
 
 export default {
-  path: '/apps/overview',
+  path: '/apps/cms',
   template,
   MDX,
   vars: {
-    meta_title: 'Apps overview',
-    meta_description: 'Integrate your Design System into your application or CMS.',
+    meta_title: 'Wingsuit CMS APP',
+    meta_description: 'Wingsuit APP for all TWIG based CMS.',
     next: [
       {
         title: 'UI Patterns',
@@ -18,10 +18,10 @@ export default {
         href: '/components/wingsuit',
       },
       {
-        title: 'Presentation templates',
-        text: 'Learn how to create storybook preview pages for your components.',
+        title: 'Components',
+        text: 'Learn about creating and editing components.',
         link_title: 'continue',
-        href: '/components/presentation',
+        href: '/components/overview',
       },
     ],
   },

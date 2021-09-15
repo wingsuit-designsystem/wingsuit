@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Imagemin Preset',
+    meta_description: 'The official wingsuit imagemin preset optimizes your images.',
     next: [
       {
         title: 'PWA Preset',

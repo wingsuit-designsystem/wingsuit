@@ -8,6 +8,10 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Favicon Preset',
+    meta_description:
+      'Wingsuit also ships with a pwa (favicon) preset, which uses WebappWebpackPlugin.',
+
     next: [
       {
         title: 'UI Patterns',

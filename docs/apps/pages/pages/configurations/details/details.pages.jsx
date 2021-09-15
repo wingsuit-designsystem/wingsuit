@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Overview',
+    meta_description: 'Custom webpack configuration.',
     next: [
       {
         title: 'Configure webpack',

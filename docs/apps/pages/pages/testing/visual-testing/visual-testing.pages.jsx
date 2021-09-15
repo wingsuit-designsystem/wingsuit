@@ -8,6 +8,8 @@ export default {
   template,
   MDX,
   vars: {
+    meta_title: 'Visual testing',
+    meta_description: 'Make Wingsuit work with visual testing.',
     next: [
       {
         title: 'Storybook visual testing documentation',

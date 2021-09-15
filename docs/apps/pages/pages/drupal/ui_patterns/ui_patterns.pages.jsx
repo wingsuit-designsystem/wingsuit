@@ -8,4 +8,8 @@ export default {
   path: '/drupal/ui_patterns',
   template,
   MDX,
+  vars: {
+    meta_title: 'Drupal Kickstarter',
+    meta_description: 'Kickstarter for Wingsuit.',
+  },
 };

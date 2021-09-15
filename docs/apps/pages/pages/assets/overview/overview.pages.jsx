@@ -8,6 +8,9 @@ export default {
   MDX,
   template,
   vars: {
+    meta_title: 'Assets overview',
+    meta_description:
+      'Wingsuit will compile all assets, which are @import ed inside the design system.',
     next: [
       {
         title: 'Images & Icons',

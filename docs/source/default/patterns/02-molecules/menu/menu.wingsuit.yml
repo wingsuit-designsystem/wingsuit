@@ -54,6 +54,11 @@ menu:
                 url: "/presets/imagemin"
               - title: Pwa Preset
                 url: "/presets/pwa"
+          - title: STARTER KITS
+            url: "#"
+            below:
+              - title: TailwindCSS + Drupal
+                url: "/starter-kits/tailwind-drupal"
           - title: COMPONENTS
             url: "#"
             below:
@@ -99,7 +104,7 @@ menu:
         items:
           - title: Documentation
             url: "/guides/quick-start-guide/"
-          - title: What's new in Version 1.1?
+          - title: <b>What's new in Version 1.1</b>
             url: "/releases/onedotone"
     footer:
       label: Footer
