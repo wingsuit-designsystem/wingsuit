@@ -1,5 +1,6 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import {
   Title,
@@ -17,6 +18,11 @@ import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
+
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line no-undef
+  window.wingsuitStorage = storage;
+}
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
 
@@ -36,6 +42,12 @@ function getStorybookControlsOptions(setting) {
   return knobsOption;
 }
 
+function requireAll(r) {
+  if (r != null) {
+    r.keys().forEach(r);
+  }
+}
+
 export function configure(
   module: NodeModule,
   storybookContext,
@@ -45,7 +57,7 @@ export function configure(
 ) {
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromMultiContext(storybookContext);
-  storage.createTwigStorageFromContext(templateContext);
+  requireAll(templateContext);
   storage.createGlobalsFromContext(dataContext);
   renderer.setRenderer(new TwingRenderer());
   storybookConfigure(() => {

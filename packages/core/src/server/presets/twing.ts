@@ -1,5 +1,7 @@
 import AppConfig from '../../AppConfig';
 
+const loader = require('@wingsuit-designsystem/twing-loader');
+
 export function name(appConfig: AppConfig) {
   return 'twing';
 }
@@ -12,7 +14,10 @@ export function webpack(appConfig: AppConfig) {
           test: /\.twig$/,
           use: [
             {
-              loader: 'raw-loader',
+              loader: '@wingsuit-designsystem/twing-loader',
+              options: {
+                namespaces: appConfig.namespaces,
+              },
             },
           ],
         },
