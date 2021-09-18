@@ -8,7 +8,7 @@ describe('Wingsuit Component', () => {
   it('[text] it should change field value.', () => {
     clickAddon('Controls');
 
-    cy.get('#content').clear().type('John Doe');
+    cy.get('#control-content').clear().type('John Doe');
     cy.wait(1000);
     cy.getStoryElement()
       .find('.wsc-component')
