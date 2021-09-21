@@ -9,7 +9,9 @@ export const getProps = async (ctx, renderer, renderToStaticMarkup) => {
     getStorage().addDefinition('preset--page', pattern);
     props.page = await renderer.renderPatternPreview('preset--page', vars);
   } else {
-    vars.content = renderToStaticMarkup(<ctx.MDX />);
+    if (ctx.MDX != null) {
+      vars.content = renderToStaticMarkup(<ctx.MDX />);
+    }
     props.page = await renderer.renderData(ctx.path, ctx.template.default, vars);
   }
 

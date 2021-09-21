@@ -102,3 +102,4 @@ container:
       green-lighter: 'bg-green-100'
       blue-light: 'bg-blue-200'
       yellow-lighter: 'bg-yellow-100'
+      black: 'dark bg-black'
