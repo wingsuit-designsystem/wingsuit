@@ -38,3 +38,8 @@ rich_text:
       label: Default
     large:
       label: Large
+  settings:
+    text_align:
+      type: select
+      options:
+        center: Center

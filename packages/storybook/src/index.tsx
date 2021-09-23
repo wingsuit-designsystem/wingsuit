@@ -19,11 +19,6 @@ import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line no-undef
-  window.wingsuitStorage = storage;
-}
-
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
 
 function getStorybookControlsOptions(setting) {

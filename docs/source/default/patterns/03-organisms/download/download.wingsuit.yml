@@ -9,9 +9,9 @@ download:
     intro:
       type: text
       label: Intro
-      preview: "<div class=\"text-center\"><h2>Try it now!</h2>
+      preview: "<h2>Try it now!</h2>
         <p>Get started using the automated command line tool. This command creates a Wingsuit demo project. The demo page uses the atomic design principle to structure the patterns..</p>
-        </div>"
+        "
     intro_drupal:
       type: text
       label: Intro

@@ -16,7 +16,7 @@ placeholder:
     placeholder_url:
       label: Placeholder service
       type: select
-      preview: https://placeimg.com/[width]/[height]/people
+      preview: https://satyr.io/[width]x[height]
       required: true
       options:
         "https://satyr.io/[width]x[height]": https://satyr.io/

@@ -14,7 +14,7 @@ export default function (options) {
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
-  const branch = options.branch != null ? options.branch : 'stable';
+  const branch = options.branch != null ? options.branch : 'master';
   const tmpCheckoutFolder = 'wscheckout';
   const folder = !options.folder ? path.resolve('wingsuit') : path.resolve(options.folder);
   const npmOptions = {

@@ -18,7 +18,14 @@ export function configure(
   storage.setNamespaces(namespaces);
 
   storage.createDefinitionsFromMultiContext(patternContext);
-  storage.createTwigStorageFromContext(templateContext);
+  // storage.createTwigStorageFromContext(templateContext);
+  function requireAll(r) {
+    if (r != null) {
+      r.keys().forEach(r);
+    }
+  }
+  requireAll(templateContext);
+
   storage.createGlobalsFromContext(dataContext);
   const twigRenderer = new TwingRenderer();
   twigRenderer.addFunction('file_url', (url) => {
@@ -36,6 +43,12 @@ export function configure(
   };
   const resultPages = {};
   const renderAll = async () => {
+    const pages: string[] = [];
+    for (let index = 0; index < pagesContext.keys().length; index += 1) {
+      const data = pagesContext(pagesContext.keys()[index]);
+      pages.push(data.default.path);
+    }
+    storage.addGlobal('pages', pages);
     for (let index = 0; index < pagesContext.keys().length; index += 1) {
       try {
         const data = pagesContext(pagesContext.keys()[index]);
@@ -48,13 +61,16 @@ export function configure(
               : // eslint-disable-next-line no-await-in-loop
                 await getProps(data.default, renderer, ReactDOMServer.renderToStaticMarkup);
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
-          // eslint-disable-next-line no-await-in-loop
-          const htmlRendered = await renderHtmlTwig({
-            ...data?.default?.vars,
-            content: rendered,
-            css,
-            js,
-          });
+          const htmlRendered =
+            data.default.html !== ''
+              // eslint-disable-next-line no-await-in-loop
+              ? await renderHtmlTwig({
+                  ...data?.default?.vars,
+                  content: rendered,
+                  css,
+                  js,
+                })
+              : props.page;
           resultPages[data.default.path] = htmlRendered;
         } catch (e) {
           resultPages[data.default.path] = e.message;
