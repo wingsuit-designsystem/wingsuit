@@ -63,8 +63,8 @@ export function configure(
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
           const htmlRendered =
             data.default.html !== ''
-              // eslint-disable-next-line no-await-in-loop
-              ? await renderHtmlTwig({
+              ? // eslint-disable-next-line no-await-in-loop
+                await renderHtmlTwig({
                   ...data?.default?.vars,
                   content: rendered,
                   css,

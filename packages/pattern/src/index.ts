@@ -8,7 +8,6 @@ export { default as Pattern } from './Pattern';
 export { default as PatternVariant } from './PatternVariant';
 export const storage: PatternStorage = new PatternStorage();
 
-
 // eslint-disable-next-line no-undef
 window.wingsuitStorage = storage;
 
