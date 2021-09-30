@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/pattern-react",
-  "version": "1.2.0-alpha.1",
+  "version": "1.2.0-alpha.2",
   "description": "Wingsuit Pattern for React.",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
   "dependencies": {
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/pattern": "1.2.0-alpha.1",
+    "@wingsuit-designsystem/pattern": "1.2.0-alpha.2",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1"
