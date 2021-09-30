@@ -38,7 +38,11 @@ function getStorybookControlsOptions(setting) {
 }
 
 function requireAll(r) {
-  if (r != null) {
+  if (Array.isArray(r)) {
+    r.forEach((item) => {
+      requireAll(item);
+    });
+  } else if (r != null) {
     r.keys().forEach(r);
   }
 }
@@ -51,8 +55,10 @@ export function configure(
   namespaces
 ) {
   storage.setNamespaces(namespaces);
-  storage.createDefinitionsFromMultiContext(storybookContext);
+  // storage.createDefinitionsFromMultiContext(storybookContext);
   requireAll(templateContext);
+  requireAll(storybookContext);
+
   storage.createGlobalsFromContext(dataContext);
   renderer.setRenderer(new TwingRenderer());
   storybookConfigure(() => {

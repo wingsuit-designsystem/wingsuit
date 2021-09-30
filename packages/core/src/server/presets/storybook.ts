@@ -14,10 +14,10 @@ export function webpack(appConfig: AppConfig) {
       rules: [
         {
           test: /\.ya?ml$/,
+          exclude: /\.wingsuit\.ya?ml$/,
           type: 'json', // Required by Webpack v4
           use: 'yaml-loader',
         },
-        // Non-standard assets on the dependency chain
         {
           test: /\.(md)$/,
           loader: 'file-loader',

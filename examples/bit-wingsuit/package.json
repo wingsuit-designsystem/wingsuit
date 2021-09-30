@@ -1,0 +1,75 @@
+{
+  "name": "bit-wingsuit",
+  "private": true,
+  "version": "1.2.0-alpha.1",
+  "description": "A design system with Storybook, Tailwind and Drupal",
+  "main": "",
+  "license": "GPL-2.0",
+  "author": {
+    "name": "christian.wiedemann@key-tec.de",
+    "url": "https://github.com/wingsuit-designsystem/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wingsuit-designsystem/wingsuit.git"
+  },
+  "keywords": [
+    "storybook",
+    "prototyping"
+  ],
+  "scripts": {
+    "build-storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true build-storybook -c ./apps/storybook",
+    "packtracker": "yarn storybook -c ./apps/storybook  --webpack-stats-json /tmp --smoke-test --ci --no-manager-cache --quiet && cross-env PT_PROJECT_TOKEN=945a7723-9fe2-4318-ae53-6ee806cd9e86 packtracker-upload --stats=/tmp/manager-stats.json",
+    "storybook": "cross-env STORYBOOK_DISPLAY_WARNING=true DISPLAY_WARNING=true start-storybook  -p 9011 -c ./apps/storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@packtracker/webpack-plugin": "^2.0.1",
+    "@storybook/addon-links": "^6.1.0",
+    "@storybook/addon-measure": "^1.3.1",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-viewport": "^6.1.0",
+    "@storybook/addons": "^6.1.0",
+    "@storybook/linter-config": "^2.5.0",
+    "@storybook/react": "^6.1.0",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "@wingsuit-designsystem/cli": "1.2.0-alpha.1",
+    "@wingsuit-designsystem/core": "1.2.0-alpha.1",
+    "@wingsuit-designsystem/pattern": "1.2.0-alpha.1",
+    "@wingsuit-designsystem/storybook": "1.2.0-alpha.1",
+    "autoprefixer": "^9.7.4",
+    "core-js": "^3.4.1",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-webpack": "^0.12.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.0.1",
+    "fibers": "^4.0.2",
+    "holderjs": "^2.9.6",
+    "lodash": "^4.17.15",
+    "postcss-nested": "^4.2.1",
+    "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.3",
+    "require-context": "^1.1.0",
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^4.41.3",
+    "yo": "^3.1.1"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "alpinejs": "^1.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "svg4everybody": "^2.1.9",
+    "tailwindcss": "^1.4.0"
+  },
+  "gitHead": "f33e3b40f1bad944ca7cd0c1aec27618cc56f9ef"
+}

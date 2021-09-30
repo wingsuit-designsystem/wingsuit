@@ -30,10 +30,54 @@ export function supportFeature(name, appConfig: AppConfig) {
   return presetManager.supportFeature(name, appConfig);
 }
 
+export interface PathInfo {
+  namespace: string;
+  path: string;
+}
+
+/**
+ * Return namespace and path for given resourcePath.
+ *
+ * @param resourcePath
+ *   The resourcePath.
+ * @param appConfig
+ *   The appConfig.
+ *
+ * @return
+ *   Returns path and namespace.
+ */
+export function pathInfo(resourcePath, appConfig: AppConfig): PathInfo | null {
+  const { namespaces } = appConfig;
+  let namespaceInfo: PathInfo = {
+    namespace: '',
+    path: '',
+  };
+  let found = false;
+  Object.keys(namespaces).forEach((key) => {
+    if (found === false && resourcePath.substr(0, namespaces[key].length) === namespaces[key]) {
+      namespaceInfo = {
+        namespace: key,
+        path: resourcePath.substr(namespaces[key].length + 1),
+      };
+      found = true;
+    }
+  });
+
+  return found ? namespaceInfo : null;
+}
+
 export function getDefaultPreset(name) {
   return presetManager.getDefaultPreset(name);
 }
 
+/**
+ * Invoke function for all presets.
+ *
+ * @param funcName
+ *   The functionName to invoke.
+ * @param config
+ *   The config
+ */
 export function invokePreset(funcName, config) {
   const apps = getApps();
   const result = {};
