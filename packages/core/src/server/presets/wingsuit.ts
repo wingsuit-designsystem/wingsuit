@@ -12,6 +12,7 @@ export function webpack(appConfig: AppConfig) {
     resolveLoader: {
       alias: {
         'wingsuit-loader': path.join(__dirname, '../loader/wingsuitLoader'),
+        'wingsuit-stories-loader': path.join(__dirname, '../loader/wingsuitStoriesLoader'),
       },
     },
     plugins: [fileDependencyPlugin],
@@ -23,6 +24,10 @@ export function webpack(appConfig: AppConfig) {
           options: {
             appConfig,
           },
+        },
+        {
+          test: /\.stories\.wingsuit\.jsx/,
+          use: ['wingsuit-stories-loader', 'babel-loader'],
         },
       ],
     },
