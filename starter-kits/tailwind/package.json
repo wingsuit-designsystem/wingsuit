@@ -42,13 +42,15 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "@storybook/addon-links": "^6.1.0",
+    "@storybook/addon-links": "^6.4.0-beta.4",
     "@storybook/addon-measure": "^1.3.1",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addon-viewport": "^6.1.0",
-    "@storybook/addons": "^6.1.0",
+    "@storybook/addon-viewport": "^6.4.0-beta.4",
+    "@storybook/addons": "^6.4.0-beta.4",
+    "@storybook/builder-webpack5": "^6.4.0-beta.4",
     "@storybook/linter-config": "^2.5.0",
-    "@storybook/react": "^6.1.0",
+    "@storybook/manager-webpack5": "^6.4.0-beta.4",
+    "@storybook/react": "^6.4.0-beta.4",
     "@storybook/storybook-deployer": "^2.8.7",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
@@ -82,7 +84,7 @@
     "storybook-addon-themes": "^6.0.1",
     "storycap": "^3.0.4",
     "stylelint-scss": "^3.17.2",
-    "webpack": "^4.41.3",
+    "webpack": "^5.56.1",
     "yo": "^3.1.1"
   },
   "dependencies": {
@@ -90,6 +92,7 @@
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.3.1",
     "alpinejs": "^3.0.9",
+    "buffer": "^6.0.3",
     "svg4everybody": "^2.1.9",
     "tailwindcss": "^2.2.2"
   },

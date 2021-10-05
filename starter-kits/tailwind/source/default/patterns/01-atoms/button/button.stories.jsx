@@ -1,10 +1,12 @@
-import './index';
+// Button.stories.js | Button.stories.jsx
 
-const patternDefinition = require('./button.wingsuit.yml');
+import React from 'react';
 
-export const wingsuit = {
-  parameters: {
-    layout: 'padded',
-  },
-  patternDefinition,
+import { Button } from './button.jsx';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
 };
+
+export const Primary = () => <Button background="#ff0" label="Button" />;
