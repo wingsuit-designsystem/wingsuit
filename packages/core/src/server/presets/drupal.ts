@@ -44,20 +44,11 @@ export function webpack(appConfig: AppConfig) {
       rules: [
         {
           test: /\.(yml|md|yaml)$/,
+          exclude: /\.wingsuit\.ya?ml$/,
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'wingsuit',
-            emit: true,
-          },
-        },
-        {
-          test: /\.twig$/,
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-            outputPath: appConfig.assetAtomicFolder,
-            context: appConfig.absDesignSystemPath,
+            outputPath: 'yaml',
             emit: true,
           },
         },

@@ -20,7 +20,7 @@ export function webpack(appConfig: AppConfig) {
         {
           test: /\.(js|jsx)$/,
           // @babel runtime and core must NOT be transformed by babel
-          exclude: /@babel(?:\/|\\{1,2})runtime|core-js|highlight\.js/,
+          exclude: /@babel(?:\/|\\{1,2})runtime|core-js|node_modules|highlight\.js/,
           use: {
             loader: 'babel-loader',
             options: {

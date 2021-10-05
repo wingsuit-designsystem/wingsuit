@@ -18,7 +18,14 @@ export function configure(
   storage.setNamespaces(namespaces);
 
   storage.createDefinitionsFromMultiContext(patternContext);
-  storage.createTwigStorageFromContext(templateContext);
+  // storage.createTwigStorageFromContext(templateContext);
+  function requireAll(r) {
+    if (r != null) {
+      r.keys().forEach(r);
+    }
+  }
+  requireAll(templateContext);
+
   storage.createGlobalsFromContext(dataContext);
   const twigRenderer = new TwingRenderer();
   twigRenderer.addFunction('file_url', (url) => {
@@ -56,8 +63,8 @@ export function configure(
           const rendered = ReactDOMServer.renderToStaticMarkup(<Page {...props} />);
           const htmlRendered =
             data.default.html !== ''
-              // eslint-disable-next-line no-await-in-loop
-              ? await renderHtmlTwig({
+              ? // eslint-disable-next-line no-await-in-loop
+                await renderHtmlTwig({
                   ...data?.default?.vars,
                   content: rendered,
                   css,

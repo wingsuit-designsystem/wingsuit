@@ -7,6 +7,7 @@ const storybook = require('../server/presets/storybook')
 const drupal = require('../server/presets/drupal')
 const cms = require('../server/presets/cms')
 const twing = require('../server/presets/twing')
+const wingsuitp = require('../server/presets/wingsuit')
 const svg = require('../server/presets/svg')
 const assetsVideos = require('../server/presets/assetsVideos')
 
@@ -23,8 +24,9 @@ export const wingsuit: Config = {
     storybook,
     drupal,
     cms,
+    wingsuit: wingsuitp,
   },
-  presets: [babel, css, assets, assetsVideos, svg],
+  presets: [wingsuitp, babel, css, assets, assetsVideos, svg],
   designSystems: {
     default: {
       path: 'source/default',

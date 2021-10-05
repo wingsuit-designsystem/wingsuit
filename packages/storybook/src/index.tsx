@@ -1,5 +1,6 @@
 import React from 'react';
 import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import {
   Title,
@@ -36,6 +37,16 @@ function getStorybookControlsOptions(setting) {
   return knobsOption;
 }
 
+function requireAll(r) {
+  if (Array.isArray(r)) {
+    r.forEach((item) => {
+      requireAll(item);
+    });
+  } else if (r != null) {
+    r.keys().forEach(r);
+  }
+}
+
 export function configure(
   module: NodeModule,
   storybookContext,
@@ -44,8 +55,10 @@ export function configure(
   namespaces
 ) {
   storage.setNamespaces(namespaces);
-  storage.createDefinitionsFromMultiContext(storybookContext);
-  storage.createTwigStorageFromContext(templateContext);
+  // storage.createDefinitionsFromMultiContext(storybookContext);
+  requireAll(templateContext);
+  requireAll(storybookContext);
+
   storage.createGlobalsFromContext(dataContext);
   renderer.setRenderer(new TwingRenderer());
   storybookConfigure(() => {
