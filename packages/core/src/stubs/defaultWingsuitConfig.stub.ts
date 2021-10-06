@@ -26,7 +26,7 @@ export const wingsuit: Config = {
     cms,
     wingsuit: wingsuitp,
   },
-  presets: [wingsuitp, babel, css, assets, assetsVideos, svg],
+  presets: [wingsuitp, assets, assetsVideos, svg],
   designSystems: {
     default: {
       path: 'source/default',
@@ -66,7 +66,7 @@ export const wingsuit: Config = {
       distFolder: 'dist/app-cms',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [cms],
+      presets: [babel, css, cms],
     },
     drupal: {
       path: './apps/drupal',
@@ -77,7 +77,7 @@ export const wingsuit: Config = {
       type: 'drupal',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [drupal],
+      presets: [babel, css, drupal],
     },
   },
 }

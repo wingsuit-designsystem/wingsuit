@@ -1,16 +1,8 @@
 import React from 'react';
-import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { Pattern, renderer, TwingRenderer } from '@wingsuit-designsystem/pattern';
 
-import { configure as storybookConfigure, storiesOf } from '@storybook/react';
-import {
-  Title,
-  Subtitle,
-  DocsStory,
-  ArgsTable,
-  CURRENT_SELECTION,
-} from '@storybook/addon-docs/blocks';
+import { Title, Subtitle, DocsStory, ArgsTable, CURRENT_SELECTION } from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
-import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
@@ -20,6 +12,7 @@ import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
+renderer.setRenderer(new TwingRenderer());
 
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -37,60 +30,6 @@ function getStorybookControlsOptions(setting) {
   return knobsOption;
 }
 
-function requireAll(r) {
-  if (Array.isArray(r)) {
-    r.forEach((item) => {
-      requireAll(item);
-    });
-  } else if (r != null) {
-    r.keys().forEach(r);
-  }
-}
-
-export function configure(
-  module: NodeModule,
-  storybookContext,
-  dataContext,
-  templateContext,
-  namespaces
-) {
-  storage.setNamespaces(namespaces);
-  // storage.createDefinitionsFromMultiContext(storybookContext);
-  requireAll(templateContext);
-  requireAll(storybookContext);
-
-  storage.createGlobalsFromContext(dataContext);
-  renderer.setRenderer(new TwingRenderer());
-  storybookConfigure(() => {
-    // Load stories from wingusit.yml.
-    const patternIds = storage.getPatternIds();
-    patternIds.forEach((patternId) => {
-      const pattern = storage.loadPattern(patternId);
-      if (pattern.isVisible('storybook')) {
-        getStories(pattern, module);
-      }
-    });
-
-    // Load stories form storybook app.
-    const allExports: any = [];
-    if (Array.isArray(storybookContext) === false) {
-      storybookContext.keys().forEach((key) => {
-        if (storybookContext(key).default !== null) {
-          allExports.push(storybookContext(key));
-        }
-      });
-    } else {
-      storybookContext.forEach((innerContext) => {
-        innerContext.keys().forEach((key) => {
-          if (innerContext(key).default != null) {
-            allExports.push(innerContext(key));
-          }
-        });
-      });
-    }
-    return allExports;
-  }, module);
-}
 function getArgs(defaultArgs, variant) {
   const fields = variant.getFields();
   const resultArgs = { ...defaultArgs };
@@ -237,10 +176,7 @@ function getArgTypes(variant) {
   return argTypes;
 }
 
-function getStories(pattern: Pattern, module) {
-  const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
-  const story = storiesOf(patternLabel, module);
-
+export function storiesOf(pattern: Pattern, story) {
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const argTypes = getArgTypes(variant);
@@ -278,7 +214,6 @@ function getStories(pattern: Pattern, module) {
   return story;
 }
 
-export { drupalAttachBehaviorDecorator } from './drupal';
 export {
   isInitDecorator,
   initDecorator,

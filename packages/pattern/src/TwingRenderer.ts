@@ -80,6 +80,8 @@ export class TwingRenderer implements IRenderer {
       this.initializeEnvironment = true;
       this.initialize();
     }
+    const loader = new TwingLoaderArray(storage.getTwigResources());
+    this.environment.setLoader(loader);
     return this.environment.render(include, variables);
   }
 }

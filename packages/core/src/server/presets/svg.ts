@@ -61,11 +61,10 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
           loader: 'svgo-loader',
           options: {
             plugins: [
-              { convertFillsToCurrentColor: true },
-              { removeTitle: true },
-              { removeEditorsNSData: false },
-              { convertColors: { shorthex: false } },
-              { convertPathData: false },
+              { name: 'removeTitle' },
+              { name: 'removeEditorsNSData' },
+              { name: 'convertColors', param: { shorthex: false } },
+              { name: 'convertPathData' },
             ],
           },
         },

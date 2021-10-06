@@ -19,12 +19,15 @@ export function webpack(appConfig: AppConfig) {
   return {
     entry: entryPoints,
     plugins: [
-      new CopyPlugin([
-        {
-          from: 'images/*',
-          to: appConfig.assetBundleFolder,
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'images/*',
+            to: appConfig.assetBundleFolder,
+            noErrorOnMissing: true,
+          },
+        ],
+      }),
     ],
     module: {
       rules: [

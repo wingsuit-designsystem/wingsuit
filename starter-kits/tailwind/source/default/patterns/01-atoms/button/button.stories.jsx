@@ -1,12 +1,7 @@
-// Button.stories.js | Button.stories.jsx
+import { addToStory, storyKind } from '@wingsuit-designsystem/storybook';
+import { storiesOf } from '@storybook/react';
+import './index';
 
-import React from 'react';
+const story = storiesOf(storyKind('button'), module);
 
-import { Button } from './button.jsx';
-
-export default {
-  title: 'Components/Button',
-  component: Button,
-};
-
-export const Primary = () => <Button background="#ff0" label="Button" />;
+addToStory('button', story);

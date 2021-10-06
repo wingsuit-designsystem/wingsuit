@@ -30,7 +30,7 @@ const defaultPresets: {} = {
   assetsVideos,
 };
 
-merge.multiple();
+// merge.multiple();
 
 export default class PresetManager {
   private environment = 'production';
@@ -134,7 +134,7 @@ export default class PresetManager {
       }
     });
 
-    let config = merge.smartStrategy({
+    let config = merge.mergeWithCustomize({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
       'module.rules.use': 'replace',
@@ -146,21 +146,13 @@ export default class PresetManager {
         {
           resolve: {
             alias: appConfig.namespaces,
-            fallback: {
-              buffer: require.resolve('buffer/'),
-              crypto: require.resolve('crypto-browserify'),
-            },
           },
           output: {
             path: appConfig.absDistFolder,
           },
           mode: this.environment,
           optimization: {
-            minimizer: [
-              new TerserPlugin({
-                sourceMap: this.environment === 'production',
-              }),
-            ],
+            minimizer: [new TerserPlugin()],
           },
           plugins: [
             new DefinePlugin({
