@@ -1,14 +1,10 @@
-import { storage } from '@wingsuit-designsystem/pattern';
-import { storiesOf as storiesOfPattern } from './dist/storyof';
+function webpack(config) {
+  // eslint-disable-next-line global-require
+  const wingsuitCore = require('@wingsuit-designsystem/core');
+  const wingsuitConfig = wingsuitCore.resolveConfig('storybook');
+  const final = wingsuitCore.getAppPack(wingsuitConfig, [config]);
 
-global.window.Drupal = {};
-global.window.Drupal.behaviors = {};
+  return final;
+}
 
-export function storyKind(patternId) {
-  const pattern = storage.loadPattern(patternId);
-  return `${pattern.getNamespace()}/${pattern.getLabel()}`;
-}
-export function addToStory(patternId, story) {
-  const pattern = storage.loadPattern(patternId);
-  storiesOfPattern(pattern, story);
-}
+module.exports = { webpack };
