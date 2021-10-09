@@ -7,6 +7,5 @@ module.exports = {
     console.log(configType);
     // return config;
     return wingsuitCore.getAppPack(wingsuitConfig, [config]);
-  }
-
+  },
 };
