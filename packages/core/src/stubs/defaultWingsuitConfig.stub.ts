@@ -26,7 +26,7 @@ export const wingsuit: Config = {
     cms,
     wingsuit: wingsuitp,
   },
-  presets: [wingsuitp, assets, assetsVideos, svg],
+  presets: [],
   designSystems: {
     default: {
       path: 'source/default',
@@ -47,7 +47,7 @@ export const wingsuit: Config = {
       dataFolder: './apps/data',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [twing, storybook],
+      presets: [storybook, twing, wingsuitp],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',

@@ -1,10 +1,12 @@
-function webpack(config) {
-  // eslint-disable-next-line global-require
-  const wingsuitCore = require('@wingsuit-designsystem/core');
-  const wingsuitConfig = wingsuitCore.resolveConfig('storybook');
-  const final = wingsuitCore.getAppPack(wingsuitConfig, [config]);
+const wingsuitCore = require('@wingsuit-designsystem/core');
 
-  return final;
-}
+const wingsuitConfig = wingsuitCore.resolveConfig('storybook');
 
-module.exports = { webpack };
+module.exports = {
+  webpackFinal: async (config, { configType }) => {
+    console.log(configType);
+    // return config;
+    return wingsuitCore.getAppPack(wingsuitConfig, [config]);
+  }
+
+};

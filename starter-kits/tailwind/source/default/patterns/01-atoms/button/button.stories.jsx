@@ -1,4 +1,4 @@
-import { addToStory, storyKind } from '@wingsuit-designsystem/storybook';
+import { addToStory, storyKind } from '@wingsuit-designsystem/storybook/story';
 import { storiesOf } from '@storybook/react';
 import './index';
 

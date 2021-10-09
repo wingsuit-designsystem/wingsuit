@@ -55,8 +55,6 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/cli": "1.2.0-alpha.2",
-    "@wingsuit-designsystem/core": "1.2.0-alpha.2",
-    "@wingsuit-designsystem/pattern": "1.2.0-alpha.2",
     "@wingsuit-designsystem/preset-postcss8": "1.2.0-alpha.2",
     "@wingsuit-designsystem/preset-tailwind2": "1.2.0-alpha.2",
     "@wingsuit-designsystem/storybook": "1.2.0-alpha.2",
