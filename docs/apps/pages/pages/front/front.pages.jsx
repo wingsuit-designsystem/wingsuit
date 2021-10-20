@@ -4,6 +4,7 @@ const tokens = require('wsdata/homepage/tokens.yml');
 const component = require('wsdata/homepage/component.yml');
 const love = require('wsdata/homepage/love.yml');
 const document = require('wsdata/homepage/document.yml');
+const video = require('wsdata/homepage/video.yml');
 
 export default {
   path: '/',
@@ -34,6 +35,10 @@ export default {
           {
             id: 'section_code',
             fields: love,
+          },
+          {
+            id: 'hero',
+            fields: video,
           },
           {
             id: 'download',
