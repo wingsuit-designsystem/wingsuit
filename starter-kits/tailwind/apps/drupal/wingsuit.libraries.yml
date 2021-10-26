@@ -8,6 +8,9 @@ core:
         preprocess: true
       ws-assets://hamburger.css:
         preprocess: true
+      ws-assets://menu-primary.css:
+        preprocess: true
+
   js:
     ws-assets://vendors/alpine.js:
       preprocess: true

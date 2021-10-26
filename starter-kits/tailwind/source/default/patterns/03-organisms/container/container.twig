@@ -10,7 +10,13 @@
 {# Defaults #}
 {% set width = width|default('default') %}
 {% set padding_x = width != 'full' ? padding_x|default('default') : '' %}
-{% set padding_bottom = padding_bottom|default('default') %}
+
+{% set padding_top = padding_top|default('auto') %}
+{% set padding_bottom = padding_bottom|default('auto') %}
+
+{% set padding_top = padding_top == 'auto' and bg is not empty ? 'default' : '' %}
+{% set padding_bottom = padding_bottom == 'auto' ? 'default' %}
+
 
 {# SETTINGS #}
 {% set bg_classes = ([

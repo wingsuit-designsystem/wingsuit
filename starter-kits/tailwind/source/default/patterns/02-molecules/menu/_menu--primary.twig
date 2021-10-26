@@ -10,8 +10,8 @@
   ] | sort | join(' ') | trim ) %}
 
   {% set link_classes = ([
-    'flex lg:px-7 py-4 whitespace-nowrap',
-    menu_level >= 1 ? 'lg:hover:text-black lg:hover:bg-yellow-300 border-b w-full block cursor-pointer lg:flex lg:space-x-15 lg:px-2 lg:py-3',
+    'flex lg:px-7 py-4',
+    menu_level >= 1 ? 'lg:hover:text-black lg:hover:bg-yellow-300 border-b w-full block cursor-pointer lg:flex lg:space-x-15 px-7 lg:px-2 lg:py-3 hidden',
   ] | sort | join(' ') | trim ) %}
 
   <div class="{{ container_classes }}"
@@ -58,12 +58,12 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold w-full block cursor-pointer lg:inline-block whitespace-nowrap',
+      'font-bold w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
     <li {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
-      <div class="flex border-b lg:border-0 py-4 lg:py-0">
+      <div class="flex border-b lg:border-0 px-7 lg:px-0 py-4 lg:py-0">
         <a href="{{ item.url }}" class="{{ link_classes }}">
           {{ item.title }}
         </a>
