@@ -1,52 +1,47 @@
 {% set menu_level = 0 %}
 
 {% import _self as menus %}
-{% macro create_dropdownIndicator(menu_level) %}
-  <span class="">
-      {% include "@atoms/svg/_svg--icon.twig" with {
-        fill_color: menu_level == 1 ? 'white lg:hover:text-black' : 'white',
-        size: 'w-5 h-5',
-        icon: 'sort-down'
-      } only %}
-    </span>
-{% endmacro %}
 
-{% macro create_submenu(items, menu_level) %}
+{% macro dropdown_menu(items, menu_level) %}
   {% import _self as menus %}
   {% set container_classes = ([
-    'submenu',
-    menu_level == 1 ? 'lg:bg-gray-300 lg:absolute bg-teal-700 lg:pt-2' : 'lg:absolute lg:top-0',
+    'submenu lg:border',
+    menu_level == 1 ? 'lg:absolute lg:pt-2' : 'lg:absolute lg:top-0',
   ] | sort | join(' ') | trim ) %}
+
   {% set link_classes = ([
-    'flex',
-    menu_level == 1 ? 'font-bold lg:hover:text-black lg:hover:bg-yellow-300 border-b w-full block cursor-pointer lg:flex lg:space-x-15 lg:px-2 lg:py-3',
-    menu_level == 2 ? 'font-bold border-b w-full block cursor-pointer lg:font-normal lg:text-sm lg:px-0 lg:py-1 lg:whitespace-nowrap lg:hover:text-gray-500'
+    'flex lg:px-7 py-4 whitespace-nowrap',
+    menu_level >= 1 ? 'lg:hover:text-black lg:hover:bg-yellow-300 border-b w-full block cursor-pointer lg:flex lg:space-x-15 lg:px-2 lg:py-3',
   ] | sort | join(' ') | trim ) %}
 
   <div class="{{ container_classes }}"
        :class="{'block lg:hidden': submenuIsOpen, 'hidden': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
        data-menu="submenu">
-    <div {{ menu_level == 2 ? 'class="lg:flex lg:space-x-7 lg:bg-gray-300 lg:px-3 lg:py-3"' }}>
+    <div {{ menu_level == 2 ? 'class="lg:flex"' }}>
       {% set row_numbers = items|length/2 %}
       {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
         <ul>
           {% for item in row %}
-            <li {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()" @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);" @mouseleave="processed = false" {% endif %}
+            <li
+              {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()"
+              @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);"
+              @mouseleave="processed = false"
+              {% endif %}
               :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu"
               data-menu-level="{{ menu_level }}">
-              <div class="{{ link_classes }} px-7 py-4">
+              <div class="{{ link_classes }}">
                 <a href="{{ item.url }}" class="flex-1">
                   {{ item.title }}
                 </a>
                 {% if item.below %}
                   <div class="{{ menu_level == 1 ? 'float-right transform center-origin transition duration-100 ease-in lg:-rotate-90 lg:px-3' : 'float-right lg:hidden transform center-origin transition duration-100 ease-in' }} cursor-pointer" {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
                     :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-                    {{ menus.create_dropdownIndicator(menu_level) }}
+                    {{ menus.dropdown_menu(menu_level) }}
                   </div>
                 {% endif %}
               </div>
               {% if item.below %}
-                {{ menus.create_submenu(item.below, menu_level + 1) }}
+                {{ menus.dropdown_menu(item.below, menu_level + 1) }}
               {% endif %}
             </li>
           {% endfor %}
@@ -63,13 +58,12 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold w-full block cursor-pointer lg:inline-block',
-      item.asCta ? "lg:font-display lg:font-bold lg:bg-yellow-300 lg:text-gray-900 lg:uppercase lg:!py-2 lg:!px-3",
+      'font-bold w-full block cursor-pointer lg:inline-block whitespace-nowrap',
     ] | sort | join(' ') | trim ) %}
     <li {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
-      <div class="flex border-b lg:border-0 px-7 lg:px-0 py-4 lg:py-0">
+      <div class="flex border-b lg:border-0 py-4 lg:py-0">
         <a href="{{ item.url }}" class="{{ link_classes }}">
           {{ item.title }}
         </a>
@@ -77,12 +71,15 @@
           <div
             class="{{ menu_level == 1 ? 'float-right transform center-origin transition duration-100 ease-in lg:-rotate-90 lg:px-3' : 'float-right lg:hidden transform center-origin transition duration-100 ease-in' }} cursor-pointer" {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
             :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-            {{ menus.create_dropdownIndicator(menu_level) }}
+            {% include "@atoms/svg/_svg--icon.twig" with {
+              size: 'w-5 h-5',
+              icon: 'sort-down'
+            } only %}
           </div>
         {% endif %}
       </div>
       {% if item.below %}
-        {{ menus.create_submenu(item.below, menu_level + 1) }}
+        {{ menus.dropdown_menu(item.below, menu_level + 1) }}
       {% endif %}
     </li>
   {% endfor %}
