@@ -11,6 +11,8 @@ core:
   js:
     ws-assets://vendors/alpine.js:
       preprocess: true
+    ws-assets://behaviors/menu-primary.js:
+      preprocess: true
 
   # see all in Drupal's `core/core.libraries.yml`
   dependencies:
