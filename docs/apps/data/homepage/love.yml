@@ -11,10 +11,6 @@ data:
         intro: "<p>With UI Patterns no code is needed. The UI Patterns ecosystem offers a lot of modules that help you to manage the mapping without presenter templates. But there are still corners in Drupal where you need a presenter templates.</p>
               <p>Don't forget to run <code class=\"language-bash\">yarn ws dev drupal</code></p>"
         content: |
-          <div class="relative" style="padding-top: 81.81818181818181%">
-                        <iframe class="absolute inset-0 w-full h-full"
-          src="https://www.youtube-nocookie.com/embed/Fe5DHtqhEF0"></iframe>
-          </div>
       - key: 'presenter'
         title: 'Presenter template'
         intro_pattern:
