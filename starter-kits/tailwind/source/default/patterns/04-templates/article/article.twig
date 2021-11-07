@@ -1,4 +1,5 @@
-{% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': 'small' } %}
+{%- set image -%}{{- image -}}{% endset %}
+{% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': 'small', padding_bottom: 'default' } %}
   {% block content %}
     <div class="text-gray-dark">
       {% include "@atoms/headline/headline.twig" with {
@@ -13,14 +14,16 @@
     </div>
   {% endblock %}
 {% endembed %}
-{% embed "@organisms/container/container.twig" with { padding_top: 'default', width: 'default', image: image } only %}
+{% if image is not empty %}
+{% embed "@organisms/container/container.twig" with { width: 'default', image: image } only %}
   {% block content %}
     {% block image %}
       {{ image }}
     {% endblock %}
   {% endblock %}
 {% endembed %}
-{% embed "@organisms/container/container.twig" with { padding_top: 'default', width: 'small', text: text } %}
+{% endif %}
+{% embed "@organisms/container/container.twig" with { width: 'small', text: text } %}
   {% block content %}
     {% block text %}
       {{ text }}
