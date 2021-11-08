@@ -24,10 +24,36 @@ banner:
       description: Short optional teaser.
       preview: "<div class='prose'><h1>Lorem ipsum dolor sit.</h1></div>"
   settings:
+    height:
+      type: select
+      allow_expose: true
+      label: Height
+      default_value: default
+      options:
+        large: Large
+        default: Default
+        small: Small
     position:
       type: select
       allow_token: true
-      label: Position
+      label: Text position
+      default_value: center_center
+      allow_expose: true
+      options:
+        top_left: Top left
+        top_center: Top center
+        top_right: Top right
+        center_left: Center left
+        center_center: Center
+        center_right: Center right
+        bottom_left: Bottom left
+        bottom_center: Bottom center
+        bottom_right: Bottom right
+
+    image_position:
+      type: select
+      allow_token: true
+      label: Image position
       default_value: center_center
       allow_expose: true
       options:

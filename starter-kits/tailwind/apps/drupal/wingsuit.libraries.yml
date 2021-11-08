@@ -6,6 +6,8 @@ core:
         preprocess: true
       ws-assets://tokens.css:
         preprocess: true
+      ws-assets://image.css:
+        preprocess: true
       ws-assets://hamburger.css:
         preprocess: true
       ws-assets://menu-primary.css:
