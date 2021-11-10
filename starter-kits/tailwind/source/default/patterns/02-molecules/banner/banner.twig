@@ -48,7 +48,7 @@ set height_classes = [
 
 {# Template #}
 <div{{ attributes|default(create_attribute()).addClass('relative') }}>
-  <div{{ create_attribute().addClass(height_classes).addClass(image_position_classes[image_position]) }}>{{ image }}<div>
+  <div{{ create_attribute().addClass(height_classes).addClass(image_position_classes[image_position]) }}>{{ image }}</div>
   <div class="absolute top-0 left-0 w-full h-full flex">
     {% embed "@organisms/container/container.twig" with {region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position]}  only %}
       {% block content %}

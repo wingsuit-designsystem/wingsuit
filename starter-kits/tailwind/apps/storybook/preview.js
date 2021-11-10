@@ -1,5 +1,8 @@
 import { configure, initJsBehaviors } from '@wingsuit-designsystem/storybook';
+import { TwingRenderer } from '@wingsuit-designsystem/pattern';
 import { addParameters } from '@storybook/react';
+
+const renderImpl = new TwingRenderer();
 
 const namespaces = require('wsdesignsystem/namespaces');
 
@@ -37,5 +40,6 @@ configure(
   ],
   require.context('./config', false, /\.json|\.ya?ml$/),
   require.context('wspatterns', true, /\.twig$/),
-  namespaces
+  namespaces,
+  renderImpl
 );

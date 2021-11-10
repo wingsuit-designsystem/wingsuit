@@ -22,11 +22,6 @@
 
 ] %}
 
-{% set icon_size = ([
-  icon_alignment == 'left' ? 'mr-4' : 'ml-4',
-  pattern_configuration('button', variant, 'size')['icon'][size],
-]) | sort | join(' ') | trim %}
-
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set tag_name = 'a' %}
@@ -38,9 +33,10 @@
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target).setAttribute('title', title) }}>
   {{ text }}
   {% if icon is not empty %}
+    <div class="{{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}"></div>
     {% include "@atoms/svg/_svg--icon.twig" with {
       icon: icon,
-      size: icon_size,
+      size: pattern_configuration('button', variant, 'size')['icon'][size],
     } only %}
   {% endif %}
 </{{ tag_name }}>
