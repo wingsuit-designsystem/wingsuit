@@ -1,5 +1,5 @@
 import React from 'react';
-import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { storage, renderer, Pattern, IRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import {
   Title,
@@ -41,13 +41,18 @@ export function configure(
   storybookContext,
   dataContext,
   templateContext,
-  namespaces
+  namespaces,
+  renderImpl: IRenderer | null
 ) {
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromMultiContext(storybookContext);
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
-  renderer.setRenderer(new TwingRenderer());
+  if (renderImpl != null) {
+    renderer.setRenderer(renderImpl);
+  }
+  renderer.initializeRenderer();
+
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
@@ -160,7 +165,7 @@ function getArgTypes(variant) {
       }
     }
   });
-  if (hasSettings === false) {
+  if (!hasSettings) {
     delete argTypes.SETTINGS;
   } else {
     argTypes.SEP = {
@@ -217,7 +222,7 @@ function getArgTypes(variant) {
       }
     }
   });
-  if (hasFields === false) {
+  if (hasFields) {
     delete argTypes.FIELDS;
     delete argTypes.SEP;
   }
