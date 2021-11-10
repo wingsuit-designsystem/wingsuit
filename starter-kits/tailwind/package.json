@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/starter-kit-tailwind",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A design system with Storybook, Tailwind and Drupal",
   "main": "",
   "private": true,
@@ -37,7 +37,8 @@
     "fmt:js": "eslint --fix --ext .js,.vue ./",
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
     "fmt": "npm run fmt:js; npm run fmt:css",
-    "ci": "npm run lint && npm run build:drupal"
+    "ci": "npm run lint && npm run build:drupal",
+    "chromatic": "npx chromatic --project-token 56g60sdfr38"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -52,12 +53,12 @@
     "@storybook/storybook-deployer": "^2.8.7",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/cli": "1.1.4",
-    "@wingsuit-designsystem/core": "1.1.4",
-    "@wingsuit-designsystem/pattern": "1.1.4",
-    "@wingsuit-designsystem/preset-postcss8": "1.1.4",
-    "@wingsuit-designsystem/preset-tailwind2": "1.1.4",
-    "@wingsuit-designsystem/storybook": "1.1.4",
+    "@wingsuit-designsystem/cli": "1.1.5",
+    "@wingsuit-designsystem/core": "1.1.5",
+    "@wingsuit-designsystem/pattern": "1.1.5",
+    "@wingsuit-designsystem/preset-postcss8": "1.1.5",
+    "@wingsuit-designsystem/preset-tailwind2": "1.1.5",
+    "@wingsuit-designsystem/storybook": "1.1.5",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
