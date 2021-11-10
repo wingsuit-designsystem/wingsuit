@@ -7,7 +7,8 @@ const PatternLoad: FunctionComponent<Props> = (props: Props) => {
   const [pattern, setPattern] = useState(null);
   const { children } = props;
   useEffect(() => {
-    const loaded: Pattern = storage.loadPattern(props.patternId);
+    const { patternId } = props;
+    const loaded: Pattern = storage.loadPattern(patternId);
     // @ts-ignore
     setPattern(loaded);
   }, []);
