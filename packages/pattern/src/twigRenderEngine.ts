@@ -10,6 +10,11 @@ export async function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
 
+export function initializeRenderer() {
+  Object.keys(storage.getTwigResources()).forEach((key) => {
+    rendererImpl.addTemplate(key, storage.getTwigResources()[key]);
+  });
+}
 export async function getPatternConfiguration(
   patternId: string,
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
@@ -17,12 +22,12 @@ export async function getPatternConfiguration(
 ) {
   try {
     const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-    return new Promise<string>((resolve, refuse) => {
+    return new Promise<string>((resolve) => {
       const config = variant.getConfiguration();
       resolve(config[configuration]);
     });
   } catch (e) {
-    return new Promise<string>((resolve, refuse) => {
+    return new Promise<string>((resolve) => {
       // eslint-disable-next-line no-console
       console.log(`Cannot load pattern configuration. Message: ${e.message}`);
       resolve('');
@@ -33,7 +38,7 @@ export async function getPatternConfiguration(
 export function twingMapToArray(variables): string[] {
   const ary: string[] = [];
   if (variables instanceof Map) {
-    variables.forEach((value, key) => {
+    variables.forEach((value) => {
       ary.push(value);
     });
   }
@@ -50,7 +55,7 @@ export async function renderPatternPreview(
   try {
     variant = storage.loadVariant(patternId, variantId);
   } catch (err) {
-    return new Promise<string>((resolve, refuse) => {
+    return new Promise<string>((resolve) => {
       resolve(err.message);
     });
   }
@@ -72,7 +77,7 @@ export async function renderPatternPreview(
 
   const patternVariables = variant.getVariables();
   if (Object.keys(promisedPreview).length !== 0) {
-    return new Promise<string>((resolve, refuse) => {
+    return new Promise<string>((resolve) => {
       Promise.all(promisedPreview).then((promisedPreviewValues: string[]) => {
         const previewRenderedVariables = {};
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
