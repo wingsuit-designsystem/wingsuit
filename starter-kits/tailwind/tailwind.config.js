@@ -5,10 +5,9 @@ const typography = require('@tailwindcss/typography')({
 });
 
 module.exports = {
-  mode: 'jit',
   important: false,
   darkMode: 'class',
-  purge: ['./safelist.txt', './source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+  content: ['./safelist.txt', './source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -74,17 +73,6 @@ module.exports = {
       serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
       sans: ['Poppins', 'Roboto', 'sans-serif'],
     },
-  },
-  variants: {
-    opacity: ['responsive'],
-    borderWidth: ['responsive', 'hover', 'group-hover'],
-    backgroundColor: ['responsive', 'hover', 'group-hover'],
-    textDecoration: ['responsive', 'hover', 'group-hover'],
-    textColor: ['responsive', 'hover', 'group-hover', 'dark'],
-    fontFamily: ['responsive', 'hover', 'focus'],
-    fill: ['responsive', 'hover', 'focus'],
-    spacing: ['responsive', 'last'],
-    typography: ['responsive', 'dark'],
   },
   plugins: [forms, typography],
 };
