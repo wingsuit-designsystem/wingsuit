@@ -145,7 +145,14 @@ export default class PatternVariant {
         for (let i = 0; i < preview.length; i += 1) {
           previewPatterns[`${key}--${i}`] = this.buildPreviewPattern(preview[i]);
         }
-      } else if (field.getType() === 'pattern' && preview != null && preview.id != null) {
+      } else if (field.getType() === 'pattern' && preview?.id) {
+        previewPatterns[key] = this.buildPreviewPattern(preview);
+      }
+    });
+    Object.keys(this.settings).forEach((key) => {
+      const setting: Setting = this.settings[key];
+      const preview = setting.getPreview();
+      if (setting.getType() === 'media' && preview?.id) {
         previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });
@@ -169,10 +176,12 @@ export default class PatternVariant {
 
     if (includeSettings) {
       Object.keys(this.settings).forEach((key) => {
-        if (this.settings[key].getType() === 'attributes') {
-          values[key] = new TwigAttribute(this.settings[key].getPreview());
-        } else {
-          values[key] = this.settings[key].getPreview();
+        if (this.settings[key].getType() !== 'media') {
+          if (this.settings[key].getType() === 'attributes') {
+            values[key] = new TwigAttribute(this.settings[key].getPreview());
+          } else {
+            values[key] = this.settings[key].getPreview();
+          }
         }
       });
     }
@@ -207,7 +216,7 @@ export default class PatternVariant {
   private settings: Setting[] = [];
 
   private cleanStorybookString(string: string) {
-    return string.toLowerCase().replace(' ', '-').replace('/', '-');
+    return string.toLowerCase().replace(/ /g, '-').replace(/\//g, '-');
   }
 
   constructor(

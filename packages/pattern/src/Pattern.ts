@@ -212,8 +212,12 @@ export default class Pattern {
         if (variantDefinition.settings != null) {
           Object.keys(variantDefinition.settings).forEach((key: string) => {
             const setting: Setting = variant.getSetting(key);
-            setting.setPreview(variantDefinition.settings[key]);
-            setting.setEnable(false);
+            if (setting) {
+              setting.setPreview(variantDefinition.settings[key]);
+              setting.setEnable(false);
+            } else {
+              console.warn(`Invalid variant configuration. Setting with ${key} doesn't exists in variant. ${variant.getId()}` )
+            }
           });
         }
         if (variantDefinition.fields != null) {
