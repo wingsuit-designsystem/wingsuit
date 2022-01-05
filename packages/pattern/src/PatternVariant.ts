@@ -156,7 +156,7 @@ export default class PatternVariant {
     Object.keys(this.settings).forEach((key) => {
       const setting: Setting = this.settings[key];
       const preview = setting.getPreview();
-      if (setting.getType() === 'media' && preview?.id) {
+      if (setting.getType() === 'media_library' && preview?.id) {
         previewPatterns[key] = this.buildPreviewPattern(preview);
       }
     });
@@ -195,7 +195,7 @@ export default class PatternVariant {
 
     if (includeSettings) {
       Object.keys(this.settings).forEach((key) => {
-        if (this.settings[key].getType() !== 'media') {
+        if (this.settings[key].getType() !== 'media_library') {
           if (this.settings[key].getType() === 'attributes') {
             values[key] = new TwigAttribute(this.settings[key].getPreview());
           } else {

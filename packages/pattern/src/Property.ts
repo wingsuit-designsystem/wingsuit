@@ -69,7 +69,7 @@ export default class Property {
       if (this.preview?.faker != null) {
         return this.generateFake(this.preview.faker);
       }
-      if (this.type === 'pattern' || this.type === 'object' || this.type === 'media') {
+      if (this.type === 'pattern' || this.type === 'object' || this.type === 'media_library') {
         return this.preview;
       }
       return JSON.stringify(this.preview);

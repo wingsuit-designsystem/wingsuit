@@ -23,7 +23,7 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
     }
     Object.keys(settings).forEach((key) => {
       const setting = settings[key];
-      if (setting.getType() !== 'media' && renderArgs[key]
+      if (setting.getType() !== 'media_library' && renderArgs[key]
       && setting.getDefaultValue() !== renderArgs[key]
         && setting.isEnable()
       ) {

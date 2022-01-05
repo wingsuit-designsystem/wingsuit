@@ -56,7 +56,7 @@ export function configure(
     const patternIds = storage.getPatternIds();
     patternIds.forEach((patternId) => {
       let pattern = storage.loadPattern(patternId);
-      if (events !== null) {
+      if (events != null) {
         pattern = events.alterPattern(pattern);
       }
       if (pattern!== null && pattern.isVisible('storybook')) {
@@ -70,7 +70,7 @@ export function configure(
       storybookContext.keys().forEach((key) => {
         const storyContext = storybookContext(key);
         if (storyContext.default !== null) {
-          if (events !== null) {
+          if (events != null) {
             storyContext.default = events.alterStory(storybookContext(key).default);
           }
           if (storyContext.default !== null) {
@@ -83,7 +83,7 @@ export function configure(
         innerContext.keys().forEach((key) => {
           const storyContext = innerContext(key)
           if (storyContext.default != null) {
-            if (events !== null) {
+            if (events != null) {
               storyContext.default = events.alterStory(storyContext.default);
             }
             if (storyContext.default !== null) {
@@ -125,7 +125,7 @@ function getArgTypes(variant) {
     const setting = variant.getSetting(key);
 
     if (setting.isEnable() && setting.getType() !== 'group'
-      && setting.getType() !== 'media') {
+      && setting.getType() !== 'media_library') {
       hasSettings = true;
       argTypes[key] = {
         name: key,
@@ -210,7 +210,7 @@ function getArgTypes(variant) {
         argTypes[key].control = {
           type: 'object',
         };
-      } else if (field.getType() === 'pattern' || field.getType() === 'media') {
+      } else if (field.getType() === 'pattern' || field.getType() === 'media_library') {
         argTypes[key].type.name = 'boolean';
         argTypes[key].defaultValue = true;
         argTypes[key].control = {

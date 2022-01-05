@@ -37,12 +37,15 @@ card:
         image:
           id: placeholder
           variant: image
+          definition:
+            view_mode: 16x9
           settings:
             style: card_horizontal
+
   settings:
     image:
       label: Image
-      type: media
+      type: media_library
       description: The image tag.
       preview:
         id: placeholder
