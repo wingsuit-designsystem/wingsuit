@@ -1,4 +1,4 @@
-<footer class="text-gray-700 body-font">
+<footer class="text-gray-700">
   {% embed "@organisms/container/container.twig" %}
     {% block content %}
       <div class="block lg:flex py-24">
@@ -6,23 +6,8 @@
           {% include "@atoms/logo/logo.twig" only %}
           <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
         </div>
-        <div class="w-full flex flex-col md:flex-row">
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Links</h2>
-            {{ menu_1 }}
-          </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Legal</h2>
-            {{ menu_2 }}
-          </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Social</h2>
-            {{ menu_3 }}
-          </div>
-          <div class="flex-1 text-center lg:text-left">
-            <h2 class="uppercase font-medium text-gray-900 tracking-widest text-sm mb-1">Company</h2>
-            {{ menu_4 }}
-          </div>
+        <div class="w-full">
+          {{ footer_menu }}
         </div>
       </div>
     {% endblock %}

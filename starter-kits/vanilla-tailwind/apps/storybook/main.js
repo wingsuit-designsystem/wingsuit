@@ -3,10 +3,7 @@ const postCss = require('postcss');
 
 module.exports = {
   addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-viewport',
-    '@storybook/addon-links',
+    '@storybook/addon-essentials',
     'storybook-addon-themes',
     '@storybook/addon-postcss',
     {

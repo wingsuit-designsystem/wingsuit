@@ -66,7 +66,9 @@ export function configure(
               : props.page;
           resultPages[data.default.path] = htmlRendered;
         } catch (e) {
-          resultPages[data.default.path] = e.message;
+          if (e instanceof Error) {
+            resultPages[data.default.path] = e.message;
+          }
         }
       } catch (e) {
         callback(null, {});

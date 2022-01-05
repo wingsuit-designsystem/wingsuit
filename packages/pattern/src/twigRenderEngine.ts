@@ -56,6 +56,7 @@ export async function renderPatternPreview(
   let variant: PatternVariant;
   try {
     variant = storage.loadVariant(patternId, variantId);
+
   } catch (err) {
     return new Promise<string>((resolve) => {
       if (err instanceof Error) {
@@ -178,6 +179,7 @@ export async function renderPattern(
     ...buildBaseVariables(variables, true),
   };
   finalVariables.variant = variantId;
+  variant.setRenderArgs(finalVariables);
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),

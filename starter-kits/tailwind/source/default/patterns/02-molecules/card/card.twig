@@ -33,29 +33,20 @@
     </div>
   {% endif %}
   <div class="p-6 flex-1">
-    <div{{ region_attributes.preheadline|default(create_attribute()).addClass('tracking-widest text-lg title-font font-medium text-gray-500 mb-1') }}>
-      {% block preheadline %}
-        {{ preheadline }}
-      {% endblock %}
-    </div>
-    <{{ headline__element }}{{ region_attributes.headline|default(create_attribute()).addClass('font-bold text-l md:text-2xl headline dark:text-gray-50 font-sans mb-2.5 md:mb-3.5') }}>
-      {% block headline %}
+    {% embed "@atoms/rich-text/rich-text.twig" %}
+    {% block text %}
+      <{{ headline_element }}>
+        <div{{ region_attributes.preheadline|default(create_attribute()).addClass('text-sm font-normal') }}>
+          {{ preheadline }}
+        </div>
         {{ headline }}
-      {% endblock %}
-    </{{ headline__element }}>
-    <div{{ region_attributes.text|default(create_attribute()).addClass('leading-relaxed mb-3') }}>
-      {% block text %}
+      </{{ headline_element }}>
+      <div>
         {{ text }}
-      {% endblock %}
+      </div>
+    {% endblock %}
+    {% endembed %}
+    <div class="mt-8">
+      {{ button }}
     </div>
-  {% if show_read_more %}
-    <div{{ region_attributes.link|default(create_attribute()).addClass(link_classes) }}>
-      {{ "Read more now"|t }}
-      {% include "@atoms/svg/_svg--icon.twig" with {
-        icon: 'arrow',
-        size: 'small',
-      } only %}
-    </div>
-  {% endif %}
-  </div>
 </{{ element }}>

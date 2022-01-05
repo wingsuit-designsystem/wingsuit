@@ -9,7 +9,7 @@ Drupal.behaviors.slider = {
         const slidesPerView = slider.attributes['data-slides-per-view'].value;
         const splide = new Splide(slider, {
           type: 'slide',
-          arrows: false,
+          arrows: true,
           perPage: slidesPerView,
           perMove: slidesPerView,
           autoplay: autoplay === '1',

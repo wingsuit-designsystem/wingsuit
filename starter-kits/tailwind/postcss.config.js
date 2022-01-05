@@ -3,5 +3,5 @@ const nested = require('tailwindcss/nesting');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  plugins: [tailwind, nested, autoprefixer],
+  plugins: [nested, tailwind, autoprefixer],
 };

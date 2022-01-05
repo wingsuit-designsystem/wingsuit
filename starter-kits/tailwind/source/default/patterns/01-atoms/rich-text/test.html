@@ -1,0 +1,99 @@
+<h1>Heading 1</h1>
+
+<p class="lead">Until now, trying to style an article, document, or blog post with Tailwind has been
+  a tedious task that required a keen eye for typography and a lot of complex custom CSS.</p>
+  <h2>Heading 2</h2>
+  <p>By default, Tailwind
+  removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful
+  for building application UIs because you spend less time undoing user-agent styles, but when you <em>really are</em>
+  just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising
+  and unintuitive.</p>
+  <h3>Heading 3</h3>
+  <p>We get lots of complaints about it actually, with people regularly asking us things like:</p>
+  <h2>Heading 2</h2>
+  <h2>Heading 3</h2>
+<ol>
+  <li><strong>Nested lists are rarely a good idea.</strong>
+    <ul>
+      <li>You might feel like you are being really "organized" or something but you are just creating a gross shape on
+        the screen that is hard to read.
+      </li>
+      <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
+      <li>Nesting tons of folders in your source code is also not helpful.</li>
+    </ul>
+  </li>
+  <li><strong>Since we need to have more items, here is another one.</strong>
+    <ul>
+      <li>I am not sure if we will bother styling more than two levels deep.</li>
+      <li>Two is already too much, three is guaranteed to be a bad idea.</li>
+      <li>If you nest four levels deep you belong in prison.</li>
+    </ul>
+  </li>
+  <li><strong>Two items is not really a list, three is good though.</strong>
+    <ul>
+      <li>Again please do not nest lists if you want people to actually read your content.</li>
+      <li>Nobody wants to look at this.</li>
+      <li>I am upset that we even have to bother styling this.</li>
+    </ul>
+  </li>
+</ol><p>The most annoying thing about lists in Markdown is that elements are not given a child
+  tag unless there are multiple paragraphs in the list item. That means I have to worry about
+  styling that annoying situation too.</p>
+<ul>
+  <li><p><strong>For example, here is another nested list.</strong></p>
+    <p>But this time with a second paragraph.</p>
+    <ul>
+      <li>These list items wont have <code>&lt;p&gt;</code> tags</li>
+      <li>Because they are only one line each</li>
+    </ul>
+  </li>
+  <li><p><strong>But in this second top-level list item, they will.</strong></p>
+    <p>This is especially annoying because of the spacing on this paragraph.</p>
+    <ul>
+      <li><p>As you can see here, because I have added a second line, this list item now has a <code>&lt;p&gt;</code>
+        tag.</p>
+        <p>This is the second line I am talking about by the way.</p></li>
+      <li><p>Finally here is another list item so it is more like a list.</p></li>
+    </ul>
+  </li>
+  <li><p>A closing list item, but with no nested list, because why not?</p></li>
+</ul><p>And finally a sentence to close off this section.</p><h2>There are other elements we need to style</h2><p>I
+  almost forgot to mention links, like <a href="https://tailwindcss.com">this link to the Tailwind CSS website</a>. We
+  almost made them blue but that is so yesterday, so we went with dark gray, feels edgier.</p><p>We even included table
+  styles, check it out:</p>
+<table>
+  <thead>
+  <tr>
+    <th>Wrestler</th>
+    <th>Origin</th>
+    <th>Finisher</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Bret "The Hitman" Hart</td>
+    <td>Calgary, AB</td>
+    <td>Sharpshooter</td>
+  </tr>
+  <tr>
+    <td>Stone Cold Steve Austin</td>
+    <td>Austin, TX</td>
+    <td>Stone Cold Stunner</td>
+  </tr>
+  <tr>
+    <td>Randy Savage</td>
+    <td>Sarasota, FL</td>
+    <td>Elbow Drop</td>
+  </tr>
+  <tr>
+    <td>Vader</td>
+    <td>Boulder, CO</td>
+    <td>Vader Bomb</td>
+  </tr>
+  <tr>
+    <td>Razor Ramon</td>
+    <td>Chuluota, FL</td>
+    <td>Razor is Edge</td>
+  </tr>
+  </tbody>
+</table>

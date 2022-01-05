@@ -5,12 +5,16 @@ import IPatternStorage from './IPatternStorage';
 import TwigAttribute from './TwigAttribute';
 
 export default class PatternVariant {
+
   public getUse(): string {
     return this.use;
   }
 
   public getStoryId(): string {
-    return this.storyId;
+    const pattern = this.getPattern();
+    return this.cleanStorybookString(
+      `${pattern.getNamespace()}-${pattern.getLabel()}--${this.getLabel()}`
+    );
   }
 
   public getId(): string {
@@ -159,6 +163,21 @@ export default class PatternVariant {
     return previewPatterns;
   }
 
+  public setRenderArgs(args) {
+    this.renderArgs = args;
+    if (this.beforeRenderHandler != null) {
+      this.beforeRenderHandler(args);
+    }
+  }
+
+  public getRenderArgs() {
+    return this.renderArgs;
+  }
+
+  public beforeRender(handler) {
+    this.beforeRenderHandler = handler;
+  }
+
   public getVariables(includeFields = true, includeSettings = true) {
     const values = {};
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
@@ -203,11 +222,14 @@ export default class PatternVariant {
 
   private variant: string;
 
+  private renderArgs:any = {};
+
+  private beforeRenderHandler: any;
+
   private label: string;
 
   private description: string;
 
-  private storyId: string;
 
   private configuration: any;
 
@@ -235,12 +257,5 @@ export default class PatternVariant {
     this.use = use;
     this.description = description;
     this.configuration = configuration;
-    if (pattern.getNamespace() != null) {
-      this.storyId = this.cleanStorybookString(
-        `${pattern.getNamespace()}-${pattern.getLabel()}--${label}`
-      );
-    } else {
-      this.storyId = '';
-    }
   }
 }

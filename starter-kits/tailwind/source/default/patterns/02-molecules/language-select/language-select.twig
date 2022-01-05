@@ -4,14 +4,14 @@
     <div class="mr-2.5">
       {% include "@atoms/svg/_svg--icon.twig" with {
         icon: 'globe',
-        size: 'w-5 h-5',
+        size: 'small',
       } only %}
     </div>
     <div :class="{'rotate-90 transition duration-75 ease-in-out': languageSwitcherOpen, '': !languageSwitcherOpen}">
       {% include "@atoms/svg/_svg--icon.twig" with {
         icon: 'arrow',
         fill_color: 'text-yellow-500',
-        size: 'w-2.5 h-2.5',
+        size: 'small',
       } only %}
     </div>
   </div>

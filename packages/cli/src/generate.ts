@@ -43,10 +43,12 @@ program
 
 program
   .command('dev')
+  .option('-D --docs', ' Build a documentation-only site using addon-docs')
   .description('Start Wingsuit App in dev mode.')
   .action((options) => startApp(options, 'development'));
 program
   .command('build')
+  .option('-D --docs', ' Build a documentation-only site using addon-docs')
   .description('Build Wingsuit App.')
   .action((options) => startApp(options, 'production'));
 

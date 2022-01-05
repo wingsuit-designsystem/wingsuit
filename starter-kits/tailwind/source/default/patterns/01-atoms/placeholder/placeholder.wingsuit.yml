@@ -30,106 +30,41 @@ placeholder:
     style:
       label: Image style
       type: select
-      preview: 16x9_md_sc
+      preview: article
       options:
-        1x1_xs_sc: XSmall 1x1
-        1x1_xxs_sc: XXSmall 1x1
-        8x7_xxs_sc: XSmall 8x7
-        8x7_xs_sc: Small 8x7
-        4x6_xs_sc: Small 4x6
-        16x9_xxxs_sc: XXXSmall 16x9
-        16x9_xxs_sc: XXSmall 16x9
-        16x9_xs_sc: XSmall 16x9
-        16x9_sm_sc: SM 16x9
-        16x9_md_sc: LG 16x9
-        16x9_xl_sc: XL 16x9
-        16x9_xxl_sc: XXLL 16x9
         card: Card
         article: Article
         banner: Banner
   visibility: storybook
   configuration:
     image_config:
-      styles:
-        1x2_xs_sc:
-          label: XSmall 1x2
-          width: 400
-          height: 800
-        1x1_xs_sc:
-          label: XSmall 1x1
-          width: 400
-          height: 400
-        1x1_xxs_sc:
-          label: Small 1x1
-          width: 80
-          height: 80
-        8x7_xxs_sc:
-          label: XSmall 8x7
-          width: 460
-          height: 402
-        8x7_xs_sc:
-          label: Small 8x7
-          width: 640
-          height: 560
-        16x9_xxxs_sc:
-          label: XXXSmall 16x9 ()
-          width: 220
-          height: 124
-        16x9_xxs_sc:
-          label: XXSmall 16x9
-          width: 460
-          height: 258
-        16x9_xs_sc:
-          label: XSmall 16x9
-          width: 640
-          height: 359
-        16x9_sm_sc:
-          label: SM 16x9
-          width: 768
-          height: 432
-        16x9_md_sc:
-          label: MD 16x9
-          width: 1024
-          height: 576
-        16x9_l_sc:
-          label: L 16x9
-          width: 1280
-          height: 720
-        16x9_xl_sc:
-          label: XL 16x9
-          width: 1600
-          height: 900
-        16x9_xxl_sc:
-          label: XXL 16x9
-          width: 1900
-          height: 1068
+      styles: {}
       styles_responsive:
         banner:
-          style: 16x9_xs_sc
+          style: responsive_8_7_400w
           breakpoints:
-            xxs: 8x7_xxs_sc
-            xs: 8x7_xs_sc
-            sm: 16x9_sm_sc
-            md: 16x9_md_sc
-            lg: 16x9_l_sc
-            xl: 16x9_xxl_sc
+            sm: responsive_8_7_800w
+            md: responsive_16_9_1200w
+            lg: responsive_16_9_1400w
+            xl: responsive_21_6_1600w
+            2xl: responsive_21_6_2000w
         card:
-          style: 16x9_xs_sc
+          style: responsive_4_3_600w
           breakpoints:
-            xxs: 8x7_xxs_sc
-            xs: 8x7_xs_sc
+            sm: responsive_4_3_600w
+        card_horizontal:
+          style: responsive_1_2_200w
+          breakpoints:
+            sm: responsive_1_2_200w
         article:
-          style: 16x9_xl_sc
+          style: responsive_8_7_400w
           breakpoints:
-            xxs: 8x7_xxs_sc
-            xs: 8x7_xs_sc
-            sm: 16x9_sm_sc
-            md: 16x9_md_sc
+            sm: responsive_8_7_800w
+            md: responsive_16_9_1200w
+            lg: responsive_16_9_1400w
+            xl: responsive_21_6_1600w
+            2xl: responsive_21_6_2000w
       breakpoints:
-        xxs:
-          mediaQuery: '(min-width: 0px) and (max-width: 459px)'
-        xs:
-          mediaQuery: '(min-width: 460px) and (max-width: 639px)'
         sm:
           mediaQuery: 'all and (min-width: 640px) and (max-width: 767px)'
         md:
@@ -137,4 +72,6 @@ placeholder:
         lg:
           mediaQuery: 'all and (min-width: 1024px) and (max-width: 1279px)'
         xl:
-          mediaQuery: 'all and (min-width: 1280px)'
+          mediaQuery: 'all and (min-width: 1280px) and (max-width: 1535px)'
+        2xl:
+          mediaQuery: 'all and (min-width: 1536px)'

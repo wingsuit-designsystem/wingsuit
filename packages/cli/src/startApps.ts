@@ -1,4 +1,5 @@
 import { getAppNames, resolveConfig } from '@wingsuit-designsystem/core';
+import version from "./version";
 
 const inquirer = require('inquirer');
 
@@ -25,7 +26,8 @@ export default function (options, environment) {
     const appName = await getAppName();
     try {
       const appConfig = resolveConfig(appName, environment);
-      const console = appConfig.startup();
+      const console = options.docs === false ? appConfig.startup(): `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`;
+      version({});
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);
       logger.info('');

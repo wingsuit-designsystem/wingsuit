@@ -3,15 +3,6 @@ card:
   label: Card
   description: Amazing card component with image, titles, body and link.
   fields:
-    image:
-      label: Image
-      type: pattern
-      description: The image tag.
-      preview:
-        id: placeholder
-        variant: image
-        settings:
-          style: card
     preheadline:
       type: text
       label: Preheadline
@@ -19,37 +10,50 @@ card:
       preview:
         faker: lorem.word
     headline:
-      type: pattern
+      type: text
       label: Headline
       description: The main headline.
       preview:
-        id: headline
-        variant: h4
-        settings:
-          spacing_bottom: small
+        faker: lorem.sentence
     text:
       type: text
       label: Text
       description: A long text under the headline.
       preview:
         faker: lorem.paragraph
-    link:
+    button:
       type: pattern
-      label: Link
+      label: Button
       description: An optional button at the bottom of the card.
       preview:
-        id: link
+        id: button
+        variant: default
   variants:
     default:
       label: Default
     horizontal:
       label: Horizontal
+      settings:
+        image:
+          id: placeholder
+          variant: image
+          settings:
+            style: card_horizontal
   settings:
+    image:
+      label: Image
+      type: media
+      description: The image tag.
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: card
     alignment:
       type: select
       label: Alignment
       required: true
-      default: left
+      default_value: left
       options:
         left: Left
         center: Center
@@ -62,8 +66,12 @@ card:
     url:
       type: url
       label: Url
-    show_read_more:
-      label: Show read more
-      type: boolean
+    headline_element:
+      label: Headline Tag
+      type: select
+      default_value: h3
+      options:
+        h2: H2
+        h3: H3
   parameters:
     layout: centered
