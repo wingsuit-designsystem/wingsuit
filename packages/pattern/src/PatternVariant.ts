@@ -5,7 +5,6 @@ import IPatternStorage from './IPatternStorage';
 import TwigAttribute from './TwigAttribute';
 
 export default class PatternVariant {
-
   public getUse(): string {
     return this.use;
   }
@@ -222,14 +221,13 @@ export default class PatternVariant {
 
   private variant: string;
 
-  private renderArgs:any = {};
+  private renderArgs: any = {};
 
   private beforeRenderHandler: any;
 
   private label: string;
 
   private description: string;
-
 
   private configuration: any;
 

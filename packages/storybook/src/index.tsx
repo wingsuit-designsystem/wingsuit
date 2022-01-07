@@ -14,8 +14,8 @@ import { PatternInclude } from './docs/PatternInclude';
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
 export interface PatternEvents {
-  alterPattern: (pattern:Pattern) => Pattern;
-  alterStory: (story:any) => any;
+  alterPattern: (pattern: Pattern) => Pattern;
+  alterStory: (story: any) => any;
 }
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -23,7 +23,7 @@ function getStorybookControlsOptions(setting) {
 
   if (setting.isRequired() === false) {
     controls = {
-      '': 'Empty' ,
+      '': 'Empty',
     };
   }
   Object.keys(options).forEach((key) => {
@@ -49,9 +49,8 @@ export function configure(
     renderer.setRenderer(renderImpl);
   }
   renderer.initializeRenderer();
-  const stories:any = [];
+  const stories: any = [];
   storybookConfigure(() => {
-
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
     patternIds.forEach((patternId) => {
@@ -59,7 +58,7 @@ export function configure(
       if (events != null) {
         pattern = events.alterPattern(pattern);
       }
-      if (pattern!== null && pattern.isVisible('storybook')) {
+      if (pattern !== null && pattern.isVisible('storybook')) {
         stories.push(getStories(pattern, module));
       }
     });
@@ -81,7 +80,7 @@ export function configure(
     } else {
       storybookContext.forEach((innerContext) => {
         innerContext.keys().forEach((key) => {
-          const storyContext = innerContext(key)
+          const storyContext = innerContext(key);
           if (storyContext.default != null) {
             if (events != null) {
               storyContext.default = events.alterStory(storyContext.default);
@@ -124,8 +123,11 @@ function getArgTypes(variant) {
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
 
-    if (setting.isEnable() && setting.getType() !== 'group'
-      && setting.getType() !== 'media_library') {
+    if (
+      setting.isEnable() &&
+      setting.getType() !== 'group' &&
+      setting.getType() !== 'media_library'
+    ) {
       hasSettings = true;
       argTypes[key] = {
         name: key,

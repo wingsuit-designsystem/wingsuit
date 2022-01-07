@@ -1,6 +1,6 @@
 import { Source } from '@storybook/components';
 
-import React, {FunctionComponent, useState} from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import { PatternVariant } from '@wingsuit-designsystem/pattern';
 
@@ -14,7 +14,7 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
   const [code, setCode] = useState('');
   const { variant } = props;
   variant.beforeRender((renderArgs) => {
-    const variables:Variables = {};
+    const variables: Variables = {};
     const settings = variant.getSettings();
     if (variant.getId() !== '__default') {
       variables.variant = variant.getId();
@@ -23,9 +23,11 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
     }
     Object.keys(settings).forEach((key) => {
       const setting = settings[key];
-      if (setting.getType() !== 'media_library' && renderArgs[key]
-      && setting.getDefaultValue() !== renderArgs[key]
-        && setting.isEnable()
+      if (
+        setting.getType() !== 'media_library' &&
+        renderArgs[key] &&
+        setting.getDefaultValue() !== renderArgs[key] &&
+        setting.isEnable()
       ) {
         variables[key] = renderArgs[key];
       }
@@ -37,7 +39,7 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
     )} %}`;
     // @ts-ignore
     setCode(generatedCode);
-  })
+  });
 
   if (code !== '') {
     return (
@@ -47,5 +49,4 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
     );
   }
   return <>Loading</>;
-
 };

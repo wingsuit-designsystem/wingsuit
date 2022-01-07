@@ -12,7 +12,7 @@ addParameters({
   themes: {
     list: [
       { name: 'Dark', class: ['dark', 'bg-black'], color: '#000000' },
-      { name: 'Gray', class: ['bg-gray-100'], color: '#cecece' }
+      { name: 'Gray', class: ['bg-gray-100'], color: '#cecece' },
     ],
   },
   options: {
@@ -66,7 +66,7 @@ configure(
           card: 'Blocks',
           rich_text: 'Blocks',
           button_group: 'Blocks',
-          avatar: 'Blocks'
+          avatar: 'Blocks',
         };
         if (docsPages[pattern.getId()]) {
           pattern.setNamespace(docsPages[pattern.getId()]);

@@ -1,13 +1,12 @@
 import AppConfig from '../../AppConfig';
 
-
 interface BabelConfig {
   exclude: RegExp;
 }
 
 export function defaultConfig(appConfig: AppConfig): BabelConfig {
   return {
-    exclude: /node_modules/
+    exclude: /node_modules/,
   };
 }
 

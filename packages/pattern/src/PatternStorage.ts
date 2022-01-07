@@ -10,7 +10,7 @@ export default class PatternStorage implements IPatternStorage {
 
   private globals = {};
 
-  private patterns:Pattern = {} as Pattern;
+  private patterns: Pattern = {} as Pattern;
 
   private twigResources = {};
 
@@ -147,7 +147,7 @@ export default class PatternStorage implements IPatternStorage {
         ).join(' ,')}"`
       );
     }
-    this.patterns[patternId] = new Pattern(patternId, definition, this);;
+    this.patterns[patternId] = new Pattern(patternId, definition, this);
     return this.patterns[patternId];
   }
 
@@ -161,9 +161,9 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   createDefinitionsFromMultiContext(any): void {
-    Object.keys(this.patterns).forEach((key)=>{
+    Object.keys(this.patterns).forEach((key) => {
       delete this.patterns[key];
-    })
+    });
     this.patterns = {} as Pattern;
     if (Array.isArray(any) === true) {
       any.forEach((context) => {

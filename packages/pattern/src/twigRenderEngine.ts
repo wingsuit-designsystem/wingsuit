@@ -56,7 +56,6 @@ export async function renderPatternPreview(
   let variant: PatternVariant;
   try {
     variant = storage.loadVariant(patternId, variantId);
-
   } catch (err) {
     return new Promise<string>((resolve) => {
       if (err instanceof Error) {
