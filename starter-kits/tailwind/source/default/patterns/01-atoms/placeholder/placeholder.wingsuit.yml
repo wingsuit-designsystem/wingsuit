@@ -16,11 +16,11 @@ placeholder:
     placeholder_url:
       label: Placeholder service
       type: select
-      preview: https://fakeimg.pl/[width]x[height]
+      preview: https://fakeimg.pl/[width]x[height]/
       required: true
       options:
         "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
-        "https://fakeimg.pl/[width]x[height]": https://fakeimg.pl/
+        "https://fakeimg.pl/[width]x[height]/": https://fakeimg.pl/
         "https://placeimg.com/[width]/[height]/people": https://placeimg/
     background_classes:
       label: Classes
@@ -30,7 +30,7 @@ placeholder:
     style:
       label: Image style
       type: select
-      preview: article
+      preview: responsive_16_9_1200w
       options:
         card: Card
         article: Article
@@ -61,9 +61,9 @@ placeholder:
           breakpoints:
             sm: responsive_8_7_800w
             md: responsive_16_9_1200w
-            lg: responsive_16_9_1400w
-            xl: responsive_21_6_1600w
-            2xl: responsive_21_6_2000w
+            lg: responsive_16_9_1200w
+            xl: responsive_16_9_1200w
+            2xl: responsive_16_9_1200w
       breakpoints:
         sm:
           mediaQuery: 'all and (min-width: 640px) and (max-width: 767px)'

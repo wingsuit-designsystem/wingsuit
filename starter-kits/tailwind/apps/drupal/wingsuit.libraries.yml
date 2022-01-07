@@ -2,13 +2,9 @@
 core:
   css:
     theme:
-      css/_drupal-styles.css:
-        preprocess: true
       ws-assets://tokens.css:
         preprocess: true
       ws-assets://image.css:
-        preprocess: true
-      ws-assets://hamburger.css:
         preprocess: true
       ws-assets://menu-primary.css:
         preprocess: true

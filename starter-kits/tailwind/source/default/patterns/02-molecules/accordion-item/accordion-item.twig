@@ -6,15 +6,30 @@
  * See accordion-item.wingsuit.yaml for documentation.
  */
 #}
-{# SETTINGS #}
-{% set id = uuid() %}
 
-{# TEMPLATE #}
-<div class="tab w-full overflow-hidden border-t" data-children-count="1">
-  <input class="absolute opacity-0 " id="{{ id }}" type="checkbox" name="tabs">
-  <label class="block p-5 border-l-2 leading-normal text-xl cursor-pointer" for="{{ id }}">{{ label }}</label>
-  <div class="tab-content overflow-hidden border-l-2 border-teal-500 leading-normal">
-    <div class="p-5">{{ content }}</div>
+{# Template #}
+<div class="relative border-b border-gray-200" x-data="{selected: false}">
+  <button type="button" class="w-full py-6 text-left" @click="selected !== true ? selected = true : selected = false">
+    <div class="flex items-center justify-between">
+      <span class="font-bold">{{ label }}</span>
+      <div x-cloak :class="{ 'hidden' : selected == true }" >
+        {% include "@atoms/svg/_svg--icon.twig" with {
+          icon: 'plus',
+          size: 'small',
+        } only %}
+      </div>
+      <div x-cloak :class="{ 'hidden' : selected == false }">
+        {% include "@atoms/svg/_svg--icon.twig" with {
+          icon: 'minus',
+          size: 'small',
+        } only %}
+      </div>
+    </div>
+  </button>
+  <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1"
+       x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+    <div class="py-4">
+      {{ content }}
+    </div>
   </div>
 </div>
-

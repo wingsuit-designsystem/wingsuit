@@ -1,6 +1,7 @@
 rich_text:
   use: "@atoms/rich-text/rich-text.twig"
   label: Rich Text
+  icon_path: ws-assets://images/rich_text-icon.svg
   description: Component for displaying rich text, for example from a WYSIWYG editor. Check https://github.com/tailwindlabs/tailwindcss-typography for more informations.
   fields:
     text:

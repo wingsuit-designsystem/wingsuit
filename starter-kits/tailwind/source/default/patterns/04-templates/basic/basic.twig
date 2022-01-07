@@ -11,6 +11,7 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
+
 {% set content %}{% block content %}{{ content }}{% endblock %}{% endset %}
 {% set headline %}{% block headline %}{{ headline }}{% endblock %}{% endset %}
 
@@ -21,6 +22,8 @@
   {% block content %}
     <div class="text-gray-dark">
       {% embed "@atoms/rich-text/rich-text.twig" with {
+        headline: headline,
+        content: content
       } only %}
         {% block text %}
           <h1>{{ headline }}</h1>

@@ -21,7 +21,7 @@
     {% endblock %}
   {% endembed %}
 {% endif %}
-{% embed "@organisms/container/container.twig" with { width: 'small', text: text } %}
+{% embed "@organisms/container/container.twig" with { width: 'small', text: text } only %}
   {% block content %}
     {% embed "@atoms/rich-text/rich-text.twig" with {
       text: text,

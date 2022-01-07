@@ -1,6 +1,7 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
+  icon_path: ws-assets://images/card-icon.svg
   description: Amazing card component with image, titles, body and link.
   fields:
     preheadline:

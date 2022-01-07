@@ -9,10 +9,12 @@ const namespaces = require('wsdesignsystem/namespaces');
 initJsBehaviors('Drupal');
 
 addParameters({
-  themes: [
-    { name: 'Dark', class: ['dark', 'bg-black'], color: '#000000' },
-    { name: 'Gray', class: ['bg-gray-100'], color: '#cecece' },
-  ],
+  themes: {
+    list: [
+      { name: 'Dark', class: ['dark', 'bg-black'], color: '#000000' },
+      { name: 'Gray', class: ['bg-gray-100'], color: '#cecece' }
+    ],
+  },
   options: {
     storySort: {
       method: 'alphabetical',

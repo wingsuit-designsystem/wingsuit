@@ -1,6 +1,7 @@
 button_group:
   use: "@molecules/button-group/button-group.twig"
   label: Button Group
+  icon_path: ws-assets://images/button_group-icon.svg
   description: A group of buttons
   fields:
     buttons:
