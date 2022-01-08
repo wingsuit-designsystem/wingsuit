@@ -65,9 +65,7 @@
     {#end of text div#}
 
     {#start of button div of the card#}
-    {% if button is not empty %}
-      {% include '@atoms/button/button.twig' with {variant: 'primary', content: button} %}
-    {% endif %}
+    {{ button }}
     {#end of button div#}
 
     {#start of icon div of the card#}

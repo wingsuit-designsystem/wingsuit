@@ -14,6 +14,15 @@ export default class PatternStorage implements IPatternStorage {
 
   private twigResources = {};
 
+  static instance: PatternStorage;
+
+  static getInstance() {
+    if (!PatternStorage.instance) {
+      PatternStorage.instance = new PatternStorage();
+    }
+    return PatternStorage.instance;
+  }
+
   addGlobal(name: string, value: {}) {
     if (this.globals[name] != null) {
       if (typeof value === 'string') {
@@ -181,10 +190,11 @@ export default class PatternStorage implements IPatternStorage {
       if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
         try {
           const data = context(key);
-          if (data.wingsuit != null && typeof data.wingsuit.patternDefinition === 'object') {
-            const { patternDefinition } = data.wingsuit;
-            let { namespace } = data.wingsuit;
-            const { parameters } = data.wingsuit;
+          const wingsuit = data.wingsuit?.patternDefinition;
+          if (typeof wingsuit === 'object') {
+            const patternDefinition = wingsuit.default;
+            let { namespace } = wingsuit;
+            const { parameters } = wingsuit;
             if (namespace == null) {
               const hierachy = key.split('/');
               if (hierachy.length > 2) {
@@ -219,6 +229,12 @@ export default class PatternStorage implements IPatternStorage {
 
   addDefinition(id: string, pattern: IPatternDefinition) {
     this.definitions[id] = pattern;
+  }
+
+  addDefinitions(wingsuit) {
+    Object.keys(wingsuit).forEach((id) => {
+      this.definitions[id] = wingsuit[id];
+    });
   }
 
   findTwigByNamespace(namespace): any | null {

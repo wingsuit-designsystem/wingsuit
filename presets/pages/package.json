@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-pages",
-  "version": "1.2.0-alpha.3",
+  "version": "2.0.0-alpha.0",
   "description": "Wingsuit Pages.",
   "repository": {
     "type": "git",
@@ -34,9 +34,9 @@
   },
   "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc",
   "dependencies": {
-    "@wingsuit-designsystem/core": "1.2.0-alpha.3",
-    "@wingsuit-designsystem/pattern": "1.2.0-alpha.3",
-    "@wingsuit-designsystem/pattern-react": "1.2.0-alpha.3",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/pattern-react": "2.0.0-alpha.0",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",
     "js-yaml": "^4.0.0",

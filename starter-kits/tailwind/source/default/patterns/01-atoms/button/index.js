@@ -6,6 +6,8 @@ import 'protons';
 
 // Module template
 import './button.twig';
-import './button.wingsuit.yml';
+import { button } from './button.wingsuit.yml';
 
+console.log(button);
 export const name = 'button';
+export const pattern = button;

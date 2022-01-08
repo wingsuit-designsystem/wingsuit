@@ -16,6 +16,7 @@ export function defaultConfig(appConfig: AppConfig): CssConfig {
     cssLoaderConfig: {
       options: {
         sourceMap: true,
+        importLoaders: 1,
       },
     },
   };
@@ -36,7 +37,6 @@ export function webpack(appConfig: AppConfig, config: CssConfig) {
       loader: require.resolve('resolve-url-loader'),
       options: {
         sourceMap: true,
-        root: '',
       },
     },
   ];

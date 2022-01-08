@@ -11,6 +11,10 @@ export default class Pattern {
     return this.use;
   }
 
+  public getStoryName(): string {
+    return `${this.getNamespace()}/${this.getLabel()}`;
+  }
+
   public getLabel(): string {
     return this.label;
   }

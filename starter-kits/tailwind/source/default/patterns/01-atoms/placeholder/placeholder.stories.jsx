@@ -1,6 +1,6 @@
 import './index';
 
-const patternDefinition = require('./placeholder.wingsuit.yml');
+import { placeholder } from './placeholder.wingsuit.yml';
 
 function generateImageStyles() {
   const step = 200;
@@ -8,12 +8,12 @@ function generateImageStyles() {
   const end = 2500;
   const imageConfig = {};
   const aspectRatios = {
-    '1_1': {w: 1, h: 1},
-    '4_3': {w: 4, h: 3},
-    '8_7': {w: 8, h: 7},
-    '1_2': {w: 1, h: 2},
-    '16_9': {w: 16, h: 9},
-    '21_6': {w: 21, h: 6},
+    '1_1': { w: 1, h: 1 },
+    '4_3': { w: 4, h: 3 },
+    '8_7': { w: 8, h: 7 },
+    '1_2': { w: 1, h: 2 },
+    '16_9': { w: 16, h: 9 },
+    '21_6': { w: 21, h: 6 },
   };
 
   Object.keys(aspectRatios).forEach((key) => {
@@ -30,14 +30,11 @@ function generateImageStyles() {
 
   return imageConfig;
 }
-
+const configuration = placeholder.getConfiguration();
 const styles = generateImageStyles();
-patternDefinition.placeholder.configuration.image_config.styles = styles;
+
+configuration.image_config.styles = styles;
 const options = {};
 Object.keys(styles).forEach((key) => {
   options[key] = styles[key].label;
 });
-Object.assign(patternDefinition.placeholder.settings.style.options, options);
-export const wingsuit = {
-  patternDefinition,
-};

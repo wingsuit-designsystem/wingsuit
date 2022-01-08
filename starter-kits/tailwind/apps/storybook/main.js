@@ -1,7 +1,11 @@
-const wingsuitCore = require('@wingsuit-designsystem/core');
 const postCss = require('postcss');
 
 module.exports = {
+  typescript: { reactDocgen: false },
+  core: {
+    builder: 'webpack5',
+  },
+  stories: ['../../source/**/*.stories.@(js|jsx)'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-controls',
@@ -16,9 +20,6 @@ module.exports = {
         },
       },
     },
+    '@wingsuit-designsystem/storybook',
   ],
-  webpackFinal: (config) => {
-    const final = wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [config]);
-    return final;
-  },
 };

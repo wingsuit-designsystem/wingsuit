@@ -6,9 +6,10 @@ import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
-const { ProgressPlugin, ProvidePlugin } = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
+const { ProgressPlugin } = require('webpack');
+// const TerserPlugin = require('terser-webpack-plugin');
 
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');
 const babel = require('./presets/babel');
 const assets = require('./presets/assets');
@@ -28,8 +29,6 @@ const defaultPresets: {} = {
   svg,
   assetsVideos,
 };
-
-merge.multiple();
 
 export default class PresetManager {
   private environment = 'production';
@@ -133,7 +132,7 @@ export default class PresetManager {
       }
     });
 
-    let config = merge.smartStrategy({
+    let config = merge.mergeWithCustomize({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
       'module.rules.use': 'replace',
@@ -151,18 +150,14 @@ export default class PresetManager {
           },
           mode: this.environment,
           optimization: {
-            minimizer: [
-              new TerserPlugin({
-                sourceMap: this.environment === 'production',
-              }),
-            ],
+            minimizer: [],
           },
           plugins: [
             new DefinePlugin({
               BUILD_TARGET: JSON.stringify(appConfig.name),
             }),
             new ProgressPlugin({ profile: false }),
-            new ProvidePlugin({}),
+            new NodePolyfillPlugin(),
           ],
         },
       ]

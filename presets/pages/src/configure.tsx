@@ -18,7 +18,14 @@ export function configure(
   storage.setNamespaces(namespaces);
 
   storage.createDefinitionsFromMultiContext(patternContext);
-  storage.createTwigStorageFromContext(templateContext);
+  // storage.createTwigStorageFromContext(templateContext);
+  function requireAll(r) {
+    if (r != null) {
+      r.keys().forEach(r);
+    }
+  }
+  requireAll(templateContext);
+
   storage.createGlobalsFromContext(dataContext);
   const twigRenderer = new TwingRenderer();
   twigRenderer.addFunction('file_url', (url) => {

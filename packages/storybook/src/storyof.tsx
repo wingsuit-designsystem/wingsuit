@@ -1,9 +1,8 @@
 import React from 'react';
-import { storage, renderer, Pattern, IRenderer } from '@wingsuit-designsystem/pattern';
-import { configure as storybookConfigure, storiesOf } from '@storybook/react';
+import { Pattern, renderer, TwingRenderer } from '@wingsuit-designsystem/pattern';
+
 import { Title, Subtitle, DocsStory, ArgsTable, CURRENT_SELECTION } from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
-import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
@@ -13,10 +12,8 @@ import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
-export interface PatternEvents {
-  alterPattern: (pattern: Pattern) => Pattern;
-  alterStory: (story: any) => any;
-}
+renderer.setRenderer(new TwingRenderer());
+
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
   let controls = {};
@@ -32,69 +29,6 @@ function getStorybookControlsOptions(setting) {
   return controls;
 }
 
-export function configure(
-  module: NodeModule,
-  storybookContext,
-  dataContext,
-  templateContext,
-  namespaces,
-  renderImpl: IRenderer | null,
-  events: PatternEvents | null
-) {
-  storage.setNamespaces(namespaces);
-  storage.createDefinitionsFromMultiContext(storybookContext);
-  storage.createTwigStorageFromContext(templateContext);
-  storage.createGlobalsFromContext(dataContext);
-  if (renderImpl != null) {
-    renderer.setRenderer(renderImpl);
-  }
-  renderer.initializeRenderer();
-  const stories: any = [];
-  storybookConfigure(() => {
-    // Load stories from wingusit.yml.
-    const patternIds = storage.getPatternIds();
-    patternIds.forEach((patternId) => {
-      let pattern = storage.loadPattern(patternId);
-      if (events != null) {
-        pattern = events.alterPattern(pattern);
-      }
-      if (pattern !== null && pattern.isVisible('storybook')) {
-        stories.push(getStories(pattern, module));
-      }
-    });
-
-    // Load stories form storybook app.
-    const allExports: any = [];
-    if (Array.isArray(storybookContext) === false) {
-      storybookContext.keys().forEach((key) => {
-        const storyContext = storybookContext(key);
-        if (storyContext.default !== null) {
-          if (events != null) {
-            storyContext.default = events.alterStory(storybookContext(key).default);
-          }
-          if (storyContext.default !== null) {
-            allExports.push(storyContext);
-          }
-        }
-      });
-    } else {
-      storybookContext.forEach((innerContext) => {
-        innerContext.keys().forEach((key) => {
-          const storyContext = innerContext(key);
-          if (storyContext.default != null) {
-            if (events != null) {
-              storyContext.default = events.alterStory(storyContext.default);
-            }
-            if (storyContext.default !== null) {
-              allExports.push(storyContext);
-            }
-          }
-        });
-      });
-    }
-    return allExports;
-  }, module);
-}
 function getArgs(defaultArgs, variant) {
   const fields = variant.getFields();
   const resultArgs = { ...defaultArgs };
@@ -233,35 +167,30 @@ function getArgTypes(variant) {
   return argTypes;
 }
 
-function getStories(pattern: Pattern, module) {
-  const patternLabel = `${pattern.getNamespace()}/${pattern.getLabel()}`;
-  const story = storiesOf(patternLabel, module);
-
+export function storiesOf(pattern: Pattern, story) {
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const argTypes = getArgTypes(variant);
-    const twigFile = storage.findTwigById(variant.getPattern().getId());
     let parameters = {
       argTypes,
+      component: PatternPreview,
+      notes: variant.getDescription(),
       docs: {
-        source: {
-          code: twigFile.default,
-        },
         page: () => (
           <>
             <Title />
             <Subtitle>
               <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
             </Subtitle>
-            <DocsStory id={variant.getStoryId()} />
+            <DocsStory id={CURRENT_SELECTION} />
             <ArgsTable story={CURRENT_SELECTION} />
             <PatternInclude variant={variant} />
           </>
         ),
-
         storyDescription: variant.getDescription(),
       },
     };
+
     parameters = Object.assign(parameters, pattern.getParameters());
 
     story.add(
@@ -276,7 +205,6 @@ function getStories(pattern: Pattern, module) {
   return story;
 }
 
-export { drupalAttachBehaviorDecorator } from './drupal';
 export {
   isInitDecorator,
   initDecorator,

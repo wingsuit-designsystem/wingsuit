@@ -10,12 +10,15 @@ export function name(appConfig: AppConfig) {
 export function webpack(appConfig: AppConfig) {
   return {
     plugins: [
-      new CopyPlugin([
-        {
-          from: 'videos/*',
-          to: appConfig.assetBundleFolder,
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: 'videos/*',
+            to: appConfig.assetBundleFolder,
+            noErrorOnMissing: true,
+          },
+        ],
+      }),
     ],
     module: {
       rules: [

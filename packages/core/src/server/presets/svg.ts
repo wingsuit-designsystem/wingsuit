@@ -37,54 +37,40 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
       rules: [],
     },
   };
-  const testPatterns: string[] = [];
+
   config.sources.forEach((svgConfig) => {
     resultWebpack.plugins.push(
       new Svg2JsonPlugin(svgConfig.sourceFolder, svgConfig.jsonFile, appConfig)
     );
-    testPatterns.push(`.*[/|\\\\]${svgConfig.sourceFolder}[/|\\\\].*.svg$`);
-  });
 
-  const rule = new RegExp(testPatterns.join('|'));
-  resultWebpack.module.rules.push({
-    test: rule,
-    use: [
-      {
-        loader: 'svg-sprite-loader',
-        options: {
-          extract: true,
-          outputPath: `${appConfig.assetBundleFolder}/`,
-          spriteFilename: (sourceFileName) => {
-            let targetFileName = 'images/spritemap.svg';
-            config.sources.forEach((svgConfig) => {
-              if (sourceFileName.includes(`/${svgConfig.sourceFolder}/`)) {
-                targetFileName = svgConfig.spriteFilename;
-              }
-            });
-            return targetFileName;
+    resultWebpack.plugins.push(new SpriteLoaderPlugin());
+    const rule = new RegExp(`.*[/|\\\\]${svgConfig.sourceFolder}[/|\\\\].*.svg$`);
+    resultWebpack.module.rules.push({
+      test: rule,
+      use: [
+        {
+          loader: 'svg-sprite-loader',
+          options: {
+            extract: false,
+            outputPath: `${appConfig.assetBundleFolder}/`,
+            spriteFilename: svgConfig.spriteFilename,
           },
         },
-      },
-      'svg-transform-loader',
-      {
-        loader: 'svgo-loader',
-        options: {
-          plugins: [
-            { convertFillsToCurrentColor: true },
-            { removeTitle: true },
-            { removeEditorsNSData: false },
-            { convertColors: { shorthex: false } },
-            { convertPathData: false },
-          ],
+        'svg-transform-loader',
+        {
+          loader: 'svgo-loader',
+          options: {
+            plugins: [
+              { name: 'removeTitle' },
+              { name: 'removeEditorsNSData' },
+              { name: 'convertColors', param: { shorthex: false } },
+              { name: 'convertPathData' },
+            ],
+          },
         },
-      },
-    ],
+      ],
+    });
   });
-  resultWebpack.plugins.push(
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-    })
-  );
   return resultWebpack;
 }
 
