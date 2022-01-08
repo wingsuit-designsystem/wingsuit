@@ -5,7 +5,7 @@ aliases:
     working_directory: /tmp/storybook
     CYPRESS_CACHE_FOLDER:
     docker:
-      - image: circleci/node:14-browsers
+      - image: cimg/python:3.9.7-browsers
 
 jobs:
   install:
