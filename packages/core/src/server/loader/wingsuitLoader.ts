@@ -10,7 +10,6 @@ export default function wingsuitLoader(this: any, src) {
     ...loaderUtils.getOptions(this),
   };
   const { appConfig } = options;
-  const esModule = typeof options.esModule !== 'undefined' ? options.esModule : true;
   const res = YAML.parse(src, options);
   const info = pathInfo(this.resourcePath, appConfig);
   const result: any = {};
