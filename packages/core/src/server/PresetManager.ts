@@ -1,7 +1,6 @@
 /**
  * Wingsuit PresetManager.
  */
-import { DefinePlugin } from 'webpack';
 import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
@@ -153,9 +152,6 @@ export default class PresetManager {
             minimizer: [],
           },
           plugins: [
-            new DefinePlugin({
-              BUILD_TARGET: JSON.stringify(appConfig.name),
-            }),
             new ProgressPlugin({ profile: false }),
             new NodePolyfillPlugin(),
           ],

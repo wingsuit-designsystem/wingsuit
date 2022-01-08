@@ -28,7 +28,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@ianwalter/exclude-assets-plugin": "^1.0.0",
-    "@wingsuit-designsystem/core": "1.1.0-alpha.0",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
     "favicons": "^6.2.2",
     "favicons-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^4.2.0"

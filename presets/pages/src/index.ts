@@ -18,7 +18,12 @@ export function wingsuitConfig(): any {
         path: './apps/pages',
         cssMode: 'extract',
         distFolder: 'dist/app-pages',
-        presets: [getDefaultPreset('twing'), getDefaultPreset('storybook')],
+        presets: [
+          getDefaultPreset('wingsuit'),
+          getDefaultPreset('css'),
+          getDefaultPreset('twing'),
+          getDefaultPreset('storybook'),
+        ],
         designSystem: 'default',
         assetBundleFolder: '',
         generator: (type, sourceGenerator) => {

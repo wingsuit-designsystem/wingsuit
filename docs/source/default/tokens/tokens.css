@@ -4,7 +4,7 @@
     font-weight: 1 999;
     font-display: swap;
     src: local(''),
-    url('/font/Inter.var.woff2') format('woff2');
+    url('./fonts/inter/Inter.var.woff2') format('woff2');
   }
 }
 
