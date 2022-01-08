@@ -5,7 +5,7 @@ aliases:
     working_directory: /tmp/storybook
     CYPRESS_CACHE_FOLDER:
     docker:
-      - image: circleci/node:14-browsers
+      - image: cimg/python:3.9.7-browsers
 
 jobs:
   install:
@@ -17,9 +17,6 @@ jobs:
           keys:
             - core-dependencies-v5-{{ checksum "yarn.lock" }}
             - core-dependencies-v5-
-      - run:
-          name: Install Python
-          command: sudo apt-get install python3; sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3; sudo apt-get install g++ build-essential
       - run:
           name: Install dependencies
           command: yarn install
