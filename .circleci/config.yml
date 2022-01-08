@@ -19,7 +19,7 @@ jobs:
             - core-dependencies-v5-
       - run:
           name: Install Python
-          command: sudo apt-get install python3; sudo update-alternatives --install /usr/bin/python python /usr/bin/python3
+          command: sudo apt-get install python3; sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3
       - run:
           name: Install dependencies
           command: yarn install
