@@ -2,6 +2,7 @@ card:
   use: "@molecules/card/card.twig"
   label: Card
   icon_path: ws-assets://images/card-icon.svg
+  allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
   fields:
     preheadline:
@@ -37,22 +38,24 @@ card:
       settings:
         image:
           id: placeholder
-          variant: image
+          variant: background
           definition:
-            view_mode: 16x9
+            view_mode: background
           settings:
-            style: card_horizontal
+            style: responsive_1_3_200w
 
   settings:
     image:
       label: Image
       type: media_library
       description: The image tag.
+      view_mode: 16x9
+      allow_expose: true
       preview:
         id: placeholder
         variant: image
         settings:
-          style: card
+          style: responsive_16_9_600w
     alignment:
       type: select
       label: Alignment

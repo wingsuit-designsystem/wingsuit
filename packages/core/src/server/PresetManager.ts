@@ -18,7 +18,7 @@ const twing = require('./presets/twing');
 const svg = require('./presets/svg');
 const assetsVideos = require('./presets/assetsVideos');
 
-const defaultPresets: {} = {
+const defaultPresets:any = {
   css,
   babel,
   assets,

@@ -1,7 +1,14 @@
 import React from 'react';
 import { storage, renderer, Pattern, IRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
-import { Title, Subtitle, DocsStory, ArgsTable, CURRENT_SELECTION } from '@storybook/addon-docs';
+import {
+  Title,
+  Subtitle,
+  DocsStory,
+  Stories,
+  ArgsTable,
+  CURRENT_SELECTION,
+} from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
@@ -241,6 +248,7 @@ function getStories(pattern: Pattern, module) {
     const variant = pattern.getVariant(variantKey);
     const argTypes = getArgTypes(variant);
     const twigFile = storage.findTwigById(variant.getPattern().getId());
+    const stories = process.env.STORYBOOK_DOCS === 'true' ? <Stories /> : null;
     let parameters = {
       argTypes,
       docs: {
@@ -256,6 +264,7 @@ function getStories(pattern: Pattern, module) {
             <DocsStory id={variant.getStoryId()} />
             <ArgsTable story={CURRENT_SELECTION} />
             <PatternInclude variant={variant} />
+            {stories}
           </>
         ),
 

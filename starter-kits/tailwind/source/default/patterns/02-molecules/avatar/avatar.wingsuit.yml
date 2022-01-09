@@ -2,6 +2,7 @@ avatar:
   use: "@molecules/avatar/avatar.twig"
   label: Avatar
   icon_path: ws-assets://images/avatar-icon.svg
+  allow_variant_expose: true
   description: "An avatar represent a user, and displays the profile picture."
   fields:
     text:
@@ -25,12 +26,13 @@ avatar:
         variant: default
         settings:
           expanded: true
-
   settings:
     image:
       type: media_library
       label: Image
       description: The profile picture.
+      view_mode: 1x1
+      allow_expose: true
       preview:
         id: placeholder
         variant: image
@@ -53,7 +55,9 @@ avatar:
       settings:
         image:
           id: placeholder
-          variant: image
+          variant: background
+          definition:
+            view_mode: background
           settings:
-            style: responsive_1_2_400w
+            style: responsive_1_3_200w
 

@@ -26,15 +26,15 @@ export default function (options, environment) {
     const appName = await getAppName();
     try {
       const appConfig = resolveConfig(appName, environment);
-      const console =
-        options.docs === false
+      const consoleCommand =
+        options.docs !== true
           ? appConfig.startup()
           : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`;
       version({});
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);
       logger.info('');
-      const command = spawn(console, [], { shell: true, stdio: 'inherit' });
+      const command = spawn(consoleCommand, [], { shell: true, stdio: 'inherit' });
       command.on('close', (code) => {
         logger.log(`${code}`);
       });

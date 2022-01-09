@@ -5,6 +5,7 @@
  * Functions to support theming layout builder in Wingsuit theme.
  */
 
+use Drupal\node\NodeInterface;
 
 /**
  * Checks if current route is a layout builder route.
@@ -12,7 +13,7 @@
  * @return bool
  *   True if it is a layout builder route.
  */
-function wingsuit_is_layout_builder(){
+function wingsuit_is_layout_builder() {
   $route_name = \Drupal::routeMatch()->getRouteName();
   if (preg_match('/^(layout_builder\.([^.]+\.)?)/', $route_name)) {
     return TRUE;
@@ -27,8 +28,7 @@ function wingsuit_is_layout_builder(){
  */
 function wingsuit_theme_suggestions_page_alter(array &$suggestions, array $variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node !== NULL && $node instanceof \Drupal\node\NodeInterface) {
+  if ($node !== NULL && $node instanceof NodeInterface) {
     $suggestions[] = 'page__' . $node->getEntityTypeId() . '__' . $node->bundle();
   }
 }
-

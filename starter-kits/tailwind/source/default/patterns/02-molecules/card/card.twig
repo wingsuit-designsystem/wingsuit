@@ -21,19 +21,28 @@
   variant == 'horizontal' ? 'flex-col md:flex-row' : 'flex-col'
 ] | sort | join(' ') | trim ) %}
 
+{% set image_classes = ([
+  variant == 'default' ? 'flex-0',
+  variant == 'horizontal' ? 'h-48 lg:h-auto w-full lg:w-48 relative'
+  ] | sort | join(' ') | trim ) %}
+
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {# TEMPLATE #}
 <{{ element }} {{ attributes }}>
   {% if image is not empty %}
-    <div class="flex-0">
+    <div class="{{ image_classes }}">
       {% block image %}
         {{ image }}
       {% endblock %}
     </div>
   {% endif %}
   <div class="p-6 flex-1">
-    {% embed "@atoms/rich-text/rich-text.twig" %}
+    {% embed "@atoms/rich-text/rich-text.twig" with {
+      headline_element: headline_element,
+      headline: headline,
+      text: text
+    } only %}
     {% block text %}
       <{{ headline_element }}>
         <div{{ region_attributes.preheadline|default(create_attribute()).addClass('text-sm font-normal') }}>
@@ -49,4 +58,5 @@
     <div class="mt-8">
       {{ button }}
     </div>
+  </div>
 </{{ element }}>

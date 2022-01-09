@@ -66,8 +66,12 @@
                   media="{{ breakpoints[breakpoint_name].mediaQuery }}">
           {% endif %}
         {% endfor %}
+        {% if image_styles[image_style.style] is not empty %}
         <img src="{{- self.get_placeholder_url(image_styles[image_style.style], placeholder_url)|trim -}}"
              alt="MDN">
+          {% else %}
+            No image style {{ image_style.style }} found!
+          {% endif %}
       </picture>
     {% endif %}
   {% endif %}
@@ -78,7 +82,7 @@
   {% set imageConfig = pattern_configuration('placeholder', 'background', 'image_config') %}
   {% set image_styles = imageConfig.styles %}
 {%  if image_styles[style] is not empty %}
-<div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url) }}')">
+<div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url)|trim }}')">
 </div>
   {% else %}
     {{ style }} not found.

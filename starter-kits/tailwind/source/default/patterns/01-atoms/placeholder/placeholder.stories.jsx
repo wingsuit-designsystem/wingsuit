@@ -8,12 +8,12 @@ function generateImageStyles() {
   const end = 2500;
   const imageConfig = {};
   const aspectRatios = {
-    '1_1': {w: 1, h: 1},
-    '4_3': {w: 4, h: 3},
-    '8_7': {w: 8, h: 7},
-    '1_2': {w: 1, h: 2},
-    '16_9': {w: 16, h: 9},
-    '21_6': {w: 21, h: 6},
+    '1_1': { w: 1, h: 1 },
+    '4_3': { w: 4, h: 3 },
+    '8_7': { w: 8, h: 7 },
+    '1_3': { w: 1, h: 3 },
+    '16_9': { w: 16, h: 9 },
+    '21_6': { w: 21, h: 6 },
   };
 
   Object.keys(aspectRatios).forEach((key) => {

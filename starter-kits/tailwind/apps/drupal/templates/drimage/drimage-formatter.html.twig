@@ -16,7 +16,7 @@
  * @ingroup themeable
  */
 #}
-
+{% set item_attributes = data.image_handling == 'background' ? item_attributes.addClass('absolute w-full h-full') : item_attributes %}
 {{ attach_library('drimage/drimage') }}
 <div {{ item_attributes }} data-drimage="{{ data|json_encode }}">
     {% if data.media_preview %}

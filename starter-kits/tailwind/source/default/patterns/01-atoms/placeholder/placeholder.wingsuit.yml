@@ -26,7 +26,7 @@ placeholder:
       label: Classes
       description: Classes applied to background image container.
       type: textfield
-      preview: w-full h-20 bg-cover
+      preview: w-full h-full bg-cover
     style:
       label: Image style
       type: select
@@ -48,14 +48,6 @@ placeholder:
             lg: responsive_16_9_1400w
             xl: responsive_21_6_1600w
             2xl: responsive_21_6_2000w
-        card:
-          style: responsive_4_3_600w
-          breakpoints:
-            sm: responsive_4_3_600w
-        card_horizontal:
-          style: responsive_1_2_200w
-          breakpoints:
-            sm: responsive_1_2_200w
         article:
           style: responsive_8_7_400w
           breakpoints:
