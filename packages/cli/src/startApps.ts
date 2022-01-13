@@ -24,12 +24,14 @@ export default function (options, environment) {
   };
   const startApp = async () => {
     const appName = await getAppName();
+    const { outputDir, docs } = options;
     try {
       const appConfig = resolveConfig(appName, environment);
       const consoleCommand =
-        options.docs !== true
+        (docs !== true
           ? appConfig.startup()
-          : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`;
+          : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`) +
+        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '');
       version({});
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);

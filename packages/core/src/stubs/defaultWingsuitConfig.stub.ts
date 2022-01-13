@@ -53,6 +53,9 @@ export const wingsuit: Config = {
         presenter: 'Presentation template',
       },
       startup() {
+        if (this.environment === 'production') {
+          return `build-storybook --config-dir ${this.absAppPath}`
+        }
         return `start-storybook --config-dir ${this.absAppPath}`
       },
     },

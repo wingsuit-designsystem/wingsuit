@@ -11,7 +11,7 @@ image:
         id: placeholder
         variant: image
         settings:
-          style: card
+          style: responsive_16_9_1200w
     caption:
       type: text
       label: The caption text.

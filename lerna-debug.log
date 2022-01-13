@@ -1,24 +1,143 @@
-0 silly argv {
-0 silly argv   _: [ 'exec' ],
-0 silly argv   scope: '@wingsuit-designsystem/*',
-0 silly argv   parallel: true,
-0 silly argv   args: [],
-0 silly argv   '--': [
-0 silly argv     'cross-env-shell',
-0 silly argv     'node',
-0 silly argv     '$LERNA_ROOT_PATH/scripts/watch-babel.js'
-0 silly argv   ],
-0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'node_modules/.bin/lerna'
-0 silly argv }
-1 notice cli v3.22.1
-2 verbose rootPath /home/cw/projects/wingsuit/wingsuit
-3 notice filter including "@wingsuit-designsystem/*"
-4 info filter [ '@wingsuit-designsystem/*' ]
-5 info Executing command in 17 packages: "cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js"
-6 error Error: Command failed: cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js
-6 error
-6 error Successfully compiled 4 files with Babel (1530ms).
-6 error
-6 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
-6 error     at /home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16
+91 error Error: Command failed: git commit -m v1.2.0-alpha.7
+91 error husky > pre-commit (node v14.17.0)
+91 error $ /home/cw/projects/wingsuit/wingsuit/node_modules/.bin/lint-staged
+91 error Stashing changes... [started]
+91 error Stashing changes... [completed]
+91 error Running tasks... [started]
+91 error Running tasks for *.html [started]
+91 error Running tasks for *.js [started]
+91 error Running tasks for *.jsx [started]
+91 error Running tasks for *.ts [started]
+91 error Running tasks for *.tsx [started]
+91 error Running tasks for *.jsx [skipped]
+91 error → No staged files match *.jsx
+91 error Running tasks for *.ts [skipped]
+91 error → No staged files match *.ts
+91 error Running tasks for *.tsx [skipped]
+91 error → No staged files match *.tsx
+91 error yarn lint:js --fix [started]
+91 error yarn lint:js --fix [started]
+91 error yarn lint:js --fix [failed]
+91 error →
+91 error Running tasks for *.js [failed]
+91 error →
+91 error yarn lint:js --fix [failed]
+91 error →
+91 error Running tasks for *.html [failed]
+91 error →
+91 error Running tasks... [failed]
+91 error Updating stash... [started]
+91 error Updating stash... [skipped]
+91 error → Skipping stash update since some tasks exited with errors
+91 error Restoring local changes... [started]
+91 error Restoring local changes... [completed]
+91 error
+91 error
+91 error
+91 error ✖ yarn lint:js --fix found some errors. Please fix them and try committing again.
+91 error $ cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives packages starter-kits --fix /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/0.14a99c92399b08e3fa73.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/0.9e2fe995.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/1.be3932ea.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/2.1704d161.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/3.86351267.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/4.0b57f9ee.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/4.a4fadbc138b1b2fe3e55.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/5.1900373937e8b74b390b.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/5.ba580c0c.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/6.29c45ef534d3edb8db3c.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/7.b1391760d6438252dda4.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/8.7df209cf0c1c17d581fd.manager.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.3127423e.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.de1046f0.iframe.bundle.js /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.e528661ca7c28b95cdbe.manager.bundle.js '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/runtime~main.8eeccbe09e617fc0f829.manager.bundle.js' '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/runtime~main.b7ddc69f.iframe.bundle.js' '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.0c3f9dda34a3e2e671fa.manager.bundle.js' '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.2a4a3b02c4a421d0e2fb.manager.bundle.js' '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.3435011b.iframe.bundle.js' '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.e067a166.iframe.bundle.js'
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/packages/core/src/index.ts
+91 error 0:0  error  Parsing error: Cannot read property 'map' of undefined
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/packages/core/src/server/PresetManager.ts
+91 error 0:0  error  Parsing error: Cannot read property 'map' of undefined
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/0.14a99c92399b08e3fa73.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/0.9e2fe995.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/1.be3932ea.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/2.1704d161.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/3.86351267.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/4.0b57f9ee.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/4.a4fadbc138b1b2fe3e55.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/5.1900373937e8b74b390b.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/5.ba580c0c.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/6.29c45ef534d3edb8db3c.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/7.b1391760d6438252dda4.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/8.7df209cf0c1c17d581fd.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.3127423e.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.de1046f0.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/main.e528661ca7c28b95cdbe.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/runtime~main.8eeccbe09e617fc0f829.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/runtime~main.b7ddc69f.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.0c3f9dda34a3e2e671fa.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.2a4a3b02c4a421d0e2fb.manager.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.3435011b.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/vendors~main.e067a166.iframe.bundle.js
+91 error 0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to override
+91 error
+91 error ✖ 23 problems (2 errors, 21 warnings)
+91 error
+91 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+91 error error Command failed with exit code 1.
+91 error
+91 error
+91 error
+91 error ✖ yarn lint:js --fix found some errors. Please fix them and try committing again.
+91 error $ cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .ts,.tsx,.mjs --report-unused-disable-directives packages starter-kits --fix /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/iframe.html /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/index.html
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/packages/core/src/index.ts
+91 error 0:0  error  Parsing error: Cannot read property 'map' of undefined
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/packages/core/src/server/PresetManager.ts
+91 error 0:0  error  Parsing error: Cannot read property 'map' of undefined
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/iframe.html
+91 error 296:31  error  'window' is already defined as a built-in global variable                      no-redeclare
+91 error 305:5   error  Unused eslint-disable directive (no problems were reported from 'no-console')
+91 error
+91 error /home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/test/index.html
+91 error 11:31  error  'window' is already defined as a built-in global variable                      no-redeclare
+91 error 18:5   error  Unused eslint-disable directive (no problems were reported from 'no-console')
+91 error
+91 error ✖ 6 problems (6 errors, 0 warnings)
+91 error
+91 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+91 error error Command failed with exit code 1.
+91 error error Command failed with exit code 1.
+91 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+91 error husky > pre-commit hook failed (add --no-verify to bypass)
+91 error
+91 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
+91 error     at /home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16
+91 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
