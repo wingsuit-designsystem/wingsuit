@@ -12,7 +12,7 @@ export { default as PresetManager } from './server/PresetManager';
 
 const presetManager = new PresetManager();
 
-export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
+export function getAppPack(appConfig: AppConfig, webpacks: any[] = []) {
   const pack = presetManager.generateWebpack(appConfig, webpacks);
   return pack;
 }
