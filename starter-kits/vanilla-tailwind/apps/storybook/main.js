@@ -5,7 +5,6 @@ module.exports = {
   addons: [
     '@storybook/addon-essentials',
     'storybook-addon-themes',
-    '@storybook/addon-postcss',
     {
       name: '@storybook/addon-postcss',
       options: {

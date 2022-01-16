@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs';
 import { Badge } from '@storybook/components';
 import { getStorybook, storiesOf} from '@storybook/react';
 import { storage } from '@wingsuit-designsystem/pattern';
@@ -9,7 +9,31 @@ import './images/ws-atoms.svg';
 import './images/ws-molecules.svg';
 import './images/ws-organisms.svg';
 import './images/ws-templates.svg';
-
+const namespaces = {
+  docs: {
+    Blocks: {
+      icon: 'images/ws-atoms.svg'
+    },
+    Section: {
+     icon: 'images/ws-molecules.svg'
+    }
+  },
+  default: {
+    Atoms: {
+      icon: 'images/ws-atoms.svg'
+    },
+    Molecules: {
+     icon: 'images/ws-molecules.svg'
+    },
+    Organisms: {
+      icon: 'images/ws-organisms.svg'
+    },
+    Templates: {
+      icon: 'images/ws-templates.svg'
+    }
+  }
+}
+const mode = process.env.STORYBOOK_DOCS === 'true' ? 'docs' : 'default';
 
 <Meta title="Welcome"
   parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
@@ -23,79 +47,49 @@ import './images/ws-templates.svg';
 
 # Design system
 
-Wingsuit demo page with components from <a href="https://mertjf.github.io/tailblocks/" target="_blank">Tailblocks</a> and <a href="https://www.tailwindtoolbox.com" target="_blank"> tailwindtoolbox.com</a>.
 
-Design and images from <a href="https://www.drawkit.io/product/peach-illustration-system" target="_blank">drawkit</a>.
 
 
 <div style={{paddingTop: '40px'}}>
-
-  ## <img src="images/ws-tokens.svg" style={{width: '20px'}}/> Tokens
-  <Canvas>
-    <LinkTo story="page" kind="Tokens/Colors">
-      <Badge status="neutral">Colors</Badge>
-    </LinkTo>
-    <LinkTo story="page" kind="Tokens/Typography">
-      <Badge status="neutral">Typography</Badge>
-    </LinkTo>
-    <LinkTo story="page" kind="Tokens/Scale">
-      <Badge status="neutral">Scale</Badge>
-    </LinkTo>
-    <LinkTo story="page" kind="Tokens/Icons">
-      <Badge status="neutral">Icons</Badge>
-    </LinkTo>
-  </Canvas>
-
-  ## <img src="images/ws-atoms.svg" style={{width: '20px'}}/> Atoms
-  <Canvas>
-    {
-      storage.loadPatternsByNamespace('Atoms').map((pattern)=>{
-        return (
-          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
-            <Badge status="neutral">{pattern.getLabel()}</Badge>
-          </LinkTo>
-        )
-      })
-    }
-  </Canvas>
-
-
-  ## <img src="images/ws-molecules.svg" style={{width: '20px'}}/> Molecules
-  <Canvas>
-    {
-      storage.loadPatternsByNamespace('Molecules').map((pattern)=>{
-        return (
-          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
-            <Badge status="neutral">{pattern.getLabel()}</Badge>
-          </LinkTo>
-        )
-      })
-    }
-  </Canvas>
-
-  ## <img src="images/ws-organisms.svg" style={{width: '20px'}}/> Organisms
-  <Canvas>
-    {
-      storage.loadPatternsByNamespace('Organisms').map((pattern)=>{
-        return (
-          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
-            <Badge status="neutral">{pattern.getLabel()}</Badge>
-          </LinkTo>
-        )
-      })
-    }
-  </Canvas>
-
-  ## <img src="images/ws-templates.svg" style={{width: '20px'}}/> Templates
-  <Canvas>
-    {
-      storage.loadPatternsByNamespace('Templates').map((pattern)=>{
-        return (
-          <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
-            <Badge status="neutral">{pattern.getLabel()}</Badge>
-          </LinkTo>
-        )
-      })
-    }
-  </Canvas>
+  {
+    <div>
+      {
+        Object.keys(namespaces[mode]).map((namespace, i) => {
+          const config = namespaces[mode][namespace];
+          return (
+            <div key={namespace}>
+              <h2 class="flex flex-row"> <img src={config.icon} style={{width: '20px', marginRight: '16px'}}/> {namespace} </h2>
+              <div style={{marginBottom: '34px'}}>
+                {
+                storage.loadPatternsByNamespace(namespace).map((pattern)=>{
+                  if (mode === 'docs') {
+                    return (
+                      <div style={{marginBottom: '24px'}} key={pattern.getId()}>
+                        <LinkTo story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+                          <div style={{display: 'flex', width: '100%'}}>
+                            <div style={{width: '20%'}}><img src={pattern.getIconPath()}/></div>
+                            <div class="prose" style={{width: '80%', paddingLeft: '12px'}}>
+                              <h3>{pattern.getLabel()}</h3>
+                              <div>{pattern.getDescription()}</div>
+                            </div>
+                          </div>
+                        </LinkTo>
+                      </div>
+                    )
+                  } else {
+                  return (
+                    <LinkTo key={pattern.getId()} story={pattern.getDefaultVariant().getLabel()} kind={`${pattern.getNamespace()}-${pattern.getId()}`}>
+                      <Badge status="neutral" style={{marginRight: '8px'}}>{pattern.getLabel()}</Badge>
+                    </LinkTo>
+                  )
+                  }
+                  })
+                }
+              </div>
+            </div>
+          )
+        })
+      }
+    </div>
+ }
 </div>
