@@ -1,14 +1,18 @@
-# Component-Based Theming in Drupal'
+# Thinking in Components!
+## Component-Based Theming in Drupal'
 
-Drupal theming without a component based solution increase the productivity
+When it comes to Drupal themes the easy and fast way is to just theme your nodes or taxonomies as we see it.
+It is very likely that you need to theme the same component more than once.
 
-It is very likely that you need to theme the same component more than once. Once you need your button inside as a field, next time you need the same button inside your node template. The solution most developer took is to copy the template and adjust them to their needs.
-You distribute your component markup across the project and changes to a component must be done on several places inside your project.
+What if we thought about building components so that they are configurable and reusable across different entities, views or blocks.
+Each component is the single point of view inside your theme. This is especially important for utility first frameworks like TailwindCSS.
 
-Thinking in components makes it much easier to structure your layout. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) or others helps you to structure your layout and makes it easier for every developer to follow the same path.
+If we could do that then we would be able to deliver your theme at a much faster. It is much faster to add new content types.
 
-### Presenter template
-The presenter template is a drupal theme template which `includes` the component template and provides all need variables.
+Drupal supports two possibilities for component based theming. Both ways are working with Wingsuit.
+
+### 1. Presenter template
+The presenter template is a Drupal theme template which `includes` the component template and provides all need variables.
 If you need to theme your link field with the button component you create a field template `field--field-link.html.twig` and include the button component like this:
 
 ```twig
@@ -18,3 +22,11 @@ If you need to theme your link field with the button component you create a fiel
 %}
 ```
 
+### 2. UI Patterns Ecosystem
+With UI Patterns you can map your entity fields to a component without additional mapping code.
+The UI Patterns ecosystem offering additional modules to map nearly any corner of Drupal to a component.
+
+<div class="relative" style={{paddingTop: '81.81818181818181%' }}>
+  <iframe class="absolute inset-0 w-full h-full"
+          src="https://www.youtube-nocookie.com/embed/Fe5DHtqhEF0"></iframe>
+</div>

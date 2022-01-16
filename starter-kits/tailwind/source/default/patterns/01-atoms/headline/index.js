@@ -1,5 +1,0 @@
-/**
- * headline
- */
-
-import './headline.twig';

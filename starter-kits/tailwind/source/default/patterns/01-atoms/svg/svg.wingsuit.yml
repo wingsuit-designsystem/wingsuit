@@ -8,13 +8,13 @@ svg_icon:
       type: textfield
       preview: fill-current
     size:
-      preview: w-4
+      preview: medium
       label: Size
       type: select
       options:
-        w-4: Small
-        w-8: Medium
-        w-12: Large
+        small: Small
+        medium: Medium
+        large: Large
     icon:
       type: token
       label: Icon

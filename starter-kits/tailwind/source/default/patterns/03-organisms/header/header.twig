@@ -13,13 +13,13 @@
         <div class="w-3/6 md:w-2/6 max-w-xs md:max-w-7xl">
           {% include "@atoms/logo/logo.twig" only %}
         </div>
-        <div class="flex justify-end items-center flex-1 lg:hidden" @click="menuIsOpen = !menuIsOpen">
+        <div class="flex justify-end items-center flex-1 lg:hidden">
           {% include "@atoms/hamburger/hamburger.twig" only %}
         </div>
         <div class="w-full flex-grow hidden text-black z-20 mt-2 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
         </div>
-        <ul class="list-reset flex justify-end lg:flex-1 items-center">
+        <ul class="list-reset flex justify-end lg:flex-1 items-center hidden">
           <li>{{ language_select }}</li>
         </ul>
       </div>

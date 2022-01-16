@@ -1,0 +1,55 @@
+.img-object-left-top img {
+  @apply object-left-top;
+}
+
+.img-object-top img {
+  @apply object-top;
+}
+
+.img-object-right-top img {
+  @apply object-right-top;
+}
+
+.img-object-left img {
+  @apply object-left;
+}
+
+.img-object-center img {
+  @apply object-center;
+}
+
+.img-object-right img {
+  @apply object-right;
+}
+
+.img-object-left-bottom img {
+  @apply object-left-bottom;
+}
+
+.img-object-bottom img {
+  @apply object-bottom;
+}
+
+.img-object-right-bottom img {
+  @apply object-right-bottom;
+}
+
+.img-object-none img {
+  @apply object-none;
+}
+
+.img-object-contain img {
+  @apply object-contain;
+}
+
+.img-object-cover img {
+  @apply object-cover;
+}
+
+.img-w-full img {
+  width: 100%;
+}
+
+.img-h-full img {
+  height: 100%;
+}

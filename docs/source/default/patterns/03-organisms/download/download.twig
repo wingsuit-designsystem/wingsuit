@@ -1,18 +1,11 @@
-{% set content_bottom %}
-
-<div class="text-center pt-10">
-  {{ pattern('rich_text', {'text': '<h2>Or try...</h2>'}, 'large' ) }}
-  <div class="pt-8">
-  {{ pattern_preview('button', {'size': 'large', 'round': true, 'text': 'Drupal Kickstarter', 'url': '/drupal/ui_patterns/'}, 'default') }}
-  </div>
-</div>
-{% endset %}
 {{ pattern_preview('section_code', {
-  bg: bg|default('gray-lighter'),
+  bg: bg|default('black'),
   width: width|default('default'),
   padding_top: padding_top|default('default'),
+  padding_bottom: 'large',
   content: intro,
-  content_bottom: content_bottom,
+  content_align: 'center',
+  content_width: 'small',
   badge_headline: 'Choose your flavor:',
   data: [
     {
@@ -79,3 +72,19 @@ yarn ws dev cms
     },
   ]
 }) }}
+
+{% set kickstarter_left %}
+
+  {{ pattern('rich_text', {'text': '
+<h2><div class="text-2xl">You might also try ...</div>Drupal Kickstarter</h2>
+<p>Wingsuit Kickstarter is the fastest way to start your Drupal project with Wingsuit. The Kickstarter uses UI Patterns to map Patterns to Drupal and Acquia Blt for automation.
+</p>
+',
+  }, 'large' ) }}
+{% endset %}
+{% set kickstarter_right %}
+  <div class="flex items-center justify-center pt-20">
+  {{ pattern_preview('button', {'size': 'large', 'round': true, 'text': 'Get Started', 'url': '/drupal/ui_patterns/'}, 'default') }}
+  </div>
+{% endset %}
+{{ pattern('section', {columns: 2, column_1: kickstarter_left, column_2: kickstarter_right, padding_bottom: 'default' }, '2_column') }}

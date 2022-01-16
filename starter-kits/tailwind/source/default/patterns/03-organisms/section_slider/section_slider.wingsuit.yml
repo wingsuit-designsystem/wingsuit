@@ -1,0 +1,19 @@
+section_slider:
+  use: "@organisms/section_slider/section_slider.twig"
+  label: "Section Slider"
+  extends:
+    - container.settings
+    - slider.settings
+    - slider.fields
+  icon_path: ws-assets://images/slider-icon.svg
+  description: Javascript slider with splide (https://splidejs.com/).
+    Change the slider behavior in slider.behavior.js.
+  fields:
+    header:
+      type: pattern
+      label: Section Header
+      description: Optional header
+      preview:
+        id: rich_text
+        fields:
+          text: '<h2 class="text-center section-header">Headline</h2>'

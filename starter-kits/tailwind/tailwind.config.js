@@ -5,17 +5,17 @@ const typography = require('@tailwindcss/typography')({
 });
 
 module.exports = {
-  mode: 'jit',
   important: false,
   darkMode: 'class',
-  purge: ['./safelist.txt', './source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+  safelist: ['bg-black'],
   theme: {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.trueGray,
+      gray: colors.neutral,
       teal: colors.teal,
       red: colors.rose,
       green: colors.green,
@@ -65,26 +65,18 @@ module.exports = {
         '8xl': '120rem',
       },
       gridTemplateColumns: {
-        '33/66': '33% 66%',
-        '66/33': '66% 33%',
-        '25/50/25': '25% 50% 25%',
+        '33/66': 'minmax(0, 1fr) minmax(0, 2fr)',
+        '66/33': 'minmax(0, 2fr) minmax(0, 1fr)',
+        '25/75': 'minmax(0, 1fr) minmax(0, 3fr)',
+        '75/25': 'minmax(0, 3fr) minmax(0, 1fr)',
+        '4/5/3': 'minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr)',
+        '25/50/25': 'minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)',
+        '25/25/50': 'minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr)',
       },
     },
     fontFamily: {
-      serif: ['SourceSerif', '-apple-system', 'BlinkMacSystemFont'],
-      sans: ['Poppins', 'Roboto', 'sans-serif'],
+      sans: ['Poppins', 'Arial'],
     },
-  },
-  variants: {
-    opacity: ['responsive'],
-    borderWidth: ['responsive', 'hover', 'group-hover'],
-    backgroundColor: ['responsive', 'hover', 'group-hover'],
-    textDecoration: ['responsive', 'hover', 'group-hover'],
-    textColor: ['responsive', 'hover', 'group-hover', 'dark'],
-    fontFamily: ['responsive', 'hover', 'focus'],
-    fill: ['responsive', 'hover', 'focus'],
-    spacing: ['responsive', 'last'],
-    typography: ['responsive', 'dark'],
   },
   plugins: [forms, typography],
 };

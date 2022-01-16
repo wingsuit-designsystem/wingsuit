@@ -9,10 +9,24 @@
 
 {# Defaults #}
 {% set width = width|default('default') %}
-{% set padding_x = width != 'full' ? padding_x|default('default') : '' %}
-{% set padding_bottom = padding_bottom|default('default') %}
 
-{# SETTINGS #}
+{#
+  Padding x defaults:
+  The container x padding is allways "default" for all widhts.
+  Only width "full" removes the padding_x completly.
+#}
+{% set padding_x = width != 'full' ? padding_x|default('default') : '' %}
+
+{#
+  Padding top/bottom defaults:
+  Very basic logic for vertical spacing. Each "auto" container has a default spacing to bottom.
+  If a background color is adjusted a "default" padding to top is adjusted.
+  The user can allways overwrite the this behavior.
+#}
+{% set padding_top = padding_top|default('auto') == 'auto' and bg is not empty ? 'default' : padding_top %}
+{% set padding_bottom = padding_bottom|default('auto') == 'auto' ? 'default' : padding_bottom %}
+
+{# Settings #}
 {% set bg_classes = ([
   'relative',
   pattern_configuration('container', '', 'bg')[bg]
@@ -25,7 +39,7 @@
   pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
   pattern_configuration('container', '', 'width')[width],
   classes,
-  'mx-auto'
+  'mx-auto w-full'
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()) %}

@@ -2,20 +2,10 @@ slider:
   use: "@organisms/slider/slider.twig"
   label: Slider
   extends:
-    - container.settings
   icon_path: ws-assets://images/slider-icon.svg
   description: Javascript slider with splide (https://splidejs.com/).
     Change the slider behavior in slider.behavior.js.
   fields:
-    header:
-      type: pattern
-      label: Section Header
-      description: Optional header
-      preview:
-        id: rich_text
-        variant: default
-        fields:
-          text: '<h2 class="text-center section-header">Headline</h2>'
     items:
       type: pattern
       label: Slider items
@@ -31,38 +21,19 @@ slider:
           position: bottom_left
         - id: banner
           position: bottom_left
-  variants:
-    1:
-      label: Single slide
-    2:
-      label: Two slides
-    3:
-      label: Three slides
-    4:
-      label: Four slides
   settings:
+    slides_per_view:
+      type: select
+      label: Slides per view
+      options:
+        1: 1
+        2: 2
+        3: 3
+      default_value: 1
     autoplay:
       type: boolean
       label: Autoplay
       default_value: false
-    bullet_spacing:
-      type: select
-      label: Bullet spacing
-      default_value: none
-      options:
-        none: None
-        default: Default
-    pagination_spacing:
-      type: select
-      label: Pagination spacing
-      default_value: none
-      options:
-        none: None
-        default: Default
-  configuration:
-    pagination_spacing:
-      none: ''
-      default: 'splide__pagination__spacing-default'
   libraries:
     - pattern_slider:
         js:

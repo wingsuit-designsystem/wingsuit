@@ -1,4 +1,3 @@
-import PatternVariant from '../src/PatternVariant';
 import Pattern from '../src/Pattern';
 import PatternStorage from '../src/PatternStorage';
 

@@ -1,4 +1,5 @@
 import 'protons';
+import './images/mariage.png';
 
 const tokens = require('wsdata/homepage/tokens.yml');
 const component = require('wsdata/homepage/component.yml');

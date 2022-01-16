@@ -9,7 +9,7 @@
 
     <div x-data="{feature: null, key: '{{ data|first.key }}'}">
       <div class="pb-10">
-      {% include "@atoms/rich-text/rich-text.twig" with {text: content, variant: 'large'} only %}
+      {% include "@atoms/rich-text/rich-text.twig" with {text: content, variant: 'large', text_align: content_align, width: content_width} only %}
       </div>
       {% if badge_headline is not empty %}
         <div class="pb-2">
@@ -25,11 +25,12 @@
         {% for item in data %}
           {% include "@atoms/badge/badge.twig" with {
             text: item.title, variant: 'default',
-            round: true,
+            round: false,
+            expand: true,
             attributes: create_attribute().setAttribute(
               '@click', 'key=\'' ~ item.key ~'\''
             ).setAttribute (
-              ':class', "{ 'bg-black text-white': key === '" ~ item.key ~ "' }"
+              ':class', "{ 'bg-black text-white dark:bg-white dark:text-black': key === '" ~ item.key ~ "' }"
             )
           } only %}
         {% endfor %}
@@ -49,12 +50,13 @@
           {% if item.contents|length > 0 %}
           <div x-data="{key: '{{ item.contents|first.key }}'}">
             <div {{ create_attribute().addClass([
-              'pb-4',
+              'pb-4 flex space-x-3',
               item.contents|length == 1 ? 'hidden'
             ]) }}>
               {% for content in item.contents %}
                 {% include "@atoms/badge/badge.twig" with {
                   text: content.title, variant: 'default',
+                  expand: true,
                   attributes: create_attribute().setAttribute(
                     '@click', 'key=\'' ~ content.key ~'\''
                   ).setAttribute (
@@ -101,7 +103,7 @@
             {% include "@atoms/rich-text/rich-text.twig" with {text: item.intro, variant: 'large'} only %}
             </div>
           {% endif %}
-          <div class="pt-8">
+          <div>
             {% embed "@organisms/grid/grid.twig" with {
               columns: code_block|trim and content|trim is not empty ? 2 : 1,
               cells: [
@@ -112,7 +114,6 @@
             {% endembed %}
           </div>
         </div>
-
       {% endfor %}
     </div>
     {{ content_bottom }}

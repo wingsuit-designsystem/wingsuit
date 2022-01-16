@@ -9,6 +9,7 @@
 {# DEFAULTS #}
 
 {% set position = position|default('center_center') %}
+{% set image_position = image_position|default('center_center') %}
 
 {# SETTINGS #}
 {% set position_classes =  {
@@ -23,11 +24,31 @@
   'bottom_right': 'text-right items-end justify-end',
 } %}
 
+{% set image_position_classes =  {
+  'top_left': 'img-object-left-top',
+  'top_center': 'img-object-top',
+  'top_right': 'img-object-right-top',
+  'center_left': 'img-object-left',
+  'center_center': 'img-object-center',
+  'center_right': 'img-object-right',
+  'bottom_left': 'img-object-left-bottom',
+  'bottom_center': 'img-object-bottom',
+  'bottom_right': 'img-object-right-bottom',
+} %}
+
+{%
+set height_classes = [
+  'img-w-full img-h-full img-object-cover overflow-hidden',
+  height == 'small' ? 'h-[300px] md:h-[300px]',
+  height == 'default' ? 'h-[400px] md:h-[500px]',
+  height == 'large' ? 'h-[600px] md:h-[800px]',
+]|sort|join(' ')
+%}
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {# Template #}
 <div{{ attributes|default(create_attribute()).addClass('relative') }}>
-  {{ image }}
+  <div{{ create_attribute().addClass(height_classes).addClass(image_position_classes[image_position]) }}>{{ image }}</div>
   <div class="absolute top-0 left-0 w-full h-full flex">
     {% embed "@organisms/container/container.twig" with {region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position]}  only %}
       {% block content %}

@@ -2,17 +2,21 @@
 core:
   css:
     theme:
-      css/_drupal-styles.css:
-        preprocess: true
       ws-assets://tokens.css:
         preprocess: true
-      ws-assets://hamburger.css:
+      ws-assets://image.css:
         preprocess: true
+      ws-assets://menu-primary.css:
+        preprocess: true
+
   js:
     ws-assets://vendors/alpine.js:
+      preprocess: true
+    ws-assets://behaviors/menu-primary.js:
       preprocess: true
 
   # see all in Drupal's `core/core.libraries.yml`
   dependencies:
     - core/drupal
     - core/drupalSettings
+    - drimage/drimage

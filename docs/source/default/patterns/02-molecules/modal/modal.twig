@@ -1,9 +1,19 @@
-<div class="h-screen w-full flex flex-col items-center justify-center bg-teal-300 font-sans">
-  <div v-if="modal.visible" @click.self="modal.visible = false" class="h-screen w-full absolute flex items-center justify-center bg-modal">
-    <div class="bg-white rounded shadow p-8 m-4 max-w-xs max-h-full text-center overflow-y-scroll">
-      <div class="mb-4">
-        <p>{{ content }}</p>
+<div class="z-30 fixed h-screen w-full flex flex-col items-center justify-center bg-green-200 hidden"
+:class="{'hidden': !$store.modal.visible}"
+>
+  {% embed "@organisms/container/container.twig" with {
+    "width": 'large'
+  }%}
+    {% block content %}
+      <div class="relative w-full" style="padding-top: 56.25%">
+        <iframe name="youtube embed" allow="autoplay; encrypted-media" class="absolute inset-0 w-full h-full" x-bind:src="$store.modal.url" frameborder="0" allowfullscreen></iframe>
       </div>
-    </div>
+    {% endblock %}
+  {% endembed %}
+  <div class="absolute top-8 right-8 cursor-pointer" @click="$store.modal.visible = false">
+    {% include "@atoms/svg/svg.twig" with {
+      "icon": 'close',
+      "size": "w-6 h-6"
+    } %}
   </div>
 </div>

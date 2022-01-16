@@ -5,8 +5,7 @@
  *here we have different types of alert with different colors for every situation.
  * See _alert.wingsuit.yaml for documentation.
  */
-#}
-
+#}234512
 {# VARIANTS #}
 {% set classes = ([
   "p-5 w-full border-l-4",
@@ -23,7 +22,7 @@
     <div class="flex-none">
     {% include "@atoms/svg/svg.twig" with {
       "icon": "alert--" ~ variant,
-      "size": "w-6 h-6"
+      "size": "medium"
     } only %}
     </div>
     <div class="leading-tight flex flex-col space-y-2">

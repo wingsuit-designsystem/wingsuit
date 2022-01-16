@@ -7,3 +7,8 @@ badge:
       type: text
       label: Text
       preview: Text
+  settings:
+    round:
+      type: boolean
+      label: Round
+      default_value: true
