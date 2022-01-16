@@ -1,12 +1,13 @@
 const forms = require('@tailwindcss/forms');
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
-  modifiers: ['lg', '2xl'],
+  modifiers: ['lg', '2xl', 'dark'],
 });
 
 module.exports = {
   important: false,
   mode: 'jit',
+  darkMode: 'class',
   purge: {
     layers: ['utilities'],
     content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
@@ -60,16 +61,35 @@ module.exports = {
             h2: {
               fontSize: '3rem',
             },
+          },
+        },
+        lg: {
+          css: {
+            p: {
+              fontWeight: 500,
+            },
             h1: {
-              fontWeight: 600,
+              fontSize: '2.5rem',
             },
           },
         },
+
         DEFAULT: {
           css: {
             color: theme('colors.black'),
             '[class~="lead"]': {
               color: theme('colors.black'),
+            },
+          },
+        },
+        dark: {
+          css: {
+            color: theme('colors.white'),
+            '[class~="lead"]': {
+              color: theme('colors.white'),
+            },
+            h2: {
+              color: theme('colors.white'),
             },
           },
         },

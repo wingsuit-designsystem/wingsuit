@@ -114,7 +114,7 @@
     <link rel="yandex-tableau-widget" href="/favicons/yandex-browser-manifest.json">
 
   </head>
-  <body x-data="{ isScrollDown: false, menuIsOpen: false }">
+  <body x-data="{ menuIsOpen: false, modal: { visible: false, url:''} }">
     {{ content }}
 
     <script type="text/javascript">
@@ -131,5 +131,6 @@
         Drupal.behaviors[key].attach(document);
       });
     </script>
+    {% include "@molecules/modal/modal.twig" only%}
   </body>
 </html>

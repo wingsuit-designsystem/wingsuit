@@ -1,13 +1,14 @@
 import React from 'react';
-import { storage, renderer, Pattern, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { storage, renderer, Pattern, IRenderer } from '@wingsuit-designsystem/pattern';
 import { configure as storybookConfigure, storiesOf } from '@storybook/react';
 import {
   Title,
   Subtitle,
   DocsStory,
+  Stories,
   ArgsTable,
   CURRENT_SELECTION,
-} from '@storybook/addon-docs/blocks';
+} from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import '@storybook/addon-docs/register';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
@@ -19,21 +20,23 @@ import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
 ReactSyntaxHighlighter.registerLanguage('twig', twig);
-
+export interface PatternEvents {
+  alterPattern: (pattern: Pattern) => Pattern;
+  alterStory: (story: any) => any;
+}
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
-  let knobsOption = {};
+  let controls = {};
 
   if (setting.isRequired() === false) {
-    knobsOption = {
-      Empty: '',
+    controls = {
+      '': 'Empty',
     };
   }
   Object.keys(options).forEach((key) => {
-    const paramKey = options[key] != null ? options[key] : key;
-    knobsOption[paramKey] = key;
+    controls[key] = options[key];
   });
-  return knobsOption;
+  return controls;
 }
 
 export function configure(
@@ -41,20 +44,29 @@ export function configure(
   storybookContext,
   dataContext,
   templateContext,
-  namespaces
+  namespaces,
+  renderImpl: IRenderer | null,
+  events: PatternEvents | null
 ) {
   storage.setNamespaces(namespaces);
   storage.createDefinitionsFromMultiContext(storybookContext);
   storage.createTwigStorageFromContext(templateContext);
   storage.createGlobalsFromContext(dataContext);
-  renderer.setRenderer(new TwingRenderer());
+  if (renderImpl != null) {
+    renderer.setRenderer(renderImpl);
+  }
+  renderer.initializeRenderer();
+  const stories: any = [];
   storybookConfigure(() => {
     // Load stories from wingusit.yml.
     const patternIds = storage.getPatternIds();
     patternIds.forEach((patternId) => {
-      const pattern = storage.loadPattern(patternId);
-      if (pattern.isVisible('storybook')) {
-        getStories(pattern, module);
+      let pattern = storage.loadPattern(patternId);
+      if (events != null) {
+        pattern = events.alterPattern(pattern);
+      }
+      if (pattern !== null && pattern.isVisible('storybook')) {
+        stories.push(getStories(pattern, module));
       }
     });
 
@@ -62,15 +74,27 @@ export function configure(
     const allExports: any = [];
     if (Array.isArray(storybookContext) === false) {
       storybookContext.keys().forEach((key) => {
-        if (storybookContext(key).default !== null) {
-          allExports.push(storybookContext(key));
+        const storyContext = storybookContext(key);
+        if (storyContext.default !== null) {
+          if (events != null) {
+            storyContext.default = events.alterStory(storybookContext(key).default);
+          }
+          if (storyContext.default !== null) {
+            allExports.push(storyContext);
+          }
         }
       });
     } else {
       storybookContext.forEach((innerContext) => {
         innerContext.keys().forEach((key) => {
-          if (innerContext(key).default != null) {
-            allExports.push(innerContext(key));
+          const storyContext = innerContext(key);
+          if (storyContext.default != null) {
+            if (events != null) {
+              storyContext.default = events.alterStory(storyContext.default);
+            }
+            if (storyContext.default !== null) {
+              allExports.push(storyContext);
+            }
           }
         });
       });
@@ -100,31 +124,29 @@ function getArgs(defaultArgs, variant) {
   return resultArgs;
 }
 function getArgTypes(variant) {
-  const argTypes: any = {
-    SETTINGS: {
-      name: 'SETTINGS:',
-      type: 'string',
-      table: {
-        defaultValue: { summary: null },
-      },
-      control: null,
-    },
-  };
+  const argTypes: any = {};
   let hasSettings = false;
+
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
 
-    if (setting.isEnable() && setting.getType() !== 'group') {
+    if (
+      setting.isEnable() &&
+      setting.getType() !== 'group' &&
+      setting.getType() !== 'media_library'
+    ) {
       hasSettings = true;
       argTypes[key] = {
         name: key,
         type: {
+          type: 'string',
           required: setting.isRequired(),
         },
         table: {
           defaultValue: { summary: setting.getPreview() },
+          category: 'Settings',
         },
-        defaultValue: setting.getPreview(),
+        defaultValue: setting.getDefaultValue(),
         description: `${setting.getLabel()} ${
           setting.getDescription() !== '' ? ` - ${setting.getDescription()}` : ''
         }`,
@@ -138,8 +160,9 @@ function getArgTypes(variant) {
         argTypes[key].description += `<br>Option keys: ${Object.keys(setting.getOptions()).join(
           ', '
         )}`;
+        argTypes[key].options = Object.keys(getStorybookControlsOptions(setting));
         argTypes[key].control = {
-          options: getStorybookControlsOptions(setting),
+          labels: getStorybookControlsOptions(setting),
           type: setting.getType() === 'radio' ? 'radio' : 'select',
         };
       } else if (setting.getType() === 'boolean') {
@@ -160,7 +183,7 @@ function getArgTypes(variant) {
       }
     }
   });
-  if (hasSettings === false) {
+  if (!hasSettings) {
     delete argTypes.SETTINGS;
   } else {
     argTypes.SEP = {
@@ -172,17 +195,7 @@ function getArgTypes(variant) {
       control: null,
     };
   }
-  argTypes.FIELDS = {
-    name: 'FIELDS:',
-    description: null,
-    type: 'string',
-    table: {
-      defaultValue: { summary: null },
-    },
-    control: {
-      type: '',
-    },
-  };
+
   let hasFields = false;
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
@@ -190,6 +203,9 @@ function getArgTypes(variant) {
       hasFields = true;
       argTypes[key] = {
         name: key,
+        table: {
+          category: 'Fields',
+        },
         type: {
           required: false,
         },
@@ -203,7 +219,7 @@ function getArgTypes(variant) {
         argTypes[key].control = {
           type: 'object',
         };
-      } else if (field.getType() === 'pattern') {
+      } else if (field.getType() === 'pattern' || field.getType() === 'media_library') {
         argTypes[key].type.name = 'boolean';
         argTypes[key].defaultValue = true;
         argTypes[key].control = {
@@ -217,7 +233,7 @@ function getArgTypes(variant) {
       }
     }
   });
-  if (hasFields === false) {
+  if (hasFields) {
     delete argTypes.FIELDS;
     delete argTypes.SEP;
   }
@@ -231,26 +247,30 @@ function getStories(pattern: Pattern, module) {
   Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
     const variant = pattern.getVariant(variantKey);
     const argTypes = getArgTypes(variant);
+    const twigFile = storage.findTwigById(variant.getPattern().getId());
+    const stories = process.env.STORYBOOK_DOCS === 'true' ? <Stories /> : null;
     let parameters = {
       argTypes,
-      component: PatternPreview,
-      notes: variant.getDescription(),
       docs: {
+        source: {
+          code: twigFile.default,
+        },
         page: () => (
           <>
             <Title />
             <Subtitle>
               <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
             </Subtitle>
-            <DocsStory id={CURRENT_SELECTION} />
+            <DocsStory id={variant.getStoryId()} />
             <ArgsTable story={CURRENT_SELECTION} />
             <PatternInclude variant={variant} />
+            {stories}
           </>
         ),
+
         storyDescription: variant.getDescription(),
       },
     };
-
     parameters = Object.assign(parameters, pattern.getParameters());
 
     story.add(
@@ -276,5 +296,4 @@ export { RenderTwig, PatternPreview } from '@wingsuit-designsystem/pattern-react
 export { default as PatternLoad } from './docs/PatternLoad';
 export { default as Spacing } from './docs/Spacing';
 export { default as Typeset } from './docs/Typeset';
-export { default as wingsuitTheme } from './theme';
 export { PatternDoc, PatternProperties, PatternInclude };

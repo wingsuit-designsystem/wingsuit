@@ -84,6 +84,8 @@ menu:
           - title: DRUPAL
             url: "/drupal/ui_patterns"
             below:
+              - title: Thinking in Components!
+                url: "/drupal/overview"
               - title: Wingsuit Kickstarter
                 url: "/drupal/ui_patterns"
           - title: DOCUMENTATION

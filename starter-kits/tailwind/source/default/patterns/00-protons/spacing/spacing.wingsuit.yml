@@ -20,7 +20,9 @@ spacing:
       type: select
       label: Padding top
       group: tab_spacing
+      default_value: auto
       options:
+        auto: Auto
         small: Small
         default: Default
         large: Large
@@ -28,8 +30,9 @@ spacing:
       type: select
       label: Padding bottom
       group: tab_spacing
-      default_value: default
+      default_value: auto
       options:
+        auto: Auto
         small: Small
         default: Default
         large: Large

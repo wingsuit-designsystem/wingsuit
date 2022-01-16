@@ -2,10 +2,7 @@
   with {
   primary_menu: pattern_preview('menu', {}, 'primary'),
   language_select: pattern_preview('language_select'),
-  footer_menu_1: pattern_preview('menu', {}, 'footer'),
-  footer_menu_2: pattern_preview('menu', {}, 'footer'),
-  footer_menu_3: pattern_preview('menu', {}, 'footer'),
-  footer_menu_4: pattern_preview('menu', {}, 'footer')
+  footer_menu: pattern_preview('menu', {}, 'footer'),
 } %}
   {% block main %}
     {% embed "@organisms/section/section.twig" with { columns: 1 } %}
@@ -36,6 +33,7 @@
         {{ pattern_preview('accordion_item') }}
       {% endblock %}
     {% endembed %}
+
     {% embed "@organisms/section/section.twig" with { columns: 1, display_header_region: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Banner</h2>" }%}
@@ -44,7 +42,7 @@
         {{ pattern_preview('banner') }}
       {% endblock %}
     {% endembed %}
-    {% embed "@organisms/section/section.twig" with { columns: 3, equal_height: true } %}
+    {% embed "@organisms/section/section.twig" with { columns: 3, equal_height: true, display_header_region: true } %}
       {% block header%}
         {% include "@atoms/rich-text/rich-text.twig" with { text: "<h2 class=text-center>Cards</h2>" }%}
       {% endblock %}

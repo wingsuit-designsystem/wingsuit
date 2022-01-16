@@ -9,13 +9,32 @@
 
 {# TEMPLATE #}
 
+{% if data %}
+  {% for item in data %}
+    {% if item.content %}
+      {% set content = item.content %}
+    {% endif %}
+    {% if item.text %}
+      {% set text = item.text %}
+    {% endif %}
+    {% if item.buttons %}
+      {% set buttons = item.buttons %}
+    {% endif %}
+    {% if item.image %}
+      {% set image = item.image %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 <section class="pt-16 md:pt-28">
-  {% embed "@organisms/container/container.twig" with {buttons: buttons, text: text, padding_bottom: 'small'} only %}
+    {% embed "@organisms/container/container.twig" with {buttons: buttons, text: text, padding_bottom: 'small'} only %}
     {% block content %}
       {% include "@atoms/rich-text/rich-text.twig" with {text: text, variant: 'large' } only %}
-      <div class="flex space-x-4 py-8 lg:py-14">
-        {{ buttons }}
-      </div>
+      {% if buttons != ' ' %}
+        <div class="flex space-x-4 py-8 lg:py-14">
+          {{ buttons }}
+        </div>
+      {% endif %}
     {% endblock %}
   {% endembed %}
   {% embed "@organisms/container/container.twig" with {image:image, width: 'large'} only %}

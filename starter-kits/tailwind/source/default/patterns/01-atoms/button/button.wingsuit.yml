@@ -36,9 +36,9 @@ button:
         medium: text-base
         large: text-xl
       icon:
-        small: w-4 h-4
-        medium: w-5 h-5
-        large: w-6 h-6
+        small: small
+        medium: medium
+        large: large
   settings:
     size:
       type: select

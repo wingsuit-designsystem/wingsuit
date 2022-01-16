@@ -1,4 +1,5 @@
 import { getAppNames, resolveConfig } from '@wingsuit-designsystem/core';
+import version from './version';
 
 const inquirer = require('inquirer');
 
@@ -23,13 +24,19 @@ export default function (options, environment) {
   };
   const startApp = async () => {
     const appName = await getAppName();
+    const { outputDir, docs } = options;
     try {
       const appConfig = resolveConfig(appName, environment);
-      const console = appConfig.startup();
+      const consoleCommand =
+        (docs !== true
+          ? appConfig.startup()
+          : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`) +
+        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '');
+      version({});
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);
       logger.info('');
-      const command = spawn(console, [], { shell: true, stdio: 'inherit' });
+      const command = spawn(consoleCommand, [], { shell: true, stdio: 'inherit' });
       command.on('close', (code) => {
         logger.log(`${code}`);
       });

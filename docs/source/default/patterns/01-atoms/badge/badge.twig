@@ -20,6 +20,12 @@
 {#
   Template
 #}
-<div {{ attributes.addClass(['md:text-2xl font-sans font-medium cursor-pointer border-2 px-4 text-center py-1 inline-block rounded-full border-black'] | sort | join(' ') | trim) }}>
+<div {{ attributes.addClass(
+  [
+    'md:text-2xl font-sans font-medium cursor-pointer border-2 px-4 text-center py-1 border-black dark:text-white dark:border-white',
+    round == true ? 'rounded-full',
+    expand == true ? 'flex-1 flex flex-col justify-center' : 'inline-block'
+
+  ] | sort | join(' ') | trim) }}>
   {{ text }}
 </div>

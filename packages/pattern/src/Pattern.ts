@@ -15,6 +15,14 @@ export default class Pattern {
     return this.label;
   }
 
+  public getIconPath(): string {
+    return this.iconPath;
+  }
+
+  public setIconPath(iconPath): void {
+    this.iconPath = iconPath;
+  }
+
   public getNamespace(): string {
     return this.namespace;
   }
@@ -40,6 +48,8 @@ export default class Pattern {
   private label: string;
 
   private description: string;
+
+  private iconPath: string;
 
   private namespace: string;
 
@@ -77,6 +87,7 @@ export default class Pattern {
     this.visible = definition.visible;
     this.storage = storage;
     this.use = definition.use;
+    this.iconPath = definition.icon_path?.replace('ws-assets://', '');
     this.namespace = definition.namespace;
     this.parameters = definition.parameters;
     this.definition = definition;
@@ -212,8 +223,14 @@ export default class Pattern {
         if (variantDefinition.settings != null) {
           Object.keys(variantDefinition.settings).forEach((key: string) => {
             const setting: Setting = variant.getSetting(key);
-            setting.setPreview(variantDefinition.settings[key]);
-            setting.setEnable(false);
+            if (setting) {
+              setting.setPreview(variantDefinition.settings[key]);
+              setting.setEnable(false);
+            } else {
+              console.warn(
+                `Invalid variant configuration. Setting with ${key} doesn't exists in variant. ${variant.getId()}`
+              );
+            }
           });
         }
         if (variantDefinition.fields != null) {

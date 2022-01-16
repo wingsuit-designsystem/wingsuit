@@ -3,7 +3,7 @@ import { AppConfig } from '../../index';
 
 const fs = require('fs-extra');
 const path = require('path');
-const jsondiff = require('jsondiffpatch');
+const jsondiff = require('json-diff');
 
 export default class Svg2JsonPlugin {
   private readonly sourceFolder: string;
@@ -38,7 +38,7 @@ export default class Svg2JsonPlugin {
       fs.readJson(filename, (readerr, existingJson) => {
         if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
         // Only write output if there is a difference or non-existent target file
-        if (jsondiff.diff(existingJson, output)) {
+        if (jsondiff.diff(existingJson, output) !== undefined) {
           fs.outputJson(filename, output, (writeerr) => {
             if (writeerr) console.error(writeerr);
           });

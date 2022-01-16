@@ -11,6 +11,7 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
+
 {% set content %}{% block content %}{{ content }}{% endblock %}{% endset %}
 {% set headline %}{% block headline %}{{ headline }}{% endblock %}{% endset %}
 
@@ -20,13 +21,15 @@
 {% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': width } %}
   {% block content %}
     <div class="text-gray-dark">
-      {% include "@atoms/headline/headline.twig" with {
+      {% embed "@atoms/rich-text/rich-text.twig" with {
         headline: headline,
-        variant: 'h1'
+        content: content
       } only %}
-    </div>
-    <div class="pt-8">
-      {{ content }}
+        {% block text %}
+          <h1>{{ headline }}</h1>
+          <div>{{ content }}</div>
+        {% endblock %}
+      {% endembed %}
     </div>
   {% endblock %}
 {% endembed %}

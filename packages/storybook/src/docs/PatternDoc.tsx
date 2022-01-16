@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { Heading, Preview } from '@storybook/addon-docs/blocks';
+import { Heading, Preview } from '@storybook/addon-docs';
 import { Pattern } from '@wingsuit-designsystem/pattern';
 
 import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';

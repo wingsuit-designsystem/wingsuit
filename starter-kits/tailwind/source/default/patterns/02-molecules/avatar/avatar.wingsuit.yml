@@ -1,17 +1,10 @@
 avatar:
   use: "@molecules/avatar/avatar.twig"
   label: Avatar
+  icon_path: ws-assets://images/avatar-icon.svg
+  allow_variant_expose: true
   description: "An avatar represent a user, and displays the profile picture."
   fields:
-    image:
-      type: pattern
-      label: Image
-      description: The profile picture.
-      preview:
-        id: placeholder
-        variant: image
-        settings:
-          style: 1x1_xs_sc
     text:
       type: text
       label: Text
@@ -33,8 +26,18 @@ avatar:
         variant: default
         settings:
           expanded: true
-
   settings:
+    image:
+      type: media_library
+      label: Image
+      description: The profile picture.
+      view_mode: 1x1
+      allow_expose: true
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: responsive_1_1_400w
     text_align:
       type: select
       label: Text align
@@ -49,10 +52,12 @@ avatar:
       description: Show
     horizontal:
       label: Horizontal
-      fields:
+      settings:
         image:
           id: placeholder
-          variant: image
+          variant: background
+          definition:
+            view_mode: background
           settings:
-            style: 1x2_xs_sc
+            style: responsive_1_3_200w
 
