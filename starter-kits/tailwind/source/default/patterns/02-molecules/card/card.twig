@@ -38,23 +38,12 @@
     </div>
   {% endif %}
   <div class="p-6 flex-1">
-    {% embed "@atoms/rich-text/rich-text.twig" with {
-      headline_element: headline_element,
+    {% include "@molecules/rich-snippet/rich-snippet.twig" with {
+      preheadline: preheadline,
       headline: headline,
+      headline_tag: headline_tag,
       text: text
     } only %}
-    {% block text %}
-      <{{ headline_element }}>
-        <div{{ region_attributes.preheadline|default(create_attribute()).addClass('text-sm font-normal') }}>
-          {{ preheadline }}
-        </div>
-        {{ headline }}
-      </{{ headline_element }}>
-      <div>
-        {{ text }}
-      </div>
-    {% endblock %}
-    {% endembed %}
     <div class="mt-8">
       {{ button }}
     </div>
