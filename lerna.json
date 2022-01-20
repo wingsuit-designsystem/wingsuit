@@ -7,7 +7,7 @@
     "examples/*",
     "starter-kits/*"
   ],
-  "version": "1.2.0-alpha.8",
+  "version": "1.2.0-alpha.9",
   "registry": "https://registry.npmjs.org",
   "npmClient": "yarn"
 }
