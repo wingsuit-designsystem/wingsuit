@@ -3,7 +3,6 @@ import { AppConfig } from '../../index';
 
 const fs = require('fs-extra');
 const path = require('path');
-const jsondiff = require('json-diff');
 
 export default class Svg2JsonPlugin {
   private readonly sourceFolder: string;
@@ -32,19 +31,19 @@ export default class Svg2JsonPlugin {
       files.forEach((file) => {
         svgs.push(path.basename(file, '.svg'));
       });
-      const output = { svgs };
+      const output = JSON.stringify({ svgs } );
       // Plugins are null after restoring from file system.
       // Infinite loop.
-      fs.readJson(filename, (readerr, existingJson) => {
+      fs.readFile(filename, (readerr, buffer) => {
         if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
         // Only write output if there is a difference or non-existent target file
-        if (jsondiff.diff(existingJson, output) !== undefined) {
-          fs.outputJson(filename, output, (writeerr) => {
+        const existingJson = buffer.toString()
+        if (output !== existingJson) {
+          fs.writeFile(filename, output, (writeerr) => {
             if (writeerr) console.error(writeerr);
           });
         }
       });
-      callback(null);
     };
 
     if (compiler.hooks) {

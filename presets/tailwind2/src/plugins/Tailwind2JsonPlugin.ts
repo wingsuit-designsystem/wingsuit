@@ -1,6 +1,5 @@
 const fs = require('fs-extra');
 const path = require('path');
-const jsondiff = require('json-diff');
 const resolveConfig = require('tailwindcss/resolveConfig');
 
 export default class Tailwind2JsonPlugin {
@@ -21,14 +20,16 @@ export default class Tailwind2JsonPlugin {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const tailwindConfig = require(this.tailwindConfig);
       const filename = this.targetFilePath;
-      const output = { tailwind: { theme: resolveConfig(tailwindConfig).theme } };
+      const output = JSON.stringify({ tailwind: { theme: resolveConfig(tailwindConfig).theme } });
       // Plugins are null after restoring from file system.
       // Infinite loop.
-      fs.readJson(filename, (readerr, existingJson) => {
+
+      fs.readFile(filename, (readerr, buffer) => {
         if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
         // Only write output if there is a difference or non-existent target file
-        if (jsondiff.diff(existingJson, output) !== undefined) {
-          fs.outputJson(filename, output, (writeerr) => {
+        const existingJson = buffer.toString()
+        if (output !== existingJson) {
+          fs.writeFile(filename, output, (writeerr) => {
             if (writeerr) console.error(writeerr);
           });
         }
