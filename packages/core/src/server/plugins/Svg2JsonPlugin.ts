@@ -1,7 +1,7 @@
 import { glob } from 'glob';
 import { AppConfig } from '../../index';
+import { syncSilo } from "../../index";
 
-const fs = require('fs-extra');
 const path = require('path');
 
 export default class Svg2JsonPlugin {
@@ -31,19 +31,9 @@ export default class Svg2JsonPlugin {
       files.forEach((file) => {
         svgs.push(path.basename(file, '.svg'));
       });
-      const output = JSON.stringify({ svgs } );
-      // Plugins are null after restoring from file system.
-      // Infinite loop.
-      fs.readFile(filename, (readerr, buffer) => {
-        if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
-        // Only write output if there is a difference or non-existent target file
-        const existingJson = buffer.toString()
-        if (output !== existingJson) {
-          fs.writeFile(filename, output, (writeerr) => {
-            if (writeerr) console.error(writeerr);
-          });
-        }
-      });
+      const data = { svgs };
+      syncSilo(filename, data);
+      callback(null);
     };
 
     if (compiler.hooks) {

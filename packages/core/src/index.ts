@@ -1,14 +1,18 @@
+import path from "path";
+
+const fs = require('fs-extra');
+
 import PresetManager from './server/PresetManager';
 
 import AppConfig from './AppConfig';
 
-import { getConfigBase, resolveConfig } from './resolveConfig';
+import {getConfigBase, resolveConfig} from './resolveConfig';
 
-export { default as AppConfig } from './AppConfig';
+export {default as AppConfig} from './AppConfig';
 
-export { resolveConfig } from './resolveConfig';
+export {resolveConfig} from './resolveConfig';
 
-export { default as PresetManager } from './server/PresetManager';
+export {default as PresetManager} from './server/PresetManager';
 
 const presetManager = new PresetManager();
 
@@ -44,7 +48,7 @@ export function invokePreset(funcName, config) {
       if (def.preset[funcName] !== undefined && executed[def.name] === undefined) {
         const defaultConfig =
           def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
-        const finalConfig = { ...defaultConfig, ...config };
+        const finalConfig = {...defaultConfig, ...config};
         result[appConfig.name] = def.preset[funcName](apps, finalConfig);
         executed[def.name] = true;
       }
@@ -54,7 +58,7 @@ export function invokePreset(funcName, config) {
 }
 
 export function getAppTypes(wingsuitConfig: any = null) {
-  const { mergedConfig } = getConfigBase();
+  const {mergedConfig} = getConfigBase();
   const names: string[] = [];
   Object.keys(mergedConfig.apps).forEach((name) => {
     if (mergedConfig.apps[name].type === name) {
@@ -65,7 +69,7 @@ export function getAppTypes(wingsuitConfig: any = null) {
 }
 
 export function getApps(wingsuitConfig: any = null, environment = 'development'): AppConfig[] {
-  const { mergedConfig } = getConfigBase();
+  const {mergedConfig} = getConfigBase();
   const apps: AppConfig[] = [];
   Object.keys(mergedConfig.apps).forEach((name) => {
     const app = resolveConfig(name, environment, null, wingsuitConfig);
@@ -75,7 +79,7 @@ export function getApps(wingsuitConfig: any = null, environment = 'development')
 }
 
 export function getAppNames(wingsuitConfig: any = null, type = '') {
-  const { mergedConfig } = getConfigBase();
+  const {mergedConfig} = getConfigBase();
   const names: string[] = [];
   Object.keys(mergedConfig.apps).forEach((name) => {
     if (type === '' || type === mergedConfig.apps[name].type || name === type) {
@@ -83,4 +87,21 @@ export function getAppNames(wingsuitConfig: any = null, type = '') {
     }
   });
   return names;
+}
+
+export function syncSilo(filename, data) {
+  const output = JSON.stringify(data);
+  fs.readFile(filename, (readerr, buffer) => {
+    // Only write output if there is a difference or non-existent target file
+    const existingJson = buffer ? buffer.toString() : '';
+    if (readerr || output !== existingJson) {
+      const dir = path.dirname(filename);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+      fs.writeFile(filename, output, (writeerr) => {
+        if (writeerr) console.error(writeerr);
+      });
+    }
+  });
 }
