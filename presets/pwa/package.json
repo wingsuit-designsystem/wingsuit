@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-pwa",
-  "version": "1.2.0-alpha.10",
+  "version": "1.2.0-alpha.11",
   "description": "Wingsuit automatically generated favicons and progressive webapp enhancements preset.",
   "repository": {
     "type": "git",
