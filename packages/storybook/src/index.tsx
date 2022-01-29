@@ -26,7 +26,7 @@ export interface PatternEvents {
 }
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
-  let controls = {};
+  const controls = {};
 
   Object.keys(options).forEach((key) => {
     controls[key] = options[key];
