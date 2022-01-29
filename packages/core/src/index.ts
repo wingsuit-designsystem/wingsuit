@@ -97,7 +97,7 @@ export function syncSilo(filename, data) {
     if (readerr || output !== existingJson) {
       const dir = path.dirname(filename);
       if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
+        fs.mkdirSync(dir, { recursive: true });
       }
       fs.writeFile(filename, output, (writeerr) => {
         if (writeerr) console.error(writeerr);
