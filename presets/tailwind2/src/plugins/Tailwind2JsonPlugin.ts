@@ -1,4 +1,4 @@
-import {syncSilo} from "@wingsuit-designsystem/core";
+import { syncSilo } from '@wingsuit-designsystem/core';
 
 const resolveConfig = require('tailwindcss/resolveConfig');
 

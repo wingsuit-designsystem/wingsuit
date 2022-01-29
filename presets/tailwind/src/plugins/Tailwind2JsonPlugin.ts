@@ -1,7 +1,5 @@
-import {syncSilo} from "@wingsuit-designsystem/core";
+import { syncSilo } from '@wingsuit-designsystem/core';
 
-const fs = require('fs-extra');
-const path = require('path');
 const resolveConfig = require('tailwindcss/resolveConfig');
 
 export default class Tailwind2JsonPlugin {

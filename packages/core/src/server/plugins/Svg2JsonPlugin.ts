@@ -1,6 +1,5 @@
 import { glob } from 'glob';
-import { AppConfig } from '../../index';
-import { syncSilo } from "../../index";
+import { AppConfig, syncSilo } from '../../index';
 
 const path = require('path');
 
