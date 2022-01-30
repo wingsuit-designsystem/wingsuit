@@ -1,39 +1,11 @@
-import { configure, initJsBehaviors } from '@wingsuit-designsystem/storybook';
-import { TwingRenderer } from '@wingsuit-designsystem/pattern';
-import { addParameters } from '@storybook/react';
+# Showroom
+Storybook patterns overwhelm most customer. To provide only the patterns the customer needs Wingsuit (>=1.2)
+adds a showroom feature.
 
-const renderImpl = new TwingRenderer();
+To configure the structure of Wingsuit adds a alterStory and alterPattern hook. Open `apps/storybook/preview.js`:
 
-const namespaces = require('wsdesignsystem/namespaces');
-
-initJsBehaviors('Drupal');
-
-addParameters({
-  themes: {
-    list: [
-      { name: 'Dark', class: ['dark', 'bg-black'], color: '#000000' },
-      { name: 'Gray', class: ['bg-gray-100'], color: '#cecece' },
-    ],
-  },
-  options: {
-    storySort: {
-      method: 'alphabetical',
-      order: [
-        'Welcome',
-        'Layout',
-        'Tokens',
-        ['Colors', 'Typography', 'Scales'],
-        'Atoms',
-        'Molecules',
-        'Organisms',
-        'Templates',
-        'Pages',
-      ],
-      locales: 'en-US',
-    },
-  },
-});
-
+Here a sample for a Drupal Layout Builder centric project.
+```js
 configure(
   module,
   [
@@ -63,7 +35,6 @@ configure(
           section: 'Section',
           section_slider: 'Section',
           hero: 'Blocks',
-          banner: 'Blocks',
           card: 'Blocks',
           rich_text: 'Blocks',
           button_group: 'Blocks',
@@ -78,4 +49,16 @@ configure(
       return pattern;
     },
   }
-);
+```
+
+## Start storybook in showroom mode
+
+Run either
+```
+yarn ws build --docs
+```
+or execute
+```
+yarn ws dev --docs
+```
+to start storybook in dev mode.
