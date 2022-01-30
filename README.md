@@ -2,39 +2,6 @@
 <img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
-## Tailwind Jit and Postcss 8
-In Version`Wingsuit V1 PostCss8 and Jit compiler becomes default. 
-
-To upgrade your existing project:
-
-Step 1:
-```
-yarn add -D @storybook/addon-postcss
-yarn add -D @wingsuit-designsystem/preset-postcss8
-yarn add @tailwindcss/jit
-
-# Replace
-"tailwindcss": "npm:@tailwindcss/postcss7-compat"
-with:
-"tailwindcss": "^2.0.4"
-
-```
-Step 2:
-* Add `@wingsuit-designsystem/preset-postcss8` to your `wingsuit.config.js`
-* Follow PostCss instructions from https://storybook.js.org/addons/@storybook/addon-postcss
-
-Step 3:
-
-Adjust your postcss config. See https://github.com/wingsuit-designsystem/wingsuit/blob/master/starter-kits/tailwind/postcss.config.js
-## Upgrade from BETA.41 to rc.1
-
-Breaking changes:
-* From knobs to controls: 
-Replace `@storybook/addon-knobs` to `@storybook/addon-controls` in your apps/storybook/main.js
-* Twig functions `pattern_preview` and `pattern` are now compatible with UI Patterns functions
-The arguments order changed from `pattern, variant, variables` to `pattern, variable, variant`.
-So search for all `pattern_preview` and `pattern` methods and reorder the variables.
-
 # Build bulletproof TWIG Components in Storybook
 
 1.  Describe, develop and test your Pattern in storybook with [twing](https://www.npmjs.com/package/twing).
