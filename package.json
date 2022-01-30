@@ -66,10 +66,11 @@
     "examples/*"
   ],
   "optionalDependencies": {
-    "@cypress/webpack-preprocessor": "^5.1.2",
-    "cypress": "^4.7.0",
-    "verdaccio": "^4.5.1",
-    "verdaccio-auth-memory": "^9.4.0"
+    "@cypress/skip-test": "^2.6.1",
+    "@cypress/webpack-preprocessor": "^5.9.1",
+    "cypress": "8.7.0",
+    "ts-loader": "^8.0.14",
+    "verdaccio-auth-memory": "^9.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -137,6 +138,7 @@
     "wait-on": "^4.0.0"
   },
   "dependencies": {
+    "verdaccio": "^5.5.2",
     "window-size": "^1.1.1"
   }
 }

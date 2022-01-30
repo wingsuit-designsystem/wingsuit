@@ -10,6 +10,8 @@ import nodeCleanup from 'node-cleanup';
 
 import startVerdaccioServer from 'verdaccio';
 import pLimit from 'p-limit';
+// @ts-ignore
+import { maxConcurrentTasks } from './utils/concurrency';
 import { listOfPackages, Package } from './utils/list-packages';
 
 program
@@ -29,7 +31,9 @@ const startVerdaccio = (port: number) => {
     new Promise((resolve) => {
       const cache = path.join(__dirname, '..', '.verdaccio-cache');
       const config = {
-        ...yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'verdaccio.yaml'), 'utf8')),
+        ...(yaml.safeLoad(
+          fs.readFileSync(path.join(__dirname, 'verdaccio.yaml'), 'utf8')
+        ) as Record<string, any>),
         self_path: cache,
       };
 
@@ -46,16 +50,17 @@ const startVerdaccio = (port: number) => {
       setTimeout(() => {
         if (!resolved) {
           resolved = true;
-          rej(new Error(`TIMEOUT - verdaccio didn't start within 60s`));
+          rej(new Error(`TIMEOUT - verdaccio didn't start within 10s`));
         }
-      }, 60000);
+      }, 10000);
     }),
   ]);
 };
-const registryUrl = (command: string, url?: string) =>
+
+const registryUrlNPM = (url?: string) =>
   new Promise<string>((res, rej) => {
     const args = url ? ['config', 'set', 'registry', url] : ['config', 'get', 'registry'];
-    exec(`${command} ${args.join(' ')}`, (e, stdout) => {
+    exec(`npm ${args.join(' ')}`, { cwd: path.join(process.cwd(), '..') }, (e, stdout) => {
       if (e) {
         rej(e);
       } else {
@@ -64,8 +69,23 @@ const registryUrl = (command: string, url?: string) =>
     });
   });
 
+const registryUrlYarn = (url?: string) =>
+  new Promise<string>((res, rej) => {
+    const args = url
+      ? ['config', 'set', 'npmRegistryServer', url]
+      : ['config', 'get', 'npmRegistryServer'];
+    exec(`yarn ${args.join(' ')}`, { cwd: path.join(__dirname, '..') }, (e, stdout) => {
+      if (e) {
+        console.log(stdout.toString());
+        rej(e);
+      } else {
+        res(url || stdout.toString().trim());
+      }
+    });
+  });
+
 const registriesUrl = (yarnUrl?: string, npmUrl?: string) =>
-  Promise.all([registryUrl('yarn', yarnUrl), registryUrl('npm', npmUrl || yarnUrl)]);
+  Promise.all([registryUrlYarn(yarnUrl), registryUrlNPM(npmUrl || yarnUrl)]);
 
 const applyRegistriesUrl = (
   yarnUrl: string,
@@ -87,40 +107,36 @@ const applyRegistriesUrl = (
   return registriesUrl(yarnUrl, npmUrl);
 };
 
-const addUser = (url: string) =>
-  new Promise((res, rej) => {
-    logger.log(`👤 add temp user to verdaccio`);
-
-    exec(`npx npm-cli-adduser -r "${url}" -a -u user -p password -e user@example.com`, (e) => {
-      if (e) {
-        rej(e);
-      } else {
-        res();
-      }
-    });
-  });
-
 const currentVersion = async () => {
   const { version } = (await import('../lerna.json')).default;
   return version;
 };
 
 const publish = (packages: { name: string; location: string }[], url: string) => {
-  const limit = pLimit(3);
+  logger.log(`Publishing packages with a concurrency of ${maxConcurrentTasks}`);
+
+  const limit = pLimit(maxConcurrentTasks);
+  let i = 0;
 
   return Promise.all(
     packages.map(({ name, location }) =>
       limit(
         () =>
           new Promise((res, rej) => {
-            logger.log(`🛫 publishing ${name} (${location})`);
-            const command = `cd ${location} && npm publish --registry ${url} --force --access restricted`;
+            logger.log(
+              `🛫 publishing ${name} (${location.replace(
+                path.resolve(path.join(__dirname, '..')),
+                '.'
+              )})`
+            );
+            const command = `cd ${location} && npm publish --registry ${url} --force --access restricted --ignore-scripts`;
             exec(command, (e) => {
               if (e) {
                 rej(e);
               } else {
-                logger.log(`🛬 successful publish of ${name}!`);
-                res();
+                i += 1;
+                logger.log(`${i}/${packages.length} 🛬 successful publish of ${name}!`);
+                res(undefined);
               }
             });
           })
@@ -128,6 +144,19 @@ const publish = (packages: { name: string; location: string }[], url: string) =>
     )
   );
 };
+
+// const addUser = (url: string) =>
+//   new Promise((res, rej) => {
+//     logger.log(`👤 add temp user to verdaccio`);
+
+//     exec(`npx npm-cli-adduser -r "${url}" -a -u user -p password -e user@example.com`, (e) => {
+//       if (e) {
+//         rej(e);
+//       } else {
+//         res();
+//       }
+//     });
+//   });
 
 const run = async () => {
   const port = await freePort(program.port);
@@ -145,10 +174,11 @@ const run = async () => {
     originalNpmRegistryUrl = 'https://registry.npmjs.org/';
   }
 
-  logger.log(`📐 reading version of wingsuit`);
-  logger.log(`🚛 listing wingsuit packages`);
+  logger.log(`📐 reading version of storybook`);
+  logger.log(`🚛 listing storybook packages`);
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
+  // @ts-ignore
   const [verdaccioServer, packages, version] = await Promise.all<any, Package[], string>([
     startVerdaccio(port),
     listOfPackages(),
@@ -164,9 +194,10 @@ const run = async () => {
     originalNpmRegistryUrl
   );
 
+  // first time running, you might need to enable this
   // await addUser(verdaccioUrl);
 
-  logger.log(`📦 found ${packages.length} wingsuit packages at version ${chalk.blue(version)}`);
+  logger.log(`📦 found ${packages.length} storybook packages at version ${chalk.blue(version)}`);
 
   if (program.publish) {
     await publish(packages, verdaccioUrl);
