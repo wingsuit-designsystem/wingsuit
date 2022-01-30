@@ -28,8 +28,10 @@ export async function getPatternConfiguration(
     });
   } catch (e) {
     return new Promise<string>((resolve) => {
-      // eslint-disable-next-line no-console
-      console.log(`Cannot load pattern configuration. Message: ${e.message}`);
+      if (e instanceof Error) {
+        // eslint-disable-next-line no-console
+        console.info(`Cannot load pattern configuration. Message: ${e.message}`);
+      }
       resolve('');
     });
   }
@@ -56,7 +58,9 @@ export async function renderPatternPreview(
     variant = storage.loadVariant(patternId, variantId);
   } catch (err) {
     return new Promise<string>((resolve) => {
-      resolve(err.message);
+      if (err instanceof Error) {
+        resolve(err.message);
+      }
     });
   }
   const renderInfo = { ...variant.getRenderInfo(), ...renderInfoContext };
@@ -89,7 +93,6 @@ export async function renderPatternPreview(
           } else {
             const fieldName = nameKeys[0];
             const delta: number = Number.parseInt(nameKeys[1], 10);
-
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.items) {
               if (previewRenderedVariables[nameKeys[0]] === undefined) {
                 previewRenderedVariables[nameKeys[0]] = [];
@@ -122,7 +125,7 @@ export async function renderPatternPreview(
           ...buildBaseVariables(variables),
         };
         Object.keys(previewRenderedVariables).forEach((key) => {
-          // Allow overwriting
+          // Overwrite variables with rendered ones.
           if (finalVariables[key] !== null) {
             finalVariables[key] = previewRenderedVariables[key];
           }
@@ -175,6 +178,7 @@ export async function renderPattern(
     ...buildBaseVariables(variables, true),
   };
   finalVariables.variant = variantId;
+  variant.setRenderArgs(finalVariables);
   return rendererImpl.render(
     `${patternId}__${variant.getVariant()}`,
     variant.getUse(),

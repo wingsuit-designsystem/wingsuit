@@ -32,6 +32,7 @@ export interface Variant {
 export interface IPatternDefinition {
   label: string;
   id: string;
+  icon_path: string;
   namespace: string;
   parameters: any;
   use: string;

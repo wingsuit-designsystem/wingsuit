@@ -15,7 +15,8 @@
  *   The image url.
  */
 #}
-{% macro get_placeholder_url(image_style, placeholder_url) %}
+{% macro get_placeholder_url(image_style, service) %}
+  {% set placeholder_url = pattern_configuration('placeholder', 'image', 'service')[service] %}
   {% if not image_style.height %}
     {% set height = random(range(image_style.width * 0.75, image_style.width * 1.25, 10)) %}
   {% endif %}
@@ -38,36 +39,39 @@
  *   The image.
  */
 #}
-{% macro image(style, placeholder_url) %}
+{% macro image(style, service) %}
 
-  {% set imageConfig = pattern_configuration('placeholder', 'image', 'image_config') %}
+  {% set image_config = pattern_configuration('placeholder', 'image', 'image_config') %}
   {% import _self as self %}
   {% set is_responsive_image = false %}
-  {% set image_styles = imageConfig.styles %}
-  {% set responsive_image_styles = imageConfig.styles_responsive %}
-  {% set breakpoints = imageConfig.breakpoints %}
+  {% set image_styles = image_config.styles %}
+  {% set responsive_image_styles = image_config.styles_responsive %}
+  {% set breakpoints = image_config.breakpoints %}
   {% set image_style = image_styles[style] %}
   {% if image_style is empty %}
     {% set image_style = responsive_image_styles[style] %}
     {% set is_responsive_image = image_style != null ? true : false %}
   {% endif %}
-
   {# Build responsive image or image. #}
   {% if image_style is empty %}
     No image style {{ style }} found!
   {% else %}
     {% if is_responsive_image == false %}
-      <img src="{{- self.get_placeholder_url(image_style, placeholder_url)|trim -}}" alt="A placeholder image">
+      <img src="{{- self.get_placeholder_url(image_style, service)|trim -}}" alt="A placeholder image">
     {% else %}
       <picture>
         {% for breakpoint_name, image_style_name in image_style.breakpoints %}
           {% if image_styles[image_style_name] is not empty %}
-          <source srcset="{{- self.get_placeholder_url(image_styles[image_style_name], placeholder_url) -}}"
+          <source srcset="{{- self.get_placeholder_url(image_styles[image_style_name], service) -}}"
                   media="{{ breakpoints[breakpoint_name].mediaQuery }}">
           {% endif %}
         {% endfor %}
-        <img src="{{- self.get_placeholder_url(image_styles[image_style.style], placeholder_url)|trim -}}"
+        {% if image_styles[image_style.style] is not empty %}
+        <img src="{{- self.get_placeholder_url(image_styles[image_style.style], service)|trim -}}"
              alt="MDN">
+          {% else %}
+            No image style {{ image_style.style }} found!
+          {% endif %}
       </picture>
     {% endif %}
   {% endif %}
@@ -75,8 +79,12 @@
 
 {% macro background(style, classes, placeholder_url) %}
   {% import _self as self %}
-  {% set imageConfig = pattern_configuration('placeholder', 'background', 'image_config') %}
-  {% set image_styles = imageConfig.styles %}
-<div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url) }}')">
+  {% set image_config = pattern_configuration('placeholder', 'background', 'image_config') %}
+  {% set image_styles = image_config.styles %}
+{%  if image_styles[style] is not empty %}
+<div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], service)|trim }}')">
 </div>
+  {% else %}
+    {{ style }} not found.
+  {% endif %}
 {% endmacro %}

@@ -92,8 +92,11 @@ export default class extends Generator {
       this.fs.write(this.destinationPath('wingsuit.config.js'), updatedWingsuitConfig);
       this.log(`Your new app ${appName} is being created.`);
     } catch (err) {
-      this.log(err);
-      this.log(`Error while creating component. ${err.message}`);
+      if (err instanceof Error) {
+        this.log(`Error while creating component. ${err.message}`);
+      } else {
+        this.log(err);
+      }
     }
   }
 }

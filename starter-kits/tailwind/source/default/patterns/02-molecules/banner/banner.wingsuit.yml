@@ -1,6 +1,7 @@
 banner:
   use: "@molecules/banner/banner.twig"
   label: Banner
+  icon_path: ws-assets://images/banner-icon.svg
   description: Big image banner with text overlay.
   fields:
     image:

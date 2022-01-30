@@ -34,12 +34,12 @@ To adjust the way the blocks are printed use twig blocks.
 ### Example: cell_inner
 ```twig dark
   {% set cells = [
-        {content: '<div class="w-full h-20 bg-primary">1</div>'},
-        {content: '<div class="w-full h-20 bg-primary">2</div>'},
-        {content: '<div class="w-full h-20 bg-primary">3</div>'},
-        {content: '<div class="w-full h-20 bg-primary">4</div>'},
-        {content: '<div class="w-full h-20 bg-primary">5</div>'},
-        {content: '<div class="w-full h-20 bg-primary">6</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">1</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">2</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">3</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">4</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">5</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">6</div>'},
       ] %}
       {% embed "@organisms/grid/grid.twig" with {
         attributes: create_attribute(),
@@ -57,12 +57,12 @@ To adjust the way the blocks are printed use twig blocks.
 ### Example: cell_outer
 ```twig dark
   {% set cells = [
-        {content: '<div class="w-full h-20 bg-primary">1</div>'},
-        {content: '<div class="w-full h-20 bg-primary">2</div>'},
-        {content: '<div class="w-full h-20 bg-primary">3</div>'},
-        {content: '<div class="w-full h-20 bg-primary">4</div>'},
-        {content: '<div class="w-full h-20 bg-primary">5</div>'},
-        {content: '<div class="w-full h-20 bg-primary">6</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">1</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">2</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">3</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">4</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">5</div>'},
+        {content: '<div class="w-full h-20 bg-green-500">6</div>'},
       ] %}
       {% embed "@organisms/grid/grid.twig" with {
         attributes: create_attribute(),

@@ -62,7 +62,7 @@ export class TwingRenderer implements IRenderer {
 
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
-    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
+    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: true });
   }
 
   private initialize() {

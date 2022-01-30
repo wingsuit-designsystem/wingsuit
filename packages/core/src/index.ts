@@ -1,8 +1,12 @@
+import path from 'path';
+
 import PresetManager from './server/PresetManager';
 
 import AppConfig from './AppConfig';
 
 import { getConfigBase, resolveConfig } from './resolveConfig';
+
+const fs = require('fs-extra');
 
 export { default as AppConfig } from './AppConfig';
 
@@ -12,7 +16,7 @@ export { default as PresetManager } from './server/PresetManager';
 
 const presetManager = new PresetManager();
 
-export function getAppPack(appConfig: AppConfig, webpacks: [] = []) {
+export function getAppPack(appConfig: AppConfig, webpacks: any[] = []) {
   const pack = presetManager.generateWebpack(appConfig, webpacks);
   return pack;
 }
@@ -83,4 +87,21 @@ export function getAppNames(wingsuitConfig: any = null, type = '') {
     }
   });
   return names;
+}
+
+export function syncSilo(filename, data) {
+  const output = JSON.stringify(data);
+  fs.readFile(filename, (readerr, buffer) => {
+    // Only write output if there is a difference or non-existent target file
+    const existingJson = buffer ? buffer.toString() : '';
+    if (readerr || output !== existingJson) {
+      const dir = path.dirname(filename);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      fs.writeFile(filename, output, (writeerr) => {
+        if (writeerr) console.error(writeerr);
+      });
+    }
+  });
 }

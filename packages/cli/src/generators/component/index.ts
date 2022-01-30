@@ -250,7 +250,9 @@ export default class extends Generator {
 
       this.log(`Your new component ${name} is being created.`);
     } catch (err) {
-      this.log(`Error while creating component. ${err.message}`);
+      if (err instanceof Error) {
+        this.log(`Error while creating component. ${err.message}`);
+      }
     }
   }
 }

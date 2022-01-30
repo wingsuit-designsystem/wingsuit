@@ -1,55 +1,50 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
+  extends:
+    - rich_snippet
+  icon_path: ws-assets://images/card-icon.svg
+  allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
   fields:
-    image:
-      label: Image
+    button:
       type: pattern
-      description: The image tag.
-      preview:
-        id: placeholder
-        variant: image
-        settings:
-          style: card
-    preheadline:
-      type: text
-      label: Preheadline
-      description: A short headline above the headline.
-      preview:
-        faker: lorem.word
-    headline:
-      type: pattern
-      label: Headline
-      description: The main headline.
-      preview:
-        id: headline
-        variant: h4
-        settings:
-          spacing_bottom: small
-    text:
-      type: text
-      label: Text
-      description: A long text under the headline.
-      preview:
-        faker: lorem.paragraph
-    link:
-      type: pattern
-      label: Link
+      label: Button
       description: An optional button at the bottom of the card.
       preview:
-        id: link
+        id: button
+        variant: default
   variants:
     default:
       label: Default
     horizontal:
       label: Horizontal
+      settings:
+        image:
+          id: placeholder
+          variant: background
+          definition:
+            view_mode: background
+          settings:
+            style: responsive_1_3_200w
+
   settings:
+    image:
+      label: Image
+      type: media_library
+      description: The image tag.
+      view_mode: 16x9
+      allow_expose: true
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: responsive_16_9_600w
     alignment:
       type: select
       label: Alignment
       required: true
-      default: left
+      default_value: left
       options:
         left: Left
         center: Center
@@ -62,8 +57,5 @@ card:
     url:
       type: url
       label: Url
-    show_read_more:
-      label: Show read more
-      type: boolean
   parameters:
     layout: centered

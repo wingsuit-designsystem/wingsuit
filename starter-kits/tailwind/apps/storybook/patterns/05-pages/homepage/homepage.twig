@@ -2,10 +2,7 @@
   with {
   primary_menu: pattern_preview('menu', {}, 'primary'),
   language_select: pattern_preview('language_select'),
-  footer_menu_1: pattern_preview('menu', {}, 'footer'),
-  footer_menu_2: pattern_preview('menu', {}, 'footer'),
-  footer_menu_3: pattern_preview('menu', {}, 'footer'),
-  footer_menu_4: pattern_preview('menu', {}, 'footer')
+  footer_menu: pattern_preview('menu', {}, 'footer'),
 } %}
   {% block main %}
     {% embed "@organisms/section/section.twig" with { columns: 1 } %}

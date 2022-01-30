@@ -1,6 +1,5 @@
-const fs = require('fs-extra');
-const path = require('path');
-const jsondiff = require('jsondiffpatch');
+import { syncSilo } from '@wingsuit-designsystem/core';
+
 const resolveConfig = require('tailwindcss/resolveConfig');
 
 export default class Tailwind2JsonPlugin {
@@ -20,19 +19,9 @@ export default class Tailwind2JsonPlugin {
     const beforeCompile = (compilation, callback) => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const tailwindConfig = require(this.tailwindConfig);
+      const data = { tailwind: { theme: resolveConfig(tailwindConfig).theme } };
       const filename = this.targetFilePath;
-      const output = { tailwind: { theme: resolveConfig(tailwindConfig).theme } };
-      // Plugins are null after restoring from file system.
-      // Infinite loop.
-      fs.readJson(filename, (readerr, existingJson) => {
-        if (readerr) console.error(readerr, `Creating ${path.basename(filename)}!`);
-        // Only write output if there is a difference or non-existent target file
-        if (jsondiff.diff(existingJson, output)) {
-          fs.outputJson(filename, output, (writeerr) => {
-            if (writeerr) console.error(writeerr);
-          });
-        }
-      });
+      syncSilo(filename, data);
       callback(null);
     };
 
