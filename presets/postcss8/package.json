@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-postcss8",
-  "version": "1.2.0-alpha.14",
+  "version": "1.2.0",
   "description": "Wingsuit PostCss 8 support.",
   "repository": {
     "type": "git",
