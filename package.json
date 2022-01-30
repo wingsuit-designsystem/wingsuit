@@ -66,6 +66,7 @@
     "examples/*"
   ],
   "optionalDependencies": {
+    "verdaccio": "^5.5.2",
     "@cypress/skip-test": "^2.6.1",
     "@cypress/webpack-preprocessor": "^5.9.1",
     "cypress": "8.7.0",
@@ -138,7 +139,6 @@
     "wait-on": "^4.0.0"
   },
   "dependencies": {
-    "verdaccio": "^5.5.2",
     "window-size": "^1.1.1"
   }
 }
