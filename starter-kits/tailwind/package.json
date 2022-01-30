@@ -38,7 +38,7 @@
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
     "fmt": "npm run fmt:js; npm run fmt:css",
     "ci": "npm run lint && npm run build:drupal",
-    "chromatic": "npx chromatic --project-token 56g60sdfr38"
+    "chromatic": "npx chromatic"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",

@@ -77,7 +77,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro background(style, classes, placeholder_url) %}
+{% macro background(style, classes, service) %}
   {% import _self as self %}
   {% set image_config = pattern_configuration('placeholder', 'background', 'image_config') %}
   {% set image_styles = image_config.styles %}
