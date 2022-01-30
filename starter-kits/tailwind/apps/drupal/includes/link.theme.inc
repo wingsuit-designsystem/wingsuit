@@ -18,7 +18,7 @@ function wingsuit_link_attributes_plugin_alter(array &$plugins) {
     'type' => 'select',
     'options' => [
       'default' => 'Default',
-      'outline' => 'Outline'
-    ]
+      'outline' => 'Outline',
+    ],
   ];
 }

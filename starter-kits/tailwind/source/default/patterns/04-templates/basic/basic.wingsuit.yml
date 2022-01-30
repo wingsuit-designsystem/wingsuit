@@ -1,7 +1,7 @@
 basic:
   use: "@templates/basic/basic.twig"
   label: Basic
-  description: Basic page template
+  description: Use basic pages for your static content, such as an 'About us' page.
   fields:
     headline:
       type: text
@@ -12,4 +12,4 @@ basic:
       type: text
       label: Content
       preview:
-        faker: lorem.text
+        faker: lorem.paragraph

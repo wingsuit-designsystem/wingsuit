@@ -1,32 +1,34 @@
 {%- set image -%}{{- image -}}{% endset %}
 {% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': 'small', padding_bottom: 'default' } %}
   {% block content %}
-    <div class="text-gray-dark">
-      {% include "@atoms/headline/headline.twig" with {
+      {% embed "@atoms/rich-text/rich-text.twig" with {
         headline: headline,
-        variant: 'h1'
+        lead: lead
       } only %}
-    </div>
-    <div class="pt-8">
-      {% block lead %}
-        {{ lead }}
-      {% endblock %}
-    </div>
+        {% block text %}
+          <h1>{{ headline }}</h1>
+          <p class="lead">{{ lead }}</p>
+        {% endblock %}
+      {% endembed %}
   {% endblock %}
 {% endembed %}
 {% if image is not empty %}
-{% embed "@organisms/container/container.twig" with { width: 'default', image: image } only %}
-  {% block content %}
-    {% block image %}
-      {{ image }}
+  {% embed "@organisms/container/container.twig" with { width: 'default', image: image } only %}
+    {% block content %}
+      {% block image %}
+        {{ image }}
+      {% endblock %}
     {% endblock %}
-  {% endblock %}
-{% endembed %}
+  {% endembed %}
 {% endif %}
-{% embed "@organisms/container/container.twig" with { width: 'small', text: text } %}
+{% embed "@organisms/container/container.twig" with { width: 'small', text: text } only %}
   {% block content %}
-    {% block text %}
-      {{ text }}
-    {% endblock %}
+    {% embed "@atoms/rich-text/rich-text.twig" with {
+      text: text,
+    } only %}
+      {% block text %}
+        {{ text }}
+      {% endblock %}
+    {% endembed %}
   {% endblock %}
 {% endembed %}

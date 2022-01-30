@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * slider
+ *
+ * See slider.wingsuit.yaml for documentation.
+ */
+#}
+{% set slider %}
+  {{ pattern('slider', { items: items, slides_per_view: slides_per_view, autoplay:autoplay } ) }}
+{% endset %}
+{% embed "@organisms/section/section.twig" with {
+  header: header,
+  show_header: show_header,
+  padding_x: padding_x,
+  padding_top: padding_top,
+  padding_bottom: padding_bottom,
+  bg: bg,
+  columns: '1',
+  width: width,
+  columns_width_1: 'equal',
+  slider: slider
+} only %}
+  {% block column_1 %}
+    {{ slider }}
+  {% endblock %}
+{% endembed %}

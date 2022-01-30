@@ -1,12 +1,58 @@
-<nav role="navigation">
-  <ul class="list-reset mb-6 grid lg:block">
-    {% for item in items %}
-      <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-        <a class="text-gray-600 hover:text-gray-800 {% if (item.in_active_trail) %}is-active{% endif %}" href="{{ item.url }}">
-          {{ item.title }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
+{% set menu_level = 0 %}
+
+{% import _self as menus %}
+
+{% macro menu(items, menu_level) %}
+  {% import _self as menus %}
+
+  {% set link_classes = ([
+    'text-sm text-blue-500 pb-2',
+    menu_level == 1 ? ' w-full',
+  ] | sort | join(' ') | trim ) %}
+    <div>
+      {% set row_numbers = items|length/2 %}
+      {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
+        <ul>
+          {% for item in row %}
+            <li>
+              <div class="{{ link_classes }}">
+                <a href="{{ item.url }}" class="flex-1">
+                  {{ item.title }}
+                </a>
+              </div>
+              {% if item.below %}
+                {{ menus.menu(item.below, menu_level + 1) }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+{% endmacro %}
+
+{% set list_classes = ([
+  'lg:flex justify-between'
+] | sort | join(' ') | trim ) %}
+
+<ul class="{{ list_classes }}">
+  {% for item in items %}
+    {% set title_classes = ([
+      'w-full flex justify-center flex-col pb-4'
+    ] | sort | join(' ') | trim ) %}
+    <li data-menu-target="submenu" data-menu-level="{{ menu_level }}"  class="flex-1">
+      <div class="flex flex-col justify-center pt-8 lg:pt-0">
+        <div class="{{ title_classes }}">
+          <div class="font-bold">
+            {{ item.title }}
+          </div>
+        </div>
+      </div>
+      {% if item.below %}
+        {{ menus.menu(item.below, menu_level + 1) }}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+
 

@@ -240,6 +240,7 @@ const runE2E = (parameters: Parameters) =>
         const { name, version } = parameters;
         const cwd = path.join(siblingDir, `${name}-v${version}`);
 
+        // @ts-ignore
         const { cleanup } = await prompt({
           type: 'confirm',
           name: 'cleanup',

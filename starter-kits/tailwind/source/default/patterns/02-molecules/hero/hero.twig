@@ -14,11 +14,13 @@
 
     <div class="flex flex-col pt-8 items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left mb-16 md:mb-0 lg:flex-grow lg:pr-24">
       <div{{ region_attributes.pre_headline|default(create_attribute()).addClass('dark:text-gray-100 uppercase tracking-loose font-medium w-full mb-4') }}>{{ pre_headline }}</div>
-      {% include "@atoms/headline/headline.twig" with {headline: headline, variant: 'h3', tag_name: 'h1', attributes: region_attributes.headline } %}
-      <div{{ region_attributes.text|default(create_attribute()).addClass('mb-8 font-medium leading-relaxed text-l max-w-sm ') }}>{{ text }}</div>
+      {% include "@molecules/rich-snippet/rich-snippet.twig" with {
+        headline: headline,
+        headline_tag: 'h1',
+        text: text
+      } only %}
       <div class="flex justify-center">
         <div{{ region_attributes.button|default(create_attribute()).addClass('mr-5') }}>{{ button }}</div>
-        <div{{ region_attributes.button_second }}>{{ button_second }}</div>
       </div>
     </div>
 

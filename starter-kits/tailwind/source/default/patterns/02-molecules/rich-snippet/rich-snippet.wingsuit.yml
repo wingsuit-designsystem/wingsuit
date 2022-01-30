@@ -1,0 +1,26 @@
+rich_snippet:
+  use: "@molecules/rich-snippet/rich-snippet.twig"
+  label: Rich Snippet
+  description: |
+                Typical text snippet with preheadline headline and text.
+                It uses Rich-Text under the hood. Use this component inside more specific components.
+                It replaces the headline atom.
+  fields:
+    preheadline:
+      type: text
+      label: Preheadline
+      description: A short headline above the headline.
+      preview:
+        faker: lorem.word
+    headline:
+      type: text
+      label: Headline
+      description: The main headline.
+      preview:
+        faker: lorem.sentence
+    text:
+      type: text
+      label: Text
+      description: A long text under the headline.
+      preview:
+        faker: lorem.paragraph

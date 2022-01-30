@@ -1,6 +1,7 @@
 hero:
   use: "@molecules/hero/hero.twig"
   label: Hero
+  icon_path: ws-assets://images/hero-icon.svg
   description: Hero section component, for all your presentation needs.
   fields:
     pre_headline:
@@ -15,7 +16,7 @@ hero:
       type: text
       label: Text
       preview: "Sub-hero message, not too long and not too short. Make it just right!"
-    button:
+    button_group:
       type: pattern
       label: Button
       preview:
@@ -23,16 +24,6 @@ hero:
         variant: default
         settings:
           icon: plus
-    button_second:
-      type: pattern
-      label: Button
-      preview:
-        id: button
-        variant: outline
-        fields:
-          text: Show Video
-        settings:
-          color: secondary
     image:
       type: pattern
       label: Image

@@ -18,7 +18,7 @@ const twing = require('./presets/twing');
 const svg = require('./presets/svg');
 const assetsVideos = require('./presets/assetsVideos');
 
-const defaultPresets: {} = {
+const defaultPresets = {
   css,
   babel,
   assets,
@@ -122,7 +122,7 @@ export default class PresetManager {
    *
    * @returns {*} - Fully merged and customized webpack config
    */
-  public generateWebpack(appConfig: AppConfig, webpackConfigs: [] = []) {
+  public generateWebpack(appConfig: AppConfig, webpackConfigs: any[] = []) {
     this.environment = appConfig.environment ? appConfig.environment : 'development';
     const presets = this.getPresetDefinitions(appConfig);
 

@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * rich-snippet
+ *
+ * See rich-snippet.wingsuit.yaml for documentation.
+ */
+#}
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set headline_tag = headline_tag|default('h2') %}
+
+{% set preheadline %}{{- preheadline -}}{% endset %}
+{% set headline %}{{- headline -}}{% endset %}
+{% set text %}{{- text -}}{% endset %}
+
+
+{#
+  Template
+#}
+{% if preheadline is not empty %}
+  <div>{{ preheadline }}</div>
+{% endif %}
+{% embed "@atoms/rich-text/rich-text.twig" with {
+  headline: headline,
+  headline_tag: headline_tag,
+  text: text
+} only %}
+  {% block text %}
+    {% if headline is not empty %}
+      <{{ headline_tag }}>{{ headline }}</{{ headline_tag }}>
+    {% endif %}
+    {% if text is not empty %}
+      <p>{{ text -}}</p>
+    {% endif %}
+  {% endblock %}
+{% endembed %}

@@ -63,9 +63,9 @@ const config_3 = {
 
 describe('#Test storybook config', () => {
   test.each([
-    [config_1, 7],
-    [config_2, 9],
-    [config_3, 8],
+    [config_1, 6],
+    [config_2, 8],
+    [config_3, 7],
   ])('Check resolve config', (config: {}, presetsLength) => {
     const appConfig = resolveConfig('storybook', 'development', {}, config);
     expect(appConfig.environment).toBe('development');

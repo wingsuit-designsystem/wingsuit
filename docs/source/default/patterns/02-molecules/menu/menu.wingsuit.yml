@@ -25,6 +25,10 @@ menu:
                 url: "/guides/create-component-guide"
               - title: Create new app
                 url: "/guides/create-app-guide"
+              - title: Showroom
+                url: "/guides/showroom"
+              - title: Twing extensions
+                url: "/guides/twing-extensions-guide"
           - title: CONFIGURATIONS
             url: "#"
             below:
@@ -106,8 +110,8 @@ menu:
         items:
           - title: Documentation
             url: "/guides/quick-start-guide/"
-          - title: <b>What's new in Version 1.1</b>
-            url: "/releases/onedotone"
+          - title: <b>What's new in Version 1.2</b>
+            url: "/releases/onedottwo"
     footer:
       label: Footer
       description: The footer menu.

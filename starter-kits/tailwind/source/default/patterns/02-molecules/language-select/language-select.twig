@@ -1,30 +1,30 @@
 <div class="relative text-gray-600">
   <div class="flex items-center cursor-pointer" @click="languageSwitcherOpen = !languageSwitcherOpen">
-    <div class="mr-2 uppercase dark:text-white">{{ language }}</div>
+    <div class="mr-2 uppercase">{{ language }}</div>
     <div class="mr-2.5">
       {% include "@atoms/svg/_svg--icon.twig" with {
         icon: 'globe',
-        size: 'w-5 h-5',
+        size: 'small',
       } only %}
     </div>
     <div :class="{'rotate-90 transition duration-75 ease-in-out': languageSwitcherOpen, '': !languageSwitcherOpen}">
       {% include "@atoms/svg/_svg--icon.twig" with {
         icon: 'arrow',
         fill_color: 'text-yellow-500',
-        size: 'w-2.5 h-2.5',
+        size: 'small',
       } only %}
     </div>
   </div>
-  <ul class="absolute left-1/4 p-4 top-10 bg-gray-400 box-shadow rounded -translate-x-1/2 hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
+  <ul class="absolute left-0 p-4 top-10 border bg-gray-white box-shadow rounded hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
     {%- for key, item in links -%}
       {%- if item.link and item.langcode != language -%}
         <li class="last:mb-0 mb-4 group">
           <span class="language-select-icon__text">
-            <a href="{{ item.path }}" class="flex items-center dark:text-white group-hover:text-yellow-500 transition-colors">
+            <a href="{{ item.path }}" class="flex items-center group-hover:text-yellow-500 transition-colors">
               <span class="mr-4">
                 {% include "@atoms/svg/_svg--icon.twig" with {
                   icon: item.langcode,
-                  size: 'w-5 h-5',
+                  size: 'small',
                 } only %}
               </span>
               <span>{{ item.text }}</span>

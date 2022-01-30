@@ -88,8 +88,31 @@ menu:
       description: The footer menu.
       fields:
         items:
-          - title: Datenschutz
+          - title: Column 1
             url: "#"
-          - title: Impressum
+            below:
+              10:
+                title: Link 1
+                url: '#'
+              11:
+                title: Link 2
+                url: '#'
+          - title: Column 2
             url: "#"
+            below:
+              10:
+                title: Link 3
+                url: '#'
+              11:
+                title: Link 4
+                url: '#'
+          - title: Column 3
+            url: "#"
+            below:
+              10:
+                title: Link 5
+                url: '#'
+              11:
+                title: Link 6
+                url: '#'
   visibility: storybook
