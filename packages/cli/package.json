@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/cli",
-  "version": "1.2.0-alpha.13",
+  "version": "1.2.0-alpha.14",
   "description": "The Wingsuit CLI",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit",
   "author": {
@@ -43,10 +43,9 @@
     "test_jest": "jest"
   },
   "dependencies": {
-    "typescript": "^4.5.4",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
-    "@wingsuit-designsystem/core": "1.2.0-alpha.13",
+    "@wingsuit-designsystem/core": "1.2.0-alpha.14",
     "assign-deep": "^1.0.1",
     "ast-query": "^2.0.0",
     "babel-generator": "^6.26.1",
@@ -68,6 +67,7 @@
     "prettier": "^2.3.0",
     "query-ast": "^1.0.3",
     "rimraf": "^3.0.2",
+    "typescript": "^4.5.4",
     "yeoman-environment": "^3.4.0",
     "yeoman-generator": "^5.2.0",
     "yosay": "^2.0.1"
