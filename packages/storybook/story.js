@@ -1,14 +1,11 @@
 import { storage } from '@wingsuit-designsystem/pattern';
-import { storiesOf as storiesOfPattern } from './dist/storyof';
 
-global.window.Drupal = {};
-global.window.Drupal.behaviors = {};
+import { getArgTypes, getArgs } from './dist/storyof';
 
-export function storyKind(patternId) {
-  const pattern = storage.loadPattern(patternId);
-  return `${pattern.getNamespace()}/${pattern.getLabel()}`;
+export function argTypes(patternId, variantId) {
+  return getArgTypes(storage.loadVariant(patternId, variantId));
 }
-export function addToStory(patternId, story) {
-  const pattern = storage.loadPattern(patternId);
-  storiesOfPattern(pattern, story);
+
+export function args(defaultArgs, patternId, variantId) {
+  return getArgs(defaultArgs, storage.loadVariant(patternId, variantId));
 }

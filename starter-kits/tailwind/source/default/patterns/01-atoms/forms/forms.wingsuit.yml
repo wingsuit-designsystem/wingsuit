@@ -2,7 +2,7 @@ form_input:
   use: "@atoms/forms/_input.twig"
   namespace: "Atoms/Forms"
   label: Input
-  description: Input forms styled with Tailwind custom forms. Checkout https://tailwindcss-custom-forms.netlify.app/ for more infos.
+  description: Input forms styled with Tailwind custom forms.
   variants:
     textfield:
       label: Textfield

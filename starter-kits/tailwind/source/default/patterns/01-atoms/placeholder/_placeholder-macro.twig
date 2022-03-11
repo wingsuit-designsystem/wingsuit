@@ -58,7 +58,7 @@
   {% else %}
     {% if is_responsive_image == false %}
       <img src="{{- self.get_placeholder_url(image_style, placeholder_url)|trim -}}" alt="A placeholder image">
-    {% else %}
+    {% elseif image_styles[image_style.style] is not empty%}
       <picture>
         {% for breakpoint_name, image_style_name in image_style.breakpoints %}
           {% if image_styles[image_style_name] is not empty %}
@@ -69,6 +69,8 @@
         <img src="{{- self.get_placeholder_url(image_styles[image_style.style], placeholder_url)|trim -}}"
              alt="MDN">
       </picture>
+      {% else %}
+       Imagestyle {{ image_style.style }} not found.
     {% endif %}
   {% endif %}
 {% endmacro %}

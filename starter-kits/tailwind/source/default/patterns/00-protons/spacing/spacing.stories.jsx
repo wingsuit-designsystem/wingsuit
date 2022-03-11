@@ -1,4 +1,4 @@
-import './spacing.twig';
+import './index';
 
 const patternDefinition = require('./spacing.wingsuit.yml');
 

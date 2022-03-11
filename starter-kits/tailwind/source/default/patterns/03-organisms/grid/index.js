@@ -3,5 +3,4 @@
  */
 import 'protons';
 import './grid.wingsuit.yml';
-
-export const name = 'grid';
+import './grid.twig';

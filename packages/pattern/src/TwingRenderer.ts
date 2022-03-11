@@ -82,6 +82,10 @@ export class TwingRenderer implements IRenderer {
     }
     const loader = new TwingLoaderArray(storage.getTwigResources());
     this.environment.setLoader(loader);
-    return this.environment.render(include, variables);
+    console.log(`Render twig :${include}`);
+    if (storage.getTwigResources()[include]) {
+      return this.environment.render(include, variables);
+    }
+    return `Unable to load TWIG Template ${include}`;
   }
 }

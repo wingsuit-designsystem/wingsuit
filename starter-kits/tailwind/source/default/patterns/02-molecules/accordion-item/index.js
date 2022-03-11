@@ -1,3 +1,2 @@
-/**
- * accordion-item
- */
+import 'tokens';
+import './accordion-item.twig';

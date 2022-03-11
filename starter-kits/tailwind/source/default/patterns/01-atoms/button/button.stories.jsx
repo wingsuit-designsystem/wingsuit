@@ -1,7 +1,7 @@
-import { addToStory } from '@wingsuit-designsystem/storybook/story';
-import { storiesOf } from '@storybook/react';
-import { pattern } from './index';
+import './index';
 
-const story = storiesOf(pattern.getStoryName(), module);
+const patternDefinition = require('./button.wingsuit.yml');
 
-addToStory('button', story);
+export const wingsuit = {
+  patternDefinition,
+};

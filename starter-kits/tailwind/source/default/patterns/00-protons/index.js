@@ -3,5 +3,3 @@
  */
 
 import '../../vendorjs/alpine.vendor';
-import 'tokens/font.css';
-import 'tokens/tokens.css';

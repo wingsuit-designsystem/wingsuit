@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pattern, renderer, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { Pattern } from '@wingsuit-designsystem/pattern';
 
 import { Title, Subtitle, DocsStory, ArgsTable, CURRENT_SELECTION } from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
@@ -10,9 +10,6 @@ import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
-
-ReactSyntaxHighlighter.registerLanguage('twig', twig);
-renderer.setRenderer(new TwingRenderer());
 
 function getStorybookControlsOptions(setting) {
   const options: {} = setting.getOptions();
@@ -29,7 +26,7 @@ function getStorybookControlsOptions(setting) {
   return controls;
 }
 
-function getArgs(defaultArgs, variant) {
+export function getArgs(defaultArgs, variant) {
   const fields = variant.getFields();
   const resultArgs = { ...defaultArgs };
   const settings = variant.getSettings();
@@ -50,7 +47,7 @@ function getArgs(defaultArgs, variant) {
   });
   return resultArgs;
 }
-function getArgTypes(variant) {
+export function getArgTypes(variant) {
   const argTypes: any = {};
   let hasSettings = false;
 

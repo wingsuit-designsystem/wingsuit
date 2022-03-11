@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { renderer } from '@wingsuit-designsystem/pattern';
-import { attachBehaviors } from '../behaviors';
+import { attachBehaviors, init } from '../behaviors';
 
 type Props = { patternId?; variantId?; variant? };
 
@@ -13,6 +13,7 @@ const PatternPreview: FunctionComponent<Props> = ({
   const [rendered, setRendered] = useState('');
   const finalPatternId = variant !== null ? variant.getPattern().getId() : patternId;
   const finalVariantId = variant !== null ? variant.getId() : variantId;
+  init('Drupal');
   useEffect(() => {
     let mounted = true;
     renderer
@@ -35,7 +36,6 @@ const PatternPreview: FunctionComponent<Props> = ({
     if (!rendered) return;
     attachBehaviors(global.window.document, {});
   }, [rendered]);
-
   return <div dangerouslySetInnerHTML={{ __html: rendered }} />;
 };
 

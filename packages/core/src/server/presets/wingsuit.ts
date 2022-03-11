@@ -26,8 +26,21 @@ export function webpack(appConfig: AppConfig) {
           },
         },
         {
-          test: /\.stories\.wingsuit\.jsx/,
-          use: ['babel-loader', 'wingsuit-stories-loader'],
+          test: /\.stories\.jsx/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env', '@babel/preset-react'],
+              },
+            },
+            {
+              loader: 'wingsuit-stories-loader',
+              options: {
+                appConfig,
+              },
+            },
+          ],
         },
       ],
     },
