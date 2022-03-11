@@ -17,7 +17,7 @@
 
 {# VARIANT TEMPLATES #}
 {% if variant == 'image' %}
-  {{ placeholder.image(style, placeholder_url) }}
+  {{ placeholder.image(style, service) }}
 {% elseif variant == 'background' %}
-  {{ placeholder.background(style, background_classes, placeholder_url) }}
+  {{ placeholder.background(style, background_classes, service) }}
 {% endif %}

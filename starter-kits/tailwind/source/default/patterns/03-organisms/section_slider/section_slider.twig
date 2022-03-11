@@ -7,7 +7,7 @@
  */
 #}
 {% set slider %}
-  {% include "@organisms/slider/slider.twig" with { items: items, slides_per_view: slides_per_view, autoplay:autoplay } only %}
+  {{ pattern('slider', { items: items, slides_per_view: slides_per_view, autoplay:autoplay } ) }}
 {% endset %}
 {% embed "@organisms/section/section.twig" with {
   header: header,

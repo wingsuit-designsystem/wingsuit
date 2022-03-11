@@ -1,0 +1,26 @@
+# Twing extensions
+You can add your own twing extensions to wingsuit.
+
+Here a sample to add a new function `apps/storybook/preview.js`:
+
+```js
+const renderImpl = new TwingRenderer();
+const twingEnvironment = renderImpl.getEnvironment();
+let function = new TwingFunction('function_name', function () {
+    // ...
+});
+twingEnvironment.addFunction(function);
+
+configure(
+  module,
+  [
+    require.context('./patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
+    require.context('wspatterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
+  ],
+  require.context('./config', false, /\.json|\.ya?ml$/),
+  require.context('wspatterns', true, /\.twig$/),
+  namespaces,
+  renderImpl
+);
+```
+[Click here for more infos about twing extensions](https://nightlycommit.github.io/twing/advanced.html#context-aware-filters).

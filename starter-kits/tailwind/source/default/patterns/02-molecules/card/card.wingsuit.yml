@@ -1,27 +1,12 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
+  extends:
+    - rich_snippet
   icon_path: ws-assets://images/card-icon.svg
+  allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
   fields:
-    preheadline:
-      type: text
-      label: Preheadline
-      description: A short headline above the headline.
-      preview:
-        faker: lorem.word
-    headline:
-      type: text
-      label: Headline
-      description: The main headline.
-      preview:
-        faker: lorem.sentence
-    text:
-      type: text
-      label: Text
-      description: A long text under the headline.
-      preview:
-        faker: lorem.paragraph
     button:
       type: pattern
       label: Button
@@ -37,22 +22,24 @@ card:
       settings:
         image:
           id: placeholder
-          variant: image
+          variant: background
           definition:
-            view_mode: 16x9
+            view_mode: background
           settings:
-            style: card_horizontal
+            style: responsive_1_3_200w
 
   settings:
     image:
       label: Image
       type: media_library
       description: The image tag.
+      view_mode: 16x9
+      allow_expose: true
       preview:
         id: placeholder
         variant: image
         settings:
-          style: card
+          style: responsive_16_9_600w
     alignment:
       type: select
       label: Alignment
@@ -70,12 +57,5 @@ card:
     url:
       type: url
       label: Url
-    headline_element:
-      label: Headline Tag
-      type: select
-      default_value: h3
-      options:
-        h2: H2
-        h3: H3
   parameters:
     layout: centered

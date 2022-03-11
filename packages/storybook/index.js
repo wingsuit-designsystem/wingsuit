@@ -4,7 +4,7 @@ const wingsuitConfig = wingsuitCore.resolveConfig('storybook');
 
 module.exports = {
   webpackFinal: async (config, { configType }) => {
-    // return config;
-    return wingsuitCore.getAppPack(wingsuitConfig, [config]);
+    const app = wingsuitCore.getAppPack(wingsuitConfig, [config]);
+    return app;
   },
 };

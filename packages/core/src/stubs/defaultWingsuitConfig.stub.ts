@@ -26,7 +26,7 @@ export const wingsuit: Config = {
     cms,
     wingsuit: wingsuitp,
   },
-  presets: [assets, assetsVideos, svg],
+  presets: [assets, assetsVideos],
   designSystems: {
     default: {
       path: 'source/default',
@@ -47,7 +47,7 @@ export const wingsuit: Config = {
       dataFolder: './apps/data',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [storybook, twing, wingsuitp],
+      presets: [storybook, twing, wingsuitp, svg],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',
@@ -55,6 +55,9 @@ export const wingsuit: Config = {
         presenter: 'Presentation template',
       },
       startup() {
+        if (this.environment === 'production') {
+          return `build-storybook --config-dir ${this.absAppPath}`
+        }
         return `start-storybook --config-dir ${this.absAppPath}`
       },
     },
@@ -77,7 +80,7 @@ export const wingsuit: Config = {
       type: 'drupal',
       assetBundleFolder: '',
       designSystem: 'default',
-      presets: [babel, css, drupal],
+      presets: [babel, css, cms, wingsuitp, svg],
     },
   },
 }

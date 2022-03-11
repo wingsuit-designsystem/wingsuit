@@ -62,7 +62,7 @@ export class TwingRenderer implements IRenderer {
 
   constructor() {
     const loader = new TwingLoaderArray(storage.getTwigResources());
-    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
+    this.environment = new TwingEnvironment(loader, { autoescape: false, debug: true });
   }
 
   private initialize() {
@@ -82,7 +82,6 @@ export class TwingRenderer implements IRenderer {
     }
     const loader = new TwingLoaderArray(storage.getTwigResources());
     this.environment.setLoader(loader);
-    console.log(`Render twig :${include}`);
     if (storage.getTwigResources()[include]) {
       return this.environment.render(include, variables);
     }

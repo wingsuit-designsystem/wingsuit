@@ -1,0 +1,11 @@
+extends:
+  - page
+fields:
+  content:
+    preview:
+      -
+        id: rich_text
+        variant: default
+        fields:
+          text: 'test'
+

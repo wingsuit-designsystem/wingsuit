@@ -34,5 +34,3 @@ To start drupal
 ```bash
 yarn dev:drupal
 ```
-
-

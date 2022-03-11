@@ -13,20 +13,21 @@ placeholder:
     background:
       label: Background image
   settings:
-    placeholder_url:
+    service:
       label: Placeholder service
       type: select
-      preview: https://fakeimg.pl/[width]x[height]/
+      preview: base64
       required: true
       options:
-        "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
-        "https://fakeimg.pl/[width]x[height]/": https://fakeimg.pl/
-        "https://placeimg.com/[width]/[height]/people": https://placeimg/
+        "base64": "Base64"
+        "placeholder": https://via.placeholder.com/
+        "fakeimg": https://fakeimg.pl/
+        "placeimg": https://placeimg/
     background_classes:
       label: Classes
       description: Classes applied to background image container.
       type: textfield
-      preview: w-full h-20 bg-cover
+      preview: w-full h-full bg-cover
     style:
       label: Image style
       type: select
@@ -37,6 +38,11 @@ placeholder:
         banner: Banner
   visibility: storybook
   configuration:
+    service:
+      base64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8fwYAAnABnXJTVJsAAAAASUVORK5CYII="
+      placeholder: "https://via.placeholder.com/[width]x[height]"
+      fakeimg: "https://fakeimg.pl/[width]x[height]/"
+      placeimg: "https://placeimg.com/[width]/[height]/people"
     image_config:
       styles: {}
       styles_responsive:
@@ -48,14 +54,6 @@ placeholder:
             lg: responsive_16_9_1400w
             xl: responsive_21_6_1600w
             2xl: responsive_21_6_2000w
-        card:
-          style: responsive_4_3_600w
-          breakpoints:
-            sm: responsive_4_3_600w
-        card_horizontal:
-          style: responsive_1_2_200w
-          breakpoints:
-            sm: responsive_1_2_200w
         article:
           style: responsive_8_7_400w
           breakpoints:

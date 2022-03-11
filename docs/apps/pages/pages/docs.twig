@@ -9,8 +9,24 @@
 
 {% set body %}
   {{ pattern('rich_text', {text: content}, 'default') }}
+  {% if next|length > 0 %}
+    <div class="pt-6 md:pt-14">
+      <div class="p-2 my-2.5 uppercase font-bold">NEXT</div>
+      {% for item in next %}
+        {{ pattern('next', {
+          title: item.title,
+          text: item.text,
+          button: pattern('button',{
+            text: item.link_title,
+            round: true,
+            size: 'medium',
+            url: item.href,
+          }, 'default')
+        }) }}
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endset %}
-
 
 {% include "@templates/site-container.twig" with {
   menu: pattern_preview('menu', {}, 'primary'),

@@ -1,7 +1,7 @@
 import shell, { ExecOptions } from 'shelljs';
 
 export const exec = async (command: string, options: ExecOptions = {}) =>
-  new Promise((resolve, reject) => {
+  new Promise<void>((resolve, reject) => {
     shell.exec(command, options, (code) => {
       if (code === 0) {
         resolve();
