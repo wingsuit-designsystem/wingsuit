@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const inquirer = require('inquirer');
 const program = require('commander');
 const childProcess = require('child_process');
@@ -174,7 +173,7 @@ selection
           ? ''
           : `--projects ${jestProjects.join(' ')}`;
 
-        const cmd = `node --max_old_space_size=4096 ${jest} ${projectsParam} ${extraParams}`;
+        const cmd = `node --unhandled-rejections=strict --max_old_space_size=4096 ${jest} ${projectsParam} ${extraParams}`;
 
         spawn(cmd);
       }

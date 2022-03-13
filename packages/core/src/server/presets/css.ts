@@ -1,7 +1,7 @@
 import AppConfig from '../../AppConfig';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 export function name(appConfig: AppConfig) {
   return 'css';
@@ -79,21 +79,13 @@ export function webpack(appConfig: AppConfig, config: CssConfig) {
         ],
       },
       plugins: [],
+      optimization: {},
     },
   };
   if (appConfig.environment === 'production') {
-    cssModes.extract.plugins.push(
-      // @ts-ignore
-      new OptimizeCSSAssetsPlugin({
-        // Ensure css map file output
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true,
-          },
-        },
-      })
-    );
+    cssModes.extract.optimization = {
+      minimizer: [new CssMinimizerPlugin()],
+    };
   }
 
   cssModes.extract.plugins.push(

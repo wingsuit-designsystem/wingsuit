@@ -12,7 +12,7 @@ export default class PatternStorage implements IPatternStorage {
 
   private patterns: Pattern = {} as Pattern;
 
-  private twigResources = {};
+  private twigResources = new Map();
 
   static instance: PatternStorage;
 
@@ -53,7 +53,7 @@ export default class PatternStorage implements IPatternStorage {
 
   loadPatternsByNamespace(namespace): Pattern[] {
     const foundPatterns: Pattern[] = [];
-    Object.keys(this.definitions).forEach((key) => {
+    Object.keys(this.definitions).forEach(key => {
       const pattern = this.loadPattern(key);
       if (pattern.getNamespace() === namespace) {
         foundPatterns.push(pattern);
@@ -70,10 +70,10 @@ export default class PatternStorage implements IPatternStorage {
    * @returns {object} New object with merged key/values
    */
   private mergeDeep(...objects) {
-    const isObject = (obj) => obj && typeof obj === 'object';
+    const isObject = obj => obj && typeof obj === 'object';
 
     return objects.reduce((prev, obj) => {
-      Object.keys(obj).forEach((key) => {
+      Object.keys(obj).forEach(key => {
         const pVal = prev[key];
         const oVal = obj[key];
 
@@ -116,7 +116,7 @@ export default class PatternStorage implements IPatternStorage {
           basePatternTypes = [basePatternType];
         }
 
-        Object.keys(basePatternTypes).forEach((key) => {
+        Object.keys(basePatternTypes).forEach(key => {
           const type: string = basePatternTypes[key];
           if (basePatternField == null) {
             if (basePatternDefinition[type] != null) {
@@ -169,82 +169,18 @@ export default class PatternStorage implements IPatternStorage {
     this.definitions = definitions;
   }
 
-  createDefinitionsFromMultiContext(any): void {
-    Object.keys(this.patterns).forEach((key) => {
-      delete this.patterns[key];
-    });
-    this.patterns = {} as Pattern;
-    if (Array.isArray(any) === true) {
-      any.forEach((context) => {
-        if (context != null) {
-          this.createDefinitionsFromContext(context);
-        }
-      });
-    } else {
-      this.createDefinitionsFromContext(any);
-    }
-  }
-
-  createDefinitionsFromContext(context): void {
-    context.keys().forEach((key) => {
-      if (key.includes('__tests__') === false && key.includes('__int_tests__') === false) {
-        try {
-          const data = context(key);
-          const wingsuit = data.wingsuit?.patternDefinition;
-          if (typeof wingsuit === 'object') {
-            const patternDefinition = wingsuit.default;
-            let { namespace } = wingsuit;
-            const { parameters } = wingsuit;
-            if (namespace == null) {
-              const hierachy = key.split('/');
-              if (hierachy.length > 2) {
-                // eslint-disable-next-line prefer-destructuring
-                namespace = hierachy[1];
-                const namespaceParts = namespace.split('-');
-                if (namespaceParts.length > 1 && namespaceParts[0].length === 2) {
-                  namespaceParts.shift();
-                  namespace = namespaceParts.join('-');
-                  namespace = namespace.charAt(0).toUpperCase() + namespace.slice(1);
-                }
-              }
-            }
-
-            Object.keys(patternDefinition).forEach((pattern_key) => {
-              if (parameters !== null) {
-                patternDefinition[pattern_key].parameters = parameters;
-              }
-              if (patternDefinition[pattern_key].namespace == null) {
-                patternDefinition[pattern_key].namespace = namespace;
-              }
-              this.addDefinition(pattern_key, patternDefinition[pattern_key]);
-            });
-          }
-        } catch (e) {
-          console.error('Loading failed.');
-          console.error(e);
-        }
-      }
-    });
-  }
-
   addDefinition(id: string, pattern: IPatternDefinition) {
     this.definitions[id] = pattern;
   }
 
   addDefinitions(wingsuit) {
-    Object.keys(wingsuit).forEach((id) => {
+    Object.keys(wingsuit).forEach(id => {
       this.definitions[id] = wingsuit[id];
     });
   }
 
   findTwigByNamespace(namespace): any | null {
-    let foundResource = null;
-    Object.keys(this.twigResources).forEach((key) => {
-      if (key.trim() === namespace.trim()) {
-        foundResource = this.twigResources[key];
-      }
-    });
-    return foundResource;
+    return this.twigResources.get(namespace);
   }
 
   findTwigById(id): any | null {
@@ -253,40 +189,19 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   createGlobalsFromContext(context): void {
-    context.keys().forEach((key) => {
+    context.keys().forEach(key => {
       const data = context(key);
-      Object.keys(data).forEach((valueKey) => {
+      Object.keys(data).forEach(valueKey => {
         this.addGlobal(valueKey, data[valueKey]);
       });
     });
   }
 
-  createTwigStorageFromContext(context): void {
-    context.keys().forEach((key) => {
-      const pathAry = key.replace('./', '').split('/');
-      const folderName = pathAry[0];
-      let mappedNamespace = '';
-      Object.keys(this.namespaces).forEach((namespace) => {
-        const namespaceMap = this.namespaces[namespace].split('/');
-        if (namespaceMap[namespaceMap.length - 1] === folderName) {
-          mappedNamespace = namespace;
-        }
-      });
-      pathAry.shift();
-      this.addTwig(`@${mappedNamespace}/${pathAry.join('/')}`, context(key));
-    });
-  }
-
   getTwigResources(): {} {
-    const resources = this.twigResources;
-    const result = {};
-    Object.keys(resources).forEach((key) => {
-      result[key] = resources[key].default;
-    });
-    return result;
+    return this.twigResources;
   }
 
   addTwig(namespace, resource): void {
-    this.twigResources[namespace] = resource;
+    this.twigResources.set(namespace, resource.default);
   }
 }

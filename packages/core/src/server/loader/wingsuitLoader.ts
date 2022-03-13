@@ -1,5 +1,4 @@
 import { pathInfo } from '../../index';
-import FileDependencyPlugin from '../plugins/FileDependencyPlugin';
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
@@ -9,7 +8,7 @@ export default function wingsuitLoader(this: any, src) {
     prettyErrors: true,
     ...loaderUtils.getOptions(this),
   };
-  const { appConfig } = options;
+  const { appConfig, fileDependencyPlugin } = options;
   const res = YAML.parse(src, options);
   const info = pathInfo(this.resourcePath, appConfig);
   const result: any = {};
@@ -25,7 +24,7 @@ export default function wingsuitLoader(this: any, src) {
       if (res[key].namespace == null) {
         res[key].namespace = info.namespace;
       }
-      const added = FileDependencyPlugin.addFile(
+      const added = fileDependencyPlugin.addFile(
         key,
         this.resourcePath,
         `wingsuit/${key}.wingsuit.yml`,

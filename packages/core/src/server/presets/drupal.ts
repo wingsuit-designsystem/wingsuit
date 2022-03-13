@@ -40,19 +40,5 @@ export function webpack(appConfig: AppConfig) {
       ...cssObject,
       ...vendorObject,
     },
-    module: {
-      rules: [
-        {
-          test: /\.(yml|md|yaml)$/,
-          exclude: /\.wingsuit\.ya?ml$/,
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'yaml',
-            emit: true,
-          },
-        },
-      ],
-    },
   };
 }

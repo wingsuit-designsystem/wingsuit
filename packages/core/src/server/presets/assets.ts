@@ -1,4 +1,6 @@
 import * as path from 'path';
+import fs from 'fs';
+
 import AppConfig from '../../AppConfig';
 
 const CopyPlugin = require('copy-webpack-plugin');
@@ -8,22 +10,21 @@ export function name(appConfig: AppConfig) {
 }
 
 export function webpack(appConfig: AppConfig) {
+  const entryPointPath = path.resolve(appConfig.path, 'assets.js');
   // Storybook needs entries as array. For other apps assets keys are prefered.
   const entryPoints =
     appConfig.type === 'storybook'
-      ? [path.resolve(appConfig.path, 'assets.js')]
+      ? [entryPointPath]
       : {
-          assets: path.resolve(appConfig.path, 'assets.js'),
+          assets: entryPointPath,
         };
-
-  return {
-    entry: entryPoints,
+  const pack: any = {
     plugins: [
       new CopyPlugin({
         patterns: [
           {
             from: 'images/*',
-            to: appConfig.assetBundleFolder,
+            to: appConfig.assetsDistFolder,
             noErrorOnMissing: true,
           },
         ],
@@ -37,7 +38,7 @@ export function webpack(appConfig: AppConfig) {
             {
               loader: 'file-loader',
               options: {
-                outputPath: path.join(appConfig.assetBundleFolder, 'font'),
+                outputPath: path.join(appConfig.assetsDistFolder, 'font'),
                 name: '[name].[ext]?[hash]',
               },
             },
@@ -47,7 +48,7 @@ export function webpack(appConfig: AppConfig) {
           loader: 'file-loader',
           test: /.*[/|\\\\]images[/|\\\\].*\.svg$/,
           options: {
-            outputPath: path.join(appConfig.assetBundleFolder, 'images'),
+            outputPath: path.join(appConfig.assetsDistFolder, 'images'),
             name: '[name].[ext]',
           },
         },
@@ -55,11 +56,15 @@ export function webpack(appConfig: AppConfig) {
           loader: 'file-loader',
           test: /\.(png|jpg|gif|webp)$/,
           options: {
-            outputPath: path.join(appConfig.assetBundleFolder, 'images'),
+            outputPath: path.join(appConfig.assetsDistFolder, 'images'),
             name: '[name].[ext]',
           },
         },
       ],
     },
   };
+  if (fs.existsSync(entryPointPath)) {
+    pack.entry = entryPoints;
+  }
+  return pack;
 }

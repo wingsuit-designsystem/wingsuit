@@ -1,5 +1,3 @@
-import { AppConfig } from '../../index';
-
 const path = require('path');
 const fs = require('fs');
 
@@ -15,25 +13,22 @@ export interface FileItem {
 }
 
 export default class FileDependencyPlugin {
-  static filesMap: Map = {};
+  private filesMap: Map = {};
 
-  static addFile(identifier, sourcePath, targetRelativePath, content) {
+  addFile(identifier, sourcePath, targetRelativePath, content) {
     // Check for file with same identifier.
     let check = false;
-    Object.keys(FileDependencyPlugin.filesMap).forEach((loopPath) => {
-      if (
-        FileDependencyPlugin.filesMap[loopPath].identifier === identifier &&
-        loopPath !== sourcePath
-      ) {
+    Object.keys(this.filesMap).forEach(loopPath => {
+      if (this.filesMap[loopPath].identifier === identifier && loopPath !== sourcePath) {
         check = true;
       }
     });
     if (check) {
-      console.error(`File ${sourcePath} for identifer ${identifier} already added.`);
+      console.error(`File ${sourcePath} for identifier ${identifier} already added.`);
       return true;
     }
     // If found set "loaded before file" to overwritten
-    FileDependencyPlugin.filesMap[sourcePath] = {
+    this.filesMap[sourcePath] = {
       targetPath: targetRelativePath,
       content,
       identifier,
@@ -44,24 +39,25 @@ export default class FileDependencyPlugin {
 
   private plugin: {} = {};
 
-  private appConfig: AppConfig;
+  private dist: string;
 
-  constructor(appConfig: AppConfig) {
-    this.appConfig = appConfig;
+  constructor(dist: string) {
+    this.dist = dist;
     this.plugin = { name: 'FileDependency' };
   }
 
   public apply(compiler) {
     const afterCompile = (compilation, callback) => {
-      Object.keys(FileDependencyPlugin.filesMap).forEach((loopPath) => {
-        const file = FileDependencyPlugin.filesMap[loopPath];
+      Object.keys(this.filesMap).forEach(loopPath => {
+        const file = this.filesMap[loopPath];
+
         if (file.write === true) {
-          const targetPath = path.join(this.appConfig.absDistFolder, file.targetPath);
-          fs.mkdir(path.dirname(targetPath), { recursive: true }, (err) => {
+          const targetPath = path.join(this.dist, file.targetPath);
+          fs.mkdir(path.dirname(targetPath), { recursive: true }, err => {
             if (err) throw err;
             const content =
               typeof file.content !== 'string' ? JSON.stringify(file.content) : file.content;
-            fs.writeFile(targetPath, content, (fileErr) => {
+            fs.writeFile(targetPath, content, fileErr => {
               if (fileErr) throw fileErr;
               file.write = false;
             });
@@ -74,7 +70,7 @@ export default class FileDependencyPlugin {
     if (compiler.hooks) {
       compiler.hooks.afterCompile.tapAsync(this.plugin, afterCompile);
     } else {
-      compiler.plugin('beforeCompile', afterCompile);
+      compiler.plugin('afterCompile', afterCompile);
     }
   }
 }

@@ -15,7 +15,7 @@ export default interface AppConfig extends AppInitConfig {
 
   namespaces: Namespace;
 
-  assetAtomicFolder: string;
+  twigDistFolder: string;
 
   componentTypes: ComponentType;
 
@@ -37,15 +37,15 @@ export interface AppInitConfig {
 
   cssMode: string;
 
-  patternFolder?: string;
+  wingsuitDistFolder?: string;
 
   designSystem: string;
 
-  assetBundleFolder: string;
+  assetsDistFolder: string;
 
   dataFolder: string;
 
-  assetAtomicFolder?: string;
+  twigDistFolder?: string;
 
   features?: Feature;
 
@@ -131,9 +131,9 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     },
     cssMode: 'extract',
     designSystem: 'default',
-    assetBundleFolder: '',
-    patternFolder: 'patterns',
-    assetAtomicFolder: 'atomic',
+    assetsDistFolder: '',
+    wingsuitDistFolder: 'wingsuit',
+    twigDistFolder: 'templates',
     absDesignSystemPath: path.join(absRootPath, 'source/default'),
     absDistFolder: path.join(absRootPath, `dist/app-${type}`),
     absAppPath: path.join(absRootPath, `apps/${type}`),

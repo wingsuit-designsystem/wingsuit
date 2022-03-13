@@ -7,7 +7,7 @@ export function name(appConfig: AppConfig) {
 }
 
 export function webpack(appConfig: AppConfig) {
-  const fileDependencyPlugin = new FileDependencyPlugin(appConfig);
+  const fileDependencyPlugin = new FileDependencyPlugin(appConfig.absDistFolder);
   return {
     resolveLoader: {
       alias: {
@@ -23,6 +23,7 @@ export function webpack(appConfig: AppConfig) {
           loader: 'wingsuit-loader',
           options: {
             appConfig,
+            fileDependencyPlugin,
           },
         },
         {

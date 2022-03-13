@@ -14,7 +14,7 @@ export function webpack(appConfig: AppConfig) {
         patterns: [
           {
             from: 'videos/*',
-            to: appConfig.assetBundleFolder,
+            to: appConfig.assetsDistFolder,
             noErrorOnMissing: true,
           },
         ],
@@ -26,7 +26,7 @@ export function webpack(appConfig: AppConfig) {
           loader: 'file-loader',
           test: /\.(mp4)$/,
           options: {
-            outputPath: path.join(appConfig.assetBundleFolder, 'videos'),
+            outputPath: path.join(appConfig.assetsDistFolder, 'videos'),
             name: '[name].[ext]',
           },
         },

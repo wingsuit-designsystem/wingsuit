@@ -1,13 +1,12 @@
 import { getOptions } from 'loader-utils';
 import { validate } from 'schema-utils';
 import { pathInfo } from '../../index';
-import FileDependencyPlugin from '../plugins/FileDependencyPlugin';
 
 const schema = {};
 
 export default function twingLoader(this: any, source) {
   const options = getOptions(this);
-  const { appConfig } = options;
+  const { appConfig, fileDependencyPlugin } = options;
 
   validate(schema, options, {
     name: 'Twing Loader',
@@ -22,10 +21,10 @@ export default function twingLoader(this: any, source) {
   const info = pathInfo(this.resourcePath, appConfig);
   let importScript = '';
   if (info !== null) {
-    const isAdded = FileDependencyPlugin.addFile(
+    const isAdded = fileDependencyPlugin.addFile(
       `${info.namespace}/${info.path}`,
       this.resourcePath,
-      `${appConfig.assetBundleFolder}/${info.namespace}/${info.path}`,
+      `${info.namespace}/${info.path}`,
       source
     );
     if (isAdded === true) {
@@ -33,6 +32,5 @@ export default function twingLoader(this: any, source) {
     getStorage().addTwig('@${info.namespace}/${info.path}', {default: ${json}});`;
     }
   }
-
   return `${importScript} ${esModule ? 'export default' : 'module.exports ='} ${json};`;
 }

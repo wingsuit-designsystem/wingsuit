@@ -40,42 +40,5 @@ export function webpack(appConfig: AppConfig) {
       ...cssObject,
       ...vendorObject,
     },
-    module: {
-      rules: [
-        {
-          test: /\.(yml|md|yaml)$/,
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'wingsuit',
-            emit: true,
-          },
-        },
-        {
-          test: /\.twig$/,
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-            outputPath: (url, resourcePath, context) => {
-              const { namespaces } = appConfig;
-              delete namespaces.wsdesignsystem;
-              delete namespaces.wspatterns;
-              let outputPath = url;
-              Object.keys(namespaces).forEach((key) => {
-                const namespacePath = namespaces[key];
-                if (resourcePath.substring(0, namespacePath.length) === namespacePath) {
-                  outputPath = `${appConfig.assetAtomicFolder}/${key}/${resourcePath.substring(
-                    namespacePath.length
-                  )}`;
-                }
-              });
-              return outputPath;
-            },
-            context: appConfig.absDesignSystemPath,
-            emit: true,
-          },
-        },
-      ],
-    },
   };
 }

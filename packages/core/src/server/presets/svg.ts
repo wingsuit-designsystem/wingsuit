@@ -53,7 +53,7 @@ export function webpack(appConfig: AppConfig, config: SvgConfig) {
         loader: 'svg-sprite-loader',
         options: {
           extract: true,
-          outputPath: `${appConfig.assetBundleFolder}/`,
+          outputPath: `${appConfig.assetsDistFolder}/`,
           spriteFilename: (sourceFileName) => {
             let targetFileName = 'images/spritemap.svg';
             config.sources.forEach((svgConfig) => {

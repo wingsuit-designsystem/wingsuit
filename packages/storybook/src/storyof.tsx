@@ -49,7 +49,6 @@ export function getArgs(defaultArgs, variant) {
 }
 export function getArgTypes(variant) {
   const argTypes: any = {};
-  let hasSettings = false;
 
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
@@ -59,7 +58,6 @@ export function getArgTypes(variant) {
       setting.getType() !== 'group' &&
       setting.getType() !== 'media_library'
     ) {
-      hasSettings = true;
       argTypes[key] = {
         name: key,
         type: {
@@ -107,24 +105,10 @@ export function getArgTypes(variant) {
       }
     }
   });
-  if (!hasSettings) {
-    delete argTypes.SETTINGS;
-  } else {
-    argTypes.SEP = {
-      type: 'string',
-      name: '',
-      table: {
-        defaultValue: { summary: null },
-      },
-      control: null,
-    };
-  }
 
-  let hasFields = false;
   Object.keys(variant.getFields()).forEach((key) => {
     const field = variant.getField(key);
     if (field.isEnable()) {
-      hasFields = true;
       argTypes[key] = {
         name: key,
         table: {
@@ -157,10 +141,16 @@ export function getArgTypes(variant) {
       }
     }
   });
-  if (hasFields) {
-    delete argTypes.FIELDS;
-    delete argTypes.SEP;
-  }
+  argTypes.patternId = {
+    table: {
+      disable: true,
+    },
+  };
+  argTypes.variantId = {
+    table: {
+      disable: true,
+    },
+  };
   return argTypes;
 }
 

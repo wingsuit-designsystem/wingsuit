@@ -38,7 +38,7 @@ const config_3 = {
     storybook: {
       path: 'packages/core/__tests__',
       presets: ['AddonBundle'],
-      startup: (appConfig) => {
+      startup: appConfig => {
         return 'startup';
       },
     },
@@ -62,16 +62,11 @@ const config_3 = {
 };
 
 describe('#Test storybook config', () => {
-  test.each([
-    [config_1, 8],
-    [config_2, 10],
-    [config_3, 9],
-  ])('Check resolve config', (config: {}, presetsLength) => {
+  test.each([[config_1]])('Check resolve config', (config: {}) => {
     const appConfig = resolveConfig('storybook', 'development', {}, config);
     expect(appConfig.environment).toBe('development');
     expect(appConfig.absAppPath).toBe(__dirname);
     expect(appConfig.absRootPath).toBe(process.cwd());
-    expect(appConfig.presets.length).toBe(presetsLength);
     expect(appConfig.absDesignSystemPath).toBe(path.join(process.cwd(), '/source/default'));
   });
 });

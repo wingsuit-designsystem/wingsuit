@@ -1,18 +1,22 @@
 import * as path from 'path';
-import { TwingLoaderFilesystem } from 'twing';
+import { TwingLoaderFilesystem, TwingEnvironment } from 'twing';
 import fs from 'fs';
+import { init } from '../src/defaultEnvironment';
+
 import { storage, TwingRenderer } from '../src';
 
 const namespaces = require('./namespaces').default;
 const renderEngine = require('../src/twigRenderEngine');
 
-const renderer = new TwingRenderer();
 const loader = new TwingLoaderFilesystem();
-Object.keys(namespaces).forEach((namespace) => {
+const environment = new TwingEnvironment(loader);
+init(environment);
+const renderer = new TwingRenderer(environment);
+
+Object.keys(namespaces).forEach(namespace => {
   loader.setPaths(namespaces[namespace], namespace);
 });
 
-renderer.setLoader(loader);
 renderEngine.setRenderer(renderer);
 
 storage.createDefinitions(
