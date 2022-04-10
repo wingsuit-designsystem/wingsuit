@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/storybook",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
     "@storybook/theming": "^6.4.0",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@wingsuit-designsystem/pattern": "1.2.1",
-    "@wingsuit-designsystem/pattern-react": "1.2.1",
+    "@wingsuit-designsystem/pattern": "1.2.2",
+    "@wingsuit-designsystem/pattern-react": "1.2.2",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
