@@ -50,6 +50,8 @@
     "jsondiffpatch": "^0.4.1",
     "loader-utils": "^2.0.0",
     "lodash": "^4.17.21",
+    "memfs": "^3.4.1",
+    "memory-fs": "^0.5.0",
     "merge-deep": "^3.0.3",
     "mini-css-extract-plugin": "^2.6.0",
     "node-polyfill-webpack-plugin": "^1.1.4",
@@ -78,8 +80,7 @@
     "webpack-merge": "^5.8.0",
     "yaml": "^1.10.2",
     "yaml-loader": "^0.6.0",
-    "yargs": "^17.2.1",
-    "memory-fs": "^0.5.0"
+    "yargs": "^17.2.1"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

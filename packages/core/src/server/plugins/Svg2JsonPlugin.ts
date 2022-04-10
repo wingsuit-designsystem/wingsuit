@@ -20,6 +20,7 @@ export default class Svg2JsonPlugin {
   }
 
   public apply(compiler) {
+    console.log('APPPLY');
     const beforeCompile = (compilation, callback) => {
       const filename = this.targetJsonFlename;
       const { sourceFolder, appConfig } = this;

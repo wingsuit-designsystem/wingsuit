@@ -20,7 +20,9 @@ export default function twingLoader(this: any, source) {
 
   const info = pathInfo(this.resourcePath, appConfig);
   let importScript = '';
+  console.log('#########################################');
   if (info !== null) {
+    console.log('ADD to file dependency');
     const isAdded = fileDependencyPlugin.addFile(
       `${info.namespace}/${info.path}`,
       this.resourcePath,
@@ -31,6 +33,8 @@ export default function twingLoader(this: any, source) {
       importScript = `import { getStorage } from '@wingsuit-designsystem/pattern';
     getStorage().addTwig('@${info.namespace}/${info.path}', {default: ${json}});`;
     }
+  } else {
+    console.error(`Unable to resolve namespace for TWIG ${this.resourcePath}`);
   }
   return `${importScript} ${esModule ? 'export default' : 'module.exports ='} ${json};`;
 }

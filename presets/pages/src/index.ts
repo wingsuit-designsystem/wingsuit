@@ -19,6 +19,7 @@ export function wingsuitConfig(): any {
         cssMode: 'extract',
         distFolder: 'dist/app-pages',
         presets: [
+          getDefaultPreset('assets'),
           getDefaultPreset('wingsuit'),
           getDefaultPreset('css'),
           getDefaultPreset('twing'),

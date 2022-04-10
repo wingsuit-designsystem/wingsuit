@@ -1,8 +1,9 @@
-import { resolve as resolvePath } from 'path';
+import path, { resolve as resolvePath } from 'path';
 
 import { Compiler, Configuration } from 'webpack';
 
-const MemoryFileSystem = require('memory-fs');
+import { createFsFromVolume, Volume, IFs } from 'memfs';
+
 const webpack = require('webpack');
 
 export abstract class TestCase {
@@ -24,22 +25,25 @@ export abstract class TestCase {
     return {};
   }
 
-  public compile(configuration: Configuration): Promise<MemoryFileSystem> {
+  public compile(configuration: Configuration): Promise<IFs> {
     return new Promise((resolve, reject) => {
       const compiler: Compiler = webpack(configuration);
-      const memoryFs = new MemoryFileSystem();
 
-      compiler.outputFileSystem = memoryFs;
+      const fs = createFsFromVolume(new Volume());
+      compiler.outputFileSystem = fs;
+      compiler.outputFileSystem.join = path.join.bind(path);
 
       compiler.run((err, stats) => {
         if (err || stats.hasErrors()) {
           if (err) {
             reject(err);
           } else {
+            console.log(stats.toJson('errors-only'));
             reject(new Error(stats.toJson('errors-only').errors.join('')));
           }
         } else {
-          resolve(memoryFs);
+          console.log(stats);
+          resolve(fs);
         }
       });
     });

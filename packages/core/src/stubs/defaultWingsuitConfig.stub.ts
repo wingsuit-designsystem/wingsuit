@@ -61,6 +61,17 @@ export const wingsuit: Config = {
         return `start-storybook --config-dir ${this.absAppPath}`
       },
     },
+    test: {
+      path: './apps/test',
+      cssMode: 'hot',
+      type: 'cms',
+      dataFolder: './apps/data',
+      distFolder: 'dist/app-cms',
+      assetsDistFolder: '',
+      twigDistFolder: 'templates',
+      designSystem: 'default',
+      presets: [assets, assetsVideos, css, twing],
+    },
     cms: {
       path: './apps/cms',
       cssMode: 'hot',

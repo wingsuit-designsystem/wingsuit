@@ -1,6 +1,6 @@
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
-import { renderer, storage, TwingRenderer } from '@wingsuit-designsystem/pattern';
+import { renderer, storage } from '@wingsuit-designsystem/pattern';
 import Page from './Page';
 import { getProps } from './props';
 
@@ -17,8 +17,6 @@ export function configure(
 ) {
   storage.setNamespaces(namespaces);
 
-  storage.createDefinitionsFromMultiContext(patternContext);
-  // storage.createTwigStorageFromContext(templateContext);
   function requireAll(r) {
     if (r != null) {
       r.keys().forEach(r);
@@ -27,11 +25,6 @@ export function configure(
   requireAll(templateContext);
 
   storage.createGlobalsFromContext(dataContext);
-  const twigRenderer = new TwingRenderer();
-  twigRenderer.addFunction('file_url', (url) => {
-    return Promise.resolve(url.replace('ws-assets://', '/'));
-  });
-  renderer.setRenderer(twigRenderer);
 
   const assets = Object.keys(locals.webpackStats.compilation.assets);
   const css = assets != null ? assets.filter((value) => value.match(/\.css$/)) : {};

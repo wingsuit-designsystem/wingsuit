@@ -13,12 +13,12 @@ export interface FileItem {
 }
 
 export default class FileDependencyPlugin {
-  private filesMap: Map = {};
+  private filesMap = new Map<string, FileItem>();
 
   addFile(identifier, sourcePath, targetRelativePath, content) {
     // Check for file with same identifier.
     let check = false;
-    Object.keys(this.filesMap).forEach(loopPath => {
+    Object.keys(this.filesMap).forEach((loopPath) => {
       if (this.filesMap[loopPath].identifier === identifier && loopPath !== sourcePath) {
         check = true;
       }
@@ -48,23 +48,33 @@ export default class FileDependencyPlugin {
 
   public apply(compiler) {
     const afterCompile = (compilation, callback) => {
-      Object.keys(this.filesMap).forEach(loopPath => {
+      const count: number = Object.keys(this.filesMap).length;
+      let i = 0;
+      Object.keys(this.filesMap).forEach((loopPath) => {
         const file = this.filesMap[loopPath];
-
         if (file.write === true) {
           const targetPath = path.join(this.dist, file.targetPath);
-          fs.mkdir(path.dirname(targetPath), { recursive: true }, err => {
+          fs.mkdir(path.dirname(targetPath), { recursive: true }, (err) => {
             if (err) throw err;
             const content =
               typeof file.content !== 'string' ? JSON.stringify(file.content) : file.content;
-            fs.writeFile(targetPath, content, fileErr => {
+            fs.writeFile(targetPath, content, (fileErr) => {
               if (fileErr) throw fileErr;
               file.write = false;
+              i = +1;
+              console.log('WWRIIIIIIIIIIIIIIIIIIIITTTTTTTTTTTTTTTTTTTTTTE');
+              if (i === count) {
+                callback();
+              }
             });
           });
+        } else {
+          i = +1;
+          if (i === count) {
+            callback();
+          }
         }
       });
-      callback(null);
     };
 
     if (compiler.hooks) {

@@ -2,7 +2,7 @@ import path from 'path';
 import { PresetManager, resolveConfig } from '../src/index';
 import { TestCase } from './test-case';
 
-class WebpackTest extends TestCase {
+class TwingLoaderTest extends TestCase {
   get entry() {
     return '/entry.js';
   }
@@ -12,13 +12,16 @@ class WebpackTest extends TestCase {
   }
 }
 
+beforeEach(function () {
+  jest.setTimeout(20000); // ms
+});
 describe('#Test Webpack config', () => {
   test.each([[{}]])('Check resolve config', async (config: {}) => {
-    const testCase = new WebpackTest();
+    const testCase = new TwingLoaderTest();
     const presetManager = new PresetManager();
     const resolvedConfig = resolveConfig(
-      'drupal',
-      'production',
+      'test',
+      'development',
       {},
       {
         designSystems: {
@@ -30,16 +33,19 @@ describe('#Test Webpack config', () => {
         },
       }
     );
+
+    const sleep = (milliseconds) => {
+      return new Promise((resolve) => setTimeout(resolve, milliseconds));
+    };
     const webpackConfig = presetManager.generateWebpack(resolvedConfig);
     webpackConfig.resolveLoader.alias['twing-loader'] =
       './packages/core/dist/server/loader/twingLoader.js';
     webpackConfig.entry = path.join(__dirname, './entry.js');
     const directoryPath = webpackConfig.output.path;
     const outputFs = await testCase.compile(webpackConfig);
+    await sleep(2000);
     const files = outputFs.readdirSync(directoryPath);
-    files.forEach(file => {
-      // Do whatever you want to do with the file
-      // eslint-disable-next-line no-console
+    files.forEach((file) => {
       console.log(file);
     });
   });
