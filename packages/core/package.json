@@ -51,7 +51,7 @@
     "postcss": "^7.0.35",
     "postcss-loader": "^4.2.0",
     "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "^7.4.3",
     "postcss-replace": "^1.1.0",
     "prettier": "^2.3.0",
     "reflect-metadata": "^0.1.13",
