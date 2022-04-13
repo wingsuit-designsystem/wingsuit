@@ -6,9 +6,9 @@ const escapeHtml = require('escape-html');
 export default class TwigAttribute {
   private attributes: Map<string, any>;
 
-  constructor(attributes = '') {
-    this.attributes = new Map();
-    if (attributes !== '') {
+  constructor(attributes: string | any = '') {
+    this.attributes = attributes instanceof Map ? attributes : new Map();
+    if (!(attributes instanceof Map) && attributes !== '') {
       const attrs = htmlAttributeParser(`<div ${attributes}></div>`).attributes;
       Object.keys(attrs).forEach((key) => {
         if (key === 'class') {

@@ -9,6 +9,10 @@ describe('TwigAttribute test', () => {
     twigAttribute = new TwigAttribute('class="class1 class2" data="test"');
     expect(twigAttribute.toString()).toBe(' class="class1 class2" data="test"');
   });
+  test('fromMap.', () => {
+    twigAttribute = new TwigAttribute(new Map().set('class', 'class1 class2').set('data', 'test'));
+    expect(twigAttribute.toString()).toBe(' class="class1 class2" data="test"');
+  });
   test('addClass.', () => {
     twigAttribute.addClass(['class1', 'class2']);
     twigAttribute.addClass('class1 class2');

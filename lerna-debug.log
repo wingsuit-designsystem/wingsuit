@@ -1,98 +1,15 @@
-0 silly argv {
-0 silly argv   _: [ 'exec' ],
-0 silly argv   scope: '@wingsuit-designsystem/*',
-0 silly argv   parallel: true,
-0 silly argv   args: [],
-0 silly argv   '--': [
-0 silly argv     'cross-env-shell',
-0 silly argv     'node',
-0 silly argv     '$LERNA_ROOT_PATH/scripts/watch-babel.js'
-0 silly argv   ],
-0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'node_modules/.bin/lerna'
-0 silly argv }
-1 notice cli v3.22.1
-2 verbose rootPath /home/cw/projects/wingsuit/wingsuit
-3 notice filter including "@wingsuit-designsystem/*"
-4 info filter [ '@wingsuit-designsystem/*' ]
-5 info Executing command in 20 packages: "cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js"
-6 error Error: Command failed: cross-env-shell node $LERNA_ROOT_PATH/scripts/watch-babel.js
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-methods.
-6 error The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
-6 error 	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
-6 error to the "plugins" section of your Babel config.
-6 error
-6 error Successfully compiled 9 files with Babel (2950ms).
-6 error Successfully compiled 5 files with Babel (851ms).
-6 error Successfully compiled 4 files with Babel (563ms).
-6 error
-6 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
-6 error     at /home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:278:16
+15 error Error: Command failed: git remote update
+15 error remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+15 error remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+15 error fatal: Authentifizierung fehlgeschlagen für 'https://github.com/iuscare/wingsuit.git/'
+15 error error: Konnte nicht von pascal anfordern
+15 error
+15 error Fordere an von origin
+15 error Fordere an von pascal
+15 error
+15 error     at makeError (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:174:9)
+15 error     at Function.module.exports.sync (/home/cw/projects/wingsuit/wingsuit/node_modules/execa/index.js:338:15)
+15 error     at Object.execSync (/home/cw/projects/wingsuit/wingsuit/node_modules/@lerna/child-process/index.js:26:16)
+15 error     at updateRemote (/home/cw/projects/wingsuit/wingsuit/node_modules/@lerna/version/lib/is-behind-upstream.js:26:16)
+15 error     at isBehindUpstream (/home/cw/projects/wingsuit/wingsuit/node_modules/@lerna/version/lib/is-behind-upstream.js:11:3)
+15 error     at VersionCommand.initialize (/home/cw/projects/wingsuit/wingsuit/node_modules/@lerna/version/index.js:154:9)
