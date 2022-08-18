@@ -97,7 +97,7 @@ export function syncSilo(filename, data) {
   }
   syncIsRunning[filename] = true;
   const output = JSON.stringify(data);
-  setTimeout(function () {
+  setTimeout(() => {
     syncIsRunning[filename] = false;
   }, 2000);
 
