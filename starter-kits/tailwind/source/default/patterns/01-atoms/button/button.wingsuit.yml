@@ -78,6 +78,7 @@ button:
       label: Url
       description: The action url of your button
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+      expose_as_field: true
     icon:
       type: select
       label: Icon

@@ -16,7 +16,7 @@ hero:
       type: text
       label: Text
       preview: "Sub-hero message, not too long and not too short. Make it just right!"
-    button_group:
+    button:
       type: pattern
       label: Button
       preview:
