@@ -5,7 +5,7 @@ aliases:
     working_directory: /tmp/storybook
     CYPRESS_CACHE_FOLDER:
     docker:
-      - image: cimg/python:3.9.7-browsers
+      - image: cimg/python:3.10.6-browsers
 
 jobs:
   install:
