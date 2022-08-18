@@ -89,8 +89,18 @@ export function getAppNames(wingsuitConfig: any = null, type = '') {
   return names;
 }
 
+// Check for recursion
+const syncIsRunning = {};
 export function syncSilo(filename, data) {
+  if (syncIsRunning[filename]) {
+    return;
+  }
+  syncIsRunning[filename] = true;
   const output = JSON.stringify(data);
+  setTimeout(function () {
+    syncIsRunning[filename] = false;
+  }, 2000);
+
   fs.readFile(filename, (readerr, buffer) => {
     // Only write output if there is a difference or non-existent target file
     const existingJson = buffer ? buffer.toString() : '';
@@ -99,6 +109,7 @@ export function syncSilo(filename, data) {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
+
       fs.writeFile(filename, output, (writeerr) => {
         if (writeerr) console.error(writeerr);
       });

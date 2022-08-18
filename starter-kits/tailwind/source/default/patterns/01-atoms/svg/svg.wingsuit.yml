@@ -22,4 +22,3 @@ svg_icon:
   variants:
     icon:
       label: Sprite Map
-  visibility: storybook

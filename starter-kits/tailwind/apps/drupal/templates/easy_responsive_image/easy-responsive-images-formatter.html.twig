@@ -1,0 +1,39 @@
+{# --
+  /**
+   * @file
+   * Default theme implementation to display a easy responsive images.
+   *
+   * Available variables:
+   * - url: An optional URL the image can be linked to.
+   * - src: The transformed src tag for the image, using the smallest defined width.
+   * - srcset[]: The srcset of the transformed image,
+          consisting of transformed url, transformed width & calculated height (if aspect ratio is used), and the srcset_url
+   * - loading_method: The loading attribute of the image.
+   * - decoding_method: The decoding attribute of the image.
+   * - fetch_priority: The fetch priority of the image.
+   * - width: The original width of the image.
+   * - height: The original height of the image.
+   * - alt: The alt text for the image.
+   * - item_attributes[]: attributes for the wrapper
+   * - data[]: json encoded drimage data object
+   * @see EasyResponsiveImagesFormatter
+   *
+   * @ingroup themeable
+   */
+-- #}
+
+{{ attach_library('easy_responsive_images/resizer') }}
+
+{% set easy_responsive_images_srcset = [] %}
+{% for source in srcset %}
+  {% set easy_responsive_images_srcset = easy_responsive_images_srcset
+    |merge([source.srcset_url]) %}
+{% endfor %}
+<img
+  {{ item_attributes }}
+  src="{{ src }}"
+  data-srcset="{{ easy_responsive_images_srcset|join(',') }}"
+  loading="{{ loading_method }}"
+  decoding="{{ decoding_method }}"
+  fetchpriority="{{ fetch_priority }}"
+/>

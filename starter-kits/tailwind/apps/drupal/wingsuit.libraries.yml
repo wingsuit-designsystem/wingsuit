@@ -19,4 +19,3 @@ core:
   dependencies:
     - core/drupal
     - core/drupalSettings
-    - drimage/drimage

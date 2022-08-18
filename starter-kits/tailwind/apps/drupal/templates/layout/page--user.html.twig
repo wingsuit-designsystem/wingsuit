@@ -45,11 +45,12 @@
  * @see html.html.twig
  */
 #}
+
 {% extends "page.html.twig" %}
   {% block main %}
     {% embed "@templates/basic/basic.twig" with {width: 'small' } %}
       {% block headline %}
-        Welcome to <br>the Peach Company!
+        Welcome
       {% endblock %}
       {% block content %}
         {{ page.content }}

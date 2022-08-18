@@ -8,7 +8,7 @@ module.exports = {
   important: false,
   darkMode: 'class',
   content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
-  safelist: ['bg-black'],
+  safelist: ['bg-black', 'object-cover'],
   theme: {
     colors: {
       transparent: 'transparent',

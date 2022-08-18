@@ -23,13 +23,13 @@
   If a background color is adjusted a "default" padding to top is adjusted.
   The user can allways overwrite the this behavior.
 #}
-{% set padding_top = padding_top|default('auto') == 'auto' and bg is not empty ? 'default' : padding_top %}
+{% set padding_top = padding_top|default('auto') == 'auto' and (bg is not empty or bg_image is not empty )  ? 'default' : padding_top %}
 {% set padding_bottom = padding_bottom|default('auto') == 'auto' ? 'default' : padding_bottom %}
 
 {# Settings #}
 {% set bg_classes = ([
-  'relative',
-  pattern_configuration('container', '', 'bg')[bg]
+  pattern_configuration('container', '', 'bg')[bg],
+  'absolute left-0 top-0 w-full h-full overflow-hidden background-cover'
 ] | sort | join(' ') | trim )%}
 
 {% set classes = ([
@@ -46,14 +46,14 @@
 
 {# TEMPLATE #}
 {% if bg or bg_image or is_relative%}
-<div {{ create_attribute().addClass(bg_classes) }}>
-  {{ bg_image }}
-  {% endif %}
+<div class="relative">
+  {% if bg_image or bg %}<div {{ create_attribute().addClass(bg_classes) }} style="z-index: -1">{{ bg_image }}</div>{% endif %}
+{% endif %}
   <div {{ attributes.addClass(classes) }}>
     {% block content %}
       {{ content }}
     {% endblock %}
   </div>
-  {% if bg or bg_image or is_relative%}
+{% if bg or bg_image or is_relative%}
 </div>
 {% endif %}

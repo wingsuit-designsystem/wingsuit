@@ -29,7 +29,6 @@ export default function (options) {
   };
   const cmdOptions = { stdio: 'inherit', cwd: npmOptions.checkoutFolder };
   const gitOptions = { cwd: npmOptions.gitFolder };
-
   // Removes the \n from the stringified buffer
   const extractHash = (buffer) => {
     const arr = buffer.toString('utf8').split('\n');
@@ -72,7 +71,10 @@ export default function (options) {
    */
   const setupWingsuit = () => {
     // This function must complete before the subsequent installs can be ran.
+
+    logger.log(`${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`);
     checkoutLatestTag();
+
     mv(
       `${npmOptions.gitFolder}/starter-kits/${npmOptions.starterKit}`,
       npmOptions.targetFolder,

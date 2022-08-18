@@ -40,7 +40,7 @@ container:
     bg_image:
       type: media_library
       label: Background image
-      view_mode: drimage_background
+      view_mode: background
       group: tab_bg
       description: The background image
     tab_advanced:
