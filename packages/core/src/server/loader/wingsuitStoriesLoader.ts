@@ -52,7 +52,8 @@ export default function wingsuitStoriesLoader(this: any, src) {
     output.push(`
     import React from 'react';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
-    import { argTypes, args } from '@wingsuit-designsystem/storybook/story';
+    import { args, argTypes } from '@wingsuit-designsystem/storybook/story';
+    import '@wingsuit-designsystem/pattern/environment-entry';
     
     import './${path.basename(absYamlPath)}';
     

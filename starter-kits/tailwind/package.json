@@ -23,7 +23,7 @@
     "prototyping"
   ],
   "scripts": {
-    "dev:storybook": "start-storybook --config-dir apps/storybook",
+    "dev:storybook": "cross-env-shell NODE_ENV=development \"start-storybook --config-dir apps/storybook\"",
     "dev:storybook:docksal": "start-storybook --config-dir apps/storybook -p 3000",
     "build:storybook": "build-storybook --config-dir apps/storybook -o ./dist/app-storybook",
     "docs:storybook": "build-storybook --docs --config-dir apps/storybook -o ./dist/app-storybook",

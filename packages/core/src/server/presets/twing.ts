@@ -10,19 +10,8 @@ export function webpack(appConfig: AppConfig) {
   const fileDependencyPlugin = new FileDependencyPlugin(
     path.join(appConfig.absDistFolder, appConfig.twigDistFolder)
   );
-  const entryPointPath = path.join(
-    path.dirname(require.resolve('@wingsuit-designsystem/pattern')),
-    'environment-entry.js'
-  );
-  const entryPoint =
-    appConfig.type === 'storybook'
-      ? [entryPointPath]
-      : {
-          assets: entryPointPath,
-        };
 
   return {
-    entry: entryPoint,
     resolveLoader: {
       alias: {
         'twing-loader': path.join(__dirname, '../loader/twingLoader'),

@@ -17,7 +17,7 @@ function without(element, ...args) {
     return [];
   }
   if (element instanceof TwigAttribute) {
-    args.forEach(key => {
+    args.forEach((key) => {
       element.removeAttribute(key);
     });
   }
@@ -39,17 +39,17 @@ export function init(environment: TwingEnvironment) {
     create_attribute: twigAttributeFunction,
     pattern_configuration: getPatternConfiguration,
     pattern_preview: (patternId: string, variables: {} = {}, variantId = '__default') => {
-      return new Promise(resolve => {
-        renderPatternPreview(patternId, variables, variantId).then(output => {
+      return new Promise((resolve) => {
+        renderPatternPreview(patternId, variables, variantId).then((output) => {
           resolve(output);
         });
       });
     },
   };
-  Object.keys(functions).forEach(key => {
+  Object.keys(functions).forEach((key) => {
     environment.addFunction(new TwingFunction(key, functions[key], []));
   });
-  Object.keys(filters).forEach(key => {
+  Object.keys(filters).forEach((key) => {
     environment.addFilter(new TwingFilter(key, filters[key], []));
   });
 }

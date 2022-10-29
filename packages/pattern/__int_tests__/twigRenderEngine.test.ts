@@ -13,7 +13,7 @@ const environment = new TwingEnvironment(loader);
 init(environment);
 const renderer = new TwingRenderer(environment);
 
-Object.keys(namespaces).forEach(namespace => {
+Object.keys(namespaces).forEach((namespace) => {
   loader.setPaths(namespaces[namespace], namespace);
 });
 

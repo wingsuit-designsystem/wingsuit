@@ -53,7 +53,7 @@ export default class PatternStorage implements IPatternStorage {
 
   loadPatternsByNamespace(namespace): Pattern[] {
     const foundPatterns: Pattern[] = [];
-    Object.keys(this.definitions).forEach(key => {
+    Object.keys(this.definitions).forEach((key) => {
       const pattern = this.loadPattern(key);
       if (pattern.getNamespace() === namespace) {
         foundPatterns.push(pattern);
@@ -70,10 +70,10 @@ export default class PatternStorage implements IPatternStorage {
    * @returns {object} New object with merged key/values
    */
   private mergeDeep(...objects) {
-    const isObject = obj => obj && typeof obj === 'object';
+    const isObject = (obj) => obj && typeof obj === 'object';
 
     return objects.reduce((prev, obj) => {
-      Object.keys(obj).forEach(key => {
+      Object.keys(obj).forEach((key) => {
         const pVal = prev[key];
         const oVal = obj[key];
 
@@ -116,7 +116,7 @@ export default class PatternStorage implements IPatternStorage {
           basePatternTypes = [basePatternType];
         }
 
-        Object.keys(basePatternTypes).forEach(key => {
+        Object.keys(basePatternTypes).forEach((key) => {
           const type: string = basePatternTypes[key];
           if (basePatternField == null) {
             if (basePatternDefinition[type] != null) {
@@ -174,7 +174,7 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   addDefinitions(wingsuit) {
-    Object.keys(wingsuit).forEach(id => {
+    Object.keys(wingsuit).forEach((id) => {
       this.definitions[id] = wingsuit[id];
     });
   }
@@ -189,9 +189,9 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   createGlobalsFromContext(context): void {
-    context.keys().forEach(key => {
+    context.keys().forEach((key) => {
       const data = context(key);
-      Object.keys(data).forEach(valueKey => {
+      Object.keys(data).forEach((valueKey) => {
         this.addGlobal(valueKey, data[valueKey]);
       });
     });

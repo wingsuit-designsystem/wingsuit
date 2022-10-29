@@ -12,7 +12,7 @@ class TwingLoaderTest extends TestCase {
   }
 }
 
-beforeEach(function () {
+beforeEach(() => {
   jest.setTimeout(20000); // ms
 });
 describe('#Test Webpack config', () => {
@@ -46,6 +46,7 @@ describe('#Test Webpack config', () => {
     await sleep(2000);
     const files = outputFs.readdirSync(directoryPath);
     files.forEach((file) => {
+      // eslint-disable-next-line no-console
       console.log(file);
     });
   });

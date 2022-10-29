@@ -38,11 +38,9 @@ export abstract class TestCase {
           if (err) {
             reject(err);
           } else {
-            console.log(stats.toJson('errors-only'));
             reject(new Error(stats.toJson('errors-only').errors.join('')));
           }
         } else {
-          console.log(stats);
           resolve(fs);
         }
       });

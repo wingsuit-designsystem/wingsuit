@@ -90,6 +90,7 @@
   },
   "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc",
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.0",
     "node-polyfill-webpack-plugin": "^1.1.4"
   }
 }

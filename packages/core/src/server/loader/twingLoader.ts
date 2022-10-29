@@ -20,9 +20,7 @@ export default function twingLoader(this: any, source) {
 
   const info = pathInfo(this.resourcePath, appConfig);
   let importScript = '';
-  console.log('#########################################');
   if (info !== null) {
-    console.log('ADD to file dependency');
     const isAdded = fileDependencyPlugin.addFile(
       `${info.namespace}/${info.path}`,
       this.resourcePath,

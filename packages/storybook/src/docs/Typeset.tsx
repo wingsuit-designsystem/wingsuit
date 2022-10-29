@@ -32,8 +32,8 @@ const Wrapper = styled.div<{}>({}, ({ theme }) => ({
 }));
 
 export interface TypesetProps {
-  fontFamily?: string;
-  classNamePrefix?: string;
+  fontFamily: string;
+  classNamePrefix: string;
   fontSizes: {};
   fontWeight?: number;
   sampleText?: string;
@@ -68,10 +68,14 @@ export const Typeset: FunctionComponent<TypesetProps> = ({
             lineHeight: fontSizes[name],
           }}
         >
-          {sampleText || 'Was he a beast if music could move him so?'}
+          {sampleText}
         </Sample>
       </TypeSpecimen>
     ))}
   </Wrapper>
 );
+Typeset.defaultProps = {
+  sampleText: 'Was he a beast if music could move him so?',
+  fontWeight: 4
+}
 export default Typeset;

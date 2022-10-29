@@ -6,7 +6,6 @@ import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 // Library Imports
 const merge = require('webpack-merge');
 const { ProgressPlugin } = require('webpack');
-// const TerserPlugin = require('terser-webpack-plugin');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');

@@ -22,12 +22,12 @@ export async function getPatternConfiguration(
 ) {
   try {
     const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-    return new Promise<string>(resolve => {
+    return new Promise<string>((resolve) => {
       const config = variant.getConfiguration();
       resolve(config[configuration]);
     });
   } catch (e) {
-    return new Promise<string>(resolve => {
+    return new Promise<string>((resolve) => {
       if (e instanceof Error) {
         // eslint-disable-next-line no-console
         console.info(`Cannot load pattern configuration. Message: ${e.message}`);
@@ -40,7 +40,7 @@ export async function getPatternConfiguration(
 export function twingMapToArray(variables): string[] {
   const ary: string[] = [];
   if (variables instanceof Map) {
-    variables.forEach(value => {
+    variables.forEach((value) => {
       ary.push(value);
     });
   }
@@ -57,7 +57,7 @@ export async function renderPatternPreview(
   try {
     variant = storage.loadVariant(patternId, variantId);
   } catch (err) {
-    return new Promise<string>(resolve => {
+    return new Promise<string>((resolve) => {
       if (err instanceof Error) {
         resolve(err.message);
       }
@@ -81,7 +81,7 @@ export async function renderPatternPreview(
 
   const patternVariables = variant.getVariables();
   if (Object.keys(promisedPreview).length !== 0) {
-    return new Promise<string>(resolve => {
+    return new Promise<string>((resolve) => {
       Promise.all(promisedPreview).then((promisedPreviewValues: string[]) => {
         const previewRenderedVariables = {};
         for (let j = 0; j < promisedPreviewValues.length; j += 1) {
@@ -114,9 +114,7 @@ export async function renderPatternPreview(
                 previewRenderedVariables[nameKeys[0]] += promisedPreviewValues[j];
               }
             } else {
-              previewRenderedVariables[
-                nameKeys[0]
-              ] = `No multi value type for field: '${variant
+              previewRenderedVariables[nameKeys[0]] = `No multi value type for field: '${variant
                 .getPattern()
                 .getId()}:${fieldName}:${variant.getField(fieldName).multiValueType()}'`;
             }
@@ -126,17 +124,17 @@ export async function renderPatternPreview(
           ...patternVariables,
           ...buildBaseVariables(variables),
         };
-        Object.keys(previewRenderedVariables).forEach(key => {
+        Object.keys(previewRenderedVariables).forEach((key) => {
           // Overwrite variables with rendered ones.
           if (finalVariables[key] !== null) {
             finalVariables[key] = previewRenderedVariables[key];
           }
         });
         renderPattern(patternId, finalVariables, variantId)
-          .then(output => {
+          .then((output) => {
             resolve(output);
           })
-          .catch(error => {
+          .catch((error) => {
             resolve(error);
           });
       });
