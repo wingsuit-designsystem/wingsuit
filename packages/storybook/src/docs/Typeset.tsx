@@ -76,6 +76,6 @@ export const Typeset: FunctionComponent<TypesetProps> = ({
 );
 Typeset.defaultProps = {
   sampleText: 'Was he a beast if music could move him so?',
-  fontWeight: 4
-}
+  fontWeight: 4,
+};
 export default Typeset;

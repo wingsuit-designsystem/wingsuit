@@ -5,6 +5,7 @@ import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
+const mergeDeep = require('merge-deep');
 const { ProgressPlugin } = require('webpack');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
@@ -39,6 +40,7 @@ export default class PresetManager {
     return preset.name != null ? preset.name(appConfig) : Math.random();
   }
 
+
   private getPresetParameter(preset: Preset, appConfig: AppConfig, providedConfig: any): any {
     const defaultConfig = preset.defaultConfig != null ? preset.defaultConfig(appConfig) : {};
     const appParameter =
@@ -46,6 +48,18 @@ export default class PresetManager {
         ? appConfig.getParameters(this.getPresetName(preset, appConfig))
         : {};
     return Object.assign(defaultConfig, appParameter, providedConfig);
+  }
+
+  public invokeHook(appConfig: AppConfig, hookName, hookArguments: any = {}, data: any) {
+    const presets = this.getPresetDefinitions(appConfig);
+    let mergedData = data;
+    presets.forEach((definition) => {
+      if (typeof definition.preset[hookName] === 'function') {
+        const hookResult = definition.preset[hookName]();
+        mergedData = mergeDeep(data, hookResult);
+      }
+    });
+    return mergedData;
   }
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {

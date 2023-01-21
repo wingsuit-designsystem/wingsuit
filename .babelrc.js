@@ -7,7 +7,6 @@ const withTests = {
   ],
   plugins: [
     'babel-plugin-require-context-hook',
-    'babel-plugin-dynamic-import-node',
     '@babel/plugin-transform-runtime',
   ],
 };

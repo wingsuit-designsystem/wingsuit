@@ -22,7 +22,7 @@ export function getConfigBase(wingsuitConfig: any = null) {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
-  let mergedConfig = merge(configStub.wingsuit, projectConfig);
+  const mergedConfig = merge(configStub.wingsuit, projectConfig);
   mergedConfig.absAppPath = '';
 
   // Overrule logic.
@@ -33,15 +33,8 @@ export function getConfigBase(wingsuitConfig: any = null) {
 
   // Overrule with preset configs.
   const presetManager = new PresetManager();
-  const presets = presetManager.getPresetDefinitions(mergedConfig);
-
-  Object.keys(presets).forEach((key) => {
-    if (presets[key] != null && presets[key].preset.wingsuitConfig != null) {
-      const presetWingsuitConfig = presets[key].preset.wingsuitConfig();
-      mergedConfig = merge(mergedConfig, presetWingsuitConfig);
-    }
-  });
-  return { mergedConfig, projectConfig };
+  const finalMergedConfig = presetManager.invokeHook(mergedConfig, 'wingsuitConfig', {}, mergedConfig);
+  return { mergedConfig: finalMergedConfig, projectConfig };
 }
 
 /**
