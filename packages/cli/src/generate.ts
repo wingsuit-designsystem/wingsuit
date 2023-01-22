@@ -4,6 +4,7 @@ import leven from 'leven';
 import startApp from './startApps';
 import initiate from './initiate';
 import component from './component';
+import upgrade from './upgrade';
 import app from './app';
 import version from './version';
 
@@ -40,6 +41,11 @@ program
   .description('Generate Wingsuit app.')
   .option('-N --use-npm', 'Use npm to install deps')
   .action((options) => app(options));
+
+program
+  .command('upgrade')
+  .description('Upgrade Wingsuit to Version 2.')
+  .action((options) => upgrade(options));
 
 program
   .command('dev')

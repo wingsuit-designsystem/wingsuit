@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TabbedArgsTable } from '@storybook/components';
+import { TabBar } from '@storybook/components';
 
 import { PatternVariant } from '@wingsuit-designsystem/pattern';
 
@@ -51,7 +51,7 @@ export const PatternProperties: FC<Props> = (props: Props) => {
     }
   });
 
-  return <TabbedArgsTable tabs={properties} />;
+  return <TabBar />;
 };
 
 PatternProperties.displayName = 'PatternProperties';

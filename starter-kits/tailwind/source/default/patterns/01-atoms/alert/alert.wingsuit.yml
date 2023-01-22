@@ -1,4 +1,4 @@
-alert:
+alertxxx:
   use: "@atoms/alert/alert.twig"
   label: Alert
   description: Colorful status, warning and error messages for every situation.

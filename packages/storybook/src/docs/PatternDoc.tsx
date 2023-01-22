@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { Heading, Preview } from '@storybook/addon-docs';
+import { Heading } from '@storybook/addon-docs';
 import { Pattern } from '@wingsuit-designsystem/pattern';
 
 import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
@@ -34,9 +34,7 @@ export const PatternDoc: FunctionComponent<StoriesProps> = (props: StoriesProps)
         return (
           <div key={variant.getId()} id={`anchor--${variant.getStoryId()}`}>
             <Heading>{variant.getLabel()}</Heading>
-            <Preview>
-              <PatternPreview patternId={pattern.getId()} variantId={variant.getId()} />
-            </Preview>
+            <PatternPreview patternId={pattern.getId()} variantId={variant.getId()} />
             <>{included}</>
             <PatternProperties variant={variant} />
           </div>
