@@ -40,7 +40,6 @@ export default class PresetManager {
     return preset.name != null ? preset.name(appConfig) : Math.random();
   }
 
-
   private getPresetParameter(preset: Preset, appConfig: AppConfig, providedConfig: any): any {
     const defaultConfig = preset.defaultConfig != null ? preset.defaultConfig(appConfig) : {};
     const appParameter =

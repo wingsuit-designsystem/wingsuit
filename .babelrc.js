@@ -5,10 +5,7 @@ const withTests = {
       { shippedProposals: true, useBuiltIns: 'usage', corejs: '3', targets: { node: 'current' } },
     ],
   ],
-  plugins: [
-    'babel-plugin-require-context-hook',
-    '@babel/plugin-transform-runtime',
-  ],
+  plugins: ['babel-plugin-require-context-hook', '@babel/plugin-transform-runtime'],
 };
 
 module.exports = {

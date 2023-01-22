@@ -1,4 +1,4 @@
-import { Source } from '@storybook/components';
+import { Code } from '@storybook/components';
 
 import React, { FunctionComponent, useState } from 'react';
 
@@ -44,7 +44,7 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
   if (code !== '') {
     return (
       <>
-        <Source format={false} dark code={code} language="twig" />
+        <Code>{code}</Code>
       </>
     );
   }

@@ -1,12 +1,9 @@
 import React from 'react';
-import { Pattern } from '@wingsuit-designsystem/pattern';
 
-import { Title, Subtitle, DocsStory, ArgsTable, CURRENT_SELECTION } from '@storybook/addon-docs';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
-import { PatternPreview } from '@wingsuit-designsystem/pattern-react/client';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
@@ -152,44 +149,6 @@ export function getArgTypes(variant) {
     },
   };
   return argTypes;
-}
-
-export function storiesOf(pattern: Pattern, story) {
-  Object.keys(pattern.getPatternVariants()).forEach((variantKey) => {
-    const variant = pattern.getVariant(variantKey);
-    const argTypes = getArgTypes(variant);
-    let parameters = {
-      argTypes,
-      component: PatternPreview,
-      notes: variant.getDescription(),
-      docs: {
-        page: () => (
-          <>
-            <Title />
-            <Subtitle>
-              <div dangerouslySetInnerHTML={{ __html: pattern.getDescription() }} />
-            </Subtitle>
-            <DocsStory id={CURRENT_SELECTION} />
-            <ArgsTable story={CURRENT_SELECTION} />
-            <PatternInclude variant={variant} />
-          </>
-        ),
-        storyDescription: variant.getDescription(),
-      },
-    };
-
-    parameters = Object.assign(parameters, pattern.getParameters());
-
-    story.add(
-      variant.getLabel(),
-      (args) => {
-        const vars = getArgs(args, variant);
-        return <PatternPreview patternId={pattern.getId()} variantId={variantKey} {...vars} />;
-      },
-      parameters
-    );
-  });
-  return story;
 }
 
 export {

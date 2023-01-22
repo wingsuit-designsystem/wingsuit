@@ -12,6 +12,8 @@ export { default as AppConfig } from './AppConfig';
 
 export { resolveConfig } from './resolveConfig';
 
+export { csfParser } from './server/csfParser';
+
 export { default as PresetManager } from './server/PresetManager';
 
 const presetManager = new PresetManager();

@@ -27,7 +27,7 @@ export function webpack(appConfig: AppConfig) {
           },
         },
         {
-          test: /\.stories\.jsx/,
+          test: /\.stories\.wingsuit\.jsx/,
           use: [
             {
               loader: 'babel-loader',

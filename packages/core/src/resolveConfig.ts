@@ -33,7 +33,12 @@ export function getConfigBase(wingsuitConfig: any = null) {
 
   // Overrule with preset configs.
   const presetManager = new PresetManager();
-  const finalMergedConfig = presetManager.invokeHook(mergedConfig, 'wingsuitConfig', {}, mergedConfig);
+  const finalMergedConfig = presetManager.invokeHook(
+    mergedConfig,
+    'wingsuitConfig',
+    {},
+    mergedConfig
+  );
   return { mergedConfig: finalMergedConfig, projectConfig };
 }
 
