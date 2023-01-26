@@ -2,7 +2,7 @@ import { TwingEnvironment } from 'twing';
 import IRenderer from './IRenderer';
 
 export class TwingRenderer implements IRenderer {
-  private environment;
+  private environment: TwingEnvironment;
 
   constructor(environment: TwingEnvironment) {
     this.environment = environment;

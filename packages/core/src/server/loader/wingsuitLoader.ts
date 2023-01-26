@@ -36,8 +36,10 @@ export default function wingsuitLoader(this: any, src) {
       }
     });
   }
-
-  exports.push(`export default getStorage().loadPattern('${firstPattern}');`);
+  exports.push(`import Template from '${res[firstPattern].use.replace('@', '')}';`);
+  exports.push(`const firstPattern = getStorage().loadPattern('${firstPattern}');`);
+  exports.push(`firstPattern.setTemplate(Template);`);
+  exports.push(`export default firstPattern;`);
 
   const json = JSON.stringify(res);
   return `import { getStorage } from '@wingsuit-designsystem/pattern'; 

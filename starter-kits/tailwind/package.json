@@ -55,6 +55,7 @@
     "@wingsuit-designsystem/cli": "2.0.0-alpha.0",
     "@wingsuit-designsystem/preset-postcss8": "2.0.0-alpha.0",
     "@wingsuit-designsystem/preset-tailwind2": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/preset-twing": "2.0.0-alpha.0",
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.0",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",

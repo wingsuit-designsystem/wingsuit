@@ -14,7 +14,7 @@ const babel = require('./presets/babel');
 const assets = require('./presets/assets');
 const storybook = require('./presets/storybook');
 const drupal = require('./presets/drupal');
-const twing = require('./presets/twing');
+// const twing = require('./presets/twing');
 const svg = require('./presets/svg');
 const assetsVideos = require('./presets/assetsVideos');
 
@@ -24,7 +24,6 @@ const defaultPresets = {
   assets,
   storybook,
   drupal,
-  twing,
   svg,
   assetsVideos,
 };

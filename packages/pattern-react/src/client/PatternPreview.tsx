@@ -1,23 +1,25 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { renderer } from '@wingsuit-designsystem/pattern';
+import { getStorage } from '@wingsuit-designsystem/pattern';
 import { attachBehaviors, init } from '../behaviors';
 
-type Props = { patternId?; variantId?; variant? };
+type Props = { patternId?; variantId?; variant?; environment? };
 
 const PatternPreview: FunctionComponent<Props> = ({
   patternId,
   variantId,
+  environment,
   variant,
   ...variables
 }) => {
   const [rendered, setRendered] = useState('');
-  const finalPatternId = variant !== null ? variant.getPattern().getId() : patternId;
-  const finalVariantId = variant !== null ? variant.getId() : variantId;
+  const finalVariant = variant ?? getStorage().loadVariant(patternId, variantId);
   init('Drupal');
   useEffect(() => {
     let mounted = true;
-    renderer
-      .renderPatternPreview(finalPatternId, variables, finalVariantId)
+
+    const template = finalVariant.getPattern().getTemplate();
+
+    template()
       .then((output: string) => {
         if (mounted) {
           setRendered(output);
@@ -45,6 +47,7 @@ PatternPreview.defaultProps = {
   patternId: '',
   variantId: '',
   variant: null,
+  environment: null,
 };
 
 export default PatternPreview;

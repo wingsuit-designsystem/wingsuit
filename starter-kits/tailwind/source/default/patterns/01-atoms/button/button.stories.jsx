@@ -1,7 +1,12 @@
 import './index';
+import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
 
-const patternDefinition = require('./button.wingsuit.yml');
+import Button from './button.wingsuit.yml';
 
+export default {
+  title: 'atoms/Button',
+  component: PatternPreview,
+};
 export const wingsuit = {
-  patternDefinition,
+  render: (args) => <PatternPreview patternId="button" variantId="default" />,
 };

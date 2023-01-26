@@ -55,6 +55,8 @@ export default class Pattern {
 
   private iconPath: string;
 
+  private template: any;
+
   private namespace: string;
 
   private parameters: any;
@@ -121,6 +123,14 @@ export default class Pattern {
       );
     }
     return this.patternVariants[variantId];
+  }
+
+  public getTemplate() {
+    return this.template;
+  }
+
+  public setTemplate(template) {
+    this.template = template;
   }
 
   public getParameters(): any {

@@ -7,6 +7,7 @@ export function name(appConfig: AppConfig) {
 }
 
 export function webpack(appConfig: AppConfig) {
+  return {};
   const fileDependencyPlugin = new FileDependencyPlugin(
     path.join(appConfig.absDistFolder, appConfig.twigDistFolder)
   );

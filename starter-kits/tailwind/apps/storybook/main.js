@@ -9,7 +9,7 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../../source/**/*.stories.wingsuit.jsx'],
+  stories: ['../../source/**/*.stories.wingsuit.jsx', '../../source/**/*.stories.jsx'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-controls',
