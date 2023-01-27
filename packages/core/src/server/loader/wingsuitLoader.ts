@@ -11,19 +11,12 @@ export default function wingsuitLoader(this: any, src) {
   const { appConfig, fileDependencyPlugin } = options;
   const res = YAML.parse(src, options);
   const info = pathInfo(this.resourcePath, appConfig);
-  const result: any = {};
-  let firstPattern = '';
   const exports: string[] = [];
 
   if (info !== null) {
     Object.keys(res).forEach((key) => {
-      if (firstPattern === '') {
-        firstPattern = key;
-      }
-
-      if (res[key].namespace == null) {
-        res[key].namespace = info.namespace;
-      }
+      const pattern = res[key];
+      pattern.namespace = pattern.namespace ?? info.namespace;
       const added = fileDependencyPlugin.addFile(
         key,
         this.resourcePath,
@@ -31,16 +24,22 @@ export default function wingsuitLoader(this: any, src) {
         res
       );
       if (added === true) {
-        result[key] = res[key];
+        const twigTemplatePath = pattern.use.replace('@', '');
         exports.push(`export const ${key} = getStorage().loadPattern('${key}');`);
+        exports.push(`import ${key}Template from '${twigTemplatePath}';`);
+        exports.push(`${key}.setTemplate(${key}Template);`);
+        const dependencies = pattern.dependencies ?? [];
+        dependencies.forEach((dependency) => {
+          exports.push(`import '${dependency}';`);
+          this.addDependency(dependency);
+        });
+        this.addDependency(twigTemplatePath);
       }
     });
   }
-  exports.push(`import Template from '${res[firstPattern].use.replace('@', '')}';`);
-  exports.push(`const firstPattern = getStorage().loadPattern('${firstPattern}');`);
-  exports.push(`firstPattern.setTemplate(Template);`);
-  exports.push(`export default firstPattern;`);
 
+  const defaultPatternKey = Object.keys(res)[0];
+  exports.push(`export default getStorage().loadPattern('${defaultPatternKey}');`);
   const json = JSON.stringify(res);
   return `import { getStorage } from '@wingsuit-designsystem/pattern'; 
   getStorage().addDefinitions(${json}); 

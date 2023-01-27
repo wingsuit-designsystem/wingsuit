@@ -179,18 +179,5 @@ export async function renderPattern(
   };
   finalVariables.variant = variantId;
   variant.setRenderArgs(finalVariables);
-  return rendererImpl.render(
-    `${patternId}__${variant.getVariant()}`,
-    variant.getUse(),
-    finalVariables
-  );
-}
-
-export function renderData(path: string, template: string, variables: {} = {}) {
-  return renderTemplate(path, variables);
-}
-
-export function renderTemplate(path: string, variables: {} = {}) {
-  const finalVariables = { ...storage.getGlobals(), ...variables };
-  return rendererImpl.render(path, path, finalVariables);
+  return rendererImpl.renderVariant(variant, finalVariables);
 }

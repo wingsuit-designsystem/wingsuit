@@ -1,3 +1,5 @@
+import { PatternVariant } from './index';
+
 export default interface IRenderer {
-  render(id: string, include: string, variables: {}): Promise<string>;
+  renderVariant(variant: PatternVariant, variables: {}): Promise<string>;
 }

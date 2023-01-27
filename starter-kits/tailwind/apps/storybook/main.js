@@ -1,9 +1,8 @@
 const postCss = require('postcss');
 
-const { storyIndexers } = require('./csf-loader');
+// const { storyIndexers } = require('./csf-loader');
 
 module.exports = {
-  storyIndexers,
   framework: '@storybook/react-webpack5',
   typescript: { reactDocgen: false },
   core: {
@@ -24,6 +23,11 @@ module.exports = {
         },
       },
     },
-    '@wingsuit-designsystem/storybook',
+    {
+      name: '@wingsuit-designsystem/storybook',
+      options: {
+        appName: 'storybook',
+      },
+    },
   ],
 };

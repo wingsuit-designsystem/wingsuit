@@ -1,12 +1,15 @@
-import './index';
+import React from 'react';
 import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
 
-import Button from './button.wingsuit.yml';
+import './index';
+
+
+import './button.wingsuit.yml';
 
 export default {
   title: 'atoms/Button',
   component: PatternPreview,
 };
 export const wingsuit = {
-  render: (args) => <PatternPreview patternId="button" variantId="default" />,
+  render: () => <PatternPreview patternId="button" variantId="default" />,
 };

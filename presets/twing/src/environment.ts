@@ -1,5 +1,6 @@
 import { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } from 'twing';
 import { renderer, TwigAttribute } from '@wingsuit-designsystem/pattern';
+import { TwingRenderer } from './TwingRenderer';
 
 const twingFilters = require('twing-drupal-filters');
 
@@ -40,7 +41,7 @@ function without(element, ...args) {
   return element;
 }
 
-export function init(environment: TwingEnvironment) {
+export function init() {
   twingFilters(environment);
   const filters: {} = {
     without: (arg1, ...args) => {
@@ -68,6 +69,6 @@ export function init(environment: TwingEnvironment) {
     environment.addFilter(new TwingFilter(key, filters[key], []));
   });
 }
-
+renderer.setRenderer(new TwingRenderer());
 init(environment);
 module.exports = environment;

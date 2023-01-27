@@ -36,8 +36,11 @@
     "escape-html": "^1.0.3",
     "faker": "^4.1.0",
     "html-attribute-parser": "^1.0.0",
-    "reflect-metadata": "^0.1.13",
-    "twing": "^5.1.0",
+    "reflect-metadata": "^0.1.13"
+
+  },
+  "devDependencies": {
+    "twing": "^5.1.2",
     "twing-drupal-filters": "^0.0.2"
   },
   "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc"

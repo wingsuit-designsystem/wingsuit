@@ -49,7 +49,6 @@ export function csfParser(resourcePath, src, namespaces) {
     import React from 'react';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
     import { args, argTypes } from '@wingsuit-designsystem/storybook/story';
-    import '@wingsuit-designsystem/pattern/environment-entry';
 
     import './${path.basename(absYamlPath)}';
 

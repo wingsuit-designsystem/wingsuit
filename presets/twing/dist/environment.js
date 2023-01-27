@@ -15,6 +15,7 @@ require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.object.keys.js");
 var _twing = require("twing");
 var _pattern = require("@wingsuit-designsystem/pattern");
+var _TwingRenderer = require("./TwingRenderer");
 var twingFilters = require('twing-drupal-filters');
 var ecAbsPath = '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/source/default/patterns/01-atoms/';
 var loader = new _twing.TwingLoaderFilesystem(ecAbsPath);
@@ -47,7 +48,7 @@ function _without(element) {
   }
   return element;
 }
-function init(environment) {
+function init() {
   twingFilters(environment);
   var filters = {
     without: function without(arg1) {
@@ -79,5 +80,6 @@ function init(environment) {
     environment.addFilter(new _twing.TwingFilter(key, filters[key], []));
   });
 }
+_pattern.renderer.setRenderer(new _TwingRenderer.TwingRenderer());
 init(environment);
 module.exports = environment;

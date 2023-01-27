@@ -6,7 +6,6 @@ const assets = require('../server/presets/assets')
 const storybook = require('../server/presets/storybook')
 const drupal = require('../server/presets/drupal')
 const cms = require('../server/presets/cms')
-const twing = require('../server/presets/twing')
 const wingsuitp = require('../server/presets/wingsuit')
 const svg = require('../server/presets/svg')
 const assetsVideos = require('../server/presets/assetsVideos')
@@ -21,7 +20,6 @@ export const wingsuit: Config = {
     assets,
     assetsVideos,
     svg,
-    twing,
     storybook,
     drupal,
     cms,
@@ -47,7 +45,7 @@ export const wingsuit: Config = {
       dataFolder: './apps/data',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, assetsVideos, storybook, twing, wingsuitp, svg],
+      presets: [assets, assetsVideos, storybook, wingsuitp, svg],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',
@@ -70,7 +68,7 @@ export const wingsuit: Config = {
       assetsDistFolder: '',
       twigDistFolder: 'templates',
       designSystem: 'default',
-      presets: [assets, assetsVideos, css, twing],
+      presets: [assets, assetsVideos, css],
     },
     cms: {
       path: './apps/cms',
@@ -81,7 +79,7 @@ export const wingsuit: Config = {
       assetsDistFolder: '',
       twigDistFolder: 'templates',
       designSystem: 'default',
-      presets: [assets, assetsVideos, babel, css, twing, cms],
+      presets: [assets, assetsVideos, babel, css, cms],
     },
     drupal: {
       path: './apps/drupal',
@@ -92,7 +90,7 @@ export const wingsuit: Config = {
       type: 'drupal',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, assetsVideos, babel, css, cms, twing, wingsuitp, svg],
+      presets: [assets, assetsVideos, babel, css, cms, wingsuitp, svg],
     },
   },
 }

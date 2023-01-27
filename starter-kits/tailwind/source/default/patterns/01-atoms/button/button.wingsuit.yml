@@ -2,7 +2,15 @@ button:
   use: "@atoms/button/button.twig"
   label: Button
   description: Regular or outline buttons with different colors.
+  dependencies:
+    - atoms/svg
   fields:
+    sample:
+      type: pattern
+      label: Sample
+      preview:
+        id: svg_icon
+        variant: icon
     text:
       type: text
       label: Text

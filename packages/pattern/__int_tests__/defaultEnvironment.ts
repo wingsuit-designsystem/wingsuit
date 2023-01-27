@@ -1,7 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TwingEnvironment, TwingFunction, TwingFilter } from 'twing';
-import TwigAttribute from './TwigAttribute';
-import { getPatternConfiguration, renderPattern, renderPatternPreview } from './twigRenderEngine';
+import TwigAttribute from '../src/TwigAttribute';
+import {
+  getPatternConfiguration,
+  renderPattern,
+  renderPatternPreview,
+} from '../src/twigRenderEngine';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 const twingFilters = require('twing-drupal-filters');
 
 function twigAttributeFunction(attributes = '') {
