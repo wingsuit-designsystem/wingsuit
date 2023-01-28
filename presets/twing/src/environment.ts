@@ -6,7 +6,7 @@ const twingFilters = require('twing-drupal-filters');
 
 const loader = new TwingLoaderFilesystem();
 
-const environment = new TwingEnvironment(loader);
+const environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
 
 // In storybook we get this returned as an instance of
 // TWigLoaderNull, we need to avoid processing this.

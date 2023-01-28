@@ -60,7 +60,7 @@ export function csfParser(resourcePath, src, namespaces) {
     Object.keys(variants).forEach((variantName) => {
       const name = variants[variantName].label.replace(' ', '_');
       output.push(
-        `export const ${variantName} = {
+        `export const ${variantName}Pattern = {
         title: '${name}',
         args: {patternId: '${patternId}', variantId: '${variantName}'},
         argTypes: argTypes('${patternId}', '${variantName}')

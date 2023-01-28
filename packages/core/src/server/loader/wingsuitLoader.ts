@@ -34,8 +34,8 @@ export default function wingsuitLoader(this: any, src) {
         linkedPatternIds.forEach((patternId) => {
           const namespace = fileDependencyPlugin.getPatternNamespace(patternId);
           if (namespace) {
-            //     exports.push(`import '${namespace}';`);
-            //   this.addDependency(namespace);
+            exports.push(`import '${namespace}';`);
+            this.addDependency(namespace);
           } else {
             console.error(`Unable to found pattern namespace for ${patternId}`);
           }
