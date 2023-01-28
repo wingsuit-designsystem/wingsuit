@@ -6,7 +6,6 @@ const glob = require('glob');
 export function name(appConfig: AppConfig) {
   return 'drupal';
 }
-
 export function webpack(appConfig: AppConfig) {
   const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
 

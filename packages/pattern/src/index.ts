@@ -6,6 +6,7 @@ export { default as IPatternStorage } from './IPatternStorage';
 export { default as TwigAttribute } from './TwigAttribute';
 export { default as Pattern } from './Pattern';
 export { default as PatternVariant } from './PatternVariant';
+export { IPatternDefinition, Variant, Property, Preview } from './definition';
 export const storage: PatternStorage = PatternStorage.getInstance();
 export const renderer = TwigRenderEngine;
 

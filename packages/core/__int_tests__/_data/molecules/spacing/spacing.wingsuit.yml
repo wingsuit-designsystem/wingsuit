@@ -1,0 +1,50 @@
+spacing:
+  use: "@protons/spacing/spacing.twig"
+  label: Spacing
+  description: Abstract spacing component. Extend this component if you component need spacing.
+  settings:
+    tab_spacing:
+      label: Spacing
+      type: group
+      group_type: details
+      weight: 90
+    padding_x:
+      type: select
+      label: Padding left/right
+      group: tab_spacing
+      default_value: default
+      options:
+        default: Default
+        large: Large
+    padding_top:
+      type: select
+      label: Padding top
+      group: tab_spacing
+      default_value: auto
+      options:
+        auto: Auto
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      group: tab_spacing
+      default_value: auto
+      options:
+        auto: Auto
+        small: Small
+        default: Default
+        large: Large
+  configuration:
+    padding_x:
+      default: 'px-6'
+      large: 'px-10'
+    padding_top:
+      small: 'pt-4'
+      default: 'pt-10 md:pt-20'
+      large: 'pt-20 md:pt-24'
+    padding_bottom:
+      small: 'pb-4'
+      default: 'pb-10 md:pb-20'
+      large: 'pb-20 md:pb-24'

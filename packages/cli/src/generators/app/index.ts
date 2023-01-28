@@ -1,5 +1,5 @@
 import { getAppTypes, getApps } from '@wingsuit-designsystem/core';
-import { addApp } from '../../configParser';
+import { addApp } from '../../config-parser';
 
 const { join, relative } = require('path');
 const inqfs = require('inquirer-fs-selector');

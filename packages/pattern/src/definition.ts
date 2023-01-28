@@ -7,9 +7,12 @@ export interface Options {
 }
 export interface Preview {
   faker: Faker;
+  fields: Preview;
+  id: string;
 }
 export interface Properties {
   [key: string]: Property;
+  fields: Property;
 }
 export interface Property {
   type: string;
@@ -20,6 +23,7 @@ export interface Property {
   required: boolean;
   multi_value_type: string;
   options: Options;
+  fields: Property;
 }
 export interface Variants {
   [key: string]: Variant;
@@ -43,6 +47,7 @@ export interface IPatternDefinition {
   variants: Variants;
   extends: string[];
   configuration: any;
+  dependencies: string[];
 }
 export interface IPatternDefinitionsPatterns {
   [key: string]: IPatternDefinition;

@@ -5,27 +5,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.init = init;
+require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/web.dom-collections.for-each.js");
+require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.for-each.js");
-require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.keys.js");
 var _twing = require("twing");
 var _pattern = require("@wingsuit-designsystem/pattern");
 var _TwingRenderer = require("./TwingRenderer");
 var twingFilters = require('twing-drupal-filters');
-var ecAbsPath = '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/source/default/patterns/01-atoms/';
-var loader = new _twing.TwingLoaderFilesystem(ecAbsPath);
+var loader = new _twing.TwingLoaderFilesystem();
 var environment = new _twing.TwingEnvironment(loader);
 
 // In storybook we get this returned as an instance of
 // TWigLoaderNull, we need to avoid processing this.
 if (typeof loader.addPath === 'function') {
-  // Add namespace ecl-twig.
-  loader.addPath('/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/source/default/patterns/01-atoms', 'atoms');
+  var namespaces = _pattern.renderer.getNamespaces();
+  Object.keys(namespaces).forEach(function (namespace) {
+    loader.addPath(namespaces[namespace], namespace);
+  });
 }
 function twigAttributeFunction() {
   var attributes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -81,5 +82,5 @@ function init() {
   });
 }
 _pattern.renderer.setRenderer(new _TwingRenderer.TwingRenderer());
-init(environment);
+init();
 module.exports = environment;

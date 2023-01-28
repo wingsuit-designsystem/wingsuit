@@ -1,5 +1,5 @@
-card:
-  use: "@molecules/card/_card.twig"
+button:
+  use: "@atoms/button/_button.twig"
   label: Card
   description: Example description
   extends:

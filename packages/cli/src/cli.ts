@@ -1,12 +1,12 @@
 import program from 'commander';
 import leven from 'leven';
 
-import startApp from './startApps';
-import initiate from './initiate';
-import component from './component';
-import upgrade from './upgrade';
-import app from './app';
-import version from './version';
+import startApp from './cli-start-app';
+import cliInit from './cli-init';
+import generateComponent from './cli-create-component';
+import upgrade from './cli-upgrade';
+import generateApp from './cli-generate-app';
+import cliVersion from './cli-version';
 
 const logger = console;
 
@@ -23,24 +23,24 @@ program
   .option('-N --use-npm', 'Use npm to install deps')
   .option('-S --smoke-test', 'Exit after successful start')
   .option('-B --branch <branch>', 'Use a specific branch')
-  .action((options) => initiate(options));
+  .action((options) => cliInit(options));
 
 program
   .command('version')
   .description('Shows Wingsuit version.')
-  .action((options) => version(options));
+  .action((options) => cliVersion(options));
 
 program
   .command('generate-component')
   .description('Generate Wingsuit component.')
   .option('-N --use-npm', 'Use npm to install deps')
-  .action((options) => component(options));
+  .action((options) => generateComponent(options));
 
 program
   .command('generate-app')
   .description('Generate Wingsuit app.')
   .option('-N --use-npm', 'Use npm to install deps')
-  .action((options) => app(options));
+  .action((options) => generateApp(options));
 
 program
   .command('upgrade')

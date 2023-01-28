@@ -1,10 +1,12 @@
 import { AppConfig } from '@wingsuit-designsystem/core';
+import { renderer } from '@wingsuit-designsystem/pattern';
 
 export function name(appConfig: AppConfig) {
   return 'twing-loader';
 }
 
 export function webpack(appConfig: AppConfig) {
+  renderer.setNamespaces(appConfig.namespaces);
   return {
     module: {
       rules: [

@@ -43,8 +43,6 @@ export interface AppInitConfig {
 
   assetsDistFolder: string;
 
-  dataFolder: string;
-
   twigDistFolder?: string;
 
   features?: Feature;
@@ -124,7 +122,6 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     type,
     name: type,
     distFolder: `dist/app-${type}`,
-    dataFolder: 'apps/data',
     namespaces: {
       wsdesignsystem: path.join(absRootPath, 'source/default'),
       wspatterns: path.join(absRootPath, 'source/default/patterns'),

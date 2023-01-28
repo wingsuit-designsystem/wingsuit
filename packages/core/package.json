@@ -44,7 +44,7 @@
     "external-svg-sprite-loader": "^7.2.0",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
-    "glob": "^7.2.0",
+    "glob": "^8.1.0",
     "image-webpack-loader": "^8.0.1",
     "jest": "^27.2.4",
     "jsondiffpatch": "^0.4.1",

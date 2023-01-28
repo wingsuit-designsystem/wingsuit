@@ -4,20 +4,17 @@ import { TwingRenderer } from './TwingRenderer';
 
 const twingFilters = require('twing-drupal-filters');
 
-const ecAbsPath =
-  '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/source/default/patterns/01-atoms/';
-const loader = new TwingLoaderFilesystem(ecAbsPath);
+const loader = new TwingLoaderFilesystem();
 
 const environment = new TwingEnvironment(loader);
 
 // In storybook we get this returned as an instance of
 // TWigLoaderNull, we need to avoid processing this.
 if (typeof loader.addPath === 'function') {
-  // Add namespace ecl-twig.
-  loader.addPath(
-    '/home/cw/projects/wingsuit/wingsuit/starter-kits/tailwind/source/default/patterns/01-atoms',
-    'atoms'
-  );
+  const namespaces = renderer.getNamespaces();
+  Object.keys(namespaces).forEach((namespace) => {
+    loader.addPath(namespaces[namespace], namespace);
+  });
 }
 
 function twigAttributeFunction(attributes = '') {
@@ -70,5 +67,5 @@ export function init() {
   });
 }
 renderer.setRenderer(new TwingRenderer());
-init(environment);
+init();
 module.exports = environment;

@@ -3,7 +3,6 @@ import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
 
 import './index';
 
-
 import './button.wingsuit.yml';
 
 export default {

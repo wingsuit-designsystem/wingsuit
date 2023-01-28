@@ -7,10 +7,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.name = name;
 exports.webpack = webpack;
+var _pattern = require("@wingsuit-designsystem/pattern");
 function name(appConfig) {
   return 'twing-loader';
 }
 function webpack(appConfig) {
+  _pattern.renderer.setNamespaces(appConfig.namespaces);
   return {
     module: {
       rules: [{

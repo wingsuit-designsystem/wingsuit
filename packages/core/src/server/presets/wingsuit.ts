@@ -7,7 +7,10 @@ export function name(appConfig: AppConfig) {
 }
 
 export function webpack(appConfig: AppConfig) {
-  const fileDependencyPlugin = new FileDependencyPlugin(appConfig.absDistFolder);
+  const fileDependencyPlugin = new FileDependencyPlugin(
+    appConfig.absDistFolder,
+    appConfig.namespaces
+  );
   return {
     resolveLoader: {
       alias: {

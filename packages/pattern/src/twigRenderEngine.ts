@@ -6,9 +6,17 @@ import { storage } from './index';
 import { MultiValueTypes } from './Field';
 
 let rendererImpl: IRenderer;
-
+let namespacesImpl = {};
 export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
+}
+
+export function setNamespaces(namespaces) {
+  namespacesImpl = namespaces;
+}
+
+export function getNamespaces() {
+  return namespacesImpl;
 }
 
 export function getRenderer(): IRenderer {
