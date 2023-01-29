@@ -1,6 +1,6 @@
 card:
   use: "@molecules/card/card.twig"
-  label: Card
+  label: Card222
   extends:
     - rich_snippet
   icon_path: ws-assets://images/card-icon.svg
@@ -44,7 +44,7 @@ card:
       type: select
       label: Alignment
       required: true
-      default_value: left
+      default_value: center
       options:
         left: Left
         center: Center

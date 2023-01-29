@@ -5,7 +5,7 @@ const YAML = require('yaml');
 const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
 
-export function csfParser(resourcePath, src, namespaces) {
+export function csfParser(resourcePath, src, namespaces, loader:any = null):string {
   const ast = babylon.parse(src, {
     sourceType: 'module',
   });
@@ -20,22 +20,31 @@ export function csfParser(resourcePath, src, namespaces) {
     },
   });
   if (absYamlPath !== '') {
+    if (loader) {
+      loader.addDependency(absYamlPath);
+    }
     const hasIndexFile = fs.existsSync(path.join(path.dirname(resourcePath), 'index.js'));
+
     const file = fs.readFileSync(absYamlPath, 'utf8');
     const patternDefinition = YAML.parse(file);
-    const patternId = Object.keys(patternDefinition)[0];
-    const { label } = patternDefinition[patternId];
-    const variants = patternDefinition[patternId].variants ?? { __default: { label: 'Default' } };
-    let namespace = patternDefinition[patternId].namespace ?? '';
+    const patternIds = Object.keys(patternDefinition);
+    const defaultPatternId = patternIds[0];
+    if (!defaultPatternId) {
+      return src;
+    }
+    const defaultPattern = patternDefinition[defaultPatternId];
+    const defaultPatternLabel = defaultPattern.label ?? defaultPatternId;
+    let defaultPatternNamespace = defaultPattern.namespace ?? '';
+
     let namespacePath = '';
 
-    if (namespace === '') {
+    if (defaultPatternNamespace === '') {
       Object.keys(namespaces).forEach((key) => {
         if (
           resourcePath.startsWith(namespaces[key]) &&
           namespaces[key].length > namespacePath.length
         ) {
-          namespace = key;
+          defaultPatternNamespace = key;
           namespacePath = namespaces[key];
         }
       });
@@ -53,19 +62,24 @@ export function csfParser(resourcePath, src, namespaces) {
     import './${path.basename(absYamlPath)}';
 
     export default {
-      title: '${namespace}/${label}',
+      title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       component: PatternPreview,
     }
 `);
-    Object.keys(variants).forEach((variantName) => {
-      const name = variants[variantName].label.replace(' ', '_');
-      output.push(
-        `export const ${variantName}Pattern = {
-        title: '${name}',
+    patternIds.forEach((patternId)=>{
+      const {label} = patternDefinition[patternId];
+      const variants = patternDefinition[patternId].variants ?? {__default: {label: 'Default'}};
+      Object.keys(variants).forEach((variantName) => {
+        const variantLabel = variants[variantName].label;
+        const storyLabel = label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`
+        output.push(
+          `export const ${patternId}${variantName}Pattern = {
+        name: '${storyLabel}',
         args: {patternId: '${patternId}', variantId: '${variantName}'},
         argTypes: argTypes('${patternId}', '${variantName}')
       }`
-      );
+        );
+      });
     });
     return output.join('\n');
   }

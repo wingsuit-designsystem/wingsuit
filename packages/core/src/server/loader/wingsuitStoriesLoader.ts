@@ -5,5 +5,5 @@ export default function wingsuitStoriesLoader(this: any, src) {
   const { resourcePath } = this;
   const { appConfig } = options;
   const { namespaces } = appConfig;
-  return csfParser(resourcePath, src, namespaces);
+  return csfParser(resourcePath, src, namespaces, this);
 }

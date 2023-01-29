@@ -1,8 +1,10 @@
 import { IPatternDefinition, Variant, Property, Preview } from '@wingsuit-designsystem/pattern';
 import { pathInfo } from '../../index';
+import path from "path";
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
+const fs = require('fs');
 
 export default function wingsuitLoader(this: any, src) {
   const { ...options } = {
@@ -31,16 +33,22 @@ export default function wingsuitLoader(this: any, src) {
         exports.push(`import ${key}Template from '${twigTemplatePath}';`);
         exports.push(`${key}.setTemplate(${key}Template);`);
         const linkedPatternIds = findLinkedPatternIds(pattern);
+
         linkedPatternIds.forEach((patternId) => {
-          const namespace = fileDependencyPlugin.getPatternNamespace(patternId);
-          if (namespace) {
-            exports.push(`import '${namespace}';`);
-            this.addDependency(namespace);
+          const linkedPatternIndexFile = fileDependencyPlugin.getPatternComponentNamespace(patternId);
+          if (linkedPatternIndexFile) {
+            exports.push(`import '${linkedPatternIndexFile}';`);
+            this.addDependency(path.resolve(linkedPatternIndexFile));
+          }
+          const linkedPatternNamespace = fileDependencyPlugin.getPatternNamespace(patternId);
+          if (linkedPatternNamespace) {
+            exports.push(`import '${linkedPatternNamespace}';`);
+            this.addDependency(path.resolve(linkedPatternNamespace));
           } else {
             console.error(`Unable to found pattern namespace for ${patternId}`);
           }
         });
-        this.addDependency(twigTemplatePath);
+        this.addDependency(path.resolve(twigTemplatePath));
       }
     });
   }
