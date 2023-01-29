@@ -20,6 +20,7 @@ export default class FileDependencyPlugin {
   private filesMap = new Map<string, FileItem>();
 
   private pattern2NamespaceCache: { [key: string]: string } = {};
+
   private patternIndex2NamespaceCache: { [key: string]: string } = {};
 
   private namespaces: { [key: string]: string } = {};
@@ -35,20 +36,15 @@ export default class FileDependencyPlugin {
       files.forEach((file) => {
         const wingsuitFile = YAML.parse(fs.readFileSync(file, 'utf-8'));
         const componentFile = fs.existsSync(`${path.dirname(file)}/index.js`)
-          ? path.dirname(file) : null;
+          ? path.dirname(file)
+          : null;
 
         Object.keys(wingsuitFile).forEach((key) => {
           if (!this.pattern2NamespaceCache[key]) {
-            this.pattern2NamespaceCache[key] = file.replace(
-              namespacePath,
-              namespace
-            );
+            this.pattern2NamespaceCache[key] = file.replace(namespacePath, namespace);
           }
           if (!this.patternIndex2NamespaceCache[key] && componentFile) {
-            this.patternIndex2NamespaceCache[key] = componentFile.replace(
-              namespacePath,
-              namespace
-            );
+            this.patternIndex2NamespaceCache[key] = componentFile.replace(namespacePath, namespace);
           }
         });
       });

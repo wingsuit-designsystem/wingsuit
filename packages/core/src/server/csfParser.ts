@@ -5,7 +5,7 @@ const YAML = require('yaml');
 const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
 
-export function csfParser(resourcePath, src, namespaces, loader:any = null):string {
+export function csfParser(resourcePath, src, namespaces, loader: any = null): string {
   const ast = babylon.parse(src, {
     sourceType: 'module',
   });
@@ -66,12 +66,13 @@ export function csfParser(resourcePath, src, namespaces, loader:any = null):stri
       component: PatternPreview,
     }
 `);
-    patternIds.forEach((patternId)=>{
-      const {label} = patternDefinition[patternId];
-      const variants = patternDefinition[patternId].variants ?? {__default: {label: 'Default'}};
+    patternIds.forEach((patternId) => {
+      const { label } = patternDefinition[patternId];
+      const variants = patternDefinition[patternId].variants ?? { __default: { label: 'Default' } };
       Object.keys(variants).forEach((variantName) => {
         const variantLabel = variants[variantName].label;
-        const storyLabel = label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`
+        const storyLabel =
+          label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `export const ${patternId}${variantName}Pattern = {
         name: '${storyLabel}',

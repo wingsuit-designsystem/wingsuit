@@ -1,6 +1,6 @@
 import { IPatternDefinition, Variant, Property, Preview } from '@wingsuit-designsystem/pattern';
+import path from 'path';
 import { pathInfo } from '../../index';
-import path from "path";
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
@@ -35,7 +35,8 @@ export default function wingsuitLoader(this: any, src) {
         const linkedPatternIds = findLinkedPatternIds(pattern);
 
         linkedPatternIds.forEach((patternId) => {
-          const linkedPatternIndexFile = fileDependencyPlugin.getPatternComponentNamespace(patternId);
+          const linkedPatternIndexFile =
+            fileDependencyPlugin.getPatternComponentNamespace(patternId);
           if (linkedPatternIndexFile) {
             exports.push(`import '${linkedPatternIndexFile}';`);
             this.addDependency(path.resolve(linkedPatternIndexFile));
