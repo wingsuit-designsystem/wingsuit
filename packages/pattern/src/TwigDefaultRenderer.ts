@@ -17,7 +17,9 @@ export class TwigDefaultRenderer implements IRenderer {
       return `Error while render variant. Pattern is null. [ID: ${variant.getId()}]`;
     }
     if (!variant.getPattern().getTemplate()) {
-      return `Error while render variant. Template not linked pattern [ID: ${variant.getPattern()}, PATH: ${variant.getPattern().getUse()}]`;
+      return `Error while render variant. Template not linked pattern [ID: ${variant.getPattern()}, PATH: ${variant
+        .getPattern()
+        .getUse()}]`;
     }
     return variant.getPattern().getTemplate()({ ...variables });
   }
