@@ -1,12 +1,14 @@
-import 'protons';
+import '../../index';
 import MDX from './javascript.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/assets/javascript',
   MDX,
   template,
+  html,
   vars: {
     meta_title: 'Javascript',
     meta_description: 'Drupal javascript behaviors are working out of the box in Wingsuit.',

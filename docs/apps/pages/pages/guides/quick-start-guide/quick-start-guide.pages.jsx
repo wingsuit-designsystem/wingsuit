@@ -4,10 +4,12 @@ import './images/storybook.png';
 import MDX from './index.mdx';
 
 const template = require('./quick.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/guides/quick-start-guide',
   template,
+  html,
   MDX,
   vars: {
     meta_title: 'Automated command line tool',

@@ -4,7 +4,6 @@ import { pathInfo } from '../../index';
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
-const fs = require('fs');
 
 export default function wingsuitLoader(this: any, src) {
   const { ...options } = {

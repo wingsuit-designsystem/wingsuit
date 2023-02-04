@@ -8,11 +8,7 @@ module.exports = {
   important: false,
   mode: 'jit',
   darkMode: 'class',
-  purge: {
-    layers: ['utilities'],
-    content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
-    whitelist: ['bg-red-500', 'px-4'],
-  },
+  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
   theme: {
     colors: {
       transparent: 'transparent',

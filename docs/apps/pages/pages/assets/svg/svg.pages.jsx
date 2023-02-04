@@ -1,11 +1,13 @@
-import 'protons';
+import '../../index';
 import MDX from './svg.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/assets/svg',
   template,
+  html,
   MDX,
   vars: {
     meta_title: 'SVGs',

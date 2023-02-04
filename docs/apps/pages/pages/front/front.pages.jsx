@@ -1,13 +1,28 @@
 import 'protons';
+import 'organisms/download';
+import 'molecules/hero';
+import 'molecules/tabs';
+import 'organisms/section-code';
+import 'templates/page';
+
 import './images/mariage.png';
 
+import pageTemplate from 'templates/page/page.twig';
+
+// eslint-disable-next-line import/no-unresolved
 const tokens = require('wsdata/homepage/tokens.yml');
+// eslint-disable-next-line import/no-unresolved
 const component = require('wsdata/homepage/component.yml');
+// eslint-disable-next-line import/no-unresolved
 const love = require('wsdata/homepage/love.yml');
+// eslint-disable-next-line import/no-unresolved
 const document = require('wsdata/homepage/document.yml');
+
+const html = require('../html.twig');
 
 export default {
   path: '/',
+  html,
   vars: {
     meta_title: 'Build Twig Components in Storybook',
     meta_description:
@@ -15,6 +30,8 @@ export default {
   },
   pattern: {
     label: 'Homepage',
+    id: 'frontpage',
+    template: pageTemplate,
     extends: ['page'],
     fields: {
       content: {

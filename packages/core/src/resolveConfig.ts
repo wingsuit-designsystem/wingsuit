@@ -77,7 +77,6 @@ export function resolveConfig(
     typeOverwritten = true;
   }
   const { mergedConfig, projectConfig } = getConfigBase(wingsuitConfig);
-
   if (projectConfig.apps === undefined) {
     projectConfig.apps = {};
   }
@@ -158,9 +157,11 @@ export function resolveConfig(
   appConfig.absDesignSystemPath = path.join(appConfig.absRootPath, designSystem.path);
   appConfig.absPatternPath = path.join(appConfig.absDesignSystemPath, appConfig.patternFolder);
   appConfig.namespaces = designSystem.namespaces;
-  appConfig.namespaces.wsdesignsystem = appConfig.absDesignSystemPath;
-  appConfig.namespaces.wspatterns = appConfig.absPatternPath;
-  appConfig.namespaces.wsapp = appConfig.absAppPath;
+  appConfig.wsNamespaces = {};
+  appConfig.wsNamespaces.wsdesignsystem = appConfig.absDesignSystemPath;
+  appConfig.wsNamespaces.wsdata = path.join(appConfig.absRootPath, appConfig.wsdata ?? 'apps/data');
+  appConfig.wsNamespaces.wspatterns = appConfig.absPatternPath;
+  appConfig.wsNamespaces.wsapp = appConfig.absAppPath;
   if (mergedConfig.postCssConfig != null) {
     appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
   }

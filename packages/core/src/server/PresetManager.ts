@@ -14,18 +14,19 @@ const babel = require('./presets/babel');
 const assets = require('./presets/assets');
 const storybook = require('./presets/storybook');
 const drupal = require('./presets/drupal');
-// const twing = require('./presets/twing');
+const wingsuitP = require('./presets/wingsuit');
 const svg = require('./presets/svg');
 const assetsVideos = require('./presets/assetsVideos');
 
 const defaultPresets = {
   css,
   babel,
+  assetsVideos,
   assets,
   storybook,
   drupal,
+  wingsuit: wingsuitP,
   svg,
-  assetsVideos,
 };
 
 export default class PresetManager {
@@ -50,13 +51,15 @@ export default class PresetManager {
 
   public invokeHook(appConfig: AppConfig, hookName, hookArguments: any = {}, data: any) {
     const presets = this.getPresetDefinitions(appConfig);
+
     let mergedData = data;
     presets.forEach((definition) => {
       if (typeof definition.preset[hookName] === 'function') {
         const hookResult = definition.preset[hookName]();
-        mergedData = mergeDeep(data, hookResult);
+        mergedData = mergeDeep(mergedData, hookResult);
       }
     });
+
     return mergedData;
   }
 
@@ -153,10 +156,7 @@ export default class PresetManager {
         appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
-            alias: appConfig.namespaces,
-          },
-          output: {
-            path: appConfig.absDistFolder,
+            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces },
           },
           mode: this.environment,
           optimization: {

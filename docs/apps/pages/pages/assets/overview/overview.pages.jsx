@@ -1,12 +1,14 @@
-import 'protons';
+import '../../index';
 import MDX from './overview.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/assets/overview',
   MDX,
   template,
+  html,
   vars: {
     meta_title: 'Assets overview',
     meta_description:

@@ -9,9 +9,11 @@ export function isInit() {
 
 export function init(pbehaviorName) {
   if (beahviorsInitialized === false) {
-    // @ts-ignore
-    window[pbehaviorName] = { behaviors: {} };
-    behaviorName = pbehaviorName;
+    if (typeof global.window !== 'undefined') {
+      // @ts-ignore
+      global.window[pbehaviorName] = { behaviors: {} };
+      behaviorName = pbehaviorName;
+    }
   }
   beahviorsInitialized = true;
 }

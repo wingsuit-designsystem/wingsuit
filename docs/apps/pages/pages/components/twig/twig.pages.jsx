@@ -1,7 +1,8 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   vars: {
@@ -10,5 +11,6 @@ export default {
   },
   path: '/components/twig',
   template,
+  html,
   MDX,
 };

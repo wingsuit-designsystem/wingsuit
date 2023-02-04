@@ -35,6 +35,8 @@ export interface AppInitConfig {
 
   namespaces?: Namespace;
 
+  wsNamespaces?: Namespace;
+
   cssMode: string;
 
   wingsuitDistFolder?: string;

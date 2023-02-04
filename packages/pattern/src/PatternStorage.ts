@@ -173,9 +173,9 @@ export default class PatternStorage implements IPatternStorage {
     this.definitions[id] = pattern;
   }
 
-  addDefinitions(wingsuit) {
-    Object.keys(wingsuit).forEach((id) => {
-      this.definitions[id] = wingsuit[id];
+  addDefinitions(definitions: IPatternDefinitions) {
+    Object.keys(definitions).forEach((id) => {
+      this.definitions[id] = definitions[id];
     });
   }
 

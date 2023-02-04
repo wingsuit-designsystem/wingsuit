@@ -12,6 +12,11 @@ export function name(appConfig: AppConfig) {
 
 export function wingsuitConfig(): any {
   return {
+    parameters: {
+      twing: {
+        mode: 'load',
+      },
+    },
     apps: {
       pages: {
         type: 'pages',
@@ -21,9 +26,13 @@ export function wingsuitConfig(): any {
         presets: [
           getDefaultPreset('assets'),
           getDefaultPreset('wingsuit'),
+          getDefaultPreset('babel'),
           getDefaultPreset('css'),
-          getDefaultPreset('twing'),
-          getDefaultPreset('storybook'),
+          getDefaultPreset('drupal'),
+          getDefaultPreset('assetsVideos'),
+          getDefaultPreset('svg'),
+          '@wingsuit-designsystem/preset-twing',
+          '@wingsuit-designsystem/preset-mdx',
         ],
         designSystem: 'default',
         assetBundleFolder: '',
@@ -54,6 +63,7 @@ export function wingsuitConfig(): any {
 }
 
 export function webpack(appConfig: AppConfig) {
+  const entry = { pages: `${appConfig.absAppPath}/preview.js` };
   if (appConfig.type !== 'pages') {
     return {};
   }
@@ -61,29 +71,27 @@ export function webpack(appConfig: AppConfig) {
     devServer: { inline: true },
     output: {
       libraryTarget: 'umd',
+      publicPath: '',
     },
-    entry: {
-      pages: path.join(appConfig.absAppPath ? appConfig.absAppPath : '', 'preview.js'),
-    },
-    module: {
-      rules: [
-        {
-          test: /\.mdx?$/,
-          use: ['babel-loader', '@mdx-js/loader'],
-        },
-      ],
-    },
+    devtool: 'eval',
+    entry,
     plugins: [
-      new BrowserSyncPlugin({
-        host: 'localhost',
-        port: 3000,
-        server: { baseDir: [appConfig.absDistFolder] },
-      }),
       new StaticSiteGeneratorPlugin({
         entry: 'pages',
         globals: {
           window: {},
           self: {},
+          MutationObserver: () => {},
+
+          document: {
+            querySelectorAll: () => {
+              return [];
+            },
+            querySelector: () => {
+              return null;
+            },
+            addEventListener: () => {},
+          },
           Drupal: {
             behaviors: {},
           },
@@ -91,6 +99,11 @@ export function webpack(appConfig: AppConfig) {
             userAgent: [],
           },
         },
+      }),
+      new BrowserSyncPlugin({
+        host: 'localhost',
+        port: 3000,
+        server: { baseDir: [appConfig.absDistFolder] },
       }),
     ],
   };

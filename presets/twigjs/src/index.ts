@@ -5,20 +5,21 @@ import { renderer } from '@wingsuit-designsystem/pattern';
 // import path from "path";
 
 export function name(appConfig: AppConfig) {
-  return 'twing';
+  return 'twigjs';
 }
 
-interface TwingConfig {
+interface TwigJsConfig {
   mode: string;
 }
 
-export function defaultConfig(appConfig: AppConfig): TwingConfig {
+export function defaultConfig(appConfig: AppConfig): TwigJsConfig {
   return {
     mode: appConfig.type === 'storybook' ? 'load' : 'copy',
   };
 }
 
-export function webpack(appConfig: AppConfig, config: TwingConfig) {
+export function webpack(appConfig: AppConfig, config: TwigJsConfig) {
+  const { namespaces } = appConfig;
   if (config.mode === 'load') {
     renderer.setNamespaces(appConfig.namespaces);
     return {
@@ -28,9 +29,11 @@ export function webpack(appConfig: AppConfig, config: TwingConfig) {
             test: /\.twig$/,
             use: [
               {
-                loader: 'twing-loader',
+                loader: 'twig-loader',
                 options: {
-                  environmentModulePath: require.resolve('./environment'),
+                  twigOptions: {
+                    namespaces,
+                  },
                 },
               },
             ],
@@ -39,7 +42,7 @@ export function webpack(appConfig: AppConfig, config: TwingConfig) {
       },
     };
   }
-  const { namespaces } = appConfig;
+
   const loaderRules: any[] = [];
   Object.entries(namespaces).forEach(([namespace, namespacePath]) => {
     loaderRules.push({

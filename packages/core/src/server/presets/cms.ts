@@ -6,7 +6,6 @@ const glob = require('glob');
 export function name(appConfig: AppConfig) {
   return 'cms';
 }
-
 export function webpack(appConfig: AppConfig) {
   const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
 
@@ -34,6 +33,9 @@ export function webpack(appConfig: AppConfig) {
 
   return {
     target: 'web',
+    output: {
+      path: appConfig.absDistFolder,
+    },
     devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
     entry: {
       ...behaviorObject,

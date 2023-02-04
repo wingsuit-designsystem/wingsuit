@@ -34,6 +34,7 @@ export interface Variant {
   settings: Property;
 }
 export interface IPatternDefinition {
+  template?: any;
   label: string;
   id: string;
   icon_path: string;
@@ -49,9 +50,6 @@ export interface IPatternDefinition {
   configuration: any;
   dependencies: string[];
 }
-export interface IPatternDefinitionsPatterns {
-  [key: string]: IPatternDefinition;
-}
 export interface IPatternDefinitions {
-  patterns: IPatternDefinitionsPatterns;
+  [key: string]: IPatternDefinition;
 }

@@ -1,6 +1,7 @@
-import { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } from 'twing';
 import { renderer, TwigAttribute } from '@wingsuit-designsystem/pattern';
 import { TwingRenderer } from './TwingRenderer';
+
+const { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } = require('twing');
 
 const twingFilters = require('twing-drupal-filters');
 

@@ -1,12 +1,14 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/apps/overview',
   template,
   MDX,
+  html,
   vars: {
     meta_title: 'Apps overview',
     meta_description: 'Integrate your Design System into your application or CMS.',
