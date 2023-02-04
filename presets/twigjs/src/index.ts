@@ -2,7 +2,6 @@ import path from 'path';
 
 import { AppConfig, pathInfo } from '@wingsuit-designsystem/core';
 import { renderer } from '@wingsuit-designsystem/pattern';
-// import path from "path";
 
 export function name(appConfig: AppConfig) {
   return 'twigjs';
@@ -11,13 +10,11 @@ export function name(appConfig: AppConfig) {
 interface TwigJsConfig {
   mode: string;
 }
-
 export function defaultConfig(appConfig: AppConfig): TwigJsConfig {
   return {
     mode: appConfig.type === 'storybook' ? 'load' : 'copy',
   };
 }
-
 export function webpack(appConfig: AppConfig, config: TwigJsConfig) {
   const { namespaces } = appConfig;
   if (config.mode === 'load') {

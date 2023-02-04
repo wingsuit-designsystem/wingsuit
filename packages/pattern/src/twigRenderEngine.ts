@@ -4,8 +4,9 @@ import Pattern from './Pattern';
 import { storage } from './index';
 
 import { MultiValueTypes } from './Field';
+import { TwigDefaultRenderer } from "./TwigDefaultRenderer";
 
-let rendererImpl: IRenderer;
+let rendererImpl: IRenderer = new TwigDefaultRenderer();
 let namespacesImpl = {};
 export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
