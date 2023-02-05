@@ -1,7 +1,8 @@
 import { create } from '@storybook/theming';
 
-export default create({
+export const theme = create({
   base: 'light',
+
   colorSecondary: '#81E6D9',
   appContentBg: '#ffffff',
   barSelectedColor: '#000000',

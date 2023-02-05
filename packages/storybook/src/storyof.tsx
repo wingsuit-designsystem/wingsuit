@@ -1,8 +1,6 @@
 import React from 'react';
 
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
-import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
-import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';

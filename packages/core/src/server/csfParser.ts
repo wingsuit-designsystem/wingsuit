@@ -64,6 +64,7 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
     export default {
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       component: PatternPreview,
+      tags: ['autodocs'],
     }
 `);
     patternIds.forEach((patternId) => {
@@ -75,8 +76,8 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `export const ${patternId}${variantName}Pattern = {
-        name: '${storyLabel}',
-        args: {patternId: '${patternId}', variantId: '${variantName}'},
+          name: '${storyLabel}',
+          args: {patternId: '${patternId}', variantId: '${variantName}'},
         argTypes: argTypes('${patternId}', '${variantName}')
       }`
         );

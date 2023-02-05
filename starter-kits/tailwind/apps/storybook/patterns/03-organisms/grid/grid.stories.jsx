@@ -1,5 +1,4 @@
-import { RenderTwig } from '@wingsuit-designsystem/storybook';
-import React from 'react';
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';
 import 'templates/article';
 
 export default {
@@ -7,8 +6,13 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+  component: RenderTwig,
 };
 
 const template = require('./grid-samples.twig');
 
-export const Samples = () => <RenderTwig data={template}></RenderTwig>;
+export const Samples = {
+  args: {
+    data: template,
+  },
+};
