@@ -55,7 +55,6 @@ export function webpack(appConfig: AppConfig, config: TwingConfig) {
     });
   });
   return {
-    assetModuleFilename: appConfig.absDistFolder,
     module: {
       rules: loaderRules,
     },

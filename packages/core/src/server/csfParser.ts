@@ -56,8 +56,15 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
     }
     output.push(`
     import React from 'react';
+    import { storage } from '@wingsuit-designsystem/pattern';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
-    import { args, argTypes } from '@wingsuit-designsystem/storybook/story';
+    import { args, argTypes, PatternDoc } from '@wingsuit-designsystem/storybook';
+    import {
+      ArgsTable,
+      Description, Primary, PRIMARY_STORY, Stories,
+      Subtitle,
+      Title
+    } from "@storybook/addon-docs";
 
     import './${path.basename(absYamlPath)}';
 
@@ -65,7 +72,8 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       component: PatternPreview,
       tags: ['autodocs'],
-    }
+     }
+     let pattern = null;
 `);
     patternIds.forEach((patternId) => {
       const { label } = patternDefinition[patternId];
@@ -75,10 +83,25 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
         const storyLabel =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
-          `export const ${patternId}${variantName}Pattern = {
+          `
+          export const ${patternId}${variantName}Pattern = {
           name: '${storyLabel}',
           args: {patternId: '${patternId}', variantId: '${variantName}'},
-        argTypes: argTypes('${patternId}', '${variantName}')
+          argTypes: argTypes('${patternId}', '${variantName}'),
+          parameters: {
+          docs: {
+            page: () => (
+            <>
+              <Title />
+              <Subtitle />
+              <Description />
+              <Primary />
+              <ArgsTable story={PRIMARY_STORY} />
+              <PatternDoc pattern={storage.loadPattern('${patternId}')}/>
+            </>
+          ),
+        }
+      }
       }`
         );
       });

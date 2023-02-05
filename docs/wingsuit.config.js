@@ -5,7 +5,6 @@ module.exports = {
     // '@wingsuit-designsystem/preset-tailwind2',
     '@wingsuit-designsystem/preset-pages',
     // '@wingsuit-designsystem/preset-mdx',
-    // '@wingsuit-designsystem/preset-postcss8',
     // '@wingsuit-designsystem/preset-pwa',
     // '@wingsuit-designsystem/preset-imagemin',
     // '@wingsuit-designsystem/preset-compression',

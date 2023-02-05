@@ -55,7 +55,6 @@ export function webpack(appConfig: AppConfig, config: TwigJsConfig) {
     });
   });
   return {
-    assetModuleFilename: appConfig.absDistFolder,
     module: {
       rules: loaderRules,
     },

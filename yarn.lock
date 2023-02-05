@@ -7401,6 +7401,13 @@
     twing "^5.0.1"
     twing-drupal-filters "^0.0.2"
 
+"@wingsuit-designsystem/preset-postcss8@2.0.0-alpha.0":
+  version "2.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/preset-postcss8/-/preset-postcss8-2.0.0-alpha.0.tgz#ff7cfcec025f6582517de4582cadfeb0c8445cb1"
+  integrity sha512-utNtQAuMN8umrrDaDtFxmjd7mfxjYbPN0NyAD1D0M3eiopBEzM+MOk0LXzQ4jWtSiLpb+mXqArRoKWG25uH/cw==
+  dependencies:
+    postcss "^8"
+
 "@wingsuit-designsystem/storybook@1.1.0-alpha.0":
   version "1.1.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/storybook/-/storybook-1.1.0-alpha.0.tgz#e6012d5ed573cbed8f421eda9d41dc3eb6d8cbff"

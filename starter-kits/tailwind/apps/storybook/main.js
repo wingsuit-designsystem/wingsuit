@@ -5,6 +5,9 @@ const postCss = require('postcss');
 export default {
   framework: '@storybook/react-webpack5',
   typescript: { reactDocgen: false },
+  docs: {
+    autodocs: true,
+  },
   core: {
     builder: 'webpack5',
   },
