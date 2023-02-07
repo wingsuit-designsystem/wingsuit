@@ -51,7 +51,7 @@ function generateImageStyles(aspectRatios, steps, start, end) {
 export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
   return {
     appConfigAlter: () => {
-      appConfig.namespaces.wsplaceholder = path.resolve(__dirname, '../patterns');
+      appConfig.namespaces['ws-placeholder'] = path.resolve(__dirname, '../patterns');
     },
     patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
       const { aspectRatios, generationSteps, generationStart, generationMax } = config;

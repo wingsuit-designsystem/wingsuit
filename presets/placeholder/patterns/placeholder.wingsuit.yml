@@ -1,5 +1,5 @@
 placeholder:
-  use: "@wsplaceholder/placeholder.twig"
+  use: "@ws-placeholder/placeholder.twig"
   label: Placeholder
   description: "Placeholder image component."
   variants:
