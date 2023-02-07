@@ -106,7 +106,7 @@ export default class FileDependencyPlugin {
           const targetPath = path.join(this.dist, file.targetPath);
           fs.mkdirSync(path.dirname(targetPath), { recursive: true });
           const content =
-            typeof file.content !== 'string' ? JSON.stringify(file.content) : file.content;
+            typeof file.content !== 'string' ? YAML.stringify(file.content) : file.content;
           fs.writeFileSync(targetPath, content);
         }
       });

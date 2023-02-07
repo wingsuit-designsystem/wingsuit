@@ -19,7 +19,7 @@ export default function wingsuitLoader(this: any, src) {
   if (info !== null) {
     Object.keys(res).forEach((key) => {
       const pattern = res[key];
-      invokeHook('patternLoaded', [appConfig, key, pattern]);
+      invokeHook(appConfig, 'patternLoaded', [key, pattern]);
       pattern.namespace = pattern.namespace ?? info.namespace;
 
       const added = fileDependencyPlugin.addFile(

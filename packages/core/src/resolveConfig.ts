@@ -1,6 +1,7 @@
 import path from 'path';
 import AppConfig, { defaultAppConfig } from './AppConfig';
 import PresetManager from './server/PresetManager';
+import { invokeHook } from "./index";
 
 const merge = require('merge-deep');
 const yargs = require('yargs');
@@ -165,5 +166,6 @@ export function resolveConfig(
   if (mergedConfig.postCssConfig != null) {
     appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
   }
+  invokeHook(appConfig, 'appConfigAlter');
   return appConfig;
 }

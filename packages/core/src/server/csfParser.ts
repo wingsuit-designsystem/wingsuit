@@ -43,7 +43,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       return src;
     }
     const defaultPattern = patternDefinition[defaultPatternId];
-    invokeHook('storyLoaded', [appConfig, defaultPatternId, defaultPattern]);
+    invokeHook(appConfig, 'storyLoaded', [defaultPatternId, defaultPattern]);
     const defaultPatternLabel = defaultPattern.label ?? defaultPatternId;
     let defaultPatternNamespace = defaultPattern.namespace ?? '';
 
