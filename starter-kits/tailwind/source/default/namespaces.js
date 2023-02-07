@@ -14,4 +14,8 @@ module.exports = {
   organisms: path.resolve(patterns, '03-organisms'),
   templates: path.resolve(patterns, '04-templates'),
   pages: path.resolve(patterns, '05-pages'),
+  wsplaceholder: path.resolve(
+    require.resolve('@wingsuit-designsystem/preset-placeholder'),
+    '../../patterns'
+  ),
 };

@@ -1,6 +1,6 @@
 import { IPatternDefinition, Variant, Property, Preview } from '@wingsuit-designsystem/pattern';
 import path from 'path';
-import { pathInfo } from '../../index';
+import { invokeHook, pathInfo } from '../../index';
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
@@ -12,12 +12,14 @@ export default function wingsuitLoader(this: any, src) {
   };
   const { appConfig, fileDependencyPlugin } = options;
   const res = YAML.parse(src, options);
+
   const info = pathInfo(this.resourcePath, appConfig);
   const exports: string[] = [];
 
   if (info !== null) {
     Object.keys(res).forEach((key) => {
       const pattern = res[key];
+      invokeHook('patternLoaded', [appConfig, key, pattern]);
       pattern.namespace = pattern.namespace ?? info.namespace;
 
       const added = fileDependencyPlugin.addFile(

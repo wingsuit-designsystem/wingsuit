@@ -1,21 +1,30 @@
 import path from 'path';
 import fs from 'fs';
+import { AppConfig, invokeHook } from '../index';
 
 const YAML = require('yaml');
 const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
 
-export function csfParser(resourcePath, src, namespaces, loader: any = null): string {
+export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any = null): string {
+  const { namespaces } = appConfig;
   const ast = babylon.parse(src, {
     sourceType: 'module',
   });
 
   let absYamlPath = '';
+  let patternClientYamlPath = '';
   traverse(ast, {
     VariableDeclaration(pathItem) {
       if (pathItem.node.declarations[0].id.name === 'patternDefinition') {
         const yamlPath = pathItem.node.declarations[0].init.arguments[0].value;
-        absYamlPath = path.join(path.dirname(resourcePath), yamlPath);
+        if (yamlPath.startsWith('.') || yamlPath.startsWith('/')) {
+          absYamlPath = path.join(path.dirname(resourcePath), yamlPath);
+          patternClientYamlPath = `./${path.basename(absYamlPath)}`;
+        } else {
+          absYamlPath = require.resolve(yamlPath);
+          patternClientYamlPath = `${yamlPath}`;
+        }
       }
     },
   });
@@ -27,12 +36,14 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
 
     const file = fs.readFileSync(absYamlPath, 'utf8');
     const patternDefinition = YAML.parse(file);
+
     const patternIds = Object.keys(patternDefinition);
     const defaultPatternId = patternIds[0];
     if (!defaultPatternId) {
       return src;
     }
     const defaultPattern = patternDefinition[defaultPatternId];
+    invokeHook('storyLoaded', [appConfig, defaultPatternId, defaultPattern]);
     const defaultPatternLabel = defaultPattern.label ?? defaultPatternId;
     let defaultPatternNamespace = defaultPattern.namespace ?? '';
 
@@ -66,7 +77,7 @@ export function csfParser(resourcePath, src, namespaces, loader: any = null): st
       Title
     } from "@storybook/addon-docs";
 
-    import './${path.basename(absYamlPath)}';
+    import '${patternClientYamlPath}';
 
     export default {
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',

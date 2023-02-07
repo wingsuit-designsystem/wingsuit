@@ -16,6 +16,7 @@
  */
 #}
 {% macro get_placeholder_url(image_style, placeholder_url) %}
+
   {% if not image_style.height %}
     {% set height = random(range(image_style.width * 0.75, image_style.width * 1.25, 10)) %}
   {% endif %}
@@ -38,14 +39,15 @@
  *   The image.
  */
 #}
-{% macro image(style, placeholder_url) %}
+{% macro image(style, service) %}
 
-  {% set imageConfig = pattern_configuration('placeholder', 'image', 'image_config') %}
+  {% set image_config = pattern_configuration('placeholder', 'image', 'image_config') %}
+  {% set placeholder_url = pattern_configuration('placeholder', 'image', 'service')[service] %}
   {% import _self as self %}
   {% set is_responsive_image = false %}
-  {% set image_styles = imageConfig.styles %}
-  {% set responsive_image_styles = imageConfig.styles_responsive %}
-  {% set breakpoints = imageConfig.breakpoints %}
+  {% set image_styles = image_config.styles %}
+  {% set responsive_image_styles = image_config.styles_responsive %}
+  {% set breakpoints = image_config.breakpoints %}
   {% set image_style = image_styles[style] %}
   {% if image_style is empty %}
     {% set image_style = responsive_image_styles[style] %}
@@ -77,8 +79,8 @@
 
 {% macro background(style, classes, placeholder_url) %}
   {% import _self as self %}
-  {% set imageConfig = pattern_configuration('placeholder', 'background', 'image_config') %}
-  {% set image_styles = imageConfig.styles %}
+  {% set image_config = pattern_configuration('placeholder', 'background', 'image_config') %}
+  {% set image_styles = image_config.styles %}
 {%  if image_styles[style] is not empty %}
 <div class="{{ classes }}" style="background-image: url('{{ self.get_placeholder_url(image_styles[style], placeholder_url) }}')">
 </div>

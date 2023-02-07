@@ -8,4 +8,3 @@ import './_image--background.twig';
 import './_image--image.twig';
 import './image.css';
 import './image.wingsuit.yml';
-import 'atoms/placeholder';

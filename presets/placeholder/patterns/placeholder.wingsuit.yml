@@ -1,5 +1,5 @@
 placeholder:
-  use: "@atoms/placeholder/placeholder.twig"
+  use: "@wsplaceholder/placeholder.twig"
   label: Placeholder
   description: "Placeholder image component."
   variants:
@@ -16,11 +16,9 @@ placeholder:
     service:
       label: Placeholder service
       type: select
-      preview: base64
+      preview: placeimg
       required: true
       options:
-        "base64": "Base64"
-        "placeholder": https://via.placeholder.com/
         "fakeimg": https://fakeimg.pl/
         "placeimg": https://placeimg/
     background_classes:
@@ -40,7 +38,6 @@ placeholder:
   configuration:
     service:
       base64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8fwYAAnABnXJTVJsAAAAASUVORK5CYII="
-      placeholder: "https://via.placeholder.com/[width]x[height]"
       fakeimg: "https://fakeimg.pl/[width]x[height]/"
       placeimg: "https://placeimg.com/[width]/[height]/people"
     image_config:

@@ -3802,7 +3802,7 @@
     lodash "^4.17.21"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@7.0.0-beta.43", "@storybook/addon-docs@^2.0.0", "@storybook/addon-docs@^7.0.0-beta.31":
+"@storybook/addon-docs@7.0.0-beta.43", "@storybook/addon-docs@^7.0.0-beta.31":
   version "7.0.0-beta.43"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-7.0.0-beta.43.tgz#f7f9bf50fab71f219ef98a635b5d867340f9aae8"
   integrity sha512-EBCGpaI8gSdpNRLfOqfV7C5VFxl6HROgvHG00XdUnAVJVTuJX0H6SNur2BBRK+74BuAQHXOOeFjmvGJtiGhbAg==

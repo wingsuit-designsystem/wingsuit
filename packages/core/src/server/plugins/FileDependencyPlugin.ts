@@ -79,6 +79,7 @@ export default class FileDependencyPlugin {
       identifier,
       write: true,
     };
+
     return true;
   }
 

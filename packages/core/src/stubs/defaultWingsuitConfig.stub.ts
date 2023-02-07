@@ -53,9 +53,9 @@ export const wingsuit: Config = {
       },
       startup() {
         if (this.environment === 'production') {
-          return `build-storybook --config-dir ${this.absAppPath}`
+          return `storybook build --config-dir ${this.absAppPath}`
         }
-        return `start-storybook --config-dir ${this.absAppPath}`
+        return `storybook dev --config-dir ${this.absAppPath}`
       },
     },
     test: {

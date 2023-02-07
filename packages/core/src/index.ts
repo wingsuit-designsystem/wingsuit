@@ -18,6 +18,10 @@ export { default as PresetManager } from './server/PresetManager';
 
 const presetManager = new PresetManager();
 
+interface PresetResult {
+  [key: string]: string;
+}
+
 export interface PathInfo {
   namespace: string;
   path: string;
@@ -84,14 +88,30 @@ export function getDefaultPreset(name) {
  * @param config
  *   The config
  */
-export function invokePreset(funcName, config) {
+
+export function invokeHook(hookName, data: any[] | null = null): PresetResult {
+  const providedArgs = data ?? [];
+  const hookResults: PresetResult = {};
+  const results: PresetResult = invokePreset('hooks', {});
+  Object.entries(results).forEach(([key, hookImpl]) => {
+    Object.values(hookImpl).forEach((func) => {
+      if (typeof func === 'function') {
+        // @ts-ignore
+        hookResults[key] = func(...providedArgs);
+      }
+    });
+  });
+  return hookResults;
+}
+
+export function invokePreset(funcName, config): PresetResult {
   const apps = getApps();
-  const result = {};
+  const result: PresetResult = {};
   const executed = {};
   apps.forEach((appConfig) => {
     const definitions = presetManager.getPresetDefinitions(appConfig);
     definitions.forEach((def) => {
-      if (def.preset[funcName] !== undefined && executed[def.name] === undefined) {
+      if (def.preset[funcName] && !executed[def.name]) {
         const defaultConfig =
           def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
         const finalConfig = { ...defaultConfig, ...config };

@@ -1,15 +1,17 @@
 {
-  "name": "@wingsuit-designsystem/preset-twing",
+  "name": "@wingsuit-designsystem/preset-placeholder",
   "version": "2.0.0-alpha.0",
-  "description": "Wingsuit Twing preset.",
+  "description": "Wingsuit Placeholder preset.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/preset.js",
+  "browser": "./dist/index.js",
   "files": [
     "bin/**/*",
     "dist/**/*",
+    "patterns/**/*",
     "README.md",
     "*.js",
     "*.d.ts",
@@ -35,9 +37,6 @@
   "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
   "dependencies": {
     "@wingsuit-designsystem/core": "2.0.0-alpha.0",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.0",
-    "twing": "^5.1.0",
-    "twing-drupal-filters": "^0.0.2",
-    "twing-loader": "^4.0.0"
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.0"
   }
 }
