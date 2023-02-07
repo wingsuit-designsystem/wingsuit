@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 const patterns = path.resolve(__dirname, 'source/default/patterns');
 console.log(patterns);

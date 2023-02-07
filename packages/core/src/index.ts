@@ -104,7 +104,7 @@ export function invokeHook(appConfig, hookName, data: any[] | null = null): Pres
   return hookResults;
 }
 
-export function invokePreset(appConfig:AppConfig, funcName, config): PresetResult {
+export function invokePreset(appConfig: AppConfig, funcName, config): PresetResult {
   const result: PresetResult = {};
   const executed = {};
   const definitions = presetManager.getPresetDefinitions(appConfig);

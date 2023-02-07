@@ -1,7 +1,7 @@
 import path from 'path';
 import AppConfig, { defaultAppConfig } from './AppConfig';
 import PresetManager from './server/PresetManager';
-import { invokeHook } from "./index";
+import { invokeHook } from './index';
 
 const merge = require('merge-deep');
 const yargs = require('yargs');

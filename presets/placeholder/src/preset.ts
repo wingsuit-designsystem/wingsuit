@@ -2,7 +2,7 @@
 
 import { AppConfig } from '@wingsuit-designsystem/core';
 import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
-import path from "path";
+import path from 'path';
 
 export function name(appConfig: AppConfig) {
   return 'placeholder';
@@ -51,7 +51,7 @@ function generateImageStyles(aspectRatios, steps, start, end) {
 export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
   return {
     appConfigAlter: () => {
-      appConfig.namespaces.wsplaceholder = path.resolve(__dirname, '../../patterns')
+      appConfig.namespaces.wsplaceholder = path.resolve(__dirname, '../patterns');
     },
     patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
       const { aspectRatios, generationSteps, generationStart, generationMax } = config;
