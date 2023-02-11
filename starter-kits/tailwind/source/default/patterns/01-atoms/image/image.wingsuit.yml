@@ -1,5 +1,5 @@
 image:
-  use: "@atoms/image/image.twig"
+
   label: Image
   description: "Image with caption component."
   fields:
@@ -18,11 +18,13 @@ image:
   variants:
     image:
       label: Image
+      use: "@atoms/image/_image--image.twig"
       description: Use variant "image" for drupal images or theme images. Use url with ws-assets:// for theme images. E.g. "ws-assets://images/logo.svg"
       settings:
         background_style: ''
     background:
       label: Background image
+      use: "@atoms/image/_image--background.twig"
       description: Set the image url with setting "url" and control the display with setting "background_style"
       settings:
         url: 'ws-assets://images/logo.svg'

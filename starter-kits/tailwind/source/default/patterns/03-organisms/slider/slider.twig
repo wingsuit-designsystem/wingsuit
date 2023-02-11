@@ -24,22 +24,12 @@
   <div class="splide__arrows">
     <div class="group">
       <button class="splide__arrow splide__arrow--prev flex items-center justify-center absolute right-full mr-3 top-1/2 -translate-y-1/2 w-[42px] h-[42px] border border-2 rounded-full border-gray-900 dark:border-white dark:group-hover:border-blue-300 group-hover:border-blue-300">
-        {% include "@atoms/svg/svg.twig" with {
-          "variant": "icon",
-          "icon": "chevron-left",
-          "size": "small",
-          "color": "fill-current dark:text-white dark:group-hover:text-blue-300 group-hover:text-blue-300"
-        } only %}
+        {{ pattern('icon_spritemap', {icon: 'chevron-left' } ) }}
       </button>
     </div>
     <div class="group">
       <button class="splide__arrow splide__arrow--next flex items-center justify-center absolute left-full ml-3 top-1/2 -translate-y-1/2 w-[42px] h-[42px] border border-2 rounded-full border-gray-900 dark:border-white dark:group-hover:border-blue-300 group-hover:border-blue-300">
-        {% include "@atoms/svg/svg.twig" with {
-          "variant": "icon",
-          "icon": "chevron-right",
-          "size": "small",
-          "color": "fill-current dark:text-white dark:group-hover:text-blue-300 group-hover:text-blue-300"
-        } only %}
+        {{ pattern('icon_spritemap', {icon: 'chevron-right' } ) }}
       </button>
     </div>
   </div>

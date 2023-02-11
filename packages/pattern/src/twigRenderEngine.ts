@@ -1,7 +1,7 @@
 import PatternVariant from './PatternVariant';
 import IRenderer from './IRenderer';
 import Pattern from './Pattern';
-import { storage } from './index';
+import { storage, TwigAttribute } from './index';
 
 import { MultiValueTypes } from './Field';
 import { TwigDefaultRenderer } from './TwigDefaultRenderer';
@@ -149,6 +149,14 @@ export async function renderPatternPreview(
       });
     });
   }
+
+  const settings = variant.getSettings();
+  Object.keys(settings).forEach((key) => {
+    if (settings[key].type === 'attributes') {
+      // eslint-disable-next-line no-param-reassign
+      variables[key] = new TwigAttribute(patternVariables[key]);
+    }
+  });
   return renderPattern(
     patternId,
     {
@@ -180,13 +188,20 @@ export async function renderPattern(
   variables: {} = {},
   variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
-  const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-  const patternVariables = variant.getVariables(false);
-  const finalVariables = {
-    ...patternVariables,
-    ...buildBaseVariables(variables, true),
-  };
-  finalVariables.variant = variantId;
-  variant.setRenderArgs(finalVariables);
-  return rendererImpl.renderVariant(variant, finalVariables);
+  try {
+    const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+    const patternVariables = variant.getVariables(false);
+    const finalVariables = {
+      ...patternVariables,
+      ...buildBaseVariables(variables, true),
+    };
+    finalVariables.variant = variantId;
+    variant.setRenderArgs(finalVariables);
+    return rendererImpl.renderVariant(variant, finalVariables);
+  } catch (e: any) {
+    if (e.message) {
+      return e.message;
+    }
+    return e;
+  }
 }

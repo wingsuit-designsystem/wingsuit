@@ -19,7 +19,7 @@ const configStub = require('./stubs/defaultWingsuitConfig.stub');
  *    - The complete merged configuration including all presets.
  *    - The wingsuit.config.js
  */
-export function getConfigBase(wingsuitConfig: any = null) {
+export function getConfigBase(wingsuitConfig: any = null): any {
   const projectConfig =
     // eslint-disable-next-line global-require,import/no-dynamic-require
     wingsuitConfig != null ? wingsuitConfig : require(`${process.cwd()}/wingsuit.config`);
@@ -34,12 +34,7 @@ export function getConfigBase(wingsuitConfig: any = null) {
 
   // Overrule with preset configs.
   const presetManager = new PresetManager();
-  const finalMergedConfig = presetManager.invokeHook(
-    mergedConfig,
-    'wingsuitConfig',
-    {},
-    mergedConfig
-  );
+  const finalMergedConfig = presetManager.mergeWingsuitConfig(mergedConfig);
   return { mergedConfig: finalMergedConfig, projectConfig };
 }
 

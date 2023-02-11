@@ -13,16 +13,10 @@
     <div class="flex items-center justify-between">
       <span class="font-bold">{{ label }}</span>
       <div x-cloak :class="{ 'hidden' : selected == true }" >
-        {% include "@atoms/svg/_svg--icon.twig" with {
-          icon: 'plus',
-          size: 'small',
-        } only %}
+        {{ pattern('icon_spritemap', {icon: 'plus' } ) }}
       </div>
       <div x-cloak :class="{ 'hidden' : selected == false }">
-        {% include "@atoms/svg/_svg--icon.twig" with {
-          icon: 'minus',
-          size: 'small',
-        } only %}
+        {{ pattern('icon_spritemap', {icon: 'minus' } ) }}
       </div>
     </div>
   </button>

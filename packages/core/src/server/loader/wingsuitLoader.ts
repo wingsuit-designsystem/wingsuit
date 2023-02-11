@@ -18,7 +18,7 @@ export default function wingsuitLoader(this: any, src) {
 
   if (info !== null) {
     Object.keys(res).forEach((key) => {
-      const pattern = res[key];
+      const pattern: IPatternDefinition = res[key];
       invokeHook(appConfig, 'patternLoaded', [key, pattern]);
       pattern.namespace = pattern.namespace ?? info.namespace;
 
@@ -29,12 +29,28 @@ export default function wingsuitLoader(this: any, src) {
         res
       );
       if (added === true) {
-        const twigTemplatePath = pattern.use.replace('@', '');
-        exports.push(`export const ${key} = getStorage().loadPattern('${key}');`);
-        exports.push(`import ${key}Template from '${twigTemplatePath}';`);
-        exports.push(`${key}.setTemplate(${key}Template);`);
+        if (pattern.use) {
+          const twigTemplatePath = pattern.use.replace('@', '');
+          exports.push(`import ${key}Template from '${twigTemplatePath}';`);
+          exports.push(`export const ${key} = getStorage().loadPattern('${key}');`);
+          exports.push(`${key}.setTemplate(${key}Template);`);
+          this.addDependency(path.resolve(twigTemplatePath));
+        }
         const linkedPatternIds = findLinkedPatternIds(pattern);
-
+        if (pattern.variants) {
+          Object.entries(pattern.variants).forEach(([variantName, variant]) => {
+            if (variant.use) {
+              const twigVariantTemplatePath = variant.use.replace('@', '');
+              exports.push(
+                `import ${key}${variantName}Template from '${twigVariantTemplatePath}';`
+              );
+              exports.push(
+                `export const ${key}${variantName} = getStorage().loadVariant('${key}', '${variantName}');`
+              );
+              exports.push(`${key}${variantName}.setTemplate(${key}${variantName}Template);`);
+            }
+          });
+        }
         linkedPatternIds.forEach((patternId) => {
           const linkedPatternIndexFile =
             fileDependencyPlugin.getPatternComponentNamespace(patternId);
@@ -50,7 +66,6 @@ export default function wingsuitLoader(this: any, src) {
             console.error(`Unable to found pattern namespace for ${patternId}`);
           }
         });
-        this.addDependency(path.resolve(twigTemplatePath));
       }
     });
   }

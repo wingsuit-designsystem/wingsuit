@@ -7,6 +7,8 @@ module.exports = {
     '@wingsuit-designsystem/preset-tailwind2',
     '@wingsuit-designsystem/preset-twing',
     '@wingsuit-designsystem/preset-placeholder',
+    '@wingsuit-designsystem/preset-icon',
+    '@wingsuit-designsystem/preset-icon-spritemap',
   ],
   designSystems: {
     default: {

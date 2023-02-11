@@ -34,13 +34,7 @@ Template
 {{ text }}
   {% if icon is not empty %}
     <div class="{{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}"></div>
-    {% include "@atoms/svg/_svg--icon.twig" with {
-      icon: icon,
-      size: pattern_configuration('button', variant, 'size')['icon'][size],
-    } only %}
+    {{ pattern('icon_spritemap', {icon: icon } ) }}
   {% endif %}
 </{{ tag_name }}>
-{% include "@atoms/svg/_svg--icon.twig" with {
-  icon: icon,
-} only %}
 

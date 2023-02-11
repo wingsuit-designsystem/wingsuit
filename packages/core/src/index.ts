@@ -92,7 +92,7 @@ export function getDefaultPreset(name) {
 export function invokeHook(appConfig, hookName, data: any[] | null = null): PresetResult {
   const providedArgs = data ?? [];
   const hookResults: PresetResult = {};
-  const results: PresetResult = invokePreset(appConfig, 'hooks', {});
+  const results: PresetResult = invokePresets(appConfig, 'hooks', {});
   Object.entries(results).forEach(([key, hookImpl]) => {
     Object.values(hookImpl).forEach((func) => {
       if (typeof func === 'function') {
@@ -104,17 +104,15 @@ export function invokeHook(appConfig, hookName, data: any[] | null = null): Pres
   return hookResults;
 }
 
-export function invokePreset(appConfig: AppConfig, funcName, config): PresetResult {
+export function invokePresets(appConfig: AppConfig, funcName, config): PresetResult {
   const result: PresetResult = {};
-  const executed = {};
   const definitions = presetManager.getPresetDefinitions(appConfig);
   definitions.forEach((def) => {
-    if (def.preset[funcName] && !executed[def.name]) {
+    if (def.preset[funcName]) {
       const defaultConfig =
         def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
       const finalConfig = { ...defaultConfig, ...config };
-      result[appConfig.name] = def.preset[funcName](appConfig, finalConfig);
-      executed[def.name] = true;
+      result[def.name] = def.preset[funcName](appConfig, finalConfig);
     }
   });
   return result;

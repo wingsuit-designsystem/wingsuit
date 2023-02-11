@@ -48,6 +48,7 @@ function generateImageStyles(aspectRatios, steps, start, end) {
 
   return imageConfig;
 }
+
 export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
   return {
     appConfigAlter: () => {
@@ -66,7 +67,9 @@ export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
         Object.keys(styles).forEach((key) => {
           options[key] = styles[key].label;
         });
-        Object.assign(patternDefinition.settings.style.options, options);
+        if (patternDefinition.settings.style.options) {
+          Object.assign(patternDefinition.settings.style.options, options);
+        }
         patternDefinition.configuration.image_config.styles = styles;
       }
     },

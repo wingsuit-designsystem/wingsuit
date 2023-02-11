@@ -95,9 +95,10 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `
+          
           export const ${patternId}${variantName}Pattern = {
           name: '${storyLabel}',
-          args: {patternId: '${patternId}', variantId: '${variantName}'},
+          args: {patternId: '${patternId}', variantId: '${variantName}', ...storage.loadVariant('${patternId}', '${variantName}').getVariables(true, true, false) },
           argTypes: argTypes('${patternId}', '${variantName}'),
           parameters: {
           docs: {

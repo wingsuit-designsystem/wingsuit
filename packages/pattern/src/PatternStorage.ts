@@ -3,14 +3,15 @@ import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
 import { IPatternDefinition, IPatternDefinitions } from './definition';
 
+interface PatternCache {
+  [key: string]: Pattern;
+}
 export default class PatternStorage implements IPatternStorage {
   private definitions: IPatternDefinitions = {} as IPatternDefinitions;
 
-  private namespaces = {};
-
   private globals = {};
 
-  private patterns: Pattern = {} as Pattern;
+  private patterns: PatternCache = {};
 
   private twigResources = new Map();
 
@@ -37,14 +38,6 @@ export default class PatternStorage implements IPatternStorage {
 
   getGlobals() {
     return this.globals;
-  }
-
-  setNamespaces(namespaces: {}) {
-    this.namespaces = namespaces;
-  }
-
-  getNamespaces() {
-    return this.namespaces;
   }
 
   getPatternIds(): string[] {
@@ -143,7 +136,7 @@ export default class PatternStorage implements IPatternStorage {
   }
 
   loadPattern(patternId: string): Pattern {
-    if (this.patterns[patternId] !== undefined) {
+    if (this.patterns[patternId]) {
       return this.patterns[patternId];
     }
     const definition: IPatternDefinition = this.extendPatternDefinition(
@@ -167,41 +160,22 @@ export default class PatternStorage implements IPatternStorage {
 
   createDefinitions(definitions: IPatternDefinitions): void {
     this.definitions = definitions;
+    this.patterns = {};
   }
 
-  addDefinition(id: string, pattern: IPatternDefinition) {
-    this.definitions[id] = pattern;
+  addDefinition(id: string, patternDefinition: IPatternDefinition) {
+    this.definitions[id] = patternDefinition;
+    delete this.patterns[id];
   }
 
   addDefinitions(definitions: IPatternDefinitions) {
     Object.keys(definitions).forEach((id) => {
       this.definitions[id] = definitions[id];
+      delete this.patterns[id];
     });
   }
 
   findTwigByNamespace(namespace): any | null {
     return this.twigResources.get(namespace);
-  }
-
-  findTwigById(id): any | null {
-    const use = this.loadPattern(id).getUse();
-    return this.findTwigByNamespace(use);
-  }
-
-  createGlobalsFromContext(context): void {
-    context.keys().forEach((key) => {
-      const data = context(key);
-      Object.keys(data).forEach((valueKey) => {
-        this.addGlobal(valueKey, data[valueKey]);
-      });
-    });
-  }
-
-  getTwigResources(): {} {
-    return this.twigResources;
-  }
-
-  addTwig(namespace, resource): void {
-    this.twigResources.set(namespace, resource.default);
   }
 }

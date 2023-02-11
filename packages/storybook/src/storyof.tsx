@@ -16,7 +16,11 @@ function getStorybookControlsOptions(setting) {
     };
   }
   Object.keys(options).forEach((key) => {
-    controls[key] = options[key];
+    if (options[key].label) {
+      controls[key] = options[key].label;
+    } else {
+      controls[key] = options[key];
+    }
   });
   return controls;
 }
@@ -63,7 +67,7 @@ export function getArgTypes(variant) {
           defaultValue: { summary: setting.getPreview() },
           category: 'Settings',
         },
-        defaultValue: setting.getDefaultValue(),
+        defaultValue: setting.getDefaultValue() || setting.getPreview(),
         description: `${setting.getLabel()} ${
           setting.getDescription() !== '' ? ` - ${setting.getDescription()}` : ''
         }`,

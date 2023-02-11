@@ -83,6 +83,9 @@ export interface AppInitConfig {
 export interface Preset {
   defaultConfig?(appConfig: AppConfig): any;
   name?(appConfig: AppConfig): string;
+
+  wingsuitConfig?(): any;
+  configKey?(appConfig: AppConfig): string;
   webpack?(appConfig: AppConfig);
   defaultAppConfig?(): AppConfig;
   webpackFinal?(appConfig: AppConfig, config: any);
