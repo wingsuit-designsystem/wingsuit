@@ -7,7 +7,6 @@ const storybook = require('../server/presets/storybook')
 const drupal = require('../server/presets/drupal')
 const cms = require('../server/presets/cms')
 const wingsuitp = require('../server/presets/wingsuit')
-const svg = require('../server/presets/svg')
 const assetsVideos = require('../server/presets/assetsVideos')
 
 export const wingsuit: Config = {
@@ -19,7 +18,6 @@ export const wingsuit: Config = {
     babel,
     assets,
     assetsVideos,
-    svg,
     storybook,
     drupal,
     cms,
@@ -44,7 +42,7 @@ export const wingsuit: Config = {
       distFolder: 'dist/app-storybook',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, assetsVideos, storybook, wingsuitp, svg],
+      presets: [assets, assetsVideos, storybook, wingsuitp],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',
@@ -53,9 +51,9 @@ export const wingsuit: Config = {
       },
       startup() {
         if (this.environment === 'production') {
-          return `build-storybook --config-dir ${this.absAppPath}`
+          return `storybook build --config-dir ${this.absAppPath}`
         }
-        return `start-storybook --config-dir ${this.absAppPath}`
+        return `storybook dev --config-dir ${this.absAppPath}`
       },
     },
     test: {
@@ -86,7 +84,7 @@ export const wingsuit: Config = {
       type: 'drupal',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, assetsVideos, babel, css, cms, wingsuitp, svg],
+      presets: [assets, assetsVideos, babel, css, cms, wingsuitp],
     },
   },
 }

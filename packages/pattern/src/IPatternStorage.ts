@@ -10,8 +10,4 @@ export default interface IPatternStorage {
   addGlobal(name, value): void;
   getGlobals(): {};
   getPatternIds(): string[];
-  createGlobalsFromContext(context): void;
-  findTwigById(id): any | null;
-  addTwig(namespace, resource): void;
-  findTwigByNamespace(namespace): any | null;
 }

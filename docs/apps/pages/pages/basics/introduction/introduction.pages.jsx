@@ -3,10 +3,12 @@ import MDX from './index.mdx';
 import './images/add-blocks.png';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/basics/introduction',
   template,
+  html,
   MDX,
   vars: {
     meta_title: 'Wingsuit introduction',

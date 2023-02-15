@@ -1,14 +1,16 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/configurations/custom-webpack-config',
   template,
+  html,
   MDX,
   vars: {
-    meta_title: 'Configuration',
+    meta_title: 'Configuration2',
     meta_description: 'Custom webpack configuration.',
     next: [
       {

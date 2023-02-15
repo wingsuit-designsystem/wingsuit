@@ -36,8 +36,8 @@
   "dependencies": {
     "@wingsuit-designsystem/core": "2.0.0-alpha.0",
     "@wingsuit-designsystem/pattern": "2.0.0-alpha.0",
-    "twing-loader": "^4.0.0",
+    "twing": "^5.1.0",
     "twing-drupal-filters": "^0.0.2",
-    "twing": "^5.1.0"
+    "twing-loader": "^4.0.0"
   }
 }

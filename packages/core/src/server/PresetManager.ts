@@ -14,18 +14,17 @@ const babel = require('./presets/babel');
 const assets = require('./presets/assets');
 const storybook = require('./presets/storybook');
 const drupal = require('./presets/drupal');
-// const twing = require('./presets/twing');
-const svg = require('./presets/svg');
+const wingsuitP = require('./presets/wingsuit');
 const assetsVideos = require('./presets/assetsVideos');
 
 const defaultPresets = {
   css,
   babel,
+  assetsVideos,
   assets,
   storybook,
   drupal,
-  svg,
-  assetsVideos,
+  wingsuit: wingsuitP,
 };
 
 export default class PresetManager {
@@ -48,21 +47,23 @@ export default class PresetManager {
     return Object.assign(defaultConfig, appParameter, providedConfig);
   }
 
-  public invokeHook(appConfig: AppConfig, hookName, hookArguments: any = {}, data: any) {
+  public mergeWingsuitConfig(appConfig: AppConfig): any {
     const presets = this.getPresetDefinitions(appConfig);
-    let mergedData = data;
+
+    let mergedData = appConfig;
     presets.forEach((definition) => {
-      if (typeof definition.preset[hookName] === 'function') {
-        const hookResult = definition.preset[hookName]();
-        mergedData = mergeDeep(data, hookResult);
+      if (typeof definition.preset.wingsuitConfig === 'function') {
+        const hookResult = definition.preset.wingsuitConfig();
+        mergedData = mergeDeep(mergedData, hookResult);
       }
     });
+
     return mergedData;
   }
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
     const presets: PresetDefinition[] = [];
-    if (appConfig.presets !== undefined) {
+    if (appConfig.presets) {
       appConfig.presets.forEach((item) => {
         if (typeof item === 'string') {
           const lpreset =
@@ -99,6 +100,18 @@ export default class PresetManager {
         }
       });
     }
+    presets.forEach((presetDef) => {
+      if (presetDef.preset.configKey) {
+        const key = presetDef.preset.configKey(appConfig);
+        const foundPreset = presets.find(
+          (def) => def.preset.name && def.preset.name(appConfig) === key
+        );
+        if (foundPreset && foundPreset.preset) {
+          // eslint-disable-next-line no-param-reassign
+          presetDef.parameters = foundPreset.parameters;
+        }
+      }
+    });
     return presets;
   }
 
@@ -134,7 +147,6 @@ export default class PresetManager {
   public generateWebpack(appConfig: AppConfig, webpackConfigs: any[] = []) {
     this.environment = appConfig.environment ? appConfig.environment : 'development';
     const presets = this.getPresetDefinitions(appConfig);
-
     const shared: any = [];
     Object.keys(presets).forEach((key) => {
       if (presets[key] != null && presets[key].preset.webpack != null) {
@@ -153,10 +165,7 @@ export default class PresetManager {
         appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
-            alias: appConfig.namespaces,
-          },
-          output: {
-            path: appConfig.absDistFolder,
+            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces },
           },
           mode: this.environment,
           optimization: {

@@ -1,0 +1,46 @@
+{
+  "name": "@wingsuit-designsystem/preset-twigjs",
+  "version": "2.0.0-alpha.0",
+  "description": "Wingsuit Twig.js preset.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
+  "dependencies": {
+    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.0",
+    "add-attributes-twig-extension": "^0.1.0",
+    "twig-drupal-filters": "^3.1.0",
+    "twig-loader": "https://github.com/fourkitchens/twig-loader"
+  },
+  "devDependencies": {
+    "raw-loader": "^4.0.2"
+  }
+}

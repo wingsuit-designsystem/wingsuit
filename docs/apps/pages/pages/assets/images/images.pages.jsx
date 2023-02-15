@@ -1,11 +1,13 @@
-import 'protons';
+import '../../index';
 import MDX from './images.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/assets/images',
   MDX,
+  html,
   template,
   vars: {
     meta_title: 'Images & Icons',

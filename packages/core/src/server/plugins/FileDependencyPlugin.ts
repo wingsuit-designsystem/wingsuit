@@ -21,26 +21,30 @@ export default class FileDependencyPlugin {
 
   private pattern2NamespaceCache: { [key: string]: string } = {};
 
+  private patternIndex2NamespaceCache: { [key: string]: string } = {};
+
   private namespaces: { [key: string]: string } = {};
 
   buildPatternNamespaceMap() {
     const { namespaces } = this;
     this.pattern2NamespaceCache = {};
+    this.patternIndex2NamespaceCache = {};
     Object.keys(namespaces).forEach((namespace) => {
       const namespacePath = namespaces[namespace];
       const globPattern = `${namespacePath}/**/*.wingsuit.yml`;
       const files = glob.sync(globPattern);
       files.forEach((file) => {
         const wingsuitFile = YAML.parse(fs.readFileSync(file, 'utf-8'));
-        const wingsuitComponentPath = fs.existsSync(`${path.dirname(file)}/index.js`)
+        const componentFile = fs.existsSync(`${path.dirname(file)}/index.js`)
           ? path.dirname(file)
-          : file;
+          : null;
+
         Object.keys(wingsuitFile).forEach((key) => {
           if (!this.pattern2NamespaceCache[key]) {
-            this.pattern2NamespaceCache[key] = wingsuitComponentPath.replace(
-              namespacePath,
-              namespace
-            );
+            this.pattern2NamespaceCache[key] = file.replace(namespacePath, namespace);
+          }
+          if (!this.patternIndex2NamespaceCache[key] && componentFile) {
+            this.patternIndex2NamespaceCache[key] = componentFile.replace(namespacePath, namespace);
           }
         });
       });
@@ -50,6 +54,10 @@ export default class FileDependencyPlugin {
 
   public getPatternNamespace(namespace) {
     return this.pattern2NamespaceCache[namespace];
+  }
+
+  public getPatternComponentNamespace(namespace) {
+    return this.patternIndex2NamespaceCache[namespace];
   }
 
   addFile(identifier, sourcePath, targetRelativePath, content) {
@@ -71,6 +79,7 @@ export default class FileDependencyPlugin {
       identifier,
       write: true,
     };
+
     return true;
   }
 
@@ -97,7 +106,7 @@ export default class FileDependencyPlugin {
           const targetPath = path.join(this.dist, file.targetPath);
           fs.mkdirSync(path.dirname(targetPath), { recursive: true });
           const content =
-            typeof file.content !== 'string' ? JSON.stringify(file.content) : file.content;
+            typeof file.content !== 'string' ? YAML.stringify(file.content) : file.content;
           fs.writeFileSync(targetPath, content);
         }
       });

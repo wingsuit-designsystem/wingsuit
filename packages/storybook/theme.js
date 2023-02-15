@@ -1,1 +1,0 @@
-export { default as wingsuitTheme } from './dist/theme';

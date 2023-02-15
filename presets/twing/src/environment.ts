@@ -1,12 +1,12 @@
-import { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } from 'twing';
 import { renderer, TwigAttribute } from '@wingsuit-designsystem/pattern';
-import { TwingRenderer } from './TwingRenderer';
+
+const { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } = require('twing');
 
 const twingFilters = require('twing-drupal-filters');
 
 const loader = new TwingLoaderFilesystem();
 
-const environment = new TwingEnvironment(loader, { autoescape: false, debug: false });
+const environment = new TwingEnvironment(loader, { autoescape: false, debug: true });
 
 // In storybook we get this returned as an instance of
 // TWigLoaderNull, we need to avoid processing this.
@@ -66,6 +66,5 @@ export function init() {
     environment.addFilter(new TwingFilter(key, filters[key], []));
   });
 }
-renderer.setRenderer(new TwingRenderer());
 init();
 module.exports = environment;

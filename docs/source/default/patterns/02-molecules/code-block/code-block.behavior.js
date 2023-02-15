@@ -10,9 +10,6 @@ import 'prismjs/plugins/keep-markup/prism-keep-markup';
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 
-window.Spruce.store('component_feature', null);
-window.Spruce.store('modal', { visible: false, url: '' });
-
 Drupal.behaviors.code_block = {
   attach() {
     Prism.highlightAll();

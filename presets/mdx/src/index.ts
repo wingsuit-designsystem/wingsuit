@@ -7,7 +7,6 @@ interface MdxConfig {
     plugins: any[];
   };
 }
-
 export function defaultConfig(appConfig: AppConfig): MdxConfig {
   return {
     remarkOptions: {
@@ -15,7 +14,6 @@ export function defaultConfig(appConfig: AppConfig): MdxConfig {
     },
   };
 }
-
 export function supportFeature(name, appConfig: AppConfig) {
   if (name === 'mdx') {
     return true;

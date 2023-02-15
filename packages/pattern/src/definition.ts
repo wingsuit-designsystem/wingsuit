@@ -12,28 +12,29 @@ export interface Preview {
 }
 export interface Properties {
   [key: string]: Property;
-  fields: Property;
 }
 export interface Property {
   type: string;
-  id: string;
+  id?: string;
   label: string;
-  default_value: string;
-  preview: string | Preview;
-  required: boolean;
-  multi_value_type: string;
-  options: Options;
-  fields: Property;
+  default_value?: string;
+  preview?: string | Preview;
+  required?: boolean;
+  multi_value_type?: string;
+  options?: Options;
+  fields?: Property;
 }
 export interface Variants {
   [key: string]: Variant;
 }
 export interface Variant {
+  use: string;
   label: string;
   fields: Property;
   settings: Property;
 }
 export interface IPatternDefinition {
+  template?: any;
   label: string;
   id: string;
   icon_path: string;
@@ -49,9 +50,6 @@ export interface IPatternDefinition {
   configuration: any;
   dependencies: string[];
 }
-export interface IPatternDefinitionsPatterns {
-  [key: string]: IPatternDefinition;
-}
 export interface IPatternDefinitions {
-  patterns: IPatternDefinitionsPatterns;
+  [key: string]: IPatternDefinition;
 }

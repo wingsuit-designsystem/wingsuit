@@ -2,17 +2,10 @@
   <div class="flex items-center cursor-pointer" @click="languageSwitcherOpen = !languageSwitcherOpen">
     <div class="mr-2 uppercase">{{ language }}</div>
     <div class="mr-2.5">
-      {% include "@atoms/svg/_svg--icon.twig" with {
-        icon: 'globe',
-        size: 'small',
-      } only %}
+      {{ pattern('icon_spritemap', {icon: 'globe' } ) }}
     </div>
     <div :class="{'rotate-90 transition duration-75 ease-in-out': languageSwitcherOpen, '': !languageSwitcherOpen}">
-      {% include "@atoms/svg/_svg--icon.twig" with {
-        icon: 'arrow',
-        fill_color: 'text-yellow-500',
-        size: 'small',
-      } only %}
+      {{ pattern('icon_spritemap', {icon: 'arrow' } ) }}
     </div>
   </div>
   <ul class="absolute left-0 p-4 top-10 border bg-gray-white box-shadow rounded hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
@@ -22,10 +15,7 @@
           <span class="language-select-icon__text">
             <a href="{{ item.path }}" class="flex items-center group-hover:text-yellow-500 transition-colors">
               <span class="mr-4">
-                {% include "@atoms/svg/_svg--icon.twig" with {
-                  icon: item.langcode,
-                  size: 'small',
-                } only %}
+                {{ pattern('icon_spritemap', {icon: item.langcode } ) }}
               </span>
               <span>{{ item.text }}</span>
             </a>

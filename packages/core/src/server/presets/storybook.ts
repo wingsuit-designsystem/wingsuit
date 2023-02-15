@@ -12,6 +12,9 @@ export function webpack(appConfig: AppConfig) {
         fs: false,
       },
     },
+    output: {
+      path: appConfig.absDistFolder,
+    },
     stats: {
       performance: true,
       children: false,

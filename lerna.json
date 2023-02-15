@@ -1,6 +1,7 @@
 {
   "packages": [
     "docs",
+    "docs-next",
     "packages/*",
     "presets/*",
     "presets/examples/*",

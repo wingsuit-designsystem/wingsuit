@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Placeholder component.
+ *
+ * Use this component for prototyping images.
+ * Configure image styles in placeholder.wingsuit.yml.
+ *
+ * Use variant image or background.
+ */
+#}
+{# SETTINGS #}
+{% import '@ws-placeholder/_placeholder-macro.twig' as placeholder %}
+
+{% set variant = variant|default('image') %}
+
+{# VARIANT TEMPLATES #}
+{% if variant == 'image' %}
+  {{ placeholder.image(style, service) }}
+{% elseif variant == 'background' %}
+  {{ placeholder.background(style, background_classes, service) }}
+{% endif %}

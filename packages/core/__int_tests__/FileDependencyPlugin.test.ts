@@ -11,7 +11,7 @@ describe('#Test wingsuit loader', () => {
     const map = fileDependencyPlugin.buildPatternNamespaceMap();
     expect(map).toEqual({
       button: 'atoms/button/button.wingsuit.yml',
-      card: 'molecules/card',
+      card: 'molecules/card/card.wingsuit.yml',
       check: 'molecules/tests/check.wingsuit.yml',
       spacing: 'molecules/spacing/spacing.wingsuit.yml',
     });

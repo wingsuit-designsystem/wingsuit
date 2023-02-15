@@ -1,9 +1,11 @@
+import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import { themes, create } from '@storybook/theming';
+import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 import { Code } from '@storybook/components';
-
 import React, { FunctionComponent, useState } from 'react';
-
 import { PatternVariant } from '@wingsuit-designsystem/pattern';
 
+ReactSyntaxHighlighter.registerLanguage('twig', twig);
 type Props = { variant: PatternVariant };
 
 interface Variables {

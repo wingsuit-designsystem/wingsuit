@@ -1,5 +1,5 @@
 body {
-  @apply text-black flex;
+  @apply text-black flex flex-col;
 }
 
 .wingsuit-page-wrapper {

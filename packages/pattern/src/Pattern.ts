@@ -97,6 +97,9 @@ export default class Pattern {
     this.namespace = definition.namespace;
     this.parameters = definition.parameters;
     this.definition = definition;
+    if (definition.template) {
+      this.setTemplate(definition.template);
+    }
     this.defaultVariant = new PatternVariant(
       '__default',
       this,
