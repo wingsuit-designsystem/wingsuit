@@ -15,6 +15,7 @@ export default {
     '../../source/**/*.stories.wingsuit.jsx',
     '../../source/**/*.stories.jsx',
     './patterns/**/*.stories.jsx',
+    // './patterns/**/*.mdx',
   ],
   addons: [
     '@storybook/addon-links',
