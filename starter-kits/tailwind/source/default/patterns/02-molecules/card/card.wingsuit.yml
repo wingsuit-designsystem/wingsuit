@@ -44,7 +44,7 @@ card:
       type: select
       label: Alignment
       required: true
-      default_value: left
+      default_value: center
       options:
         left: Left
         center: Center

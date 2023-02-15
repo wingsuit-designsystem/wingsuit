@@ -1,0 +1,46 @@
+{
+  "name": "@wingsuit-designsystem/preset-icon-spritemap",
+  "version": "2.0.0-alpha.0",
+  "description": "Wingsuit Icon spritemap preset.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
+  },
+  "main": "./dist/preset.js",
+  "browser": "./dist/index.js",
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "patterns/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "ts3.5/**/*"
+  ],
+  "keywords": [
+    "Storybook",
+    "Atomic Design",
+    "Tailwind"
+  ],
+  "author": "Christian Wiedemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
+  },
+  "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
+  "scripts": {
+    "prepare": "node ../../scripts/prepare.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
+  "dependencies": {
+    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.0",
+    "svg-sprite-loader": "^6.0.11",
+    "svg-transform-loader": "^2.0.13",
+    "svgo": "^3.0.2",
+    "svgo-loader": "^4.0.0"
+  }
+}

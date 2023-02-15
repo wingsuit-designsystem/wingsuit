@@ -3,7 +3,7 @@ button:
   label: Button
   description: Regular or outline buttons with different colors.
   dependencies:
-    - atoms/svg
+    - icon_spritemap
   fields:
     sample:
       type: pattern
@@ -69,6 +69,7 @@ button:
     title:
       type: textfield
       label: Title
+      default_value: demo
     round:
       type: boolean
       label: Round

@@ -1,3 +1,7 @@
+const wingsuitCore = require('@wingsuit-designsystem/core');
+
+const appConfig = wingsuitCore.resolveConfig('storybook', process.env.NODE_ENV);
+
 const forms = require('@tailwindcss/forms');
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
@@ -7,7 +11,11 @@ const typography = require('@tailwindcss/typography')({
 module.exports = {
   important: false,
   darkMode: 'class',
-  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+  content: [
+    './apps/**/*.twig',
+    ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.twig`),
+    ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.yml`),
+  ],
   safelist: ['bg-black'],
   theme: {
     colors: {
@@ -22,40 +30,6 @@ module.exports = {
       yellow: colors.amber,
     },
     extend: {
-      typography: (theme) => ({
-        dark: {
-          css: {
-            color: theme('colors.gray.100'),
-            '[class~="lead"]': {
-              color: theme('colors.gray.100'),
-            },
-            blockquote: {
-              color: theme('colors.gray.100'),
-            },
-            strong: {
-              color: theme('colors.gray.100'),
-            },
-            h2: {
-              color: theme('colors.gray.100'),
-            },
-            h3: {
-              color: theme('colors.gray.100'),
-            },
-            h4: {
-              color: theme('colors.gray.100'),
-            },
-            a: {
-              color: theme('colors.gray.100'),
-              '&:hover': {
-                color: theme('colors.gray.100'),
-              },
-            },
-          },
-        },
-      }),
-      fill: {
-        current: 'currentColor',
-      },
       height: {
         18: '4.5rem',
       },

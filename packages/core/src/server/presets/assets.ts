@@ -45,6 +45,11 @@ export function webpack(appConfig: AppConfig) {
           ],
         },
         {
+          test: /\.ya?ml$/,
+          exclude: /\.wingsuit\.ya?ml$/,
+          use: 'js-yaml-loader',
+        },
+        {
           loader: 'file-loader',
           test: /.*[/|\\\\]images[/|\\\\].*\.svg$/,
           options: {

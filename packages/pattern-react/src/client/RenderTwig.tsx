@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { renderer } from '@wingsuit-designsystem/pattern';
 import { attachBehaviors } from '../behaviors';
 
 type Props = { data };
@@ -8,8 +7,7 @@ const RenderTwig: FunctionComponent<Props> = ({ data, ...variables }) => {
   const [rendered, setRendered] = useState('');
   useEffect(() => {
     const mounted = true;
-    renderer
-      .renderData(Math.random().toString(), data.default, variables)
+    data(variables)
       .then((output: string) => {
         if (mounted) {
           setRendered(output);

@@ -6,8 +6,6 @@ import { csfParser } from '@wingsuit-designsystem/core';
 
 const wingsuitCore = require('@wingsuit-designsystem/core');
 
-const namespaces = {};
-
 interface Options {
   appName?: string | 'storybook';
 }
@@ -22,7 +20,7 @@ export const storyIndexers = async (indexers, options: Options) => {
   const wingsuitConfig = wingsuitCore.resolveConfig(options.appName ?? 'storybook');
   const csfIndexer = async (fileName: string, opts) => {
     const src = readFileSync(fileName, 'utf-8').toString();
-    const code = csfParser(fileName, src, wingsuitConfig.namespaces);
+    const code = csfParser(fileName, src, wingsuitConfig);
     const result = loadCsf(code, { ...opts, fileName }).parse();
     return result;
   };

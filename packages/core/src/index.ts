@@ -18,6 +18,10 @@ export { default as PresetManager } from './server/PresetManager';
 
 const presetManager = new PresetManager();
 
+interface PresetResult {
+  [key: string]: string;
+}
+
 export interface PathInfo {
   namespace: string;
   path: string;
@@ -84,21 +88,32 @@ export function getDefaultPreset(name) {
  * @param config
  *   The config
  */
-export function invokePreset(funcName, config) {
-  const apps = getApps();
-  const result = {};
-  const executed = {};
-  apps.forEach((appConfig) => {
-    const definitions = presetManager.getPresetDefinitions(appConfig);
-    definitions.forEach((def) => {
-      if (def.preset[funcName] !== undefined && executed[def.name] === undefined) {
-        const defaultConfig =
-          def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
-        const finalConfig = { ...defaultConfig, ...config };
-        result[appConfig.name] = def.preset[funcName](apps, finalConfig);
-        executed[def.name] = true;
+
+export function invokeHook(appConfig, hookName, data: any[] | null = null): PresetResult {
+  const providedArgs = data ?? [];
+  const hookResults: PresetResult = {};
+  const results: PresetResult = invokePresets(appConfig, 'hooks', {});
+  Object.entries(results).forEach(([key, hookImpl]) => {
+    Object.values(hookImpl).forEach((func) => {
+      if (typeof func === 'function') {
+        // @ts-ignore
+        hookResults[key] = func(...providedArgs);
       }
     });
+  });
+  return hookResults;
+}
+
+export function invokePresets(appConfig: AppConfig, funcName, config): PresetResult {
+  const result: PresetResult = {};
+  const definitions = presetManager.getPresetDefinitions(appConfig);
+  definitions.forEach((def) => {
+    if (def.preset[funcName]) {
+      const defaultConfig =
+        def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
+      const finalConfig = { ...defaultConfig, ...config };
+      result[def.name] = def.preset[funcName](appConfig, finalConfig);
+    }
   });
   return result;
 }

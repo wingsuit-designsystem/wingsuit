@@ -3,6 +3,9 @@ import { AppInitConfig, Preset, PresetItem, Namespace } from './AppConfig';
 export interface AppItem {
   [key: string]: AppInitConfig;
 }
+export interface AppTypeItem {
+  [key: string]: AppInitConfig;
+}
 
 export interface DesignSystemItem {
   [key: string]: DesignSystem;

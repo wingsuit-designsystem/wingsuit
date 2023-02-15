@@ -2,11 +2,18 @@ import Field from './Field';
 import Setting from './Setting';
 import Pattern from './Pattern';
 import IPatternStorage from './IPatternStorage';
-import TwigAttribute from './TwigAttribute';
 
 export default class PatternVariant {
   public getUse(): string {
     return this.use;
+  }
+
+  public getTemplate() {
+    return this.template;
+  }
+
+  public setTemplate(template) {
+    this.template = template;
   }
 
   public getStoryId(): string {
@@ -177,9 +184,9 @@ export default class PatternVariant {
     this.beforeRenderHandler = handler;
   }
 
-  public getVariables(includeFields = true, includeSettings = true) {
+  public getVariables(includeFields = true, includeSettings = true, includeVariant = true) {
     const values = {};
-    if (this.variant !== Pattern.DEFAULT_VARIANT_NAME) {
+    if (this.variant !== Pattern.DEFAULT_VARIANT_NAME && includeVariant) {
       // eslint-disable-next-line dot-notation
       values['variant'] = this.variant;
     }
@@ -195,20 +202,16 @@ export default class PatternVariant {
     if (includeSettings) {
       Object.keys(this.settings).forEach((key) => {
         if (this.settings[key].getType() !== 'media_library') {
-          if (this.settings[key].getType() === 'attributes') {
-            values[key] = new TwigAttribute(this.settings[key].getPreview());
-          } else {
-            values[key] = this.settings[key].getPreview();
-          }
+          values[key] = this.settings[key].getPreview();
         }
       });
     }
 
     // eslint-disable-next-line dot-notation
-    if (values['attributes'] == null) {
-      // eslint-disable-next-line dot-notation
-      values['attributes'] = new TwigAttribute();
-    }
+    // if (!values['attributes']) {
+    // eslint-disable-next-line dot-notation
+    // values['attributes'] = new TwigAttribute();
+    // }
 
     return values;
   }
@@ -226,6 +229,8 @@ export default class PatternVariant {
   private beforeRenderHandler: any;
 
   private label: string;
+
+  private template: any;
 
   private description: string;
 

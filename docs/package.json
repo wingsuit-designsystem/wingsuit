@@ -52,7 +52,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/cli": "2.0.0-alpha.0",
-    "@wingsuit-designsystem/preset-postcss8": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/preset-pages": "2.0.0-alpha.0",
     "@wingsuit-designsystem/preset-tailwind2": "2.0.0-alpha.0",
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.0",
     "autoprefixer": "^9.7.4",
@@ -84,11 +84,11 @@
   },
   "dependencies": {
     "@ryangjchandler/spruce": "^2.6.3",
-    "@tailwindcss/forms": "^0.2.1",
-    "@tailwindcss/typography": "^0.3.1",
-    "alpinejs": "^2.7.0",
-    "prismjs": "^1.23.0",
-    "tailwindcss": "^2.1.4"
+    "@tailwindcss/forms": "^0.5.1",
+    "@tailwindcss/typography": "^0.5.1",
+    "alpinejs": "2.7.0",
+    "prismjs": "1.23.0",
+    "tailwindcss": "^3.1.4"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"
 }

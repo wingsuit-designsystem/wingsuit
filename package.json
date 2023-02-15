@@ -59,6 +59,7 @@
   },
   "workspaces": [
     "docs",
+    "docs-next",
     "packages/*",
     "starter-kits/*",
     "presets/*",

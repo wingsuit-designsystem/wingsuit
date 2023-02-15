@@ -1,12 +1,14 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/apps/pages',
   template,
   MDX,
+  html,
   vars: {
     meta_title: 'Wingsuit Pages',
     meta_description: 'Wingsuit Preset to generate static pages from patterns.',

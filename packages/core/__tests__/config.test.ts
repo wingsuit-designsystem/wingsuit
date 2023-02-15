@@ -15,7 +15,7 @@ const config_1 = {
     },
   },
 };
-
+const AddonBundle = {};
 const config_2 = {
   presets: [{}],
   apps: {
@@ -37,19 +37,19 @@ const config_3 = {
   apps: {
     storybook: {
       path: 'packages/core/__tests__',
-      presets: ['AddonBundle'],
+      presets: [AddonBundle],
       startup: (appConfig) => {
         return 'startup';
       },
     },
     storybook2: {
       path: 'packages/core/__tests__',
-      presets: ['AddonBundle'],
+      presets: [AddonBundle],
     },
     storybook3: {
       type: 'storybook',
       path: 'packages/core/__tests__',
-      presets: ['AddonBundle'],
+      presets: [AddonBundle],
     },
   },
   designSystems: {

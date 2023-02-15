@@ -1,11 +1,13 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/components/presentation',
   template,
+  html,
   MDX,
   vars: {
     meta_title: 'Presentation templates',

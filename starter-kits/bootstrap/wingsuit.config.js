@@ -1,7 +1,7 @@
 const namespaces = require('./source/default/namespaces');
 
 module.exports = {
-  presets: ['@wingsuit-designsystem/preset-scss', '@wingsuit-designsystem/preset-postcss8'],
+  presets: ['@wingsuit-designsystem/preset-scss'],
   designSystems: {
     default: {
       namespaces,

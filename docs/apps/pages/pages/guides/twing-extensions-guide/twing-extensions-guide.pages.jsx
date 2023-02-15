@@ -1,11 +1,13 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/guides/twing-extensions-guide',
   template,
+  html,
   MDX,
   vars: {
     meta_title: 'Twing extensions',

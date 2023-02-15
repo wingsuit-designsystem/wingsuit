@@ -1,8 +1,6 @@
 import React from 'react';
 
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
-import twig from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
-import { PrismLight as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
@@ -18,7 +16,11 @@ function getStorybookControlsOptions(setting) {
     };
   }
   Object.keys(options).forEach((key) => {
-    controls[key] = options[key];
+    if (options[key].label) {
+      controls[key] = options[key].label;
+    } else {
+      controls[key] = options[key];
+    }
   });
   return controls;
 }
@@ -65,7 +67,7 @@ export function getArgTypes(variant) {
           defaultValue: { summary: setting.getPreview() },
           category: 'Settings',
         },
-        defaultValue: setting.getDefaultValue(),
+        defaultValue: setting.getDefaultValue() || setting.getPreview(),
         description: `${setting.getLabel()} ${
           setting.getDescription() !== '' ? ` - ${setting.getDescription()}` : ''
         }`,

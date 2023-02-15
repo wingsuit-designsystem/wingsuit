@@ -1,15 +1,17 @@
-import 'protons';
+import '../../index';
 import MDX from './index.mdx';
 
 const template = require('../../docs.twig');
+const html = require('../../html.twig');
 
 export default {
   path: '/components/wingsuit',
   template,
+  html,
   MDX,
   vars: {
     vars: {
-      meta_title: 'Wingsuit Pattern',
+      meta_title: 'Wingsuit Pattern 222',
       meta_description: 'The Wingsuit component definition.',
     },
     next: [

@@ -1,10 +1,10 @@
-import { addApp } from '../src/configParser';
+import { addApp } from '../src/config-parser';
 
 describe('configParser test', () => {
   test('Test addApp with no app key.', () => {
     const source =
       'module.exports = {\n' +
-      "  presets: ['@wingsuit-designsystem/preset-tailwind2', '@wingsuit-designsystem/preset-postcss8'],\n" +
+      "  presets: ['@wingsuit-designsystem/preset-tailwind2'],\n" +
       '  apps: {\n' +
       '  },\n' +
       '  designSystems: {\n' +
@@ -22,7 +22,7 @@ describe('configParser test', () => {
   test('Test addApp with without app key.', () => {
     const source =
       'module.exports = {\n' +
-      "  presets: ['@wingsuit-designsystem/preset-tailwind2', '@wingsuit-designsystem/preset-postcss8'],\n" +
+      "  presets: ['@wingsuit-designsystem/preset-tailwind2'],\n" +
       '  designSystems: {\n' +
       '    default: {\n' +
       '      namespaces:{},\n' +
