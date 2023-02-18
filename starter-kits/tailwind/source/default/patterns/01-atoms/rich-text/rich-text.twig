@@ -6,9 +6,22 @@
  * Ex. headlines, list and more.
  * See rich-text.wingsuit.yaml for documentation.
  */
+
+
 #}
+
 {# TEMPLATE #}
-<div class="prose dark:prose-dark lg:prose-lg max-w-none">
+{% set variant = variant|default('default') %}
+{% set bg = bg|default('') %}
+{# SETTINGS #}
+{%- set classes = ([
+  'prose dark:prose-dark max-w-none hyphen-auto break-words',
+  variant == 'narrow' ? 'narrow',
+  'layout-builder-block',
+] | join(' ') | trim ) %}
+
+  {# TEMPLATE #}
+<div class="{{ classes }} {{ bg }}">
   {% block text %}
     {{ text }}
   {% endblock %}
