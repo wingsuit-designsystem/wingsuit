@@ -21,7 +21,6 @@ export default function wingsuitLoader(this: any, src) {
       const pattern: IPatternDefinition = res[key];
       invokeHook(appConfig, 'patternLoaded', [key, pattern]);
       pattern.namespace = pattern.namespace ?? info.namespace;
-
       const added = fileDependencyPlugin.addFile(
         key,
         this.resourcePath,

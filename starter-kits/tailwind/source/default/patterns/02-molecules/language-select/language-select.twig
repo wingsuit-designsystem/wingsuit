@@ -2,10 +2,10 @@
   <div class="flex items-center cursor-pointer" @click="languageSwitcherOpen = !languageSwitcherOpen">
     <div class="mr-2 uppercase">{{ language }}</div>
     <div class="mr-2.5">
-      {{ pattern('icon_spritemap', {icon: 'globe' } ) }}
+      {{ pattern('icon', {icon: 'globe' }, 'spritemap' ) }}
     </div>
     <div :class="{'rotate-90 transition duration-75 ease-in-out': languageSwitcherOpen, '': !languageSwitcherOpen}">
-      {{ pattern('icon_spritemap', {icon: 'arrow' } ) }}
+      {{ pattern('icon', {icon: 'arrow' }, 'spritemap' ) }}
     </div>
   </div>
   <ul class="absolute left-0 p-4 top-10 border bg-gray-white box-shadow rounded hidden" :class="{'block': languageSwitcherOpen, 'hidden': !languageSwitcherOpen}">
@@ -15,7 +15,7 @@
           <span class="language-select-icon__text">
             <a href="{{ item.path }}" class="flex items-center group-hover:text-yellow-500 transition-colors">
               <span class="mr-4">
-                {{ pattern('icon_spritemap', {icon: item.langcode } ) }}
+                {{ pattern('icon', {icon: item.langcode }, 'spritemap' ) }}
               </span>
               <span>{{ item.text }}</span>
             </a>

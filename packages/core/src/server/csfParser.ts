@@ -34,8 +34,8 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
     }
     const hasIndexFile = fs.existsSync(path.join(path.dirname(resourcePath), 'index.js'));
 
-    const file = fs.readFileSync(absYamlPath, 'utf8');
-    const patternDefinition = YAML.parse(file);
+    const patternDefinitionFile = fs.readFileSync(absYamlPath, 'utf8');
+    const patternDefinition = YAML.parse(patternDefinitionFile);
 
     const patternIds = Object.keys(patternDefinition);
     const defaultPatternId = patternIds[0];
@@ -43,6 +43,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       return src;
     }
     const defaultPattern = patternDefinition[defaultPatternId];
+    invokeHook(appConfig, 'patternLoaded', [defaultPatternId, defaultPattern]);
     invokeHook(appConfig, 'storyLoaded', [defaultPatternId, defaultPattern]);
     const defaultPatternLabel = defaultPattern.label ?? defaultPatternId;
     let defaultPatternNamespace = defaultPattern.namespace ?? '';
@@ -101,12 +102,21 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           args: {patternId: '${patternId}', variantId: '${variantName}', ...storage.loadVariant('${patternId}', '${variantName}').getVariables(true, true, false) },
           argTypes: argTypes('${patternId}', '${variantName}'),
           parameters: {
-          docs: {
+          
+          docs: { 
+          description: {
+            component: \`${patternDefinition[patternId].description ?? ''}\`
+          },
+          source: {
+              code: \`${patternDefinitionFile}\`,
+              language: 'yml',
+              type: 'auto',
+              format: true
+            },
             page: () => (
             <>
               <Title />
-              <Subtitle />
-              <Description />
+              <Description>${patternDefinition[patternId].description ?? ''}</Description>
               <Primary />
               <ArgsTable story={PRIMARY_STORY} />
               <PatternDoc pattern={storage.loadPattern('${patternId}')}/>

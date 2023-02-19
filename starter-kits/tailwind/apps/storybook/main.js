@@ -1,7 +1,5 @@
 const postCss = require('postcss');
 
-// const { storyIndexers } = require('./csf-loader');
-
 export default {
   framework: '@storybook/react-webpack5',
   typescript: { reactDocgen: false },
@@ -12,10 +10,10 @@ export default {
     builder: 'webpack5',
   },
   stories: [
+    './patterns/**/*.mdx',
     '../../source/**/*.stories.wingsuit.jsx',
     '../../source/**/*.stories.jsx',
     './patterns/**/*.stories.jsx',
-    // './patterns/**/*.mdx',
   ],
   addons: [
     '@storybook/addon-links',

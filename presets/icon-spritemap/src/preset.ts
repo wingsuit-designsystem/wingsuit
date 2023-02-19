@@ -1,6 +1,7 @@
 import { AppConfig } from '@wingsuit-designsystem/core';
 import { IconConfig } from '@wingsuit-designsystem/preset-icon';
 import path from 'path';
+import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
@@ -68,6 +69,17 @@ export function webpack(appConfig: AppConfig, config: IconConfig) {
 
 export function hooks(appConfig: AppConfig, config: IconConfig) {
   return {
+    patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
+      if (patternId === 'icon') {
+        // eslint-disable-next-line no-param-reassign
+        patternDefinition.variants = {};
+        // eslint-disable-next-line no-param-reassign
+        patternDefinition.variants.spritemap = {
+          use: '@ws-icon-spritemap/spritemap.twig',
+          label: 'Spritemap',
+        };
+      }
+    },
     appConfigAlter: () => {
       // eslint-disable-next-line no-param-reassign
       appConfig.namespaces['ws-icon-spritemap'] = path.resolve(__dirname, '../patterns');

@@ -1,9 +1,8 @@
 {# SETTINGS #}
 {% set scale = scale|default(1) %}
-{% set fill_color = fill_color|default('fill-current') %}
-{% set padding = pattern_configuration('svg_icon', 'icon', 'padding')[padding|default('square')] %}
+{% set padding = pattern_configuration('icon', 'spritemap', 'padding')[padding|default('square')] %}
 {% set wrapper_classes = ([
-  padding != '' ? 'flex items-center aspect-[1/1]',
+  padding != '' ? 'flex items-center aspect-[1/1] ' ~ padding,
 ] | sort | join(' ') | trim) %}
   {%
  set classes = ([
@@ -19,7 +18,7 @@
 {% endif %}
 
 {# TEMPLATE #}
-<div class="{{ wrapper_classes }}" style="{% if padding is not empty %}margin: {{ (padding * scale) }}px; {% endif %}height: {{ scale }}rem">
+<div class="{{ wrapper_classes }}" style="height: {{ scale }}rem">
   <svg {{ attributes }}>
       <use xlink:href="{{ file_url('ws-assets://images/spritemap.svg') }}#{{ icon }}"></use>
   </svg>

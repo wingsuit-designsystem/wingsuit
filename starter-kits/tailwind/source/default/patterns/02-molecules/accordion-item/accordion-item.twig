@@ -13,10 +13,10 @@
     <div class="flex items-center justify-between">
       <span class="font-bold">{{ label }}</span>
       <div x-cloak :class="{ 'hidden' : selected == true }" >
-        {{ pattern('icon_spritemap', {icon: 'plus' } ) }}
+        {{ pattern('icon', {icon: 'plus' }, 'spritemap' ) }}
       </div>
       <div x-cloak :class="{ 'hidden' : selected == false }">
-        {{ pattern('icon_spritemap', {icon: 'minus' } ) }}
+        {{ pattern('icon', {icon: 'minus' }, 'spritemap' ) }}
       </div>
     </div>
   </button>

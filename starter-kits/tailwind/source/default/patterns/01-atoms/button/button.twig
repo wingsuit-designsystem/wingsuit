@@ -34,7 +34,7 @@ Template
 {{ text }}
   {% if icon is not empty %}
     <div class="{{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}"></div>
-    {{ pattern('icon_spritemap', {icon: icon } ) }}
+    {{ pattern('icon', {icon: icon }, 'spritemap' ) }}
   {% endif %}
 </{{ tag_name }}>
 

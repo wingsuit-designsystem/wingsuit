@@ -3,6 +3,18 @@ import { AppConfig } from '@wingsuit-designsystem/core';
 import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 import { glob } from 'glob';
 
+interface IconScale {
+  [key: string]: string;
+}
+
+interface IconPadding {
+  [key: string]: IconPaddingConfiguration;
+}
+interface IconPaddingConfiguration {
+  configuration: string;
+  label: string;
+}
+
 interface IconSource {
   sourceFolder: string;
   spriteFilename: string;
@@ -12,6 +24,9 @@ interface IconSource {
 
 export interface IconConfig {
   sources: IconSource[];
+  scales: IconScale;
+
+  padding: IconPadding;
 }
 
 export function name(appConfig: AppConfig) {
@@ -20,6 +35,19 @@ export function name(appConfig: AppConfig) {
 
 export function defaultConfig(appConfig: AppConfig): IconConfig {
   return {
+    scales: {
+      '0.5': '0.5',
+      '0.75': '0.75',
+      '1': '1',
+      '1.25': '1.25',
+      '1.5': '1.5',
+      '2': '2',
+      '3': '3',
+    },
+    padding: {
+      roomy: { label: 'Roomy', configuration: 'm-2' },
+      square: { label: 'Square', configuration: 'm-4' },
+    },
     sources: [
       {
         sourceFolder: 'icons',
@@ -38,7 +66,7 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
       appConfig.namespaces['ws-icon'] = path.resolve(__dirname, '../patterns');
     },
     patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
-      if (patternId === 'icon_lib') {
+      if (patternId === 'icon') {
         config.sources.forEach((source) => {
           const searchFiles = `${appConfig.absPatternPath}/**/${source.sourceFolder}/*.svg`;
           const files = glob.sync(searchFiles);
@@ -49,6 +77,19 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
           });
           // eslint-disable-next-line no-param-reassign
           patternDefinition.settings = {};
+
+          // eslint-disable-next-line no-param-reassign
+          patternDefinition.settings.scale = {
+            type: 'select',
+            label: 'Scale',
+            options: config.scales,
+          };
+          // eslint-disable-next-line no-param-reassign
+          patternDefinition.settings.padding = {
+            type: 'select',
+            label: 'Padding',
+            options: config.padding,
+          };
           // eslint-disable-next-line no-param-reassign
           patternDefinition.settings.icon = {
             label: 'Icon',
