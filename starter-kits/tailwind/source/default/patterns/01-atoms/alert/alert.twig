@@ -8,29 +8,49 @@
 #}
 {# VARIANTS #}
 {% set classes = ([
-  "p-5 w-full border-l-4",
+  "p-5 w-full shadow-lg rounded-lg text-sm",
   variant == 'status' ? "bg-green-100 border-green-500 text-green-700",
   variant == 'error' ? "bg-red-100 border-red-500 text-red-700",
-  variant == 'warning' ? "bg-yellow-100 border-yellow-500 text-yellow-700"
+  variant == 'warning' ? "bg-yellow-100 border-yellow-500 text-yellow-700",
+  variant == 'info' ? "bg-blue-100 border-blue-500 text-blue-700"
 ] | sort | join(' ') | trim )%}
-
+{% set header_color = ([
+  variant == 'status' ? "text-green-600",
+  variant == 'error' ? "text-red-600",
+  variant == 'warning' ? "text-yellow-600",
+  variant == 'info' ? "text-blue-600"
+] | sort | join(' ') | trim )%}
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {# TEMPLATE #}
 <div {{ attributes }}>
   <div class="flex space-x-3">
-    <div class="flex-none">
+    <div class="flex-none pt-0.5">
       {{ pattern('icon_spritemap', {icon: 'alert--' ~ variant } ) }}
     </div>
-    <div class="leading-tight flex flex-col space-y-2">
+    <div class="tracking-[0.01em] flex flex-col space-y-2">
       <div class="font-bold">
         {% block header %}{{ header }}{% endblock %}
       </div>
-      <div class="flex-1 leading-snug text-sm">
+      <div class="flex-1">
         {% block content %}
           {{ content }}
         {% endblock %}
       </div>
+      {% if view_problem_url is not empty or dismiss_url is not empty%}
+        <div class="flex pt-1 tracking-[0.01em] font-bold {{ header_color }}">
+          {% if view_problem_url is not empty %}
+            <div>
+              <a href="{{ view_problem_url }}">{{ 'View problem'|t }}</a>
+            </div>
+          {% endif %}
+          {% if dismiss_url is not empty %}
+            <div class="pl-6">
+              <a href="{{ dismiss_url }}">{{ 'Dismiss'|t }}</a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
