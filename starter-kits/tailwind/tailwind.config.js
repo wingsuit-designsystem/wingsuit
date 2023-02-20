@@ -142,7 +142,10 @@ module.exports = {
         18: '4.5rem',
       },
       spacing: {
+        1.5: rem(6),
+        3.5: rem(14),
         4.5: rem(18),
+        5.5: rem(22),
         7.5: rem(30),
       },
       maxWidth: {

@@ -15,15 +15,18 @@ icon_spritemap:
         '1.5': 1.5x
       preview: 1
       required: true
-
     padding:
       type: select
       label: Padding
       options:
-        roomy:
-          label: Roomy
-          configuration: 4
-        square:
-          label: Square
-          configuration: 2
+        empty: Empty
+        square: Square
+        roomy: Roomy
+  configuration:
+    padding:
+      empty: none
+      square: 2
+      medium: 2.5
+      roomy: 4
+
 

@@ -2,39 +2,78 @@
 Defaults
 #}
 {% set tag_name = tag_name|default('div') %}
-{% set color = color|default('primary') %}
-{% set size = size|default('default') %}
+{% set size = size|default('medium') %}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set icon_size = icon_size|default('default') %}
 {% set icon_alignment = icon_alignment|default('right') %}
-
+{% if variant == 'icon' %}
+  {% set icon = icon|default('search') %}
+{% endif %}
 {#
 Classes
 #}
-{% set classes = [
-  'btn flex items-center justify-center inline-flex border-2 py-1.5 px-3 focus:outline-none rounded transition-colors duration-500',
-  expanded ? 'w-full',
-  variant == 'link' ? 'border-0 py-0',
-  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
-  pattern_configuration('button', variant, 'colors')[color],
-  pattern_configuration('button', variant, 'size')['text'][size],
-  round ? 'rounded-2xl'
+{% set paddings = ([
+  variant == 'default' ? 'padding',
+  variant == 'outline' ? 'outline_padding',
+  variant == 'link' ? '',
+  variant == 'icon' ? 'icon_padding',
+]) | sort | join(' ') | trim %}
+{% set padding = pattern_configuration('button', variant, 'size')[paddings][size] %}
+{% if rounded %}
+  {% if variant == 'default' or variant == 'outline' %}
+    {% set radius = pattern_configuration('button', variant, 'size')['radius'][size] %}
+  {% elseif variant == 'icon' %}
+    {% set radius = 'rounded-full' %}
+  {% endif %}
+{% endif %}
+{% if disabled %}
+  {% set colors = ([
+    variant == 'default' or variant == 'icon' ? 'bg-gray-300 text-gray-400',
+    variant == 'outline' ? 'border-2 border-gray-400 bg-white text-gray-400',
+    variant == 'link' ? 'text-gray-400',
+  ]) | sort | join(' ') | trim %}
+{% else %}
+  {% set colors = ([
+    variant == 'default' or variant == 'icon' ? 'bg-purple-600 dark:bg-white hover:bg-purple-800 dark:hover:bg-purple-100 text-white dark:text-purple-700',
+    variant == 'outline' ? 'border-2 border-purple-600 hover:border-purple-800 bg-white text-purple-600 hover:text-purple-800',
+    variant == 'link' ? 'bg-transparent text-purple-600 dark:text-white hover:text-purple-800 dark:hover:text-purple-400',
+  ]) | sort | join(' ') | trim %}
+{% endif %}
 
+{% set classes = [
+  'btn flex items-center inline-flex font-bold focus:outline-yellow-500
+  focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400',
+  expanded ? 'w-full justify-between' : 'justify-center',
+  icon_alignment == 'left' ? 'flex-row-reverse' : 'flex-row',
+  pattern_configuration('button', variant, 'size')['text'][size],
+  radius,
+  padding,
+  colors,
 ] %}
+{% if icon is not empty and variant != 'icon'%}
+  {% set icon_spacing = pattern_configuration('button', variant, 'size')['icon_spacing'][size] %}
+  {% set icon_spacing = 'mr-'~icon_spacing %}
+{% endif %}
+
+{% if disabled %}{% set url = null %}{% endif %}
 
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set tag_name = 'a' %}
 {% endif %}
 
+{% set scale = pattern_configuration('button', variant, 'size')['scale'][size] %}
+{% set svg_padding = ([
+  size == 'small' or size == 'medium' ? 'square' : 'medium',
+]) | sort | join(' ') | trim %}
 {#
 Template
 #}
-<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target).setAttribute('title', title) }}>
-{{ text }}
+<{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target).setAttribute('title', title) }}{% if disabled == true %}disabled{% endif %} style="word-break: break-word">
+  {% if variant != 'icon' %}
+    {{ text }}
+  {% endif %}
   {% if icon is not empty %}
-    <div class="{{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}"></div>
-    {{ pattern('icon_spritemap', {icon: icon } ) }}
+    <div class="{% if variant != 'icon' %}{{ icon_spacing }}{% endif %}"></div>
+    {{ pattern('icon_spritemap', { icon: icon, scale: scale, padding: svg_padding } ) }}
   {% endif %}
 </{{ tag_name }}>
-
