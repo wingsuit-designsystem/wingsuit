@@ -1,52 +1,53 @@
 button:
   use: "@atoms/button/button.twig"
   label: Button
-  description: Regular or outline buttons with different colors.
+  description: Regular, outline, link or icon buttons with different sizes, icons, colors, shapes and states.
   dependencies:
     - icon_spritemap
   fields:
-    sample:
-      type: pattern
-      label: Sample
-      preview:
-        id: svg_icon
-        variant: icon
     text:
       type: text
       label: Text
-      preview: More
+      preview: Button
   variants:
     default:
       label: Default
-      configuration:
-        colors:
-          primary: 'border-teal-600 bg-teal-600 text-white hover:bg-teal-300 hover:border-teal-300'
-          secondary: 'border-yellow-300 bg-yellow-300 text-black hover:bg-yellow-600 hover:border-yellow-600'
     outline:
       label: Outline
-      configuration:
-        colors:
-          primary: 'border-teal-300 text-black hover:bg-teal-600 hover:border-teal-600 hover:text-white'
-          secondary: 'border-yellow-600 text-black hover:bg-yellow-600 hover:text-white'
-      description: Inverts colors
     link:
       label: Link
-      settings:
-        round: false
-      configuration:
-        colors:
-          primary: 'text-teal-600 hover:text-teal-300'
-          secondary: 'text-yellow-300 hover:text-yellow-600'
+    icon:
+      label: Icon
   configuration:
     size:
+      radius:
+        small: 'rounded-[18px]'
+        medium: 'rounded-[22px]'
+        large: 'rounded-[24px]'
+      padding:
+        small: 'py-2 px-4'
+        medium: 'py-2.5 px-4'
+        large: 'py-2.5 px-6'
+      outline_padding:
+        small: 'py-1.5 px-3.5'
+        medium: 'py-2 px-3.5'
+        large: 'py-2 px-5.5'
+      icon_padding:
+        small: 'p-2'
+        medium: 'p-3'
+        large: 'p-3'
+      scale:
+        small: '1'
+        medium: '1'
+        large: '1.25'
       text:
-        small: text-xs
-        medium: text-base
-        large: text-xl
-      icon:
-        small: small
-        medium: medium
-        large: large
+        small: 'text-sm tracking-[0.01em]'
+        medium: 'text-base tracking-[0.01em]'
+        large: 'text-lg'
+      icon_spacing:
+        small: '2'
+        medium: '1'
+        large: '2.5'
   settings:
     size:
       type: select
@@ -57,36 +58,6 @@ button:
         small: Small
         medium: Medium
         large: Large
-    expanded:
-      type: boolean
-      label: Expanded
-    target:
-      type: select
-      label: Target
-      options:
-        _blank: Blank
-        _top: Top
-    title:
-      type: textfield
-      label: Title
-      default_value: demo
-    round:
-      type: boolean
-      label: Round
-    color:
-      type: select
-      required: true
-      label: Color
-      default_value: primary
-      description: Choose your color
-      options:
-        primary: Primary
-        secondary: Secondary
-    url:
-      type: url
-      label: Url
-      description: The action url of your button
-      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
     icon:
       type: select
       label: Icon
@@ -103,3 +74,30 @@ button:
       options:
         left: Left
         right: Right
+    title:
+      type: textfield
+      label: Title
+      default_value: demo
+    target:
+      type: select
+      label: Target
+      options:
+        _blank: Blank
+        _top: Top
+    url:
+      type: url
+      label: Url
+      description: The action url of your button
+      preview: 'https://github.com/wingsuit-designsystem/wingsuit'
+    disabled:
+      type: boolean
+      label: Disabled
+      default_value: false
+    rounded:
+      type: boolean
+      label: Rounded
+      default_value: true
+    expanded:
+      type: boolean
+      label: Expanded
+      default_value: false

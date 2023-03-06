@@ -22,4 +22,15 @@ alert:
       label: Error message
     warning:
       label: Warning message
+    info:
+      label: Info message
+  settings:
+    view_problem_url:
+      type: url
+      label: Url
+      description: The action url of your view more button
+    dismiss_url:
+      type: url
+      label: Url
+      description: The action url of your dismiss button
   visibility: storybook

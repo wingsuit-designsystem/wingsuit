@@ -1,0 +1,109 @@
+.prose {
+/* Font */
+  @apply [&>*:first-child]:mt-0 [&>*:last-child]:mb-0;
+  h1 {
+    @apply font-sans;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-4xl lg:text-6xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-8 lg:mb-12;
+  }
+  h2 {
+    @apply font-sans;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-3xl lg:text-5xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-6 lg:mb-10 mt-8 lg:mt-12;
+  }
+  h3 {
+    @apply font-sans;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-2xl lg:text-4xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-5 lg:mb-8 mt-6 lg:mt-10;
+  }
+  h4 {
+    @apply font-sans;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-xl lg:text-3xl;
+    @apply tracking-normal;
+    @apply mb-5 lg:mb-6 mt-5 lg:mt-8;
+  }
+  h5 {
+    @apply font-sans;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-xl lg:text-2xl;
+    @apply tracking-normal;
+    @apply mb-5 lg:mb-5 mt-5 lg:mt-6;
+  }
+  a {
+    @apply font-serif;
+    @apply font-bold;
+    @apply text-purple-600;
+    @apply text-base lg:text-lg;
+    @apply hover:no-underline;
+  }
+  p {
+    @apply font-sans;
+    @apply font-normal;
+    @apply text-black;
+    @apply text-base lg:text-lg;
+    @apply mb-5 lg:mb-5 mt-5 lg:mt-5;
+  }
+/*  Table */
+  table {
+    @apply border-separate border-spacing-0 border border-gray-200 border-l-0 rounded-lg text-black text-left;
+  }
+  thead {
+    @apply bg-gray-50;
+  }
+  tbody tr:nth-child(even){
+    @apply bg-gray-50;
+  }
+  th {
+    @apply font-normal;
+    @apply px-6 py-3;
+    @apply border-l border-gray-200;
+  }
+  td:first-child {
+    @apply font-semibold;
+  }
+  td {
+    @apply px-6 py-7.5;
+    @apply border-l border-t border-gray-200;
+  }
+  /* top-left */
+  thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+    @apply rounded-tl-lg;
+  }
+  /* top-right */
+  thead:first-child tr:first-child th:last-child, tbody:first-child tr:first-child td:last-child {
+    @apply rounded-tr-lg;
+  }
+  /* bottom-right */
+  thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+    @apply rounded-bl-lg;
+  }
+  /* bottom-left */
+  thead:last-child tr:last-child th:last-child, tbody:last-child tr:last-child td:last-child {
+    @apply rounded-br-lg;
+  }
+  /* Lists */
+  ol ul {
+    @apply font-serif;
+  }
+  li::marker {
+    @apply text-black;
+  }
+}
+
+/* optional variant
+.prose.article {
+
+}
+*/
