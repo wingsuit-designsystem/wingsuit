@@ -73,5 +73,6 @@ grid:
         equal: 'grid-cols-1 lg:grid-cols-5'
     gutter:
       none: ''
-      default: 'gap-4 md:gap-5 lg:gap-7'
-      large: 'gap-10 lg:gap-18'
+      default: 'gap-3 md:gap-4 lg:gap-7'
+      large: 'gap-6 lg:gap-20'
+      xlarge: 'gap-6 lg:gap-28'

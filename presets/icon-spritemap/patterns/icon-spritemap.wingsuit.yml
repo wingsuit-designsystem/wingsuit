@@ -2,7 +2,7 @@ icon_spritemap:
   use: "@ws-icon-spritemap/spritemap.twig"
   label: Icon
   extends:
-    - icon_lib
+    - icon
   description: Flexible SVG spritemap Icon component.
   settings:
     scale:

@@ -63,9 +63,12 @@ button:
       label: Icon
       description: Go with an icon alongside your text.
       options:
-        plus: Plus
-        search: Search
-        right-arrow: Right-arrow
+        user: User
+        person: Person
+        home: Home
+        eye: Eye
+        close: Close
+        check: Check
     icon_alignment:
       type: select
       label: Icon alignment
