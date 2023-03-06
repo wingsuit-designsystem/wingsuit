@@ -1,5 +1,5 @@
 icon_spritemap:
-  use: "@ws-icon-spritemap/icon.twig"
+  use: "@ws-icon-spritemap/spritemap.twig"
   label: Icon
   extends:
     - icon_lib
