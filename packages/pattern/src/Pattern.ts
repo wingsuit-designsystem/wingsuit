@@ -1,8 +1,12 @@
 import PatternVariant from './PatternVariant';
 import Setting from './Setting';
 import Field, { MultiValueTypes } from './Field';
-import { IPatternDefinition } from './definition';
+import { IPatternDefinition, Properties, Options } from './definition';
 import IPatternStorage from './IPatternStorage';
+
+interface CleanedOptions {
+  [key: string]: Options;
+}
 
 export default class Pattern {
   public static DEFAULT_VARIANT_NAME = '__default';
@@ -19,7 +23,7 @@ export default class Pattern {
     return this.label;
   }
 
-  public getIconPath(): string {
+  public getIconPath(): string | undefined {
     return this.iconPath;
   }
 
@@ -53,7 +57,7 @@ export default class Pattern {
 
   private description: string;
 
-  private iconPath: string;
+  private iconPath: string | undefined;
 
   private template: any;
 
@@ -146,13 +150,30 @@ export default class Pattern {
 
   private initializeVariants() {
     const variantKeys: string[] = [];
-    const settings: {} = this.definition.settings != null ? this.definition.settings : {};
-    const fields: {} = this.definition.fields != null ? this.definition.fields : {};
-    const configuration: {} =
-      this.definition.configuration != null ? this.definition.configuration : {};
+    const settings: Properties = this.definition.settings ?? {};
+    const fields: {} = this.definition.fields ?? {};
 
-    const variantsDefinitions: {} =
-      this.definition.variants != null ? this.definition.variants : {};
+    const settingsConfiguration: any = {};
+    const cleanedSettings: CleanedOptions = {};
+    Object.entries(settings).forEach(([name, setting]) => {
+      if (setting.options) {
+        const options: Options = {};
+        Object.entries(setting.options).forEach(([optionName, option]) => {
+          if (option.configuration) {
+            if (!settingsConfiguration[name]) {
+              settingsConfiguration[name] = {};
+            }
+            settingsConfiguration[name][optionName] = option.configuration;
+            options[optionName] = option.label;
+          } else {
+            options[optionName] = option;
+          }
+        });
+        cleanedSettings[name] = options;
+      }
+    });
+    const configuration: {} = this.definition.configuration ?? {};
+    const variantsDefinitions: {} = this.definition.variants ?? {};
 
     Object.keys(variantsDefinitions).forEach((key: string) => {
       variantKeys.push(key);
@@ -163,15 +184,19 @@ export default class Pattern {
     }
     let isFirst = true;
     variantKeys.forEach((variantKey: string) => {
-      const variantDefinition =
-        variantsDefinitions[variantKey] != null ? variantsDefinitions[variantKey] : {};
-      const label = variantDefinition.label != null ? variantDefinition.label : this.label;
-      const use = variantDefinition.use != null ? variantDefinition.use : this.use;
-      const description =
-        variantDefinition.description != null ? variantDefinition.description : '';
+      const variantDefinition = variantsDefinitions[variantKey] ?? {};
+      const label = variantDefinition.label ?? this.label;
+      const use = variantDefinition.use ?? this.use;
+      const description = variantDefinition.description ?? '';
+
       const variantConfiguration =
         variantDefinition.configuration != null ? variantDefinition.configuration : {};
-      const mergedConfiguration = { ...configuration, ...variantConfiguration };
+      const mergedConfiguration = {
+        ...configuration,
+        ...settingsConfiguration,
+        ...variantConfiguration,
+      };
+
       const variant = new PatternVariant(
         variantKey,
         this,
@@ -192,24 +217,24 @@ export default class Pattern {
           key,
           settings[key].type,
           settings[key].label,
-          settings[key].description,
+          settings[key].description ?? '',
           settings[key].preview
         );
         setting.setRequired(!!settings[key].required);
-        setting.setOptions(settings[key].options);
-        setting.setDefaultValue(settings[key].default_value);
-        if (settings[key].default_value != null) {
-          setting.setPreview(settings[key].default_value);
+        setting.setOptions(cleanedSettings[key]);
+        if (settings[key].default_value) {
+          setting.setDefaultValue(settings[key].default_value ?? '');
         }
-        if (settings[key].value != null) {
-          setting.setPreview(settings[key].value);
+
+        if (settings[key].default_value) {
+          setting.setPreview(settings[key].default_value ?? '');
         }
         if (
-          setting.getPreview() == null &&
+          setting.getPreview() &&
           settings[key].required === true &&
           settings[key].type === 'select'
         ) {
-          const keys = Object.keys(settings[key].options);
+          const keys = Object.keys(cleanedSettings[key]);
           if (keys.length > 0) {
             const firstOption = keys[0];
             setting.setPreview(firstOption);
@@ -236,8 +261,8 @@ export default class Pattern {
         variant.addField(field);
       });
 
-      if (variantDefinition != null) {
-        if (variantDefinition.settings != null) {
+      if (variantDefinition) {
+        if (variantDefinition.settings) {
           Object.keys(variantDefinition.settings).forEach((key: string) => {
             const setting: Setting = variant.getSetting(key);
             if (setting) {
@@ -250,7 +275,7 @@ export default class Pattern {
             }
           });
         }
-        if (variantDefinition.fields != null) {
+        if (variantDefinition.fields) {
           Object.keys(variantDefinition.fields).forEach((key: string) => {
             const field: Field = variant.getField(key);
             field.setPreview(variantDefinition.fields[key]);

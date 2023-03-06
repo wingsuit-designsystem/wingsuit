@@ -73,7 +73,7 @@ Template
     {{ text }}
   {% endif %}
   {% if icon is not empty %}
-    <div class="{% if variant != 'icon' %}{{ icon_spacing }}{% endif %}"></div>
-    {{ pattern('icon_spritemap', { icon: icon, scale: scale, padding: svg_padding } ) }}
+    <div class="{{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}"></div>
+    {{ pattern('icon', {icon: icon }, 'spritemap' ) }}
   {% endif %}
 </{{ tag_name }}>

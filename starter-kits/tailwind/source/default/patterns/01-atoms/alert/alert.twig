@@ -32,7 +32,8 @@
 <div {{ attributes }}>
   <div class="flex space-x-3">
     <div class="flex-none {{ icon_color }}">
-      {{ pattern('icon_spritemap', {icon: 'alert--' ~ variant } ) }}
+    <div class="flex-none">
+      {{ pattern('icon', {icon: 'alert--' ~ variant }, 'spritemap' ) }}
     </div>
     <div class="tracking-[0.01em] flex flex-col space-y-2">
       <div class="font-bold">

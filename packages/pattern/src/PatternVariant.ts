@@ -5,6 +5,9 @@ import IPatternStorage from './IPatternStorage';
 
 export default class PatternVariant {
   public getUse(): string {
+    if (!this.use) {
+      return this.getPattern().getUse();
+    }
     return this.use;
   }
 
@@ -87,7 +90,7 @@ export default class PatternVariant {
     this.settings = value;
   }
 
-  public getSetting(name: string) {
+  public getSetting(name: string): Setting {
     return this.settings[name];
   }
 

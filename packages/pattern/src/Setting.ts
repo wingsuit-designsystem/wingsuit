@@ -21,7 +21,7 @@ export default class Setting extends Property {
   }
 
   public getPreviewDisplayValue(): string {
-    if (this.getType() === 'select' && this.getPreview() != null && this.getPreview() !== '') {
+    if (this.getType() === 'select' && this.getPreview()) {
       return this.options[this.getPreview()];
     }
     return this.getPreview();

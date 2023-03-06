@@ -1,14 +1,11 @@
-import { Meta, ColorPalette, ColorItem, Subtitle } from '@storybook/addon-docs';
-const tailwindFile = require('../../config/silo/tailwind.json');
-const colors = tailwindFile.tailwind.theme.colors;
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+export const tailwindFile = require('../../config/silo/tailwind.json');
+export const colors = tailwindFile.tailwind.theme.colors;
 
-<Meta title="Tokens/Colors" id="meta/test"/>
-
+<Meta title="Foundations/Colors" />
 # Colors Matter
 
-<Subtitle>
 Describe your palette of great-looking, well-balanced colors.
-</Subtitle>
 
 <ColorPalette>
   {

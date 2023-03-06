@@ -1,14 +1,13 @@
-import { Meta, IconGallery, IconItem, Subtitle } from '@storybook/addon-docs';
-const svgFile = require('../../config/silo/svgs.json');
-const icons = svgFile.svgs;
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs';
+export const iconLib = require('@wingsuit-designsystem/preset-icon/patterns/icon.wingsuit.yml');
+export const icons = Object.keys(iconLib.default.getVariant('spritemap').getSetting('icon').options);
 
-<Meta title="Tokens/Icons"
-parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
-/>
+
+<Meta title="Foundations/Icons"/>
 
 # Icons
 
-<Subtitle>A collection of simply beautiful icons</Subtitle>
+## A collection of simply beautiful icons
 
 When adding new icons keep in mind that by stripping `fill` inline attributes fron inside the svg file usually they can be styled using css rules.  This way an icon can serve in an color combination.
 

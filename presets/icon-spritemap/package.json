@@ -38,6 +38,7 @@
   "dependencies": {
     "@wingsuit-designsystem/core": "2.0.0-alpha.0",
     "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.0",
     "svg-sprite-loader": "^6.0.11",
     "svg-transform-loader": "^2.0.13",
     "svgo": "^3.0.2",

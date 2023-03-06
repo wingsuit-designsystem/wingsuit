@@ -67,7 +67,7 @@ export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
         Object.keys(styles).forEach((key) => {
           options[key] = styles[key].label;
         });
-        if (patternDefinition.settings.style.options) {
+        if (patternDefinition.settings?.style.options) {
           Object.assign(patternDefinition.settings.style.options, options);
         }
         patternDefinition.configuration.image_config.styles = styles;

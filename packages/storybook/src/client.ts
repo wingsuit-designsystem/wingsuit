@@ -4,6 +4,10 @@ import { getArgTypes, getArgs } from './storyof';
 
 export { PatternDoc } from './docs/PatternDoc';
 
+export { Typeset } from './docs/Typeset';
+
+export { Spacing } from './docs/Spacing';
+
 export function argTypes(patternId, variantId) {
   return getArgTypes(storage.loadVariant(patternId, variantId));
 }
