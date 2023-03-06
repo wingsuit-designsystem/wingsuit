@@ -1,0 +1,17 @@
+breadcrumb:
+  use: "@molecules/breadcrumb/breadcrumb.twig"
+  label: breadcrumb
+  description: Breadcrumb
+  fields:
+    breadcrumb:
+      type: object
+      label: Breadcrumb
+      preview:
+        - text: 'Breadcrumb 1'
+          url: '#'
+        - text: 'Breadcrumb 2'
+          url: '#'
+        - text: 'Breadcrumb 3'
+          url: '#'
+        - text: 'Breadcrumb Active page'
+          url: '#'

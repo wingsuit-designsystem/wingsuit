@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+
+<nav role="navigation" aria-labelledby="system-breadcrumb">
+  {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', breadcrumb: breadcrumb} only %}
+    {% block content %}
+      <ol class="flex items-center">
+        {% for item in breadcrumb %}
+          <li class="flex items-center">
+            {% if item.url %}
+              <a class="text-base underline hover:no-underline text-black"
+                 href="{{ item.url }}">{{ item.text }}</a>
+            {% else %}
+              <div class="text-xs text-black font-bold">
+                {{ item.text }}
+              </div>
+            {% endif %}
+            {% if loop.last == false %}
+              <div class="mx-[17px] w-[13px] h-[11px] text-neutral-500">
+                {{ pattern('icon', {icon: 'chevron-right' }, 'spritemap' ) }}
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endblock %}
+  {% endembed %}
+</nav>
