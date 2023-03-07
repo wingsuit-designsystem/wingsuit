@@ -12,39 +12,43 @@
 ]) | sort | join(' ') | trim %}
 
 {% set classes = ([
+  ' group',
+] | sort | join(' ') | trim ) %}
+
+{% set wrapper_classes = ([
   alignment == 'center' ? 'text-center rounded': '',
-  bg_color == 'gray' ? 'bg-gray-200',
-  bg_color == 'blue' ? 'bg-blue-200',
-  'w-full flex  max-w-xl flex-1',
-  'border-2 border-gray-200 rounded-lg overflow-hidden w-full',
+  ' group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full',
   variant == 'horizontal' ? 'flex-col md:flex-row' : 'flex-col'
 ] | sort | join(' ') | trim ) %}
 
 {% set image_classes = ([
-  variant == 'default' ? 'flex-0',
-  variant == 'horizontal' ? 'h-48 lg:h-auto w-full lg:w-48 relative'
+  variant == 'default' ? 'flex-0 aspect-[16/9]',
+  variant == 'horizontal' ? 'w-full lg:w-60 aspect-[16/9] relative flex'
   ] | sort | join(' ') | trim ) %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {# TEMPLATE #}
 <{{ element }} {{ attributes }}>
-  {% if image is not empty %}
-    <div class="{{ image_classes }}">
-      {% block image %}
-        {{ image }}
-      {% endblock %}
-    </div>
-  {% endif %}
-  <div class="p-6 flex-1">
-    {% include "@molecules/rich-snippet/rich-snippet.twig" with {
-      preheadline: preheadline,
-      headline: headline,
-      headline_tag: headline_tag,
-      text: text
-    } only %}
-    <div class="mt-8">
-      {{ button }}
+  <div class="{{ wrapper_classes }}">
+    {% if image is not empty %}
+      <div class="{{ image_classes }}">
+        {% block image %}
+          {{ image }}
+        {% endblock %}
+      </div>
+    {% endif %}
+    <div class="p-6 flex-1 bg-white">
+      {% if preheadline %}
+        <div class="font-bold text-base text-teal-500 mb-2">
+          {{ preheadline }}
+        </div>
+      {% endif %}
+      <div class="text-2xl font-bold mb-3 ">{{ headline }}</div>
+      <div class="text-base leading-[28px]">{{ text }}</div>
+      <div class="mt-7.5 text-purple-600 group-hover:underline font-bold flex items-center">
+        {{ "Tell me more"|t }} <span class="pl-3">{{ pattern('icon', {icon: "check" }, 'spritemap' ) }}</span>
+      </div>
     </div>
   </div>
 </{{ element }}>

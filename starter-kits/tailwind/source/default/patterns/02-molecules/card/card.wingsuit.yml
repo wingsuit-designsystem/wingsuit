@@ -1,19 +1,22 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
-  extends:
-    - rich_snippet
   icon_path: ws-assets://images/card-icon.svg
   allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
   fields:
-    button:
-      type: pattern
-      label: Button
-      description: An optional button at the bottom of the card.
-      preview:
-        id: button
-        variant: default
+    preheadline:
+      type: text
+      label: Preheadline
+      preview: Preheadline
+    headline:
+      type: text
+      label: Headline
+      preview: Headline
+    text:
+      type: text
+      label: Text
+      preview: Bitcoins upside downside What's a Euro short traders show me the money embracing ingenuity not making jack investment property.
   variants:
     default:
       label: Default
@@ -22,11 +25,11 @@ card:
       settings:
         image:
           id: placeholder
-          variant: background
+          variant: image
           definition:
-            view_mode: background
+            view_mode: 16x9
           settings:
-            style: responsive_1_3_200w
+            style: responsive_16_9_600w
 
   settings:
     image:
