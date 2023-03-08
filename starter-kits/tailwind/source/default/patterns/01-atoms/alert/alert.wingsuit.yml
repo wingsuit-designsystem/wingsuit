@@ -1,0 +1,48 @@
+alert:
+  use: "@atoms/alert/alert.twig"
+  label: Alert
+  description: Alert component which plays nicely with the drupal message system.
+  fields:
+    title_ids:
+      type: object
+      label: Title Ids
+      description: A list of unique ids keyed by message type.
+      preview:
+        status: 'status'
+        error: 'error'
+        success: 'success'
+        info: 'info'
+    status_headings:
+      type: object
+      label: Status Heading
+      description: List of all status types.
+      preview:
+        status: 'Status'
+        success: 'Success'
+        info: 'Info'
+        error: 'Error'
+    message_list:
+      type: object
+      label: Messages
+      description: List of messages to be displayed, grouped by type.
+      preview:
+        error:
+          - 'Id exercitation elit commodo. Nisi et labore dolore do ullamco veniam labore veniam est nostrud velit aliquip sunt.'
+          - 'Nisi et labore dolore do ullamco veniam labore veniam est nostrud velit aliquip sunt.'
+  configuration:
+    bg_color:
+      status: 'bg-green-50'
+      error: 'bg-red-50'
+      success: 'bg-yellow-50'
+      info: 'bg-blue-50'
+    status_headings_color:
+      status: 'text-green-700'
+      error: 'text-red-700'
+      success: 'text-yellow-700'
+      info: 'text-blue-700'
+    message_color:
+      status: 'text-green-600'
+      error: 'text-red-600'
+      success: 'text-yellow-600'
+      info: 'text-blue-600'
+    paddings: 'pt-4 px-4 pb-6 pl-12'

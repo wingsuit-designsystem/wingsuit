@@ -1,0 +1,61 @@
+{#
+  Template
+#}
+
+{% set padding_classes = pattern_configuration('alert', '', 'paddings') %}
+
+{# -- Message list -- #}
+<div>
+  {% for type, messages in message_list %}
+    {% set classes = [
+      pattern_configuration('alert', '', 'bg_color')[type],
+      pattern_configuration('alert', '', 'status_heading_styles')[type],
+      pattern_configuration('alert', '', 'status_heading_color')[type],
+      pattern_configuration('alert', '', 'message_color')[type],
+      padding_classes
+    ] %}
+    {% set is_message_with_title = status_headings[type] %}
+    {% set is_message_with_icon = type in ['error', 'status', 'warning'] %}
+
+    {% set attributes = attributes|default(create_attribute()) %}
+
+    <div role="contentinfo" aria-labelledby="{{ title_ids[type] }}"{{ attributes.addClass(classes)|without('role', 'aria-label') }}>
+      {% if type == 'error' %}
+        <div role="alert">
+      {% endif %}
+      {# -- Message header -- #}
+      {% if is_message_with_title or is_message_with_icon %}
+        <div class="relative">
+          {% if is_message_with_title %}
+            <h2 id="{{ title_ids[type] }}">
+              {{ status_headings[type] }}
+            </h2>
+            {% if is_message_with_icon %}
+              <div class="absolute -left-8 top-1/2 -translate-y-1/2">
+                {{ pattern('icon', {icon: type }, 'spritemap' ) }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endif %}
+      {# -- Message content -- #}
+      <div>
+        {# -- Message list -- #}
+        {% if messages|length > 1 %}
+          <ul role="list">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {# -- Single message -- #}
+        {% else %}
+          {{ messages|first }}
+        {% endif %}
+      </div>
+      {% if type == 'error' %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
