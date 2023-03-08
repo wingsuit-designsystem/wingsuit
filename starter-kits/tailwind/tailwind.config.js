@@ -18,6 +18,7 @@ const round = (num) =>
 const em = (px, base) => `${round(px / base)}em`;
 const rem = (px) => `${px / 16}rem`.replace(' ', '');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   important: false,
   darkMode: 'class',
