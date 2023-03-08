@@ -6,8 +6,8 @@
   {% import _self as menus %}
 
   {% set link_classes = ([
-    'text-sm text-blue-500 pb-2',
-    menu_level == 1 ? ' w-full',
+    'text-green-700 pb-2 dark:text-white',
+    menu_level == 1 ? 'text-green-700 w-full',
   ] | sort | join(' ') | trim ) %}
     <div>
       {% set row_numbers = items|length/2 %}
@@ -37,12 +37,12 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set title_classes = ([
-      'w-full flex justify-center flex-col pb-4'
+      'flex flex-col justify-center text-green-700 text-lg font-bold dark:text-white pb-2 w-full '
     ] | sort | join(' ') | trim ) %}
     <li data-menu-target="submenu" data-menu-level="{{ menu_level }}"  class="flex-1">
-      <div class="flex flex-col justify-center pt-8 lg:pt-0">
+      <div class="flex flex-col justify-center pt-4 lg:pt-0">
         <div class="{{ title_classes }}">
-          <div class="font-bold">
+          <div>
             {{ item.title }}
           </div>
         </div>

@@ -1,42 +1,10 @@
 <footer class="text-gray-700">
-  {% embed "@organisms/container/container.twig" %}
+  {% embed "@organisms/container/container.twig" with {
+    bg: 'teal-dark',
+    footer_menu: footer_menu
+  } only %}
     {% block content %}
-      <div class="block lg:flex py-12">
-        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center mb-6 md:text-left">
-          {% include "@atoms/logo/logo.twig" only %}
-          <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
-        </div>
-        <div class="w-full">
-          {{ footer_menu }}
-        </div>
-      </div>
+      {{ footer_menu }}
     {% endblock %}
   {% endembed %}
-  <div class="bg-gray-200">
-    {% embed "@organisms/container/container.twig" %}
-      {% block content %}
-
-        <div class="py-4 px-6 flex flex-wrap flex-col sm:flex-row">
-          <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 tailblocks —
-            <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
-               target="_blank">@knyttneve</a>
-          </p>
-          <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        <a class="text-gray-500">
-          {{ pattern('icon', {icon: 'facebook' }, 'spritemap' ) }}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {{ pattern('icon', {icon: 'instagram' }, 'spritemap' ) }}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {{ pattern('icon', {icon: 'twitter' }, 'spritemap' ) }}
-        </a>
-        <a class="ml-3 text-gray-500">
-          {{ pattern('icon', {icon: 'linkedin' }, 'spritemap' ) }}
-        </a>
-      </span>
-        </div>
-      {% endblock %}
-    {% endembed %}
-  </div>
 </footer>
