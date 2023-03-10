@@ -5,6 +5,8 @@ hero:
   description: Hero section component, for all your presentation needs.
   extends:
     - rich_snippet.fields
+  dependencies:
+    - grid
   fields:
     image:
       type: pattern

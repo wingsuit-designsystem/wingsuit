@@ -78,7 +78,7 @@
           <div class="{{
               menu_level == 1
                 ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
-                : 'float-right center-origin transition duration-100 ease-in group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'
+                : 'float-right center-origin transition duration-100 ease-in lg:group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'
             }} cursor-pointer"
             {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
             :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">

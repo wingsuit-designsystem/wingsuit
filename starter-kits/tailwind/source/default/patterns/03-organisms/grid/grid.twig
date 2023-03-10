@@ -17,6 +17,7 @@
 {% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
 
 {% set vertical_center = vertical_center|default(false) %}
+{% set reverse = reverse|default(false) %}
 {% set equal_height = vertical_center == true ? true: equal_height %}
 
 {% set classes = ([
@@ -38,6 +39,7 @@
             flip_mobile == '1' and cell_counter == '1' ? 'row-start-1 lg:row-start-auto',
             equal_height == true ? 'flex flex-col',
             vertical_center == true ? 'justify-center',
+            reverse == true ? 'order-last',
           ]
           %}
           {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}

@@ -7,32 +7,22 @@
  */
 #}
 {# DEFAULTS #}
-
-{% set position = position|default('center_center') %}
-{% set image_position = pattern_configuration('banner', 'position')['image_position'][position]|default('center_center') %}
+{% set position = pattern_configuration('banner', null, 'position')['text'][position] %}
+{% set image_position = pattern_configuration('banner', null, 'position')['image'][position] %}
+{% set height = pattern_configuration('banner', null, 'height')['height'][height] %}
 
 {# SETTINGS #}
-{% set position_classes = [
-  pattern_configuration('banner', 'position')['text_alignment'][position]
-] %}
+{% set position_classes = ([
+  position
+]) | sort | join(' ') | trim %}
 
-{% set image_position_classes =  [
-  image_position
-] %}
-
-{%
-set height_classes = [
-  'img-w-full img-h-full img-object-cover overflow-hidden',
-  pattern_configuration('banner', 'height')['height'][height]
-]|sort|join(' ')
-%}
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {# Template #}
 <div{{ attributes|default(create_attribute()).addClass('relative dark') }}>
-  <div{{ create_attribute().addClass(height_classes).addClass(image_position_classes[image_position]) }}>{{ image }}</div>
+  <div>{{ image }}</div>
   <div class="absolute top-0 left-0 w-full h-full flex">
-    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position]}  only %}
+    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes}  only %}
       {% block content %}
         <div class="p-6 dark:text-white">
           {% if teaser is not empty %}

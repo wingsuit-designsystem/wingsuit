@@ -26,7 +26,7 @@ banner:
       preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
   configuration:
     position:
-      text_alignment:
+      text:
         top_left: ''
         top_center: 'text-center justify-center '
         top_right: 'text-right justify-end '
@@ -36,52 +36,12 @@ banner:
         bottom_left: 'items-end'
         bottom_center: 'text-center items-end justify-center'
         bottom_right': 'text-right items-end justify-end'
-      image_position:
-        top_left: 'img-object-left-top'
-        top_center: 'img-object-top'
-        top_right: 'img-object-right-top'
-        center_left: 'img-object-left'
-        center_center: 'img-object-center'
-        center_right: 'img-object-right'
-        bottom_left: 'img-object-left-bottom'
-        bottom_center: 'img-object-bottom'
-        bottom_right: 'img-object-right-bottom'
-    height:
-      small: 'h-[300px] lg:h-[300px]'
-      default: 'h-[400px] lg:h-[500px]'
-      large: 'h-[600px] lg:h-[800px]'
 
   settings:
-    height:
-      type: select
-      allow_expose: true
-      label: Height
-      default_value: default
-      options:
-        large: Large
-        default: Default
-        small: Small
     position:
       type: select
       allow_token: true
       label: Text position
-      default_value: center_center
-      allow_expose: true
-      options:
-        top_left: Top left
-        top_center: Top center
-        top_right: Top right
-        center_left: Center left
-        center_center: Center
-        center_right: Center right
-        bottom_left: Bottom left
-        bottom_center: Bottom center
-        bottom_right: Bottom right
-
-    image_position:
-      type: select
-      allow_token: true
-      label: Image position
       default_value: center_center
       allow_expose: true
       options:

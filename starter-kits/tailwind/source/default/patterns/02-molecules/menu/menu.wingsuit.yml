@@ -2,6 +2,8 @@ menu:
   use: "@molecules/menu/menu.twig"
   label: Menu
   description: Primary and footer menu component.
+  dependencies:
+    - icon
   fields:
     items:
       type: object

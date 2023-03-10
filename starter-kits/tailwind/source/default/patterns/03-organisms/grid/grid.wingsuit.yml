@@ -51,6 +51,10 @@ grid:
     vertical_center:
       type: boolean
       label: Vertical Center
+    reverse:
+      type: boolean
+      label: Reverse
+      group: tab_cells
 
   configuration:
     columns:
