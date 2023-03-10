@@ -8,18 +8,21 @@
 #}
 
 {# Template #}
-<div class="relative border-b border-gray-200 px-4" x-data="{selected: false}">
+<div class="relative border-b border-gray-200" x-data="{selected: false}">
   <button type="button" class="w-full py-6 text-left" @click="selected !== true ? selected = true : selected = false">
     <div class="flex items-center justify-between">
-      <span class="font-bold text-lg lg:text-xl">{{ label }}</span>
-      <div class="text-purple-600 ml-4" :class="{ 'transform rotate-180 ease-in duration-300' : selected == true, 'transform rotate-0' : selected == false }" >
-        {{ pattern('icon_spritemap', {icon: 'chevron-down' }, '__default' ) }}
+      <span class="font-bold">{{ label }}</span>
+      <div x-cloak :class="{ 'hidden' : selected == true }" >
+        {{ pattern('icon', {icon: 'plus' }, 'spritemap' ) }}
+      </div>
+      <div x-cloak :class="{ 'hidden' : selected == false }">
+        {{ pattern('icon', {icon: 'minus' }, 'spritemap' ) }}
       </div>
     </div>
   </button>
   <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1"
        x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
-    <div class="pb-6 text-base lg:text-lg">
+    <div class="py-4">
       {{ content }}
     </div>
   </div>
