@@ -47,6 +47,7 @@ module.exports = {
       yellow: colors.yellow,
       blue: colors.blue,
       green: colors.green,
+      pink: colors.pink,
     },
     fontSize: {
       xs: [rem(12), rem(16)],

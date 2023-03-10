@@ -5,13 +5,13 @@
 {% macro dropdown_menu(items, menu_level) %}
   {% import _self as menus %}
   {% set container_classes = ([
-    'submenu lg:border',
-    menu_level == 1 ? 'lg:absolute lg:pt-2' : 'lg:absolute lg:top-0',
+    'submenu lg:border bg-white lg:group-hover-block',
+    menu_level == 1 ? 'lg:absolute left-[-165px]' : 'lg:absolute lg:top-0',
   ] | sort | join(' ') | trim ) %}
 
   {% set link_classes = ([
-    'flex lg:px-7 py-4',
-    menu_level >= 1 ? 'lg:hover:text-black lg:hover:bg-yellow-300 border-b w-full block cursor-pointer lg:flex lg:space-x-15 px-7 lg:px-2 lg:py-3 hidden',
+    menu_level == 1 ? 'w-full lg:w-[320px]' : 'w-full lg:w-[240px]',
+    menu_level >= 1 ? 'lg:hover:bg-teal-50 block cursor-pointer lg:flex pl-8 pr-4 lg:px-4 py-3 border-b lg:border-0',
   ] | sort | join(' ') | trim ) %}
 
   <div class="{{ container_classes }}"
@@ -22,7 +22,7 @@
       {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
         <ul>
           {% for item in row %}
-            <li
+            <li class="relative"
               {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()"
               @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);"
               @mouseleave="processed = false"
@@ -37,12 +37,12 @@
                   <div
                     class=" {{
                       menu_level == 1
-                        ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90 lg:px-3'
+                        ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                         : 'float-right lg:hidden center-origin transition duration-100 ease-in'
                     }} cursor-pointer"
                     {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
-                    :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}"
-                  >
+                    :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
+                    {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
                     {{ menus.dropdown_menu(menu_level) }}
                   </div>
                 {% endif %}
@@ -59,32 +59,30 @@
 {% endmacro %}
 
 {% set list_classes = ([
-  'lg:flex lg:justify-end lg:space-x-7 lg:items-center xl:space-x-11 2xl:space-x-15'
+  'lg:flex lg:justify-end lg:space-x-7 lg:items-center'
 ] | sort | join(' ') | trim ) %}
 
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold w-full block cursor-pointer lg:inline-block',
+      'font-bold text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
-    <li {% if item.below %}
+    <li class="relative" {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
-      <div class="flex border-b lg:border-0 px-7 lg:px-0 py-4 lg:py-0">
+      <div class="flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0">
         <a href="{{ item.url }}" class="{{ link_classes }}">
           {{ item.title }}
         </a>
-        {% if item.below %}
-          <div
-            class="{{
+        {% if item.below is not empty %}
+          <div class="{{
               menu_level == 1
-                ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90 lg:px-3'
-                : 'float-right lg:hidden center-origin transition duration-100 ease-in'
+                ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
+                : 'float-right center-origin transition duration-100 ease-in group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'
             }} cursor-pointer"
             {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
-            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}"
-          >
-            {{ pattern('icon', {icon: 'sort-down' }, 'spritemap' ) }}
+            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
+            {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
           </div>
         {% endif %}
       </div>

@@ -12,76 +12,90 @@ menu:
       fields:
         items:
           1:
-            title: Galerie
+            title: Products
             url: "#"
             in_active_trail: true
             below:
               10:
-                title: Kollektionen
+                title: Accounts
                 url: '#'
               11:
-                title: Shop
+                title: Hosting
                 url: '#'
               12:
-                title: Standorte
+                title: Software
                 url: '#'
                 below:
-                  100:
-                    title: Menu 1
-                    url: '#'
-                  101:
-                    title: Menu 2
-                    url: '#'
-                  102:
-                    title: Menu 3
-                    url: '#'
-                  103:
-                    title: Menu 4
-                    url: '#'
-                  104:
-                    title: Menu 5
-                    url: '#'
                   105:
-                    title: Menu 6
+                    title: Drivers
                     url: '#'
                   106:
-                    title: Menu 7
+                    title: Apps
                     url: '#'
                   107:
-                    title: Menu 8
+                    title: FlyMeet
                     url: '#'
                   108:
-                    title: Menu 9
+                    title: FlySecurity
                     url: '#'
-                  109:
-                    title: Menu 10
-                    url: '#'
-                  110:
-                    title: Menu 11
-                    url: '#'
-                  111:
-                    title: Menu 12
-                    url: '#'
-                  112:
-                    title: Menu 13
-                    url: '#'
-                  113:
-                    title: Menu 14
-                    url: '#'
-                  114:
-                    title: Menu 15
-                    url: '#'
-                  115:
-                    title: Menu 16
-                    url: '#'
+              13:
+                title: CRM
+                url: '#'
+              14:
+                title: Devices
+                url: '#'
+              15:
+                title: Support
+                url: '#'
+              16:
+                title: Security
+                url: '#'
           2:
-            title: Kollektionen
+            title: Pricing
             url: "#"
           3:
-            title: Shop
+            title: Partner
             url: "#"
           4:
-            title: Kontakt
+            title: Article
+            url: "#"
+            below:
+              21:
+                title: Accounts
+                url: '#'
+              22:
+                title: Hosting
+                url: '#'
+              23:
+                title: Software
+                url: '#'
+                below:
+                  111:
+                    title: Drivers
+                    url: '#'
+                  112:
+                    title: Apps
+                    url: '#'
+                  113:
+                    title: FlyMeet
+                    url: '#'
+                  114:
+                    title: FlySecurity
+                    url: '#'
+              24:
+                title: CRM
+                url: '#'
+              25:
+                title: Devices
+                url: '#'
+              26:
+                title: Support
+                url: '#'
+              27:
+                title: Security
+                url: '#'
+          5:
+            title: Contact
             url: "#"
     footer:
       label: Footer

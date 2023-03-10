@@ -3,27 +3,9 @@ hero:
   label: Hero
   icon_path: ws-assets://images/hero-icon.svg
   description: Hero section component, for all your presentation needs.
+  extends:
+    - rich_snippet.fields
   fields:
-    pre_headline:
-      type: text
-      label: Pre Headline
-      preview: "What business are you?"
-    headline:
-      type: text
-      label: Headline
-      preview: "Main Hero Message to sell yourself!"
-    text:
-      type: text
-      label: Text
-      preview: "Sub-hero message, not too long and not too short. Make it just right!"
-    button_group:
-      type: pattern
-      label: Button
-      preview:
-        id: button
-        variant: default
-        settings:
-          icon: plus
     image:
       type: pattern
       label: Image
@@ -31,5 +13,10 @@ hero:
         id: image
         variant: image
         settings:
-          url: ws-assets://images/hero.png
-
+          url: file_url('ws-assets://images/hero.png')
+  settings:
+    position:
+      type: select
+      label: Position
+      options:
+        reverse: Reverse

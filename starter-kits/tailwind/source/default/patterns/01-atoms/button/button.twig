@@ -69,9 +69,9 @@ Classes
 Template
 #}
 <{{ tag_name }} {{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target).setAttribute('title', title) }}{% if disabled == true %}disabled{% endif %} style="word-break: break-word">
-{% if variant != 'icon' %}
-  {{ text }}
-{% endif %}
+  {% if variant != 'icon' %}
+    {{ text }}
+  {% endif %}
   {% if icon is not empty %}
     <div class="{% if variant != 'icon' %} {{ icon_alignment == 'left' ? 'mr-2' : 'ml-2' }}{% endif %}">
       {{ pattern('icon', {icon: icon }, 'spritemap' ) }}
