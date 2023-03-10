@@ -7,7 +7,6 @@
 {% endif %}
 {# CARD CLASSES #}
 {% set link_classes = ([
-  alignment == 'center' ? 'mx-auto': '',
   'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0', 'items-center', 'underline',
 ]) | sort | join(' ') | trim %}
 
@@ -16,7 +15,6 @@
 ] | sort | join(' ') | trim ) %}
 
 {% set wrapper_classes = ([
-  alignment == 'center' ? 'text-center rounded': '',
   ' group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full',
   variant == 'horizontal' ? 'flex-col md:flex-row' : 'flex-col'
 ] | sort | join(' ') | trim ) %}
@@ -39,16 +37,7 @@
       </div>
     {% endif %}
     <div class="p-6 flex-1 bg-white">
-      {% if preheadline %}
-        <div class="font-bold text-base text-teal-500 mb-2">
-          {{ preheadline }}
-        </div>
-      {% endif %}
-      <div class="text-2xl font-bold mb-3 ">{{ headline }}</div>
-      <div class="text-base leading-[28px]">{{ text }}</div>
-      <div class="mt-7.5 text-purple-600 group-hover:underline font-bold flex items-center">
-        {{ "Tell me more"|t }} <span class="pl-3">{{ pattern('icon', {icon: "check" }, 'spritemap' ) }}</span>
-      </div>
+      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'small', {size: 'small'} ) }}
     </div>
   </div>
 </{{ element }}>

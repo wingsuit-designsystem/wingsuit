@@ -41,7 +41,9 @@ Template
       {{ text }}
     </p>
   {% endif %}
-  <div class="mt-5">
-    {{ action }}
-  </div>
+  {% if action %}
+    <div class="mt-5">
+      {{ action }}
+    </div>
+  {% endif %}
 </div>

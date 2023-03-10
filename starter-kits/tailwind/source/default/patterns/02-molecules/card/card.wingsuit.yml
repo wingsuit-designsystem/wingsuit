@@ -4,19 +4,9 @@ card:
   icon_path: ws-assets://images/card-icon.svg
   allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
+  extends:
+    - rich_snippet.fields
   fields:
-    preheadline:
-      type: text
-      label: Preheadline
-      preview: Preheadline
-    headline:
-      type: text
-      label: Headline
-      preview: Headline
-    text:
-      type: text
-      label: Text
-      preview: Bitcoins upside downside What's a Euro short traders show me the money embracing ingenuity not making jack investment property.
   variants:
     default:
       label: Default
@@ -43,20 +33,6 @@ card:
         variant: image
         settings:
           style: responsive_16_9_600w
-    alignment:
-      type: select
-      label: Alignment
-      required: true
-      default_value: center
-      options:
-        left: Left
-        center: Center
-    bg_color:
-      type: select
-      label: Bg Color
-      options:
-        gray: Gray
-        blue: Blue
     url:
       type: url
       label: Url

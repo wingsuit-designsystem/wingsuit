@@ -25,14 +25,7 @@
         <div class="{{ position == 'reverse' ? 'absolute w-[209px] h-[296px] top-[-190px] right-0 lg:w-[261px] lg:h-[370px] lg:right-0 lg:top-0 bg-gradient-to-b from-transparent to-blue-700 opacity-70 filter blur-[70px] transform -rotate-[135deg]' : 'absolute w-[209px] h-[296px] transform -rotate-[135deg] lg:rotate-0 top-[-190px] right-0 lg:right-auto lg:left-[345px] lg:top-[274px] bg-gradient-to-b from-transparent to-blue-700 opacity-70 filter blur-[70px]' }}"></div>
       </div>
       <div class="flex flex-1 items-center">
-        {% include "@molecules/rich-snippet/rich-snippet.twig" with {
-          preheadline: preheadline,
-          headline: headline,
-          text: text,
-          action: action,
-          variant: 'default',
-          size: 'default'
-        } only %}
+        {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'default', {size: 'default'} ) }}
       </div>
 {#    {% endset %}#}
 {#    {{ pattern('grid', {cells: cells }, '', {columns: '1', gutter: 'default'} ) }}#}
