@@ -1,6 +1,8 @@
 {# SETTINGS #}
 {% set scale = scale|default(1) %}
 {% set padding = pattern_configuration('icon', 'spritemap', 'padding')[padding|default('square')] %}
+{% set fill_color = fill_color|default('fill-current') %}
+
 {% set wrapper_classes = ([
   padding != '' ? 'flex items-center aspect-[1/1] ' ~ padding,
 ] | sort | join(' ') | trim) %}

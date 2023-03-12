@@ -1,7 +1,8 @@
 /**
  * alert
  */
-// Module template
+// Module dependencies
 import 'tokens';
+
+// Module template
 import './alert.twig';
-import './alert.wingsuit.yml';

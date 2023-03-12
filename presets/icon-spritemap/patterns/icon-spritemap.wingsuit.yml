@@ -1,0 +1,32 @@
+icon_spritemap:
+  use: "@ws-icon-spritemap/spritemap.twig"
+  label: Icon
+  extends:
+    - icon
+  description: Flexible SVG spritemap Icon component.
+  settings:
+    scale:
+      label: Size
+      type: select
+      options:
+        '0.75': 0.75x
+        '1': 1x
+        '1.25': 1.25x
+        '1.5': 1.5x
+      preview: 1
+      required: true
+    padding:
+      type: select
+      label: Padding
+      options:
+        empty: Empty
+        square: Square
+        roomy: Roomy
+  configuration:
+    padding:
+      empty: none
+      square: 2
+      medium: 2.5
+      roomy: 4
+
+

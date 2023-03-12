@@ -18,11 +18,9 @@ container:
       required: true
       preview: default
       options:
+        full: Full
         small: Small
         default: Default
-        large: Large
-        xlarge: Xlarge
-        full: Full
     tab_bg:
       label: Background
       type: group
@@ -54,10 +52,9 @@ container:
       group: tab_advanced
   configuration:
     width:
-      small: 'max-w-3xl'
-      default: 'max-w-5xl'
-      large: 'max-w-7xl'
-      xlarge: 'max-w-8xl'
+      small: 'max-w-7xl'
+      default: 'max-w-8xl'
     bg:
       teal-medium: 'dark bg-teal-500'
+      teal-dark: 'dark bg-teal-800'
       gray-light: 'bg-gray-300'

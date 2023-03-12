@@ -14,8 +14,8 @@ spacing:
       group: tab_spacing
       default_value: default
       options:
+        none: None
         default: Default
-        large: Large
     padding_top:
       type: select
       label: Padding top
@@ -23,9 +23,11 @@ spacing:
       default_value: auto
       options:
         auto: Auto
+        none: None
+        xxsmall: XXSmall
+        xsmall: XSmall
         small: Small
-        default: Default
-        large: Large
+        Default: Default
     padding_bottom:
       type: select
       label: Padding bottom
@@ -33,18 +35,24 @@ spacing:
       default_value: auto
       options:
         auto: Auto
+        none: None
+        xxsmall: XXSmall
+        xsmall: XSmall
         small: Small
-        default: Default
-        large: Large
+        Default: Default
   configuration:
     padding_x:
-      default: 'px-6'
-      large: 'px-10'
+      none: ''
+      default: 'px-4 md:px-8'
     padding_top:
-      small: 'pt-4'
-      default: 'pt-10 md:pt-20'
-      large: 'pt-20 md:pt-24'
+      none: ''
+      xxsmall: 'pt-4 lg:pt-6'
+      xsmall: 'pt-4 lg:pt-8'
+      small: 'pt-8 lg:pt-16'
+      default: 'pt-16 lg:pt-28'
     padding_bottom:
-      small: 'pb-4'
-      default: 'pb-10 md:pb-20'
-      large: 'pb-20 md:pb-24'
+      none: ''
+      xxsmall: 'pb-4 lg:pb-6'
+      xsmall: 'pb-4 lg:pb-8'
+      small: 'pb-8 lg:pb-16'
+      default: 'pb-16 lg:pb-28'

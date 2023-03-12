@@ -3,24 +3,121 @@ pagination:
   label: Pagination
   description: Simple and functional pagination.
   fields:
+    heading_id:
+      type: text
+      label: Heading Id
+      description: Pagination heading ID.
     items:
       type: object
       label: Items
+      description: |
+        Item list is keyed by the following elements:
+
+        'first': Item for the first page; not present on the first page of results
+
+        'previous':  Item for the previous page; not present on the first page of results
+
+        'next': Item for the next page; not present on the last page of results
+
+        'last': Item for the last page; not present on the last page of results
+
+        'pages': List of pages, keyed by page number
+
+        **'items.first', 'items.previous', 'items.next', 'items.last' & each item inside 'items.pages' contain the following elements:**
+
+        'href': URL with appropriate query parameters for the item
+
+        'attributes': A keyed list of HTML attributes for the item
+
+        'text': The visible text used for the item link, such as "‹ Previous" or "Next ›"
       preview:
-        - title: 1
-          link: "#"
-          in_active_trail: true
-        - title: 2
-          link: "#"
-        - title: ...
-          link: "#"
-        - title: 6
-          link: "#"
+        first:
+          - title: 'First Page'
+            href: '#'
+            attributes: 'foo'
+            in_active_trail: false
+        previous:
+          - title: 'Previous Page'
+            href: '#'
+            attributes: 'foo'
+            in_active_trail: false
+        next:
+          - title: 'Next Page'
+            href: '#'
+            attributes: 'foo'
+            in_active_trail: false
+        last:
+          - title: 'Last Page'
+            href: '#'
+            attributes: 'foo'
+            in_active_trail: false
+        pages:
+          - title: 'Page 1'
+            href: '#'
+            attributes: 'foo'
+            in_active_trail: true
+          - title: 'Page 2'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 3'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 4'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 5'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 6'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 7'
+            href: '#'
+            attributes: 'foo'
+          - title: 'Page 8'
+            href: '#'
+            attributes: 'foo'
+  variants:
+    default:
+      label: Default
+    mini:
+      label: Mini
+      settings:
+        show_actions: 1
+        show_pages: 1
+        ellipses: 0
   settings:
-    previous_url:
-      type: link
-      label: Previous url
-    next_url:
-      type: link
-      label: Next url
+    ellipses:
+      type: object
+      label: Ellipses
+      description: |
+        If there are more pages than the quantity allows, then an
+        ellipsis before or after the listed pages may be present. Associative Array with following values:
+
+        'previous': Present if the currently visible list of pages does not start at the first page.
+
+        'next': Present if the visible list of pages ends before the last page.
+      preview:
+        previous: false
+        next: true
+    current:
+      type: text
+      label: Current
+      description: The page number of the current page
+      default_value: '1'
+    show_actions:
+      type: text
+      label: Show Actions
+      description: Display 'next' and 'previous' action links
+      default_value: 0
+    show_pages:
+      type: text
+      label: Show Pages
+      description: Display the pages array.
+      default_value: 1
+    show_first_last:
+      type: text
+      label: Show first and last
+      description: Show links to jump to first or last item of the pagination
+      default_value: 0
   visibility: storybook
