@@ -2,8 +2,10 @@ button:
   use: "@atoms/button/button.twig"
   label: Button
   description: Regular, outline, link or icon buttons with different sizes, icons, colors, shapes and states.
+  extends:
+    - icon.settings.icon
   dependencies:
-    - icon_spritemap
+    - icon
   fields:
     text:
       type: text
@@ -12,42 +14,28 @@ button:
   variants:
     default:
       label: Default
+      configuration:
+          wrapper_classes:
+            active: 'bg-purple-600 dark:bg-white hover:bg-purple-800 dark:hover:bg-purple-100 text-white dark:text-purple-700'
+            disabled: 'bg-gray-300 text-gray-400'
     outline:
       label: Outline
+      configuration:
+        wrapper_classes:
+          active: 'border-2 border-purple-600 hover:border-purple-800 bg-white text-purple-600 hover:text-purple-800'
+          disabled: 'border-2 border-gray-400 bg-white text-gray-400'
     link:
       label: Link
+      configuration:
+        wrapper_classes:
+          active: 'bg-transparent text-purple-600 dark:text-white hover:text-purple-800 dark:hover:text-purple-400'
+          disabled: 'text-gray-400'
     icon:
       label: Icon
-  configuration:
-    size:
-      radius:
-        small: 'rounded-[18px]'
-        medium: 'rounded-[22px]'
-        large: 'rounded-[24px]'
-      padding:
-        small: 'py-2 px-4'
-        medium: 'py-2.5 px-4'
-        large: 'py-2.5 px-6'
-      outline_padding:
-        small: 'py-1.5 px-3.5'
-        medium: 'py-2 px-3.5'
-        large: 'py-2 px-5.5'
-      icon_padding:
-        small: 'p-2'
-        medium: 'p-3'
-        large: 'p-3'
-      scale:
-        small: '1'
-        medium: '1'
-        large: '1.25'
-      text:
-        small: 'text-sm tracking-[0.01em]'
-        medium: 'text-base tracking-[0.01em]'
-        large: 'text-lg'
-      icon_spacing:
-        small: '2'
-        medium: '1'
-        large: '2.5'
+      configuration:
+          wrapper_classes:
+            active: 'bg-transparent text-purple-600 dark:text-white hover:text-purple-800 dark:hover:text-purple-400'
+            disabled: 'bg-gray-300 text-gray-400'
   settings:
     size:
       type: select
@@ -55,28 +43,40 @@ button:
       label: Size
       default_value: medium
       options:
-        small: Small
-        medium: Medium
-        large: Large
-    icon:
-      type: select
-      label: Icon
-      description: Go with an icon alongside your text.
-      options:
-        user: User
-        person: Person
-        home: Home
-        eye: Eye
-        close: Close
-        check: Check
+        small:
+          label: Small
+          configuration:
+            padding: 'py-2 px-4'
+            icon_gap: 'gap-2'
+            text: 'text-sm tracking-[0.01em]'
+            icon_scale: 1
+        medium:
+          label: Medium
+          configuration:
+            padding: 'py-2 px-4'
+            icon_gap: 'gap-2'
+            icon_scale: 1
+            text: 'text-base tracking-[0.01em]'
+        large:
+          label: Large
+          configuration:
+            padding: 'py-2 px-4'
+            icon_gap: 'gap-2'
+            icon_scale: 1
+            text: 'text-lg'
+
     icon_alignment:
       type: select
       label: Icon alignment
       description: Left or right your text.
       default_value: right
       options:
-        left: Left
-        right: Right
+        left:
+          label: Left
+          configuration: flex-row
+        right:
+          label: Right
+          configuration: flex-row-reverse
     title:
       type: textfield
       label: Title
@@ -96,11 +96,10 @@ button:
       type: boolean
       label: Disabled
       default_value: false
-    rounded:
-      type: boolean
-      label: Rounded
-      default_value: true
     expanded:
       type: boolean
       label: Expanded
       default_value: false
+  configuration:
+    defaults:
+      wrapper_classes: 'btn flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'
