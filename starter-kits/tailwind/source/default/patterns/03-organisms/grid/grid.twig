@@ -39,7 +39,7 @@
             flip_mobile == '1' and cell_counter == '1' ? 'row-start-1 lg:row-start-auto',
             equal_height == true ? 'flex flex-col',
             vertical_center == true ? 'justify-center',
-            reverse == true ? 'order-last',
+            reverse == true and cell_counter == '1' ? 'order-first',
           ]
           %}
           {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}

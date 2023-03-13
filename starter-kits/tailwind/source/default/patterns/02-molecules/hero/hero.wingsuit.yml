@@ -5,6 +5,7 @@ hero:
   description: Hero section component, for all your presentation needs.
   extends:
     - rich_snippet.fields
+    - grid.settings.reverse
   dependencies:
     - grid
   fields:
@@ -16,9 +17,4 @@ hero:
         variant: image
         settings:
           url: file_url('ws-assets://images/hero.png')
-  settings:
-    position:
-      type: select
-      label: Position
-      options:
-        reverse: Reverse
+
