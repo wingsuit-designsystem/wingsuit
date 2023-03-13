@@ -22,3 +22,5 @@ footer:
       preview:
         id: menu
         variant: privacy
+  configuration:
+    bg_color: 'purple-dark'

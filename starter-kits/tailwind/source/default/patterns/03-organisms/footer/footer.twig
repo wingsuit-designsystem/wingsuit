@@ -1,11 +1,27 @@
 <footer>
-  {% embed "@organisms/container/container.twig" with {
-    bg: 'teal-dark',
+  {% embed "@organisms/section/section.twig" with {
+    columns: 2,
+    columns_width: '25x75',
+    gutter: 'large',
+    bg: pattern_configuration('footer', '', 'bg_color'),
     padding_top: 'small',
     padding_bottom: 'small',
     footer_menu: footer_menu
   } only %}
-    {% block content %}
+    {% block column_1 %}
+      <div class="w-44">
+        {% include "@atoms/logo/logo.twig" only %}
+      </div>
+      <div class="text-purple-300 mt-3">
+        Lorem ipsum dolor sit amet consectetur. Mollis elit enim auctor.
+      </div>
+      <div class="flex space-x-4 mt-6">
+        {%  for social in ['youtube', 'instagram', 'facebook'] %}
+          {{ pattern('icon', {icon: social, color: 'text-purple-300', scale: 1.25 }, 'spritemap' ) }}
+        {% endfor %}
+      </div>
+    {% endblock %}
+    {% block column_2 %}
       {{ footer_menu }}
     {% endblock %}
   {% endembed %}

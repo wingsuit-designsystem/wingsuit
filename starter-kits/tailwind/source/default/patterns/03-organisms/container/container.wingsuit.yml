@@ -57,4 +57,5 @@ container:
     bg:
       teal-medium: 'dark bg-teal-500'
       teal-dark: 'dark bg-teal-800'
+      purple-dark: 'dark bg-purple-900'
       gray-light: 'bg-gray-300'
