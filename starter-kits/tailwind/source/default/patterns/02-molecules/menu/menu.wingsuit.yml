@@ -104,31 +104,55 @@ menu:
       description: The footer menu.
       fields:
         items:
-          - title: Column 1
+          - title: Get to know us
             url: "#"
             below:
               10:
-                title: Link 1
+                title: About us
                 url: '#'
               11:
-                title: Link 2
+                title: History
                 url: '#'
-          - title: Column 2
+            12:
+              title: TechPlay
+              url: '#'
+            13:
+              title: Career
+              url: '#'
+          - title: News & Press
             url: "#"
             below:
               10:
-                title: Link 3
+                title: News
                 url: '#'
               11:
-                title: Link 4
+                title: Presse releases
                 url: '#'
-          - title: Column 3
+              12:
+                title: Events
+                url: '#'
+          - title: Customer Service
             url: "#"
             below:
               10:
-                title: Link 5
+                title: Help Center
                 url: '#'
               11:
-                title: Link 6
+                title: Return Policy
+                url: '#'
+              12:
+                title: Shipping info
+                url: '#'
+              13:
+                title: Contact us
+                url: '#'
+          - title: Legal
+            url: "#"
+            below:
+              10:
+                title: Privacy policy
+                url: '#'
+              11:
+                title: Imprint
                 url: '#'
   visibility: storybook

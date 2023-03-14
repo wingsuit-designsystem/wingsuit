@@ -8,21 +8,31 @@
 #}
 
 {# Template #}
-<div class="relative border-b border-gray-200" x-data="{selected: false}">
-  <button type="button" class="w-full py-6 text-left" @click="selected !== true ? selected = true : selected = false">
+<div
+  class="relative border-b border-gray-200"
+  x-data="{selected: false}"
+>
+  <div
+    type="button"
+    class="w-full py-6 px-4 text-left cursor-pointer {{ pattern_configuration('accordion_item', '', 'button_styles') }}"
+    @click="selected !== true ? selected = true : selected = false"
+  >
     <div class="flex items-center justify-between">
       <span class="font-bold">{{ label }}</span>
-      <div x-cloak :class="{ 'hidden' : selected == true }" >
-        {{ pattern('icon', {icon: 'plus' }, 'spritemap' ) }}
-      </div>
-      <div x-cloak :class="{ 'hidden' : selected == false }">
-        {{ pattern('icon', {icon: 'minus' }, 'spritemap' ) }}
+      <div
+        x-cloak
+        :class="{ 'transform rotate-180 transition duration-400' : selected == true }"
+      >
+        {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
       </div>
     </div>
-  </button>
-  <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1"
-       x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
-    <div class="py-4">
+  </div>
+  <div
+    class="relative overflow-hidden transition-all max-h-0 duration-700"
+    x-ref="container1"
+    x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
+  >
+    <div class="{{ pattern_configuration('accordion_item', '', 'text_styles') }} p-4">
       {{ content }}
     </div>
   </div>
