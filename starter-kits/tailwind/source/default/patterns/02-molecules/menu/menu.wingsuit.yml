@@ -155,4 +155,9 @@ menu:
               11:
                 title: Imprint
                 url: '#'
+      configuration:
+        parent_list: ''
+        parent_link: 'text-green-700 text-lg font-bold dark:text-white pb-2'
+        child_list:  ''
+        child_link: 'text-green-700 pb-2 dark:text-white text-green-700'
   visibility: storybook
