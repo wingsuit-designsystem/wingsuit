@@ -8,6 +8,10 @@ export default {
   },
   core: {
     builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCache: true,
+    },
   },
   stories: [
     './patterns/**/*.mdx',
