@@ -24,3 +24,44 @@ rich_snippet:
       description: A long text under the headline.
       preview:
         faker: lorem.paragraph
+    action:
+      type: pattern
+      label: Action
+      preview:
+        id: button
+        variant: link
+        settings:
+          icon: home
+          size: large
+  variants:
+    small:
+      label: Small
+      settings:
+        size: small
+    default:
+      label: Default
+      settings:
+        size: default
+    large:
+      label: Large
+      settings:
+        size: default
+  configuration:
+    size:
+      headline_size:
+        small: 'text-2xl'
+        default: 'text-2xl lg:text-4xl'
+        large: 'text-4xl lg:text-6xl'
+      spacing:
+        small: 'mb-3'
+        default: 'mb-3 lg:mb-4'
+        large: 'mb-4'
+  settings:
+    size:
+      type: select
+      required: true
+      label: Size
+      options:
+        small: Small
+        Default: Default
+        large: Large

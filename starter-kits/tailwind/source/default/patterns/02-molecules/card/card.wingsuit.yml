@@ -1,19 +1,12 @@
 card:
   use: "@molecules/card/card.twig"
   label: Card
-  extends:
-    - rich_snippet
   icon_path: ws-assets://images/card-icon.svg
   allow_variant_expose: true
   description: Amazing card component with image, titles, body and link.
+  extends:
+    - rich_snippet.fields
   fields:
-    button:
-      type: pattern
-      label: Button
-      description: An optional button at the bottom of the card.
-      preview:
-        id: button
-        variant: default
   variants:
     default:
       label: Default
@@ -22,11 +15,11 @@ card:
       settings:
         image:
           id: placeholder
-          variant: background
+          variant: image
           definition:
-            view_mode: background
+            view_mode: 16x9
           settings:
-            style: responsive_1_3_200w
+            style: responsive_16_9_600w
 
   settings:
     image:
@@ -40,20 +33,6 @@ card:
         variant: image
         settings:
           style: responsive_16_9_600w
-    alignment:
-      type: select
-      label: Alignment
-      required: true
-      default_value: center
-      options:
-        left: Left
-        center: Center
-    bg_color:
-      type: select
-      label: Bg Color
-      options:
-        gray: Gray
-        blue: Blue
     url:
       type: url
       label: Url
