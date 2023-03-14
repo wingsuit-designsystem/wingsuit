@@ -1,5 +1,6 @@
-{% set cells = [] %}
-
+{#
+Classes
+#}
 {% set class_names = [
   'parent_list',
   'parent_link',
@@ -15,6 +16,10 @@
   {% endif %}
 {% endfor %}
 
+{#
+Template
+#}
+{% set cells = [] %}
 {% for item in items %}
   {% set cell %}
     <ul role="menu" {{ classes.parent_list_classes is not empty ? "class=#{classes.parent_list_classes}" }}>
