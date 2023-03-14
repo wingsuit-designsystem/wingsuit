@@ -19,34 +19,30 @@
 {% set classes = [
   text_align == 'center' ? 'text-center',
   'bg-gray-100 rounded-xl overflow-hidden p-8',
-  variant == 'horizontal' ? 'flex flex-row'
 ] %}
 
-{% set image_classes = [
-  'relative overflow-hidden flex-none ',
-  variant == 'default'? 'h-48 w-48 rounded-full mx-auto',
-  variant == 'horizontal' ? 'h-auto -m-8 mr-8 w-24 lg-48'
-] %}
 
 {#
   Template
 #}
 <figure{{attributes.addClass(classes)}}>
-  <div{{ image_attributes.addClass(image_classes) }}>
+  <div class="relative overflow-hidden flex-none w-[152px] h-[152px] lg:h-[168px] lg:w-[168px] rounded-full mx-auto aspect-[1/1]">
     {{ image }}
   </div>
-  <div class="pt-6 space-y-4 flex-1">
-    <blockquote>
-      <div class="text-lg font-semibold">
-        {{ text }}
-      </div>
-    </blockquote>
-    <figcaption>
-      <div class="text-teal-600">
-        {{ full_name }}
-      </div>
-    </figcaption>
-    <div class="pt-4">
+  <div class="mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col">
+    <div>
+      <blockquote>
+        <div class="text-xl font-bold">
+          {{ full_name }}
+        </div>
+      </blockquote>
+      <figcaption>
+        <div class="text-base text-center mt-1">
+          {{ title }}
+        </div>
+      </figcaption>
+    </div>
+    <div>
       {{ button }}
     </div>
   </div>

@@ -1,5 +1,4 @@
 image:
-
   label: Image
   description: "Image with caption component."
   fields:

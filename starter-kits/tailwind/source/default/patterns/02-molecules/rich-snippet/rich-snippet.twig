@@ -8,7 +8,7 @@
 #}
 
 {#
-  Defaults
+Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
 {% set headline_tag = headline_tag|default('h2') %}
@@ -17,24 +17,33 @@
 {% set headline %}{{- headline -}}{% endset %}
 {% set text %}{{- text -}}{% endset %}
 
-
+{% set headline_classes = ([
+  'font-bold',
+  pattern_configuration('rich_snippet', variant, 'size')['headline_size'][size],
+  pattern_configuration('rich_snippet', variant, 'size')['spacing'][size],
+] | sort | join(' ') | trim ) %}
 {#
-  Template
+Template
 #}
-{% if preheadline is not empty %}
-  <div>{{ preheadline }}</div>
-{% endif %}
-{% embed "@atoms/rich-text/rich-text.twig" with {
-  headline: headline,
-  headline_tag: headline_tag,
-  text: text
-} only %}
-  {% block text %}
-    {% if headline is not empty %}
-      <{{ headline_tag }}>{{ headline }}</{{ headline_tag }}>
-    {% endif %}
-    {% if text is not empty %}
-      <p>{{ text -}}</p>
-    {% endif %}
-  {% endblock %}
-{% endembed %}
+<div>
+  {% if preheadline is not empty %}
+    <div class="text-teal-500 text-2xl mb-2 font-bold">
+      {{ preheadline }}
+    </div>
+  {% endif %}
+  {% if headline %}
+    <div class="{{ headline_classes }}">
+      {{ headline }}
+    </div>
+  {% endif %}
+  {% if text %}
+    <p class="text-base {{ variant == 'large' ? 'text-base lg:text-lg' }}">
+      {{ text }}
+    </p>
+  {% endif %}
+  {% if action %}
+    <div class="mt-5">
+      {{ action }}
+    </div>
+  {% endif %}
+</div>

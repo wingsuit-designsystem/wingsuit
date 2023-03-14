@@ -23,38 +23,25 @@ banner:
       type: text
       label: Teaser
       description: Short optional teaser.
-      preview: "<div class='prose'><h1>Lorem ipsum dolor sit.</h1></div>"
+      preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
+  configuration:
+    position:
+      text:
+        top_left: ''
+        top_center: 'text-center justify-center '
+        top_right: 'text-right justify-end '
+        center_left: 'items-center'
+        center_center: 'text-center items-center justify-center'
+        center_right: 'text-right items-center justify-end'
+        bottom_left: 'items-end'
+        bottom_center: 'text-center items-end justify-center'
+        bottom_right': 'text-right items-end justify-end'
+
   settings:
-    height:
-      type: select
-      allow_expose: true
-      label: Height
-      default_value: default
-      options:
-        large: Large
-        default: Default
-        small: Small
     position:
       type: select
       allow_token: true
       label: Text position
-      default_value: center_center
-      allow_expose: true
-      options:
-        top_left: Top left
-        top_center: Top center
-        top_right: Top right
-        center_left: Center left
-        center_center: Center
-        center_right: Center right
-        bottom_left: Bottom left
-        bottom_center: Bottom center
-        bottom_right: Bottom right
-
-    image_position:
-      type: select
-      allow_token: true
-      label: Image position
       default_value: center_center
       allow_expose: true
       options:
