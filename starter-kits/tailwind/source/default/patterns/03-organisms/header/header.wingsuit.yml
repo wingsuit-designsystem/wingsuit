@@ -2,13 +2,14 @@ header:
   use: "@organisms/header/header.twig"
   label: Header
   description: The header pattern with logo and menu.
+  dependencies:
+    - menu
   fields:
     menu:
       type: pattern
       label: Menu
       preview:
-        id: menu
-        variant: primary
+        id: menu_primary
     language_select:
       type: pattern
       label: Language select
@@ -17,6 +18,19 @@ header:
   variants:
     fixed:
       label: Fixed
+      configuration:
+        functionality:
+          position: 'fixed h-18 w-full'
     sticky:
       label: Sticky
-  visibility: storybook
+      configuration:
+        functionality:
+          position: 'sticky'
+  configuration:
+    default:
+      bg_color: 'bg-teal-800'
+      main_wrapper: 'w-full z-30 top-0 header-offset'
+      second_wrapper: 'flex py-3 lg:py-6 justify-between md:flex-row'
+      logo: 'w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl'
+      hamburger: 'flex justify-end items-center flex-1 lg:hidden'
+      menu: 'w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent'

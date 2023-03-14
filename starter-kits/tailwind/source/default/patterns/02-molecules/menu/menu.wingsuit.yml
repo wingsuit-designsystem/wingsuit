@@ -1,6 +1,6 @@
-menu:
-  use: "@molecules/menu/menu.twig"
-  label: Menu
+menu_primary:
+  use: "@molecules/menu/menu-primary.twig"
+  label: Menu primary
   description: Primary and footer menu component.
   dependencies:
     - icon
@@ -8,159 +8,152 @@ menu:
   fields:
     items:
       type: object
-      label: Items
-  variants:
-    primary:
-      label: Primary
-      fields:
-        items:
-          1:
-            title: Products
-            url: "#"
-            in_active_trail: true
-            below:
-              10:
-                title: Accounts
-                url: '#'
-              11:
-                title: Hosting
-                url: '#'
-              12:
-                title: Software
-                url: '#'
-                below:
-                  105:
-                    title: Drivers
-                    url: '#'
-                  106:
-                    title: Apps
-                    url: '#'
-                  107:
-                    title: FlyMeet
-                    url: '#'
-                  108:
-                    title: FlySecurity
-                    url: '#'
-              13:
-                title: CRM
-                url: '#'
-              14:
-                title: Devices
-                url: '#'
-              15:
-                title: Support
-                url: '#'
-              16:
-                title: Security
-                url: '#'
-          2:
-            title: Pricing
-            url: "#"
-          3:
-            title: Partner
-            url: "#"
-          4:
-            title: Article
-            url: "#"
-            below:
-              21:
-                title: Accounts
-                url: '#'
-              22:
-                title: Hosting
-                url: '#'
-              23:
-                title: Software
-                url: '#'
-                below:
-                  111:
-                    title: Drivers
-                    url: '#'
-                  112:
-                    title: Apps
-                    url: '#'
-                  113:
-                    title: FlyMeet
-                    url: '#'
-                  114:
-                    title: FlySecurity
-                    url: '#'
-              24:
-                title: CRM
-                url: '#'
-              25:
-                title: Devices
-                url: '#'
-              26:
-                title: Support
-                url: '#'
-              27:
-                title: Security
-                url: '#'
-          5:
-            title: Contact
-            url: "#"
-    footer:
-      label: Footer
-      description: The footer menu.
-      fields:
-        items:
-          - title: Get to know us
-            url: "#"
-            below:
-              10:
-                title: About us
-                url: '#'
-              11:
-                title: History
-                url: '#'
+      label: Item
+      preview:
+        1:
+          title: Products
+          url: "#"
+          in_active_trail: true
+          below:
+            10:
+              title: Accounts
+              url: '#'
+            11:
+              title: Hosting
+              url: '#'
             12:
-              title: TechPlay
+              title: Software
               url: '#'
+              below:
+                105:
+                  title: Drivers
+                  url: '#'
+                106:
+                  title: Apps
+                  url: '#'
+                107:
+                  title: FlyMeet
+                  url: '#'
+                108:
+                  title: FlySecurity
+                  url: '#'
             13:
-              title: Career
+              title: CRM
               url: '#'
-          - title: News & Press
-            url: "#"
-            below:
-              10:
-                title: News
-                url: '#'
-              11:
-                title: Presse releases
-                url: '#'
-              12:
-                title: Events
-                url: '#'
-          - title: Customer Service
-            url: "#"
-            below:
-              10:
-                title: Help Center
-                url: '#'
-              11:
-                title: Return Policy
-                url: '#'
-              12:
-                title: Shipping info
-                url: '#'
-              13:
-                title: Contact us
-                url: '#'
-          - title: Legal
-            url: "#"
-            below:
-              10:
-                title: Privacy policy
-                url: '#'
-              11:
-                title: Imprint
-                url: '#'
-      configuration:
-        parent_list_classes: ''
-        parent_list_item_classes: ''
-        parent_link_classes: 'text-green-700 text-lg font-bold dark:text-white pb-2'
-        child_list_classes:  ''
-        child_list_item_classes: ''
-        child_link_classes: 'text-green-700 pb-2 dark:text-white text-green-700'
-  visibility: storybook
+            14:
+              title: Devices
+              url: '#'
+            15:
+              title: Support
+              url: '#'
+            16:
+              title: Security
+              url: '#'
+        2:
+          title: Pricing
+          url: "#"
+        3:
+          title: Partner
+          url: "#"
+        4:
+          title: Article
+          url: "#"
+          below:
+            21:
+              title: Accounts
+              url: '#'
+            22:
+              title: Hosting
+              url: '#'
+            23:
+              title: Software
+              url: '#'
+              below:
+                111:
+                  title: Drivers
+                  url: '#'
+                112:
+                  title: Apps
+                  url: '#'
+                113:
+                  title: FlyMeet
+                  url: '#'
+                114:
+                  title: FlySecurity
+                  url: '#'
+            24:
+              title: CRM
+              url: '#'
+            25:
+              title: Devices
+              url: '#'
+            26:
+              title: Support
+              url: '#'
+            27:
+              title: Security
+              url: '#'
+        5:
+          title: Contact
+          url: "#"
+
+menu_footer:
+  use: "@molecules/menu/menu-footer.twig"
+  label: Footer
+  description: The footer menu.
+  fields:
+    items:
+      type: object
+      label: Items
+      preview:
+         - title: Get to know us
+           url: "#"
+           below:
+             10:
+               title: About us
+               url: '#'
+             11:
+               title: History
+               url: '#'
+           12:
+             title: TechPlay
+             url: '#'
+           13:
+             title: Career
+             url: '#'
+         - title: News & Press
+           url: "#"
+           below:
+             10:
+               title: News
+               url: '#'
+             11:
+               title: Presse releases
+               url: '#'
+             12:
+               title: Events
+               url: '#'
+         - title: Customer Service
+           url: "#"
+           below:
+             10:
+               title: Help Center
+               url: '#'
+             11:
+               title: Return Policy
+               url: '#'
+             12:
+               title: Shipping info
+               url: '#'
+             13:
+               title: Contact us
+               url: '#'
+         - title: Legal
+           url: "#"
+           below:
+             10:
+               title: Privacy policy
+               url: '#'
+             11:
+               title: Imprint
+               url: '#'

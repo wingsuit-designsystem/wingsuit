@@ -1,27 +1,40 @@
 {# SETTINGS #}
 {% set header_classes = ([
-  'header-offset bg-teal-800 w-full z-30 top-0 text-white',
-  variant == 'fixed'? 'fixed h-18 w-full',
-  variant == 'sticky'? 'sticky',
+  pattern_configuration('header', variant, 'default')['bg_color'],
+  pattern_configuration('header', variant, 'default')['main_wrapper'],
+  pattern_configuration('header', variant, 'functionality')['position'],
+]) | sort | join(' ') | trim %}
+
+{% set second_wrapper = ([
+  pattern_configuration('header', variant, 'default')['second_wrapper'],
+]) | sort | join(' ') | trim %}
+
+{% set logo_classes = ([
+  pattern_configuration('header', variant, 'default')['logo'],
+]) | sort | join(' ') | trim %}
+
+{% set hamburger_classes = ([
+  pattern_configuration('header', variant, 'default')['hamburger'],
+]) | sort | join(' ') | trim %}
+
+{% set menu_classes = ([
+  pattern_configuration('header', variant, 'default')['menu'],
 ]) | sort | join(' ') | trim %}
 
 {# TEMPLATE #}
 <header class="{{ header_classes }}">
-  {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select, padding_bottom: 'none'} only%}
+  {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select, padding_bottom: 'none', second_wrapper: second_wrapper, logo_classes: logo_classes, hamburger_classes: hamburger_classes, menu_classes: menu_classes} only%}
     {% block content %}
-      <div class="flex py-3 lg:py-6 justify-between md:flex-row">
-        <div class="w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl">
-          {% include "@atoms/logo/logo.twig" only %}
+      <div class="{{ second_wrapper }}">
+        <div class="{{ logo_classes }}">
+          {{ pattern('logo', null, '' ) }}
         </div>
-        <div class="flex justify-end items-center flex-1 lg:hidden">
-          {% include "@atoms/hamburger/hamburger.twig" only %}
+        <div class="{{ hamburger_classes }}">
+          {{ pattern('hamburger', null, '' ) }}
         </div>
-        <div class="w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        <div class="{{ menu_classes }}" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
         </div>
-        <ul class="list-reset flex justify-end lg:flex-1 items-center hidden">
-          <li>{{ language_select }}</li>
-        </ul>
       </div>
     {% endblock %}
   {% endembed %}
