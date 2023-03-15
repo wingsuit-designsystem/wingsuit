@@ -9,36 +9,50 @@
 {#
   Default
 #}
-{% set classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['classes']) %}
-{% set wrapper_classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['wrapper_classes']) %}
-{% set teaser_spacing = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_spacing']) %}
-{% set teaser_classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_classes']) %}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set position = position|default('center_center') %}
 
 {#
-  SETTINGS
+  Attributes
 #}
-{% set position_classes = ([
-  pattern_configuration('banner', null, 'position')[position]['text'],
-]) | sort | join(' ') | trim %}
+{% set attributes = attributes.addClass(pattern_configuration('banner', null, 'defaults')['wrapper_classes']) %}
+{% set teaser_wrapper_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_wrapper_classes']) %}
+{% set teaser_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_classes']) %}
 
+{#
+  Classes
+#}
+{% set position_classes = [
+  'flex-1 flex',
+  pattern_configuration('banner', null, 'position')[position]['text']
+] | sort | join(' ') | trim %}
+
+{#
+  Render Slots
+#}
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {#
   Template
 #}
-<div {{ classes }}>
+<div {{ attributes }}>
   <div>{{ image }}</div>
-  <div {{ wrapper_classes }}>
-    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes, teaser_spacing: teaser_spacing, teaser_classes: teaser_classes}  only %}
+  <div {{ teaser_wrapper_attributes }}>
+    {% if teaser is not empty %}
+    {% embed "@organisms/container/container.twig" with {
+      padding_bottom: 'none',
+      region_attributes: region_attributes,
+      teaser: teaser,
+      headline: headline,
+      classes: position_classes,
+      teaser_attributes: teaser_attributes
+    }  only %}
       {% block content %}
-        <div {{ teaser_spacing }}>
-          {% if teaser is not empty %}
-            <div {{ teaser_classes }}>
-              {{ teaser }}
-            </div>
-          {% endif %}
+        <div {{ teaser_attributes }}>
+          {{ teaser }}
         </div>
       {% endblock %}
     {% endembed %}
+    {% endif %}
   </div>
 </div>
