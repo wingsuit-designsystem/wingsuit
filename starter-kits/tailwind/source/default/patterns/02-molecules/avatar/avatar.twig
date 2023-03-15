@@ -18,26 +18,33 @@
 #}
 {% set classes = [
   text_align == 'center' ? 'text-center',
-  'bg-gray-100 rounded-xl overflow-hidden p-8',
-] %}
+  pattern_configuration('avatar', null, 'defaults')['wrapper_classes'],
+] | sort | join(' ') | trim %}
 
+{% set image_classes = [
+  pattern_configuration('avatar', null, 'defaults')['image_classes'],
+] | sort | join(' ') | trim %}
+
+{% set content_classes = [
+  pattern_configuration('avatar', null, 'defaults')['content_classes'],
+] | sort | join(' ') | trim %}
 
 {#
   Template
 #}
 <figure{{attributes.addClass(classes)}}>
-  <div class="relative overflow-hidden flex-none w-[152px] h-[152px] lg:h-[168px] lg:w-[168px] rounded-full mx-auto aspect-[1/1]">
+  <div class="{{ image_classes }}">
     {{ image }}
   </div>
-  <div class="mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col">
+  <div class="{{ content_classes }}">
     <div>
       <blockquote>
-        <div class="text-xl font-bold">
+        <div class="{{ pattern_configuration('avatar', null, 'defaults')['name_classes'] }}">
           {{ full_name }}
         </div>
       </blockquote>
       <figcaption>
-        <div class="text-base text-center mt-1">
+        <div class="{{ pattern_configuration('avatar', null, 'defaults')['title_classes'] }}">
           {{ title }}
         </div>
       </figcaption>
