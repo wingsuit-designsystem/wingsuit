@@ -4,6 +4,7 @@ menu:
   description: Primary and footer menu component.
   dependencies:
     - icon
+    - grid
   fields:
     items:
       type: object
@@ -155,4 +156,11 @@ menu:
               11:
                 title: Imprint
                 url: '#'
+      configuration:
+        parent_list_classes: ''
+        parent_list_item_classes: ''
+        parent_link_classes: 'text-green-700 text-lg font-bold dark:text-white pb-2'
+        child_list_classes:  ''
+        child_list_item_classes: ''
+        child_link_classes: 'text-green-700 pb-2 dark:text-white text-green-700'
   visibility: storybook
