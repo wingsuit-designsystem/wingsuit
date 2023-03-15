@@ -24,18 +24,6 @@ banner:
       label: Teaser
       description: Short optional teaser.
       preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
-  configuration:
-    position:
-      text:
-        top_left: ''
-        top_center: 'text-center justify-center '
-        top_right: 'text-right justify-end '
-        center_left: 'items-center'
-        center_center: 'text-center items-center justify-center'
-        center_right: 'text-right items-center justify-end'
-        bottom_left: 'items-end'
-        bottom_center: 'text-center items-end justify-center'
-        bottom_right': 'text-right items-end justify-end'
 
   settings:
     position:
@@ -45,12 +33,45 @@ banner:
       default_value: center_center
       allow_expose: true
       options:
-        top_left: Top left
-        top_center: Top center
-        top_right: Top right
-        center_left: Center left
-        center_center: Center
-        center_right: Center right
-        bottom_left: Bottom left
-        bottom_center: Bottom center
-        bottom_right: Bottom right
+        top_left:
+          label: Top left
+          configuration:
+            position: ''
+        top_center:
+          label: Top center
+          configuration:
+            text: 'text-center justify-center '
+        top_right:
+          label: Top right
+          configuration:
+            text: 'text-right justify-end '
+        center_left:
+          label: Center left
+          configuration:
+            text: 'items-center'
+        center_center:
+          label: Center
+          configuration:
+            text: 'text-center items-center justify-center'
+        center_right:
+          label: Center right
+          configuration:
+            text: 'text-right items-center justify-end'
+        bottom_left:
+          label: Bottom left
+          configuration:
+            text: 'items-end'
+        bottom_center:
+          label: Bottom center
+          configuration:
+            text: 'text-center items-end justify-center'
+        bottom_right:
+          label: Bottom right
+          configuration:
+            text: 'text-right items-end justify-end'
+  configuration:
+    defaults:
+      classes: 'relative dark'
+      wrapper_classes: 'absolute top-0 left-0 w-full h-full flex'
+      teaser_classes: 'bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6'
+      teaser_spacing: 'p-6'

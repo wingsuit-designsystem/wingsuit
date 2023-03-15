@@ -6,27 +6,23 @@
  * See banner.wingsuit.yaml for documentation.
  */
 #}
-{# DEFAULTS #}
-{% set position = pattern_configuration('banner', null, 'position')['text'][position] %}
-{% set image_position = pattern_configuration('banner', null, 'position')['image'][position] %}
-{% set height = pattern_configuration('banner', null, 'height')['height'][height] %}
 
 {# SETTINGS #}
 {% set position_classes = ([
-  position
+  pattern_configuration('banner', null, 'position')[position]['text'],
 ]) | sort | join(' ') | trim %}
 
 {% set teaser %}{{- teaser -}}{% endset %}
 
 {# Template #}
-<div{{ attributes|default(create_attribute()).addClass('relative dark') }}>
+<div class="{{ pattern_configuration('banner', null, 'defaults')['classes'] }}">
   <div>{{ image }}</div>
-  <div class="absolute top-0 left-0 w-full h-full flex">
+  <div class="{{ pattern_configuration('banner', null, 'defaults')['wrapper_classes'] }}">
     {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes}  only %}
       {% block content %}
-        <div class="p-6 dark:text-white">
+        <div class="{{ pattern_configuration('banner', null, 'defaults')['teaser_spacing'] }}">
           {% if teaser is not empty %}
-            <div{{ region_attributes.teaser|default(create_attribute()).addClass('bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6') }}>
+            <div class="{{ pattern_configuration('banner', null, 'defaults')['teaser_classes'] }}">
               {{ teaser }}
             </div>
           {% endif %}
