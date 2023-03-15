@@ -2,17 +2,52 @@ hamburger:
   use: "@atoms/hamburger/hamburger.twig"
   label: Hamburger
   description: Simple animated hamburger icon.
-  configuration:
-    color_classes: 'bg-red'
-    defaults:
-      base_classes: 'block absolute h-0.5 w-5 transform transition duration-500 ease-in-out'
-    upper_line:
-      closed_classes: '-translate-y-1.5'
-      opened_classes: 'rotate-45'
-    middle_line:
-      closed_classes: ''
-      opened_classes: 'opacity-0'
-    bottom_line:
-      closed_classes: 'translate-y-1.5'
-      opened_classes: '-rotate-45'
+  settings:
+    color_classes:
+      type: text
+      label: Color
+      description: Tailwind Color Background Classes
+      default_value: 'bg-black'
+    size:
+      type: select
+      required: true
+      label: Size
+      default_value: default
+      options:
+        small:
+          label: Small
+          configuration: tham-w-4
+        default:
+          label: Default
+          configuration: tham-w-6
+        large:
+          label: Large
+          configuration: tham-w-8
+        xlarge:
+          label: xLarge
+          configuration: tham-w-12
+    active_behaviour:
+      type: select
+      label: Hamburger Active behaviour
+      description: Which animation to play when clicking on the hamburger.
+      default_value: squeeze
+      options:
+        squeeze:
+          label: Squeeze
+          configuration: 'tham-e-squeeze'
+        slide:
+          label: Slide
+          configuration: 'tham-e-slider'
+        arrow:
+          label: Arrow
+          configuration: 'tham-e-arrow'
+        arrow_alt:
+          label: Arrow Alt
+          configuration: 'tham-e-arrow-alt'
+        arrow_turn:
+          label: Arrow Turn
+          configuration: 'tham-e-arrow-turn'
+        spin:
+          label: Spin
+          configuration: 'tham-e-spin'
   visibility: storybook

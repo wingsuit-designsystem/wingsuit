@@ -7,6 +7,7 @@ const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg'],
 });
+const hamburgers = require('tailwind-hamburgers');
 
 const round = (num) =>
   num
@@ -93,5 +94,5 @@ module.exports = {
       serif: ['Noto serif', 'Serif'],
     },
   },
-  plugins: [forms, typography],
+  plugins: [hamburgers, forms, typography],
 };
