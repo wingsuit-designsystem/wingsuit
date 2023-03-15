@@ -71,7 +71,7 @@ banner:
             text: 'text-right items-end justify-end'
   configuration:
     defaults:
-      classes: 'relative dark'
+      classes: 'relative dark rounded-lg border border-transparent overflow-hidden'
       wrapper_classes: 'absolute top-0 left-0 w-full h-full flex'
       teaser_classes: 'bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6'
       teaser_spacing: 'p-6'

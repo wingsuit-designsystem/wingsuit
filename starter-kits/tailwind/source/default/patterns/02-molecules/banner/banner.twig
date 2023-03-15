@@ -6,23 +6,34 @@
  * See banner.wingsuit.yaml for documentation.
  */
 #}
+{#
+  Default
+#}
+{% set classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['classes']) %}
+{% set wrapper_classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['wrapper_classes']) %}
+{% set teaser_spacing = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_spacing']) %}
+{% set teaser_classes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_classes']) %}
 
-{# SETTINGS #}
+{#
+  SETTINGS
+#}
 {% set position_classes = ([
   pattern_configuration('banner', null, 'position')[position]['text'],
 ]) | sort | join(' ') | trim %}
 
 {% set teaser %}{{- teaser -}}{% endset %}
 
-{# Template #}
-<div class="{{ pattern_configuration('banner', null, 'defaults')['classes'] }}">
+{#
+  Template
+#}
+<div {{ classes }}>
   <div>{{ image }}</div>
-  <div class="{{ pattern_configuration('banner', null, 'defaults')['wrapper_classes'] }}">
-    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes}  only %}
+  <div {{ wrapper_classes }}>
+    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes, teaser_spacing: teaser_spacing, teaser_classes: teaser_classes}  only %}
       {% block content %}
-        <div class="{{ pattern_configuration('banner', null, 'defaults')['teaser_spacing'] }}">
+        <div {{ teaser_spacing }}>
           {% if teaser is not empty %}
-            <div class="{{ pattern_configuration('banner', null, 'defaults')['teaser_classes'] }}">
+            <div {{ teaser_classes }}>
               {{ teaser }}
             </div>
           {% endif %}
