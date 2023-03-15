@@ -2,6 +2,7 @@ import React from 'react';
 
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 
+import { PatternVariant } from '@wingsuit-designsystem/pattern';
 import PatternProperties from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
@@ -25,9 +26,9 @@ function getStorybookControlsOptions(setting) {
   return controls;
 }
 
-export function getArgs(defaultArgs, variant) {
+export function getArgs(defaultArgs, variant: PatternVariant) {
   const fields = variant.getFields();
-  const resultArgs = { ...defaultArgs };
+  const resultArgs = { ...defaultArgs, ...variant.getVariables(true, true, false) };
   const settings = variant.getSettings();
   Object.keys(settings).forEach((key) => {
     if (settings[key].getType() === 'attributes') {
@@ -51,7 +52,6 @@ export function getArgTypes(variant) {
 
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
-
     if (
       setting.isEnable() &&
       setting.getType() !== 'group' &&
@@ -67,7 +67,7 @@ export function getArgTypes(variant) {
           defaultValue: { summary: setting.getPreview() },
           category: 'Settings',
         },
-        defaultValue: setting.getDefaultValue() || setting.getPreview(),
+        defaultValue: setting.getDefaultValue(),
         description: `${setting.getLabel()} ${
           setting.getDescription() !== '' ? ` - ${setting.getDescription()}` : ''
         }`,

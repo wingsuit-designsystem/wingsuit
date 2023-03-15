@@ -15,7 +15,6 @@ const PatternPreview: FunctionComponent<Props> = ({
   init('Drupal');
   useEffect(() => {
     let mounted = true;
-
     const finalPatternId = variant !== null ? variant.getPattern().getId() : patternId;
     const finalVariantId = variant !== null ? variant.getId() : variantId;
     renderer

@@ -2,6 +2,9 @@ landing:
   use: "@pages/page.twig"
   label: Landing
   description: Landing page example
+  dependencies:
+    - menu
+    - language_select
   fields:
     content:
       type: pattern
@@ -12,12 +15,7 @@ landing:
           settings:
             display_header_region: true
           fields:
-            header:
-              - id: rich_text
-                variant: default
             column_1:
-              - id: rich_text
-                variant: default
               - id: grid
                 fields:
                   cells:
