@@ -2,12 +2,9 @@ hamburger:
   use: "@atoms/hamburger/hamburger.twig"
   label: Hamburger
   description: Simple animated hamburger icon.
+  configuration:
+    color: 'bg-black'
   settings:
-    color_classes:
-      type: text
-      label: Color
-      description: Tailwind Color Background Classes
-      default_value: 'bg-black'
     size:
       type: select
       required: true
@@ -50,4 +47,3 @@ hamburger:
         spin:
           label: Spin
           configuration: 'tham-e-spin'
-  visibility: storybook
