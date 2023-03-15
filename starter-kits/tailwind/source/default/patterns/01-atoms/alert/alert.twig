@@ -1,25 +1,24 @@
-{#
-  Template
-#}
-
-{% set padding_classes = pattern_configuration('alert', '', 'paddings') %}
-
-{# -- Message list -- #}
 <div>
   {% for type, messages in message_list %}
-    {% set classes = [
-      pattern_configuration('alert', '', 'bg_color')[type],
-      pattern_configuration('alert', '', 'status_heading_styles')[type],
-      pattern_configuration('alert', '', 'status_heading_color')[type],
-      pattern_configuration('alert', '', 'message_color')[type],
-      padding_classes
-    ] %}
+    {#
+    Classes
+    #}
+    {% set classes = [] %}
+    {% set attributes = {} %}
+    {% set classes = classes|merge([
+      pattern_configuration('alert', '', type)['bg_color'],
+      pattern_configuration('alert', '', type)['status_heading_styles'],
+      pattern_configuration('alert', '', type)['status_heading_color'],
+      pattern_configuration('alert', '', type)['message_color'],
+      pattern_configuration('alert', '', 'paddings')
+    ]) %}
     {% set is_message_with_title = status_headings[type] %}
-    {% set is_message_with_icon = type in ['error', 'status', 'warning'] %}
-
     {% set attributes = attributes|default(create_attribute()) %}
 
-    <div role="contentinfo" aria-labelledby="{{ title_ids[type] }}"{{ attributes.addClass(classes)|without('role', 'aria-label') }}>
+    {#
+    Template
+    #}
+    <div role="contentinfo" aria-labelledby="{{ title_ids[type] }}"{{ attributes.addClass(classes|sort|join(' ')|trim())|without('role', 'aria-label') }}>
       {% if type == 'error' %}
         <div role="alert">
       {% endif %}
@@ -27,14 +26,15 @@
       {% if is_message_with_title or is_message_with_icon %}
         <div class="relative">
           {% if is_message_with_title %}
-            <h2 id="{{ title_ids[type] }}">
+            <h2 id="{{ title_ids[type] }}" class="font-bold">
               {{ status_headings[type] }}
             </h2>
-            {% if is_message_with_icon %}
               <div class="absolute -left-8 top-1/2 -translate-y-1/2">
-                {{ pattern('icon', {icon: type }, 'spritemap' ) }}
+                {{ pattern('icon', {
+                  icon: pattern_configuration('alert', '', type)['icon'],
+                  color: pattern_configuration('alert', '', type)['icon_color'],
+                }, 'spritemap' ) }}
               </div>
-            {% endif %}
           {% endif %}
         </div>
       {% endif %}

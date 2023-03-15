@@ -1,6 +1,8 @@
 alert:
   use: "@atoms/alert/alert.twig"
   label: Alert
+  dependencies:
+    - icon
   description: Alert component which plays nicely with the drupal message system.
   fields:
     title_ids:
@@ -26,23 +28,39 @@ alert:
       label: Messages
       description: List of messages to be displayed, grouped by type.
       preview:
+        status:
+          - 'Qui ut anim veniam irure adipisicing officia cupidatat commodo reprehenderit Lorem/'
         error:
           - 'Id exercitation elit commodo. Nisi et labore dolore do ullamco veniam labore veniam est nostrud velit aliquip sunt.'
           - 'Nisi et labore dolore do ullamco veniam labore veniam est nostrud velit aliquip sunt.'
+        success:
+          - 'Ad laborum nostrud ipsum nisi dolor sunt nostrud.'
+          - 'Eiusmod veniam laboris nostrud anim qui cupidatat dolor est.'
+        info:
+          - 'Consequat consequat ullamco elit do nisi deserunt nostrud amet.'
   configuration:
-    bg_color:
-      status: 'bg-green-50'
-      error: 'bg-red-50'
-      success: 'bg-yellow-50'
-      info: 'bg-blue-50'
-    status_headings_color:
-      status: 'text-green-700'
-      error: 'text-red-700'
-      success: 'text-yellow-700'
-      info: 'text-blue-700'
-    message_color:
-      status: 'text-green-600'
-      error: 'text-red-600'
-      success: 'text-yellow-600'
-      info: 'text-blue-600'
     paddings: 'pt-4 px-4 pb-6 pl-12'
+    status:
+      bg_color: 'bg-green-50'
+      heading_color: 'text-green-700'
+      message_color: 'text-green-600'
+      icon: 'circle-exclamation'
+      icon_color: 'text-green-400'
+    error:
+      bg_color: 'bg-red-50'
+      heading_color: 'text-red-700'
+      message_color: 'text-red-600'
+      icon: 'circle-exclamation'
+      icon_color: 'text-red-400'
+    success:
+      bg_color: 'bg-yellow-50'
+      heading_color: 'text-yellow-700'
+      message_color: 'text-yellow-600'
+      icon: 'circle-exclamation'
+      icon_color: 'text-yellow-400'
+    info:
+      bg_color: 'bg-blue-50'
+      heading_color: 'text-blue-700'
+      message_color: 'text-blue-600'
+      icon: 'circle-info'
+      icon_color: 'text-blue-400'

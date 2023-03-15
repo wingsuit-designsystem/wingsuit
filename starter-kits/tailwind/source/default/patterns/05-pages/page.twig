@@ -1,0 +1,13 @@
+{% embed "@templates/site-container.twig"
+  with {
+  has_spacer: true,
+  language_select: pattern_preview('language_select'),
+  primary_menu: pattern_preview('menu', {}, 'primary'),
+  secondary_menu: pattern_preview('menu', {}, 'secondary'),
+  footer_menu: pattern_preview('menu', {}, 'footer'),
+} %}
+  {% block main %}
+    {{ content }}
+  {% endblock %}
+{% endembed %}
+
