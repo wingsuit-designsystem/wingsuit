@@ -4,12 +4,15 @@ header:
   description: The header pattern with logo and menu.
   dependencies:
     - menu
+    - logo
+    - hamburger
   fields:
     menu:
       type: pattern
       label: Menu
       preview:
-        id: menu_primary
+        id: menu
+        variant: primary
     language_select:
       type: pattern
       label: Language select
@@ -20,7 +23,7 @@ header:
       label: Fixed
       configuration:
         functionality:
-          position: 'fixed h-18 w-full'
+          position: 'fixed'
     sticky:
       label: Sticky
       configuration:
@@ -28,8 +31,7 @@ header:
           position: 'sticky'
   configuration:
     default:
-      bg_color: 'bg-teal-800'
-      main_wrapper: 'w-full z-30 top-0 header-offset'
+      main_wrapper: 'w-full z-30 top-0 header-offset bg-teal-800'
       second_wrapper: 'flex py-3 lg:py-6 justify-between md:flex-row'
       logo: 'w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl'
       hamburger: 'flex justify-end items-center flex-1 lg:hidden'
