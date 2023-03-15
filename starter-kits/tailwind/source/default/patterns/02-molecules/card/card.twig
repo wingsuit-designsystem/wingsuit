@@ -1,30 +1,26 @@
   {# SETTINGS #}
+
 {% set element = element|default('article') %}
-{% set headline__element = headline__element|default('h2') %}
-{% if url is not empty %}
-  {% set attributes = attributes.setAttribute('href', url) %}
-  {% set element = 'a' %}
-{% endif %}
-{# CARD CLASSES #}
-{% set link_classes = ([
-  'text-indigo-500', 'inline-flex', 'md:mb-2', 'lg:mb-0', 'items-center', 'underline',
-]) | sort | join(' ') | trim %}
 
 {% set classes = ([
   ' group',
 ] | sort | join(' ') | trim ) %}
 
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{% if url is not empty %}
+  {% set attributes = attributes.setAttribute('href', url) %}
+  {% set element = 'a' %}
+{% endif %}
+
 {% set wrapper_classes = ([
-  ' group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full',
-  variant == 'horizontal' ? 'flex-col md:flex-row' : 'flex-col'
+  pattern_configuration('card', variant, 'defaults')['wrapper_classes'],
+  pattern_configuration('card', variant, 'direction')['flex'],
 ] | sort | join(' ') | trim ) %}
 
 {% set image_classes = ([
-  variant == 'default' ? 'flex-0 aspect-[16/9]',
-  variant == 'horizontal' ? 'w-full lg:w-60 aspect-[16/9] relative flex'
+  pattern_configuration('card', variant, 'image')['size'],
   ] | sort | join(' ') | trim ) %}
-
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
 {# TEMPLATE #}
 <{{ element }} {{ attributes }}>
@@ -37,7 +33,7 @@
       </div>
     {% endif %}
     <div class="p-6 flex-1 bg-white">
-      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'small', {size: 'small'} ) }}
+      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action}, 'small', {size: 'small'} ) }}
     </div>
   </div>
 </{{ element }}>

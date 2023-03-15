@@ -6,12 +6,24 @@ card:
   description: Amazing card component with image, titles, body and link.
   extends:
     - rich_snippet.fields
+  dependencies:
+    - rich_snippet
   fields:
   variants:
     default:
       label: Default
+      configuration:
+        direction:
+          flex: 'flex-col'
+        image:
+          size: 'flex-0 aspect-[16/9]'
     horizontal:
       label: Horizontal
+      configuration:
+        direction:
+          flex: 'flex-col md:flex-row'
+        image:
+          size: 'w-full lg:w-60 aspect-[16/9] relative flex'
       settings:
         image:
           id: placeholder
@@ -36,5 +48,6 @@ card:
     url:
       type: url
       label: Url
-  parameters:
-    layout: centered
+  configuration:
+    defaults:
+      wrapper_classes: 'group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full'
