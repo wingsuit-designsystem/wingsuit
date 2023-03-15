@@ -18,9 +18,9 @@ container:
       required: true
       preview: default
       options:
+        default: Default
         full: Full
         small: Small
-        default: Default
     tab_bg:
       label: Background
       type: group

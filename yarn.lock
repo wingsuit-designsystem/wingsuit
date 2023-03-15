@@ -28728,6 +28728,11 @@ tabtab@^1.3.2:
     npmlog "^2.0.3"
     object-assign "^4.1.0"
 
+tailwind-hamburgers@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/tailwind-hamburgers/-/tailwind-hamburgers-1.3.4.tgz#7afe63db219b0cd28421f6a1cbb4b0c51f5a13dc"
+  integrity sha512-vvbpTYWFBgDihORdBUTt6Ye6OmcpCFGwXkmDqNO5+s5bBAgSsUZeVpBpfqwLiX6sozOmKoA/Zw2veV76VtaLAA==
+
 tailwindcss@^1.4.0, tailwindcss@^1.4.6:
   version "1.9.6"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.9.6.tgz#0c5089911d24e1e98e592a31bfdb3d8f34ecf1a0"

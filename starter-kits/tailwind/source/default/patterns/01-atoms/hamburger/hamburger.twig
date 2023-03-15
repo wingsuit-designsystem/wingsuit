@@ -1,8 +1,30 @@
-<button class="text-gray-500 w-8 h-8 relative focus:outline-none" @click="menuIsOpen = !menuIsOpen">
-  <span class="sr-only">Open main menu</span>
-  <div class="block w-5 absolute left-1/2 top-1/2   transform  -translate-x-1/2 -translate-y-1/2">
-    <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-white transform transition duration-500 ease-in-out" :class="{'rotate-45': menuIsOpen,' -translate-y-1.5': !menuIsOpen }"></span>
-    <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-white transform transition duration-500 ease-in-out" :class="{'opacity-0': menuIsOpen } "></span>
-    <span aria-hidden="true" class="block absolute h-0.5 w-5 bg-white transform transition duration-500 ease-in-out" :class="{'-rotate-45': menuIsOpen, ' translate-y-1.5': !menuIsOpen}"></span>
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set inner_attributes = create_attribute() %}
+{% set size = size|default('default') %}
+{% set active_behaviour = active_behaviour|default('squeeze') %}
+
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass([
+  'tham',
+  pattern_configuration('hamburger', '', 'size')[size],
+  pattern_configuration('hamburger', '', 'active_behaviour')[active_behaviour],
+]|sort |join(' ')| trim) %}
+
+{% set inner_attributes = inner_attributes.addClass([
+  'tham-inner',
+  pattern_configuration('hamburger', '', 'color'),
+]|sort |join(' ')| trim) %}
+
+{#
+Template
+#}
+<div {{ attributes }} @click="menuIsOpen = !menuIsOpen" :class="{ 'tham-active': menuIsOpen }">
+  <div class="tham-box">
+    <div {{ inner_attributes }}></div>
   </div>
-</button>
+</div>
