@@ -2,4 +2,17 @@ hamburger:
   use: "@atoms/hamburger/hamburger.twig"
   label: Hamburger
   description: Simple animated hamburger icon.
+  configuration:
+    color_classes: 'bg-red'
+    defaults:
+      base_classes: 'block absolute h-0.5 w-5 transform transition duration-500 ease-in-out'
+    upper_line:
+      closed_classes: '-translate-y-1.5'
+      opened_classes: 'rotate-45'
+    middle_line:
+      closed_classes: ''
+      opened_classes: 'opacity-0'
+    bottom_line:
+      closed_classes: 'translate-y-1.5'
+      opened_classes: '-rotate-45'
   visibility: storybook
