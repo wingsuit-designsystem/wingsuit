@@ -11,28 +11,36 @@
 {% set icon_scale = pattern_configuration('button', variant, 'size')[size]['icon_scaling'] %}
 {% set url = disabled ? null : url %}
 
+{#
+  Internal logic
+#}
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set tag_name = 'a' %}
 {% endif %}
 
 {#
-  Classes
+  Attributes
 #}
-{% set classes = [
-  pattern_configuration('button', variant, 'defaults')['wrapper_classes'],
-  pattern_configuration('button', variant, 'wrapper_classes')[active_key],
-  pattern_configuration('button', variant, 'size')[size]['padding'],
-  pattern_configuration('button', variant, 'size')[size]['text'],
-  pattern_configuration('button', variant, 'size')[size]['icon_gap'],
-  pattern_configuration('button', variant, 'icon_alignment')[icon_alignment],
-  expanded ? 'w-full justify-between' : 'justify-center',
-] %}
+{% set attributes = attributes
+  .addClass([
+    pattern_configuration('button', variant, 'defaults')['wrapper_classes'],
+    pattern_configuration('button', variant, 'wrapper_classes')[active_key],
+    pattern_configuration('button', variant, 'size')[size]['padding'],
+    pattern_configuration('button', variant, 'size')[size]['text'],
+    pattern_configuration('button', variant, 'size')[size]['icon_gap'],
+    pattern_configuration('button', variant, 'icon_alignment')[icon_alignment],
+    expanded ? 'w-full justify-between' : 'justify-center',
+  ])
+  .setAttribute('traget', target)
+  .setAttribute('title', title)
+  .setAttribute('disabled', disabled)
+%}
 
 {#
   Template
 #}
-<{{ tag_name }}{{ attributes.addClass(classes | sort | join(' ') | trim).setAttribute('target', target).setAttribute('title', title).setAttribute('disabled', disabled)}}>
+<{{ tag_name }} {{ attributes }}>
   {% if variant != 'icon' %}
     {{ text }}
   {% endif %}
