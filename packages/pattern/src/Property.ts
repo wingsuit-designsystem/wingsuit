@@ -81,7 +81,7 @@ export default class Property {
     return value;
   }
 
-  public setPreview(value: Preview | string) {
+  public setPreview(value: any) {
     this.preview = value;
   }
 

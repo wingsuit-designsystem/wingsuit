@@ -24,7 +24,7 @@
 {%- endset -%}
 
 {% set bg_full = bg_align == '' ? bg_image %}
-{%- set header -%}{%- block header -%}{{ header }}{% endblock %}{% endset %}
+{%- set header -%}{{ header }}{% endset %}
 {% set region_attributes = region_attributes|default(create_attribute()) %}
 {% set grid %}
   {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
@@ -41,7 +41,8 @@
     attributes: create_attribute(),
     cells: cells,
     columns_width: columns_width,
-    region_attributes: region_attributes
+    region_attributes: region_attributes,
+    gutter: gutter
   }
   %}
   {% endembed %}

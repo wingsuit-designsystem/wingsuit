@@ -114,6 +114,3 @@ rich_text:
   variants:
     default:
       label: Default
-# Optional Variant
-#    article:
-#      label: Article
