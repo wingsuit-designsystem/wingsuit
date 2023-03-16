@@ -1,26 +1,39 @@
 {#
   Defaults
 #}
-{% set header_classes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['main_wrapper']).addClass(pattern_configuration('header', variant, 'functionality')['position']) %}
-{% set second_wrapper = create_attribute().addClass(pattern_configuration('header', variant, 'default')['second_wrapper']) %}
-{% set logo_classes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['logo']) %}
-{% set hamburger_classes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['hamburger']) %}
-{% set menu_classes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['menu']) %}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('header', variant, 'default')['classes']).addClass(pattern_configuration('header', variant, 'functionality')['position']) %}
+{% set wrapper_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['wrapper_classes']) %}
+{% set logo_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['logo_classes']) %}
+{% set hamburger_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['hamburger_classes']) %}
+{% set menu_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['menu_classes']) %}
 
 {#
   TEMPLATE
 #}
-<header {{ header_classes }}>
-  {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select, padding_bottom: 'none', second_wrapper: second_wrapper, logo_classes: logo_classes, hamburger_classes: hamburger_classes, menu_classes: menu_classes} only%}
+<header {{ attributes }}>
+  {% embed "@organisms/container/container.twig" with {
+    menu: menu,
+    language_select: language_select,
+    padding_bottom: 'none',
+    wrapper_attributes: wrapper_attributes,
+    logo_attributes: logo_attributes,
+    hamburger_attributes: hamburger_attributes,
+    menu_attributes: menu_attributes
+  } only%}
     {% block content %}
-      <div {{ second_wrapper }}>
-        <div {{ logo_classes }}>
+      <div {{ wrapper_attributes }}>
+        <div {{ logo_attributes }}>
           {{ pattern('logo', null, '' ) }}
         </div>
-        <div {{ hamburger_classes }}>
+        <div {{ hamburger_attributes }}>
           {{ pattern('hamburger', null, '' ) }}
         </div>
-        <div {{ menu_classes }} :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        <div {{ menu_attributes }} :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
         </div>
       </div>

@@ -31,8 +31,8 @@ header:
           position: 'sticky'
   configuration:
     default:
-      main_wrapper: 'w-full z-30 top-0 header-offset bg-teal-800'
-      second_wrapper: 'flex py-3 lg:py-6 justify-between md:flex-row'
-      logo: 'w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl'
-      hamburger: 'flex justify-end items-center flex-1 lg:hidden'
-      menu: 'w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent'
+      classes: 'w-full z-30 top-0 header-offset bg-teal-800'
+      wrapper_classes: 'flex py-3 lg:py-6 justify-between md:flex-row'
+      logo_classes: 'w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl'
+      hamburger_classes: 'flex justify-end items-center flex-1 lg:hidden'
+      menu_classes: 'w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent'
