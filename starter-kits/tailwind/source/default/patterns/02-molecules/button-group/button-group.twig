@@ -18,16 +18,15 @@
   Classes
 #}
 
-{% set classes = [
-  'flex flex-col md:flex-row pt-8',
-  'space-y-2 md:space-x-2 md:space-y-0',
-  align == 'center' ? 'justify-center',
-  align == 'right' ? 'justify-end',
-] %}
+{% set attributes = attributes.addClass([
+    pattern_configuration('button_group', null, 'default')['classes'],
+    pattern_configuration('button_group', null, 'align')[align]['direction']
+  ])
+%}
 
 {#
   Template
 #}
-<div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+<div {{ attributes }}>
   {{ buttons }}
 </div>
