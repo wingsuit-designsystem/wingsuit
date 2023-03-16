@@ -227,10 +227,10 @@ export default class Pattern {
         }
 
         if (settings[key].default_value) {
-          setting.setPreview(settings[key].default_value ?? '');
+          setting.setPreview(settings[key].default_value ?? null);
         }
         if (
-          setting.getPreview() &&
+          !setting.getPreview() &&
           settings[key].required === true &&
           settings[key].type === 'select'
         ) {

@@ -209,13 +209,6 @@ export default class PatternVariant {
         }
       });
     }
-
-    // eslint-disable-next-line dot-notation
-    // if (!values['attributes']) {
-    // eslint-disable-next-line dot-notation
-    // values['attributes'] = new TwigAttribute();
-    // }
-
     return values;
   }
 

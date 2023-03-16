@@ -99,7 +99,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           
           export const ${patternId}${variantName}Pattern = {
           name: '${storyLabel}',
-          args: {patternId: '${patternId}', variantId: '${variantName}', ...storage.loadVariant('${patternId}', '${variantName}').getVariables(true, true, false) },
+          args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },
           argTypes: argTypes('${patternId}', '${variantName}'),
           parameters: {
           

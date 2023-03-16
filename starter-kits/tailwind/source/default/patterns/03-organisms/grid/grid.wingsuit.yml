@@ -28,6 +28,7 @@ grid:
       required: true
       default_value: default
       description: The gutter between the cells.
+      preview: default
       options:
         none: None
         default: Default
@@ -37,7 +38,7 @@ grid:
       label: Columns
       description: The number of grid columns
       required: true
-      preview: 4
+      default_value: '4'
       options:
         1: One column
         2: Two columns
@@ -46,10 +47,12 @@ grid:
         5: Five columns
     flip_mobile:
       type: boolean
+      default_value: false
       label: Flip on mobile
       description: Flip columns order on mobile. Useful to display right column first (top) on mobile devices.
     vertical_center:
       type: boolean
+      default_value: false
       label: Vertical Center
     reverse:
       type: boolean
