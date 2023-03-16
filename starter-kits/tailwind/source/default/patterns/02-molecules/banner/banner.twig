@@ -6,32 +6,53 @@
  * See banner.wingsuit.yaml for documentation.
  */
 #}
-{# DEFAULTS #}
-{% set position = pattern_configuration('banner', null, 'position')['text'][position] %}
-{% set image_position = pattern_configuration('banner', null, 'position')['image'][position] %}
-{% set height = pattern_configuration('banner', null, 'height')['height'][height] %}
+{#
+  Default
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set position = position|default('center_center') %}
 
-{# SETTINGS #}
-{% set position_classes = ([
-  position
-]) | sort | join(' ') | trim %}
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('banner', null, 'defaults')['wrapper_classes']) %}
+{% set teaser_wrapper_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_wrapper_classes']) %}
+{% set teaser_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_classes']) %}
 
+{#
+  Classes
+#}
+{% set position_classes = [
+  'flex-1 flex',
+  pattern_configuration('banner', null, 'position')[position]['text']
+] | sort | join(' ') | trim %}
+
+{#
+  Render Slots
+#}
 {% set teaser %}{{- teaser -}}{% endset %}
 
-{# Template #}
-<div{{ attributes|default(create_attribute()).addClass('relative dark') }}>
+{#
+  Template
+#}
+<div {{ attributes }}>
   <div>{{ image }}</div>
-  <div class="absolute top-0 left-0 w-full h-full flex">
-    {% embed "@organisms/container/container.twig" with {padding_bottom: 'none', region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes}  only %}
+  <div {{ teaser_wrapper_attributes }}>
+    {% if teaser is not empty %}
+    {% embed "@organisms/container/container.twig" with {
+      padding_bottom: 'none',
+      region_attributes: region_attributes,
+      teaser: teaser,
+      headline: headline,
+      classes: position_classes,
+      teaser_attributes: teaser_attributes
+    }  only %}
       {% block content %}
-        <div class="p-6 dark:text-white">
-          {% if teaser is not empty %}
-            <div{{ region_attributes.teaser|default(create_attribute()).addClass('bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6') }}>
-              {{ teaser }}
-            </div>
-          {% endif %}
+        <div {{ teaser_attributes }}>
+          {{ teaser }}
         </div>
       {% endblock %}
     {% endembed %}
+    {% endif %}
   </div>
 </div>
