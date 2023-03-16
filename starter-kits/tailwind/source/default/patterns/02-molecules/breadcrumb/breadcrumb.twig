@@ -1,0 +1,101 @@
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set link_attributes = create_attribute() %}
+{% set last_item_attributes = create_attribute() %}
+{% set list_attributes = create_attribute() %}
+{% set list_item_attributes = create_attribute() %}
+
+{#
+  Attributes
+#}
+{% set attributes = attributes
+  .addClass([
+    pattern_configuration('breadcrumb', '', 'root_classes'),
+    pattern_configuration('breadcrumb', '', 'darkmode_classes')[darkmode]
+  ]|sort|join(' ')|trim)
+  .setAttribute('role', 'navigation')
+  .setAttribute('aria-labelledby', 'system-breadcrumb')
+%}
+
+{% set link_attributes = link_attributes
+  .addClass([
+    pattern_configuration('breadcrumb', '', 'link_classes'),
+  ] | sort | join(' ') | trim )
+%}
+
+{% set last_item_attributes = last_item_attributres
+  .addClass([
+    pattern_configuration('breadcrumb', '', 'list_item_classes'),
+  ] | sort | join(' ') | trim )
+%}
+
+{% set list_attributes = list_attributes
+  .addClass([
+    pattern_configuration('breadcrumb', '', 'list_classes'),
+  ] | sort | join(' ') | trim )
+%}
+
+{% set list_item_attributes = list_item_attributes
+  .addClass([
+    pattern_configuration('breadcrumb', '', 'list_item_classes'),
+  ] | sort | join(' ') | trim )
+%}
+
+{#
+  Render Slots
+#}
+{% set mobile_icon %}
+  <div class="mx-2 text-royal-500 dark:text-white">
+    {{ pattern('icon', {
+      icon: pattern_configuration('breadcrumb', '', 'icon')['symbol'],
+      size: pattern_configuration('breadcrumb', '', 'icon')['size']
+    }, 'spritemap' ) }}
+  </div>
+{% endset %}
+
+{#
+  Template
+#}
+  <nav {{ attributes }}>
+    <ol {{ list_attributes }}>
+      {% for item in links %}
+        {% set mobile_text %}
+          <a class="{{ last_item }} {{ link_classes }}" href="{{ item.url }}">
+            {{ item.text }}
+          </a>
+        {% endset %}
+        <li {{ list_item_attributes }}>
+          {% if loop.last and loop.length != 1%}
+            {% set last_item = '' %}
+            <div class="hidden lg:block font-semibold text-royal-500 dark:text-white no-underline"{{ last_item }} {{ link_classes }}">
+              {{ item.text }}
+            </div>
+          {% else %}
+            <a class="hidden lg:block font-normal text-black lg:hover:underline dark:text-sky-blue-300 {{ last_item }} {{ link_classes }}" href="{{ item.url }}">
+              {{ item.text }}
+            </a>
+          {% endif %}
+          <div class="block lg:hidden {{ list_classes }}">
+            {% if loop.length == 1 %}
+              {{ mobile_icon }}
+              {{ mobile_text }}
+            {% endif %}
+            {% if loop.revindex0 == 1 %}
+              {{ mobile_icon }}
+              {{ mobile_text }}
+            {% endif %}
+          </div>
+          {% if loop.last == false %}
+            <div class="hidden lg:block mx-1 lg:mx-2 text-royal-500 dark:text-white">
+              {{ pattern('icon', {icon: 'chevron-right' }, 'spritemap' ) }}
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+
+
+

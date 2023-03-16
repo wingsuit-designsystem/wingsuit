@@ -1,13 +1,4 @@
 {#
-/**
- * @file
- * avatar
- *
- * See avatar.wingsuit.yaml for documentation.
- */
-#}
-
-{#
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
@@ -15,6 +6,7 @@
 {#
   Attributes
 #}
+
 {% set attributes = attributes.addClass(pattern_configuration('avatar', null, 'defaults')['wrapper_classes']) %}
 {% set image_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['image_classes']) %}
 {% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['content_wrapper_classes']) %}
@@ -24,12 +16,12 @@
 {#
   Template
 #}
-
 <figure {{ attributes }}>
   <div {{ image_attributes }}>
     {{ image }}
   </div>
   <div {{ content_wrapper_attributes }}>
+
     <div>
       <blockquote>
         <div {{ name_attributes }}>
