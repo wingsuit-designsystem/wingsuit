@@ -9,16 +9,20 @@
 {#
   Attributes
 #}
-{% set attributes = attributes.addClass([
-  'tham',
-  pattern_configuration('hamburger', '', 'size')[size],
-  pattern_configuration('hamburger', '', 'active_behaviour')[active_behaviour],
-]|sort |join(' ')| trim) %}
+{% set attributes = attributes
+  .addClass([
+    'tham',
+    pattern_configuration('hamburger', '', 'size')[size],
+    pattern_configuration('hamburger', '', 'active_behaviour')[active_behaviour],
+  ]|sort |join(' ')| trim)
+%}
 
-{% set inner_attributes = inner_attributes.addClass([
-  'tham-inner',
-  pattern_configuration('hamburger', '', 'color'),
-]|sort |join(' ')| trim) %}
+{% set inner_attributes = inner_attributes
+  .addClass([
+    'tham-inner',
+    pattern_configuration('hamburger', '', 'color'),
+  ]|sort |join(' ')| trim)
+%}
 
 {#
 Template
