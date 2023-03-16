@@ -39,6 +39,6 @@ avatar:
     defaults:
       wrapper_classes: 'rounded-xl overflow-hidden p-8'
       image_classes: 'relative overflow-hidden flex-none w-[152px] h-[152px] lg:h-[168px] lg:w-[168px] rounded-full mx-auto aspect-[1/1]'
-      content_classes: 'mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col'
+      content_wrapper_classes: 'mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col'
       name_classes: 'text-xl font-bold'
       title_classes: 'text-base text-center mt-1'
