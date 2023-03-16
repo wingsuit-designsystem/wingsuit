@@ -54,14 +54,14 @@ module.exports = {
     fontSize: {
       xs: [rem(12), rem(16)],
       sm: [rem(14), rem(18)],
-      base: [rem(16), rem(24)],
-      lg: [rem(18), rem(28)],
+      base: [rem(16), rem(28)],
+      lg: [rem(18), rem(32)],
       xl: [rem(20), rem(28)],
-      '2xl': [rem(24), rem(32)],
+      '2xl': [rem(24), rem(28)],
       '3xl': [rem(30), rem(36)],
       '4xl': [rem(36), rem(42)],
-      '5xl': [rem(48), rem(52)],
-      '6xl': [rem(60), rem(66)],
+      '5xl': [rem(48), rem(55)],
+      '6xl': [rem(60), rem(69)],
     },
     extend: {
       height: {

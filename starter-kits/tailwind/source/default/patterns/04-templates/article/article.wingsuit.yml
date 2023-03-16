@@ -2,12 +2,13 @@ article:
   use: "@templates/article/article.twig"
   label: Article
   description: The article template.
+  dependencies:
+    - container
   fields:
     headline:
       type: text
       label: Headline
-      preview:
-        faker: lorem.word
+      preview: 'All about our new awesome Design'
     image:
       type: pattern
       label: Image
@@ -15,34 +16,79 @@ article:
         id: placeholder
         variant: image
         settings:
-          style: article
+          style: responsive_16_9_600w
     lead:
-      type: pattern
+      type: text
       label: Lead
-      preview:
-        id: rich_text
-        fields:
-          text: '<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
-            pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
-            Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-            in pretium orci vestibulum eget.</p>'
+      preview: 'George Soros discount window lending block chain transactions feel better hawkish federal reserve perplexed retail investor liquidity stashing loot. Chump change financial intelligence and money moves billion dollar networth all the boats rise sure thing. Yield to broker not bullish advice market upside downside.'
     text:
       type: pattern
       label: Text
       preview:
         id: rich_text
         fields:
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
-            pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
-            Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-            in pretium orci vestibulum eget. Class aptent taciti sociosqu ad litora torquent
-            per conubia nostra, per inceptos himenaeos. Duis pharetra luctus lacus ut
-            vestibulum. Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar vitae dolor.
-            Integer eu nibh at nisi ullamcorper sagittis id vel leo. Integer feugiat
-            faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc.
-            Phasellus bibendum turpis ut ipsum egestas, sed sollicitudin elit convallis.
-            Cras pharetra mi tristique sapien vestibulum lobortis. Nam eget bibendum metus,
-            non dictum mauris. Nulla at tellus sagittis, viverra est a, bibendum metus.'
+          text: '<h2>Read all you want all day long</h2>
+            <p>The European languages are members of the same family. Their separate existence is a myth.
+            For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+            in their grammar, their pronunciation and their most common words. Everyone realizes why a
+            new common language would be desirable: one could refuse to pay expensive translators. To
+            achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+            words. If several languages coalesce, the grammar of the resulting language is more simple
+            and regular than that of the individual languages. The new common language will be more simple
+            and regular than the existing European languages. It will be as simple as Occidental; in fact,
+            it will be Occidental. To an English person, it will seem like simplified English, as a skeptical
+            Cambridge friend of mine told me what Occidental is.</p>
+
+            <blockquote>
+            Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue nulla quam fermentum. Tortor
+            libero placerat curabitur in non viverra.
+            </blockquote>
+            <div class="text-center text-purple-600">Albert Einstein</div>
+
+            <ul>
+              <li>Quam turpis egestas aliquet ullamcorper tellus.</li>
+              <li>A sed sit morbi augue nulla quam fermentum.</li>
+              <li>Tortor libero placerat curabitur in non viverra.</li>
+              <li>Duis faucibus mattis elit nullam.</li>
+              <li>Sit tortor vitae sem nam tortor, viverra id facilisis.</li>
+              <li>Leo quis sapien mattis volutpat fermentum urna euismod aliquam.</li>
+            </ul>
+
+            <h3>Cool more great Headlines</h3>
+            <p>The European languages are members of the same family. Their separate existence
+            is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages
+            only differ in their grammar, their pronunciation and their most common words. Everyone
+            realizes why a new common language would be desirable: one could refuse to pay expensive
+            translators. To achieve this, it would be necessary to have uniform grammar, pronunciation
+            and more common words. If several languages coalesce, the grammar of the resulting language
+            is more simple and regular than that of the individual languages. The new common language will
+            be more simple and regular than the existing European languages. It will be as simple as Occidental;
+            in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical
+            Cambridge friend of mine told me what Occidental is.</p>
+
+            <h4>Super duper colors in the Design<h4>
+            <p>Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue nulla quam fermentum. Tortor libero
+            placerat curabitur in non viverra. Duis faucibus mattis elit nullam. Sit tortor vitae sem nam tortor, viverra
+            id facilisis. Leo quis sapien mattis volutpat fermentum urna euismod aliquam. Luctus fermentum, mollis aliquam
+            et, sapien purus duis risus consectetur. </p>
+            <p>Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue nulla quam fermentum. Tortor libero
+            placerat curabitur in non viverra. Duis faucibus mattis elit nullam. Sit tortor vitae sem nam tortor, viverra
+            id facilisis. Leo quis sapien mattis volutpat fermentum urna euismod aliquam. Luctus fermentum, mollis aliquam
+            et, sapien purus duis risus consectetur. Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue
+            nulla quam fermentum. Tortor libero placerat curabitur in non viverra.</p>
+            <p>Duis faucibus mattis elit nullam. Sit tortor vitae sem nam tortor, viverra id facilisis. Leo quis sapien mattis
+            volutpat fermentum urna euismod aliquam. Luctus fermentum, mollis aliquam et, sapien purus duis risus consectetur.
+            Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue nulla quam fermentum.</p>
+            <p>Tortor libero placerat curabitur in non viverra. Duis faucibus mattis elit nullam.  Sit tortor vitae sem nam
+            tortor, viverra id facilisis. Leo quis sapien mattis volutpat fermentum urna euismod aliquam. Luctus fermentum, mollis
+            aliquam et, sapien  purus duis risus consectetur.</p>
+
+            <h5>Read all you want all day long</h5>
+            <p>Quam turpis egestas aliquet ullamcorper tellus. A sed sit morbi augue nulla quam fermentum. Tortor libero
+            placerat curabitur in non viverra. Duis faucibus mattis elit nullam. Sit tortor vitae sem nam tortor, viverra
+            id facilisis. Leo quis sapien mattis volutpat fermentum urna euismod aliquam. Luctus fermentum, mollis aliquam
+            et, sapien purus duis risus consectetur. </p>
+            '
     button:
       type: pattern
       label: Button
