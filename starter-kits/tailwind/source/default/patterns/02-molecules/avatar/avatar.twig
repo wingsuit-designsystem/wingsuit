@@ -1,50 +1,35 @@
 {#
-/**
- * @file
- * avatar
- *
- * See avatar.wingsuit.yaml for documentation.
- */
-#}
-
-{#
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set image_attributes = image_attributes|default(create_attribute()) %}
 
 {#
-  Classes
+  Attributes
 #}
-{% set classes = [
-  text_align == 'center' ? 'text-center',
-  pattern_configuration('avatar', null, 'defaults')['wrapper_classes'],
-] | sort | join(' ') | trim %}
 
-{% set image_classes = [
-  pattern_configuration('avatar', null, 'defaults')['image_classes'],
-] | sort | join(' ') | trim %}
-
-{% set content_classes = [
-  pattern_configuration('avatar', null, 'defaults')['content_classes'],
-] | sort | join(' ') | trim %}
+{% set attributes = attributes.addClass(pattern_configuration('avatar', null, 'defaults')['wrapper_classes']) %}
+{% set image_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['image_classes']) %}
+{% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['content_wrapper_classes']) %}
+{% set name_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['name_classes']) %}
+{% set title_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['title_classes']) %}
 
 {#
   Template
 #}
-<figure{{attributes.addClass(classes)}}>
-  <div class="{{ image_classes }}">
+<figure {{ attributes }}>
+  <div {{ image_attributes }}>
     {{ image }}
   </div>
-  <div class="{{ content_classes }}">
+  <div {{ content_wrapper_attributes }}>
+
     <div>
       <blockquote>
-        <div class="{{ pattern_configuration('avatar', null, 'defaults')['name_classes'] }}">
+        <div {{ name_attributes }}>
           {{ full_name }}
         </div>
       </blockquote>
       <figcaption>
-        <div class="{{ pattern_configuration('avatar', null, 'defaults')['title_classes'] }}">
+        <div {{ title_attributes }}>
           {{ title }}
         </div>
       </figcaption>

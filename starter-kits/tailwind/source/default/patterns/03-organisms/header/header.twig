@@ -1,27 +1,41 @@
-{# SETTINGS #}
-{% set header_classes = ([
-  'header-offset bg-teal-800 w-full z-30 top-0 text-white',
-  variant == 'fixed'? 'fixed h-18 w-full',
-  variant == 'sticky'? 'sticky',
-]) | sort | join(' ') | trim %}
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
 
-{# TEMPLATE #}
-<header class="{{ header_classes }}">
-  {% embed "@organisms/container/container.twig" with {menu: menu, language_select: language_select, padding_bottom: 'none'} only%}
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('header', variant, 'default')['classes']).addClass(pattern_configuration('header', variant, 'functionality')['position']) %}
+{% set wrapper_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['wrapper_classes']) %}
+{% set logo_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['logo_classes']) %}
+{% set hamburger_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['hamburger_classes']) %}
+{% set menu_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['menu_classes']) %}
+
+{#
+  TEMPLATE
+#}
+<header {{ attributes }}>
+  {% embed "@organisms/container/container.twig" with {
+    menu: menu,
+    language_select: language_select,
+    padding_bottom: 'none',
+    wrapper_attributes: wrapper_attributes,
+    logo_attributes: logo_attributes,
+    hamburger_attributes: hamburger_attributes,
+    menu_attributes: menu_attributes
+  } only%}
     {% block content %}
-      <div class="flex py-3 lg:py-6 justify-between md:flex-row">
-        <div class="w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl">
-          {% include "@atoms/logo/logo.twig" only %}
+      <div {{ wrapper_attributes }}>
+        <div {{ logo_attributes }}>
+          {{ pattern('logo', null, '' ) }}
         </div>
-        <div class="flex justify-end items-center flex-1 lg:hidden">
-          {% include "@atoms/hamburger/hamburger.twig" only %}
+        <div {{ hamburger_attributes }}>
+          {{ pattern('hamburger', null, '' ) }}
         </div>
-        <div class="w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent" :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+        <div {{ menu_attributes }} :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
           {{ menu }}
         </div>
-        <ul class="list-reset flex justify-end lg:flex-1 items-center hidden">
-          <li>{{ language_select }}</li>
-        </ul>
       </div>
     {% endblock %}
   {% endembed %}

@@ -1,0 +1,40 @@
+breadcrumb:
+  use: "@molecules/breadcrumb/breadcrumb.twig"
+  label: Breadcrumb
+  description: Drupal breadcrumb component
+  dependencies:
+    - icon
+  fields:
+    links:
+      type: object
+      label: Breadcrumb
+      preview:
+        - text: 'Startseite'
+          url: '#'
+        - text: 'Produkte'
+          url: '#'
+        - text: 'Vibrationstraining'
+          url: '#'
+        - text: 'SONIC VITAL XTcoloR'
+          url: '#'
+  configuration:
+    darkmode_classes:
+      true: 'dark'
+    root_classes: 'w-full truncate'
+    list_classes: 'flex items-center'
+    list_item_classes: 'flex items-center'
+    link_classes:
+      regular: 'text-sm lg:text-base'
+      loop:
+        last: 'font-normal text-black hover:underline dark:text-sky-blue-300'
+    mobile_icon:
+      symbol: 'chevron-left'
+      size: 'small'
+    desktop_icon:
+      symbol: 'chevron-right'
+  settings:
+    darkmode:
+      label: Darkmode for storybook presentation
+      type: boolean
+      default_value: false
+

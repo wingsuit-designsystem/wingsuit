@@ -1,5 +1,4 @@
 menu:
-  use: "@molecules/menu/menu.twig"
   label: Menu
   description: Primary and footer menu component.
   dependencies:
@@ -11,6 +10,7 @@ menu:
       label: Items
   variants:
     primary:
+      use: "@molecules/menu/menu-primary.twig"
       label: Primary
       fields:
         items:
@@ -101,6 +101,7 @@ menu:
             title: Contact
             url: "#"
     footer:
+      use: "@molecules/menu/menu-footer.twig"
       label: Footer
       description: The footer menu.
       fields:
@@ -156,11 +157,4 @@ menu:
               11:
                 title: Imprint
                 url: '#'
-      configuration:
-        parent_list_classes: ''
-        parent_list_item_classes: ''
-        parent_link_classes: 'text-green-700 text-lg font-bold dark:text-white pb-2'
-        child_list_classes:  ''
-        child_list_item_classes: ''
-        child_link_classes: 'text-green-700 pb-2 dark:text-white text-green-700'
   visibility: storybook

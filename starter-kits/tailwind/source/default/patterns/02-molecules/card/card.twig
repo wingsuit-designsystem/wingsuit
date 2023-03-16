@@ -1,32 +1,42 @@
-  {# SETTINGS #}
-
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
 {% set element = element|default('article') %}
 
-{% set classes = ([
-  ' group',
-] | sort | join(' ') | trim ) %}
-
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
-
+{#
+  Internal Logic
+#}
 {% if url is not empty %}
   {% set attributes = attributes.setAttribute('href', url) %}
   {% set element = 'a' %}
 {% endif %}
 
-{% set wrapper_classes = ([
-  pattern_configuration('card', variant, 'defaults')['wrapper_classes'],
-  pattern_configuration('card', variant, 'direction')['flex'],
-] | sort | join(' ') | trim ) %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass(['group',] | sort | join(' ') | trim ) %}
 
-{% set image_classes = ([
-  pattern_configuration('card', variant, 'image')['size'],
-  ] | sort | join(' ') | trim ) %}
+{% set wrapper_attributes = wrapper_attributes
+  .addClass([
+    pattern_configuration('card', variant, 'defaults')['wrapper_classes'],
+    pattern_configuration('card', variant, 'direction')['flex'],
+  ] | sort | join(' ') | trim )
+%}
 
-{# TEMPLATE #}
+{% set image_attributes = image_attributes
+  .addClass([
+    pattern_configuration('card', variant, 'image')['size'],
+    ] | sort | join(' ') | trim )
+%}
+
+{#
+  Template
+#}
 <{{ element }} {{ attributes }}>
-  <div class="{{ wrapper_classes }}">
+  <div {{ wrapper_attributes }}>
     {% if image is not empty %}
-      <div class="{{ image_classes }}">
+      <div {{ image_attributes }}>
         {% block image %}
           {{ image }}
         {% endblock %}
