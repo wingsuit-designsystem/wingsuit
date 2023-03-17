@@ -111,6 +111,4 @@ rich_text:
           </tr>
           </tbody>
         </table>
-  variants:
-    default:
-      label: Default
+
