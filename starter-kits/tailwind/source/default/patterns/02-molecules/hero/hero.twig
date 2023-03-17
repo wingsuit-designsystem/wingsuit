@@ -14,22 +14,21 @@
 {#
   Attributes
 #}
-{% set cell_left_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'default')['cell_left_classes']) %}
-{% set cell_right_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'default')['cell_left_classes']) %}
+{% set cell_left_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['cell_left_classes']) %}
+{% set cell_right_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['cell_left_classes']) %}
 {% set gradiant_first_attributes = create_attribute().addClass([
-    pattern_configuration('hero', null, 'default')['gradiant_classes']['base'],
-    pattern_configuration('hero', null, 'default')['gradiant_classes']['first_layer'][direction_key]
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['first_layer'][direction_key]
   ] | sort | join(' ') | trim ) %}
 {% set gradiant_second_attributes = create_attribute().addClass([
-    pattern_configuration('hero', null, 'default')['gradiant_classes']['base'],
-    pattern_configuration('hero', null, 'default')['gradiant_classes']['second_layer'][direction_key]
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['second_layer'][direction_key]
   ] | sort | join(' ') | trim ) %}
 {% set gradiant_third_attributes = create_attribute().addClass([
-  pattern_configuration('hero', null, 'default')['gradiant_classes']['base'],
-  pattern_configuration('hero', null, 'default')['gradiant_classes']['third_layer'][direction_key]
+  pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+  pattern_configuration('hero', null, 'defaults')['gradiant_classes']['third_layer'][direction_key]
 ] | sort | join(' ') | trim ) %}
-
-{% set image_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'default')['image_classes']) %}
+{% set image_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['image_classes']) %}
 
 {#
   TEMPLATE

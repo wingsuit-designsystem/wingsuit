@@ -10,14 +10,12 @@
 {#
   Defaults
 #}
-
 {% set attributes = attributes|default(create_attribute()) %}
 {% set align = align|default('center') %}
 
 {#
-  Classes
+  Attributes
 #}
-
 {% set attributes = attributes.addClass([
     pattern_configuration('button_group', null, 'default')['classes'],
     pattern_configuration('button_group', null, 'align')[align]['direction']

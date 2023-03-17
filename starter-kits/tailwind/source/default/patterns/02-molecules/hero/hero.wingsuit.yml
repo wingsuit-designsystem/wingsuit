@@ -18,10 +18,10 @@ hero:
         settings:
           url: file_url('ws-assets://images/hero.png')
   configuration:
-    default:
+    defaults:
       cell_left_classes: 'flex flex-col relative'
       cell_right_classes: 'flex flex-1 items-center'
-      gradient_classes:
+      gradiant_classes:
         base: 'absolute transform filter'
         first_layer:
           forward: 'w-[435px] h-[434px] -rotate-[135deg] lg:rotate-0 lg:left-[232px] top-[-90px] lg:top-[73px] bg-gradient-to-b to-transparent from-[#00C2FF] blur-[70px] opacity-20'
