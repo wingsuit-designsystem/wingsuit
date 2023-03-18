@@ -154,7 +154,7 @@ export async function renderPatternPreview(
   Object.keys(settings).forEach((key) => {
     if (settings[key].type === 'attributes') {
       // eslint-disable-next-line no-param-reassign
-      variables[key] = new TwigAttribute(patternVariables[key]);
+      variables[key] = variables[key] ?  new TwigAttribute(variables[key]) : new TwigAttribute(patternVariables[key]);
     }
   });
   return renderPattern(

@@ -10,18 +10,22 @@
  * @see template_preprocess_input()
  */
 #}
-{{ dump(attributes) }}
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
 
-{# VARIANTS #}
+{#
+  Internal logic
+#}
+{% set active_key = attributes.hasAttribute('disabled') == false ? 'active' : 'disabled' %}
+
+{#
+  Classes
+#}
 {% set classes = ([
-  variant == 'textfield' or
-  variant == 'password' or
-  variant == 'email' or
-  variant == 'date' or
-  variant == 'tel' ? 'form-input w-full',
-  variant == 'radio' ? 'form-radio mr-1',
-  variant == 'checkbox' ? 'form-checkbox mr-1',
-  variant == 'submit' ? 'bg-teal-500 text-white hover:bg-teal-600 px-2 py-1'
+  pattern_configuration('form_submit', variant, 'classes')['wrapper'],
+  pattern_configuration('form_submit', variant, 'classes')[active_key],
 ] | sort | join(' ') | trim )%}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}

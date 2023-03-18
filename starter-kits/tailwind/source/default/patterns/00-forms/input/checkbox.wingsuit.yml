@@ -1,0 +1,16 @@
+form_checkbox:
+  use: "@forms/input/checkbox.twig"
+  label: Checkbox
+  description: Input forms styled with Tailwind custom forms.
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "type=\"checkbox\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: ''

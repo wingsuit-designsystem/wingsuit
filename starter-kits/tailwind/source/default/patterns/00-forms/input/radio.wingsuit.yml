@@ -1,0 +1,16 @@
+form_radio:
+  use: "@forms/input/radio.twig"
+  label: Radio
+  description: Input forms styled with Tailwind custom forms.
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"Value\" type=\"radio\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: ''

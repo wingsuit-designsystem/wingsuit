@@ -1,0 +1,16 @@
+form_file:
+  use: "@forms/input/input.twig"
+  label: File
+  description: Input forms styled with Tailwind custom forms.
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\" type=\"file\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: ''
