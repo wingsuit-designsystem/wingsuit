@@ -56,8 +56,4 @@ landing:
             column_2:
               - id: card
                 variant: horizontal
-        - id: section
-          variant: 1_column
-          fields:
-            column_1:
-              - id: tabs
+

@@ -1,0 +1,18 @@
+form_submit:
+  use: "@forms/submit/submit.twig"
+  label: Submit
+  description: Styled Submit Button.
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "type=\"submit\" value=\"Send\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: 'btn flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400 py-2 px-4 text-base tracking-[0.01em]'
+      active: 'bg-purple-600 dark:bg-white hover:bg-purple-800 dark:hover:bg-purple-100 text-white dark:text-purple-700'
+      disabled: 'bg-gray-300 text-gray-400'

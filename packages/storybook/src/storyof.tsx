@@ -29,12 +29,6 @@ function getStorybookControlsOptions(setting) {
 export function getArgs(defaultArgs, variant: PatternVariant) {
   const fields = variant.getFields();
   const resultArgs = { ...defaultArgs, ...variant.getVariables(true, true, false) };
-  const settings = variant.getSettings();
-  Object.keys(settings).forEach((key) => {
-    if (settings[key].getType() === 'attributes') {
-      resultArgs[key] = new TwigAttribute(resultArgs[key]);
-    }
-  });
   Object.keys(fields).forEach((key) => {
     const field = fields[key];
     if (field.getType() === 'pattern') {

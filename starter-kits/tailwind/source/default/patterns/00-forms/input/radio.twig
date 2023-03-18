@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+  Classes
+#}
+{% set classes = ([
+  'form-radio',
+  'form-radio-icon-unchecked checked:form-radio-icon-checked',
+  pattern_configuration('form_radio', variant, 'classes')['wrapper']
+] | sort | join(' ') | trim )%}
+
+{#
+  Template
+#}
+<input {{ attributes.addClass(classes) }} />{{ children }}

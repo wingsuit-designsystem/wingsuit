@@ -1,0 +1,19 @@
+form_select:
+  use: "@forms/input/select.twig"
+  label: Select
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    options:
+      type: object
+      label: Options
+      preview:
+        - label: Option 1
+          type: "option"
+          selected: true
+        - label: Option 2
+          type: "option"
+        - label: Option 3
+          type: "option"

@@ -1,0 +1,9 @@
+form_label:
+  use: "@forms/label/form-label.twig"
+  label: Label
+  fields:
+    title:
+      type: text
+      label: Title
+      preview:
+        faker: lorem.word

@@ -1,5 +1,3 @@
-import { Preview } from './definition';
-
 const faker = require('faker');
 
 export default class Property {

@@ -1,0 +1,19 @@
+form_radios:
+  use: "@forms/input/radios.twig"
+  label: Radios
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_element
+          variant: "radio"
+        - id: form_element
+          variant: "radio"
+        - id: form_element
+          variant: "radio"
+  visibility: storybook

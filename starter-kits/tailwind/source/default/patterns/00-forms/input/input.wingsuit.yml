@@ -1,0 +1,37 @@
+form_input:
+  use: "@forms/input/input.twig"
+  label: Input
+  description: Input forms styled with Tailwind custom forms.
+  variants:
+    textfield:
+      label: Textfield
+      settings:
+        attributes: "type=\"text\" placeholder=\"Placeholder\""
+    password:
+      label: Password
+      settings:
+        attributes: "type=\"password\" placeholder=\"Password\""
+    email:
+      label: Email
+      settings:
+        attributes: "type=\"email\" placeholder=\"Email\""
+    tel:
+      label: Tel
+      settings:
+        attributes: "type=\"tel\""
+    date:
+      label: Date
+      settings:
+        attributes: "type=\"date\""
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: 'p-4 w-full'

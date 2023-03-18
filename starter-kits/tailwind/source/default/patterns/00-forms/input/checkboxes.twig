@@ -9,7 +9,19 @@
  *
  * @see template_preprocess_checkboxes()
  */
- @todo: remove this file once https://www.drupal.org/node/1819284 is resolved.
- This is identical to core/modules/system/templates/container.html.twig
 #}
+
+
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+Classes
+#}
+{% set classes = ([
+  pattern_configuration('form_checkboxes', variant, 'classes')['wrapper']
+] | sort | join(' ') | trim )%}
+
 <div{{ attributes }}>{{ children }}</div>

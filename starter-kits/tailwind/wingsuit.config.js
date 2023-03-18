@@ -14,6 +14,7 @@ module.exports = {
     default: {
       namespaces: {
         tokens: path.resolve(__dirname, 'source/default/tokens'),
+        forms: path.resolve(patterns, '00-forms'),
         protons: path.resolve(patterns, '00-protons'),
         atoms: path.resolve(patterns, '01-atoms'),
         molecules: path.resolve(patterns, '02-molecules'),

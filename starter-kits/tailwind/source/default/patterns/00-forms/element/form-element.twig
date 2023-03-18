@@ -41,18 +41,14 @@
  * - disabled: True if the element is disabled.
  * - title_display: Title display setting.
  *
- * @see template_preprocess_form_element()
  */
 #}
-{# FORM-ELEMENT CLASSES #}
 {%
   set classes = [
     'js-form-item',
     'form-item',
-    variant == 'textfield' or
-    variant == 'password' or
-    variant == 'radio'
-    ? 'block pb-5'
+    pattern_configuration('form_element', variant, 'defaults')['wrapper_classes'],
+    pattern_configuration('form_element', variant, 'wrapper_classes')
   ]
 %}
 {%

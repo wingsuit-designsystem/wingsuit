@@ -10,7 +10,21 @@
  * @see template_preprocess_select()
  */
 #}
-<select{{ attributes.addClass('form-select w-full') }}>
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+Classes
+#}
+{% set classes = ([
+  'form-select',
+  pattern_configuration('form_select', variant, 'classes')['wrapper']
+] | sort | join(' ') | trim )%}
+
+<select{{ attributes.addClass(classes) }}>
   {% for option in options %}
     {% if option.type == 'optgroup' %}
       <optgroup label="{{ option.label }}">
