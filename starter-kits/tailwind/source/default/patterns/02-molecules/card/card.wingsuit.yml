@@ -8,7 +8,6 @@ card:
     - rich_snippet.fields
   dependencies:
     - rich_snippet
-  fields:
   variants:
     default:
       label: Default
