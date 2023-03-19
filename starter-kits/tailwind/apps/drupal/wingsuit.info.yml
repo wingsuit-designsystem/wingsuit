@@ -1,8 +1,7 @@
 name: Wingsuit
 type: theme
 description: A Theme for UIPatterns and Storybook.
-base theme: stable
-core: 8.x
+base theme: false
 libraries:
   - wingsuit/core
 regions:
@@ -12,21 +11,11 @@ regions:
   breadcrumb: Breadcrumb
   content: Content
   footer_menu: Footer menu
-component-libraries:
-  protons:
-    paths: []
-  atoms:
-    paths:
-      - ../../dist/app-drupal/atomic/patterns/01-atoms
-  molecules:
-    paths:
-      - ../../dist/app-drupal/atomic/patterns/02-molecules
-  organisms:
-    paths:
-      - ../../dist/app-drupal/atomic/patterns/03-organisms
-  templates:
-    paths:
-      - ../../dist/app-drupal/atomic/patterns/04-templates
-  pages:
-    paths: []
-core_version_requirement: ^8 || ^9
+components:
+  namespaces:
+    atoms: '../../dist/app-drupal/templates/atoms'
+    molecules: '../../dist/app-drupal/templates/molecules'
+    organisms: '../../dist/app-drupal/templates/organisms'
+    templates: '../../dist/app-drupal/templates/templates'
+
+core_version_requirement: ^9 || ^10
