@@ -20,7 +20,9 @@
 #}
 {% set classes = ([
   'form-checkbox',
-  'form-checkbox-unchecked checked:form-checkbox-checked',
+  'bg-form-checkbox-icon-unchecked checked:bg-form-checkbox-icon-checked',
+  'dark:bg-dark-form-checkbox-icon-unchecked dark:checked:bg-dark-form-checkbox-icon-checked',
+  'bg-no-repeat bg-center border-0 w-5 h-5',
   pattern_configuration('form_checkbox', variant, 'classes')['wrapper']
 ] | sort | join(' ') | trim )%}
 

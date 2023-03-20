@@ -21,7 +21,9 @@
 #}
 {% set classes = ([
   'form-radio',
-  'form-radio-icon-unchecked checked:form-radio-icon-checked',
+  'bg-form-radio-icon-unchecked checked:bg-form-radio-icon-checked',
+  'dark:bg-dark-form-radio-icon-unchecked dark:checked:bg-dark-form-radio-icon-checked',
+  'bg-no-repeat bg-center border-0 w-5 h-5',
   pattern_configuration('form_radio', variant, 'classes')['wrapper']
 ] | sort | join(' ') | trim )%}
 
