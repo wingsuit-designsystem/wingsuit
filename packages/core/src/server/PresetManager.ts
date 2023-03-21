@@ -171,9 +171,12 @@ export default class PresetManager {
           optimization: {
             minimizer: [],
           },
-          plugins: [new ProgressPlugin({ profile: false }), new NodePolyfillPlugin({
-            includeAliases: ['buffer']
-          })],
+          plugins: [
+            new ProgressPlugin({ profile: false }),
+            new NodePolyfillPlugin({
+              includeAliases: ['buffer'],
+            }),
+          ],
         },
       ]
     );
