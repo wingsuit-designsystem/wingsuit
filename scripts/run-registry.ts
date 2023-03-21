@@ -1,50 +1,40 @@
 import { exec } from 'child_process';
+import { remove, pathExists, readJSON } from 'fs-extra';
 import chalk from 'chalk';
 import path from 'path';
 import program from 'commander';
-import detectFreePort from 'detect-port';
-import dedent from 'ts-dedent';
-import fs from 'fs';
-import yaml from 'js-yaml';
-import nodeCleanup from 'node-cleanup';
 
-import startVerdaccioServer from 'verdaccio';
+import { runServer, parseConfigFile } from 'verdaccio';
 import pLimit from 'p-limit';
-// @ts-ignore
+import type { Server } from 'http';
 import { maxConcurrentTasks } from './utils/concurrency';
-import { listOfPackages, Package } from './utils/list-packages';
+import { listOfPackages } from './utils/list-packages';
 
 program
   .option('-O, --open', 'keep process open')
-  .option('-P, --publish', 'should publish packages')
-  .option('-p, --port <port>', 'port to run https server on');
+  .option('-P, --publish', 'should publish packages');
 
 program.parse(process.argv);
 
 const logger = console;
 
-const freePort = (port?: number) => port || detectFreePort(port);
-
-const startVerdaccio = (port: number) => {
+const startVerdaccio = async () => {
   let resolved = false;
   return Promise.race([
     new Promise((resolve) => {
       const cache = path.join(__dirname, '..', '.verdaccio-cache');
+
       const config = {
-        ...(yaml.safeLoad(
-          fs.readFileSync(path.join(__dirname, 'verdaccio.yaml'), 'utf8')
-        ) as Record<string, any>),
+        ...parseConfigFile(path.join(__dirname, 'verdaccio.yaml')),
         self_path: cache,
       };
 
-      const onReady = (webServer: any) => {
-        webServer.listen(port, () => {
+      runServer(config).then((app: Server) => {
+        app.listen(6001, () => {
           resolved = true;
-          resolve(webServer);
+          resolve(app);
         });
-      };
-
-      startVerdaccioServer(config, 6000, cache, '1.0.0', 'verdaccio', onReady);
+      });
     }),
     new Promise((_, rej) => {
       setTimeout(() => {
@@ -54,61 +44,11 @@ const startVerdaccio = (port: number) => {
         }
       }, 10000);
     }),
-  ]);
-};
-
-const registryUrlNPM = (url?: string) =>
-  new Promise<string>((res, rej) => {
-    const args = url ? ['config', 'set', 'registry', url] : ['config', 'get', 'registry'];
-    exec(`npm ${args.join(' ')}`, { cwd: path.join(process.cwd(), '..') }, (e, stdout) => {
-      if (e) {
-        rej(e);
-      } else {
-        res(url || stdout.toString().trim());
-      }
-    });
-  });
-
-const registryUrlYarn = (url?: string) =>
-  new Promise<string>((res, rej) => {
-    const args = url
-      ? ['config', 'set', 'npmRegistryServer', url]
-      : ['config', 'get', 'npmRegistryServer'];
-    exec(`yarn ${args.join(' ')}`, { cwd: path.join(__dirname, '..') }, (e, stdout) => {
-      if (e) {
-        console.log(stdout.toString());
-        rej(e);
-      } else {
-        res(url || stdout.toString().trim());
-      }
-    });
-  });
-
-const registriesUrl = (yarnUrl?: string, npmUrl?: string) =>
-  Promise.all([registryUrlYarn(yarnUrl), registryUrlNPM(npmUrl || yarnUrl)]);
-
-const applyRegistriesUrl = (
-  yarnUrl: string,
-  npmUrl: string,
-  originalYarnUrl: string,
-  originalNpmUrl: string
-) => {
-  logger.log(`↪️  changing system config`);
-  nodeCleanup(() => {
-    registriesUrl(originalYarnUrl, originalNpmUrl);
-
-    logger.log(dedent`
-      Your registry config has been restored from:
-      npm: ${npmUrl} to ${originalNpmUrl} 
-      yarn: ${yarnUrl} to ${originalYarnUrl} 
-    `);
-  });
-
-  return registriesUrl(yarnUrl, npmUrl);
+  ]) as Promise<Server>;
 };
 
 const currentVersion = async () => {
-  const { version } = (await import('../lerna.json')).default;
+  const { version } = await readJSON(path.join(__dirname, '..', 'package.json'));
   return version;
 };
 
@@ -145,57 +85,50 @@ const publish = (packages: { name: string; location: string }[], url: string) =>
   );
 };
 
-// const addUser = (url: string) =>
-//   new Promise((res, rej) => {
-//     logger.log(`👤 add temp user to verdaccio`);
+const addUser = (url: string) =>
+  new Promise<void>((res, rej) => {
+    logger.log(`👤 add temp user to verdaccio`);
 
-//     exec(`npx npm-cli-adduser -r "${url}" -a -u user -p password -e user@example.com`, (e) => {
-//       if (e) {
-//         rej(e);
-//       } else {
-//         res();
-//       }
-//     });
-//   });
+    exec(`npx npm-cli-adduser -r "${url}" -a -u user -p password -e user@example.com`, (e) => {
+      if (e) {
+        rej(e);
+      } else {
+        res();
+      }
+    });
+  });
 
 const run = async () => {
-  const port = await freePort(program.port);
-  logger.log(`🌏 found a open port: ${port}`);
-
-  const verdaccioUrl = `http://localhost:${port}`;
-
-  logger.log(`🔖 reading current registry settings`);
-  let [originalYarnRegistryUrl, originalNpmRegistryUrl] = await registriesUrl();
-  if (
-    originalYarnRegistryUrl.includes('localhost') ||
-    originalNpmRegistryUrl.includes('localhost')
-  ) {
-    originalYarnRegistryUrl = 'https://registry.npmjs.org/';
-    originalNpmRegistryUrl = 'https://registry.npmjs.org/';
-  }
+  const verdaccioUrl = `http://localhost:6001`;
 
   logger.log(`📐 reading version of storybook`);
   logger.log(`🚛 listing storybook packages`);
+
+  if (!process.env.CI) {
+    // when running e2e locally, clear cache to avoid EPUBLISHCONFLICT errors
+    const verdaccioCache = path.resolve(__dirname, '..', '.verdaccio-cache');
+    if (await pathExists(verdaccioCache)) {
+      logger.log(`🗑 cleaning up cache`);
+      await remove(verdaccioCache);
+    }
+  }
+
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
-  // @ts-ignore
-  const [verdaccioServer, packages, version] = await Promise.all<any, Package[], string>([
-    startVerdaccio(port),
+  const [verdaccioServer, packages, version] = await Promise.all([
+    startVerdaccio(),
     listOfPackages(),
     currentVersion(),
   ]);
 
   logger.log(`🌿 verdaccio running on ${verdaccioUrl}`);
 
-  await applyRegistriesUrl(
-    verdaccioUrl,
-    verdaccioUrl,
-    originalYarnRegistryUrl,
-    originalNpmRegistryUrl
-  );
-
-  // first time running, you might need to enable this
-  // await addUser(verdaccioUrl);
+  // in some environments you need to add a dummy user. always try to add & catch on failure
+  try {
+    await addUser(verdaccioUrl);
+  } catch (e) {
+    //
+  }
 
   logger.log(`📦 found ${packages.length} storybook packages at version ${chalk.blue(version)}`);
 
