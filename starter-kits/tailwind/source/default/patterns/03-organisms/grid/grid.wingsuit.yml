@@ -57,6 +57,7 @@ grid:
     reverse:
       type: boolean
       label: Reverse
+      allow_token: true
       group: tab_cells
 
   configuration:

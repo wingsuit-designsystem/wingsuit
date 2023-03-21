@@ -10,18 +10,19 @@
 {#
 Defaults
 #}
-{% set size = size|default('default') %}
+{% set attributes = attributes|default(create_attribute()) %}
 
 {#
   Attributes
 #}
+{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'default')['attributes_classes']) %}
 {% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'default')['preheadline_classes']) %}
 {% set headline_attributes = create_attribute().addClass([
   'font-bold',
-  pattern_configuration('rich_snippet', variant, 'size')[size]['headline_text'],
-  pattern_configuration('rich_snippet', variant, 'size')[size]['spacing'],
+  pattern_configuration('rich_snippet', variant, 'headline_text'),
+  pattern_configuration('rich_snippet', variant, 'spacing'),
 ] | sort | join(' ') | trim ) %}
-{% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'size')[size]['text']) %}
+{% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
 
 {#
   Render Slots
@@ -33,7 +34,7 @@ Defaults
 {#
   Template
 #}
-<div>
+<div {{ attributtes }}>
   {% if preheadline is not empty %}
     <div {{ preheadline_attributes }}>
       {{ preheadline }}

@@ -8,6 +8,8 @@ core:
         preprocess: true
       ws-assets://menu-primary.css:
         preprocess: true
+      ws-assets://rich-text.css:
+        preprocess: true
 
   js:
     ws-assets://vendors/alpine.js:

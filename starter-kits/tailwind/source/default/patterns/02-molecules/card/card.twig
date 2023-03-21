@@ -15,17 +15,14 @@ Defaults
 {#
 Attributes
 #}
-{% set attributes = attributes.addClass(['group',] | sort | join(' ') | trim ) %}
-
-{% set wrapper_attributes = wrapper_attributes
-  .addClass([
+{% set attributes = attributes.addClass(pattern_configuration('card', variant, 'defaults')['attribute_classes'] ) %}
+{% set wrapper_attributes = create_attribute().addClass([
     pattern_configuration('card', variant, 'defaults')['wrapper_classes'],
     pattern_configuration('card', variant, 'direction')['flex'],
   ] | sort | join(' ') | trim )
 %}
 
-{% set image_attributes = image_attributes
-  .addClass([
+{% set image_attributes = create_attribute().addClass([
     pattern_configuration('card', variant, 'image')['size'],
     ] | sort | join(' ') | trim )
 %}
@@ -42,8 +39,8 @@ Attributes
         {% endblock %}
       </div>
     {% endif %}
-    <div class="p-6 flex-1 bg-white">
-      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action}, 'small', {size: 'small'} ) }}
+    <div class="p-6 flex flex-1 bg-white">
+      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action}, 'small' ) }}
     </div>
   </div>
 </{{ element }}>
