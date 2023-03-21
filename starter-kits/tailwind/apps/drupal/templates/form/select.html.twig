@@ -10,4 +10,4 @@
  * @see template_preprocess_select()
  */
 #}
-{% include "@atoms/forms/_select.twig" %}
+{{ pattern('form_select', {options: options} ) }}

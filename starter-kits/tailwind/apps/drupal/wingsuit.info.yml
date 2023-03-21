@@ -13,6 +13,8 @@ regions:
   footer_menu: Footer menu
 components:
   namespaces:
+    forms: '../../dist/app-drupal/templates/forms'
+    "ws-icon-spritemap": '../../dist/app-drupal/templates/ws-icon-spritemap'
     atoms: '../../dist/app-drupal/templates/atoms'
     molecules: '../../dist/app-drupal/templates/molecules'
     organisms: '../../dist/app-drupal/templates/organisms'

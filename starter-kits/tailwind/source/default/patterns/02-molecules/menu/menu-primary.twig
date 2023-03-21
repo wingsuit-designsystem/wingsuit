@@ -35,14 +35,14 @@
                 </a>
                 {% if item.below %}
                   <div
-                    class=" {{
+                    class="w-[18px] h-5 {{
                       menu_level == 1
                         ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                         : 'float-right lg:hidden center-origin transition duration-100 ease-in'
                     }} cursor-pointer"
                     {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
                     :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-                    {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
+                    {{ pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) }}
                     {{ menus.dropdown_menu(menu_level) }}
                   </div>
                 {% endif %}
@@ -75,7 +75,7 @@
           {{ item.title }}
         </a>
         {% if item.below is not empty %}
-          <div class="{{
+          <div class="w-[18px] h-5 {{
               menu_level == 1
                 ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                 : 'float-right center-origin transition duration-100 ease-in lg:group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'
