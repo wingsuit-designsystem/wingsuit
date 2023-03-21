@@ -56,6 +56,7 @@
   <div {{ teaser_wrapper_attributes }}>
     {% if teaser is not empty %}
     {% embed "@organisms/container/container.twig" with {
+      width: 'small',
       padding_bottom: 'none',
       region_attributes: region_attributes,
       teaser: teaser,

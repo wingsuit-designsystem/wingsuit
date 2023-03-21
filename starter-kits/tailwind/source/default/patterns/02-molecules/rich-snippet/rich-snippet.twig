@@ -11,33 +11,42 @@
 Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set headline_tag = headline_tag|default('h2') %}
 
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'default')['attributes_classes']) %}
+{% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'default')['preheadline_classes']) %}
+{% set headline_attributes = create_attribute().addClass([
+  'font-bold',
+  pattern_configuration('rich_snippet', variant, 'headline_text'),
+  pattern_configuration('rich_snippet', variant, 'spacing'),
+] | sort | join(' ') | trim ) %}
+{% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
+
+{#
+  Render Slots
+#}
 {% set preheadline %}{{- preheadline -}}{% endset %}
 {% set headline %}{{- headline -}}{% endset %}
 {% set text %}{{- text -}}{% endset %}
 
-{% set headline_classes = ([
-  'font-bold',
-  pattern_configuration('rich_snippet', variant, 'size')['headline_size'][size],
-  pattern_configuration('rich_snippet', variant, 'size')['spacing'][size],
-] | sort | join(' ') | trim ) %}
 {#
-Template
+  Template
 #}
-<div>
+<div {{ attributtes }}>
   {% if preheadline is not empty %}
-    <div class="text-teal-500 text-2xl mb-2 font-bold">
+    <div {{ preheadline_attributes }}>
       {{ preheadline }}
     </div>
   {% endif %}
   {% if headline %}
-    <div class="{{ headline_classes }}">
+    <div {{ headline_attributes }}>
       {{ headline }}
     </div>
   {% endif %}
   {% if text %}
-    <p class="text-base {{ variant == 'large' ? 'text-base lg:text-lg' }}">
+    <p {{ text_attributes }}>
       {{ text }}
     </p>
   {% endif %}

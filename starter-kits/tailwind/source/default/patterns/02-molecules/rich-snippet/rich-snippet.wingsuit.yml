@@ -36,32 +36,23 @@ rich_snippet:
   variants:
     small:
       label: Small
-      settings:
-        size: small
+      configuration:
+        headline_text: 'text-2xl'
+        text: 'text-base'
+        spacing: 'mb-3'
     default:
       label: Default
-      settings:
-        size: default
+      configuration:
+        headline_text: 'text-2xl lg:text-4xl'
+        text: 'text-base'
+        spacing: 'mb-3 lg:mb-4'
     large:
       label: Large
-      settings:
-        size: default
+      configuration:
+        headline_text: 'text-4xl lg:text-6xl'
+        text: 'text-base lg:text-lg'
+        spacing: 'mb-4'
   configuration:
-    size:
-      headline_size:
-        small: 'text-2xl'
-        default: 'text-2xl lg:text-4xl'
-        large: 'text-4xl lg:text-6xl'
-      spacing:
-        small: 'mb-3'
-        default: 'mb-3 lg:mb-4'
-        large: 'mb-4'
-  settings:
-    size:
-      type: select
-      required: true
-      label: Size
-      options:
-        small: Small
-        Default: Default
-        large: Large
+    default:
+      attributes_classes: 'flex flex-col flex-1'
+      preheadline_classes: 'text-teal-500 text-base mb-2 font-bold'

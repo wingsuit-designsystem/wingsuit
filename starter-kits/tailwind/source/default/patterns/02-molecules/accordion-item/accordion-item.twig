@@ -6,33 +6,37 @@
  * See accordion-item.wingsuit.yaml for documentation.
  */
 #}
+{#
+  Default
+#}
+{% set attributes = attributes|default(create_attribute()) %}
 
-{# Template #}
-<div
-  class="relative border-b border-gray-200"
-  x-data="{selected: false}"
->
-  <div
-    type="button"
-    class="w-full py-6 px-4 text-left cursor-pointer {{ pattern_configuration('accordion_item', '', 'button_styles') }}"
-    @click="selected !== true ? selected = true : selected = false"
-  >
-    <div class="flex items-center justify-between">
-      <span class="font-bold">{{ label }}</span>
-      <div
-        x-cloak
-        :class="{ 'transform rotate-180 transition duration-400' : selected == true }"
-      >
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('accordion_item', null, 'defaults')['classes']) %}
+{% set wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['wrapper_classes']) %}
+{% set label_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['label_wrapper_classes']) %}
+{% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['content_wrapper_classes']) %}
+{% set content_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['content_classes']) %}
+{% set label_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['label_classes']) %}
+{% set icon_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['icon_classes']) %}
+
+{#
+  Template
+#}
+<div {{ attributes }} x-data="{selected: false}">
+  <div type="button" {{ wrapper_attributes }}
+       @click="selected !== true ? selected = true : selected = false">
+    <div {{ label_wrapper_attributes }}>
+      <span {{ label_attributes }}">{{ label }}</span>
+      <div class="text-purple-600" x-cloak {{ icon_attributes }} :class="{ 'transform rotate-180 transition duration-400' : selected == true }">
         {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
       </div>
     </div>
   </div>
-  <div
-    class="relative overflow-hidden transition-all max-h-0 duration-700"
-    x-ref="container1"
-    x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
-  >
-    <div class="{{ pattern_configuration('accordion_item', '', 'text_styles') }} p-4">
+  <div {{ content_wrapper_attributes }} x-ref="container1" x-bind:style="selected == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+    <div {{ content_attributes }}>
       {{ content }}
     </div>
   </div>

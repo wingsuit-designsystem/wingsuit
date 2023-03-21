@@ -6,26 +6,49 @@
  * See hero.wingsuit.yaml for documentation.
  */
 #}
+{#
+  Internal logic
+#}
+{% set direction_key = reverse == false ? 'forward' : 'reverse' %}
 
-{# TEMPLATE #}
+{#
+  Attributes
+#}
+{% set cell_left_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['cell_left_classes']) %}
+{% set cell_right_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['cell_left_classes']) %}
+{% set gradiant_first_attributes = create_attribute().addClass([
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['first_layer'][direction_key]
+  ] | sort | join(' ') | trim ) %}
+{% set gradiant_second_attributes = create_attribute().addClass([
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+    pattern_configuration('hero', null, 'defaults')['gradiant_classes']['second_layer'][direction_key]
+  ] | sort | join(' ') | trim ) %}
+{% set gradiant_third_attributes = create_attribute().addClass([
+  pattern_configuration('hero', null, 'defaults')['gradiant_classes']['base'],
+  pattern_configuration('hero', null, 'defaults')['gradiant_classes']['third_layer'][direction_key]
+] | sort | join(' ') | trim ) %}
+{% set image_attributes = create_attribute().addClass(pattern_configuration('hero', null, 'defaults')['image_classes']) %}
 
-<section class="">
+{#
+  TEMPLATE
+#}
+
+<section>
   {% set cell_left %}
-    <div class="flex flex-col relative" style="">
-      <div class="{{ reverse == '1' ? 'absolute  w-[435px] h-[434px] left-0 transform -rotate-[135deg] top-[-90px] lg:top-0 lg:w-[543px] lg:h-[542px] bg-gradient-to-b to-transparent from-[#00C2FF] filter blur-[70px] transform -rotate-[135deg] opacity-20':'absolute w-[435px] h-[434px] left-0 transform -rotate-[135deg] lg:rotate-0 lg:left-[232px] top-[-90px] lg:top-[73px] bg-gradient-to-b to-transparent from-[#00C2FF] filter blur-[70px] opacity-20' }}"></div>
-      <div
-        class="{{ reverse == '1' ? 'absolute w-[435px] h-[434px] left-0 transform -rotate-[135deg] top-[-90px] lg:top-0 lg:w-[543px] lg:h-[542px] bg-gradient-to-b from-transparent to-pink-500 filter blur-[70px] transform -rotate-[135deg] opacity-70' : 'absolute w-[435px] h-[434px] left-0 transform -rotate-[135deg] lg:rotate-0 lg:left-[232px] top-[-90px] lg:top-[73px] bg-gradient-to-t from-pink-500 to-transparent filter blur-[70px] opacity-70' }} "></div>
-      <div class="relative z-20">
-        <img src="{{ file_url('ws-assets://images/hero.png') }}" alt="">
-        {#        {{ image }} #}
+    <div {{ cell_left_attributes}}>
+      <div {{ gradiant_first_attributes }}></div>
+      <div {{ gradiant_second_attributes }}></div>
+      <div {{ image_attributes }}>
+{#        <img src="{{ file_url('ws-assets://images/hero.png') }}" alt="">#}
+         {{ image }}
       </div>
-      <div
-        class="{{ reverse == '1' ? 'absolute w-[209px] h-[296px] top-[-190px] right-0 lg:w-[261px] lg:h-[370px] lg:right-0 lg:top-0 bg-gradient-to-b from-transparent to-blue-700 opacity-70 filter blur-[70px] transform -rotate-[135deg]' : 'absolute w-[209px] h-[296px] transform -rotate-[135deg] lg:rotate-0 top-[-190px] right-0 lg:right-auto lg:left-[345px] lg:top-[274px] bg-gradient-to-b from-transparent to-blue-700 opacity-70 filter blur-[70px]' }}"></div>
+      <div {{ gradiant_third_attributes }}></div>
     </div>
   {% endset %}
   {% set cell_right %}
-    <div class="flex flex-1 items-center">
-      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'default', {size: 'default'} ) }}
+    <div {{ cell_right_attributes}}>
+      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'large' ) }}
     </div>
   {% endset %}
   {{ pattern('grid', {cells: [cell_left, cell_right], reverse: reverse, flip_mobile: true, vertical_center: true, columns: '2', gutter: 'default' }, null ) }}

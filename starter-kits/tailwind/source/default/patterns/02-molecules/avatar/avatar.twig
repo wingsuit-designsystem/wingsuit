@@ -2,11 +2,19 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
+{% set element = element|default('figure') %}
+
+{#
+Internal Logic
+#}
+{% if url is not empty %}
+  {% set attributes = attributes.setAttribute('href', url) %}
+  {% set element = 'a' %}
+{% endif %}
 
 {#
   Attributes
 #}
-
 {% set attributes = attributes.addClass(pattern_configuration('avatar', null, 'defaults')['wrapper_classes']) %}
 {% set image_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['image_classes']) %}
 {% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('avatar', null, 'defaults')['content_wrapper_classes']) %}
@@ -16,12 +24,11 @@
 {#
   Template
 #}
-<figure {{ attributes }}>
+<{{ element }} {{ attributes }}>
   <div {{ image_attributes }}>
     {{ image }}
   </div>
   <div {{ content_wrapper_attributes }}>
-
     <div>
       <blockquote>
         <div {{ name_attributes }}>
@@ -38,4 +45,4 @@
       {{ button }}
     </div>
   </div>
-</figure>
+</{{ element }}>

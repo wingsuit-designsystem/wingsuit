@@ -44,10 +44,4 @@
  * @see template_preprocess_form_element()
  */
 #}
-{%
-  set classes = [
-    'js-form-item',
-    'form-item',
-  ]
-%}
-{% include "@atoms/forms/_form-element.twig" with {variant: type}%}
+{{ pattern('form_element', [null], {variant: type} ) }}
