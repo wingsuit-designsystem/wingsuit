@@ -9,15 +9,31 @@
 {#
   Default
 #}
-{% set attributes = attributes|default(create_attribute()) %}
-{% set position = position|default('center_center') %}
+{%
+  set attributes = attributes|default(create_attribute())
+%}
+{%
+  set position = position|default('center_center')
+%}
 
 {#
   Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('banner', null, 'defaults')['wrapper_classes']) %}
-{% set teaser_wrapper_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_wrapper_classes']) %}
-{% set teaser_attributes = create_attribute().addClass(pattern_configuration('banner', null, 'defaults')['teaser_classes']) %}
+{%
+  set attributes = attributes.addClass(
+    pattern_configuration('banner', null, 'defaults')['wrapper_classes']
+  )
+%}
+{%
+  set teaser_wrapper_attributes = create_attribute().addClass(
+    pattern_configuration('banner', null, 'defaults')['teaser_wrapper_classes']
+  )
+%}
+{%
+  set teaser_attributes = create_attribute().addClass(
+    pattern_configuration('banner', null, 'defaults')['teaser_classes']
+  )
+%}
 
 {#
   Classes
