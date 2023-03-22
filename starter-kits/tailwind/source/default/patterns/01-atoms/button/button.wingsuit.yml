@@ -90,6 +90,7 @@ button:
     url:
       type: url
       label: Url
+      expose_as_field: true
       description: The action url of your button
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
     disabled:

@@ -33,6 +33,7 @@ container:
       group: tab_bg
       options:
         "": Transparent
+        purple-dark: Purple/#581C87
         teal-medium: Teal/#14b8a6
         gray-light: Light gray/#d1d5db
     bg_image:
@@ -55,6 +56,7 @@ container:
       small: 'max-w-7xl'
       default: 'max-w-8xl'
     bg:
+      purple-dark: 'dark bg-purple-900'
       teal-medium: 'dark bg-teal-500'
       teal-dark: 'dark bg-teal-800'
       gray-light: 'bg-gray-300'
