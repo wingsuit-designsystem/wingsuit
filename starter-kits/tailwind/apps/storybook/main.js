@@ -15,8 +15,9 @@ export default {
   },
   stories: [
     './patterns/**/*.mdx',
-    '../../source/**/*.stories.wingsuit.jsx',
     '../../source/**/*.stories.jsx',
+    '../../source/**/*.stories.wingsuit.jsx',
+    './patterns/**/*.stories.wingsuit.jsx',
     './patterns/**/*.stories.jsx',
   ],
   addons: [

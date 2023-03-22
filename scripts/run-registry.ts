@@ -69,7 +69,7 @@ const publish = (packages: { name: string; location: string }[], url: string) =>
                 '.'
               )})`
             );
-            const command = `cd ${location} && npm publish --registry ${url} --force --access restricted --ignore-scripts`;
+            const command = `cd ${location} && yarn publish --registry ${url} --force --access restricted --ignore-scripts`;
             exec(command, (e) => {
               if (e) {
                 rej(e);
@@ -101,8 +101,8 @@ const addUser = (url: string) =>
 const run = async () => {
   const verdaccioUrl = `http://localhost:6001`;
 
-  logger.log(`📐 reading version of storybook`);
-  logger.log(`🚛 listing storybook packages`);
+  logger.log(`📐 reading version of wingsuit`);
+  logger.log(`🚛 listing wingsuit packages`);
 
   if (!process.env.CI) {
     // when running e2e locally, clear cache to avoid EPUBLISHCONFLICT errors

@@ -1,7 +1,8 @@
 const path = require('path');
 
 const patterns = path.resolve(__dirname, 'source/default/patterns');
-console.log(patterns);
+const appsPatterns = path.resolve(__dirname, 'apps/storybook/patterns');
+console.log(appsPatterns);
 module.exports = {
   presets: [
     '@wingsuit-designsystem/preset-tailwind2',
@@ -20,7 +21,7 @@ module.exports = {
         molecules: path.resolve(patterns, '02-molecules'),
         organisms: path.resolve(patterns, '03-organisms'),
         templates: path.resolve(patterns, '04-templates'),
-        pages: path.resolve(patterns, '05-pages'),
+        pages: path.resolve(appsPatterns, '05-pages'),
       },
     },
   },

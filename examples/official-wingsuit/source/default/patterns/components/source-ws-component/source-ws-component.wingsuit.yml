@@ -1,0 +1,14 @@
+source_ws_component:
+  use: "@components/source-ws-component/source-ws-component.twig"
+  label: WS Source Component
+  description: Source component.
+  settings:
+    setting_textfield:
+      type: textfield
+      label: Textfield
+    setting_select:
+      type: select
+      label: Select
+      options:
+        setting_select_options1: setting_select_options1
+        setting_select_options2: setting_select_options2
