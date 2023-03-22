@@ -9,5 +9,9 @@
 
 {# TEMPLATE #}
 <a class="lg:pr-8 block" href="{{ path('<front>') }}">
-  <img src="{{ file_url('ws-assets://images/logo.svg') }}" alt="Brand Logo" class="w-full max-w-7xl">
+  {% if variant == 'default' %}
+    <img src="{{ file_url('ws-assets://images/logo.svg') }}" alt="Brand Logo" class="w-full max-w-7xl">
+  {% else %}
+    <img src="{{ file_url('ws-assets://images/logo-footer.svg') }}" alt="Brand Logo" class="w-full max-w-7xl">
+  {% endif %}
 </a>

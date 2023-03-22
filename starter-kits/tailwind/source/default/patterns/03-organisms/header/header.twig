@@ -28,7 +28,7 @@
     {% block content %}
       <div {{ wrapper_attributes }}>
         <div {{ logo_attributes }}>
-          {{ pattern('logo') }}
+          {{ pattern('logo', { }, 'default') }}
         </div>
         <div {{ hamburger_attributes }}>
           {{ pattern('hamburger') }}

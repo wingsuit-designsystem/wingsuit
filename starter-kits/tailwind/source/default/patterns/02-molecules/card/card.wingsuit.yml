@@ -49,5 +49,6 @@ card:
       label: Url
   configuration:
     defaults:
-      attribute_classes: 'flex flex-1 group'
+      attribute_classes: 'flex flex-1 flex-col group'
       wrapper_classes: 'group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full'
+
