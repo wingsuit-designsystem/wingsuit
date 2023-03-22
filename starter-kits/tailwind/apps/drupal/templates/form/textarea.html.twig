@@ -13,4 +13,12 @@
  * @see template_preprocess_textarea()
  */
 #}
-{{ pattern('form_textarea') }}
+{{
+  pattern('form_textarea', {
+    wrapper_attributes: wrapper_attributes,
+    attributes: attributes,
+    resizable: resizable,
+    required: required,
+    value: value
+  })
+}}

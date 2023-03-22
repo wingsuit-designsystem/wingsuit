@@ -44,4 +44,20 @@
  * @see template_preprocess_form_element()
  */
 #}
-{{ pattern('form_element', [null], {variant: type} ) }}
+{{
+  pattern('form_element', {
+    attributes: attributes,
+    errors: errors,
+    prefix: prefix,
+    suffix: suffix,
+    required: required,
+    name: name,
+    label: label,
+    label_display: label_display,
+    description: description,
+    description_display: description_display,
+    disabled: disabled,
+    title_display: title_display,
+    children: children
+  }, {variant: type} )
+}}

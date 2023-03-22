@@ -33,7 +33,7 @@
 
   </head>
   <body{{ attributes.addClass('flex flex-col overflow-x-hidden bg-gray-50') }}
-    x-data="{ isScrollDown: false, menuIsOpen: false, languageSwitcherOpen: false }" x-on:scroll.window="isScrollDown = (window.pageYOffset > 5) ? true : false; "
+    x-data="{ menuIsOpen: false, languageSwitcherOpen: false }"
   >
     {#
       Keyboard navigation/accessibility link to main content section in

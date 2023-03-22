@@ -50,6 +50,7 @@ program
 program
   .command('dev')
   .option('-D --docs', 'Build a documentation-only site using addon-docs')
+  .option('-p --port', 'Running port')
   .description('Start Wingsuit App in dev mode.')
   .action((options) => startApp(options, 'development'));
 program
