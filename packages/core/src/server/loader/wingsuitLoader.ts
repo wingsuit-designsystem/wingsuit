@@ -35,7 +35,6 @@ export default function wingsuitLoader(this: any, src) {
           exports.push(`${key}.setTemplate(${key}Template);`);
           this.addDependency(path.resolve(twigTemplatePath));
         }
-        const linkedPatternIds = findLinkedPatternIds(pattern);
         if (pattern.variants) {
           Object.entries(pattern.variants).forEach(([variantName, variant]) => {
             if (variant.use) {
@@ -50,6 +49,7 @@ export default function wingsuitLoader(this: any, src) {
             }
           });
         }
+        const linkedPatternIds = findLinkedPatternIds(pattern);
         linkedPatternIds.forEach((patternId) => {
           const linkedPatternIndexFile =
             fileDependencyPlugin.getPatternComponentNamespace(patternId);

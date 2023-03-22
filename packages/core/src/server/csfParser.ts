@@ -60,6 +60,8 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           namespacePath = namespaces[key];
         }
       });
+    } else {
+      namespacePath = defaultPatternNamespace;
     }
 
     const output: string[] = [];

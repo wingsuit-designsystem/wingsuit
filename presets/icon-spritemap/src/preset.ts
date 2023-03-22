@@ -1,7 +1,7 @@
+import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 import { AppConfig } from '@wingsuit-designsystem/core';
 import { IconConfig } from '@wingsuit-designsystem/preset-icon';
 import path from 'path';
-import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
