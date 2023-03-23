@@ -103,4 +103,4 @@ button:
       default_value: false
   configuration:
     defaults:
-      wrapper_classes: 'btn rounded-[22px] flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'
+      wrapper_classes: 'btn rounded-[22px] font-display flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'

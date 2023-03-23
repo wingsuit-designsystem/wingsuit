@@ -30,7 +30,7 @@
               :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu"
               data-menu-level="{{ menu_level }}">
               <div class="{{ link_classes }}">
-                <a href="{{ item.url }}" class="flex-1">
+                <a href="{{ item.url }}" class="flex-1 font-display">
                   {{ item.title }}
                 </a>
                 {% if item.below %}
@@ -65,7 +65,7 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
+      'font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
     <li class="relative" {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"

@@ -76,7 +76,7 @@ grid:
         '25x50x25': 'grid-cols-1 lg:grid-cols-25/50/25'
         '25x25x50': 'grid-cols-1 lg:grid-cols-25/25/50'
       4:
-        equal: 'grid-cols-2 lg:grid-cols-4'
+        equal: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
       5:
         equal: 'grid-cols-1 lg:grid-cols-5'
     gutter:

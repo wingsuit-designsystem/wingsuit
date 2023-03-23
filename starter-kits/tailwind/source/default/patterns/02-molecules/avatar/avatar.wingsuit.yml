@@ -4,6 +4,17 @@ avatar:
   icon_path: ws-assets://images/avatar-icon.svg
   description: "An avatar represent a user, and displays the profile picture."
   fields:
+    image:
+      type: media_library
+      label: Image
+      description: The profile picture.
+      view_mode: 1x1
+      allow_expose: true
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: responsive_1_1_400w
     full_name:
       type: text
       label: Full name
@@ -24,17 +35,6 @@ avatar:
         settings:
           size: small
   settings:
-    image:
-      type: media_library
-      label: Image
-      description: The profile picture.
-      view_mode: 1x1
-      allow_expose: true
-      preview:
-        id: placeholder
-        variant: image
-        settings:
-          style: responsive_1_1_400w
     url:
       label: Url
       type: url
@@ -43,5 +43,5 @@ avatar:
       wrapper_classes: 'rounded-xl overflow-hidden p-8'
       image_classes: 'relative overflow-hidden flex-none w-[152px] h-[152px] lg:h-[168px] lg:w-[168px] rounded-full mx-auto aspect-[1/1]'
       content_wrapper_classes: 'mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col'
-      name_classes: 'text-xl font-bold text-center'
+      name_classes: 'text-xl font-bold text-center font-display'
       title_classes: 'text-base text-center mt-1'
