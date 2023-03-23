@@ -14,9 +14,9 @@
 {% endset %}
 {{
   pattern('container', {
-    width: 'width',
+    width: 'small',
     padding_bottom: 'small',
-    content: pattern('rich_text', {text: lead_text}, 'default')
+    content: pattern('rich_text', {text: lead_text})
   })
 }}
 {% if image is not empty %}
@@ -28,6 +28,6 @@
   pattern('container',{
     width: 'small',
     padding_bottom: 'small',
-    content: pattern('rich_text', {text: text}, 'default')
+    content: pattern('rich_text', {text: text})
   })
 }}
