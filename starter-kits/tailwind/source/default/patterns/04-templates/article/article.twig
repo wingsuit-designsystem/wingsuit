@@ -1,39 +1,33 @@
+{#
+  Pre render
+#}
 {%- set image -%}{{- image -}}{% endset %}
-{% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': 'small', padding_bottom: 'small' } %}
-  {% block content %}
-    {% embed "@atoms/rich-text/rich-text.twig" with {
-      headline: headline,
-      lead: lead,
-    } only %}
-      {% block text %}
-        <h1>{{ headline }}</h1>
-        <p class="lead">{{ lead }}</p>
-      {% endblock %}
-    {% endembed %}
-  {% endblock %}
-{% endembed %}
+
+{#
+  Template
+#}
+{% set lead_text %}
+  <h1>{{ headline }}</h1>
+  {% if lead %}
+    <div class="lead">{{ lead }}</div>
+  {% endif %}
+{% endset %}
+{{
+  pattern('container', {
+    width: 'width',
+    padding_bottom: 'small',
+    content: pattern('rich_text', {text: lead_text}, 'default')
+  })
+}}
 {% if image is not empty %}
-  {% embed "@organisms/container/container.twig" with { width: 'default', image: image, padding_bottom: 'small' } only %}
-    {% block content %}
-      {% embed "@atoms/rich-text/rich-text.twig" with {
-        image: image
-      } only %}
-        {% block text %}
-          {{ image }}
-        {% endblock %}
-      {% endembed %}
-    {% endblock %}
-  {% endembed %}
+  {{
+    pattern('container', {width: 'default', padding_bottom: 'small', content: image})
+  }}
 {% endif %}
-{% embed "@organisms/container/container.twig" with { width: 'small', text: text } only %}
-  {% block content %}
-    {% embed "@atoms/rich-text/rich-text.twig" with {
-      text: text,
-      variant: 'default'
-    } only %}
-      {% block text %}
-        {{ text }}
-      {% endblock %}
-    {% endembed %}
-  {% endblock %}
-{% endembed %}
+{{
+  pattern('container',{
+    width: 'small',
+    padding_bottom: 'small',
+    content: pattern('rich_text', {text: text}, 'default')
+  })
+}}

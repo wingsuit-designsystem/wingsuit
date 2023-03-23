@@ -80,12 +80,16 @@ module.exports = {
         '8xl': '69rem',
       },
       backgroundImage: {
-        'form-radio-icon-checked': "url('forms/images/radio-icon-checked.svg')",
-        'form-radio-icon-unchecked': "url('forms/images/radio-icon-unchecked.svg')",
-        'dark-form-radio-icon-unchecked': "url('forms/images/dark-radio-icon-unchecked.svg')",
-        'dark-form-radio-icon-checked': "url('forms/images/dark-radio-icon-checked.svg')",
-        'form-checkbox-icon-checked': "url('forms/images/checkbox-icon-checked.svg')",
-        'form-checkbox-icon-unchecked': "url('forms/images/checkbox-icon-unchecked.svg')",
+        'form-radio-icon-checked': "url('../patterns/00-forms/images/radio-icon-checked.svg')",
+        'form-radio-icon-unchecked': "url('../patterns/00-forms/images/radio-icon-unchecked.svg')",
+        'dark-form-radio-icon-unchecked':
+          "url('../patterns/00-forms/images/dark-radio-icon-unchecked.svg')",
+        'dark-form-radio-icon-checked':
+          "url('../patterns/00-forms/images/dark-radio-icon-checked.svg')",
+        'form-checkbox-icon-checked':
+          "url('../patterns/00-forms/images/checkbox-icon-checked.svg')",
+        'form-checkbox-icon-unchecked':
+          "url('../patterns/00-forms/images/checkbox-icon-unchecked.svg')",
       },
       gridTemplateColumns: {
         '33/66': 'minmax(0, 1fr) minmax(0, 2fr)',
