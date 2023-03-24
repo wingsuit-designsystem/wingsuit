@@ -1,5 +1,5 @@
 import { getAppNames, resolveConfig } from '@wingsuit-designsystem/core';
-import { Command, opts } from 'commander';
+import { Command } from 'commander';
 import version from './cli-version';
 
 const inquirer = require('inquirer');
