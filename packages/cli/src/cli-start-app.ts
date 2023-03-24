@@ -1,4 +1,5 @@
 import { getAppNames, resolveConfig } from '@wingsuit-designsystem/core';
+import { Command, opts } from 'commander';
 import version from './cli-version';
 
 const inquirer = require('inquirer');
@@ -7,7 +8,7 @@ const { spawn } = require('child_process');
 
 const logger = console;
 
-export default function (options, environment) {
+export default function (options: Command, environment) {
   const getAppName = async () => {
     if (options.args.length > 0) {
       return Promise.resolve(options.args[0]);
@@ -24,22 +25,21 @@ export default function (options, environment) {
   };
   const startApp = async () => {
     const appName = await getAppName();
-    const { outputDir, docs, port } = options;
+    const parsedArgs = options.parseOptions(options.args);
+    const { outputDir, docs } = options;
+    const additionalArgs = ` ${parsedArgs.unknown.join(' ')}`;
     try {
       const appConfig = resolveConfig(appName, environment);
-      let consoleCommand =
+      const consoleCommand =
         (docs !== true
-          ? appConfig.startup()
+          ? appConfig.startup() + additionalArgs
           : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`) +
-        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '');
+        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '') +
+        additionalArgs;
       version({});
       logger.info('');
       logger.info(`Starting Wingsuit app "${appName}"...`);
       logger.info('');
-      if (port) {
-        consoleCommand += ` -p ${port}`;
-      }
-
       const command = spawn(consoleCommand, [], { shell: true, stdio: 'inherit' });
       command.on('close', (code) => {
         logger.log(`${code}`);
