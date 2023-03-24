@@ -6,10 +6,23 @@
     footer_menu: footer_menu
   } only %}
     {% block content %}
-      <div class="flex">
-        <div>
+      <div class="flex gap-10 lg:gap-28 flex-col-reverse lg:flex-row ">
+        <div class="grid w-full max-w-[181px]">
           {{ pattern('logo') }}
-        <div></div>
+          <div class="mt-3 dark:text-white">
+            {{ "Lorem ipsum dolor sit amet consectetur. Mollis elit enim auctor."|t }}
+          </div>
+          <ul class="mt-[26px] flex items-center gap-5 dark:text-purple-300">
+            <li>
+              <a href="#">{{ pattern('icon', {icon: 'youtube', scale: '1.25', padding: 'roomy' }, 'spritemap' ) }}</a>
+            </li>
+            <li>
+              <a href="#">{{ pattern('icon', {icon: 'instagram', scale: '1.25', padding: 'roomy' }, 'spritemap' ) }}</a>
+            </li>
+            <li>
+              <a href="#">{{ pattern('icon', {icon: 'facebook', scale: '1.25', padding: 'roomy' }, 'spritemap' ) }}</a>
+            </li>
+          </ul>
         </div>
         <div>{{ footer_menu }}</div>
       </div>

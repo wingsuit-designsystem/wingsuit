@@ -8,6 +8,18 @@ card:
     - rich_snippet.fields
   dependencies:
     - rich_snippet
+  fields:
+    image:
+      label: Image
+      type: media_library
+      description: The image tag.
+      view_mode: 16x9
+      allow_expose: true
+      preview:
+        id: placeholder
+        variant: image
+        settings:
+          style: responsive_16_9_600w
   variants:
     default:
       label: Default
@@ -22,7 +34,7 @@ card:
         direction:
           flex: 'flex-col md:flex-row'
         image:
-          size: 'w-full lg:w-60 aspect-[16/9] relative flex'
+          size: 'w-full lg:w-60 aspect-[16/9] relative flex [&>*]:object-cover'
       settings:
         image:
           id: placeholder
@@ -33,17 +45,6 @@ card:
             style: responsive_16_9_600w
 
   settings:
-    image:
-      label: Image
-      type: media_library
-      description: The image tag.
-      view_mode: 16x9
-      allow_expose: true
-      preview:
-        id: placeholder
-        variant: image
-        settings:
-          style: responsive_16_9_600w
     url:
       type: url
       label: Url

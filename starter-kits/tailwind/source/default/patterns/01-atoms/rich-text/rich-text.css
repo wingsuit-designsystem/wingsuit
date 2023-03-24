@@ -2,7 +2,7 @@
 /* Font */
   @apply [&>*:first-child]:mt-0 [&>*:last-child]:mb-0;
   h1 {
-    @apply font-sans;
+    @apply font-display;
     @apply font-bold;
     @apply text-black;
     @apply text-4xl lg:text-6xl;
@@ -10,7 +10,7 @@
     @apply mb-8 lg:mb-12;
   }
   h2 {
-    @apply font-sans;
+    @apply font-display;
     @apply font-bold;
     @apply text-black;
     @apply text-3xl lg:text-5xl;
@@ -18,7 +18,7 @@
     @apply mb-6 lg:mb-10 mt-8 lg:mt-12;
   }
   h3 {
-    @apply font-sans;
+    @apply font-display;
     @apply font-bold;
     @apply text-black;
     @apply text-2xl lg:text-4xl;
@@ -26,7 +26,7 @@
     @apply mb-5 lg:mb-8 mt-6 lg:mt-10;
   }
   h4 {
-    @apply font-sans;
+    @apply font-display;
     @apply font-bold;
     @apply text-black;
     @apply text-xl lg:text-3xl;
@@ -34,7 +34,7 @@
     @apply mb-5 lg:mb-6 mt-5 lg:mt-8;
   }
   h5 {
-    @apply font-sans;
+    @apply font-display;
     @apply font-bold;
     @apply text-black;
     @apply text-xl lg:text-2xl;
@@ -42,14 +42,14 @@
     @apply mb-5 lg:mb-5 mt-5 lg:mt-6;
   }
   a {
-    @apply font-serif;
+    @apply font-copy;
     @apply font-bold;
     @apply text-purple-600;
     @apply text-base lg:text-lg;
     @apply hover:no-underline;
   }
   p {
-    @apply font-serif;
+    @apply font-copy;
     @apply font-normal;
     @apply text-black;
     @apply text-base lg:text-lg;
@@ -73,7 +73,7 @@
       @apply text-2xl;
       @apply text-center;
       @apply !font-bold;
-      @apply font-sans;
+      @apply font-display;
       @apply italic;
       @apply bg-no-repeat bg-center bg-top;
       @apply pt-10 lg:pt-11;
@@ -123,7 +123,7 @@
   }
   /* Lists */
   ol ul {
-    @apply font-serif;
+    @apply font-copy;
   }
   li::marker {
     @apply text-black;
@@ -131,7 +131,7 @@
   li {
     @apply text-black;
     @apply leading-8;
-    @apply font-serif;
+    @apply font-copy;
   }
 }
 

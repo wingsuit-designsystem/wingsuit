@@ -18,7 +18,7 @@ Defaults
 {% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'default')['attributes_classes']) %}
 {% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'default')['preheadline_classes']) %}
 {% set headline_attributes = create_attribute().addClass([
-  'font-bold',
+  pattern_configuration('rich_snippet', variant, 'default')['headline_classes'],
   pattern_configuration('rich_snippet', variant, 'headline_text'),
   pattern_configuration('rich_snippet', variant, 'spacing'),
 ] | sort | join(' ') | trim ) %}

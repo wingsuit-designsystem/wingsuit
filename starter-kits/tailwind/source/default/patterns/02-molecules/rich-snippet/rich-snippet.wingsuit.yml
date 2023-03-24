@@ -37,7 +37,7 @@ rich_snippet:
     small:
       label: Small
       configuration:
-        headline_text: 'text-2xl'
+        headline_text: 'text-2xl font-display'
         text: 'text-base'
         spacing: 'mb-3'
     default:
@@ -55,4 +55,5 @@ rich_snippet:
   configuration:
     default:
       attributes_classes: 'flex flex-col flex-1'
-      preheadline_classes: 'text-teal-500 text-base mb-2 font-bold'
+      preheadline_classes: 'text-teal-500 text-base mb-2 font-display font-bold'
+      headline_classes: 'font-display font-bold'

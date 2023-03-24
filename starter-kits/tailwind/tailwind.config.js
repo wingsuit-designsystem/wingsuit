@@ -102,8 +102,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['DM sans', 'Sans'],
-      serif: ['Noto serif', 'Serif'],
+      display: ['DM sans', 'Sans'],
+      copy: ['Noto serif', 'Serif'],
     },
   },
   plugins: [hamburgers, forms, typography],
