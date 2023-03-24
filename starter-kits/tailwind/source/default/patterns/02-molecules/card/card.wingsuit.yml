@@ -11,10 +11,8 @@ card:
   fields:
     image:
       label: Image
-      type: media_library
+      type: pattern
       description: The image tag.
-      view_mode: 16x9
-      allow_expose: true
       preview:
         id: placeholder
         variant: image

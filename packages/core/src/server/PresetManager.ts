@@ -62,6 +62,9 @@ export default class PresetManager {
   }
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+    if (appConfig?.internalCache?.presets) {
+      return appConfig.internalCache.presets;
+    }
     const presets: PresetDefinition[] = [];
     if (appConfig.presets) {
       appConfig.presets.forEach((item) => {
@@ -112,6 +115,15 @@ export default class PresetManager {
         }
       }
     });
+    if (appConfig) {
+      if (!appConfig.internalCache) {
+        // eslint-disable-next-line no-param-reassign
+        appConfig.internalCache = {};
+      }
+      // eslint-disable-next-line no-param-reassign
+      appConfig.internalCache.presets = presets;
+    }
+
     return presets;
   }
 

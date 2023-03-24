@@ -109,10 +109,7 @@ export function invokePresets(appConfig: AppConfig, funcName, config): PresetRes
   const definitions = presetManager.getPresetDefinitions(appConfig);
   definitions.forEach((def) => {
     if (def.preset[funcName]) {
-      const defaultConfig =
-        def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
-      const finalConfig = { ...defaultConfig, ...config };
-      result[def.name] = def.preset[funcName](appConfig, finalConfig);
+      result[def.name] = def.preset[funcName](appConfig, def.parameters);
     }
   });
   return result;

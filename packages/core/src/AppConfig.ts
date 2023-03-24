@@ -1,6 +1,12 @@
 import path from 'path';
 
+interface InternalCache {
+  presets?: PresetDefinition[];
+}
+
 export default interface AppConfig extends AppInitConfig {
+  internalCache: InternalCache;
+
   absDesignSystemPath: string;
 
   name: string;
@@ -124,6 +130,7 @@ export interface PresetDefinition {
 
 export function defaultAppConfig(type, absRootPath): AppConfig {
   return {
+    internalCache: {},
     type,
     name: type,
     distFolder: `dist/app-${type}`,

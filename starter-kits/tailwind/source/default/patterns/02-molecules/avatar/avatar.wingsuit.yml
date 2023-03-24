@@ -5,11 +5,9 @@ avatar:
   description: "An avatar represent a user, and displays the profile picture."
   fields:
     image:
-      type: media_library
+      type: pattern
       label: Image
       description: The profile picture.
-      view_mode: 1x1
-      allow_expose: true
       preview:
         id: placeholder
         variant: image
