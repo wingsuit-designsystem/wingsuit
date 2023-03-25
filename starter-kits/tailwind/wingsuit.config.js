@@ -5,7 +5,7 @@ const appsPatterns = path.resolve(__dirname, 'apps/storybook/patterns');
 module.exports = {
   parameters: {
     placeholder: {
-      service: 'placeimg',
+      service: 'placebeard',
     },
   },
   presets: [

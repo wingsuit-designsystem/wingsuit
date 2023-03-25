@@ -16,11 +16,13 @@ placeholder:
     service:
       label: Placeholder service
       type: select
-      preview: placeimg
+      preview: fakeimg
       required: true
       options:
-        "fakeimg": https://fakeimg.pl/
-        "placeimg": https://placeimg/
+        "fakeimg": https://fakeimg.pl
+        "placebeard": http://placebeard
+        "picsum": https://picsum.photos
+        "loremflickr": https://loremflickr.com
     background_classes:
       label: Classes
       description: Classes applied to background image container.
@@ -39,7 +41,9 @@ placeholder:
     service:
       base64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8fwYAAnABnXJTVJsAAAAASUVORK5CYII="
       fakeimg: "https://fakeimg.pl/[width]x[height]/"
-      placeimg: "https://placeimg.com/[width]/[height]/people"
+      placebeard: "http://placebeard.it/[width]/[height]"
+      picsum: "https://picsum.photos/[width]/[height]"
+      loremflickr: "https://loremflickr.com/[width]/[height]"
     image_config:
       styles: {}
       styles_responsive:

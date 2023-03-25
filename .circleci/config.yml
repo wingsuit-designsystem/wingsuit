@@ -237,12 +237,12 @@ jobs:
       - run:
           name: Run Bootstrap (smoke test)
           command: |
-            cd starter-kits/bootstrap
+            cd starter-kits/vanilla-scss
             yarn dev:storybook --smoke-test --quiet
       - run:
           name: Run Bootstrap (drupal smoke test)
           command: |
-            cd starter-kits/bootstrap
+            cd starter-kits/vanilla-scss
             yarn build:drupal
 
   docs:

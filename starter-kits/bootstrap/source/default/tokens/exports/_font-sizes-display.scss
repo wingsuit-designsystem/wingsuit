@@ -1,7 +1,0 @@
-@import "../_tokens";
-
-@each $name, $value in $display-font-sizes {
-  :export{
-    #{$name}: $value;
-  }
-}

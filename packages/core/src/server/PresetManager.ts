@@ -2,6 +2,7 @@
  * Wingsuit PresetManager.
  */
 import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
+import {resolve, join} from "path";
 
 // Library Imports
 const merge = require('webpack-merge');
@@ -165,7 +166,7 @@ export default class PresetManager {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
     });
-
+    const wspresets = resolve(join(__dirname, '../'));
     let config = merge.mergeWithCustomize({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
@@ -177,7 +178,7 @@ export default class PresetManager {
         appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
-            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces },
+            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
           },
           mode: this.environment,
           optimization: {

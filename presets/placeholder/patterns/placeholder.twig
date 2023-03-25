@@ -13,7 +13,6 @@
 {% import '@ws-placeholder/_placeholder-macro.twig' as placeholder %}
 
 {% set variant = variant|default('image') %}
-
 {# VARIANT TEMPLATES #}
 {% if variant == 'image' %}
   {{ placeholder.image(style, service) }}

@@ -1,5 +1,6 @@
 import { getAppNames, resolveConfig } from '@wingsuit-designsystem/core';
 import { Command } from 'commander';
+import chalk from 'chalk';
 import version from './cli-version';
 
 const inquirer = require('inquirer');
@@ -36,10 +37,13 @@ export default function (options: Command, environment) {
           : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`) +
         (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '') +
         additionalArgs;
+
+      logger.info('');
+      logger.info(chalk.green(` Starting Wingsuit app "${appName}"...`));
       version({});
-      logger.info('');
-      logger.info(`Starting Wingsuit app "${appName}"...`);
-      logger.info('');
+      logger.info(' ');
+      logger.info(chalk.gray(` Command: ${consoleCommand}`));
+      logger.info('')
       const command = spawn(consoleCommand, [], { shell: true, stdio: 'inherit' });
       command.on('close', (code) => {
         logger.log(`${code}`);
