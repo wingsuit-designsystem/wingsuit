@@ -110,6 +110,9 @@ jobs:
           paths:
             - .verdaccio-cache
   init-e2e:
+    executor:
+      class: medium
+      name: sb_node_16_classic
     docker:
       - image: cypress/included:4.5.0
         environment:
