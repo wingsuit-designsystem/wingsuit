@@ -12,13 +12,14 @@ import { listOfPackages } from './utils/list-packages';
 
 program
   .option('-O, --open', 'keep process open')
-  .option('-P, --publish', 'should publish packages');
+  .option('-P, --publish', 'should publish packages')
+  .option('-p, --port <port>', 'port to run https server on');
 
 program.parse(process.argv);
 
 const logger = console;
 
-const startVerdaccio = async () => {
+const startVerdaccio = async (port: number) => {
   let resolved = false;
   return Promise.race([
     new Promise((resolve) => {
@@ -30,7 +31,7 @@ const startVerdaccio = async () => {
       };
 
       runServer(config).then((app: Server) => {
-        app.listen(6001, () => {
+        app.listen(port, () => {
           resolved = true;
           resolve(app);
         });
@@ -116,7 +117,7 @@ const run = async () => {
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
   const [verdaccioServer, packages, version] = await Promise.all([
-    startVerdaccio(),
+    startVerdaccio(program.port),
     listOfPackages(),
     currentVersion(),
   ]);
