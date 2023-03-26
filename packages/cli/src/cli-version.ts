@@ -6,6 +6,6 @@ const pkg = require('../package.json');
 export default function (options) {
   logger.log(chalk.gray(` Version: ${pkg.version}`));
 }
-export function getVersion(){
+export function getVersion() {
   return pkg.version;
 }

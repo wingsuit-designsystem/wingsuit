@@ -31,7 +31,7 @@ export function webpack(appConfig: AppConfig) {
       options: {
         importLoaders: 1,
         modules: {
-          mode: "icss",
+          mode: 'icss',
         },
         sourceMap: true,
       },

@@ -43,7 +43,7 @@ export default function (options: Command, environment) {
       version({});
       logger.info(' ');
       logger.info(chalk.gray(` Command: ${consoleCommand}`));
-      logger.info('')
+      logger.info('');
       const command = spawn(consoleCommand, [], { shell: true, stdio: 'inherit' });
       command.on('close', (code) => {
         logger.log(`${code}`);

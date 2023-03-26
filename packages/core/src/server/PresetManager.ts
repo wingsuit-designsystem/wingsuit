@@ -1,8 +1,8 @@
 /**
  * Wingsuit PresetManager.
  */
+import { resolve, join } from 'path';
 import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
-import {resolve, join} from "path";
 
 // Library Imports
 const merge = require('webpack-merge');
