@@ -69,7 +69,7 @@
   "optionalDependencies": {
     "@cypress/skip-test": "^2.6.1",
     "@cypress/webpack-preprocessor": "^5.9.1",
-    "cypress": "8.7.0",
+    "cypress": "^12.8.1",
     "ts-loader": "^8.0.14",
     "verdaccio": "^5.5.2",
     "verdaccio-auth-memory": "^9.7.2"

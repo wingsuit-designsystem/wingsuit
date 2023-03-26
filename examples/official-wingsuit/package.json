@@ -20,7 +20,7 @@
   "scripts": {
     "build-storybook": "yarn ws build storybook",
     "packtracker": "yarn ws build storybook --webpack-stats-json /tmp --quiet && cross-env PT_PROJECT_TOKEN=945a7723-9fe2-4318-ae53-6ee806cd9e86 packtracker-upload --stats=/tmp/preview-stats.json",
-    "storybook": "yarn ws dev storybook --help"
+    "storybook": "yarn ws dev storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
