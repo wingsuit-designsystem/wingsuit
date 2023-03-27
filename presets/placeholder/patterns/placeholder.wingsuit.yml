@@ -13,6 +13,10 @@ placeholder:
     background:
       label: Background image
   settings:
+    src:
+      label: Image src.
+      description: Optional image src. Overrules the service image.
+      type: textfield
     service:
       label: Placeholder service
       type: select

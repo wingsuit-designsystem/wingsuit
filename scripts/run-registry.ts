@@ -17,6 +17,7 @@ program
 
 program.parse(process.argv);
 
+const port = program.port ?? 6000;
 const logger = console;
 
 const startVerdaccio = async (port: number) => {
@@ -31,6 +32,7 @@ const startVerdaccio = async (port: number) => {
       };
 
       runServer(config).then((app: Server) => {
+
         app.listen(port, () => {
           resolved = true;
           resolve(app);
@@ -50,6 +52,7 @@ const startVerdaccio = async (port: number) => {
 
 const currentVersion = async () => {
   const { version } = await readJSON(path.join(__dirname, '..', 'package.json'));
+  console.log('version', path.join(__dirname, '..', 'package.json'))
   return version;
 };
 
@@ -70,7 +73,7 @@ const publish = (packages: { name: string; location: string }[], url: string) =>
                 '.'
               )})`
             );
-            const command = `cd ${location} && yarn publish --registry ${url} --force --access restricted --ignore-scripts`;
+            const command = `cd ${location} && npm publish --registry ${url} --access restricted --ignore-scripts`;
             exec(command, (e) => {
               if (e) {
                 rej(e);
@@ -100,7 +103,7 @@ const addUser = (url: string) =>
   });
 
 const run = async () => {
-  const verdaccioUrl = `http://localhost:6001`;
+  const verdaccioUrl = `http://localhost:${port}`;
 
   logger.log(`📐 reading version of wingsuit`);
   logger.log(`🚛 listing wingsuit packages`);
@@ -117,7 +120,7 @@ const run = async () => {
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
   const [verdaccioServer, packages, version] = await Promise.all([
-    startVerdaccio(program.port),
+    startVerdaccio(port),
     listOfPackages(),
     currentVersion(),
   ]);

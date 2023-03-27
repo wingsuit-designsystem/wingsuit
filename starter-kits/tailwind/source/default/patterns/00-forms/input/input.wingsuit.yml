@@ -1,7 +1,7 @@
 form_input:
   use: "@forms/input/input.twig"
   label: Input
-  description: Input forms styled with Tailwind custom forms.
+  description: Styled Input forms like textfield, password, email etc.
   variants:
     textfield:
       label: Textfield
@@ -34,4 +34,4 @@ form_input:
       label: Children
   configuration:
     classes:
-      wrapper: 'p-4 w-full'
+      wrapper: 'p-2'

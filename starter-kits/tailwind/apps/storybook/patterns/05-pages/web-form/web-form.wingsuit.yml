@@ -1,0 +1,16 @@
+page_webform:
+  use: "@pages/page.twig"
+  label: Webform
+  description: Landing page example
+  dependencies:
+    - menu
+    - language_select
+    - footer
+    - header
+  fields:
+    content:
+      type: pattern
+      label: Field content
+      preview:
+        id: form_element
+        variant: textfield

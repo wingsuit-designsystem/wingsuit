@@ -106,5 +106,7 @@ form_element:
         id: form_input
         variant: "textfield"
   configuration:
-    defaults:
-      wrapper_classes: ''
+    classes:
+      wrapper: ''
+      description: ''
+      error: 'bg-red-500'

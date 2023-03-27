@@ -181,9 +181,6 @@ export default class PresetManager {
             alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
           },
           mode: this.environment,
-          optimization: {
-            minimizer: [],
-          },
           plugins: [
             new ProgressPlugin({ profile: false }),
             new NodePolyfillPlugin({

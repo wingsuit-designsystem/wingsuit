@@ -1,6 +1,6 @@
 import './index';
 
-const patternDefinition = require('./section_slider.wingsuit.yml');
+const patternDefinition = require('./web-form.wingsuit.yml');
 
 export const wingsuit = {
   patternDefinition,

@@ -41,7 +41,6 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "drupal-attribute": "1.0.2",
-    "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "glob": "^8.1.0",
     "image-webpack-loader": "^8.0.1",

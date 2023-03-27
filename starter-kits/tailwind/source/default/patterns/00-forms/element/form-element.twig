@@ -43,37 +43,52 @@
  *
  */
 #}
+
+{#
+ /**
+ * @defaults
+ **/
+#}
 {%
   set classes = [
     'js-form-item',
     'form-item',
-    pattern_configuration('form_element', variant, 'defaults')['wrapper_classes'],
-    pattern_configuration('form_element', variant, 'wrapper_classes')
+    pattern_configuration('form_element', variant, 'classes')['wrapper']
   ]
 %}
+
+{%
+  set error_classes = [
+    pattern_configuration('form_element', variant, 'classes')['error']
+  ]
+%}
+{% set error_attributes = create_attribute() %}
 {%
   set description_classes = [
     'form-item__description',
     description_display == 'invisible' ? 'visually-hidden',
+    pattern_configuration('form_element', variant, 'classes')['description']
   ]
 %}
 {%
   set description = description is empty ? {'content': description_text} : description
 %}
 
-{# TEMPLATE #}
+{#
+ /*
+ * @template
+ */
+#}
 <label{{ attributes.addClass(classes) }}>
   <div>
   {% if label_display in ['before', 'invisible'] %}
-    <div class="pb-2">
-    {{ label }}
-    </div>
+    <div>{{ label }}</div>
   {% endif %}
   {% if prefix is not empty %}
     <span class="field-prefix">{{ prefix }}</span>
   {% endif %}
   {% if description_display == 'before' and description.content %}
-    <div class="pb-4">
+    <div{{ description.attributes.addClass(description_classes) }}>
       {{ description.content }}
     </div>
   {% endif %}
@@ -85,7 +100,7 @@
     {{ label }}
   {% endif %}
   {% if errors %}
-    <div class="text-red-500">
+    <div {{ error_attributes.addClass(error_classes) }}>
       {{ errors }}
     </div>
   {% endif %}

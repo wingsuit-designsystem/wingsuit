@@ -28,10 +28,6 @@ image:
       settings:
         url: 'ws-assets://images/logo.svg'
   settings:
-    url:
-      label: Url
-      type: textfield
-      description: Use "Url" if you don't have the rendered image tag. The component will generate an image tag.
     background_style:
       label: Background style
       description: Classes applied to background image container.

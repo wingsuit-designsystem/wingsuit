@@ -14,6 +14,7 @@ module.exports = {
     '@wingsuit-designsystem/preset-placeholder',
     '@wingsuit-designsystem/preset-icon',
     '@wingsuit-designsystem/preset-icon-spritemap',
+    '@wingsuit-designsystem/preset-imagemin',
   ],
   designSystems: {
     default: {
