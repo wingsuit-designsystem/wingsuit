@@ -53,6 +53,7 @@
   set classes = [
     'js-form-item',
     'form-item',
+    flex,
     pattern_configuration('form_element', variant, 'classes')['wrapper']
   ]
 %}
@@ -73,7 +74,7 @@
 {%
   set description = description is empty ? {'content': description_text} : description
 %}
-
+{% set attributes = attributes|default(create_attribute()) %}
 {#
  /*
  * @template

@@ -16,4 +16,5 @@ form_radios:
           variant: "radio"
         - id: form_element
           variant: "radio"
-  visibility: storybook
+  classes:
+    wrapper: ''

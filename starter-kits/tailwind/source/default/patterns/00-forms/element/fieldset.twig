@@ -21,7 +21,7 @@
  */
 #}
 
-{# FILDSET CLASSES #}
+{# Defaults #}
 {%
   set classes = [
     'form-fieldset',
@@ -39,7 +39,7 @@
 ]
 %}
 
-{# TEMPLATE #}
+{# Templates #}
 <fieldset{{ attributes.addClass(classes) }}>
   {#  Always wrap fieldset legends in a SPAN for CSS positioning. #}
   <legend{{ legend.attributes.addClass(legend_classes) }}>{{ legend.title }}</legend>

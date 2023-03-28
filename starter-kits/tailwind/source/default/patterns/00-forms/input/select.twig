@@ -11,14 +11,10 @@
  */
 #}
 
-{#
-  Defaults
-#}
+{# Defaults #}
 {% set attributes = attributes|default(create_attribute()) %}
 
-{#
-Classes
-#}
+{# Classes #}
 {% set classes = ([
   'form-select',
   pattern_configuration('form_select', variant, 'classes')['wrapper']

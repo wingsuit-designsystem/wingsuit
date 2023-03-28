@@ -19,8 +19,7 @@ form_element:
       label: File
       fields:
         children:
-          id: form_input
-          variant: "file"
+          id: form_file
     tel:
       label: Tel
       fields:
@@ -62,6 +61,9 @@ form_element:
           id: form_select
 
   settings:
+    flex:
+      type: textfield
+      label: Flex configuration
     label_display:
       type: select
       label: Label display

@@ -17,10 +17,16 @@
 {% set attributes = attributes|default(create_attribute()) %}
 
 {#
+  Internal logic
+#}
+{% set has_size = attributes.getAttribute('size') is not empty %}
+
+{#
   Classes
 #}
 {% set classes = ([
   'form-input',
+  has_size == false ? 'w-full',
   pattern_configuration('form_input', variant, 'classes')['wrapper']
 ] | sort | join(' ') | trim )%}
 

@@ -1,0 +1,12 @@
+{# Defaults #}
+{%
+  set classes = [
+    'flex flex-col md:flex-row gap-4',
+  ]
+%}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{# Template #}
+<div{{ attributes.addClass(classes) }}>
+  {{ children }}
+</div>

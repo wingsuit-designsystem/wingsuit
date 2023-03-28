@@ -12,5 +12,16 @@ page_webform:
       type: pattern
       label: Field content
       preview:
-        id: form_element
-        variant: textfield
+        id: form_flex
+        fields:
+          children:
+            -
+              id: form_element
+              variant: textfield
+              settings:
+                flex: flex-1
+            -
+              id: form_element
+              variant: textfield
+              settings:
+                flex: flex-1

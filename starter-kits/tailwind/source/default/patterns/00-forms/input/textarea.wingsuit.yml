@@ -14,3 +14,5 @@ form_textarea:
       label: Value
       preview:
         faker: lorem.sentence
+  configuration:
+    classes: ''
