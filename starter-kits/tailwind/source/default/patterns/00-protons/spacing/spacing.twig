@@ -6,15 +6,25 @@
  * See spacing.wingsuit.yaml for documentation.
  */
 #}
+{#
+  Default
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set padding_x = attributes|default('default') %}
+{% set padding_top = attributes|default('default') %}
+{% set padding_bottom = attributes|default('default') %}
 
-{% set classes = ([
-  pattern_configuration('spacing', '', 'padding_x')[padding_x],
-  pattern_configuration('spacing', '', 'padding_top')[padding_top],
-  pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('spacing', null, 'padding_x')[padding_x],
+  pattern_configuration('spacing', null, 'padding_top')[padding_top],
+  pattern_configuration('spacing', null, 'padding_bottom')[padding_bottom],
 ] | sort | join(' ') | trim )%}
 
 <div style="background: rgb(163, 163, 163);box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0;">
-  <div class="{{ classes }}">
+  <div {{ attributes }}>
     <div>
     Sample Content
     </div>
