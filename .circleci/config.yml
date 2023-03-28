@@ -184,6 +184,13 @@ jobs:
           command: yarn serve-storybooks
           background: true
       - run:
+          name: Update apt
+          command: apt-get update
+      - run:
+          name: Install g++ build-essential
+          command: apt-get install g++ build-essential -y
+
+      - run:
           name: install cypress
           command: yarn install
       - run:
