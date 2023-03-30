@@ -15,4 +15,5 @@ form_textarea:
       preview:
         faker: lorem.sentence
   configuration:
-    classes: ''
+    classes:
+      wrapper: 'form-textarea'

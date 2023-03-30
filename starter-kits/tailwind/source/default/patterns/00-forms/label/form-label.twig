@@ -17,18 +17,18 @@
   @Defaults
 #}
 {%
-  set classes = [
+  set classes = ([
     title_display == 'after' ? 'option',
     title_display == 'invisible' ? 'visually-hidden',
     required ? 'js-form-required',
     required ? 'form-required',
     'pr-4',
-  ]
+  ]| sort| join(' ')| trim)
 %}
 
 {#
   @Template
 #}
 {% if title is not empty or required -%}
-  <span{{ attributes.addClass(classes) }}>{{ title }}</span>
+  <span class="{{ classes }}">{{ title }}</span>
 {%- endif %}

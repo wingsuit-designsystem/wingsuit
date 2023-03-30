@@ -13,4 +13,10 @@ form_checkbox:
       label: Children
   configuration:
     classes:
-      wrapper: ''
+      wrapper:
+        '
+        form-checkbox
+        bg-form-checkbox-icon-unchecked checked:bg-form-checkbox-icon-checked
+        dark:bg-dark-form-checkbox-icon-unchecked dark:checked:bg-dark-form-checkbox-icon-checked
+        bg-no-repeat bg-center border-0 w-5 h-5
+        '

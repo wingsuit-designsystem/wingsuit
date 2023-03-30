@@ -14,15 +14,18 @@
  */
 #}
 
-{# TEXTAREA CLASSES #}
-{%
-  set classes = [
-    'form-textarea',
-    pattern_configuration('form_textarea', variant, 'classes')['wrapper']
-  ]
-%}
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_textarea', variant, 'classes')['wrapper']
+]) %}
+{#
+Template
+#}
+<textarea{{ attributes }}>{{ value }}</textarea>
 
-{# TEMPLATES #}
-<div{{ wrapper_attributes }}>
-  <textarea{{ attributes.addClass(classes) }}>{{ value }}</textarea>
-</div>

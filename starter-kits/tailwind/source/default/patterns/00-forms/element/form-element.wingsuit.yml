@@ -37,6 +37,9 @@ form_element:
       fields:
         children:
           id: form_checkbox
+      configuration:
+        spacings:
+          margin: 'mb-4'
     checkboxes:
       label: Checkboxes
       fields:
@@ -49,6 +52,9 @@ form_element:
       fields:
         children:
           id: form_radio
+      configuration:
+        spacings:
+          margin: 'mb-4'
     radios:
       label: Radios
       fields:
@@ -109,6 +115,8 @@ form_element:
         variant: "textfield"
   configuration:
     classes:
-      wrapper: ''
-      description: ''
+      wrapper: 'js-form-item form-item block'
+      description: 'form-item__description'
       error: 'bg-red-500'
+    spacings:
+      margin: 'mb-6'

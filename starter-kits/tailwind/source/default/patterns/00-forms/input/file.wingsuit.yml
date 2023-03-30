@@ -13,4 +13,4 @@ form_file:
       label: Children
   configuration:
     classes:
-      wrapper: ''
+      wrapper: 'form-input'

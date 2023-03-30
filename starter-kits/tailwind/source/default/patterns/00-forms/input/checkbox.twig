@@ -12,21 +12,16 @@
 #}
 
 {#
-  Defaults
+Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
 {#
-  Classes
+Attributes
 #}
-{% set classes = ([
-  'form-checkbox',
-  'bg-form-checkbox-icon-unchecked checked:bg-form-checkbox-icon-checked',
-  'dark:bg-dark-form-checkbox-icon-unchecked dark:checked:bg-dark-form-checkbox-icon-checked',
-  'bg-no-repeat bg-center border-0 w-5 h-5',
+{% set attributes = attributes.addClass([
   pattern_configuration('form_checkbox', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
-
+]) %}
 {#
-  Template
+Template
 #}
-<input {{ attributes.addClass(classes) }} />{{ children }}
+<input {{ attributes }} />{{ children }}

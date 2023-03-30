@@ -15,16 +15,13 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-
 {#
-  Classes
+  Attributes
 #}
-{% set classes = ([
-  'form-input',
-  pattern_configuration('form_input', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
-
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_file', variant, 'classes')['wrapper']
+]) %}
 {#
   Template
 #}
-<input {{ attributes.addClass(classes) }} />{{ children }}
+<input {{ attributes }} />{{ children }}

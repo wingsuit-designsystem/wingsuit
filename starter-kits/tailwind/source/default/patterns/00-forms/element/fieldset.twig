@@ -20,29 +20,20 @@
  * @see template_preprocess_fieldset()
  */
 #}
-
 {# Defaults #}
-{%
-  set classes = [
-    'form-fieldset',
-    'js-form-item',
-    'form-item',
-    'js-form-wrapper',
-    'form-wrapper',
-  ]
-%}
-{%
-  set legend_classes = [
-  'h2',
-  required ? 'js-form-required',
-  required ? 'form-required',
-]
-%}
-
+{% set attributes = attributes|default(create_attribute()) %}
+{# Attributes #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_fieldgroup', '', 'classes')['wrapper']
+])%}
+{% set legend_attributes = create_attribute().addClass ([
+  pattern_configuration('form_fieldgroup', '', 'legend')['defaults'],
+  required ? 'js-form-required form-required',
+])%}
 {# Templates #}
-<fieldset{{ attributes.addClass(classes) }}>
+<fieldset{{ attributes }}>
   {#  Always wrap fieldset legends in a SPAN for CSS positioning. #}
-  <legend{{ legend.attributes.addClass(legend_classes) }}>{{ legend.title }}</legend>
+  <legend class="{{ legend_attributes }}">{{ legend.title }}</legend>
   {% if errors %}
     <div>
       {{ errors }}

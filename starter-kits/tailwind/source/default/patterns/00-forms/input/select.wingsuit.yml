@@ -17,3 +17,6 @@ form_select:
           type: "option"
         - label: Option 3
           type: "option"
+  configuration:
+    classes:
+      wrapper: 'form-select rounded-md'

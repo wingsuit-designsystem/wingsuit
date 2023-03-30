@@ -7,6 +7,10 @@ form_input:
       label: Textfield
       settings:
         attributes: "type=\"text\" placeholder=\"Placeholder\""
+      configuration:
+        classes:
+          radius: 'rounded-md'
+          wrapper: 'form-input py-3 px-4'
     password:
       label: Password
       settings:
@@ -34,4 +38,6 @@ form_input:
       label: Children
   configuration:
     classes:
-      wrapper: 'p-2'
+      wrapper: 'form-input p-2'
+      radius: ''
+

@@ -1,12 +1,10 @@
 {# Defaults #}
-{%
-  set classes = [
-    'flex flex-col md:flex-row gap-4',
-  ]
-%}
 {% set attributes = attributes|default(create_attribute()) %}
-
+{# Classes #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_flex', '', 'classes')['wrapper']
+])%}
 {# Template #}
-<div{{ attributes.addClass(classes) }}>
+<div{{ attributes }}>
   {{ children }}
 </div>

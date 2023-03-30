@@ -22,7 +22,8 @@ form_fieldgroup:
     children:
       type: pattern
       label: Children
-
   configuration:
     classes:
-      wrapper: ''
+      wrapper: 'form-fieldset js-form-item form-item js-form-wrapper form-wrapper'
+    legend:
+      defaults: 'h2'

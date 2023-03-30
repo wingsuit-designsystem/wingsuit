@@ -8,4 +8,5 @@ form_label:
       preview:
         faker: lorem.word
   configuration:
-    classes: ''
+    classes:
+      wrapper: ''
