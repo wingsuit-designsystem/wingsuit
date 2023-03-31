@@ -19,4 +19,5 @@ form_radio:
           bg-form-radio-icon-unchecked checked:bg-form-radio-icon-checked
           dark:bg-dark-form-radio-icon-unchecked dark:checked:bg-dark-form-radio-icon-checked
           bg-no-repeat bg-center border-0 w-5 h-5
+          focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[1px] focus:outline-yellow-500
           '
