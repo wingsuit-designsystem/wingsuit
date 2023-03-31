@@ -1,0 +1,86 @@
+cookie_banner:
+  use: "@molecules/cookie-banner/cookie-banner.twig"
+  label: Cookie Banner
+  description: A template for cookie compliance consent.
+  allow_variant_token: true
+  fields:
+    message:
+      type: text
+      label: Message
+      description: The main message string of the cookie banner.
+      preview: <h2>We use cookies</h2><p>Click here to give your consent so that we can improve and personalize your user experience on our website. You can change your consent at any time.</p>
+    more_info_button:
+      type: text
+      label: More info button label
+      preview:
+        More information
+    save_preferences_button_label:
+      type: text
+      label: Save button label
+      preview:
+        Save
+    agree_button_label:
+      type: text
+      label: Agree button label
+      preview:
+        Ok, I agree
+    agree_button_class:
+      type: text
+      label: Additional primary button classes
+      preview:
+        class
+    decline_button_label:
+      type: text
+      label: Decline button label
+      preview: No, thanks
+    decline_button_class:
+      type: text
+      label: Additional decline button classes
+      preview:
+        class
+    cookie_categories:
+      type: object
+      label: Categories
+  settings:
+    wrapper:
+      type: boolean
+      label: Wrapper
+      default: 1
+  variants:
+    default:
+      label: default
+      preview:
+        settings:
+          wrapper: 1
+    categories:
+      label: Categories
+      fields:
+        cookie_categories:
+          essential:
+            label: Essential
+            checkbox_default_state: required
+          analytics:
+            label: Statistic
+            checkbox_default_state: checked
+          marketing:
+            label: Marketing
+  libraries:
+    - cookie-banner:
+        css:
+          component:
+            ../cookie-banner.css: { }
+
+  configuration:
+    defaults:
+      attributes_classes: 'eu-cookie-compliance-banner eu-cookie-compliance-banner-info cookie-banner absolute w-[90%] h-[80%] md:h-auto overflow-auto max-w-2xl z-50 md:p-7 top-16 md:top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-0 md:-translate-y-2/4 bg-white border-2 border-gray-500'
+      sliding_popup_classes: 'sliding-popup-bottom fixed inset-y-0	bg-gray-800 bg-opacity-20 w-full h-auto text-left left-1/2 p-0 m-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-top'
+      popup_content_classes: 'popup-content info cookie-banner__content p-7'
+      cookiebanner_message_classes: 'cookie-banner__message mb-8 text-left'
+      more_button_classes: 'find-more-button eu-cookie-compliance-more-button cookie-banner__more-button'
+      cookiebanner_categories_wrapper_classes: 'cookie-banner__categories'
+      cookiebanner_categories_classes: 'cookie-banner__category js-form-type-checkbox block lg:inline-block pr-10 text-lg font-medium'
+      category_description_classes: 'eu-cookie-compliance-category-description'
+      popup_buttons_wrapper_classes: 'flex flex-col md:flex-row flex-nowrap justify-center md:justify-start gap-y-6 gap-x-0 md:gap-y-0 md:gap-x-6'
+      button_preferences_classes: 'flex-col button__preferences cursor-pointer'
+      button_agree_classes: 'flex-col button__agree cursor-pointer'
+      button_decline_classes: 'flex-col px-3.75'

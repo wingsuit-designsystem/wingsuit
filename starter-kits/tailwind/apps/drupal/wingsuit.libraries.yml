@@ -10,6 +10,8 @@ core:
         preprocess: true
       ws-assets://rich-text.css:
         preprocess: true
+      ws-assets://cookie-banner.css:
+        preprocess: true
 
   js:
     ws-assets://vendors/alpine.js:
