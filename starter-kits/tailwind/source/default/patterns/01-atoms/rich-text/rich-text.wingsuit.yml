@@ -111,4 +111,15 @@ rich_text:
           </tr>
           </tbody>
         </table>
-
+  variants:
+    default:
+      label: Default
+      configuration:
+        classes: |
+          prose md:prose-lg prose-base prose-display
+#   article:
+#    label: Article
+#    configuration:
+#      classes: |
+#        prose md:prose-lg prose-base
+#

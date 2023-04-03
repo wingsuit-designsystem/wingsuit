@@ -1,45 +1,45 @@
-.prose {
-/* Font */
-  @apply [&>*:first-child]:mt-0 [&>*:last-child]:mb-0;
-  h1 {
-    @apply font-display;
-    @apply font-bold;
-    @apply text-black;
-    @apply text-4xl lg:text-6xl;
-    @apply tracking-normal lg:tracking-[0.01em];
-    @apply mb-8 lg:mb-12;
+.prose-base {
+  /** Heading Styles **/
+  @apply  prose-headings:font-display prose-headings:font-bold;
+  /** Font weights **/
+  @apply  prose-a:font-bold;
+  /** Text Sizes **/
+  @apply
+  prose-h1:text-4xl md:prose-h1:text-6xl
+  prose-h2:text-3xl md:prose-h2:text-5xl
+  prose-h3:text-2xl md:prose-h3:text-4xl
+  prose-h4:text-xl md:prose-h4:text-3xl
+  prose-h4:text-lg md:prose-h5:text-2xl
+  prose-p:text-base md:prose-p:text-lg
+  prose-li:text-base md:prose-li:text-lg;
+  /** Margins **/
+  @apply
+  prose-h1:mt-10 prose-h1:mb-8 md:prose-h1:mt-20 md:prose-h1:mb-8
+  prose-h2:mt-8 prose-h2:mb-5 md:prose-h2:mt-12 md:prose-h2:mb-8
+  prose-h3:mt-8 prose-h3:mb-5 md:prose-h3:mb-10 md:prose-h4:mt-8
+  prose-h4:mt-8 prose-h4:mb-5 md:prose-h4:mb-8 md:prose-h4:mt-8
+  prose-h5:mt-8 prose-h5:mb-5 md:prose-h5:mb-8 md:prose-h5:mt-6;
+  /** Line Height **/
+  @apply
+  prose-headings:leading-tight
+  prose-p:leading-relaxed;
+  /** Colors **/
+  @apply  prose-headings:text-black dark:prose-headings:text-white
+  prose-a:text-purple-600
+  prose-strong:text-black;
+  /** Text decoration **/
+  @apply prose-a:no-underline hover:prose-a:underline;
+  dl {
+    @apply gap-x-7 grid grid-cols-1 md:grid-cols-33/66;
   }
-  h2 {
-    @apply font-display;
-    @apply font-bold;
-    @apply text-black;
-    @apply text-3xl lg:text-5xl;
-    @apply tracking-normal lg:tracking-[0.01em];
-    @apply mb-6 lg:mb-10 mt-8 lg:mt-12;
+  dt, dd {
+    @apply md:pb-2;
   }
-  h3 {
-    @apply font-display;
-    @apply font-bold;
-    @apply text-black;
-    @apply text-2xl lg:text-4xl;
-    @apply tracking-normal lg:tracking-[0.01em];
-    @apply mb-5 lg:mb-8 mt-6 lg:mt-10;
+  dt {
+    @apply pb-1;
   }
-  h4 {
-    @apply font-display;
-    @apply font-bold;
-    @apply text-black;
-    @apply text-xl lg:text-3xl;
-    @apply tracking-normal;
-    @apply mb-5 lg:mb-6 mt-5 lg:mt-8;
-  }
-  h5 {
-    @apply font-display;
-    @apply font-bold;
-    @apply text-black;
-    @apply text-xl lg:text-2xl;
-    @apply tracking-normal;
-    @apply mb-5 lg:mb-5 mt-5 lg:mt-6;
+  dd {
+    @apply pb-4;
   }
   a {
     @apply font-copy;
@@ -72,7 +72,7 @@
       background-size: 24px;
       @apply text-2xl;
       @apply text-center;
-      @apply !font-bold;
+      @apply font-bold;
       @apply font-display;
       @apply italic;
       @apply bg-no-repeat bg-center bg-top;
@@ -136,7 +136,7 @@
 }
 
 /* optional variant
-.prose.article {
+.prose.display {
 
 }
 */

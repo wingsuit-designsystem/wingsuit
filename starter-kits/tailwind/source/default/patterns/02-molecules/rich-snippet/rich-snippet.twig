@@ -6,53 +6,57 @@
  * See rich-snippet.wingsuit.yaml for documentation.
  */
 #}
-
 {#
-Defaults
-#}
-{% set attributes = attributes|default(create_attribute()) %}
-
-{#
-  Attributes
-#}
-{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'default')['attributes_classes']) %}
-{% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'default')['preheadline_classes']) %}
-{% set headline_attributes = create_attribute().addClass([
-  pattern_configuration('rich_snippet', variant, 'default')['headline_classes'],
-  pattern_configuration('rich_snippet', variant, 'headline_text'),
-  pattern_configuration('rich_snippet', variant, 'spacing'),
-] | sort | join(' ') | trim ) %}
-{% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
-
-{#
-  Render Slots
+Render Slots
 #}
 {% set preheadline %}{{- preheadline -}}{% endset %}
 {% set headline %}{{- headline -}}{% endset %}
 {% set text %}{{- text -}}{% endset %}
-
 {#
-  Template
+Defaults
 #}
-<div {{ attributtes }}>
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('rich_snippet', variant, 'classes')['wrapper'],
+  pattern_configuration('rich_snippet', variant, 'classes')['spacing']
+])%}
+{#
+Classes
+#}
+{% set headline_tag = pattern_configuration('rich_snippet', variant, 'classes')['headline_tag'] %}
+{% set headline_style = pattern_configuration('rich_snippet', variant, 'classes')['headline_style'] %}
+{% set pre_headline_style = pattern_configuration('rich_snippet', variant, 'classes')['pre_headline_style'] %}
+{% set text_style = pattern_configuration('rich_snippet', variant, 'classes')['text_style'] %}
+{% set action_spacing = pattern_configuration('rich_snippet', variant, 'classes')['text_align'] %}
+{% set action_spacing = pattern_configuration('rich_snippet', variant, 'classes')['action_spacing'] %}
+{#
+Internal logic
+#}
+{% if darkmode  == true %}
+  {% set toggle_darkmode = pattern_configuration('rich_snippet', variant, 'classes')['dark_mode'] %}
+  {% set attributes = attributes.addClass('dark') %}
+{% endif %}
+{#
+Template
+#}
+<div {{ attributes }}  >
+  {% block content %}
   {% if preheadline is not empty %}
-    <div {{ preheadline_attributes }}>
-      {{ preheadline }}
-    </div>
+    <div class="{{ pre_headline_style }} {{ text_align }} {{ toggle_darkmode }}">{{- preheadline -}}</div>
   {% endif %}
-  {% if headline %}
-    <div {{ headline_attributes }}>
-      {{ headline }}
-    </div>
+  {% if headline is not empty %}
+  <{{ headline_tag }} class="{{ headline_style }} {{ text_align }} {{ toggle_darkmode }}">{{- headline -}}</{{ headline_tag }}>
   {% endif %}
-  {% if text %}
-    <p {{ text_attributes }}>
-      {{ text }}
-    </p>
+  {% if text is not empty %}
+    <p class=" {{ text_style }} {{ text_align }} {{ toggle_darkmode }}">{{- text -}}</p>
   {% endif %}
   {% if action %}
-    <div class="mt-5">
+    <div class="{{ action_spacing }}">
       {{ action }}
     </div>
   {% endif %}
+{% endblock %}
 </div>

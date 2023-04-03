@@ -29,31 +29,37 @@ rich_snippet:
       label: Action
       preview:
         id: button
-        variant: link
+        variant: default
         settings:
-          icon: home
+          icon: empty
+          icon_alignment: left
           size: large
   variants:
+    default:
+      label: Default
     small:
       label: Small
       configuration:
-        headline_text: 'text-2xl font-display'
-        text: 'text-base'
-        spacing: 'mb-3'
-    default:
-      label: Default
-      configuration:
-        headline_text: 'text-2xl lg:text-4xl'
-        text: 'text-base'
-        spacing: 'mb-3 lg:mb-4'
+        headline_tag: 'div'
+        headline_style: 'text-2xl'
     large:
       label: Large
       configuration:
-        headline_text: 'text-4xl lg:text-6xl'
-        text: 'text-base lg:text-lg'
-        spacing: 'mb-4'
+        headline_tag: 'h2'
+        headline_style: 'text-4xl lg:text-6xl'
+        text_style: 'text-base lg:text-lg'
   configuration:
-    default:
-      attributes_classes: 'flex flex-col flex-1'
-      preheadline_classes: 'text-teal-500 text-base mb-2 font-display font-bold'
-      headline_classes: 'font-display font-bold'
+    classes:
+      wrapper: 'rich-snippet flex flex-col flex-1 '
+      headline_tag: 'div'
+      pre_headline_style: 'text-teal-500 mb-2 font-bold leading-6 tracking-[0.01em]'
+      headline_style: 'text-black text-2xl lg:text-4xl font-bold leading-7'
+      text_style: ''
+      text_align: ''
+      action_spacing: 'mt-5'
+      dark_mode: 'dark:text-white'
+  settings:
+    darkmode:
+      label: Darkmode
+      type: boolean
+      default_value: true
