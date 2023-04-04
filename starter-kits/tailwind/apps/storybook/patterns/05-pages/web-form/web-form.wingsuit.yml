@@ -82,6 +82,7 @@ page_webform:
               - id: form_element
                 variant: radios
               - id: form_submit
+                variant: default
           settings:
             width: default
             columns: 1

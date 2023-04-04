@@ -23,6 +23,10 @@ form_input:
       label: Date
       settings:
         attributes: "type=\"date\""
+    search:
+      label: Search
+      settings:
+        attributes: "type=\"text\" placeholder=\"Search\""
   settings:
     attributes:
       type: attributes

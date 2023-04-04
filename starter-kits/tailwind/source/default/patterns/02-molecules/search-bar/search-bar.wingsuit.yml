@@ -1,0 +1,30 @@
+search_bar:
+  use: "@molecules/search-bar/search-bar.twig"
+  label: Search Bar
+  description: Main Search Bar
+  fields:
+    search_input:
+      type: pattern
+      label: Search input
+      preview:
+        id: form_input
+        variant: search
+    submit:
+      type: pattern
+      label: Submit
+      preview:
+        id: form_submit
+        variant: search
+        fields:
+          text: 'Search'
+  settings:
+    cancel:
+      type: boolean
+      label: Hide Cancel
+      default_value: true
+  configuration:
+    classes:
+      wrapper: 'relative w-full'
+      submit_wrapper: 'absolute flex items-center justify-center transform -translate-y-1/2 top-1/2 right-0 w-10 h-full'
+      submit_overlay: 'flex items-center justify-center rounded-r lg:rounded-r-lg h-full w-full
+                peer-focus:outline peer-focus:outline-3 peer-focus:outline-offset-[-2px] peer-focus:outline-yellow-500'

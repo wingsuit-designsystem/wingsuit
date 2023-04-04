@@ -7,12 +7,28 @@ form_submit:
       type: attributes
       label: Attributes
       preview: "type=\"submit\" value=\"Send\""
+    disabled:
+      type: boolean
+      label: Disabled
+      default_value: false
   fields:
     children:
       type: pattern
       label: Children
+  variants:
+    default:
+      label: Default
+    search:
+      label: Search
+      settings:
+        attributes: "type=\"submit\" value=\"\" id=\"search\""
+      configuration:
+        classes:
+          wrapper: 'absolute peer opacity-0 z-50  h-full w-full cursor-pointer'
+          active: ''
+          disabled: ''
   configuration:
     classes:
-      wrapper: 'btn flex items-center justify-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400 py-3 px-4 text-base tracking-[0.01em] rounded-[22px] w-full'
+      wrapper: 'btn flex items-center justify-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400 py-3 px-4 text-base tracking-[0.01em] rounded-[22px] w-full cursor-pointer'
       active: 'bg-teal-600 dark:bg-white hover:bg-purple-800 dark:hover:bg-purple-100 text-white dark:text-purple-700'
       disabled: 'bg-gray-300 text-gray-400'

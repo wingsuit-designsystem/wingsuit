@@ -10,6 +10,7 @@
  * @see template_preprocess_input()
  */
 #}
+
 {#
   Defaults
 #}
@@ -18,15 +19,17 @@
 {#
   Internal logic
 #}
-{% set active_key = attributes.hasAttribute('disabled') == false ? 'active' : 'disabled' %}
+{% set active_key = disabled == true ? 'disabled' : 'active' %}
 {#
-Attributes
+  Attributes
 #}
 {% set attributes = attributes.addClass([
   pattern_configuration('form_submit', variant, 'classes')['wrapper'],
-  pattern_configuration('form_submit', variant, 'classes')[active_key]
+  pattern_configuration('form_submit', variant, 'classes')[ active_key ],
 ]) %}
 {#
-Template
+  Template
 #}
-<input {{ attributes }} />{{ children }}
+<input {{ attributes }} >{{ children }}
+
+
