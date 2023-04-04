@@ -28,3 +28,4 @@ search_bar:
       submit_wrapper: 'absolute flex items-center justify-center transform -translate-y-1/2 top-1/2 right-0 w-10 h-full'
       submit_overlay: 'flex items-center justify-center rounded-r lg:rounded-r-lg h-full w-full
                 peer-focus:outline peer-focus:outline-3 peer-focus:outline-offset-[-2px] peer-focus:outline-yellow-500'
+      cancel: 'absolute flex items-center justify-center transform -translate-y-1/2 top-1/2 right-7 w-10 h-full search-clear-icon'

@@ -26,7 +26,7 @@ form_input:
     search:
       label: Search
       settings:
-        attributes: "type=\"text\" placeholder=\"Search\""
+        attributes: "type=\"text\" placeholder=\"Search\" id=\"search_input\""
   settings:
     attributes:
       type: attributes

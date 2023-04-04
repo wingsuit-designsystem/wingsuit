@@ -12,7 +12,8 @@ core:
         preprocess: true
       ws-assets://form-label.css:
         preprocess: true
-
+      ws-assets://search-bar.css:
+        preprocess: true
   js:
     ws-assets://vendors/alpine.js:
       preprocess: true
