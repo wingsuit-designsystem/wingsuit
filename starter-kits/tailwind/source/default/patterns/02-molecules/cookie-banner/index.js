@@ -1,8 +1,6 @@
 /**
- * hero
+ * cookie-banner
  */
-// Module styles
-import './cookie-banner.css';
 import './cookie-banner.twig';
 import './cookie-banner.wingsuit.yml';
-// import './cookie-banner.behavior';
+import './cookie-banner.css';

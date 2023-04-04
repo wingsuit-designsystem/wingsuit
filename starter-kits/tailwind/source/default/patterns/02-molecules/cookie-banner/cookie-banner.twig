@@ -41,7 +41,7 @@ Defaults
 {% set attributes = attributes|default(create_attribute().addClass(classes)) %}
 
 {#
-  Attributes
+Attributes
 #}
 {% set attributes = attributes.addClass(pattern_configuration('cookie_banner', null, 'defaults')['attributes_classes']) %}
 {% set sliding_popup_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['sliding_popup_classes']) %}
@@ -52,7 +52,7 @@ Defaults
 {% set cookiebanner_categories_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['cookiebanner_categories_classes']) %}
 {% set category_description_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['category_description_classes']) %}
 {% set popup_buttons_wrapper_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['popup_buttons_wrapper_classes']) %}
-{% set button_preferences__attributes= create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_preferences_classes']) %}
+{% set button_preferences_attributes= create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_preferences_classes']) %}
 {% set button_agree_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_agree_classes']) %}
 {% set button_decline_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_decline_classes']) %}
 
@@ -69,66 +69,66 @@ CLASSES
 {% endif %}
 {% if wrapper|default(0) %}
   {# wingsuit wrapper #}
-  <div id="sliding-popup" {{ sliding_popup_attributes }}>
-{% endif %}
+<div id="sliding-popup" {{ sliding_popup_attributes }}>
+  {% endif %}
 
-<div role="alertdialog" aria-labelledby="popup-text" {{ attributes }}>
-  <div {{ popup_content_attributes }}>
-    <div id="popup-text" {{ cookiebanner_message_attributes }}>
-      {{ pattern('rich_text', {text: message} ) }}
-      {% if more_info_button %}
-        <button type="button" {{ more_button_attributes }}>
-          {{ pattern('rich_text', {text: more_info_button} ) }}
-        </button>
+  <div role="alertdialog" aria-labelledby="popup-text" {{ attributes }}>
+    <div {{ popup_content_attributes }}>
+      <div id="popup-text" {{ cookiebanner_message_attributes }}>
+        {{ pattern('rich_text', {text: message} ) }}
+        {% if more_info_button %}
+          <button type="button" {{ more_button_attributes }}>
+            {{ pattern('rich_text', {text: more_info_button} ) }}
+          </button>
+        {% endif %}
+      </div>
+
+      {% if cookie_categories %}
+        <div id="eu-cookie-compliance-categories" {{ cookiebanner_categories_wrapper_attributes }}>
+          {% for key, category in cookie_categories %}
+            <div {{ cookiebanner_categories_attributes }}>
+              {% set input_attributes = create_attribute().setAttribute("type", "checkbox").setAttribute("id", "cookie-category-"~key).setAttribute("cookie-categories", key) %}
+              {# Required for eu_cookie_compliance module version > 1.9: #}
+              {% if category.checkbox_default_state in ["checked", "required"] %}
+                {% set input_attributes = input_attributes.setAttribute("checked", "checked") %}
+              {% endif %}
+              {% if category.checkbox_default_state == 'required' %}
+                {% set input_attributes = input_attributes.setAttribute("disabled", "disabled") %}
+              {% endif %}
+              {% set checkbox %}
+                {{ pattern('form_checkbox', {attributes: input_attributes} ) }}
+              {% endset %}
+              {{ pattern('form_element', {label: category.label, label_display: "after", children: checkbox, attributes: create_attribute().setAttribute("for", "cookie-category-"~key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')} ) }}
+              {% if category.description %}
+                <div {{ category_description_attributes }} >{{ category.description }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       {% endif %}
-    </div>
-
-    {% if cookie_categories %}
-      <div id="eu-cookie-compliance-categories" {{ cookiebanner_categories_wrapper_attributes }}>
-        {% for key, category in cookie_categories %}
-          <div {{ cookiebanner_categories_attributes }}>
-            {% set input_attributes = create_attribute().setAttribute("type", "checkbox").setAttribute("id", "cookie-category-"~key).setAttribute("cookie-categories", key) %}
-            {# Required for eu_cookie_compliance module version > 1.9: #}
-            {% if category.checkbox_default_state in ["checked", "required"] %}
-              {% set input_attributes = input_attributes.setAttribute("checked", "checked") %}
-            {% endif %}
-            {% if category.checkbox_default_state == 'required' %}
-              {% set input_attributes = input_attributes.setAttribute("disabled", "disabled") %}
-            {% endif %}
-            {% set checkbox %}
-              {{ pattern('form_checkbox', {attributes: input_attributes} ) }}
-            {% endset %}
-            {{ pattern('form_element', {label: category.label, label_display: "after", children: checkbox, attributes: create_attribute().setAttribute("for", "cookie-category-"~key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')} ) }}
-            {% if category.description %}
-              <div {{ category_description_attributes }} >{{ category.description }}</div>
+      {{ dump(tag_name) }}
+      <div id="popup-buttons" class="mt-6">
+        <div {{ popup_buttons_wrapper_attributes }}>
+          <div {{ button_preferences_attributes }}>
+            {% if save_preferences_button_label %}
+              {{ pattern('button', {text: save_preferences_button_label, attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: "eu-cookie-compliance-save-preferences-button"}, 'default' ) }}
             {% endif %}
           </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-{{ dump(tag_name) }}
-    <div id="popup-buttons" class="mt-6">
-      <div {{ popup_buttons_wrapper_attributes }}>
-        <div {{ button_preferences_attributes }}>
-          {% if save_preferences_button_label %}
-            {{ pattern('button', {text: save_preferences_button_label, attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: "eu-cookie-compliance-save-preferences-button"}, 'default' ) }}
+          {% if agree_button %}
+            <div {{ button_agree_attributes }}>
+              {{ pattern('button', {text: agree_button, attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: primary_button_class|replace({"eu-cookie-compliance-default-button": ""})}, 'default' ) }}
+            </div>
+          {% endif %}
+          {% if decline_button_label %}
+            <div {{ button_decline_attributes }}>
+              {{ pattern('button', {text: decline_button_label, expanded: 1, size: "medium", attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: decline_button_class}, 'default' ) }}
+            </div>
           {% endif %}
         </div>
-        {% if agree_button %}
-        <div {{ button_agree_attributes }}>
-          {{ pattern('button', {text: agree_button, attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: primary_button_class|replace({"eu-cookie-compliance-default-button": ""})}, 'default' ) }}
-        </div>
-        {% endif %}
-        {% if decline_button_label %}
-          <div {{ button_decline_attributes }}>
-            {{ pattern('button', {text: decline_button_label, expanded: 1, size: "medium", attributes: create_attribute({"type": "button"}), tag_name: 'button', extra_classes: decline_button_class}, 'default' ) }}
-          </div>
-        {% endif %}
       </div>
     </div>
   </div>
-</div>
 
-{% if wrapper|default(0) %}
+  {% if wrapper|default(0) %}
 </div>
 {% endif %}
