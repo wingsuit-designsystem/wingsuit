@@ -16,7 +16,7 @@ menu:
         items:
           1:
             title: Products
-            url: "#"
+            url: '#'
             in_active_trail: true
             below:
               10:
@@ -55,13 +55,13 @@ menu:
                 url: '#'
           2:
             title: Pricing
-            url: "#"
+            url: '#'
           3:
             title: Partner
-            url: "#"
+            url: '#'
           4:
             title: Article
-            url: "#"
+            url: '#'
             below:
               21:
                 title: Accounts
@@ -99,7 +99,19 @@ menu:
                 url: '#'
           5:
             title: Contact
-            url: "#"
+            url: '#'
+      configuration:
+        classes:
+          "parent_list": "lg:flex lg:justify-end lg:space-x-7 lg:items-center"
+          "parent_list_item": "relative"
+          "parent_link_wrapper": "flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0"
+          "parent_link": "font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block"
+          "parent_icon_wrapper": "w-[18px] h-[10px] cursor-pointer"
+          "child_wrapper": "submenu lg:border bg-white lg:group-hover-block"
+          "child_list": ""
+          "child_list_item": "relative"
+          "child_link": "dark:text-white text-base font-serif hover:underline"
+          "child_icon_wrapper": "w-[18px] h-[10px] cursor-pointer"
     footer:
       use: "@molecules/menu/menu-footer.twig"
       label: Footer
@@ -107,7 +119,7 @@ menu:
       fields:
         items:
           - title: Get to know us
-            url: "#"
+            url: '#'
             below:
               10:
                 title: About us
@@ -122,7 +134,7 @@ menu:
               title: Career
               url: '#'
           - title: News & Press
-            url: "#"
+            url: '#'
             below:
               10:
                 title: News
@@ -134,7 +146,7 @@ menu:
                 title: Events
                 url: '#'
           - title: Customer Service
-            url: "#"
+            url: '#'
             below:
               10:
                 title: Help Center
@@ -149,7 +161,7 @@ menu:
                 title: Contact us
                 url: '#'
           - title: Legal
-            url: "#"
+            url: '#'
             below:
               10:
                 title: Privacy policy

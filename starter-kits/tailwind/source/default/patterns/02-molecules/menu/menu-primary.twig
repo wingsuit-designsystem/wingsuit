@@ -1,20 +1,47 @@
+{#
+Defaults
+#}
 {% set menu_level = 0 %}
+{#
+Attributes
+#}
+{% set parent_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['parent_list']) %}
+{% set parent_list_item_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['parent_list_item']) %}
+{% set parent_link_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['parent_link_wrapper']) %}
+{% set parent_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['parent_link']) %}
+{% set parent_icon_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['parent_icon_wrapper']) %}
+{% set child_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['child_wrapper']) %}
+{% set child_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['child_list']) %}
+{% set child_list_item_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['child_list_item']) %}
+{% set child_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['child_link']) %}
+{% set child_icon_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'classes')['child_icon_wrapper']) %}
+{#
+Classes
+#}
+{% set child_classes = ([
+  child_wrapper_attributes,
+  child_list_item_attributes,
+  child_icon_wrapper_attributes,
+  child_link_attributes,
+  child_list_attributes,
+]) %}
+
+{#
+Template
+#}
 
 {% import _self as menus %}
-
-{% macro dropdown_menu(items, menu_level) %}
+{% macro dropdown_menu(items, menu_level,child_classes) %}
   {% import _self as menus %}
   {% set container_classes = ([
-    'submenu lg:border bg-white lg:group-hover-block',
-    menu_level == 1 ? 'lg:absolute left-[-165px]' : 'lg:absolute lg:top-0',
+    menu_level == 1 ? 'lg:absolute left-[-165px]' : 'lg:absolute lg:top-0 lg:right-0',
   ] | sort | join(' ') | trim ) %}
-
+  {% set child_wrapper_attributes = child_classes[0].addClass(container_classes) %}
   {% set link_classes = ([
-    menu_level == 1 ? 'w-full lg:w-[320px]' : 'w-full lg:w-[240px]',
+    menu_level == 1 ? 'w-full lg:w-[320px]' : 'w-full lg:w-[163px]',
     menu_level >= 1 ? 'lg:hover:bg-teal-50 block cursor-pointer lg:flex pl-8 pr-4 lg:px-4 py-3 border-b lg:border-0',
   ] | sort | join(' ') | trim ) %}
-
-  <div class="{{ container_classes }}"
+  <div {{ child_wrapper_attributes }}
        :class="{'block lg:hidden': submenuIsOpen, 'hidden': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
        data-menu="submenu">
     <div {{ menu_level == 2 ? 'class="lg:flex"' }}>
@@ -22,7 +49,7 @@
       {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
         <ul>
           {% for item in row %}
-            <li class="relative"
+            <li {{ child_classes[1] }}
               {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()"
               @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);"
               @mouseleave="processed = false"
@@ -30,25 +57,29 @@
               :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu"
               data-menu-level="{{ menu_level }}">
               <div class="{{ link_classes }}">
-                <a href="{{ item.url }}" class="flex-1 font-display">
+                <a href="{{ item.url }}" class="font-display">
                   {{ item.title }}
                 </a>
                 {% if item.below %}
-                  <div
-                    class="w-[18px] h-5 {{
+                  <div {{ child_classes[2] }}
+                    :class=" {{
                       menu_level == 1
                         ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                         : 'float-right lg:hidden center-origin transition duration-100 ease-in'
                     }} cursor-pointer"
                     {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
                     :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-                    {{ pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) }}
+                    {# only demo will be replaced #}
+                    <svg width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.60156 10.3984C9.07031 10.9062 9.89062 10.9062 10.3594 10.3984L17.8594 2.89844C18.3672 2.42969 18.3672 1.60938 17.8594 1.14062C17.3906 0.632812 16.5703 0.632812 16.1016 1.14062L9.5 7.74219L2.85938 1.14062C2.39062 0.632812 1.57031 0.632812 1.10156 1.14062C0.59375 1.60938 0.59375 2.42969 1.10156 2.89844L8.60156 10.3984Z" fill="currentColor"/>
+                    </svg>
+                    {#  pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) #}
                     {{ menus.dropdown_menu(menu_level) }}
                   </div>
                 {% endif %}
               </div>
               {% if item.below %}
-                {{ menus.dropdown_menu(item.below, menu_level + 1) }}
+                {{ menus.dropdown_menu(item.below, menu_level + 1, child_classes) }}
               {% endif %}
             </li>
           {% endfor %}
@@ -58,80 +89,41 @@
   </div>
 {% endmacro %}
 
-{% set list_classes = ([
-  'lg:flex lg:justify-end lg:space-x-7 lg:items-center'
-] | sort | join(' ') | trim ) %}
+{#
+Parent
+#}
 
-<ul class="{{ list_classes }}">
+<ul {{ parent_list_attributes }}>
   {% for item in items %}
-    {% set link_classes = ([
-      'font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
-    ] | sort | join(' ') | trim ) %}
-    <li class="relative" {% if item.below %}
+    <li {{ parent_list_item_attributes }} {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
-      <div class="flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0">
-        <a href="{{ item.url }}" class="{{ link_classes }}">
+      <div {{ parent_link_wrapper_attributes }}>
+        <a href="{{ item.url }}" {{ parent_link_attributes }} >
           {{ item.title }}
         </a>
         {% if item.below is not empty %}
-          <div class="w-[18px] h-5 {{
+          <div {{ parent_icon_wrapper_attributes }} :class=" {{
               menu_level == 1
                 ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                 : 'float-right center-origin transition duration-100 ease-in lg:group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'
-            }} cursor-pointer"
-            {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
-            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-            {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
+            }} "
+            {% if item.below %}
+              @click="submenuIsOpen = !submenuIsOpen;"
+            {% endif %}
+            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}"
+          >
+            {# only demo will be replaced #}
+            <svg width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.60156 10.3984C9.07031 10.9062 9.89062 10.9062 10.3594 10.3984L17.8594 2.89844C18.3672 2.42969 18.3672 1.60938 17.8594 1.14062C17.3906 0.632812 16.5703 0.632812 16.1016 1.14062L9.5 7.74219L2.85938 1.14062C2.39062 0.632812 1.57031 0.632812 1.10156 1.14062C0.59375 1.60938 0.59375 2.42969 1.10156 2.89844L8.60156 10.3984Z" fill="currentColor"/>
+            </svg>
+            {#  pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) #}
           </div>
         {% endif %}
       </div>
       {% if item.below %}
-        {{ menus.dropdown_menu(item.below, menu_level + 1) }}
+        {{ menus.dropdown_menu(item.below, menu_level + 1,child_classes) }}
       {% endif %}
     </li>
   {% endfor %}
 </ul>
-
-
-{#
-{% import _self as menus %}
-
-{{ menus.menu_links(items, attributes,  0, dropdown) }}
-
-{% macro menu_links(items, attributes, menu_level, dropdown) %}
-  {% import _self as menus %}
-
-  <ul class="flex-col w-full" >
-    {% for item in items %}
-      {% if item.in_active_trail == true %}
-        {% set link_color = 'text-sky-blue-500' %}
-      {% else %}
-        {% set link_color = 'text-black' %}
-      {% endif %}
-    {% set link_classes = ([
-        'w-full block cursor-pointer lg:inline-block',
-        'hover:text-sky-blue-500',
-        link_color,
-        padding,
-      ] | sort | join(' ') | trim ) %}
-      <li data-menu-level="{{ menu_level }}"
-          {% if menu_level == 0 and dropdown == false %}class="pb-4"{% endif %}>
-        <div class="flex">
-          <a href="{{ item.url }}" class="{{ link_classes }}
-            {% if menu_level == 0 and dropdown == true %}pb-3 text-base leading-8 font-bold
-            {% elseif menu_level == 0 and dropdown == false %}text-lg leading-8 font-bold
-            {% elseif menu_level >= 1  and dropdown == true %} pb-3 text-base font-regular
-            {% elseif menu_level >= 1  and dropdown == false %} pb-2 text-base font-regular
-            {% endif %}">
-            {{ item.title }}
-          </a>
-        </div>
-        {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1, dropdown) }}
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-{% endmacro %}
-#}
