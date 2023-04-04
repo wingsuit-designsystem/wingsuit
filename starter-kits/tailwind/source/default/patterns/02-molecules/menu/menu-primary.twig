@@ -93,3 +93,45 @@
   {% endfor %}
 </ul>
 
+
+{#
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes,  0, dropdown) }}
+
+{% macro menu_links(items, attributes, menu_level, dropdown) %}
+  {% import _self as menus %}
+
+  <ul class="flex-col w-full" >
+    {% for item in items %}
+      {% if item.in_active_trail == true %}
+        {% set link_color = 'text-sky-blue-500' %}
+      {% else %}
+        {% set link_color = 'text-black' %}
+      {% endif %}
+    {% set link_classes = ([
+        'w-full block cursor-pointer lg:inline-block',
+        'hover:text-sky-blue-500',
+        link_color,
+        padding,
+      ] | sort | join(' ') | trim ) %}
+      <li data-menu-level="{{ menu_level }}"
+          {% if menu_level == 0 and dropdown == false %}class="pb-4"{% endif %}>
+        <div class="flex">
+          <a href="{{ item.url }}" class="{{ link_classes }}
+            {% if menu_level == 0 and dropdown == true %}pb-3 text-base leading-8 font-bold
+            {% elseif menu_level == 0 and dropdown == false %}text-lg leading-8 font-bold
+            {% elseif menu_level >= 1  and dropdown == true %} pb-3 text-base font-regular
+            {% elseif menu_level >= 1  and dropdown == false %} pb-2 text-base font-regular
+            {% endif %}">
+            {{ item.title }}
+          </a>
+        </div>
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, dropdown) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+#}
