@@ -15,6 +15,13 @@ export function webpack(appConfig: AppConfig) {
     return acc;
   }, {});
 
+  const indexItems = glob.sync(`${appConfig.absDesignSystemPath}/**/index.js`);
+  const indexObjects = indexItems.reduce((acc, item) => {
+    const filename = path.basename(item).replace('index.js', '');
+    acc[`items/${filename}`] = item;
+    return acc;
+  }, {});
+
   const vendorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.vendor.js`);
 
   const vendorObject = vendorItems.reduce((acc, item) => {
@@ -38,6 +45,7 @@ export function webpack(appConfig: AppConfig) {
     },
     devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
     entry: {
+      ...indexObjects,
       ...behaviorObject,
       ...cssObject,
       ...vendorObject,

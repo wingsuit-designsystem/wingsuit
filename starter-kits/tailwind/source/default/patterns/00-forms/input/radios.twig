@@ -11,5 +11,17 @@
  */
 #}
 
-{# TEMPLATES #}
-<div{{ attributes.addClass('form-item--radio') }}>{{ children }}</div>
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_radios', variant, 'classes')['wrapper']
+]) %}
+{#
+Templates
+#}
+<div{{ attributes }}>{{ children }}</div>

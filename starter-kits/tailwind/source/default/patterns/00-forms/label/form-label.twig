@@ -13,18 +13,24 @@
  */
 #}
 
-{# FORM-LABEL CLASSES #}
-{%
-  set classes = [
-    title_display == 'after' ? 'option',
-    title_display == 'invisible' ? 'visually-hidden',
-    required ? 'js-form-required',
-    required ? 'form-required',
-    'pr-4',
-  ]
-%}
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+Attributes
+#}
 
-{# TEMPLATE #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_label', '', 'classes')['wrapper'],
+  title_display == 'after' ? 'option',
+  title_display == 'invisible' ? 'visually-hidden',
+  required ? 'js-form-required',
+  required ? 'form-required',
+]) %}
+{#
+Template
+#}
 {% if title is not empty or required -%}
-  <span{{ attributes.addClass(classes) }}>{{ title }}</span>
+  <span {{ attributes }}>{{ title }}</span>
 {%- endif %}

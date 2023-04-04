@@ -12,13 +12,15 @@ import { listOfPackages } from './utils/list-packages';
 
 program
   .option('-O, --open', 'keep process open')
-  .option('-P, --publish', 'should publish packages');
+  .option('-P, --publish', 'should publish packages')
+  .option('-p, --port <port>', 'port to run https server on');
 
 program.parse(process.argv);
 
+const port = program.port ?? 6000;
 const logger = console;
 
-const startVerdaccio = async () => {
+const startVerdaccio = async (port: number) => {
   let resolved = false;
   return Promise.race([
     new Promise((resolve) => {
@@ -30,7 +32,8 @@ const startVerdaccio = async () => {
       };
 
       runServer(config).then((app: Server) => {
-        app.listen(6001, () => {
+
+        app.listen(port, () => {
           resolved = true;
           resolve(app);
         });
@@ -49,6 +52,7 @@ const startVerdaccio = async () => {
 
 const currentVersion = async () => {
   const { version } = await readJSON(path.join(__dirname, '..', 'package.json'));
+  console.log('version', path.join(__dirname, '..', 'package.json'))
   return version;
 };
 
@@ -69,7 +73,7 @@ const publish = (packages: { name: string; location: string }[], url: string) =>
                 '.'
               )})`
             );
-            const command = `cd ${location} && yarn publish --registry ${url} --force --access restricted --ignore-scripts`;
+            const command = `cd ${location} && npm publish --registry ${url} --access restricted --ignore-scripts`;
             exec(command, (e) => {
               if (e) {
                 rej(e);
@@ -99,7 +103,7 @@ const addUser = (url: string) =>
   });
 
 const run = async () => {
-  const verdaccioUrl = `http://localhost:6001`;
+  const verdaccioUrl = `http://localhost:${port}`;
 
   logger.log(`📐 reading version of wingsuit`);
   logger.log(`🚛 listing wingsuit packages`);
@@ -116,7 +120,7 @@ const run = async () => {
   logger.log(`🎬 starting verdaccio (this takes ±5 seconds, so be patient)`);
 
   const [verdaccioServer, packages, version] = await Promise.all([
-    startVerdaccio(),
+    startVerdaccio(port),
     listOfPackages(),
     currentVersion(),
   ]);

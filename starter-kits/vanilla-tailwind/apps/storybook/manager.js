@@ -1,8 +1,8 @@
 // .storybook/manager.js
 
 import { addons } from '@storybook/addons';
-import { wingsuitTheme } from '@wingsuit-designsystem/storybook';
+import { theme } from '@wingsuit-designsystem/storybook/theming';
 
 addons.setConfig({
-  theme: wingsuitTheme,
+  theme,
 });

@@ -1,0 +1,32 @@
+
+.floating {
+  input {
+    @apply appearance-none border-none absolute top-0 left-0;
+    background-color: transparent;
+    &:focus {
+       box-shadow: none; @apply outline-0 ring-0;
+      + .floating__label .floating__label{
+        &__left { @apply border-2 border-r-0 border-yellow-500; }
+        &__center { @apply border-b-2 border-yellow-500; }
+        &__right { @apply border-2 border-l-0 border-yellow-500; }
+      }
+      + .floating__label  .floating__label__center {
+        span {@apply block duration-500 opacity-100 -translate-y-1/2;}
+      }
+     }
+    &:not(:focus) {
+      + .floating__label  .floating__label__center {
+        border-top-width: 1px;
+        span{ @apply opacity-0; }
+      }
+      &:not(:placeholder-shown) + .floating__label  .floating__label__center {
+        border-top-width: 0px;
+        span{@apply block opacity-100 -translate-y-1/2; }
+      }
+     }
+  }
+  &__label__center span {
+    @apply pl-4;
+  }
+}
+

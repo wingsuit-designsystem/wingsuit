@@ -29,6 +29,10 @@ export function webpack(appConfig: AppConfig) {
     {
       loader: require.resolve('css-loader'),
       options: {
+        importLoaders: 1,
+        modules: {
+          mode: 'icss',
+        },
         sourceMap: true,
       },
     },

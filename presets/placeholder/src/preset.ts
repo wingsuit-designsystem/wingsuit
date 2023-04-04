@@ -9,6 +9,7 @@ export function name(appConfig: AppConfig) {
 }
 
 interface PlaceholderConfig {
+  service: string;
   aspectRatios: {};
   generationSteps: number;
   generationStart: number;
@@ -20,6 +21,7 @@ export function defaultConfig(appConfig: AppConfig): PlaceholderConfig {
     generationSteps: 200,
     generationStart: 200,
     generationMax: 2000,
+    service: 'fakeimg',
     aspectRatios: {
       '1_1': { w: 1, h: 1 },
       '1_3': { w: 1, h: 3 },
@@ -70,6 +72,8 @@ export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
         if (patternDefinition.settings?.style.options) {
           Object.assign(patternDefinition.settings.style.options, options);
         }
+        // @ts-ignore
+        patternDefinition.settings.service.preview = config.service;
         patternDefinition.configuration.image_config.styles = styles;
       }
     },

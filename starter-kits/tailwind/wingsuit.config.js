@@ -2,14 +2,19 @@ const path = require('path');
 
 const patterns = path.resolve(__dirname, 'source/default/patterns');
 const appsPatterns = path.resolve(__dirname, 'apps/storybook/patterns');
-console.log(appsPatterns);
 module.exports = {
+  parameters: {
+    placeholder: {
+      service: 'placebeard',
+    },
+  },
   presets: [
     '@wingsuit-designsystem/preset-tailwind2',
     '@wingsuit-designsystem/preset-twing',
     '@wingsuit-designsystem/preset-placeholder',
     '@wingsuit-designsystem/preset-icon',
     '@wingsuit-designsystem/preset-icon-spritemap',
+    '@wingsuit-designsystem/preset-imagemin',
   ],
   designSystems: {
     default: {

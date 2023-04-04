@@ -15,12 +15,16 @@ form_element:
         children:
           id: form_input
           variant: "email"
+      settings:
+        label:
+          preview: 'test'
     file:
       label: File
       fields:
         children:
-          id: form_input
-          variant: "file"
+          id: form_file
+      settings:
+        floating_label: 'false'
     tel:
       label: Tel
       fields:
@@ -33,35 +37,54 @@ form_element:
         children:
           id: form_input
           variant: "date"
+      settings:
+        floating_label: 'false'
     checkbox:
       label: Checkbox
       fields:
         children:
           id: form_checkbox
+      configuration:
+        spacings:
+          margin: 'mb-4'
+      settings:
+        floating_label: 'false'
     checkboxes:
       label: Checkboxes
       fields:
         children:
           id: form_checkboxes
+      settings:
+        floating_label: 'false'
     radio:
       label: Radio
       settings:
         label_display: after
+        floating_label: 'false'
       fields:
         children:
           id: form_radio
+      configuration:
+        spacings:
+          margin: 'mb-4'
     radios:
       label: Radios
       fields:
         children:
           id: form_radios
+      settings:
+        floating_label: 'false'
     select:
       label: Select
       fields:
         children:
           id: form_select
-
+      settings:
+        floating_label: 'false'
   settings:
+    flex:
+      type: textfield
+      label: Flex configuration
     label_display:
       type: select
       label: Label display
@@ -82,6 +105,9 @@ form_element:
     attributes:
       type: attributes
       label: Attributes
+    floating_label:
+      type: boolean
+      label: Floating label
   fields:
     label:
       type: pattern
@@ -106,5 +132,15 @@ form_element:
         id: form_input
         variant: "textfield"
   configuration:
-    defaults:
-      wrapper_classes: ''
+    classes:
+      wrapper: 'js-form-item form-item block'
+      description: 'form-item__description text-sm py-[6px]'
+      error: 'bg-red-500'
+    spacings:
+      margin: 'mb-6'
+    floating_label:
+      wrapper: 'floating relative'
+      floating: 'floating__label  bg-white flex w-full h-[48px] rounded-md'
+      left: 'floating__label__left border border-gray-400 border-r-0 w-[20px] rounded-l-md'
+      center: 'floating__label__center border-b border-gray-400'
+      right: 'floating__label__right border border-l-0 border-gray-400 w-full rounded-r-md'

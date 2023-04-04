@@ -1,0 +1,11 @@
+form_flex:
+  use: "@forms/element/flex.twig"
+  label: Flex
+  description: Flex container for form fields.
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: 'flex flex-col md:flex-row gap-4'

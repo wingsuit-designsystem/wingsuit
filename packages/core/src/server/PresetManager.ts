@@ -1,6 +1,7 @@
 /**
  * Wingsuit PresetManager.
  */
+import { resolve, join } from 'path';
 import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
@@ -62,6 +63,9 @@ export default class PresetManager {
   }
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+    if (appConfig?.internalCache?.presets) {
+      return appConfig.internalCache.presets;
+    }
     const presets: PresetDefinition[] = [];
     if (appConfig.presets) {
       appConfig.presets.forEach((item) => {
@@ -112,6 +116,15 @@ export default class PresetManager {
         }
       }
     });
+    if (appConfig) {
+      if (!appConfig.internalCache) {
+        // eslint-disable-next-line no-param-reassign
+        appConfig.internalCache = {};
+      }
+      // eslint-disable-next-line no-param-reassign
+      appConfig.internalCache.presets = presets;
+    }
+
     return presets;
   }
 
@@ -153,7 +166,7 @@ export default class PresetManager {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
     });
-
+    const wspresets = resolve(join(__dirname, '../'));
     let config = merge.mergeWithCustomize({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
@@ -165,12 +178,9 @@ export default class PresetManager {
         appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
-            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces },
+            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
           },
           mode: this.environment,
-          optimization: {
-            minimizer: [],
-          },
           plugins: [
             new ProgressPlugin({ profile: false }),
             new NodePolyfillPlugin({

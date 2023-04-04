@@ -1,0 +1,23 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import colors from 'tokens/exports/_colors.scss';
+
+<Meta title="Foundations/Colors"
+parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Colors Matter
+
+A palette of great-looking, well-balanced colors.
+
+
+<ColorPalette>
+  {
+    Object.keys(colors).map((key)=>{
+      const color = typeof colors[key] === 'string' ? [colors[key]] : colors[key];
+      const title = `.${key}`;
+      return (
+        <ColorItem key={key} title={title} colors={color} />
+      )
+    })
+  }
+</ColorPalette>

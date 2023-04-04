@@ -1,6 +1,12 @@
 import path from 'path';
 
+interface InternalCache {
+  presets?: PresetDefinition[];
+}
+
 export default interface AppConfig extends AppInitConfig {
+  internalCache: InternalCache;
+
   absDesignSystemPath: string;
 
   name: string;
@@ -124,6 +130,7 @@ export interface PresetDefinition {
 
 export function defaultAppConfig(type, absRootPath): AppConfig {
   return {
+    internalCache: {},
     type,
     name: type,
     distFolder: `dist/app-${type}`,
@@ -149,6 +156,9 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
       wingsuit: 'Wingsuit component (UI Pattern)',
     },
     startup() {
+      if (this.environment === 'production') {
+        return `cross-env-shell NODE_ENV=${this.environment} "webpack --config ${this.path}/webpack.config.js"`;
+      }
       return `cross-env-shell NODE_ENV=${this.environment} "webpack --watch --config ${this.path}/webpack.config.js"`;
     },
     webpack(appConfig: AppConfig, config?: any) {

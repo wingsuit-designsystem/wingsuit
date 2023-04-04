@@ -12,7 +12,7 @@ banner:
         id: placeholder
         variant: image
         settings:
-          style: banner
+          style: responsive_16_9_1600w
     headline:
       type: text
       label: Headline
@@ -24,7 +24,6 @@ banner:
       label: Teaser
       description: Short optional teaser.
       preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
-
   settings:
     position:
       type: select

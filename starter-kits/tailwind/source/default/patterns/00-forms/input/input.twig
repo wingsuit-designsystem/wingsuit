@@ -15,16 +15,20 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-
 {#
-  Classes
+Internal logic
 #}
-{% set classes = ([
-  'form-input',
-  pattern_configuration('form_input', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
+{% set has_size = attributes.getAttribute('size') is not empty %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_input', variant, 'classes')['wrapper'],
+  pattern_configuration('form_input', variant, 'classes')['radius'],
+  has_size == false ? 'w-full',
+]) %}
 
 {#
   Template
 #}
-<input {{ attributes.addClass(classes) }} />{{ children }}
+<input {{ attributes }}/>{{ children }}

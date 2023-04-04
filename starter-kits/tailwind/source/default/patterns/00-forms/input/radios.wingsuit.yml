@@ -16,4 +16,6 @@ form_radios:
           variant: "radio"
         - id: form_element
           variant: "radio"
-  visibility: storybook
+  configuration:
+    classes:
+      wrapper: 'form-item--radio'

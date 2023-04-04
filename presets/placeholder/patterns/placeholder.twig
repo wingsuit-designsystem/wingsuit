@@ -9,14 +9,16 @@
  * Use variant image or background.
  */
 #}
-{# SETTINGS #}
-{% import '@ws-placeholder/_placeholder-macro.twig' as placeholder %}
-
+{#
+  Defaults
+#}
 {% set variant = variant|default('image') %}
 
-{# VARIANT TEMPLATES #}
+{% import '@ws-placeholder/_placeholder-macro.twig' as placeholder %}
+
+{# Template #}
 {% if variant == 'image' %}
-  {{ placeholder.image(style, service) }}
+  {{ placeholder.image(style, service, src) }}
 {% elseif variant == 'background' %}
   {{ placeholder.background(style, background_classes, service) }}
 {% endif %}

@@ -23,11 +23,10 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          loader: 'file-loader',
           test: /\.(mp4)$/,
-          options: {
-            outputPath: path.join(appConfig.assetsDistFolder, 'videos'),
-            name: '[name].[ext]',
+          type: 'asset/resource',
+          generator: {
+            filename: `${path.join(appConfig.assetsDistFolder, 'videos')}/[name][ext]`,
           },
         },
       ],

@@ -17,3 +17,7 @@ form_select:
           type: "option"
         - label: Option 3
           type: "option"
+  configuration:
+    classes:
+      wrapper: 'form-select w-full rounded-md leading-[30px]
+                focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
