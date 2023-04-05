@@ -4,8 +4,9 @@ Drupal.behaviors.wingsuitMenu = () => {
     processed: false,
     submenuDirection: 'right',
     getSubmenuDirection: ($el) => {
-      const space = $el.getBoundingClientRect().width + $el.getBoundingClientRect().x + 400;
+      const space = $el.getBoundingClientRect().right + $el.getBoundingClientRect().width;
       return space >= window.innerWidth ? 'left' : 'right';
     },
   };
 };
+

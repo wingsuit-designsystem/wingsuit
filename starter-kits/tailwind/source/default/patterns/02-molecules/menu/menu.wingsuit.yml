@@ -38,6 +38,20 @@ menu:
                   107:
                     title: FlyMeet
                     url: '#'
+                    below:
+                      201:
+                        title: Third 1
+                        url: '#'
+                      202:
+                        title: Third 2
+                        url: '#'
+                        below:
+                          301:
+                            title: Fourth 1
+                            url: '#'
+                          302:
+                            title: Fourth 2
+                            url: '#'
                   108:
                     title: FlySecurity
                     url: '#'
@@ -64,27 +78,40 @@ menu:
             url: '#'
             below:
               21:
-                title: Accounts
-                url: '#'
+                title: Eins eins
               22:
-                title: Hosting
+                title: Eins zwei
                 url: '#'
               23:
-                title: Software
+                title: Eins drei
                 url: '#'
                 below:
                   111:
-                    title: Drivers
+                    title: Zwei eins
                     url: '#'
                   112:
-                    title: Apps
+                    title: Zwei zwei
                     url: '#'
                   113:
-                    title: FlyMeet
+                    title: Zwei drei
                     url: '#'
                   114:
-                    title: FlySecurity
+                    title: Zwei vier
                     url: '#'
+                    below:
+                      201:
+                        title: 3 1
+                        url: '#'
+                      202:
+                        title: 3 2
+                        url: '#'
+                        below:
+                          301:
+                            title: 4 1
+                            url: '#'
+                          302:
+                            title: 4 2
+                            url: '#'
               24:
                 title: CRM
                 url: '#'
@@ -101,17 +128,27 @@ menu:
             title: Contact
             url: '#'
       configuration:
-        classes:
-          "parent_list": "lg:flex lg:justify-end lg:space-x-7 lg:items-center"
-          "parent_list_item": "relative"
-          "parent_link_wrapper": "flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0"
-          "parent_link": "font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block"
-          "parent_icon_wrapper": "w-[18px] h-[10px] cursor-pointer"
-          "child_wrapper": "submenu lg:border bg-white lg:group-hover-block"
-          "child_list": ""
-          "child_list_item": "relative"
-          "child_link": "dark:text-white text-base font-serif hover:underline"
-          "child_icon_wrapper": "w-[18px] h-[10px] cursor-pointer"
+        root:
+          "wrapper": "lg:flex lg:justify-end lg:space-x-7 lg:items-center"
+          "list_element": "relative"
+          "link_wrapper": "flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0 cursor-pointer"
+          "link": "font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block lg:inline-block"
+          "icon_wrapper": "w-[18px] h-[10px] "
+        ancestors:
+          container:
+            wrapper: "submenu lg:border bg-white lg:group-hover-block"
+            level:
+              first: "lg:absolute -left-[120px]"
+              further: "lg:absolute lg:top-0 lg:left-[-165px]"
+          list_element: "relative "
+          link:
+            wrapper: "flex justify-between items-center bg-white lg:hover:bg-teal-50 block cursor-pointer lg:flex pl-8 pr-4 lg:px-4 py-3 border-b lg:border-0 font-bold tracking-[0.01em]"
+            first: "w-full lg:w-[320px]"
+            further: "w-full lg:w-[163px]"
+          icon:
+            wrapper: "w-[18px] h-[10px] cursor-pointer"
+            first: "float-right center-origin transition duration-100 ease-in lg:-rotate-90"
+            further: "float-right lg:hidden center-origin transition duration-100 ease-in"
     footer:
       use: "@molecules/menu/menu-footer.twig"
       label: Footer
