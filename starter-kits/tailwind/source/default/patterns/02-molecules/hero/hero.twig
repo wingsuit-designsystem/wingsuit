@@ -33,14 +33,12 @@
 {#
   TEMPLATE
 #}
-
 <section>
   {% set cell_left %}
     <div {{ cell_left_attributes}}>
       <div {{ gradiant_first_attributes }}></div>
       <div {{ gradiant_second_attributes }}></div>
       <div {{ image_attributes }}>
-{#        <img src="{{ file_url('ws-assets://images/hero.png') }}" alt="">#}
          {{ image }}
       </div>
       <div {{ gradiant_third_attributes }}></div>
@@ -51,5 +49,10 @@
       {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'large' ) }}
     </div>
   {% endset %}
-  {{ pattern('grid', {cells: [cell_left, cell_right], reverse: reverse, flip_mobile: true, vertical_center: true, columns: '2', gutter: 'default' }, null ) }}
+  {{ pattern('grid', {
+    cells: [cell_left, cell_right],
+    reverse: reverse,
+    flip_mobile: true,
+    vertical_center: true,
+  }, '2_column' ) }}
 </section>

@@ -56,7 +56,6 @@ homepage:
           fields:
             column_1:
               - id: rich_text
-                variant: default
                 fields:
                   text: |
                     <h2 class='text-center'>Section 2</h2>

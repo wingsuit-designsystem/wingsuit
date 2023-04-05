@@ -40,5 +40,5 @@
 {% endfor %}
 
 <nav aria-label="footer">
-  {{ pattern('grid', {cells:cells, columns: cells|length, columns_width_4: '1/4', gutter: 'default' }, null ) }}
+  {{ pattern('grid', {cells:cells}, cells|length ~ '_column' ) }}
 </nav>

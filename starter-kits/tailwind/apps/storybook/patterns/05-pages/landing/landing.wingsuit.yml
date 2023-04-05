@@ -16,13 +16,10 @@ landing:
             display_header_region: true
           fields:
             column_1:
-              - id: grid
+              - id: rich_text
                 fields:
-                  cells:
-                    - id: rich_text
-                      variant: default
-                      fields:
-                        text: 'lalala'
+                  text: 'lalala'
+
         - id: section
           variant: 1_column
           fields:
