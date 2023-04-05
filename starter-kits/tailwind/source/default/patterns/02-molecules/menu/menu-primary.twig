@@ -2,11 +2,10 @@
 Defaults
 #}
 {% set menu_level = 0 %}
-
 {#
 Attributes
 #}
-{% set root_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['wrapper']) %}
+{% set root_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['wrapper']) %}
 {% set root_list_element_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['list_element']) %}
 {% set root_link_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link_wrapper']) %}
 {% set root_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link']) %}
@@ -26,7 +25,6 @@ Classes
   'icon_level_one': pattern_configuration('menu', variant, 'ancestors')['icon']['first'],
   'icon_level_further': pattern_configuration('menu', variant, 'ancestors')['icon']['further'],
 }) %}
-
 {#
 Template
 #}
@@ -46,7 +44,6 @@ Template
     ancestors.icon_wrapper,
     menu_level == 1 ? ancestors.icon_level_one  : ancestors.icon_level_one,
   ] | sort | join(' ') | trim ) %}
-
   <div class="{{ container_classes }}"
        :class="{'block lg:hidden': submenuIsOpen, 'hidden': !submenuIsOpen,
         {% if menu_level > 1%}
@@ -91,16 +88,18 @@ Template
 Parent
 #}
 
-<ul {{ root_list_attributes }}>
+<ul {{ root_wrapper_attributes }}>
   {% for item in items %}
     <li {{ root_list_element_attributes }} {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
       <div {{ root_link_wrapper_attributes }}
         {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;"{% endif %}>
+
         <a href="{{ item.url }}" {{ root_link_attributes }} >
           {{ item.title }}
         </a>
+        <div x-text="message = submenuIsOpen"></div>
         {% if item.below is not empty %}
           <div {{ root_icon_wrapper_attributes }}
             :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}"
