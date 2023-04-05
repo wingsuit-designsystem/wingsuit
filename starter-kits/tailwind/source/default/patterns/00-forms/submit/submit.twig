@@ -19,16 +19,14 @@
   Internal logic
 #}
 {% set active_key = attributes.hasAttribute('disabled') == false ? 'active' : 'disabled' %}
-
 {#
-  Classes
+Attributes
 #}
-{% set classes = ([
+{% set attributes = attributes.addClass([
   pattern_configuration('form_submit', variant, 'classes')['wrapper'],
-  pattern_configuration('form_submit', variant, 'classes')[active_key],
-] | sort | join(' ') | trim )%}
-
-{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
-
-{# TEMPLATES #}
+  pattern_configuration('form_submit', variant, 'classes')[active_key]
+]) %}
+{#
+Template
+#}
 <input {{ attributes }} />{{ children }}

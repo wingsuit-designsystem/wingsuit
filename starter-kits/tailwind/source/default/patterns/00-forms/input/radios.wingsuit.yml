@@ -16,5 +16,6 @@ form_radios:
           variant: "radio"
         - id: form_element
           variant: "radio"
-  classes:
-    wrapper: ''
+  configuration:
+    classes:
+      wrapper: 'form-item--radio'

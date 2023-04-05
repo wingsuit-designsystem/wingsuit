@@ -40,75 +40,100 @@
  *     but available to screen readers.
  * - disabled: True if the element is disabled.
  * - title_display: Title display setting.
- *
+ * - floating label: displays afloating label for textfields, refer to form-label.css
  */
 #}
 
+{# Defaults #}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set floating_label = floating_label|default('false') %}
+{# Attributes #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_element', variant, 'classes')['wrapper'],
+  pattern_configuration('form_element', variant, 'spacings')['margin'],
+  flex
+])%}
+{% set error_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'classes')['error']
+])%}
+{% set description_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'classes')['description'],
+  description_display == 'invisible' ? 'visually-hidden',
+])%}
+{# attributes for floating label #}
+{% set floating_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'floating_label')['wrapper']
+])%}
+{% set floating_label__wrapper_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'floating_label')['floating']
+])%}
+{% set floating_label__left_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'floating_label')['left']
+])%}
+{% set floating_label__center_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'floating_label')['center']
+])%}
+{% set floating_label__right_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'floating_label')['right']
+])%}
 {#
- /**
- * @defaults
- **/
+Internal logic
 #}
-{%
-  set classes = [
-    'js-form-item',
-    'form-item',
-    flex,
-    pattern_configuration('form_element', variant, 'classes')['wrapper']
-  ]
-%}
-
-{%
-  set error_classes = [
-    pattern_configuration('form_element', variant, 'classes')['error']
-  ]
-%}
-{% set error_attributes = create_attribute() %}
-{%
-  set description_classes = [
-    'form-item__description',
-    description_display == 'invisible' ? 'visually-hidden',
-    pattern_configuration('form_element', variant, 'classes')['description']
-  ]
-%}
 {%
   set description = description is empty ? {'content': description_text} : description
 %}
-{% set attributes = attributes|default(create_attribute()) %}
 {#
- /*
- * @template
- */
+Template
 #}
-<label{{ attributes.addClass(classes) }}>
+<label{{ attributes }}>
   <div>
   {% if label_display in ['before', 'invisible'] %}
-    <div>{{ label }}</div>
+    {% if floating_label == 'true' %}
+    <div  {{ floating_attributes }}>
+        {{ children }}
+      <div {{ floating_label__wrapper_attributes }}>
+        <div {{ floating_label__left_attributes }}></div>
+        <div {{ floating_label__center_attributes }}>
+          {{ label }}
+        </div>
+        <div {{ floating_label__right_attributes }}></div>
+      </div>
+    </div>
+    {% else %}
+      <div>{{ label }}</div>
+    {%- endif %}
   {% endif %}
   {% if prefix is not empty %}
     <span class="field-prefix">{{ prefix }}</span>
   {% endif %}
+
   {% if description_display == 'before' and description.content %}
-    <div{{ description.attributes.addClass(description_classes) }}>
+    <div{{ description_attributes }}>
       {{ description.content }}
     </div>
   {% endif %}
-  {{ children }}
-  {% if suffix is not empty %}
+  {% if floating_label == 'false'%}
+    {{ children }}
+  {% endif %}
+    {% if suffix is not empty %}
     <span class="field-suffix">{{ suffix }}</span>
   {% endif %}
+
   {% if label_display == 'after' %}
     {{ label }}
   {% endif %}
+
   {% if errors %}
-    <div {{ error_attributes.addClass(error_classes) }}>
+    <div {{ error_attributes }}>
       {{ errors }}
     </div>
   {% endif %}
+
   {% if description_display in ['after', 'invisible'] and description.content %}
-    <div{{ description.attributes.addClass(description_classes) }}>
+    <div{{ description_attributes }}>
       {{ description.content }}
     </div>
   {% endif %}
+
   </div>
 </label>

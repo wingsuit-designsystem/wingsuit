@@ -15,16 +15,34 @@
   Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-
 {#
-  Classes
+  Attributes
 #}
-{% set classes = ([
-  'form-input',
-  pattern_configuration('form_input', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
-
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_file', variant, 'classes')['wrapper'],
+]) %}
+{% set overlay_attributes = create_attribute().addClass ([
+  pattern_configuration('form_file', variant, 'classes')['overlay_wrapper']
+])%}
+{% set headline_attributes = create_attribute().addClass ([
+  pattern_configuration('form_file', variant, 'classes')['headline']
+])%}
+{% set headline_link_attributes = create_attribute().addClass ([
+  pattern_configuration('form_file', variant, 'classes')['headline_link']
+])%}
+{% set text = create_attribute().addClass ([
+  pattern_configuration('form_file', variant, 'classes')['text']
+])%}
 {#
   Template
 #}
-<input {{ attributes.addClass(classes) }} />{{ children }}
+<div for="drop-file" {{ overlay_attributes }}>
+  <img src="{{ file_url('ws-assets://images/upload.svg') }}">
+  <p {{ headline_attributes }}>
+    <span {{ headline_link_attributes }}>Upload File </span>
+    or drag and drop</p>
+  <p {{ text }}>PDF, PNG, JPG, GIF up to 5 MB</p>
+</div>
+<div class="hidden" id="drop-file">
+  <input {{ attributes }} />{{ children }}
+</div>

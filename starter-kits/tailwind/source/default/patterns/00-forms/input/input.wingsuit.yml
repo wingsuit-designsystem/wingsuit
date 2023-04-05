@@ -18,7 +18,7 @@ form_input:
     tel:
       label: Tel
       settings:
-        attributes: "type=\"tel\""
+        attributes: "type=\"tel\" placeholder=\"Telephone\""
     date:
       label: Date
       settings:
@@ -34,4 +34,7 @@ form_input:
       label: Children
   configuration:
     classes:
-      wrapper: 'p-2'
+      wrapper: 'form-input py-[11px] px-4 border-gray-400
+                focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
+      radius: ' rounded-md'
+

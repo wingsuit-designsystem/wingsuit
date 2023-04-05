@@ -11,17 +11,17 @@
  */
 #}
 
-
 {#
-Defaults
+  Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
-
 {#
-Classes
+  Attributes
 #}
-{% set classes = ([
+{% set attributes = attributes.addClass([
   pattern_configuration('form_checkboxes', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
-
+]) %}
+{#
+  Template
+#}
 <div{{ attributes }}>{{ children }}</div>

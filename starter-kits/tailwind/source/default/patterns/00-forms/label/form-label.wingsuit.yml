@@ -1,6 +1,6 @@
 form_label:
   use: "@forms/label/form-label.twig"
-  label: Label
+  label: Form Label
   fields:
     title:
       type: text
@@ -8,4 +8,5 @@ form_label:
       preview:
         faker: lorem.word
   configuration:
-    classes: ''
+    classes:
+      wrapper: 'pr-4'

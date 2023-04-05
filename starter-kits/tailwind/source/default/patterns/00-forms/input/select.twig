@@ -11,16 +11,18 @@
  */
 #}
 
-{# Defaults #}
+{#
+Defaults
+#}
 {% set attributes = attributes|default(create_attribute()) %}
-
-{# Classes #}
-{% set classes = ([
-  'form-select',
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
   pattern_configuration('form_select', variant, 'classes')['wrapper']
-] | sort | join(' ') | trim )%}
-
-<select{{ attributes.addClass(classes) }}>
+]) %}
+{# Classes #}
+<select{{ attributes }}>
   {% for option in options %}
     {% if option.type == 'optgroup' %}
       <optgroup label="{{ option.label }}">

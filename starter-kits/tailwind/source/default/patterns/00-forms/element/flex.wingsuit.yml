@@ -8,4 +8,4 @@ form_flex:
       label: Children
   configuration:
     classes:
-      wrapper: ''
+      wrapper: 'flex flex-col md:flex-row gap-4'
