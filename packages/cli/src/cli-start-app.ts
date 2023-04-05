@@ -9,7 +9,7 @@ const { spawn } = require('child_process');
 
 const logger = console;
 
-export default function (options: Command, environment) {
+export default (options: Command, environment) => {
   const getAppName = async () => {
     if (options.args.length > 0) {
       return Promise.resolve(options.args[0]);
@@ -19,7 +19,7 @@ export default function (options: Command, environment) {
         type: 'list',
         message: 'Choose your app',
         choices: getAppNames(),
-        name: `appName`,
+        name: 'appName',
       },
     ]);
     return result.appName;
@@ -53,4 +53,4 @@ export default function (options: Command, environment) {
     }
   };
   startApp();
-}
+};

@@ -2,6 +2,7 @@ import IPatternStorage from './IPatternStorage';
 import Pattern from './Pattern';
 import PatternVariant from './PatternVariant';
 import { IPatternDefinition, IPatternDefinitions } from './definition';
+import { mergeDeep } from './utils';
 
 interface PatternCache {
   [key: string]: Pattern;
@@ -24,7 +25,7 @@ export default class PatternStorage implements IPatternStorage {
     return PatternStorage.instance;
   }
 
-  addGlobal(name: string, value: {}) {
+  addGlobal(name: string, value: any) {
     if (this.globals[name] != null) {
       if (typeof value === 'string') {
         this.globals[name] = value;
@@ -53,37 +54,6 @@ export default class PatternStorage implements IPatternStorage {
       }
     });
     return foundPatterns;
-  }
-
-  /**
-   * Performs a deep merge of objects and returns new object. Does not modify
-   * objects (immutable) and merges arrays via concatenation.
-   *
-   * @param {...object} objects - Objects to merge
-   * @returns {object} New object with merged key/values
-   */
-  private mergeDeep(...objects) {
-    const isObject = (obj) => obj && typeof obj === 'object';
-
-    return objects.reduce((prev, obj) => {
-      Object.keys(obj).forEach((key) => {
-        const pVal = prev[key];
-        const oVal = obj[key];
-
-        if (Array.isArray(pVal) && Array.isArray(oVal)) {
-          // eslint-disable-next-line no-param-reassign
-          prev[key] = pVal.concat(...oVal);
-        } else if (isObject(pVal) && isObject(oVal)) {
-          // eslint-disable-next-line no-param-reassign
-          prev[key] = this.mergeDeep(pVal, oVal);
-        } else {
-          // eslint-disable-next-line no-param-reassign
-          prev[key] = oVal;
-        }
-      });
-
-      return prev;
-    }, {});
   }
 
   private extendPatternDefinition(pattern: IPatternDefinition) {
@@ -116,7 +86,7 @@ export default class PatternStorage implements IPatternStorage {
               if (resultingPattern[type] == null) {
                 resultingPattern[type] = {};
               }
-              resultingPattern[type] = this.mergeDeep(
+              resultingPattern[type] = mergeDeep(
                 basePatternDefinition[type],
                 resultingPattern[type]
               );

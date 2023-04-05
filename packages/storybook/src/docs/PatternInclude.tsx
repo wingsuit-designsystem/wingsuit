@@ -39,7 +39,6 @@ export const PatternInclude: FunctionComponent<Props> = (props: Props) => {
       null,
       2
     )} %}`;
-    // @ts-ignore
     setCode(generatedCode);
   });
 

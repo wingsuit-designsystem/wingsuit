@@ -66,7 +66,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
 
     const output: string[] = [];
     if (hasIndexFile) {
-      output.push(`import './index';`);
+      output.push("import './index';");
     }
     output.push(`
     import React from 'react';

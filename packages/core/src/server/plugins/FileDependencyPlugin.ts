@@ -83,7 +83,7 @@ export default class FileDependencyPlugin {
     return true;
   }
 
-  private plugin: {} = {};
+  private plugin: any = {};
 
   private dist: string;
 

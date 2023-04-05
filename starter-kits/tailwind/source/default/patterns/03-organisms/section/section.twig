@@ -7,49 +7,62 @@
  */
 #}
 
-{# SETTINGS #}
-{% if padding_bottom is not defined %}
-  {% set padding_bottom = 'default' %}
-{% endif %}
-{% set is_relative = bg_align != '' ? true: false %}
-{%- set bg_column_1 -%}
-  {%- if bg_align == 'left' -%}
-    <div class="relative md:absolute left-0 top-0 min-h-[10rem] h-full w-full md:w-1/2">{{- bg_image -}}</div>
-  {%- endif -%}
-{%- endset -%}
-{%- set bg_column_2 -%}
-  {%- if bg_align == 'right' -%}
-    <div class="relative md:absolute md:left-1/2 top-0 min-h-[10rem] h-full w-full md:w-1/2">{{- bg_image -}}</div>
-  {%- endif -%}
-{%- endset -%}
+{#
+  Defaults
+#}
+{% set variant = variant|default('1_column') %}
+{% set region_attributes = region_attributes|default({header: create_attribute()}) %}
+{%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
+{%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
+{%- set column_3 -%}{%- block column_3 -%}{{ _context['column_3' ] }}{% endblock %}{% endset %}
+{%- set column_4 -%}{%- block column_4 -%}{{ _context['column_4' ] }}{% endblock %}{% endset %}
+{%- set column_5 -%}{%- block column_5 -%}{{ _context['column_5' ] }}{% endblock %}{% endset %}
 
-{% set bg_full = bg_align == '' ? bg_image %}
+{#
+  Classes
+#}
+{% set header_classes = [
+  pattern_configuration('section', variant, 'classes')['header']
+  ]|sort|join|trim
+%}
+
+{#
+  Internal Logic
+#}
 {%- set header -%}{{ header }}{% endset %}
-{% set region_attributes = region_attributes|default(create_attribute()) %}
+{% set columns_ary = variant|split('_') %}
+{% set columns = columns_ary[0]|number_format %}
+
+{#
+  Header template
+#}
+{% set header %}
+  {% if header is not empty and display_header_region == true %}
+    <div{{ region_attributes.header.addClass(header_classes) }}>{{ header }}</div>
+  {% endif %}
+{% endset %}
+
+{#
+  Grid template
+#}
 {% set grid %}
-  {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
-  {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
-  {%- set column_3 -%}{%- block column_3 -%}{{ _context['column_3' ] }}{% endblock %}{% endset %}
-  {%- set column_4 -%}{%- block column_4 -%}{{ _context['column_4' ] }}{% endblock %}{% endset %}
-  {%- set column_5 -%}{%- block column_5 -%}{{ _context['column_5' ] }}{% endblock %}{% endset %}
   {% set cells = [] %}
   {%- for i in 1..columns -%}
     {% set cells = cells|merge([_context['column_' ~ i ]]) %}
   {% endfor %}
-  {% set columns_width = columns_width|default(_context['columns_width_' ~ columns ]) %}
-  {% embed "@organisms/grid/grid.twig" with {
+  {{ pattern('grid', {
     attributes: create_attribute(),
     cells: cells,
-    columns_width: columns_width,
+    layout: layout,
     region_attributes: region_attributes,
     gutter: gutter
-  }
-  %}
-  {% endembed %}
+  }, variant) }}
 {% endset %}
 
-{# TEMPLATES #}
-{% embed "@organisms/container/container.twig" with {
+{#
+  Template
+#}
+{{ pattern('container', {
   attributes: attributes,
   content: grid,
   width: width,
@@ -60,13 +73,6 @@
   header: header,
   region_attributes: region_attributes,
   display_header_region: display_header_region,
-  bg_image: bg_full,
-  is_relative: is_relative
-} only %}
-  {% block content %}
-  {% if header is not empty and display_header_region == true %}
-    <div class="mb-5 md:mb-10 {{ region_attributes.header.class }}">{{ header }}</div>
-  {% endif %}
-  {{ content }}
-  {% endblock %}
-{% endembed %}
+  bg_image: bg_image
+}) }}
+

@@ -1,10 +1,7 @@
-/* eslint-disable no-param-reassign */
-
 /**
  * @file
  *
  */
-
 import { resolveConfig, getAppNames, supportFeature } from '@wingsuit-designsystem/core';
 
 const { relative, join } = require('path');
@@ -75,13 +72,13 @@ export default class extends Generator {
       {
         type: 'confirm',
         name: 'useCss',
-        message: `Do you need a CSS file?`,
+        message: 'Do you need a CSS file?',
         default: false,
       },
       {
         type: 'confirm',
         name: 'useScss',
-        message: `Do you need a SCSS file?`,
+        message: 'Do you need a SCSS file?',
         default: false,
         when: (answers) => {
           return supportsScss;

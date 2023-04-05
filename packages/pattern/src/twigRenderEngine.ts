@@ -31,7 +31,7 @@ export async function getPatternConfiguration(
 ) {
   try {
     const variant: PatternVariant = storage.loadVariant(patternId, variantId);
-    return new Promise<string>((resolve) => {
+    return await new Promise<string>((resolve) => {
       const config = variant.getConfiguration();
       resolve(config[configuration]);
     });
@@ -58,9 +58,9 @@ export function twingMapToArray(variables): string[] {
 
 export async function renderPatternPreview(
   patternId: string,
-  variables: {} = {},
+  variables: any = {},
   variantId: string = Pattern.DEFAULT_VARIANT_NAME,
-  renderInfoContext: {} = {}
+  renderInfoContext: any = {}
 ): Promise<string> {
   let variant: PatternVariant;
   try {
@@ -129,7 +129,7 @@ export async function renderPatternPreview(
             }
           }
         }
-        const finalVariables: {} = {
+        const finalVariables: any = {
           ...patternVariables,
           ...buildBaseVariables(variables),
         };
@@ -187,7 +187,7 @@ function buildBaseVariables(variables, addGlobals = true) {
 
 export async function renderPattern(
   patternId: string,
-  variables: {} = {},
+  variables: any = {},
   variantId: string = Pattern.DEFAULT_VARIANT_NAME
 ): Promise<string> {
   try {
@@ -199,7 +199,7 @@ export async function renderPattern(
     };
     finalVariables.variant = variantId;
     variant.setRenderArgs(finalVariables);
-    return rendererImpl.renderVariant(variant, finalVariables);
+    return await rendererImpl.renderVariant(variant, finalVariables);
   } catch (e: any) {
     if (e.message) {
       return e.message;

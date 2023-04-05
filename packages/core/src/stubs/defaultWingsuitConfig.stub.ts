@@ -4,7 +4,6 @@ const css = require('../server/presets/css')
 const babel = require('../server/presets/babel')
 const assets = require('../server/presets/assets')
 const storybook = require('../server/presets/storybook')
-const drupal = require('../server/presets/drupal')
 const cms = require('../server/presets/cms')
 const wingsuitp = require('../server/presets/wingsuit')
 const assetsVideos = require('../server/presets/assetsVideos')
@@ -19,7 +18,6 @@ export const wingsuit: Config = {
     assets,
     assetsVideos,
     storybook,
-    drupal,
     cms,
     wingsuit: wingsuitp,
   },

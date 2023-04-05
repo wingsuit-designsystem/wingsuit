@@ -42,6 +42,7 @@ export function webpack(appConfig: AppConfig) {
               loader: 'wingsuit-stories-loader',
               options: {
                 appConfig,
+                fileDependencyPlugin,
               },
             },
           ],

@@ -34,7 +34,7 @@ export function webpack(appConfig: AppConfig) {
   };
 }
 
-export function webpackFinal(appConfig: AppConfig, config: any): {} {
+export function webpackFinal(appConfig: AppConfig, config: any): any {
   if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((data) => {

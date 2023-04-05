@@ -112,6 +112,14 @@
               "value2": "correct"
             }
           }
+        },
+        "variant3": {
+          "label": "Variant2",
+          "configuration": {
+            "config": {
+              "value2": "correct"
+            }
+          }
         }
       }
     },

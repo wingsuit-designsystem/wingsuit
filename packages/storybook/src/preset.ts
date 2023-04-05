@@ -15,7 +15,6 @@ export function webpackFinal(config: Configuration, options: Options = {}): Conf
   return wingsuitCore.getAppPack(wingsuitConfig, [config]);
 }
 
-// @ts-ignore
 export const storyIndexers = async (indexers, options: Options) => {
   const wingsuitConfig = wingsuitCore.resolveConfig(options.appName ?? 'storybook');
   const csfIndexer = async (fileName: string, opts) => {

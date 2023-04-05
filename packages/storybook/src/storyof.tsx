@@ -3,12 +3,12 @@ import React from 'react';
 import TwigAttribute from '@wingsuit-designsystem/pattern/dist/TwigAttribute';
 
 import { PatternVariant } from '@wingsuit-designsystem/pattern';
-import PatternProperties from './docs/PatternProperties';
+import { PatternProperties } from './docs/PatternProperties';
 import { PatternDoc } from './docs/PatternDoc';
 import { PatternInclude } from './docs/PatternInclude';
 
-function getStorybookControlsOptions(setting) {
-  const options: {} = setting.getOptions();
+function getStorybookControlsOptions(setting, variant: PatternVariant) {
+  const options: any = setting.getOptions();
   let controls = {};
 
   if (setting.isRequired() === false) {
@@ -41,6 +41,7 @@ export function getArgs(defaultArgs, variant: PatternVariant) {
   });
   return resultArgs;
 }
+
 export function getArgTypes(variant) {
   const argTypes: any = {};
 
@@ -75,9 +76,9 @@ export function getArgTypes(variant) {
         argTypes[key].description += `<br>Option keys: ${Object.keys(setting.getOptions()).join(
           ', '
         )}`;
-        argTypes[key].options = Object.keys(getStorybookControlsOptions(setting));
+        argTypes[key].options = Object.keys(getStorybookControlsOptions(setting, variant));
         argTypes[key].control = {
-          labels: getStorybookControlsOptions(setting),
+          labels: getStorybookControlsOptions(setting, variant),
           type: setting.getType() === 'radio' ? 'radio' : 'select',
         };
       } else if (setting.getType() === 'boolean') {
@@ -96,6 +97,12 @@ export function getArgTypes(variant) {
           type: 'text',
         };
       }
+    } else {
+      argTypes[key] = {
+        table: {
+          disable: true,
+        },
+      };
     }
   });
 
@@ -132,6 +139,12 @@ export function getArgTypes(variant) {
           type: 'text',
         };
       }
+    } else {
+      argTypes[key] = {
+        table: {
+          disable: true,
+        },
+      };
     }
   });
   argTypes.patternId = {
@@ -140,6 +153,11 @@ export function getArgTypes(variant) {
     },
   };
   argTypes.variantId = {
+    table: {
+      disable: true,
+    },
+  };
+  argTypes.variant = {
     table: {
       disable: true,
     },

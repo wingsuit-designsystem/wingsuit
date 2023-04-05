@@ -21,4 +21,5 @@ cypress
 !.eslintrc-markdown.js
 !.jest._config.js
 !.storybook
-
+__tests__
+__int_tests__

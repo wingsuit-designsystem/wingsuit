@@ -1,4 +1,6 @@
-import { IRenderer, PatternVariant } from './index';
+// eslint-disable-next-line import/no-named-default
+import IRenderer from './IRenderer';
+import PatternVariant from './PatternVariant';
 
 /**
  * Twig default renderer.

@@ -188,10 +188,13 @@ export default class PatternVariant {
   }
 
   public getVariables(includeFields = true, includeSettings = true, includeVariant = true) {
-    const values = {};
+    const values = {
+      variant: undefined,
+    };
     if (this.variant !== Pattern.DEFAULT_VARIANT_NAME && includeVariant) {
       // eslint-disable-next-line dot-notation
-      values['variant'] = this.variant;
+      // @ts-ignore
+      values.variant = this.variant;
     }
     if (includeFields) {
       Object.keys(this.fields).forEach((key) => {

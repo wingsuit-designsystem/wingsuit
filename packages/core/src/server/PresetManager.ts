@@ -14,7 +14,6 @@ const css = require('./presets/css');
 const babel = require('./presets/babel');
 const assets = require('./presets/assets');
 const storybook = require('./presets/storybook');
-const drupal = require('./presets/drupal');
 const wingsuitP = require('./presets/wingsuit');
 const assetsVideos = require('./presets/assetsVideos');
 
@@ -24,7 +23,6 @@ const defaultPresets = {
   assetsVideos,
   assets,
   storybook,
-  drupal,
   wingsuit: wingsuitP,
 };
 

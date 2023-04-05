@@ -1,8 +1,9 @@
 import PatternVariant from './PatternVariant';
 import Setting from './Setting';
 import Field, { MultiValueTypes } from './Field';
-import { IPatternDefinition, Properties, Options } from './definition';
+import { IPatternDefinition, Properties, Options, Variants } from './definition';
 import IPatternStorage from './IPatternStorage';
+import { mergeDeep } from './utils';
 
 interface CleanedOptions {
   [key: string]: Options;
@@ -151,29 +152,12 @@ export default class Pattern {
   private initializeVariants() {
     const variantKeys: string[] = [];
     const settings: Properties = this.definition.settings ?? {};
-    const fields: {} = this.definition.fields ?? {};
+    const fields: any = this.definition.fields ?? {};
 
     const settingsConfiguration: any = {};
-    const cleanedSettings: CleanedOptions = {};
-    Object.entries(settings).forEach(([name, setting]) => {
-      if (setting.options) {
-        const options: Options = {};
-        Object.entries(setting.options).forEach(([optionName, option]) => {
-          if (option.configuration) {
-            if (!settingsConfiguration[name]) {
-              settingsConfiguration[name] = {};
-            }
-            settingsConfiguration[name][optionName] = option.configuration;
-            options[optionName] = option.label;
-          } else {
-            options[optionName] = option;
-          }
-        });
-        cleanedSettings[name] = options;
-      }
-    });
-    const configuration: {} = this.definition.configuration ?? {};
-    const variantsDefinitions: {} = this.definition.variants ?? {};
+
+    const configuration: any = this.definition.configuration ?? {};
+    const variantsDefinitions: Variants = this.definition.variants ?? {};
 
     Object.keys(variantsDefinitions).forEach((key: string) => {
       variantKeys.push(key);
@@ -184,6 +168,28 @@ export default class Pattern {
     }
     let isFirst = true;
     variantKeys.forEach((variantKey: string) => {
+      const cleanedSettings: CleanedOptions = {};
+      Object.entries(settings).forEach(([name, setting]) => {
+        if (setting.options) {
+          const options: Options = {};
+          Object.entries(setting.options).forEach(([optionName, option]) => {
+            const skipOption =
+              option?.condition?.variant && option?.condition?.variant !== variantKey;
+            if (!skipOption) {
+              if (option.configuration) {
+                if (!settingsConfiguration[name]) {
+                  settingsConfiguration[name] = {};
+                }
+                settingsConfiguration[name][optionName] = option.configuration;
+                options[optionName] = option.label;
+              } else {
+                options[optionName] = option;
+              }
+            }
+          });
+          cleanedSettings[name] = options;
+        }
+      });
       const variantDefinition = variantsDefinitions[variantKey] ?? {};
       const label = variantDefinition.label ?? this.label;
       const use = variantDefinition.use ?? this.use;
@@ -191,11 +197,11 @@ export default class Pattern {
 
       const variantConfiguration =
         variantDefinition.configuration != null ? variantDefinition.configuration : {};
-      const mergedConfiguration = {
-        ...configuration,
-        ...settingsConfiguration,
-        ...variantConfiguration,
-      };
+      const mergedConfiguration = mergeDeep(
+        configuration,
+        settingsConfiguration,
+        variantConfiguration
+      );
 
       const variant = new PatternVariant(
         variantKey,
@@ -266,6 +272,7 @@ export default class Pattern {
           Object.keys(variantDefinition.settings).forEach((key: string) => {
             const setting: Setting = variant.getSetting(key);
             if (setting) {
+              // @ts-ignore
               setting.setPreview(variantDefinition.settings[key]);
               setting.setEnable(false);
             } else {
@@ -278,6 +285,7 @@ export default class Pattern {
         if (variantDefinition.fields) {
           Object.keys(variantDefinition.fields).forEach((key: string) => {
             const field: Field = variant.getField(key);
+            // @ts-ignore
             field.setPreview(variantDefinition.fields[key]);
             field.setEnable(false);
           });

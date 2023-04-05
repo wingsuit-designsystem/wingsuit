@@ -3,6 +3,17 @@ grid:
   label: Grid
   description:
     "A flexible mobile-first flexbox grid pattern, ensuring consistency across layouts."
+  variants:
+    1_column:
+      label: 1 Column
+    2_column:
+      label: 2 Column
+    3_column:
+      label: 3 Column
+    4_column:
+      label: 4 Column
+    5_column:
+      label: 5 Column
   fields:
     cells:
       type: object
@@ -31,20 +42,76 @@ grid:
       preview: default
       options:
         none: None
-        default: Default
-        large: Large
-    columns:
+        default:
+          label: Default
+          configuration: 'gap-3 md:gap-4 lg:gap-7'
+        large:
+          label: Large
+          configuration: 'gap-6 lg:gap-20'
+        xlarge:
+          label: XLarge
+          configuration: 'gap-6 lg:gap-28'
+    layout:
       type: select
-      label: Columns
-      description: The number of grid columns
+      label: Layout
       required: true
-      default_value: '4'
       options:
-        1: One column
-        2: Two columns
-        3: Three columns
-        4: Four columns
-        5: Five columns
+        1_equal:
+          label: 'Equal'
+          configuration: 'grid-cols-1'
+          condition:
+            variant: 1_column
+        2_equal:
+          label: 'Equal'
+          configuration: 'grid-cols-1 md:grid-cols-2'
+          condition:
+            variant: 2_column
+        2_66x33:
+          label: '66%/33%'
+          configuration: 'grid-cols-1 lg:grid-cols-66/33'
+          condition:
+            variant: 2_column
+        2_33x66:
+          label: '33%/66%'
+          configuration: 'grid-cols-1 lg:grid-cols-33/66'
+          condition:
+            variant: 2_column
+        2_75x25:
+          label: '75%/25%'
+          configuration: grid-cols-1 md:grid-cols-66/33 lg:grid-cols-75/25
+          condition:
+            variant: 2_column
+        2_25x75:
+          label: '25%/75%'
+          configuration: grid-cols-1 md:grid-cols-66/33 lg:grid-cols-75/25
+          condition:
+            variant: 2_column
+        3_equal:
+          label: Equal
+          configuration: 'grid-cols-1 lg:grid-cols-3'
+          condition:
+            variant: 3_column
+        '3_25x50x25':
+          label: 25x50x25
+          configuration: 'grid-cols-1 lg:grid-cols-25/50/25'
+          condition:
+            variant: 3_column
+        '3_25x25x50':
+          label: 25x25x50
+          configuration: 'grid-cols-1 lg:grid-cols-25/25/50'
+          condition:
+            variant: 3_column
+        4_equal:
+          label: Equal
+          configuration: 'grid-cols-2 lg:grid-cols-4'
+          condition:
+            variant: 4_column
+        5_equal:
+          label: Equal
+          configuration: 'grid-cols-1 lg:grid-cols-5'
+          condition:
+            variant: 5_column
+
     flip_mobile:
       type: boolean
       default_value: false
@@ -60,27 +127,3 @@ grid:
       allow_token: true
       group: tab_cells
 
-  configuration:
-    columns:
-      1:
-        equal: 'grid-cols-1'
-      2:
-        equal: 'grid-cols-1 lg:grid-cols-2'
-        '66x33': 'grid-cols-1 lg:grid-cols-66/33'
-        '33x66': 'grid-cols-1 lg:grid-cols-33/66'
-        '75x25': 'grid-cols-1 md:grid-cols-66/33 lg:grid-cols-75/25'
-        '25x75': 'grid-cols-1 md:grid-cols-33/66 lg:grid-cols-25/75'
-      3:
-        equal: 'grid-cols-1 lg:grid-cols-3'
-        instagram: 'grid-cols-1 md:grid-cols-4/5/3 grid-instagram'
-        '25x50x25': 'grid-cols-1 lg:grid-cols-25/50/25'
-        '25x25x50': 'grid-cols-1 lg:grid-cols-25/25/50'
-      4:
-        equal: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
-      5:
-        equal: 'grid-cols-1 lg:grid-cols-5'
-    gutter:
-      none: ''
-      default: 'gap-3 md:gap-4 lg:gap-7'
-      large: 'gap-6 lg:gap-20'
-      xlarge: 'gap-6 lg:gap-28'
