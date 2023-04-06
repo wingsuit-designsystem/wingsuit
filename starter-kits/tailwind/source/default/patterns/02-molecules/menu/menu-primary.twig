@@ -8,7 +8,7 @@ Attributes
 {% set root_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['wrapper']) %}
 {% set root_link_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link_wrapper']) %}
 {% set root_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link']) %}
-{% set root_icon_color_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['icon_color']) %}
+{% set root_svg_color_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['svg_color']) %}
 
 {#
   Classes
@@ -20,7 +20,6 @@ Attributes
 {% import _self as menus %}
 {% macro dropdown_menu(items, menu_level, ancestors) %}
   {% import _self as menus %}
-  {# {{ ancestors_test.container.wrapper }} #}
   {% set container_classes = ([
     ancestors.container.wrapper,
     'z-' + menu_level + '0',
@@ -49,13 +48,14 @@ Attributes
             data-menu-level="{{ menu_level }}"
           :class="{ 'menu-processed' : processed == true }"
         >
-          <div class="{{ link_classes }}" @click="submenuIsOpen = !submenuIsOpen">
+          <div class="{{ link_classes }}"
+            @click="submenuIsOpen = !submenuIsOpen">
             <a href="{{ item.url }}" class="font-display">
               {{ item.title }}
             </a>
             {% if item.below %}
               <div class="{{ ancestors.icon_color }}"
-                :class="{'-rotate-90': submenuDirection == 'right', 'rotate-90': submenuDirection == 'left'}
+                :class="{'rotate-180 lg:-rotate-90': submenuDirection == 'right', 'rotate-90': submenuDirection == 'left'}
               ">
                 {{  pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) }}
               </div>
@@ -92,7 +92,7 @@ Parent
           {{ item.title }}
         </a>
         {% if item.below is not empty %}
-          <div {{ root_icon_color_attributes }}
+          <div {{ root_svg_color_attributes }}
             :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
             {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
           </div>
