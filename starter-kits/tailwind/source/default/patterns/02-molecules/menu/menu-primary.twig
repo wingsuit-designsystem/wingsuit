@@ -6,43 +6,29 @@ Defaults
 Attributes
 #}
 {% set root_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['wrapper']) %}
-{% set root_list_element_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['list_element']) %}
 {% set root_link_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link_wrapper']) %}
 {% set root_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['link']) %}
-{% set root_icon_wrapper_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['icon_wrapper']) %}
+{% set root_icon_color_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'root')['icon_color']) %}
+
 {#
-Classes
+  Classes
 #}
-{% set ancestors = ({
-  'wrapper' : pattern_configuration('menu', variant, 'ancestors')['container']['wrapper'],
-  'wrapper_level_one' : pattern_configuration('menu', variant, 'ancestors')['container']['level']['first'],
-  'wrapper_level_further' : pattern_configuration('menu', variant, 'ancestors')['container']['level']['further'],
-  'list': pattern_configuration('menu', variant, 'ancestors')['list_element'],
-  'link_wrapper' : pattern_configuration('menu', variant, 'ancestors')['link']['wrapper'],
-  'link_level_one' : pattern_configuration('menu', variant, 'ancestors')['link']['first'],
-  'link_level_further' : pattern_configuration('menu', variant, 'ancestors')['link']['further'],
-  'icon_wrapper': pattern_configuration('menu', variant, 'ancestors')['icon']['wrapper'],
-  'icon_level_one': pattern_configuration('menu', variant, 'ancestors')['icon']['first'],
-  'icon_level_further': pattern_configuration('menu', variant, 'ancestors')['icon']['further'],
-}) %}
+{%  set ancestors = pattern_configuration('menu', variant, 'ancestors') %}
 {#
-Template
+  Template
 #}
 {% import _self as menus %}
 {% macro dropdown_menu(items, menu_level, ancestors) %}
   {% import _self as menus %}
+  {# {{ ancestors_test.container.wrapper }} #}
   {% set container_classes = ([
-    ancestors.wrapper,
+    ancestors.container.wrapper,
     'z-' + menu_level + '0',
-    menu_level == 1 ? ancestors.wrapper_level_one : ancestors.wrapper_level_further,
+    menu_level == 1 ? ancestors.container.level.first : ancestors.container.level.further,
   ] | sort | join(' ') | trim ) %}
   {% set link_classes = ([
-    ancestors.link_wrapper,
-    menu_level == 1 ? ancestors.link_level_one : ancestors.link_level_further,
-  ] | sort | join(' ') | trim ) %}
-  {% set icon_classes = ([
-    ancestors.icon_wrapper,
-    menu_level == 1 ? ancestors.icon_level_one  : ancestors.icon_level_one,
+    ancestors.link.wrapper,
+    menu_level == 1 ? ancestors.link.first : ancestors.link.further,
   ] | sort | join(' ') | trim ) %}
   <div class="{{ container_classes }}"
        :class="{'block lg:hidden': submenuIsOpen, 'hidden': !submenuIsOpen,
@@ -52,31 +38,31 @@ Template
        data-menu="submenu">
     <ul>
       {% for item in items %}
-        <li class="{{ ancestors.list }}"
-          {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()"
-          @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);"
-          @mouseleave="processed = false"
+        <li class="relative"
+            x-data="Drupal.behaviors.wingsuitMenu()"
+          {% if item.below %}
+            @mouseenter="processed = true; submenuDirection=getSubmenuDirection($el);"
+            @mouseover="submenuIsOpen = true"
+            @mouseleave="processed = false; submenuIsOpen = false"
           {% endif %}
-          :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu"
-          data-menu-level="{{ menu_level }}">
-          <div class=" {{ link_classes }} ">
+            data-menu-target="submenu"
+            data-menu-level="{{ menu_level }}"
+          :class="{ 'menu-processed' : processed == true }"
+        >
+          <div class="{{ link_classes }}" @click="submenuIsOpen = !submenuIsOpen">
             <a href="{{ item.url }}" class="font-display">
               {{ item.title }}
             </a>
             {% if item.below %}
-              <div class="{{ icon_classes }}"
-                {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
-                :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-                {# only demo will be replaced #}
-                <svg width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.60156 10.3984C9.07031 10.9062 9.89062 10.9062 10.3594 10.3984L17.8594 2.89844C18.3672 2.42969 18.3672 1.60938 17.8594 1.14062C17.3906 0.632812 16.5703 0.632812 16.1016 1.14062L9.5 7.74219L2.85938 1.14062C2.39062 0.632812 1.57031 0.632812 1.10156 1.14062C0.59375 1.60938 0.59375 2.42969 1.10156 2.89844L8.60156 10.3984Z" fill="currentColor"/>
-                </svg>
-                {#  pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) #}
+              <div class="{{ ancestors.icon_color }}"
+                :class="{'-rotate-90': submenuDirection == 'right', 'rotate-90': submenuDirection == 'left'}
+              ">
+                {{  pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) }}
               </div>
             {% endif %}
           </div>
           {% if item.below %}
-            {{ menus.dropdown_menu(item.below, menu_level + 1, ancestors) }}
+            {{ menus.dropdown_menu(item.below, menu_level + 1, ancestors, ancestors_test) }}
           {% endif %}
         </li>
       {% endfor %}
@@ -88,32 +74,32 @@ Template
 Parent
 #}
 
-<ul {{ root_wrapper_attributes }}>
+<ul {{ root_wrapper_attributes }} >
   {% for item in items %}
-    <li {{ root_list_element_attributes }} {% if item.below %}
-      x-data="Drupal.behaviors.wingsuitMenu()"
-      data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
+    <li class="relative"
+      {% if item.below %}
+        x-data="Drupal.behaviors.wingsuitMenu()"
+        data-menu-level="{{ menu_level }}"
+        data-menu-target="submenu"
+        @mouseover="submenuIsOpen = true"
+        @mouseleave="submenuIsOpen = false"
+      {% endif %}
+    >
       <div {{ root_link_wrapper_attributes }}
-        {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;"{% endif %}>
-
+        @click="submenuIsOpen = !submenuIsOpen;"
+      >
         <a href="{{ item.url }}" {{ root_link_attributes }} >
           {{ item.title }}
         </a>
-        <div x-text="message = submenuIsOpen"></div>
         {% if item.below is not empty %}
-          <div {{ root_icon_wrapper_attributes }}
-            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}"
-          >
-            {# only demo will be replaced #}
-            <svg width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8.60156 10.3984C9.07031 10.9062 9.89062 10.9062 10.3594 10.3984L17.8594 2.89844C18.3672 2.42969 18.3672 1.60938 17.8594 1.14062C17.3906 0.632812 16.5703 0.632812 16.1016 1.14062L9.5 7.74219L2.85938 1.14062C2.39062 0.632812 1.57031 0.632812 1.10156 1.14062C0.59375 1.60938 0.59375 2.42969 1.10156 2.89844L8.60156 10.3984Z" fill="currentColor"/>
-            </svg>
-            {#  pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) #}
+          <div {{ root_icon_color_attributes }}
+            :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
+            {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
           </div>
         {% endif %}
       </div>
       {% if item.below %}
-        {{ menus.dropdown_menu(item.below, menu_level + 1, ancestors) }}
+        {{ menus.dropdown_menu(item.below, menu_level + 1, ancestors, ancestors_test) }}
       {% endif %}
     </li>
   {% endfor %}
