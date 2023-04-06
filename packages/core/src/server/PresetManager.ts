@@ -7,7 +7,6 @@ import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 // Library Imports
 const merge = require('webpack-merge');
 const mergeDeep = require('merge-deep');
-const { ProgressPlugin } = require('webpack');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');
@@ -180,7 +179,6 @@ export default class PresetManager {
           },
           mode: this.environment,
           plugins: [
-            new ProgressPlugin({ profile: false }),
             new NodePolyfillPlugin({
               includeAliases: ['buffer'],
             }),
