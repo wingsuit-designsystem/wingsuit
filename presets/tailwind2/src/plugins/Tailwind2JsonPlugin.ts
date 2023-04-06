@@ -7,7 +7,7 @@ export default class Tailwind2JsonPlugin {
 
   private readonly targetFilePath: string;
 
-  private plugin: {} = {};
+  private plugin: any = {};
 
   constructor(tailwindConfig: string, targetFilePath: string) {
     this.tailwindConfig = tailwindConfig;

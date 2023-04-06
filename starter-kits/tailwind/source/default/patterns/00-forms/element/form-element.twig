@@ -46,7 +46,7 @@
 
 {# Defaults #}
 {% set attributes = attributes|default(create_attribute()) %}
-{% set floating_label = floating_label|default('false') %}
+{% set floating_label = floating_label|default(false) %}
 {# Attributes #}
 {% set attributes = attributes.addClass([
   pattern_configuration('form_element', variant, 'classes')['wrapper'],
@@ -60,47 +60,57 @@
   pattern_configuration('form_element', variant, 'classes')['description'],
   description_display == 'invisible' ? 'visually-hidden',
 ])%}
+
+
 {# attributes for floating label #}
-{% set floating_attributes = create_attribute().addClass ([
-  pattern_configuration('form_element', variant, 'floating_label')['wrapper']
-])%}
-{% set floating_label__wrapper_attributes = create_attribute().addClass ([
-  pattern_configuration('form_element', variant, 'floating_label')['floating']
-])%}
-{% set floating_label__left_attributes = create_attribute().addClass ([
-  pattern_configuration('form_element', variant, 'floating_label')['left']
-])%}
-{% set floating_label__center_attributes = create_attribute().addClass ([
-  pattern_configuration('form_element', variant, 'floating_label')['center']
-])%}
-{% set floating_label__right_attributes = create_attribute().addClass ([
-  pattern_configuration('form_element', variant, 'floating_label')['right']
-])%}
+{% if floating_label %}
+  {% set floating_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['wrapper']
+  ])%}
+  {% set floating_label__wrapper_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['floating']
+  ])%}
+  {% set floating_label__left_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['left']
+  ])%}
+  {% set floating_label__center_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['center']
+  ])%}
+  {% set floating_label__right_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['right']
+  ])%}
+{% else %}
+  {% set default_label_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'default_label')['classes']
+  ])%}
+{% endif %}
+
 {#
 Internal logic
 #}
 {%
   set description = description is empty ? {'content': description_text} : description
 %}
+
 {#
 Template
 #}
 <label{{ attributes }}>
   <div>
   {% if label_display in ['before', 'invisible'] %}
-    {% if floating_label == 'true' %}
-    <div  {{ floating_attributes }}>
+    {% if floating_label == true %}
+    <div{{ floating_attributes }}>
         {{ children }}
-      <div {{ floating_label__wrapper_attributes }}>
-        <div {{ floating_label__left_attributes }}></div>
-        <div {{ floating_label__center_attributes }}>
+      <div{{ floating_label__wrapper_attributes }}>
+        <div{{ floating_label__left_attributes }}></div>
+        <div{{ floating_label__center_attributes }}>
           {{ label }}
         </div>
-        <div {{ floating_label__right_attributes }}></div>
+        <div{{ floating_label__right_attributes }}></div>
       </div>
     </div>
     {% else %}
-      <div>{{ label }}</div>
+      <div{{ default_label_attributes }}>{{ label }}</div>
     {%- endif %}
   {% endif %}
   {% if prefix is not empty %}
@@ -112,7 +122,7 @@ Template
       {{ description.content }}
     </div>
   {% endif %}
-  {% if floating_label == 'false'%}
+  {% if floating_label == false %}
     {{ children }}
   {% endif %}
     {% if suffix is not empty %}

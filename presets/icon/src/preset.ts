@@ -70,7 +70,7 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
         config.sources.forEach((source) => {
           const searchFiles = `${appConfig.absPatternPath}/**/${source.sourceFolder}/*.svg`;
           const files = glob.sync(searchFiles);
-          const options: {} = {};
+          const options: any = {};
           files.forEach((file) => {
             const filename = path.basename(file, '.svg');
             options[filename] = `[${source.libName}] ${filename}`;
@@ -102,7 +102,7 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
   };
 }
 
-export function webpackFinal(appConfig: AppConfig, config: any): {} {
+export function webpackFinal(appConfig: AppConfig, config: any) {
   if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((data) => {

@@ -4,16 +4,25 @@ import { AppConfig } from '@wingsuit-designsystem/core';
 import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 import path from 'path';
 
-export function name(appConfig: AppConfig) {
-  return 'placeholder';
+interface AspectionRatio {
+  w: number;
+  h: number;
+}
+
+interface AspectionRatios {
+  [key: string]: AspectionRatio;
 }
 
 interface PlaceholderConfig {
   service: string;
-  aspectRatios: {};
+  aspectRatios: AspectionRatios;
   generationSteps: number;
   generationStart: number;
   generationMax: number;
+}
+
+export function name(appConfig: AppConfig) {
+  return 'placeholder';
 }
 
 export function defaultConfig(appConfig: AppConfig): PlaceholderConfig {

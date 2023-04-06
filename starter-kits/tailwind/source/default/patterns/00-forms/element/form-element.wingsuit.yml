@@ -24,7 +24,7 @@ form_element:
         children:
           id: form_file
       settings:
-        floating_label: 'false'
+        floating_label: false
     tel:
       label: Tel
       fields:
@@ -38,7 +38,7 @@ form_element:
           id: form_input
           variant: "date"
       settings:
-        floating_label: 'false'
+        floating_label: false
     checkbox:
       label: Checkbox
       fields:
@@ -48,19 +48,19 @@ form_element:
         spacings:
           margin: 'mb-4'
       settings:
-        floating_label: 'false'
+        floating_label: false
     checkboxes:
       label: Checkboxes
       fields:
         children:
           id: form_checkboxes
       settings:
-        floating_label: 'false'
+        floating_label: false
     radio:
       label: Radio
       settings:
         label_display: after
-        floating_label: 'false'
+        floating_label: false
       fields:
         children:
           id: form_radio
@@ -73,14 +73,14 @@ form_element:
         children:
           id: form_radios
       settings:
-        floating_label: 'false'
+        floating_label: false
     select:
       label: Select
       fields:
         children:
           id: form_select
       settings:
-        floating_label: 'false'
+        floating_label: false
   settings:
     flex:
       type: textfield
@@ -108,6 +108,7 @@ form_element:
     floating_label:
       type: boolean
       label: Floating label
+      default: false
   fields:
     label:
       type: pattern
@@ -138,6 +139,8 @@ form_element:
       error: 'bg-red-500'
     spacings:
       margin: 'mb-6'
+    default_label:
+      classes: 'mb-2'
     floating_label:
       wrapper: 'floating relative'
       floating: 'floating__label  bg-white flex w-full h-[48px] rounded-md'
