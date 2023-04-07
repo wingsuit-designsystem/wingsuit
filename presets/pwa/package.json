@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-pwa",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Wingsuit automatically generated favicons and progressive webapp enhancements preset.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@ianwalter/exclude-assets-plugin": "^1.0.0",
-    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
     "favicons": "^6.2.2",
     "favicons-webpack-plugin": "^5.0.2",
     "html-webpack-plugin": "^5.5.0"
