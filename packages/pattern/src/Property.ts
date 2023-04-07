@@ -1,4 +1,4 @@
-const faker = require('faker');
+import { faker } from '@faker-js/faker/locale/en';
 
 export default class Property {
   public getDescription(): string {
