@@ -1,4 +1,4 @@
-homepage:
+page_homepage:
   use: "@pages/page.twig"
   label: Homepage
   description: Example description

@@ -15,12 +15,11 @@ Defaults
 {#
 Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('card', variant, 'defaults')['attribute_classes'] ) %}
-{% set wrapper_attributes = create_attribute().addClass([
-    pattern_configuration('card', variant, 'defaults')['wrapper_classes'],
-    pattern_configuration('card', variant, 'direction')['flex'],
-  ] | sort | join(' ') | trim )
-%}
+{% set attributes = attributes.addClass([
+  pattern_configuration('card', variant, 'classes')['wrapper'],
+  pattern_configuration('card', variant, 'direction')['flex'],
+  ] | sort | join(' ') | trim
+) %}
 
 {% set image_attributes = create_attribute().addClass([
     pattern_configuration('card', variant, 'image')['size'],
@@ -30,8 +29,8 @@ Attributes
 {#
   Template
 #}
-<{{ element }} {{ attributes }}>
-  <div {{ wrapper_attributes }}>
+<div class="flex flex-1 flex-col group">
+  <{{ element }} {{ attributes }}>
     {% if image is not empty %}
       <div {{ image_attributes }}>
         {% block image %}
@@ -42,5 +41,5 @@ Attributes
     <div class="p-6 flex flex-1 bg-white">
       {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action}, 'small' ) }}
     </div>
-  </div>
-</{{ element }}>
+  </{{ element }}>
+</div>

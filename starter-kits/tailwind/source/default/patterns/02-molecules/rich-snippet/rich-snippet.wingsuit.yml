@@ -17,13 +17,19 @@ rich_snippet:
       label: Headline
       description: The main headline.
       preview:
-        faker: lorem.sentence
+        faker:
+          token: lorem.sentence
+          options:
+            length: 1
     text:
       type: text
       label: Text
       description: A long text under the headline.
       preview:
-        faker: lorem.paragraph
+        faker:
+          token: lorem.paragraph
+          options:
+            length: 1
     action:
       type: pattern
       label: Action

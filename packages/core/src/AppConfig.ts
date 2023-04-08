@@ -25,7 +25,7 @@ export default interface AppConfig extends AppInitConfig {
 
   componentTypes: ComponentType;
 
-  startup();
+  startup(passedArgs);
 }
 
 export interface AppInitConfig {
@@ -59,7 +59,7 @@ export interface AppInitConfig {
 
   componentTypes?: ComponentType;
 
-  startup?();
+  startup?(passedArgs);
 
   generator?(type, rootGenerator: any);
 
@@ -128,7 +128,37 @@ export interface PresetDefinition {
   parameters: any;
 }
 
-export function defaultAppConfig(type, absRootPath): AppConfig {
+export function defaultAppConfig(
+  type,
+  absRootPath
+): {
+  absAppPath: string;
+  internalCache: any;
+  distFolder: string;
+  type: any;
+  absRootPath: any;
+  webpackFinal(appConfig: AppConfig, config?: any): any;
+  features: any;
+  path: string;
+  webpack(appConfig: AppConfig, config?: any): any;
+  startup(additionalArgs): string;
+  postCssConfig: { options: { sourceMap: boolean; postcssOptions: { plugins: any[] } } };
+  absDesignSystemPath: string;
+  twigDistFolder: string;
+  assetsDistFolder: string;
+  absPatternPath: string;
+  componentTypes: { wingsuit: string };
+  wingsuitDistFolder: string;
+  environment: string;
+  presets: any[];
+  absDistFolder: string;
+  name: any;
+  getParameters: () => any;
+  cssMode: string;
+  designSystem: string;
+  namespaces: { wspatterns: string; wsdesignsystem: string };
+  absDataPath: string;
+} {
   return {
     internalCache: {},
     type,
@@ -155,11 +185,11 @@ export function defaultAppConfig(type, absRootPath): AppConfig {
     componentTypes: {
       wingsuit: 'Wingsuit component (UI Pattern)',
     },
-    startup() {
+    startup(passedArgs) {
       if (this.environment === 'production') {
-        return `cross-env-shell NODE_ENV=${this.environment} "webpack --config ${this.path}/webpack.config.js"`;
+        return `cross-env-shell NODE_ENV=${this.environment} "webpack --config ${this.path}/webpack.config.js ${passedArgs}"`;
       }
-      return `cross-env-shell NODE_ENV=${this.environment} "webpack --watch --config ${this.path}/webpack.config.js"`;
+      return `cross-env-shell NODE_ENV=${this.environment} "webpack --watch --config ${this.path}/webpack.config.js ${passedArgs}"`;
     },
     webpack(appConfig: AppConfig, config?: any) {
       return {};

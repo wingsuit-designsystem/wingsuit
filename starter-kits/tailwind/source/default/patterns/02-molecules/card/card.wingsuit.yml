@@ -17,7 +17,7 @@ card:
         id: placeholder
         variant: image
         settings:
-          style: responsive_16_9_600w
+          style: responsive_16_9_1200w
   variants:
     default:
       label: Default
@@ -25,29 +25,19 @@ card:
         direction:
           flex: 'flex-col'
         image:
-          size: 'flex-0 aspect-[16/9]'
+          size: 'flex-0 aspect-[16/9] [&>*]:w-full'
     horizontal:
       label: Horizontal
       configuration:
         direction:
           flex: 'flex-col md:flex-row'
         image:
-          size: 'w-full lg:w-60 aspect-[16/9] relative flex [&>*]:object-cover'
-      settings:
-        image:
-          id: placeholder
-          variant: image
-          definition:
-            view_mode: 16x9
-          settings:
-            style: responsive_16_9_600w
-
+          size: 'w-full lg:w-60 aspect-[16/9] relative flex [&>*]:object-cover '
   settings:
     url:
       type: url
       label: Url
   configuration:
-    defaults:
-      attribute_classes: 'flex flex-1 flex-col group'
-      wrapper_classes: 'group-hover:shadow-lg flex max-w-xl flex-1 rounded-lg overflow-hidden w-full'
+    classes:
+      wrapper: 'group-hover:shadow-lg flex flex-1 rounded-lg overflow-hidden w-full'
 

@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import generate from '@babel/generator';
 import { AppConfig, invokeHook } from '../index';
 
 const YAML = require('yaml');
@@ -14,8 +15,12 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
 
   let absYamlPath = '';
   let patternClientYamlPath = '';
+  let wingsuit = null;
   traverse(ast, {
     VariableDeclaration(pathItem) {
+      if (pathItem.node.declarations[0].id.name === 'wingsuit') {
+        wingsuit = pathItem.node;
+      }
       if (pathItem.node.declarations[0].id.name === 'patternDefinition') {
         const yamlPath = pathItem.node.declarations[0].init.arguments[0].value;
         if (yamlPath.startsWith('.') || yamlPath.startsWith('/')) {
@@ -28,6 +33,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       }
     },
   });
+  const generated = wingsuit ? generate(wingsuit).code : '';
   if (absYamlPath !== '') {
     if (loader) {
       loader.addDependency(absYamlPath);
@@ -69,6 +75,8 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       output.push("import './index';");
     }
     output.push(`
+    const patternDefinition = null;
+    ${generated};
     import React from 'react';
     import { storage } from '@wingsuit-designsystem/pattern';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
@@ -86,6 +94,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       component: PatternPreview,
       tags: ['autodocs'],
+      parameters: wingsuit.parameters,
      }
      let pattern = null;
 `);

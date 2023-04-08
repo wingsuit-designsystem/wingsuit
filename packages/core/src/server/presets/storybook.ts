@@ -7,18 +7,16 @@ export function name(appConfig: AppConfig) {
 export function webpack(appConfig: AppConfig) {
   const resultWebpack = {
     devtool: appConfig.environment === 'development' ? 'eval' : 'source-map',
-    resolve: {
-      fallback: {
-        fs: false,
-      },
-    },
     output: {
       path: appConfig.absDistFolder,
+      pathinfo: false,
     },
-    stats: {
-      performance: true,
-      children: false,
+    optimization: {
+      removeAvailableModules: false,
+      removeEmptyChunks: false,
+      splitChunks: false,
     },
   };
+
   return resultWebpack;
 }

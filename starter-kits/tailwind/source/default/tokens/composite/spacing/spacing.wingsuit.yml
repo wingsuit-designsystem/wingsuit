@@ -1,7 +1,4 @@
-spacing:
-  use: "@protons/spacing/spacing.twig"
-  label: Spacing
-  description: Abstract spacing component. Extend this component if you component need spacing.
+tokens_spacing:
   settings:
     tab_spacing:
       label: Spacing
@@ -58,4 +55,19 @@ spacing:
         default:
           label: Default
           configuration: 'pb-16 lg:pb-28'
-
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        default:
+          label: Default
+          configuration: 'max-w-8xl'
+        full:
+          label: Full
+          configuration: ''
+        small:
+          label: Small
+          configuration: 'max-w-6xl'

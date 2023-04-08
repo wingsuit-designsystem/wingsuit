@@ -3,8 +3,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-
-.ui-widget-overlay {
-  display: none;
-}

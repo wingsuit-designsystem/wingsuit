@@ -33,11 +33,11 @@
 ] | sort | join(' ') | trim )%}
 
 {% set classes = ([
-  is_layout_builder == false ? pattern_configuration('spacing', '', 'margin_top')[margin_top],
-  pattern_configuration('spacing', '', 'padding_x')[padding_x],
-  pattern_configuration('spacing', '', 'padding_top')[padding_top],
-  pattern_configuration('spacing', '', 'padding_bottom')[padding_bottom],
-  pattern_configuration('container', '', 'width')[width],
+  is_layout_builder == false ? pattern_configuration('tokens_spacing', '', 'margin_top')[margin_top],
+  pattern_configuration('tokens_spacing', '', 'padding_x')[padding_x],
+  pattern_configuration('tokens_spacing', '', 'padding_top')[padding_top],
+  pattern_configuration('tokens_spacing', '', 'padding_bottom')[padding_bottom],
+  pattern_configuration('tokens_spacing', '', 'width')[width],
   classes,
   'mx-auto w-full'
 ] | sort | join(' ') | trim )%}

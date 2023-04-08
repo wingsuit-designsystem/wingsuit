@@ -33,7 +33,7 @@
     "prepare": "node ../../scripts/prepare.js"
   },
   "dependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@ngneat/falso": "^6.4.0",
     "escape-html": "^1.0.3",
     "html-attribute-parser": "^1.0.0",
     "reflect-metadata": "^0.1.13"

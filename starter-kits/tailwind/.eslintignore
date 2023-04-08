@@ -1,11 +1,11 @@
 # Ignore any path/file using .gitignore syntax
 
 dist/
-pattern-lab/
-vendor/
+.eslintrc.js
 tools/tests/vrt/backstop_data
 preview.js-generated-config-entry.js
 storybook-init-framework-entry.js
 
 /**/node_modules/*
 .*/
+node_modules

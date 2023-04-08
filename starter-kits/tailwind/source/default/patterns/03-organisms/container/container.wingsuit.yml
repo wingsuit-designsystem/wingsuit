@@ -3,7 +3,8 @@ container:
   label: Container
   description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
   extends:
-    - spacing.settings
+    - tokens_colors.settings.bg
+    - tokens_spacing.settings
   fields:
     content:
       type: text
@@ -11,31 +12,11 @@ container:
       preview:
         faker: lorem.paragraphs
   settings:
-    width:
-      type: select
-      label: Width
-      default_value: default
-      required: true
-      preview: default
-      options:
-        default: Default
-        full: Full
-        small: Small
     tab_bg:
       label: Background
       type: group
       group_type: details
       weight: 80
-    bg:
-      type: colorwidget
-      label: Background color
-      default_value: ""
-      group: tab_bg
-      options:
-        "": Transparent
-        purple-dark: Purple/#581C87
-        teal-medium: Teal/#14b8a6
-        gray-light: Light gray/#d1d5db
     bg_image:
       type: media_library
       label: Background image
@@ -51,12 +32,3 @@ container:
       type: textfield
       label: Additional classes
       group: tab_advanced
-  configuration:
-    width:
-      small: 'max-w-7xl'
-      default: 'max-w-8xl'
-    bg:
-      purple-dark: 'dark bg-purple-900'
-      teal-medium: 'dark bg-teal-500'
-      teal-dark: 'dark bg-teal-800'
-      gray-light: 'bg-gray-300'

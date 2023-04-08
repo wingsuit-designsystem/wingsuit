@@ -28,15 +28,14 @@ export default (options: Command, environment) => {
     const appName = await getAppName();
     const parsedArgs = options.parseOptions(options.args);
     const { outputDir, docs } = options;
-    const additionalArgs = ` ${parsedArgs.unknown.join(' ')}`;
+    const passedArgs = ` ${parsedArgs.unknown.join(' ')}`;
     try {
       const appConfig = resolveConfig(appName, environment);
       const consoleCommand =
         (docs !== true
-          ? appConfig.startup() + additionalArgs
-          : `export STORYBOOK_DOCS=true && ${appConfig.startup()} --docs`) +
-        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}` : '') +
-        additionalArgs;
+          ? appConfig.startup(passedArgs)
+          : `export STORYBOOK_DOCS=true && ${appConfig.startup(passedArgs)}`) +
+        (outputDir && outputDir !== '' ? ` --output-dir ${outputDir}"` : '');
 
       logger.info('');
       logger.info(chalk.green(` Starting Wingsuit app "${appName}"...`));

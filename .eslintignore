@@ -1,15 +1,9 @@
 dist
-lib/**/dll
-build
-coverage
 node_modules
-docs/public
 storybook-static
 built-storybooks
 lib/cli/test
 scripts
-lib/codemod/src/transforms/__testfixtures__
-scripts/storage
 cypress
 *.bundle.js
 *.js.map
@@ -18,7 +12,6 @@ cypress
 !.remarkrc.js
 !.babelrc.js
 !.eslintrc.js
-!.eslintrc-markdown.js
 !.jest._config.js
 !.storybook
 __tests__

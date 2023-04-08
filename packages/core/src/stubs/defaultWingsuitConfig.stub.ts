@@ -40,18 +40,18 @@ export const wingsuit: Config = {
       distFolder: 'dist/app-storybook',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, assetsVideos, storybook, wingsuitp],
+      presets: [assets, wingsuitp],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',
         plain_presenter: 'Twig only component with presentation template',
         presenter: 'Presentation template',
       },
-      startup() {
+      startup(passedArgs) {
         if (this.environment === 'production') {
-          return `storybook build --config-dir ${this.absAppPath}`
+          return `cross-env-shell NODE_ENV=${this.environment} "storybook build --config-dir ${this.absAppPath} ${passedArgs}"`
         }
-        return `storybook dev --config-dir ${this.absAppPath}`
+        return `cross-env-shell NODE_ENV=${this.environment} "storybook dev --config-dir ${this.absAppPath}  ${passedArgs}"`
       },
     },
     test: {

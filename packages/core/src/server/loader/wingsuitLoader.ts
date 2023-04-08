@@ -37,7 +37,7 @@ export default function wingsuitLoader(this: any, src) {
         }
         if (pattern.variants) {
           Object.entries(pattern.variants).forEach(([variantName, variant]) => {
-            if (variant.use) {
+            if (variant && variant.use) {
               const twigVariantTemplatePath = variant.use.replace('@', '');
               exports.push(
                 `import ${key}${variantName}Template from '${twigVariantTemplatePath}';`

@@ -40,10 +40,18 @@ module.exports = {
     node: true,
   },
   rules: {
+    'import/no-duplicates': 0,
+    'import/no-relative-packages': 0,
+    'import/no-named-as-default': 0,
+    'import/no-unresolved': 0,
+    'import/no-named-as-default-member': 0,
+    'import/no-self-import': 0,
+    'import/order': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/no-cycle': 0,
     'react/jsx-uses-react': 1,
     'prettier/prettier': 'error',
     'no-console': [0], // turned off for now while we are console.logging everywhere.
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': [0],
   },
   settings: {
