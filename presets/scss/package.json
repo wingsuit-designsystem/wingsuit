@@ -34,7 +34,7 @@
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-loader": "^7.1.0",
     "resolve-url-loader": "^5.0.0",
-    "sass-loader": "^13.2.1",
+    "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2"
   },
   "scripts": {

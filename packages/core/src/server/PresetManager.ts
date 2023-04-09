@@ -177,15 +177,7 @@ export default class PresetManager {
           resolve: {
             alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
           },
-          cache: {
-            type: 'filesystem',
-            allowCollectingMemory: true,
-            buildDependencies: {
-              // This makes all dependencies of this file - build dependencies
-              config: [__filename],
-              // By default webpack and loaders are build dependencies
-            },
-          },
+
           mode: this.environment,
           plugins: [
             new NodePolyfillPlugin({

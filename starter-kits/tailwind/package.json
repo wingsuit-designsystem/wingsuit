@@ -39,7 +39,6 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "@esbuild/linux-x64": "^0.17.15",
     "@storybook/addon-docs": "^7.0.2",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
@@ -86,6 +85,7 @@
     "require-context": "^1.1.0",
     "storybook": "^7.0.2",
     "storybook-addon-themes": "^6.1.0",
+    "storybook-addon-turbo-build": "^1.1.0",
     "stylelint-scss": "^3.17.2",
     "webpack": "^5.56.1",
     "yo": "^3.1.1"

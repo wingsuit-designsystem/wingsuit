@@ -62,7 +62,6 @@ CLASSES
 {% set classes = [
   cookie_categories ? 'cookie-banner--with-categories',
 ] %}
-
 {# TEMPLATE #}
 {% if privacy_settings_tab_label %}
   <button type="button" class="eu-cookie-withdraw-tab">{{ privacy_settings_tab_label }}</button>
@@ -98,7 +97,7 @@ CLASSES
               {% set checkbox %}
                 {{ pattern('form_checkbox', {attributes: input_attributes} ) }}
               {% endset %}
-              {{ pattern('form_element', {label: category.label, label_display: "after", children: checkbox, attributes: create_attribute().setAttribute("for", "cookie-category-"~key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')} ) }}
+              {{ pattern('form_element', {label: category.label, label_display: "after", children: checkbox, attributes: create_attribute().setAttribute("for", "cookie-category-" ~ key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')} ) }}
               {% if category.description %}
                 <div {{ category_description_attributes }} >{{ category.description }}</div>
               {% endif %}
@@ -106,7 +105,6 @@ CLASSES
           {% endfor %}
         </div>
       {% endif %}
-      {{ dump(tag_name) }}
       <div id="popup-buttons" class="mt-6">
         <div {{ popup_buttons_wrapper_attributes }}>
           <div {{ button_preferences_attributes }}>
@@ -128,7 +126,6 @@ CLASSES
       </div>
     </div>
   </div>
-
   {% if wrapper|default(0) %}
 </div>
 {% endif %}

@@ -4,11 +4,13 @@ export default {
   framework: {
     name: '@storybook/react-webpack5',
     options: {
-      lazyCompilation: true,
-      fsCache: true,
+      builder: {
+        lazyCompilation: true,
+        fsCache: true,
+      },
     },
   },
-  typescript: { reactDocgen: false },
+  typescript: {reactDocgen: false},
   docs: {
     autodocs: true,
   },
