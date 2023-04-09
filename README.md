@@ -12,7 +12,7 @@
 1.  Bundled Webpack base configuration to keep everything up to date.
 
 ## Documentation
-Check out the <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information.
+Check out the <a href="https://wingsuit-designsystem.github.io/">Wingsuit documentation</a> for more information..
 ## Prerequisites
 
 - [Node `^12`](https://nodejs.org)
