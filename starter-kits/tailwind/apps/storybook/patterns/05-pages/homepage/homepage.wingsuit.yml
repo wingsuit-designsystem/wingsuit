@@ -2,6 +2,11 @@ page_homepage:
   use: "@pages/page.twig"
   label: Homepage
   description: Example description
+  dependencies:
+    - language_select
+    - menu
+    - logo
+    - header
   fields:
     content:
       type: pattern
@@ -9,6 +14,8 @@ page_homepage:
       preview:
         - id: section
           variant: 1_column
+          settings:
+            padding_top: default
           fields:
             column_1:
               - id: hero
@@ -16,6 +23,8 @@ page_homepage:
                   reverse: true
         - id: section
           variant: 3_column
+          settings:
+            equal_height: true
           fields:
             column_1:
               - id: card
@@ -41,6 +50,8 @@ page_homepage:
               - id: accordion_item
         - id: section
           variant: 3_column
+          settings:
+            equal_height: true
           fields:
             column_1:
               - id: card

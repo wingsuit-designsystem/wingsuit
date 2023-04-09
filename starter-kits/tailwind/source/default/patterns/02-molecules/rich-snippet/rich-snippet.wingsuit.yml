@@ -21,6 +21,7 @@ rich_snippet:
           token: lorem.sentence
           options:
             length: 1
+            chars: 10
     text:
       type: text
       label: Text

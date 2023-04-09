@@ -47,7 +47,7 @@ jobs:
             - .cache
   build:
     executor:
-      class: medium
+      class: large
       name: sb_node_16_classic
     steps:
       - checkout

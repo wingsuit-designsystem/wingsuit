@@ -43,18 +43,18 @@ Defaults
 {#
 Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('cookie_banner', null, 'defaults')['attributes_classes']) %}
-{% set sliding_popup_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['sliding_popup_classes']) %}
-{% set popup_content_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['popup_content_classes']) %}
-{% set cookiebanner_message_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['cookiebanner_message_classes']) %}
-{% set more_button_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['more_button_classes']) %}
-{% set cookiebanner_categories_wrapper_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['cookiebanner_categories_wrapper_classes']) %}
-{% set cookiebanner_categories_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['cookiebanner_categories_classes']) %}
-{% set category_description_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['category_description_classes']) %}
-{% set popup_buttons_wrapper_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['popup_buttons_wrapper_classes']) %}
-{% set button_preferences_attributes= create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_preferences_classes']) %}
-{% set button_agree_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_agree_classes']) %}
-{% set button_decline_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', null, 'defaults')['button_decline_classes']) %}
+{% set attributes = attributes.addClass(pattern_configuration('cookie_banner', variant, 'classes')['wrapper']) %}
+{% set sliding_popup_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['sliding_popup_classes']) %}
+{% set popup_content_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['popup_content_classes']) %}
+{% set cookiebanner_message_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['cookiebanner_message']) %}
+{% set more_button_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['more_button']) %}
+{% set cookiebanner_categories_wrapper_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['cookiebanner_categories_wrapper']) %}
+{% set cookiebanner_categories_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'defaults')['cookiebanner_categories']) %}
+{% set category_description_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['category_description']) %}
+{% set popup_buttons_wrapper_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['popup_buttons_wrapper']) %}
+{% set button_preferences_attributes= create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['button_preferences']) %}
+{% set button_agree_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['button_agree']) %}
+{% set button_decline_attributes = create_attribute().addClass(pattern_configuration('cookie_banner', variant, 'classes')['button_decline']) %}
 
 {#
 CLASSES
@@ -97,7 +97,13 @@ CLASSES
               {% set checkbox %}
                 {{ pattern('form_checkbox', {attributes: input_attributes} ) }}
               {% endset %}
-              {{ pattern('form_element', {label: category.label, label_display: "after", children: checkbox, attributes: create_attribute().setAttribute("for", "cookie-category-" ~ key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')} ) }}
+              {{ pattern('form_element',
+                {label: category.label,
+                  label_display: "after",
+                  children: checkbox,
+                  attributes: create_attribute().setAttribute("for", "cookie-category-" ~ key).addClass('cursor-pointer').addClass('[&>div>input]:mb-1.5')}
+                , 'checkbox'
+              ) }}
               {% if category.description %}
                 <div {{ category_description_attributes }} >{{ category.description }}</div>
               {% endif %}

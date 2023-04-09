@@ -2,6 +2,8 @@ language_select:
   use: "@molecules/language-select/language-select.twig"
   label: Language select
   description: Colorful status, warning and error messages for every situation.
+  dependencies:
+    - icon
   fields:
     links:
       type: object

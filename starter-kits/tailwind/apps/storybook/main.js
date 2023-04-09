@@ -10,7 +10,7 @@ export default {
       },
     },
   },
-  typescript: {reactDocgen: false},
+  typescript: { reactDocgen: false },
   docs: {
     autodocs: true,
   },

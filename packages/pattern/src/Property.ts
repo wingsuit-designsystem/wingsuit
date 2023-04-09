@@ -46,6 +46,7 @@ export default class Property {
         'lorem.word': randWord,
         'lorem.sentence': randSentence,
         'lorem.paragraph': randParagraph,
+        'lorem.paragraphs': randParagraph,
         'lorem.line': randLine,
       };
       if (!tokens[token]) {
