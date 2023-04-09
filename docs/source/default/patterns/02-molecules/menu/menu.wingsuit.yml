@@ -110,8 +110,8 @@ menu:
         items:
           - title: Documentation
             url: "/guides/quick-start-guide/"
-          - title: <b>What's new in Version 1.2</b>
-            url: "/releases/onedottwo"
+          - title: <b>What's new in Version 2.0 beta</b>
+            url: "/releases/twodotzero"
     footer:
       label: Footer
       description: The footer menu.

@@ -51,6 +51,7 @@
     "@storybook/storybook-deployer": "^2.8.7",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
     "@wingsuit-designsystem/cli": "2.0.0-alpha.1",
     "@wingsuit-designsystem/preset-pages": "2.0.0-alpha.1",
     "@wingsuit-designsystem/preset-tailwind2": "2.0.0-alpha.1",
@@ -86,7 +87,7 @@
     "@tailwindcss/forms": "^0.5.1",
     "@tailwindcss/typography": "^0.5.1",
     "alpinejs": "2.7.0",
-    "prismjs": "~1.29.0",
+    "prismjs": "1.29.0",
     "tailwindcss": "^3.1.4"
   },
   "gitHead": "bfeff58b8f6e6ace1c28f31ad67d75d6f18ee5a4"

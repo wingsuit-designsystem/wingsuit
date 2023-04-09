@@ -10,6 +10,7 @@ const mergeDeep = require('merge-deep');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');
+const cms = require('./presets/cms');
 const babel = require('./presets/babel');
 const assets = require('./presets/assets');
 const storybook = require('./presets/storybook');
@@ -18,6 +19,7 @@ const assetsVideos = require('./presets/assetsVideos');
 
 const defaultPresets = {
   css,
+  cms,
   babel,
   assetsVideos,
   assets,
@@ -177,18 +179,18 @@ export default class PresetManager {
           resolve: {
             alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
           },
-
+          output: {
+            path: appConfig.absDistFolder,
+          },
           mode: this.environment,
           plugins: [
             new NodePolyfillPlugin({
               excludeAliases: [
                 'console',
-                'process',
                 'assert',
                 'buffer',
                 'console',
                 'constants',
-                'crypto',
                 'domain',
                 'events',
                 'http',
@@ -196,9 +198,7 @@ export default class PresetManager {
                 'os',
                 'path',
                 'punycode',
-                'process',
                 'querystring',
-                'stream',
                 '_stream_duplex',
                 '_stream_passthrough',
                 '_stream_readable',

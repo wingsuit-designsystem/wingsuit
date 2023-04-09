@@ -28,7 +28,7 @@ export function wingsuitConfig(): any {
           getDefaultPreset('wingsuit'),
           getDefaultPreset('babel'),
           getDefaultPreset('css'),
-          getDefaultPreset('drupal'),
+          getDefaultPreset('cms'),
           getDefaultPreset('assetsVideos'),
           getDefaultPreset('svg'),
           '@wingsuit-designsystem/preset-twing',

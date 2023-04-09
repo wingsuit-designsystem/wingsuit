@@ -31,15 +31,6 @@ export function webpack(appConfig: AppConfig) {
 
   return {
     target: 'web',
-    output: {
-      path: appConfig.absDistFolder,
-    },
-    optimization: {
-      splitChunks: {
-        // include all types of chunks
-        chunks: 'all',
-      },
-    },
     devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
     entry: {
       ...indexObjects,

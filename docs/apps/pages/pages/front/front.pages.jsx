@@ -21,7 +21,7 @@ const document = require('wsdata/homepage/document.yml');
 const html = require('../html.twig');
 
 export default {
-  path: '/',
+  path: '/index.html',
   html,
   vars: {
     meta_title: 'Build Twig Components in Storybook',
