@@ -24,8 +24,8 @@
 #}
 {% set attributes = attributes
   .addClass([
-    pattern_configuration('button', variant, 'defaults')['wrapper_classes'],
-    pattern_configuration('button', variant, 'wrapper_classes')[active_key],
+    pattern_configuration('button', variant, 'classes')['wrapper'],
+    pattern_configuration('button', variant, 'classes')[active_key],
     variant == 'link' ? 'px-0' : pattern_configuration('button', variant, 'size')[size]['padding'],
     pattern_configuration('button', variant, 'size')[size]['text'],
     pattern_configuration('button', variant, 'size')[size]['icon_gap'],
@@ -37,7 +37,6 @@
   .setAttribute('title', title)
   .setAttribute('disabled', disabled)
 %}
-
 {#
   Template
 #}

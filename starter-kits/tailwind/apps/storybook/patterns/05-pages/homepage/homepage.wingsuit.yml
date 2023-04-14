@@ -42,6 +42,8 @@ page_homepage:
               - id: banner
         - id: section
           variant: 1_column
+          settings:
+            width: small
           fields:
             column_1:
               - id: accordion_item
@@ -64,6 +66,8 @@ page_homepage:
                 variant: default
         - id: section
           variant: 1_column
+          settings:
+            width: small
           fields:
             column_1:
               - id: rich_text

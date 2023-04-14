@@ -116,6 +116,19 @@ export default class FileDependencyPlugin {
     if (compiler.hooks) {
       compiler.hooks.afterCompile.tapAsync(this.plugin, afterCompile);
       compiler.hooks.beforeCompile.tapAsync(this.plugin, beforeCompile);
+      compiler.hooks.emit.tapAsync(this.plugin, (compilation, callback) => {
+        if (compiler.modifiedFiles) {
+          compiler.modifiedFiles.forEach((file) => {
+            if (file.endsWith('wingsuit.yml')) {
+              const storyFile = file.replace('wingsuit.yml', 'stories.wingsuit.jsx');
+              if (fs.existsSync(storyFile)) {
+                fs.writeFileSync(fs.readFileSync(storyFile));
+              }
+            }
+          });
+        }
+        callback();
+      });
     } else {
       compiler.plugin('beforeCompile', beforeCompile);
       compiler.plugin('afterCompile', afterCompile);

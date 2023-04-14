@@ -5,14 +5,14 @@ export default {
     name: '@storybook/react-webpack5',
     options: {
       builder: {
-        lazyCompilation: true,
+        lazyCompilation: false,
         fsCache: true,
       },
     },
   },
   typescript: { reactDocgen: false },
   docs: {
-    autodocs: true,
+    autodocs: false,
   },
   stories: [
     './patterns/00-foundations/**/*.mdx',
