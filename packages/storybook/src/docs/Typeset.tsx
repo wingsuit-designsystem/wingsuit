@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { styled } from '@storybook/theming';
 import { transparentize } from 'polished';
 
-const Label = styled.div<{}>(({ theme }) => ({
+const Label = styled.div<object>(({ theme }) => ({
   marginRight: 30,
   fontSize: `${theme.typography.size.s1}px`,
   color:
@@ -24,7 +24,7 @@ const TypeSpecimen = styled.div({
   '&:not(:last-child)': { marginBottom: '1rem' },
 });
 
-const Wrapper = styled.div<{}>({}, ({ theme }) => ({
+const Wrapper = styled.div<any>({}, ({ theme }) => ({
   border: '1px solid rgba(0, 0, 0, 0.1)',
   boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px',
   margin: '25px 0 40px',
@@ -34,7 +34,7 @@ const Wrapper = styled.div<{}>({}, ({ theme }) => ({
 export interface TypesetProps {
   fontFamily: string;
   classNamePrefix: string;
-  fontSizes: {};
+  fontSizes: any;
   fontWeight?: number;
   sampleText?: string;
 }

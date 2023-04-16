@@ -1,30 +1,26 @@
 /**
  * Wingsuit PresetManager.
  */
+import { resolve, join } from 'path';
 import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 
 // Library Imports
 const merge = require('webpack-merge');
 const mergeDeep = require('merge-deep');
-const { ProgressPlugin } = require('webpack');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');
+const cms = require('./presets/cms');
 const babel = require('./presets/babel');
 const assets = require('./presets/assets');
-const storybook = require('./presets/storybook');
-const drupal = require('./presets/drupal');
-const wingsuitP = require('./presets/wingsuit');
 const assetsVideos = require('./presets/assetsVideos');
 
 const defaultPresets = {
   css,
+  cms,
   babel,
   assetsVideos,
   assets,
-  storybook,
-  drupal,
-  wingsuit: wingsuitP,
 };
 
 export default class PresetManager {
@@ -62,6 +58,9 @@ export default class PresetManager {
   }
 
   public getPresetDefinitions(appConfig: AppConfig): PresetDefinition[] {
+    if (appConfig?.internalCache?.presets) {
+      return appConfig.internalCache.presets;
+    }
     const presets: PresetDefinition[] = [];
     if (appConfig.presets) {
       appConfig.presets.forEach((item) => {
@@ -112,6 +111,15 @@ export default class PresetManager {
         }
       }
     });
+    if (appConfig) {
+      if (!appConfig.internalCache) {
+        // eslint-disable-next-line no-param-reassign
+        appConfig.internalCache = {};
+      }
+      // eslint-disable-next-line no-param-reassign
+      appConfig.internalCache.presets = presets;
+    }
+
     return presets;
   }
 
@@ -153,7 +161,7 @@ export default class PresetManager {
         shared.push(presets[key].preset.webpack(appConfig, presets[key].parameters));
       }
     });
-
+    const wspresets = resolve(join(__dirname, '../'));
     let config = merge.mergeWithCustomize({
       // Prepend the css style-loader vs MiniExtractTextPlugin
       entry: 'append',
@@ -165,20 +173,51 @@ export default class PresetManager {
         appConfig.webpack ? appConfig.webpack(appConfig) : {},
         {
           resolve: {
-            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces },
+            alias: { ...appConfig.namespaces, ...appConfig.wsNamespaces, wspresets },
+          },
+          output: {
+            path: appConfig.absDistFolder,
           },
           mode: this.environment,
-          optimization: {
-            minimizer: [],
-          },
-          plugins: [new ProgressPlugin({ profile: false }), new NodePolyfillPlugin()],
+          plugins: [
+            new NodePolyfillPlugin({
+              excludeAliases: [
+                'console',
+                'assert',
+                'buffer',
+                'console',
+                'constants',
+                'domain',
+                'events',
+                'http',
+                'https',
+                'os',
+                'path',
+                'punycode',
+                'querystring',
+                '_stream_duplex',
+                '_stream_passthrough',
+                '_stream_readable',
+                '_stream_transform',
+                '_stream_writable',
+                'string_decoder',
+                'sys',
+                'timers',
+                'tty',
+                'url',
+                'util',
+                'vm',
+                'zlib',
+              ],
+            }),
+          ],
         },
       ]
     );
 
     Object.keys(presets).forEach((key) => {
       if (presets[key].preset.webpackFinal != null) {
-        config = presets[key].preset.webpackFinal(appConfig, config);
+        config = presets[key].preset.webpackFinal(appConfig, config, presets[key].parameters);
       }
     });
 

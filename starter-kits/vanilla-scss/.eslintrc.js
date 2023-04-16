@@ -5,7 +5,7 @@
  * Individual rule reference: http://eslint.org/docs/rules/NAME-OF-RULE
  */
 const wingsuitCore = require('@wingsuit-designsystem/core');
-const wingsuitConfig = require('./wingsuit.config.js');
+const wingsuitConfig = require('./wingsuit.config');
 
 const appConfig = wingsuitCore.resolveConfig(
   'storybook',
@@ -24,9 +24,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:jest/recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended',
-    'prettier/vue',
     'plugin:react/recommended',
   ],
   plugins: ['prettier'],

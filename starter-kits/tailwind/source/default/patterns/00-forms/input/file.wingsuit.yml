@@ -1,0 +1,20 @@
+form_file:
+  use: "@forms/input/file.twig"
+  label: File
+  description: Input forms styled with Tailwind custom forms.
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\" type=\"file\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: 'form-input'
+      overlay_wrapper: ' flex flex-col items-center justify-center py-5 bg-gray-100 rounded-sm cursor-pointer'
+      headline: 'py-2 text-sm font-bold'
+      headline_link: 'text-purple-600'
+      text: 'text-xs text-gray-500 font-normal'

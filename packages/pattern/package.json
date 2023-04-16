@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/pattern",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Wingsuit Patterns.",
   "repository": {
     "type": "git",
@@ -33,11 +33,10 @@
     "prepare": "node ../../scripts/prepare.js"
   },
   "dependencies": {
+    "@ngneat/falso": "^6.4.0",
     "escape-html": "^1.0.3",
-    "faker": "^4.1.0",
     "html-attribute-parser": "^1.0.0",
     "reflect-metadata": "^0.1.13"
-
   },
   "devDependencies": {
     "twing": "^5.1.2",

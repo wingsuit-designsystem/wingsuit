@@ -1,0 +1,88 @@
+page_homepage:
+  use: "@pages/page.twig"
+  label: Homepage
+  description: Example description
+  dependencies:
+    - language_select
+    - menu
+    - logo
+    - header
+  fields:
+    content:
+      type: pattern
+      label: Field content
+      preview:
+        - id: section
+          variant: 1_column
+          settings:
+            padding_top: default
+          fields:
+            column_1:
+              - id: hero
+                settings:
+                  reverse: true
+        - id: section
+          variant: 3_column
+          settings:
+            equal_height: true
+          fields:
+            column_1:
+              - id: card
+                variant: default
+            column_2:
+              - id: card
+                variant: default
+            column_3:
+              - id: card
+                variant: default
+        - id: section
+          variant: 1_column
+          fields:
+            column_1:
+              - id: banner
+        - id: section
+          variant: 1_column
+          settings:
+            width: small
+          fields:
+            column_1:
+              - id: accordion_item
+              - id: accordion_item
+              - id: accordion_item
+              - id: accordion_item
+        - id: section
+          variant: 3_column
+          settings:
+            equal_height: true
+          fields:
+            column_1:
+              - id: card
+                variant: default
+            column_2:
+              - id: card
+                variant: default
+            column_3:
+              - id: card
+                variant: default
+        - id: section
+          variant: 1_column
+          settings:
+            width: small
+          fields:
+            column_1:
+              - id: rich_text
+                fields:
+                  text: |
+                    <h2 class='text-center'>Section 2</h2>
+                    <p class='text-center'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+        - id: section
+          variant: 4_column
+          fields:
+            column_1:
+              - id: avatar
+            column_2:
+              - id: avatar
+            column_3:
+              - id: avatar
+            column_4:
+              - id: avatar

@@ -33,7 +33,7 @@ const hasBuildScript = (l) => {
   const text = readFileSync(l, 'utf8');
   const json = JSON.parse(text);
 
-  return !!json.scripts['build-storybook'];
+  return !!json.scripts['build:storybook'];
 };
 
 const createContent = (deployables) => {
@@ -121,7 +121,7 @@ const handleExamples = async (deployables) => {
     const out = p(['built-storybooks', d]);
     const cwd = p(['examples', d]);
 
-    await exec(`yarn`, [`build-storybook`, `--output-dir=${out}`, '--quiet'], { cwd });
+    await exec(`yarn`, [`build:storybook`, `--output-dir=${out}`, '--quiet'], { cwd });
     // Not working right now.
     // await exec(`npx`, [`sb`, 'extract', out, `${out}/stories.json`], { cwd });
 

@@ -157,4 +157,10 @@ menu:
               11:
                 title: Imprint
                 url: '#'
-  visibility: storybook
+      configuration:
+        "parent_list_classes": ""
+        "parent_list_item_classes": ""
+        "parent_link_classes": "font-bold font-display dark:text-white text-lg font-sans"
+        "child_list_classes": ""
+        "child_list_item_classes": ""
+        "child_link_classes": "dark:text-white text-base font-serif hover:underline"

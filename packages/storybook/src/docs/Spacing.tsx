@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { ScrollArea } from '@storybook/components';
 
 interface SpacingProps {
-  spacing: {};
+  spacing: any;
   color?;
   direction?;
   classNamePrefix?;
@@ -14,7 +14,7 @@ export const Spacing: FunctionComponent<SpacingProps> = (props: SpacingProps) =>
     <ScrollArea>
       {Object.keys(spacing).map((key, i) => {
         return (
-          <div style={{ display: 'flex', paddingBottom: '6px' }}>
+          <div key={key} style={{ display: 'flex', paddingBottom: '6px' }}>
             <div style={{ width: '60px', fontSize: '10px', flexShrink: 0 }}>
               {classNamePrefix != null ? (
                 <div style={{ paddingTop: '4px' }}>{classNamePrefix + key}</div>
@@ -48,7 +48,7 @@ export const Spacing: FunctionComponent<SpacingProps> = (props: SpacingProps) =>
       <div style={{ display: 'flex' }}>
         {Object.keys(spacing).map((key, i) => {
           return (
-            <div style={{ paddingBottom: '6px' }}>
+            <div key={key} style={{ paddingBottom: '6px' }}>
               <div
                 style={{
                   width: '38px',

@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a 'checkboxes' #type form element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The rendered checkboxes.
+ *
+ * @see template_preprocess_checkboxes()
+ */
+#}
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+  Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_checkboxes', variant, 'classes')['wrapper']
+]) %}
+{#
+  Template
+#}
+<div{{ attributes }}>{{ children }}</div>

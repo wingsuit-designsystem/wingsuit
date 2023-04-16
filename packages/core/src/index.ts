@@ -2,7 +2,7 @@ import path from 'path';
 
 import PresetManager from './server/PresetManager';
 
-import AppConfig from './AppConfig';
+import AppConfig, { Preset } from './AppConfig';
 
 import { getConfigBase, resolveConfig } from './resolveConfig';
 
@@ -10,9 +10,9 @@ const fs = require('fs-extra');
 
 export { default as AppConfig } from './AppConfig';
 
-export { resolveConfig } from './resolveConfig';
+export { default as Config } from './Config';
 
-export { csfParser } from './server/csfParser';
+export { resolveConfig } from './resolveConfig';
 
 export { default as PresetManager } from './server/PresetManager';
 
@@ -76,7 +76,7 @@ export function pathInfo(resourcePath, appConfig: AppConfig): PathInfo | null {
   return found ? namespaceInfo : null;
 }
 
-export function getDefaultPreset(name) {
+export function getDefaultPreset(name): Preset {
   return presetManager.getDefaultPreset(name);
 }
 
@@ -109,10 +109,7 @@ export function invokePresets(appConfig: AppConfig, funcName, config): PresetRes
   const definitions = presetManager.getPresetDefinitions(appConfig);
   definitions.forEach((def) => {
     if (def.preset[funcName]) {
-      const defaultConfig =
-        def.preset.defaultConfig !== undefined ? def.preset.defaultConfig(appConfig) : {};
-      const finalConfig = { ...defaultConfig, ...config };
-      result[def.name] = def.preset[funcName](appConfig, finalConfig);
+      result[def.name] = def.preset[funcName](appConfig, def.parameters);
     }
   });
   return result;

@@ -9,9 +9,8 @@ const PatternLoad: FunctionComponent<Props> = (props: Props) => {
   useEffect(() => {
     const { patternId } = props;
     const loaded: Pattern = storage.loadPattern(patternId);
-    // @ts-ignore
     setPattern(loaded);
-  }, []);
+  }, [props]);
   if (pattern != null) {
     return <>{children(pattern)}</>;
   }

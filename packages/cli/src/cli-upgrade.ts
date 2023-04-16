@@ -4,7 +4,7 @@ import path from 'path';
 
 const fs = require('fs');
 
-export default function (options) {
+export default (options) => {
   const appConfig = resolveConfig('storybook');
   Object.values(appConfig.namespaces).forEach((namespace) => {
     const globPattern = `${namespace}/**/*.stories.jsx`;
@@ -17,4 +17,4 @@ export default function (options) {
       });
     });
   });
-}
+};

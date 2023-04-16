@@ -10,7 +10,7 @@ const fs = require('fs');
 const mv = require('mv');
 const rimraf = require('rimraf');
 
-export default function (options) {
+export default (options) => {
   const welcomeMessage = 'ws init - the simplest way to install Wingsuit.';
   logger.log(chalk.inverse(`\n ${welcomeMessage} \n`));
   const useYarn = Boolean(options.useNpm !== true) && hasYarn();
@@ -102,11 +102,11 @@ export default function (options) {
       }
     );
   };
-  logger.log(`Cloning Wingsuit repo ...`);
+  logger.log('Cloning Wingsuit repo ...');
   clone(
     'https://github.com/wingsuit-designsystem/wingsuit',
     npmOptions.gitFolder,
     cmdOptions,
     setupWingsuit
   );
-}
+};

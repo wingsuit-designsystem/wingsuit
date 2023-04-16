@@ -13,6 +13,6 @@ describe('Property test', () => {
       faker: { property: 'nams.lastName' },
     });
     const output = field.getPreview();
-    expect(output).toBe('Invalid faker configuration "{{nams.lastName}}". Invalid module: nams');
+    expect(output).toContain('Invalid faker token: nams.lastName. Valid tokens are:');
   });
 });

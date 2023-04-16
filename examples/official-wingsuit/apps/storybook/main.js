@@ -1,8 +1,31 @@
-const wingsuitCore = require('@wingsuit-designsystem/core');
-
-module.exports = {
-  addons: ['@storybook/addon-docs', '@storybook/addon-viewport', '@storybook/addon-controls'],
-  webpackFinal: (config) => {
-    return wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [config]);
+export default {
+  framework: '@storybook/react-webpack5',
+  typescript: { reactDocgen: false },
+  docs: {
+    autodocs: true,
   },
+  core: {
+    builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCache: true,
+    },
+  },
+  stories: [
+    './patterns/**/*.mdx',
+    './patterns/**/*.stories.wingsuit.jsx',
+    '../../source/**/*.stories.wingsuit.jsx',
+    '../../source/**/*.stories.jsx',
+    './patterns/**/*.stories.jsx',
+  ],
+  addons: [
+    '@storybook/addon-essentials',
+    {
+      name: '@wingsuit-designsystem/storybook',
+
+      options: {
+        appName: 'storybook',
+      },
+    },
+  ],
 };

@@ -162,5 +162,6 @@ export function resolveConfig(
     appConfig.postCssConfig = Object.assign(appConfig.postCssConfig, mergedConfig.postCssConfig);
   }
   invokeHook(appConfig, 'appConfigAlter');
+  appConfig.internalCache = {};
   return appConfig;
 }

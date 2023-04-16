@@ -22,6 +22,6 @@ function filterDataForCurrentCircleCINode(arrayOfData) {
 }
 
 module.exports = {
-  maxConcurrentTasks,
+  maxConcurrentTasks : 1,
   filterDataForCurrentCircleCINode,
 };

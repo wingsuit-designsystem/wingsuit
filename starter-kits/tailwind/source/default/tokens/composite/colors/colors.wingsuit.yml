@@ -1,0 +1,18 @@
+tokens_colors:
+  settings:
+    bg:
+      type: colorwidget
+      label: Background color
+      default_value: ""
+      group: tab_bg
+      options:
+        "": Transparent
+        purple-dark:
+          label: Purple/#581C87
+          configuration: dark bg-purple-900
+        teal-medium:
+          label: Teal/#14b8a6
+          configuration: dark bg-teal-500
+        gray-light:
+          label: Light gray/#d1d5db
+          configuration: bg-gray-300

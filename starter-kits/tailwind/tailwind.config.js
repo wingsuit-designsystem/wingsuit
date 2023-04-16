@@ -2,22 +2,22 @@ const wingsuitCore = require('@wingsuit-designsystem/core');
 
 const appConfig = wingsuitCore.resolveConfig('storybook', process.env.NODE_ENV);
 
-const forms = require('@tailwindcss/forms');
+const forms = require('@tailwindcss/forms')({
+  strategy: 'class',
+});
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg'],
 });
 const hamburgers = require('tailwind-hamburgers');
 
-const round = (num) =>
-  num
-    .toFixed(7)
-    .replace(/(\.[0-9]+?)0+$/, '$1')
-    .replace(/\.0$/, '');
-
 /* eslint-disable no-unused-vars */
-const em = (px, base) => `${round(px / base)}em`;
 const rem = (px) => `${px / 16}rem`.replace(' ', '');
+
+const content = [
+  ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.twig`),
+  ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.yml`),
+];
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
     ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.twig`),
     ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.yml`),
   ],
-  safelist: ['bg-black'],
+  safelist: ['bg-black', 'form-input'],
   theme: {
     boxShadow: {
       sm: '0px 1px 2px rgba(0, 0, 0, 0.05)',
@@ -79,6 +79,18 @@ module.exports = {
         '7xl': '46.875rem',
         '8xl': '69rem',
       },
+      backgroundImage: {
+        'form-radio-icon-checked': "url('../patterns/00-forms/images/radio-icon-checked.svg')",
+        'form-radio-icon-unchecked': "url('../patterns/00-forms/images/radio-icon-unchecked.svg')",
+        'dark-form-radio-icon-unchecked':
+          "url('../patterns/00-forms/images/dark-radio-icon-unchecked.svg')",
+        'dark-form-radio-icon-checked':
+          "url('../patterns/00-forms/images/dark-radio-icon-checked.svg')",
+        'form-checkbox-icon-checked':
+          "url('../patterns/00-forms/images/checkbox-icon-checked.svg')",
+        'form-checkbox-icon-unchecked':
+          "url('../patterns/00-forms/images/checkbox-icon-unchecked.svg')",
+      },
       gridTemplateColumns: {
         '33/66': 'minmax(0, 1fr) minmax(0, 2fr)',
         '66/33': 'minmax(0, 2fr) minmax(0, 1fr)',
@@ -90,8 +102,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['DM sans', 'Sans'],
-      serif: ['Noto serif', 'Serif'],
+      display: ['DM sans', 'Sans'],
+      copy: ['Noto serif', 'Serif'],
     },
   },
   plugins: [hamburgers, forms, typography],

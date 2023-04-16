@@ -1,0 +1,40 @@
+form_input:
+  use: "@forms/input/input.twig"
+  label: Input
+  description: Styled Input forms like textfield, password, email etc.
+  variants:
+    textfield:
+      label: Textfield
+      settings:
+        attributes: "type=\"text\" placeholder=\"Placeholder\""
+    password:
+      label: Password
+      settings:
+        attributes: "type=\"password\" placeholder=\"Password\""
+    email:
+      label: Email
+      settings:
+        attributes: "type=\"email\" placeholder=\"Email\""
+    tel:
+      label: Tel
+      settings:
+        attributes: "type=\"tel\" placeholder=\"Telephone\""
+    date:
+      label: Date
+      settings:
+        attributes: "type=\"date\""
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+      preview: "value=\"input value\""
+  fields:
+    children:
+      type: pattern
+      label: Children
+  configuration:
+    classes:
+      wrapper: 'form-input py-[11px] px-4 border-gray-400
+                focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
+      radius: ' rounded-md'
+

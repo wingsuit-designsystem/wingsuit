@@ -1,6 +1,4 @@
-import { Preview } from './definition';
-
-const faker = require('faker');
+import { randParagraph, randWord, randSentence, randLine, seed } from '@ngneat/falso';
 
 export default class Property {
   public getDescription(): string {
@@ -26,23 +24,37 @@ export default class Property {
     let token = 'lorem.word';
 
     if (_preview.token == null && _preview.property != null) {
-      token = `{{${_preview.property}}}`;
+      token = _preview.property;
     }
     if (_preview.token != null) {
       token = _preview.token;
     }
+    const fakeOptions = _preview.options ?? {};
+
     if (typeof _preview === 'string') {
-      token = `{{${_preview}}}`;
+      token = _preview;
     }
     try {
       if (process.env.STORYBOOK_WINGSUIT_FAKER_SEED != null) {
         if (!Number.isNaN(process.env.STORYBOOK_WINGSUIT_FAKER_SEED)) {
-          faker.seed(parseInt(process.env.STORYBOOK_WINGSUIT_FAKER_SEED, 10));
+          seed(process.env.STORYBOOK_WINGSUIT_FAKER_SEED);
         } else {
           console.error('STORYBOOK_WINGSUIT_FAKER_SEED must be numeric');
         }
       }
-      return faker.fake(token);
+      const tokens = {
+        'lorem.word': randWord,
+        'lorem.sentence': randSentence,
+        'lorem.paragraph': randParagraph,
+        'lorem.paragraphs': randParagraph,
+        'lorem.line': randLine,
+      };
+      if (!tokens[token]) {
+        return `Invalid faker token: ${token}. Valid tokens are: ${Object.keys(tokens).join(', ')}`;
+      }
+      const result = tokens[token](fakeOptions);
+
+      return Array.isArray(result) ? result.join(' ') : result;
     } catch (e) {
       if (e instanceof Error) {
         return `Invalid faker configuration "${token}". ${e.message}`;
@@ -81,7 +93,7 @@ export default class Property {
     return value;
   }
 
-  public setPreview(value: any) {
+  public setPreview(value: any | undefined) {
     this.preview = value;
   }
 

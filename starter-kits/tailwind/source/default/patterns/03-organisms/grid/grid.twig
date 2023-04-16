@@ -6,53 +6,55 @@
  * See component.wingsuit.yml for usage.
  */
 #}
-{# Defaults #}
-{% set columns = columns|default(2) %}
-{% set columns_width = columns_width|default('equal') %}
-
-{# Gap #}
+{#
+  Defaults
+#}
 {% set gutter = gutter|default('default') %}
-{% set gutter_classes = pattern_configuration('grid', '', 'gutter')[gutter] %}
-{# Container #}
-{% set configuration = pattern_configuration('grid', '', 'columns')[columns][columns_width] %}
-
 {% set vertical_center = vertical_center|default(false) %}
-{% set reverse = reverse|default(false) %}
 {% set equal_height = vertical_center == true ? true: equal_height %}
+{% set reverse = reverse|default(false) %}
+{% set variant = variant|default('1_column') %}
+
+{#
+  Internal logic
+#}
+{% set columns_ary = variant|split('_') %}
+{% set columns = columns_ary[0]|number_format %}
+{% set layout = layout|default(columns ~ '_equal') %}
+{% set gutter_classes = pattern_configuration('grid', variant, 'gutter')[gutter] %}
+{% set layout_classes = pattern_configuration('grid', variant, 'layout')[layout] %}
 
 {% set classes = ([
   'grid',
-  configuration,
+  layout_classes,
   gutter_classes,
 ]) | sort | join(' ') | trim %}
 
 {% set attributes = attributes|default(create_attribute()).addClass(classes) %}
 
-{# TEMPLATE #}
-{% if configuration is not empty %}
-  <div {{ attributes }}>
-    {% block cells %}
-      {% for cell_counter, cell in cells %}
-        {% block cell_outer %}
-          {% set column_name = 'column_' ~ (cell_counter + 1) %}
-          {% set cell_classes = [
-            flip_mobile == '1' and cell_counter == '1' ? 'row-start-1 lg:row-start-auto',
-            equal_height == true ? 'flex flex-col',
-            vertical_center == true ? 'justify-center',
-            reverse == true and cell_counter == '1' ? 'order-first',
-          ]
-          %}
-          {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
+{#
+  Template
+#}
+<div {{ attributes }}>
+  {% block cells %}
+    {% for cell_counter, cell in cells %}
+      {% block cell_outer %}
+        {% set column_name = 'column_' ~ (cell_counter + 1) %}
+        {% set cell_classes = [
+          flip_mobile == '1' and cell_counter == '1' ? 'row-start-1 lg:row-start-auto',
+          equal_height == true ? 'flex flex-col',
+          vertical_center == true ? 'justify-center',
+          reverse == true and cell_counter == '1' ? 'order-first',
+        ]
+        %}
+        {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
 
-          <div{{ cell_attributes }}>
-            {% block cell_inner %}
-              {{ cell }}
-            {% endblock %}
-          </div>
-        {% endblock %}
-      {%- endfor -%}
-    {% endblock %}
-  </div>
-{% else %}
-  No configuration found for "{{ columns }}/{{ config }}".
-{% endif %}
+        <div{{ cell_attributes }}>
+          {% block cell_inner %}
+            {{ cell }}
+          {% endblock %}
+        </div>
+      {% endblock %}
+    {%- endfor -%}
+  {% endblock %}
+</div>

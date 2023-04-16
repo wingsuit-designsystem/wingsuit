@@ -1,5 +1,10 @@
 module.exports = {
   root: true,
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json",
+    ],
+  },
   extends: ['@storybook/eslint-config-storybook'],
   overrides: [
     {
@@ -17,7 +22,7 @@ module.exports = {
         'react/require-default-props': 'off',
       },
     },
-    { files: '**/.storybook/config.js', rules: { 'global-require': 'off' } },
+    {files: '**/.storybook/config.js', rules: {'global-require': 'off'}},
     {
       files: ['**/*.stories.*'],
       rules: {
@@ -27,10 +32,19 @@ module.exports = {
     {
       files: ['**/*.tsx', '**/*.ts'],
       rules: {
+        "react-hooks/exhaustive-deps": 0,
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "no-param-reassign": 0,
+        "import/no-cycle": 0,
+        "@typescript-eslint/indent":0,
+        "ban-ts-comment": 0,
+        "@typescript-eslint/semi": 0,
+        "@typescript-eslint/ban-ts-comment": 0,
+        "@typescript-eslint/comma-dangle": "off",
         'react/no-danger': 'off',
         'react/prop-types': 'off', // we should use types
         'no-dupe-class-members': 'off', // this is called overloads in typescript
-        'no-console': ['error', { allow: ['warn', 'error'] }],
+        'no-console': ['error', {allow: ['warn', 'error']}],
       },
     },
     {

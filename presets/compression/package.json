@@ -1,12 +1,12 @@
 {
   "name": "@wingsuit-designsystem/preset-compression",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Wingsuit Compression preset.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/preset.js",
   "files": [
     "bin/**/*",
     "dist/**/*",
@@ -28,8 +28,8 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@gfx/zopfli": "^1.0.15",
-    "@wingsuit-designsystem/core": "2.0.0-alpha.0",
-    "compression-webpack-plugin": "^6.1.1",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
+    "compression-webpack-plugin": "^10.0.0",
     "zlib": "^1.0.5"
   },
   "scripts": {

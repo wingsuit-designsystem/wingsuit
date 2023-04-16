@@ -1,10 +1,13 @@
+// eslint-disable-next-line prettier/prettier
 import type { Configuration } from 'webpack';
 
 import { loadCsf } from '@storybook/csf-tools';
 import { readFileSync } from 'fs';
-import { csfParser } from '@wingsuit-designsystem/core';
+import { csfParser } from './csfParser';
 
 const wingsuitCore = require('@wingsuit-designsystem/core');
+
+export { csfParser } from './csfParser';
 
 interface Options {
   appName?: string | 'storybook';
@@ -15,13 +18,13 @@ export function webpackFinal(config: Configuration, options: Options = {}): Conf
   return wingsuitCore.getAppPack(wingsuitConfig, [config]);
 }
 
-// @ts-ignore
 export const storyIndexers = async (indexers, options: Options) => {
   const wingsuitConfig = wingsuitCore.resolveConfig(options.appName ?? 'storybook');
   const csfIndexer = async (fileName: string, opts) => {
-    const src = readFileSync(fileName, 'utf-8').toString();
-    const code = csfParser(fileName, src, wingsuitConfig);
-    const result = loadCsf(code, { ...opts, fileName }).parse();
+    const csfParserFilename = fileName;
+    const src = readFileSync(csfParserFilename, 'utf-8').toString();
+    const code = csfParser(csfParserFilename, src, wingsuitConfig);
+    const result = loadCsf(code, { ...opts, csfParserFilename }).parse();
     return result;
   };
   return [

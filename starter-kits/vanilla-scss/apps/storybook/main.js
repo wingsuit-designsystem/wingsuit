@@ -1,16 +1,41 @@
-const wingsuitCore = require('@wingsuit-designsystem/core');
+const postCss = require('postcss');
 
-module.exports = {
-  addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-viewport',
-    '@storybook/addon-controls',
-    '@storybook/addon-links',
-    '@storybook/addon-backgrounds',
-    '@storybook/addon-postcss',
-  ],
-  webpackFinal: (config) => {
-    const final = wingsuitCore.getAppPack(wingsuitCore.resolveConfig('storybook'), [config]);
-    return final;
+export default {
+  framework: '@storybook/react-webpack5',
+  typescript: { reactDocgen: false },
+  docs: {
+    autodocs: true,
   },
+  core: {
+    builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCache: true,
+    },
+  },
+  stories: [
+    './patterns/**/*.mdx',
+    '../../source/**/*.stories.jsx',
+    '../../source/**/*.stories.wingsuit.jsx',
+    './patterns/**/*.stories.wingsuit.jsx',
+    './patterns/**/*.stories.jsx',
+  ],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: postCss,
+        },
+      },
+    },
+    {
+      name: '@wingsuit-designsystem/storybook',
+      options: {
+        appName: 'storybook',
+      },
+    },
+  ],
 };

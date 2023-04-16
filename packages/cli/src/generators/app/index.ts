@@ -22,7 +22,7 @@ export default class extends Generator {
   }
 
   prompting() {
-    this.log(`Hi! This will help you build a app `);
+    this.log('Hi! This will help you build a app ');
     const prompts = [
       {
         type: 'list',

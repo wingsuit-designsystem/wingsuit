@@ -4,15 +4,25 @@ import { AppConfig } from '@wingsuit-designsystem/core';
 import { IPatternDefinition } from '@wingsuit-designsystem/pattern';
 import path from 'path';
 
-export function name(appConfig: AppConfig) {
-  return 'placeholder';
+interface AspectionRatio {
+  w: number;
+  h: number;
+}
+
+interface AspectionRatios {
+  [key: string]: AspectionRatio;
 }
 
 interface PlaceholderConfig {
-  aspectRatios: {};
+  service: string;
+  aspectRatios: AspectionRatios;
   generationSteps: number;
   generationStart: number;
   generationMax: number;
+}
+
+export function name(appConfig: AppConfig) {
+  return 'placeholder';
 }
 
 export function defaultConfig(appConfig: AppConfig): PlaceholderConfig {
@@ -20,6 +30,7 @@ export function defaultConfig(appConfig: AppConfig): PlaceholderConfig {
     generationSteps: 200,
     generationStart: 200,
     generationMax: 2000,
+    service: 'fakeimg',
     aspectRatios: {
       '1_1': { w: 1, h: 1 },
       '1_3': { w: 1, h: 3 },
@@ -70,6 +81,8 @@ export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
         if (patternDefinition.settings?.style.options) {
           Object.assign(patternDefinition.settings.style.options, options);
         }
+        // @ts-ignore
+        patternDefinition.settings.service.preview = config.service;
         patternDefinition.configuration.image_config.styles = styles;
       }
     },
