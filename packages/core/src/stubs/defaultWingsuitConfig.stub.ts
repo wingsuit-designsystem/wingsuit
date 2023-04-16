@@ -40,7 +40,7 @@ export const wingsuit: Config = {
       distFolder: 'dist/app-storybook',
       assetsDistFolder: '',
       designSystem: 'default',
-      presets: [assets, wingsuitp],
+      presets: [assets, wingsuitp, storybook],
       componentTypes: {
         wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
         plain: 'Twig only component',

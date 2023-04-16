@@ -122,7 +122,7 @@ export default class FileDependencyPlugin {
             if (file.endsWith('wingsuit.yml')) {
               const storyFile = file.replace('wingsuit.yml', 'stories.wingsuit.jsx');
               if (fs.existsSync(storyFile)) {
-                fs.writeFileSync(fs.readFileSync(storyFile));
+                fs.writeFileSync(storyFile, fs.readFileSync(storyFile));
               }
             }
           });

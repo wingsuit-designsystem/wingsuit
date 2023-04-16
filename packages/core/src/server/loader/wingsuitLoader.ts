@@ -20,6 +20,7 @@ export default function wingsuitLoader(this: any, src) {
     Object.keys(res).forEach((key) => {
       const pattern: IPatternDefinition = res[key];
       invokeHook(appConfig, 'patternLoaded', [key, pattern]);
+      res[key] = pattern;
       pattern.namespace = pattern.namespace ?? info.namespace;
       const added = fileDependencyPlugin.addFile(
         key,
@@ -73,7 +74,7 @@ export default function wingsuitLoader(this: any, src) {
   exports.push(`export default getStorage().loadPattern('${defaultPatternKey}');`);
   const json = JSON.stringify(res);
   return `import { getStorage } from '@wingsuit-designsystem/pattern'; 
-  getStorage().addDefinitions(${json}); 
+    getStorage().addDefinitions(${json}); 
   ${exports.join(' ')}`;
 }
 

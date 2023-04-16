@@ -77,24 +77,16 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
     output.push(`
     const patternDefinition = null;
     ${generated};
-    import React from 'react';
     import { storage } from '@wingsuit-designsystem/pattern';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
-    import { args, argTypes, PatternDoc } from '@wingsuit-designsystem/storybook';
-    import {
-      ArgsTable,
-      Description, Primary, PRIMARY_STORY, Stories,
-      Subtitle,
-      Title
-    } from "@storybook/addon-docs";
-
+    import { args, argTypes } from '@wingsuit-designsystem/storybook';
     import '${patternClientYamlPath}';
+
 
     export default {
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',
-      component: PatternPreview,
       tags: ['autodocs'],
-      parameters: wingsuit.parameters,
+      component: PatternPreview
      }
      let pattern = null;
 `);
@@ -113,29 +105,19 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },
           argTypes: argTypes('${patternId}', '${variantName}'),
           parameters: {
-          
-          docs: { 
-          description: {
-            component: \`${patternDefinition[patternId].description ?? ''}\`
-          },
-          source: {
-              code: \`${patternDefinitionFile}\`,
-              language: 'yml',
-              type: 'auto',
-              format: true
-            },
-            page: () => (
-            <>
-              <Title />
-              <Description>${patternDefinition[patternId].description ?? ''}</Description>
-              <Primary />
-              <ArgsTable story={PRIMARY_STORY} />
-              <PatternDoc pattern={storage.loadPattern('${patternId}')}/>
-            </>
-          ),
-        }
-      }
-      }`
+            docs: { 
+              description: {
+                component: \`${patternDefinition[patternId].description ?? ''}\`
+              },
+              source: {
+                  code: storage.loadVariant('${patternId}', '${variantName}').getCode(),
+                  language: 'jsx',
+                  type: 'auto',
+                  format: true
+                }
+              }
+            }
+        }`
         );
       });
     });

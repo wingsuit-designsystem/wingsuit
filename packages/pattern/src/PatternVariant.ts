@@ -11,6 +11,53 @@ export default class PatternVariant {
     return this.use;
   }
 
+  public getCode() {
+    const variables: any = { variant: '' };
+    const settings = this.getSettings();
+    if (this.getId() !== '__default') {
+      variables.variant = this.getId();
+    } else {
+      delete variables.variant;
+    }
+
+    Object.keys(settings).forEach((key) => {
+      const setting = settings[key];
+      if (setting.getType() !== 'media_library' && setting.isEnable()) {
+        variables[key] = setting.getPreview();
+      }
+    });
+
+    const withBlock =
+      Object.keys(variables).length === 0 ? '' : `with ${JSON.stringify(variables, null, 2)}`;
+    delete variables.variant;
+    const argsBlock =
+      Object.keys(variables).length === 0 ? "''" : `${JSON.stringify(variables, null, 2)}`;
+    const blocks = [
+      {
+        title: 'Pattern function (recommend)',
+        code: `{{ pattern('${this.getPattern().getId()}', ${argsBlock}, '${this.getId()}') }} %}`,
+      },
+      {
+        title: 'Include pattern',
+        code: `{% include '${this.getUse()}' ${withBlock} %}`,
+      },
+      {
+        title: 'Embed pattern',
+        code: `{% embed '${this.getUse()}' ${withBlock} %}
+{% endembed %}
+        `,
+      },
+    ];
+    const generatedCode: string[] = [];
+    Object.entries(blocks).forEach(([key, value]) => {
+      return generatedCode.push(`/*
+* ${value.title}:
+*/
+${value.code}`);
+    });
+    return generatedCode.join('\n\n');
+  }
+
   public getTemplate() {
     return this.template;
   }

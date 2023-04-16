@@ -39,7 +39,13 @@ Attributes
       </div>
     {% endif %}
     <div class="p-6 flex flex-1 bg-white">
-      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action}, 'small' ) }}
+      {{ pattern('rich_snippet', {
+        preheadline: preheadline,
+        headline: headline,
+        text: text,
+        action: action
+      }, 'small' ) }}
     </div>
   </{{ element }}>
 </div>
+

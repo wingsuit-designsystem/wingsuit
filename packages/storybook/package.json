@@ -43,7 +43,6 @@
     "@types/react-dom": "^16.9.14",
     "@wingsuit-designsystem/core": "2.0.0-alpha.1",
     "@wingsuit-designsystem/pattern": "2.0.0-alpha.1",
-    "@wingsuit-designsystem/pattern-react": "2.0.0-alpha.1",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

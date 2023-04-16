@@ -221,7 +221,7 @@ export default class PresetManager {
 
     Object.keys(presets).forEach((key) => {
       if (presets[key].preset.webpackFinal != null) {
-        config = presets[key].preset.webpackFinal(appConfig, config);
+        config = presets[key].preset.webpackFinal(appConfig, config, presets[key].parameters);
       }
     });
 

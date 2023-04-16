@@ -6,13 +6,14 @@ export default {
     options: {
       builder: {
         lazyCompilation: false,
-        fsCache: true,
+        fsCache: false,
       },
     },
   },
   typescript: { reactDocgen: false },
   docs: {
-    autodocs: false,
+    autodocs: 'tag',
+    defaultName: 'Docs',
   },
   stories: [
     './patterns/00-foundations/**/*.mdx',
