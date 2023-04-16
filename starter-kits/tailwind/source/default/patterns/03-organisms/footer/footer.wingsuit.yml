@@ -4,6 +4,8 @@ footer:
   description: The footer pattern with copyright and menu.
   dependencies:
     - container
+    - logo
+    - icon
   fields:
     logo:
       type: pattern

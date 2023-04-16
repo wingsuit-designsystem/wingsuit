@@ -8,6 +8,12 @@ core:
         preprocess: true
       ws-assets://menu-primary.css:
         preprocess: true
+      ws-assets://rich-text.css:
+        preprocess: true
+      ws-assets://cookie-banner.css:
+        preprocess: true
+      ws-assets://form-label.css:
+        preprocess: true
 
   js:
     ws-assets://vendors/alpine.js:
@@ -19,4 +25,3 @@ core:
   dependencies:
     - core/drupal
     - core/drupalSettings
-    - drimage/drimage

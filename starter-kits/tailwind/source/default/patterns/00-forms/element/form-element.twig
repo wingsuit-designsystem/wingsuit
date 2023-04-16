@@ -1,0 +1,149 @@
+{#
+/**
+ * @file
+ * Theme override for a form element.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - errors: (optional) Any errors for this form element, may not be set.
+ * - prefix: (optional) The form element prefix, may not be set.
+ * - suffix: (optional) The form element suffix, may not be set.
+ * - required: The required marker, or empty if the associated form element is
+ *   not required.
+ * - type: The type of the element.
+ * - name: The name of the element.
+ * - label: A rendered label element.
+ * - label_display: Label display setting. It can have these values:
+ *   - before: The label is output before the element. This is the default.
+ *     The label includes the #title and the required marker, if #required.
+ *   - after: The label is output after the element. For example, this is used
+ *     for radio and checkbox #type elements. If the #title is empty but the
+ *     field is #required, the label will contain only the required marker.
+ *   - invisible: Labels are critical for screen readers to enable them to
+ *     properly navigate through forms but can be visually distracting. This
+ *     property hides the label for everyone except screen readers.
+ *   - attribute: Set the title attribute on the element to create a tooltip but
+ *     output no label element. This is supported only for checkboxes and radios
+ *     in \Drupal\Core\Render\Element\CompositeFormElementTrait::preRenderCompositeFormElement().
+ *     It is used where a visual label is not needed, such as a table of
+ *     checkboxes where the row and column provide the context. The tooltip will
+ *     include the title and required marker.
+ * - description: (optional) A list of description properties containing:
+ *    - content: A description of the form element, may not be set.
+ *    - attributes: (optional) A list of HTML attributes to apply to the
+ *      description content wrapper. Will only be set when description is set.
+ * - description_display: Description display setting. It can have these values:
+ *   - before: The description is output before the element.
+ *   - after: The description is output after the element. This is the default
+ *     value.
+ *   - invisible: The description is output after the element, hidden visually
+ *     but available to screen readers.
+ * - disabled: True if the element is disabled.
+ * - title_display: Title display setting.
+ * - floating label: displays afloating label for textfields, refer to form-label.css
+ */
+#}
+
+{# Defaults #}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set floating_label = floating_label|default(false) %}
+{# Attributes #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_element', variant, 'classes')['wrapper'],
+  pattern_configuration('form_element', variant, 'spacings')['margin'],
+  flex
+])%}
+{% set error_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'classes')['error']
+])%}
+{% set description_attributes = create_attribute().addClass ([
+  pattern_configuration('form_element', variant, 'classes')['description'],
+  description_display == 'invisible' ? 'visually-hidden',
+])%}
+
+
+{# attributes for floating label #}
+{% if floating_label %}
+  {% set floating_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['wrapper']
+  ])%}
+  {% set floating_label__wrapper_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['floating']
+  ])%}
+  {% set floating_label__left_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['left']
+  ])%}
+  {% set floating_label__center_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['center']
+  ])%}
+  {% set floating_label__right_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'floating_label')['right']
+  ])%}
+{% else %}
+  {% set default_label_attributes = create_attribute().addClass ([
+    pattern_configuration('form_element', variant, 'default_label')['classes']
+  ])%}
+{% endif %}
+
+{#
+Internal logic
+#}
+{%
+  set description = description is empty ? {'content': description_text} : description
+%}
+
+{#
+Template
+#}
+<label{{ attributes }}>
+  <div>
+  {% if label_display in ['before', 'invisible'] %}
+    {% if floating_label == true %}
+    <div{{ floating_attributes }}>
+        {{ children }}
+      <div{{ floating_label__wrapper_attributes }}>
+        <div{{ floating_label__left_attributes }}></div>
+        <div{{ floating_label__center_attributes }}>
+          {{ label }}
+        </div>
+        <div{{ floating_label__right_attributes }}></div>
+      </div>
+    </div>
+    {% else %}
+      <div{{ default_label_attributes }}>{{ label }}</div>
+    {%- endif %}
+  {% endif %}
+  {% if prefix is not empty %}
+    <span class="field-prefix">{{ prefix }}</span>
+  {% endif %}
+
+  {% if description_display == 'before' and description.content %}
+    <div{{ description_attributes }}>
+      {{ description.content }}
+    </div>
+  {% endif %}
+  {% if floating_label == false %}
+    {{ children }}
+  {% endif %}
+    {% if suffix is not empty %}
+    <span class="field-suffix">{{ suffix }}</span>
+  {% endif %}
+
+  {% if label_display == 'after' %}
+    {{ label }}
+  {% endif %}
+
+  {% if errors %}
+    <div {{ error_attributes }}>
+      {{ errors }}
+    </div>
+  {% endif %}
+
+  {% if description_display in ['after', 'invisible'] and description.content %}
+    <div{{ description_attributes }}>
+      {{ description.content }}
+    </div>
+  {% endif %}
+
+  </div>
+</label>

@@ -42,6 +42,8 @@ export interface Variant {
   label: string;
   fields?: Property;
   settings?: Property;
+  description?: string;
+  configuration?: any;
 }
 export interface IPatternDefinition {
   template?: any;

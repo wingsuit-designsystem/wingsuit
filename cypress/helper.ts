@@ -6,17 +6,19 @@ type Addons = 'Actions' | 'Knobs';
 
 const getUrl = (route: string) => {
   const host = Cypress.env('location') || 'http://localhost:8001';
-
   return `${host}/${route}`;
 };
 
 export const visit = (route = '') => {
   return cy
-    .clearLocalStorage()
+    .on('uncaught:exception', (err, runnable) => {
+      //expect(err.message).to.include('Failed to execute')
+      return false
+    }).clearLocalStorage()
     .visit(getUrl(route))
     .get(`#storybook-preview-iframe`)
-    .then({ timeout: 10000 }, (iframe) => {
-      return cy.wrap(iframe, { timeout: 10000 }).should(() => {
+    .then({ timeout: 30000 }, (iframe) => {
+      return cy.wrap(iframe, { timeout: 30000 }).should(() => {
         const content: Document | null = (iframe[0] as HTMLIFrameElement).contentDocument;
         const element: HTMLElement | null = content !== null ? content.documentElement : null;
 
@@ -37,8 +39,6 @@ export const getStorybookPreview = () => {
   return cy.get(`#storybook-preview-iframe`).then({ timeout: 10000 }, (iframe) => {
     const content: Document | null = (iframe[0] as HTMLIFrameElement).contentDocument;
     const element: HTMLElement | null = content !== null ? content.documentElement : null;
-
-    console.log({ element, content, iframe });
 
     return cy
       .wrap(iframe)

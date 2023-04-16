@@ -17,13 +17,20 @@ rich_snippet:
       label: Headline
       description: The main headline.
       preview:
-        faker: lorem.sentence
+        faker:
+          token: lorem.sentence
+          options:
+            length: 1
+            chars: 10
     text:
       type: text
       label: Text
       description: A long text under the headline.
       preview:
-        faker: lorem.paragraph
+        faker:
+          token: lorem.paragraph
+          options:
+            length: 1
     action:
       type: pattern
       label: Action
@@ -36,40 +43,24 @@ rich_snippet:
   variants:
     small:
       label: Small
-      settings:
-        size: small
+      configuration:
+        headline_text: 'text-2xl font-display'
+        text: 'text-base'
+        spacing: 'mb-3'
     default:
       label: Default
-      settings:
-        size: default
+      configuration:
+        headline_text: 'text-2xl lg:text-4xl'
+        text: 'text-base'
+        spacing: 'mb-3 lg:mb-4'
     large:
       label: Large
-      settings:
-        size: default
-  settings:
-    size:
-      type: select
-      required: true
-      label: Size
-      options:
-        small:
-          label: Small
-          configuration:
-            headline_text: 'text-2xl'
-            text: 'text-base'
-            spacing: 'mb-3'
-        default:
-          label: Default
-          configuration:
-            headline_text: 'text-2xl lg:text-4xl'
-            text: 'text-base'
-            spacing: 'mb-3 lg:mb-4'
-        large:
-          label: Large
-          configuration:
-            headline_text: 'text-4xl lg:text-6xl'
-            text: 'text-base lg:text-lg'
-            spacing: 'mb-4'
+      configuration:
+        headline_text: 'text-4xl lg:text-6xl'
+        text: 'text-base lg:text-lg'
+        spacing: 'mb-4'
   configuration:
     default:
-      preheadline_classes: 'text-teal-500 text-2xl mb-2 font-bold'
+      attributes_classes: 'flex flex-col flex-1'
+      preheadline_classes: 'text-teal-500 text-base mb-2 font-display font-bold'
+      headline_classes: 'font-display font-bold'

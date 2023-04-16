@@ -33,18 +33,18 @@ function without(element, ...args) {
 
 export function init(environment: TwingEnvironment) {
   twingFilters(environment);
-  const filters: {} = {
+  const filters: any = {
     without: (arg1, ...args) => {
       return Promise.resolve(without(arg1, ...args));
     },
   };
 
-  const functions: {} = {
+  const functions: any = {
     file_url: twigFileUrl,
     pattern: renderPattern,
     create_attribute: twigAttributeFunction,
     pattern_configuration: getPatternConfiguration,
-    pattern_preview: (patternId: string, variables: {} = {}, variantId = '__default') => {
+    pattern_preview: (patternId: string, variables: any = {}, variantId = '__default') => {
       return new Promise((resolve) => {
         renderPatternPreview(patternId, variables, variantId).then((output) => {
           resolve(output);

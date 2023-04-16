@@ -7,7 +7,7 @@ export default class Tailwind2JsonPlugin {
 
   private readonly targetFilePath: string;
 
-  private plugin: {} = {};
+  private plugin: any = {};
 
   constructor(tailwindConfig: string, targetFilePath: string) {
     this.tailwindConfig = tailwindConfig;
@@ -19,8 +19,8 @@ export default class Tailwind2JsonPlugin {
     const beforeCompile = (compilation, callback) => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const tailwindConfig = require(this.tailwindConfig);
-      const filename = this.targetFilePath;
       const data = { tailwind: { theme: resolveConfig(tailwindConfig).theme } };
+      const filename = this.targetFilePath;
       syncSilo(filename, data);
       callback(null);
     };

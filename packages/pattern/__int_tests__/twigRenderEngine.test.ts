@@ -51,6 +51,8 @@ describe('TwigRenderEngine', () => {
     ['pr_root', '__default'],
     ['simple_extend', '__default'],
     ['configuration', 'variant'],
+    ['configuration', 'variant2'],
+    ['configuration', 'variant3'],
     ['patterns_field_items', '__default'],
     ['patterns_single_value', '__default'],
     ['patterns_items', '__default'],

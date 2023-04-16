@@ -12,7 +12,7 @@ banner:
         id: placeholder
         variant: image
         settings:
-          style: banner
+          style: responsive_16_9_1600w
     headline:
       type: text
       label: Headline
@@ -24,7 +24,6 @@ banner:
       label: Teaser
       description: Short optional teaser.
       preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
-
   settings:
     position:
       type: select
@@ -71,5 +70,5 @@ banner:
   configuration:
     defaults:
       wrapper_classes: 'relative dark rounded-lg border border-transparent overflow-hidden'
-      teaser_wrapper_classes: 'absolute top-0 left-0 w-full h-fit flex'
-      teaser_classes: 'bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6 m-6'
+      teaser_wrapper_classes: 'absolute top-0 left-0 w-full h-full flex'
+      teaser_classes: 'bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6 m-6 text-lg lg:text-5xl text-white font-display font-bold'

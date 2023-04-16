@@ -1,9 +1,28 @@
 const postCss = require('postcss');
 
-module.exports = {
+export default {
+  framework: '@storybook/react-webpack5',
+  typescript: { reactDocgen: false },
+  docs: {
+    autodocs: true,
+  },
+  core: {
+    builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCache: true,
+    },
+  },
+  stories: [
+    './patterns/**/*.mdx',
+    '../../source/**/*.stories.jsx',
+    '../../source/**/*.stories.wingsuit.jsx',
+    './patterns/**/*.stories.wingsuit.jsx',
+    './patterns/**/*.stories.jsx',
+  ],
   addons: [
+    '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-addon-themes',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -12,6 +31,11 @@ module.exports = {
         },
       },
     },
-    '@wingsuit-designsystem/storybook',
+    {
+      name: '@wingsuit-designsystem/storybook',
+      options: {
+        appName: 'storybook',
+      },
+    },
   ],
 };

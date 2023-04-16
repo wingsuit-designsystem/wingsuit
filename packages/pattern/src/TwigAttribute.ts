@@ -38,6 +38,14 @@ export default class TwigAttribute {
     return this;
   }
 
+  getAttribute(key) {
+    return this.attributes.get(key);
+  }
+
+  hasAttribute(key) {
+    return this.attributes.has(key);
+  }
+
   removeClass(className = '') {
     const classAry: string[] = className.split(' ');
     for (let i = 0; i < classAry.length; i += 1) {

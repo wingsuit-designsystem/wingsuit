@@ -1,0 +1,4 @@
+apps_ws_component:
+  use: "@pages/apps-ws-component/apps-ws-component.twig"
+  label: WS APPS Component
+  description: Flexible SVG icon component. Choose between SVG spritemap, CSS classes or inline SVGs.

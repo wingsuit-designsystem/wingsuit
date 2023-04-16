@@ -1,22 +1,25 @@
 const postCss = require('postcss');
 
 export default {
-  framework: '@storybook/react-webpack5',
-  typescript: { reactDocgen: false },
-  docs: {
-    autodocs: true,
-  },
-  core: {
-    builder: 'webpack5',
+  framework: {
+    name: '@storybook/react-webpack5',
     options: {
-      lazyCompilation: true,
-      fsCache: true,
+      builder: {
+        lazyCompilation: false,
+        fsCache: false,
+      },
     },
   },
+  typescript: { reactDocgen: false },
+  docs: {
+    autodocs: 'tag',
+    defaultName: 'Docs',
+  },
   stories: [
-    './patterns/**/*.mdx',
-    '../../source/**/*.stories.wingsuit.jsx',
-    '../../source/**/*.stories.jsx',
+    './patterns/00-foundations/**/*.mdx',
+    '../../source/default/patterns/**/*.stories.wingsuit.jsx',
+    '../../source/default/patterns/**/*.stories.jsx',
+    './patterns/**/*.stories.wingsuit.jsx',
     './patterns/**/*.stories.jsx',
   ],
   addons: [

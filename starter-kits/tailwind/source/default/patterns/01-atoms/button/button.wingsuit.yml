@@ -15,28 +15,35 @@ button:
     default:
       label: Default
       configuration:
-          wrapper_classes:
+          classes:
             active: 'bg-purple-600 dark:bg-white hover:bg-purple-800 dark:hover:bg-purple-100 text-white dark:text-purple-700'
             disabled: 'bg-gray-300 text-gray-400'
     outline:
       label: Outline
       configuration:
-        wrapper_classes:
+        classes:
           active: 'border-2 border-purple-600 hover:border-purple-800 bg-white text-purple-600 hover:text-purple-800'
           disabled: 'border-2 border-gray-400 bg-white text-gray-400'
     link:
       label: Link
       configuration:
-        wrapper_classes:
+        classes:
           active: 'bg-transparent text-purple-600 dark:text-white hover:text-purple-800 dark:hover:text-purple-400'
           disabled: 'text-gray-400'
     icon:
       label: Icon
       configuration:
-          wrapper_classes:
+          classes:
             active: 'bg-transparent text-purple-600 dark:text-white hover:text-purple-800 dark:hover:text-purple-400'
             disabled: 'bg-gray-300 text-gray-400'
   settings:
+    tag_name:
+      type: select
+      label: Tag Name
+      options:
+        div: Div
+        a: A
+        button: Button
     size:
       type: select
       required: true
@@ -90,6 +97,7 @@ button:
     url:
       type: url
       label: Url
+      expose_as_field: true
       description: The action url of your button
       preview: 'https://github.com/wingsuit-designsystem/wingsuit'
     disabled:
@@ -100,6 +108,9 @@ button:
       type: boolean
       label: Expanded
       default_value: false
+    extra_classes:
+      type: textfield
+      label: Extra classes
   configuration:
-    defaults:
-      wrapper_classes: 'btn flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'
+    classes:
+      wrapper: 'btn rounded-[22px] font-display flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'

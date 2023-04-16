@@ -16,7 +16,7 @@ article:
         id: placeholder
         variant: image
         settings:
-          style: responsive_16_9_600w
+          style: responsive_16_9_1200w
     lead:
       type: text
       label: Lead

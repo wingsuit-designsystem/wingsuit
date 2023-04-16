@@ -1,0 +1,27 @@
+form_checkboxes:
+  use: "@forms/input/checkboxes.twig"
+  label: Checkboxes
+  settings:
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    children:
+      type: pattern
+      label: Children
+      preview:
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+        - id: form_element
+          variant: "checkbox"
+          settings:
+            label_display: after
+  configuration:
+    classes:
+      wrapper: ''

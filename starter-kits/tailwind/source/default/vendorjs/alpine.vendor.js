@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime';
+
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;

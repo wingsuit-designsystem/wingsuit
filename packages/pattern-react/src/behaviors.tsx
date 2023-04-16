@@ -27,12 +27,12 @@ export function attachBehaviorDecorator(storyFn) {
   return storyFn();
 }
 
-export function attachBehaviors(context: any, settings: {}) {
+export function attachBehaviors(context: any, settings: any) {
   BehaviorExecutor.attachBehaviors(context, settings);
 }
 
 class BehaviorExecutor {
-  public behaviors: {} = {};
+  public behaviors: any = {};
 
   public static throwError(error) {
     setTimeout(() => {

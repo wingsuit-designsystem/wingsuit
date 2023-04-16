@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+  Internal logic
+#}
+{% set active_key = attributes.hasAttribute('disabled') == false ? 'active' : 'disabled' %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_submit', variant, 'classes')['wrapper'],
+  pattern_configuration('form_submit', variant, 'classes')[active_key]
+]) %}
+{#
+Template
+#}
+<input {{ attributes }} />{{ children }}

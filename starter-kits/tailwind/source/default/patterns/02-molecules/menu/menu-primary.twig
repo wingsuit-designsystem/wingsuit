@@ -30,19 +30,19 @@
               :class="{ 'menu-processed' : processed == true }" data-menu-target="submenu"
               data-menu-level="{{ menu_level }}">
               <div class="{{ link_classes }}">
-                <a href="{{ item.url }}" class="flex-1">
+                <a href="{{ item.url }}" class="flex-1 font-display">
                   {{ item.title }}
                 </a>
                 {% if item.below %}
                   <div
-                    class=" {{
+                    class="w-[18px] h-5 {{
                       menu_level == 1
                         ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                         : 'float-right lg:hidden center-origin transition duration-100 ease-in'
                     }} cursor-pointer"
                     {% if item.below %} @click="submenuIsOpen = !submenuIsOpen;" {% endif %}
                     :class="{'rotate-180': submenuIsOpen, 'rotate-0': !submenuIsOpen}">
-                    {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
+                    {{ pattern('icon', {icon: 'chevron-down', scale: '1' }, 'spritemap' ) }}
                     {{ menus.dropdown_menu(menu_level) }}
                   </div>
                 {% endif %}
@@ -65,7 +65,7 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
+      'font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
     <li class="relative" {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
@@ -75,7 +75,7 @@
           {{ item.title }}
         </a>
         {% if item.below is not empty %}
-          <div class="{{
+          <div class="w-[18px] h-5 {{
               menu_level == 1
                 ? 'float-right center-origin transition duration-100 ease-in lg:-rotate-90'
                 : 'float-right center-origin transition duration-100 ease-in lg:group-hover:rotate-180 text-black lg:text-white lg:group-hover:text-teal-200'

@@ -10,4 +10,4 @@
  * @see template_preprocess_input()
  */
 #}
-{% include "@atoms/forms/_input.twig" with {variant: 'checkbox'} %}
+{{ pattern('form_checkbox', {attributes: attributes, children: children}) }}

@@ -1,0 +1,10 @@
+{# Defaults #}
+{% set attributes = attributes|default(create_attribute()) %}
+{# Classes #}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_flex', '', 'classes')['wrapper']
+])%}
+{# Template #}
+<div{{ attributes }}>
+  {{ children }}
+</div>

@@ -121,7 +121,9 @@
       Drupal.behaviors = {};
     </script>
     {% for file in js %}
-      {% if file != 'pages.js' %}
+      {% if file starts with 'behaviors'
+      or file starts with 'vendors'
+      %}
       <script type="text/javascript" src="/{{ file }}"></script>
       {% endif %}
     {% endfor %}

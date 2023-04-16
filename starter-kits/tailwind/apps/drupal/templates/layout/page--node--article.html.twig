@@ -1,7 +1,0 @@
-{% extends "page.html.twig" %}
-
-{% block main %}
-  {{ drupal_entity('node', node.id, 'full_top') }}
-  {{ page.content }}
-  {{ drupal_entity('node', node.id, 'full_bottom') }}
-{% endblock %}

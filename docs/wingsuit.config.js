@@ -4,6 +4,9 @@ module.exports = {
   presets: [
     // '@wingsuit-designsystem/preset-tailwind2',
     '@wingsuit-designsystem/preset-pages',
+    '@wingsuit-designsystem/preset-icon',
+    '@wingsuit-designsystem/preset-icon-spritemap',
+    '@wingsuit-designsystem/preset-storybook',
     // '@wingsuit-designsystem/preset-mdx',
     // '@wingsuit-designsystem/preset-pwa',
     // '@wingsuit-designsystem/preset-imagemin',

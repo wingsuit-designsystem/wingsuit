@@ -23,11 +23,10 @@ export function webpack(appConfig: AppConfig) {
     module: {
       rules: [
         {
-          loader: 'file-loader',
           test: /\.(mp4)$/,
-          options: {
-            outputPath: path.join(appConfig.assetsDistFolder, 'videos'),
-            name: '[name].[ext]',
+          type: 'asset/resource',
+          generator: {
+            filename: `${path.join(appConfig.assetsDistFolder, 'videos')}/[name][ext]`,
           },
         },
       ],
@@ -35,7 +34,7 @@ export function webpack(appConfig: AppConfig) {
   };
 }
 
-export function webpackFinal(appConfig: AppConfig, config: any): {} {
+export function webpackFinal(appConfig: AppConfig, config: any): any {
   if (appConfig.type === 'storybook') {
     // eslint-disable-next-line no-param-reassign
     config.module.rules = config.module.rules.map((data) => {

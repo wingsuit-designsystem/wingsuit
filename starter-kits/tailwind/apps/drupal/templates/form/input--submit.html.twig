@@ -12,4 +12,5 @@
  * @ingroup themeable
  */
 #}
-{% include "@atoms/forms/_input.twig" with {variant: 'submit'} %}
+{{ pattern('form_submit', {attributes: attributes, children: children}) }}
+

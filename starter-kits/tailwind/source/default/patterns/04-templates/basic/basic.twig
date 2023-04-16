@@ -12,6 +12,9 @@
 #}
 {% set attributes = attributes|default(create_attribute()) %}
 
+{#
+  Internal
+#}
 {% set content %}{% block content %}{{ content }}{% endblock %}{% endset %}
 {% set headline %}{% block headline %}{{ headline }}{% endblock %}{% endset %}
 

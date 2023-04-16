@@ -1,0 +1,87 @@
+page_webform:
+  use: "@pages/page.twig"
+  label: Webform
+  description: Landing page example
+  dependencies:
+    - menu
+    - language_select
+    - footer
+    - header
+  fields:
+    content:
+      type: pattern
+      label: Field content
+      preview:
+        - id: section
+          variant: 1_column
+          fields:
+            column_1:
+              - id: rich_text
+                fields:
+                  text: |
+                    <h1 class="text-center">Let’s work together!</h1>
+                    <p class="text-center">
+                    George Soros discount window lending block chain transactions feel better hawkish federal reserve perplexed retail investor liquidity stashin' loot. Chump change financial intelligence and money moves billion dollar networth all the boats rise sure thing. Yield to broker not bullish advice market upside downside.
+                    </p>
+          settings:
+            width: default
+            padding_top: default
+            padding_bottom: small
+            columns: 1
+        - id: section
+          variant: 1_column
+          fields:
+            column_1:
+              - id: form_flex
+                fields:
+                  children:
+                    -
+                      id: form_element
+                      variant: textfield
+                      settings:
+                        flex: flex-1
+                    -
+                      id: form_element
+                      variant: textfield
+                      settings:
+                        flex: flex-1
+              - id: form_flex
+                fields:
+                  children:
+                    - id: form_element
+                      variant: textfield
+                      settings:
+                        flex: flex-1
+                        floating_label: 'true'
+                    - id: form_element
+                      variant: textfield
+                      settings:
+                        flex: flex-1
+                        floating_label: 'true'
+              - id: form_element
+                variant: textfield
+              - id: form_element
+                variant: date
+              - id: form_element
+                variant: email
+              - id: form_element
+                variant: tel
+              - id: form_element
+                variant: file
+              - id: form_element
+                variant: select
+                settings:
+                  description_display: after
+                  description_text: 'description text bottom'
+              - id: form_element
+                variant: checkbox
+              - id: form_element
+                variant: checkboxes
+              - id: form_element
+                variant: radio
+              - id: form_element
+                variant: radios
+              - id: form_submit
+          settings:
+            width: default
+            columns: 1

@@ -30,7 +30,7 @@
        @click="selected !== true ? selected = true : selected = false">
     <div {{ label_wrapper_attributes }}>
       <span {{ label_attributes }}">{{ label }}</span>
-      <div x-cloak {{ icon_attributes }} :class="{ 'transform rotate-180 transition duration-400' : selected == true }">
+      <div class="text-purple-600" x-cloak {{ icon_attributes }} :class="{ 'transform rotate-180 transition duration-400' : selected == true }">
         {{ pattern('icon', {icon: 'chevron-down' }, 'spritemap' ) }}
       </div>
     </div>

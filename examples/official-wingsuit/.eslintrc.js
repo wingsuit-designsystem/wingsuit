@@ -24,9 +24,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:jest/recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended',
-    'prettier/vue',
     'plugin:react/recommended',
   ],
   plugins: ['prettier'],

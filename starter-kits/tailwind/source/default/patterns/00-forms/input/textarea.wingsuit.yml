@@ -1,0 +1,19 @@
+form_textarea:
+  use: "@forms/input/textarea.twig"
+  label: Textarea
+  settings:
+    wrapper_attributes:
+      type: attributes
+      label: Wrapper attributes
+    attributes:
+      type: attributes
+      label: Attributes
+  fields:
+    value:
+      type: text
+      label: Value
+      preview:
+        faker: lorem.sentence
+  configuration:
+    classes:
+      wrapper: 'form-textarea'

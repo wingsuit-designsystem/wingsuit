@@ -1,5 +1,5 @@
 {#
-Classes
+  Attributes
 #}
 {% set parent_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'parent_list_classes')) %}
 {% set parent_list_item_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'parent_list_item_classes')) %}
@@ -9,14 +9,13 @@ Classes
 {% set child_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'child_link_classes')) %}
 
 {#
-Template
+  Template
 #}
 {% set cells = [] %}
 {% for item in items %}
   {% set cell %}
     <ul role="menu" {{ parent_list_attributes }}>
       <li role="none" {{ parent_list_item_attributes }}>
-
         {# -- Main parent item w/o link  -- #}
         <a href="#" {{ parent_link_attributes }}>
           {{ item.title }}
@@ -37,10 +36,9 @@ Template
       </li>
     </ul>
   {% endset %}
-
   {% set cells = cells|merge([cell]) %}
 {% endfor %}
 
 <nav aria-label="footer">
-  {{ pattern('grid', {cells:cells, columns: cells|length, gutter: 'default' }, null ) }}
+  {{ pattern('grid', {cells:cells}, cells|length ~ '_column' ) }}
 </nav>

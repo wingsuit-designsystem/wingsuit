@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{#
+  Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+Internal logic
+#}
+{% set has_size = attributes.getAttribute('size') is not empty %}
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass([
+  pattern_configuration('form_input', variant, 'classes')['wrapper'],
+  pattern_configuration('form_input', variant, 'classes')['radius'],
+  has_size == false ? 'w-full',
+]) %}
+
+{#
+  Template
+#}
+<input {{ attributes }}/>{{ children }}

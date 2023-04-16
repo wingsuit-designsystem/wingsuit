@@ -33,5 +33,4 @@ button_group:
           configuration:
             direction: 'justify-end'
   configuration:
-    default:
-      classes: 'flex flex-col md:flex-row pt-8 space-y-2 md:space-x-2 md:space-y-0'
+    classes: 'flex flex-col md:flex-row pt-8 space-y-2 md:space-x-2 md:space-y-0'

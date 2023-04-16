@@ -7,11 +7,10 @@ export function name(appConfig: AppConfig) {
   return 'cms';
 }
 export function webpack(appConfig: AppConfig) {
-  const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
-
-  const behaviorObject = behaviorItems.reduce((acc, item) => {
-    const filename = path.basename(item).replace('.behavior.js', '');
-    acc[`behaviors/${filename}`] = item;
+  const indexItems = glob.sync(`${appConfig.absDesignSystemPath}/**/index.js`);
+  const indexObjects = indexItems.reduce((acc, item) => {
+    const filename = path.basename(path.dirname(item));
+    acc[filename] = item;
     return acc;
   }, {});
 
@@ -23,24 +22,20 @@ export function webpack(appConfig: AppConfig) {
     return acc;
   }, {});
 
-  const cssItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.css`);
-
-  const cssObject = cssItems.reduce((acc, item) => {
-    const filename = path.basename(item).replace('.css', '');
-    acc[`${filename}`] = item;
+  const behaviorItems = glob.sync(`${appConfig.absDesignSystemPath}/**/*.behavior.js`);
+  const behaviorObject = behaviorItems.reduce((acc, item) => {
+    const filename = path.basename(item).replace('.behavior.js', '');
+    acc[`behaviors/${filename}`] = item;
     return acc;
   }, {});
 
   return {
     target: 'web',
-    output: {
-      path: appConfig.absDistFolder,
-    },
     devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
     entry: {
-      ...behaviorObject,
-      ...cssObject,
+      ...indexObjects,
       ...vendorObject,
+      ...behaviorObject,
     },
   };
 }
