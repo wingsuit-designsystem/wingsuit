@@ -41,7 +41,7 @@
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/addon-measure": "^7.0.2",
-    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-postcss": "^3.0.0-alpha.1",
     "@storybook/addon-viewport": "^7.0.2",
     "@storybook/addons": "^7.0.2",
     "@storybook/builder-webpack5": "^7.0.2",

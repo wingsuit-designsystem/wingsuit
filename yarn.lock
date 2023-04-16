@@ -3371,11 +3371,6 @@
     "@storybook/preview-api" "7.0.2"
     "@storybook/types" "7.0.2"
 
-"@storybook/addon-measure@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-1.3.1.tgz#a85b35a73ce9587d54d35e18307eeeb82f509534"
-  integrity sha512-OTTbVOs/85zP5MzAMAAs/IyS3MNegSMvvGOzBRsX/7GBxhtjkrryamDkVr9py3JqPwRSndwwB7y0ZwWmf/9KJw==
-
 "@storybook/addon-outline@7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-outline/-/addon-outline-7.0.2.tgz#41bbf15b869369b00399fbe5bd91161b7432b7a5"
@@ -4472,7 +4467,7 @@
     "@storybook/client-logger" "7.0.2"
     "@storybook/preview-api" "7.0.2"
 
-"@storybook/storybook-deployer@^2.8.7":
+"@storybook/storybook-deployer@^2.8.16", "@storybook/storybook-deployer@^2.8.7":
   version "2.8.16"
   resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.16.tgz#890abe4fd81b6fbc028dffb6314016f208aba6c2"
   integrity sha512-DRQrjyLKaRLXMYo7SNUznyGabtOLJ0b9yfBKNVMu6PsUHJifGPabXuNXmRPZ6qvyhHUSKLQgeLaX8L3Og6uFUg==
