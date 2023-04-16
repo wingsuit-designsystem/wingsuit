@@ -1,7 +1,8 @@
 import path from 'path';
 import fs from 'fs';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import generate from '@babel/generator';
-import { AppConfig, invokeHook } from '../index';
+import { AppConfig, invokeHook } from '@wingsuit-designsystem/core';
 
 const YAML = require('yaml');
 const babylon = require('babylon');

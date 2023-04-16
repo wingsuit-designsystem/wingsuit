@@ -18,12 +18,12 @@ export interface DesignSystem {
 }
 
 export default interface Config {
-  webpackFinal: any;
-  webpack: any;
-  parameters: any;
+  webpackFinal?: any;
+  webpack?: any;
+  parameters?: any;
   apps: AppItem;
-  defaultPresets: PresetItem;
-  presets: Preset[];
-  designSystems: DesignSystemItem;
-  environments: any;
+  defaultPresets?: PresetItem;
+  presets?: Preset[];
+  designSystems?: DesignSystemItem;
+  environments?: any;
 }

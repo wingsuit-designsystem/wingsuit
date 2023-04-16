@@ -8,6 +8,7 @@ module.exports = {
     },
   },
   presets: [
+    '@wingsuit-designsystem/preset-storybook',
     '@wingsuit-designsystem/preset-scss',
     '@wingsuit-designsystem/preset-twing',
     '@wingsuit-designsystem/preset-placeholder',

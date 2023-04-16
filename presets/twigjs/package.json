@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/preset.js",
   "files": [
     "bin/**/*",
     "dist/**/*",

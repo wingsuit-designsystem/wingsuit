@@ -3,9 +3,11 @@ import type { Configuration } from 'webpack';
 
 import { loadCsf } from '@storybook/csf-tools';
 import { readFileSync } from 'fs';
-import { csfParser } from '@wingsuit-designsystem/core';
+import { csfParser } from './csfParser';
 
 const wingsuitCore = require('@wingsuit-designsystem/core');
+
+export { csfParser } from './csfParser';
 
 interface Options {
   appName?: string | 'storybook';

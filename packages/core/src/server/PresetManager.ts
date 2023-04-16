@@ -13,8 +13,6 @@ const css = require('./presets/css');
 const cms = require('./presets/cms');
 const babel = require('./presets/babel');
 const assets = require('./presets/assets');
-const storybook = require('./presets/storybook');
-const wingsuitP = require('./presets/wingsuit');
 const assetsVideos = require('./presets/assetsVideos');
 
 const defaultPresets = {
@@ -23,8 +21,6 @@ const defaultPresets = {
   babel,
   assetsVideos,
   assets,
-  storybook,
-  wingsuit: wingsuitP,
 };
 
 export default class PresetManager {

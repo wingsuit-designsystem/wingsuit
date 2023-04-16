@@ -1,12 +1,12 @@
 {
-  "name": "@wingsuit-designsystem/preset-pwa",
+  "name": "@wingsuit-designsystem/preset-storybook",
   "version": "2.0.0-alpha.1",
-  "description": "Wingsuit automatically generated favicons and progressive webapp enhancements preset.",
+  "description": "Wingsuit Twing preset.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/preset.js",
   "files": [
     "bin/**/*",
     "dist/**/*",
@@ -16,28 +16,27 @@
     "ts3.5/**/*"
   ],
   "keywords": [
-    "Storybook",
-    "Atomic Design",
-    "Tailwind"
+    "Storybook"
   ],
-  "author": "Pascal Glass",
+  "author": "Christian Wiedemann",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/wingsuit-designsystem/wingsuit/issues"
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
-  "dependencies": {
-    "@ianwalter/exclude-assets-plugin": "^1.0.0",
-    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
-    "favicons": "^6.2.2",
-    "favicons-webpack-plugin": "^5.0.2",
-    "html-webpack-plugin": "^5.5.0"
-  },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc"
+  "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
+  "dependencies": {
+    "@wingsuit-designsystem/storybook": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.1",
+    "path": "^0.12.7",
+    "webpack": "^5.56.1",
+    "glob": "^8.1.0"
+  }
 }

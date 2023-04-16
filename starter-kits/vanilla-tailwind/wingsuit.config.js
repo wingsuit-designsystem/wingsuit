@@ -9,11 +9,12 @@ module.exports = {
     },
   },
   presets: [
-    '@wingsuit-designsystem/preset-tailwind2',
+    '@wingsuit-designsystem/preset-tailwind',
     '@wingsuit-designsystem/preset-twing',
     '@wingsuit-designsystem/preset-placeholder',
     '@wingsuit-designsystem/preset-icon',
     '@wingsuit-designsystem/preset-icon-spritemap',
+    '@wingsuit-designsystem/preset-storybook',
   ],
   designSystems: {
     default: {

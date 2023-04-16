@@ -1,11 +1,11 @@
 import { IPatternDefinition, Variant, Property, Preview } from '@wingsuit-designsystem/pattern';
 import path from 'path';
-import { invokeHook, pathInfo } from '../../index';
+import { invokeHook, pathInfo } from '@wingsuit-designsystem/core';
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
 
-export default function wingsuitLoader(this: any, src) {
+export default function patternLoader(this: any, src) {
   const { ...options } = {
     prettyErrors: true,
     ...loaderUtils.getOptions(this),

@@ -1,12 +1,11 @@
 import Config from '../Config'
+import { Preset } from '../AppConfig'
 
-const css = require('../server/presets/css')
-const babel = require('../server/presets/babel')
-const assets = require('../server/presets/assets')
-const storybook = require('../server/presets/storybook')
-const cms = require('../server/presets/cms')
-const wingsuitp = require('../server/presets/wingsuit')
-const assetsVideos = require('../server/presets/assetsVideos')
+const css: Preset = require('../server/presets/css')
+const babel: Preset = require('../server/presets/babel')
+const assets: Preset = require('../server/presets/assets')
+const cms: Preset = require('../server/presets/cms')
+const assetsVideos: Preset = require('../server/presets/assetsVideos')
 
 export const wingsuit: Config = {
   webpackFinal: null,
@@ -17,9 +16,7 @@ export const wingsuit: Config = {
     babel,
     assets,
     assetsVideos,
-    storybook,
     cms,
-    wingsuit: wingsuitp,
   },
   designSystems: {
     default: {
@@ -33,27 +30,6 @@ export const wingsuit: Config = {
     production: {},
   },
   apps: {
-    storybook: {
-      path: './apps/storybook',
-      type: 'storybook',
-      cssMode: 'hot',
-      distFolder: 'dist/app-storybook',
-      assetsDistFolder: '',
-      designSystem: 'default',
-      presets: [assets, wingsuitp, storybook],
-      componentTypes: {
-        wingsuit_presenter: 'Wingsuit component (UI Pattern) with presentation template',
-        plain: 'Twig only component',
-        plain_presenter: 'Twig only component with presentation template',
-        presenter: 'Presentation template',
-      },
-      startup(passedArgs) {
-        if (this.environment === 'production') {
-          return `cross-env-shell NODE_ENV=${this.environment} "storybook build --config-dir ${this.absAppPath} ${passedArgs}"`
-        }
-        return `cross-env-shell NODE_ENV=${this.environment} "storybook dev --config-dir ${this.absAppPath}  ${passedArgs}"`
-      },
-    },
     test: {
       path: './apps/test',
       cssMode: 'hot',
@@ -73,16 +49,6 @@ export const wingsuit: Config = {
       twigDistFolder: 'templates',
       designSystem: 'default',
       presets: [assets, assetsVideos, babel, css, cms],
-    },
-    drupal: {
-      path: './apps/drupal',
-      cssMode: 'extract',
-      distFolder: 'dist/app-drupal',
-      twigDistFolder: 'templates',
-      type: 'drupal',
-      assetsDistFolder: '',
-      designSystem: 'default',
-      presets: [assets, assetsVideos, babel, css, cms, wingsuitp],
     },
   },
 }

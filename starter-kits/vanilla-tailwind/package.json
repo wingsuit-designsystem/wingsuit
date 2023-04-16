@@ -60,6 +60,8 @@
     "@wingsuit-designsystem/preset-scss": "2.0.0-alpha.1",
     "@wingsuit-designsystem/preset-twing": "2.0.0-alpha.1",
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/preset-storybook": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/preset-tailwind": "2.0.0-alpha.1",
     "autoprefixer": "^9.7.4",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",

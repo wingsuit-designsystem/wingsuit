@@ -71,7 +71,7 @@ export interface AppInitConfig {
 
   postCssConfig?: any;
 
-  presets?: Preset[];
+  presets?: (Preset | string)[];
 
   absDesignSystemPath?: string;
 
@@ -89,7 +89,6 @@ export interface AppInitConfig {
 export interface Preset {
   defaultConfig?(appConfig: AppConfig): any;
   name?(appConfig: AppConfig): string;
-
   wingsuitConfig?(): any;
   configKey?(appConfig: AppConfig): string;
   webpack?(appConfig: AppConfig);

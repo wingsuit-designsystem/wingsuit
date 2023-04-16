@@ -1,4 +1,5 @@
-import { csfParser } from '../csfParser';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { csfParser } from '@wingsuit-designsystem/storybook';
 
 export default function wingsuitStoriesLoader(this: any, src) {
   const options = this.getOptions();
