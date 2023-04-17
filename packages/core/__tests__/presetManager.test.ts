@@ -4,7 +4,7 @@ import { resolveConfig, PresetManager } from '../src/index';
 test('Test parameters in wingsuit.config.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {
@@ -46,7 +46,7 @@ test('Test getDefaultPreset.', () => {
 test('Test defaultConfig.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {
@@ -82,7 +82,7 @@ test('Test defaultConfig.', () => {
 test('Test initial parameters.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {
@@ -123,7 +123,7 @@ test('Test initial parameters.', () => {
 test('Test parameter overwrite defaultConfig.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {
@@ -164,7 +164,7 @@ test('Test parameter overwrite defaultConfig.', () => {
 test('Test generateWebpack.', () => {
   const presetManager = new PresetManager();
   const resolvedConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {
@@ -192,12 +192,12 @@ test('Test generateWebpack.', () => {
 
 test('Test support feature.', () => {
   const presetManager = new PresetManager();
-  let appConfig = resolveConfig('storybook', 'development', {}, {});
+  let appConfig = resolveConfig('test', 'development', {}, {});
   let supportFeature = presetManager.supportFeature('scss', appConfig);
   expect(supportFeature).toBe(false);
 
   appConfig = resolveConfig(
-    'storybook',
+    'test',
     'development',
     {},
     {

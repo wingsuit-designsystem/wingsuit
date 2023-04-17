@@ -1,5 +1,5 @@
 import * as path from 'path';
-import FileDependencyPlugin from '../src/server/plugins/FileDependencyPlugin';
+import FileDependencyPlugin from '../src/plugins/FileDependencyPlugin';
 
 describe('#Test wingsuit loader', () => {
   test('Test patternNamespaceMap.', () => {

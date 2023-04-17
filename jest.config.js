@@ -23,7 +23,12 @@ module.exports = {
     'core-js/library/fn/object/assign': 'core-js/es/object/assign',
   },
   projects: ['<rootDir>'],
-  roots: ['<rootDir>/packages/pattern', '<rootDir>/packages/core', '<rootDir>/packages/cli'],
+  roots: [
+    '<rootDir>/packages/pattern',
+    '<rootDir>/packages/core',
+    '<rootDir>/packages/cli',
+    '<rootDir>/presets/pattern',
+  ],
   transform: {
     '^.+\\.[jt]sx?$': '<rootDir>/scripts/babel-jest.js',
   },

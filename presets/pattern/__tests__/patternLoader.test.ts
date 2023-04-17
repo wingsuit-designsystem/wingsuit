@@ -1,10 +1,10 @@
 import fs from 'fs';
 import * as path from 'path';
-import { findLinkedPatternIds } from '../src/server/loader/wingsuitLoader';
+import { findLinkedPatternIds } from '../src/loader/patternLoader';
 
 const YAML = require('yaml');
 
-describe('#Test wingsuit loader', () => {
+describe('#Test pattern loader', () => {
   test('Test findRelatedPatternIds.', () => {
     const src = fs.readFileSync(
       path.join(__dirname, '_data/molecules/card/card.wingsuit.yml'),

@@ -1,0 +1,48 @@
+card:
+  use: "@molecules/card/_card.twig"
+  label: Card
+  description: Example description
+  extends:
+    - pattern_extends.settings
+  dependencies:
+    - pattern_dependency
+    - pattern_extends
+  fields:
+    label2:
+      type: text
+      label: Label
+      preview: Text
+    pattern_single:
+      type: pattern
+      label: Label
+      preview:
+        id: 'pattern_single'
+    pattern_multi:
+      type: pattern
+      label: Label
+      preview:
+        -
+          id: 'pattern_multi'
+  variants:
+    demo:
+      label: Demo
+      fields:
+        pattern_single:
+          id: variant_pattern_single
+        pattern_multi:
+          -
+            id: variant_pattern_single
+            fields:
+              pattern_single_inner:
+                id: single_inner
+                fields:
+                  pattern_single_inner_inner:
+                    id: single_inner_inner
+  settings:
+    color:
+      type: select
+      label: Color
+      options:
+        blue: Blue
+        grey: Grey
+      preview: value_1
