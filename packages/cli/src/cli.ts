@@ -56,7 +56,6 @@ program
 program
   .command('build')
   .option('-D --docs', 'Build a documentation-only site using addon-docs')
-  .option('-o --output-dir <path>', 'Directory where to store built files')
   .allowUnknownOption(true)
   .description('Build Wingsuit App.')
   .action((options) => startApp(options, 'production'));
