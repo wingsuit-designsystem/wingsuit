@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -33,10 +33,11 @@
   },
   "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc",
   "dependencies": {
+    "@emotion/babel-plugin": "^11.10.6",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
     "@types/webpack": "^5.28.0",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.2",
     "autoprefixer": "^10.3.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
@@ -44,6 +45,8 @@
     "copy-webpack-plugin": "^9.0.1",
     "crypto-browserify": "^3.12.0",
     "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "eslint": "^8.37.0",
     "eslint-webpack-plugin": "^4.0.0",
     "fs-extra": "^10.0.0",
     "glob": "^8.1.0",
@@ -75,9 +78,6 @@
     "webpack": "^5.56.1",
     "webpack-cli": "^5.0.1",
     "webpack-merge": "^5.8.0",
-    "yargs": "^17.2.1",
-    "css-minimizer-webpack-plugin": "^5.0.0",
-    "@emotion/babel-plugin": "^11.10.6",
-    "eslint": "^8.37.0"
+    "yargs": "^17.2.1"
   }
 }

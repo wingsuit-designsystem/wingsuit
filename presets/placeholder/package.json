@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-placeholder",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Wingsuit Placeholder preset.",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.1"
+    "@wingsuit-designsystem/core": "2.0.0-alpha.2",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.2"
   }
 }

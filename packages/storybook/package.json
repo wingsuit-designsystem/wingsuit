@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/storybook",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Wingsuit Storybook Integration.",
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
+    "@babel/generator": "^7.21.2",
     "@storybook/addon-controls": "^7.0.2",
     "@storybook/addon-docs": "^7.0.2",
     "@storybook/builder-webpack5": "^7.0.2",
@@ -38,21 +39,20 @@
     "@storybook/components": "^7.0.2",
     "@storybook/csf-tools": "^7.0.2",
     "@storybook/react": "^7.0.2",
-    "@babel/generator": "^7.21.2",
-    "yaml": "^2.2.1",
-    "babylon": "^6.18.0",
-    "babel-traverse": "^6.26.0",
     "@storybook/theming": "^7.0.2",
     "@types/react": "^16.9.14",
     "@types/react-dom": "^16.9.14",
-    "@wingsuit-designsystem/core": "2.0.0-alpha.1",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.1",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.2",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.2",
+    "babel-traverse": "^6.26.0",
+    "babylon": "^6.18.0",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-syntax-highlighter": "^15.5.0",
-    "webpack": "^5.78.0"
+    "webpack": "^5.78.0",
+    "yaml": "^2.2.1"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
