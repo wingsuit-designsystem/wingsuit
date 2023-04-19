@@ -31,7 +31,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c8f79243b1d0a1dace0bf3b8edcd45f23271befc",
+  "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
   "dependencies": {
     "@emotion/babel-plugin": "^11.10.6",
     "@types/jest": "^27.0.2",

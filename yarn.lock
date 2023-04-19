@@ -5086,7 +5086,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/webpack-env@^1.16.0", "@types/webpack-env@^1.16.4":
+"@types/webpack-env@^1.16.0", "@types/webpack-env@^1.16.4", "@types/webpack-env@^1.18.0":
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.18.0.tgz#ed6ecaa8e5ed5dfe8b2b3d00181702c9925f13fb"
   integrity sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg==
@@ -5786,16 +5786,6 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@webpack-cli/serve/-/serve-2.0.1.tgz#34bdc31727a1889198855913db2f270ace6d7bf8"
   integrity sha512-0G7tNyS+yW8TdgHwZKlDWYXFA6OJQnoLCQvYKkQP0Q2X205PSQ6RNUj0M+1OB/9gRQaUZ/ccYfaxd0nhaWKfjw==
-
-"@wingsuit-designsystem/preset-tailwind2@2.0.0-alpha.1":
-  version "2.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@wingsuit-designsystem/preset-tailwind2/-/preset-tailwind2-2.0.0-alpha.1.tgz#f1105b828cc8491e8e6505665924f593beec2c60"
-  integrity sha512-7vkdp+1ITBpiEZzv+KPz7oRuaXf2e7OhGX76osibDJ0mPdVyKwHzRUtZcTSt6yKYri6qDHIxgxkQpXV3FV6DBw==
-  dependencies:
-    "@wingsuit-designsystem/core" "2.0.0-alpha.1"
-    fs-extra "^9.0.0"
-    json-diff "^0.7.1"
-    tailwindcss "^3.2.7"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
