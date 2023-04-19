@@ -18,6 +18,7 @@ export function webpack(appConfig: AppConfig) {
         'pattern-loader': path.join(__dirname, './loader/patternLoader'),
       },
     },
+    plugins: [fileDependencyPlugin],
     module: {
       rules: [
         {

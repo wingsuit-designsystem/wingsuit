@@ -84,7 +84,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "regenerator-runtime": "^0.13.3",
-    "require-context": "^1.1.0",
+
     "storybook": "^7.0.2",
     "storybook-addon-themes": "^6.1.0",
     "storybook-addon-turbo-build": "^1.1.0",

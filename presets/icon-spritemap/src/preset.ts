@@ -8,18 +8,27 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 export function name(appConfig: AppConfig) {
   return 'icon-spritemap';
 }
+
 export function configKey(appConfig: AppConfig) {
   return 'icon';
 }
 
 export function webpack(appConfig: AppConfig, config: IconConfig) {
+  const entryPointPath = path.join(__dirname, './entry');
+  // Storybook needs entries as array. For other apps assets keys are prefered.
+  const entryPoints =
+    appConfig.type === 'storybook'
+      ? [entryPointPath]
+      : {
+          assets: entryPointPath,
+        };
   const resultWebpack: any = {
     plugins: [],
+    entry: entryPoints,
     module: {
       rules: [],
     },
   };
-
   const testPatterns: string[] = [];
   config.sources.forEach((svgConfig) => {
     testPatterns.push(`.*[/|\\\\]${svgConfig.sourceFolder}[/|\\\\].*.svg$`);
@@ -71,9 +80,7 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
   return {
     patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
       if (patternId === 'icon') {
-        // eslint-disable-next-line no-param-reassign
         patternDefinition.variants = {};
-        // eslint-disable-next-line no-param-reassign
         patternDefinition.variants.spritemap = {
           use: '@ws-icon-spritemap/spritemap.twig',
           label: 'Spritemap',
@@ -81,7 +88,6 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
       }
     },
     appConfigAlter: () => {
-      // eslint-disable-next-line no-param-reassign
       appConfig.namespaces['ws-icon-spritemap'] = path.resolve(__dirname, '../patterns');
     },
   };
