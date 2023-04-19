@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
     "@types/webpack": "^5.28.0",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.3",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.4",
     "autoprefixer": "^10.3.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
