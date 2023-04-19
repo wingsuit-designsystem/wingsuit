@@ -9,7 +9,7 @@
     "starter-kits/*"
   ],
   "useWorkspaces": true,
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "registry": "https://registry.npmjs.org",
   "useNx": true,
   "npmClient": "yarn"

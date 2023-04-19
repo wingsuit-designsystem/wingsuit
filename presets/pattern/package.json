@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-pattern",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "Wingsuit Twing preset.",
   "repository": {
     "type": "git",
@@ -34,8 +34,8 @@
   },
   "gitHead": "b7c8ec4097ae5cf658338c2a6c9de411793c9a58",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.0-alpha.2",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.2",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.3",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.3",
     "glob": "^8.1.0",
     "loader-utils": "^2.0.0",
     "yaml": "^1.10.2"
