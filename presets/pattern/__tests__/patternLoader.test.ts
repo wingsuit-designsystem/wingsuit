@@ -28,6 +28,7 @@ describe('#Test pattern loader', () => {
     );
     const resSpacing = YAML.parse(srcSpacing);
     const resultSpacing = findLinkedPatternIds(resSpacing.spacing);
+
     expect(resultSpacing).toEqual([]);
   });
 });
