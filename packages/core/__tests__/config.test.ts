@@ -88,13 +88,13 @@ test('#Test config type', () => {
 test('#Test startup()', () => {
   const appConfig = resolveConfig('storybook', 'development', {}, config_3);
   expect(appConfig.environment).toBe('development');
-  expect(appConfig.startup()).toBe('startup');
+  expect(appConfig.startup('')).toBe('startup');
 });
 
 test('#Test component types', () => {
   const appConfig = resolveConfig('storybook', 'development', {}, config_3);
   expect(Object.keys(appConfig.componentTypes).length).toBe(1);
-  expect(appConfig.startup()).toBe('startup');
+  expect(appConfig.startup('')).toBe('startup');
 });
 
 test('#Test unknown config', () => {

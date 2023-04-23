@@ -5,7 +5,7 @@ const withTests = {
       { shippedProposals: true, useBuiltIns: 'usage', corejs: '3', targets: { node: 'current' } },
     ],
   ],
-  plugins: ['babel-plugin-require-context-hook', '@babel/plugin-transform-runtime'],
+  plugins: ['babel-plugin-require-context-hook', '@babel/plugin-transform-runtime', '@babel/plugin-transform-modules-commonjs'],
 };
 
 module.exports = {
@@ -17,7 +17,8 @@ module.exports = {
     ['@babel/preset-env', { shippedProposals: true, useBuiltIns: 'usage', corejs: '3' }],
     '@babel/preset-typescript',
     '@babel/preset-react',
-    '@babel/preset-flow',
+    '@babel/preset-flow'
+
   ],
   plugins: [
     [
@@ -31,8 +32,9 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-syntax-dynamic-import',
-    ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
-    'babel-plugin-macros',
+
+    ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }]
+
   ],
   env: {
     test: withTests,
@@ -88,7 +90,6 @@ module.exports = {
       ],
       plugins: [
         '@emotion',
-        'babel-plugin-macros',
         '@babel/plugin-transform-arrow-functions',
         '@babel/plugin-transform-shorthand-properties',
         '@babel/plugin-transform-block-scoping',
@@ -96,6 +97,8 @@ module.exports = {
         ['@babel/plugin-proposal-class-properties', { loose: true }],
         '@babel/plugin-proposal-object-rest-spread',
         '@babel/plugin-proposal-export-default-from',
+        '@babel/plugin-transform-modules-commonjs'
+
       ],
       env: {
         test: withTests,
