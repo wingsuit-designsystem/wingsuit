@@ -6,7 +6,7 @@ export default {
     options: {
       builder: {
         lazyCompilation: false,
-        fsCache: false,
+        fsCache: true,
       },
     },
   },

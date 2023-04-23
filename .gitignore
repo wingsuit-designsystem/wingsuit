@@ -16,3 +16,4 @@ storybook-static
 cypress/videos
 cypress/screenshots
 packages/wingsuit/yarn.lock
+.fleet

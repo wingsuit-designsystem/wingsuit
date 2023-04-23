@@ -251,7 +251,7 @@ jobs:
 
   docs:
     executor:
-      class: small
+      class: large
       name: sb_node_16_classic
     steps:
       - checkout
