@@ -186,9 +186,13 @@ export function defaultAppConfig(
     },
     startup(passedArgs) {
       if (this.environment === 'production') {
-        return `cross-env-shell NODE_ENV=${this.environment} webpack --config ${this.path}/webpack.config.js ${passedArgs}`;
+        return `cross-env-shell WINGSUIT_APP=${this.name} NODE_ENV=${
+          this.environment
+        } webpack --config ${path.join(__dirname, 'start-app.js')} ${passedArgs}`;
       }
-      return `cross-env-shell NODE_ENV=${this.environment} webpack --watch --config ${this.path}/webpack.config.js ${passedArgs}`;
+      return `cross-env-shell WINGSUIT_APP=${this.name} NODE_ENV=${
+        this.environment
+      } webpack --watch --config ${path.join(__dirname, 'start-app.js')} ${passedArgs}`;
     },
     webpack(appConfig: AppConfig, config?: any) {
       return {};
