@@ -18,15 +18,14 @@ breadcrumb:
         - text: 'SONIC VITAL XTcoloR'
           url: '#'
   configuration:
-    darkmode_classes:
-      true: 'dark'
-    root_classes: 'w-full truncate'
-    list_classes: 'flex items-center'
-    list_item_classes: 'flex items-center'
-    link_classes:
-      regular: 'text-sm lg:text-base'
-      loop:
-        last: 'font-normal text-black hover:underline dark:text-sky-blue-300'
+    classes:
+      wrapper: 'w-full truncate'
+      list: 'flex items-center'
+      list_item: 'flex items-center'
+      link:
+        regular: 'text-sm lg:text-base'
+        loop:
+          last: 'font-normal text-black hover:underline dark:text-sky-blue-300'
     mobile_icon:
       symbol: 'chevron-left'
       size: 'small'

@@ -120,4 +120,3 @@ pagination:
       label: Show first and last
       description: Show links to jump to first or last item of the pagination
       default_value: 0
-  visibility: storybook

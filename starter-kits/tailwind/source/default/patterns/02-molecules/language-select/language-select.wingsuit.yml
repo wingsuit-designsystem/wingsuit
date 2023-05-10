@@ -29,5 +29,3 @@ language_select:
       type: text
       label: Language
       preview: de
-
-  visibility: storybook
