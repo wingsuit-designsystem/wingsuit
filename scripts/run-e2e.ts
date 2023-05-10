@@ -269,6 +269,7 @@ const frameworkArgs = process.argv.slice(2);
 const typedConfigs: { [key: string]: Parameters } = configs;
 let e2eConfigs: { [key: string]: Parameters } = {};
 
+console.log(frameworkArgs);
 if (frameworkArgs.length > 0) {
   // eslint-disable-next-line no-restricted-syntax
   for (const [framework, version = 'latest'] of frameworkArgs.map((arg) => arg.split('@'))) {

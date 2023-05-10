@@ -22,7 +22,7 @@ export const skBootstrapInit: Parameters = {
   name: 'sk-bootstrap',
   version: 'latest',
   generator: [
-    `npx @wingsuit-designsystem/cli init -k bootstrap --smoke-test`,
+    `npx @wingsuit-designsystem/cli init -k vanilla-scss --smoke-test --branch `,
   ].join(' && '),
 };
 
