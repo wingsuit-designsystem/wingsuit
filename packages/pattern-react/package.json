@@ -30,12 +30,14 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
     "@wingsuit-designsystem/pattern": "2.0.0-alpha.4",
     "polished": "^4.0.5",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1"
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^18",
+    "@types/react": "^16 || ^18",
+    "@types/react-dom": "^16 || ^18"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
