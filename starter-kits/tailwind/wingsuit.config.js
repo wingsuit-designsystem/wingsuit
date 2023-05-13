@@ -8,6 +8,13 @@ module.exports = {
       service: 'placebeard',
     },
   },
+  webpack: () => {
+    return {
+      externals: {
+        '@drupal/once': 'once',
+      },
+    };
+  },
   presets: [
     '@wingsuit-designsystem/preset-tailwind',
     '@wingsuit-designsystem/preset-twing',
