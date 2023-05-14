@@ -62,6 +62,7 @@ export default class PresetManager {
       return appConfig.internalCache.presets;
     }
     const presets: PresetDefinition[] = [];
+
     if (appConfig.presets) {
       appConfig.presets.forEach((item) => {
         if (typeof item === 'string') {
@@ -99,6 +100,7 @@ export default class PresetManager {
         }
       });
     }
+    const keys = {};
     presets.forEach((presetDef) => {
       if (presetDef.preset.configKey) {
         const key = presetDef.preset.configKey(appConfig);
@@ -111,16 +113,19 @@ export default class PresetManager {
         }
       }
     });
+    const uniquePreset = presets.filter(
+      (value, index, self) => index === self.findIndex((t) => t.name === value.name)
+    );
     if (appConfig) {
       if (!appConfig.internalCache) {
         // eslint-disable-next-line no-param-reassign
         appConfig.internalCache = {};
       }
       // eslint-disable-next-line no-param-reassign
-      appConfig.internalCache.presets = presets;
+      appConfig.internalCache.presets = uniquePreset;
     }
 
-    return presets;
+    return uniquePreset;
   }
 
   /**

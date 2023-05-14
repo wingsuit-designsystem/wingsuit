@@ -25,7 +25,7 @@
   "scripts": {
     "dev:storybook": "yarn ws dev storybook",
     "build:storybook": "yarn ws build storybook",
-    "docs:storybook": "storybook build --docs --config-dir apps/storybook -o ./dist/app-storybook",
+    "docs:storybook": "storybook build --docs",
     "dev:drupal": "yarn ws dev drupal",
     "build:drupal": "yarn ws build drupal",
     "lint:js": "eslint --ext .js ./source",
