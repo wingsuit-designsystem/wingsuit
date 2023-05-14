@@ -25,14 +25,13 @@
   "scripts": {
     "dev:storybook": "yarn ws dev storybook",
     "build:storybook": "yarn ws build storybook",
-    "docs:storybook": "yarn ws build storybook --docs --config-dir apps/storybook -o ./dist/app-storybook",
+    "docs:storybook": "yarn ws build storybook --docs",
     "lint:js": "eslint --ext .js ./",
     "lint:css": "stylelint '**/*.css'",
     "lint": "npm run lint:js; npm run lint:css;",
     "fmt:js": "eslint --fix --ext .js,.vue ./",
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
-    "fmt": "npm run fmt:js; npm run fmt:css",
-    "ci": "npm run lint && npm run build:drupal"
+    "fmt": "npm run fmt:js; npm run fmt:css"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

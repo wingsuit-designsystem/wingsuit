@@ -57,7 +57,9 @@
     "@wingsuit-designsystem/preset-storybook": "2.0.0-alpha.4",
     "@wingsuit-designsystem/preset-tailwind": "2.0.0-alpha.4",
     "@wingsuit-designsystem/preset-twing": "2.0.0-alpha.4",
-    "@wingsuit-designsystem/storybook": "2.0.0-alpha.4"
+    "@wingsuit-designsystem/storybook": "2.0.0-alpha.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@drupal/once": "^1.0.1",
