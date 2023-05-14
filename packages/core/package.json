@@ -53,9 +53,7 @@
     "style-loader": "^3.3.0",
     "webpack": "^5.56.1",
     "webpack-merge": "^5.8.0",
-    "yargs": "^17.2.1"
-  },
-  "devDependencies": {
+    "yargs": "^17.2.1",
     "js-yaml-loader": "^1.2.2",
     "webpack-cli": "^5.1.1"
   }
