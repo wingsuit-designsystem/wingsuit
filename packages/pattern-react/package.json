@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/pattern-react",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "Wingsuit Pattern for React.",
   "repository": {
     "type": "git",
@@ -30,14 +30,14 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.4",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.5",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "react": "^16 || ^18",
     "@types/react": "^16 || ^18",
-    "@types/react-dom": "^16 || ^18"
+    "@types/react-dom": "^16 || ^18",
+    "react": "^16 || ^18"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"
