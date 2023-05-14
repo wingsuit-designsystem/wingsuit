@@ -1,7 +1,5 @@
 import AppConfig from '../../AppConfig';
 
-const ESLintPlugin = require('eslint-webpack-plugin');
-
 interface BabelConfig {
   exclude: RegExp;
 }
@@ -18,7 +16,6 @@ export function name(appConfig: AppConfig) {
 
 export function webpack(appConfig: AppConfig, config: BabelConfig) {
   return {
-    plugins: [new ESLintPlugin({ exclude: 'node_modules', errorOnUnmatchedPattern: false })],
     module: {
       rules: [
         {

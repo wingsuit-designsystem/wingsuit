@@ -33,6 +33,7 @@ export default {
         },
       },
     },
+    'storybook-addon-theme-provider',
     {
       name: '@wingsuit-designsystem/storybook',
       options: {

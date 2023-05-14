@@ -4,6 +4,7 @@ import Splide from '@splidejs/splide';
 Drupal.behaviors.slider = {
   attach() {
     const sliders = once('splide-slider', '.splide');
+
     sliders.forEach((slider) => {
       const autoplay = slider.attributes['data-autoplay'].value;
       const slidesPerView = slider.attributes['data-slides-per-view'].value;
