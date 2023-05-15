@@ -100,7 +100,6 @@ export default class PresetManager {
         }
       });
     }
-    const keys = {};
     presets.forEach((presetDef) => {
       if (presetDef.preset.configKey) {
         const key = presetDef.preset.configKey(appConfig);
