@@ -24,8 +24,12 @@
 %}
 
 {% set link_attributes = create_attribute().addClass(configuration_classes['link']['regular']) %}
-{% set last_item_attributes = create_attribute().addClass(configuration_classes['list_item']) %}
-{% set list_attributes = create_attribute().addClass(configuration_classes['list']) %}
+{% set list_item_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['list_item']) %}
+{% set last_item_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['last_item']) %}
+{% set list_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['list']) %}
+{% set list_link_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['list_link']) %}
+{% set list_mobile_wrapper_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['list_mobile_wrapper']) %}
+{% set list_icon_attributes = create_attribute().addClass(pattern_configuration('breadcrumb', variant, 'classes')['list_icon']) %}
 
 {#
   Render Slots
@@ -53,15 +57,15 @@
       <li {{ list_item_attributes }}>
         {% if loop.last and loop.length != 1%}
           {% set last_item = '' %}
-          <div class="hidden lg:block font-semibold text-royal-500 dark:text-white no-underline"{{ last_item }} {{ link_classes }}">
+          <div {{ last_item_attributes }}>
             {{ item.text }}
           </div>
         {% else %}
-          <a class="hidden lg:block font-normal text-black lg:hover:underline dark:text-sky-blue-300 {{ last_item }} {{ link_classes }}" href="{{ item.url }}">
+          <a {{ list_link_attributes }} href="{{ item.url }}">
             {{ item.text }}
           </a>
         {% endif %}
-        <div class="block lg:hidden {{ list_classes }}">
+        <div {{ list_mobile_wrapper_attributes }}>
           {% if loop.length == 1 %}
             {{ mobile_icon }}
             {{ mobile_text }}
@@ -72,7 +76,7 @@
           {% endif %}
         </div>
         {% if loop.last == false %}
-          <div class="hidden lg:block mx-1 lg:mx-2 text-royal-500 dark:text-white">
+          <div {{ list_icon_attributes }}>
             {{ pattern('icon', {icon: 'chevron-right' }, 'spritemap' ) }}
           </div>
         {% endif %}

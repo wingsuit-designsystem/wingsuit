@@ -22,6 +22,10 @@ breadcrumb:
       wrapper: 'w-full truncate'
       list: 'flex items-center'
       list_item: 'flex items-center'
+      last_item: 'hidden lg:block font-semibold text-royal-500 dark:text-white no-underline'
+      list_link: 'hidden lg:block font-normal text-black lg:hover:underline dark:text-sky-blue-300'
+      list_mobile_wrapper: 'block lg:hidden'
+      list_icon: 'hidden lg:block mx-1 lg:mx-2 text-royal-500 dark:text-white'
       link:
         regular: 'text-sm lg:text-base'
         loop:
