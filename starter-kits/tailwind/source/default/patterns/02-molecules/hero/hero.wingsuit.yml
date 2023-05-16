@@ -18,10 +18,10 @@ hero:
         settings:
           src: images/hero.png
   configuration:
-    defaults:
-      cell_left_classes: 'flex flex-col relative'
-      cell_right_classes: 'flex flex-1 items-center'
-      gradiant_classes:
+    classes:
+      cell_left: 'flex flex-col relative'
+      cell_right: 'flex flex-1 items-center'
+      gradiant:
         base: 'absolute transform filter'
         first_layer:
           forward: 'w-[435px] h-[434px] -rotate-[135deg] lg:rotate-0 lg:left-[232px] top-[-90px] lg:top-[73px] bg-gradient-to-b to-transparent from-[#00C2FF] blur-[70px] opacity-20'
@@ -32,4 +32,4 @@ hero:
         third_layer:
           forward: 'w-[209px] h-[296px] transform -rotate-[135deg] lg:rotate-0 top-[-190px] right-0 lg:right-auto lg:left-[345px] lg:top-[274px] bg-gradient-to-b from-transparent to-blue-700 opacity-70 blur-[70px]'
           reverse: 'w-[209px] h-[296px] top-[-190px] right-0 lg:w-[261px] lg:h-[370px] lg:right-0 lg:top-0 bg-gradient-to-b from-transparent to-blue-700 opacity-70 blur-[70px] -rotate-[135deg]'
-      image_classes: 'relative z-20'
+      image: 'relative z-20'
