@@ -23,7 +23,6 @@ Object.keys(namespaces).forEach((key) => {
 module.exports = {
   extends: [
     'airbnb-base',
-    'plugin:jest/recommended',
     'plugin:prettier/recommended',
     'plugin:react/recommended',
   ],
