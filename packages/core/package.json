@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "2.0.0-alpha.5",
+  "version": "2.0.0-alpha.6",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "css-minimizer-webpack-plugin": "^5.0.0",
     "fs-extra": "^10.0.0",
     "glob": "^8.1.0",
+    "js-yaml-loader": "^1.2.2",
     "memfs": "^3.4.1",
     "merge-deep": "^3.0.3",
     "mini-css-extract-plugin": "^2.6.0",
@@ -52,9 +53,8 @@
     "resolve-url-loader": "^3.1.4",
     "style-loader": "^3.3.0",
     "webpack": "^5.56.1",
+    "webpack-cli": "^5.1.1",
     "webpack-merge": "^5.8.0",
-    "yargs": "^17.2.1",
-    "js-yaml-loader": "^1.2.2",
-    "webpack-cli": "^5.1.1"
+    "yargs": "^17.2.1"
   }
 }
