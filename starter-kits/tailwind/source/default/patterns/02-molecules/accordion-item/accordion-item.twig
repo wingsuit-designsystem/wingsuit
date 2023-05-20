@@ -14,19 +14,19 @@
 {#
   Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('accordion_item', null, 'defaults')['classes']) %}
-{% set wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['wrapper_classes']) %}
-{% set label_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['label_wrapper_classes']) %}
-{% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['content_wrapper_classes']) %}
-{% set content_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['content_classes']) %}
-{% set label_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['label_classes']) %}
-{% set icon_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'defaults')['icon_classes']) %}
+{% set attributes = attributes.addClass(pattern_configuration('accordion_item', null, 'classes')['wrapper']) %}
+{% set inner_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['inner_wrapper']) %}
+{% set label_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['label_wrapper']) %}
+{% set content_wrapper_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['content_wrapper']) %}
+{% set content_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['content']) %}
+{% set label_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['label']) %}
+{% set icon_attributes = create_attribute().addClass(pattern_configuration('accordion_item', null, 'classes')['icon']) %}
 
 {#
   Template
 #}
 <div {{ attributes }} x-data="{selected: false}">
-  <div type="button" {{ wrapper_attributes }}
+  <div type="button" {{ inner_wrapper_attributes }}
        @click="selected !== true ? selected = true : selected = false">
     <div {{ label_wrapper_attributes }}>
       <span {{ label_attributes }}">{{ label }}</span>

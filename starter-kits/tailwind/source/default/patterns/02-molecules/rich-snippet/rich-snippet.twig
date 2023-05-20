@@ -15,10 +15,10 @@ Defaults
 {#
   Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'default')['attributes_classes']) %}
-{% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'default')['preheadline_classes']) %}
+{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'classes')['wrapper']) %}
+{% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'classes')['preheadline']) %}
 {% set headline_attributes = create_attribute().addClass([
-  pattern_configuration('rich_snippet', variant, 'default')['headline_classes'],
+  pattern_configuration('rich_snippet', variant, 'classes')['headline'],
   pattern_configuration('rich_snippet', variant, 'headline_text'),
   pattern_configuration('rich_snippet', variant, 'spacing'),
 ] | sort | join(' ') | trim ) %}

@@ -20,12 +20,12 @@ accordion_item:
       type: token
       label: Id
   configuration:
-    defaults:
-      classes: 'relative border-b border-gray-200'
-      wrapper_classes: 'w-full py-6 px-4 text-left cursor-pointer foo'
-      label_wrapper_classes: 'flex items-center gap-4 justify-between'
-      label_classes: 'font-bold font-display'
-      icon_classes: 'text-purple-600'
-      content_wrapper_classes: 'relative overflow-hidden transition-all max-h-0 duration-700'
-      content_classes: 'px-4 lg:pr-16 pb-6 bar'
+    classes:
+      wrapper: 'relative border-b border-gray-200'
+      inner_wrapper: 'w-full py-6 px-4 text-left cursor-pointer foo'
+      label_wrapper: 'flex items-center gap-4 justify-between'
+      label: 'font-bold font-display'
+      icon: 'text-purple-600'
+      content_wrapper: 'relative overflow-hidden transition-all max-h-0 duration-700'
+      content: 'px-4 lg:pr-16 pb-6 bar'
 

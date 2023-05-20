@@ -103,7 +103,7 @@ module.exports = {
     },
     fontFamily: {
       display: ['DM sans', 'Sans'],
-      copy: ['Noto serif', 'Serif'],
+      copy: ['Noto serif'],
     },
   },
   plugins: [hamburgers, forms, typography],
