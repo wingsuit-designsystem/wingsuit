@@ -62,6 +62,7 @@
     "inquirer-fs-selector": "^1.2.0",
     "lerna": "^3.20.2",
     "leven": "^3.1.0",
+    "core-js": "^3.30.2",
     "lodash": "^4.17.15",
     "mv": "^2.1.1",
     "prettier": "^2.3.0",
