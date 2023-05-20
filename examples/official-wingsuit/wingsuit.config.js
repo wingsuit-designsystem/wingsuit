@@ -9,6 +9,7 @@ module.exports = {
       namespaces: {
         tokens: path.resolve(__dirname, 'source/default/tokens'),
         components: path.resolve(patterns, 'components'),
+        atoms: path.resolve(patterns, 'atoms'),
         pages: path.resolve(appsPatterns, 'pages'),
       },
     },
