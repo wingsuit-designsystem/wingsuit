@@ -46,11 +46,11 @@
     "@wingsuit-designsystem/core": "2.0.0-alpha.5",
     "@wingsuit-designsystem/pattern-react": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.5",
-    "@wingsuit-designsystem/preset-icon-spritemap": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-placeholder": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-storybook": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-tailwind": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-twing": "2.0.0-alpha.5",
+    "@wingsuit-designsystem/preset-pattern": "2.0.0-alpha.5",
     "@wingsuit-designsystem/preset-lint": "2.0.0-alpha.5",
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.5",
 
