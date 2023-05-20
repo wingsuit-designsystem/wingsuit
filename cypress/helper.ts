@@ -5,7 +5,7 @@ type StorybookApps = 'official-wingsuit';
 type Addons = 'Actions' | 'Knobs';
 
 const getUrl = (route: string) => {
-  const host = Cypress.env('location') || 'http://localhost:8001';
+  const host = Cypress.env('location') || 'http://localhost:4000';
   return `${host}/${route}`;
 };
 

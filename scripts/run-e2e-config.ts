@@ -14,7 +14,7 @@ export const skTailwindInit: Parameters = {
   name: 'sk-tailwind',
   version: 'latest',
   generator: [
-    `npx @wingsuit-designsystem/cli init --smoke-test`,
+    `npx @wingsuit-designsystem/cli@latest init --smoke-test`,
   ].join(' && '),
 };
 
@@ -22,7 +22,7 @@ export const skBootstrapInit: Parameters = {
   name: 'sk-bootstrap',
   version: 'latest',
   generator: [
-    `npx @wingsuit-designsystem/cli init -k vanilla-scss --smoke-test`,
+    `npx @wingsuit-designsystem/cli@latest init -k vanilla-scss --smoke-test`,
   ].join(' && '),
 };
 

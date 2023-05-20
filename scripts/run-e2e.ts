@@ -225,7 +225,7 @@ const runTests = async ({ name, version, ...rest }: Parameters) => {
       message: 'Should open cypress?',
     }));
   }
-
+  console.log(options);
   await runCypress(options, 'http://localhost:4000', open);
   logger.log();
 
