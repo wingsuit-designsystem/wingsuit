@@ -19,7 +19,7 @@ export const skTailwindInit: Parameters = {
 };
 
 export const skBootstrapInit: Parameters = {
-  name: 'sk-bootstrap',
+  name: 'sk-vanilla-scss',
   version: 'latest',
   generator: [
     `npx @wingsuit-designsystem/cli@latest init -k vanilla-scss --smoke-test`,

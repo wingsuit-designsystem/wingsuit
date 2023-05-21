@@ -169,7 +169,7 @@ const runCypress = async ({ name, version }: Options, location: string, open: bo
   logger.info(`🤖 Running Cypress tests`);
   try {
     await exec(
-      `yarn cypress ${cypressCommand} --config -s "cypress/generated/*" -e location="${location}"`,
+      `yarn cypress ${cypressCommand} --config '{"e2e":{"specPattern": ["cypress/e2e/${name}/**/*"]}}' -e location="${location}"`,
       { cwd: rootDir }
     );
     logger.info(`✅ E2E tests success`);
@@ -196,15 +196,6 @@ const runTests = async ({ name, version, ...rest }: Parameters) => {
   if (!(await prepareDirectory(options))) {
     await generate({ ...options, cwd: siblingDir });
     logger.log();
-
-    // await initStorybook(options);
-    // logger.log();
-
-//    await setResolutions(options);
-//    logger.log();
-
-//    await addRequiredDeps(options);
-//    logger.log();
 
     await buildStorybook(options);
     logger.log();
