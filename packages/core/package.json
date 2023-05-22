@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "2.0.0-alpha.6",
+  "version": "2.0.0-alpha.7",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -33,13 +33,14 @@
   },
   "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
   "dependencies": {
+    "@babel/preset-env": "^7.21.5",
     "@types/node": "^16.10.2",
     "@types/webpack": "^5.28.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
-    "@babel/preset-env": "^7.21.5",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.30.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "fs-extra": "^10.0.0",
@@ -50,7 +51,6 @@
     "mini-css-extract-plugin": "^2.6.0",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "postcss": "^8.3.9",
-    "cross-env": "^7.0.3",
     "postcss-loader": "^7.2.4",
     "resolve-url-loader": "^3.1.4",
     "style-loader": "^3.3.0",
