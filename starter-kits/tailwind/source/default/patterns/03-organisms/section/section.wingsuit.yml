@@ -2,6 +2,9 @@ section:
   use: "@organisms/section/section.twig"
   label: Columns section
   icon_path: ws-assets://images/section-icon.svg
+  dependencies:
+    - grid
+    - container
   extends:
     - grid.settings
     - container.settings
