@@ -106,7 +106,7 @@ export function wingsuitConfig(): Config {
         },
         startup(passedArgs) {
           if (this.environment === 'production') {
-            return `cross-env-shell NODE_ENV=${this.environment} storybook build --config-dir ${this.absAppPath} ${passedArgs}`;
+            return `cross-env-shell NODE_ENV=${this.environment} storybook build --output-dir ${this.absDistFolder} --config-dir ${this.absAppPath} ${passedArgs}`;
           }
           return `cross-env-shell NODE_ENV=${this.environment} storybook dev --config-dir ${this.absAppPath}  ${passedArgs}`;
         },

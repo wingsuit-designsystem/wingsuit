@@ -13,6 +13,7 @@ module.exports = {
     '@wingsuit-designsystem/preset-twing',
     '@wingsuit-designsystem/preset-placeholder',
     '@wingsuit-designsystem/preset-icon',
+    '@wingsuit-designsystem/preset-icon-spritemap',
     '@wingsuit-designsystem/preset-storybook',
   ],
   designSystems: {

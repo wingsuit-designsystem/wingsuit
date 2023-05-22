@@ -50,6 +50,7 @@
     "@wingsuit-designsystem/core": "2.0.0-alpha.6",
     "@wingsuit-designsystem/pattern-react": "2.0.0-alpha.6",
     "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.6",
+    "@wingsuit-designsystem/preset-icon-spritemap": "2.0.0-alpha.6",
     "@wingsuit-designsystem/preset-lint": "2.0.0-alpha.6",
     "@wingsuit-designsystem/preset-pattern": "2.0.0-alpha.6",
     "@wingsuit-designsystem/preset-placeholder": "2.0.0-alpha.6",
