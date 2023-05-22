@@ -106,10 +106,10 @@ export function wingsuitConfig(): Config {
         },
         startup(passedArgs) {
           if (this.environment === 'production') {
-            if (passedArgs['output-dir']) {
-              delete passedArgs['output-dir'];
-            }
-            return `cross-env-shell NODE_ENV=${this.environment} storybook build --output-dir ${this.absDistFolder} --config-dir ${this.absAppPath} ${passedArgs}`;
+            const extraArgs = !passedArgs.includes('--output-dir')
+              ? `--output-dir ${this.absDistFolder}`
+              : '';
+            return `cross-env-shell NODE_ENV=${this.environment} storybook build --config-dir ${this.absAppPath} ${passedArgs} ${extraArgs}`;
           }
           return `cross-env-shell NODE_ENV=${this.environment} storybook dev --config-dir ${this.absAppPath}  ${passedArgs}`;
         },
