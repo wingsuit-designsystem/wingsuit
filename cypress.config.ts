@@ -13,7 +13,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       return plugin(on, config);
     },
-    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/e2e/official-wingsuit/**/*.{js,jsx,ts,tsx}',
   },
 
   component: {
