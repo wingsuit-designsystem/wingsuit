@@ -1,20 +1,15 @@
 import { clickAddon, visit } from '../../helper';
 
-describe('Tailwind: Card', () => {
+describe('Welcome Page', () => {
   beforeEach(() => {
     visit(
-      '?path=/story/molecules-card--carddefault-pattern'
+      '?path=/docs/foundations-welcome--docs'
     );
   });
 
-  it('[text] it should change field value.', () => {
-    clickAddon('Controls');
-    cy.get('#control-preheadline')
-      .clear()
-      .type('John Doe');
-
+  it('Design system Text.', () => {
     cy.wait(1000);
     cy.getStoryElement()
-      .should('contain.text', 'John Doe')
+      .should('contain.text', 'Design system')
   });
 });
