@@ -1,0 +1,5 @@
+@import 'tokens/_tokens.scss';
+.navbar-brand {
+  display: block;
+  background-color: map-get($theme-colors, primary);
+}
