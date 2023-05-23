@@ -40,3 +40,15 @@
     {% endblock %}
   {% endembed %}
 </header>
+{% embed "@organisms/container/container.twig" with {
+  breadcrumb: breadcrumb,
+  padding_top: 'none',
+  padding_bottom: 'none',
+} only%}
+  {% block content %}
+    <div class="py">
+      {{ breadcrumb }}
+    </div>
+  {% endblock %}
+{% endembed %}
+

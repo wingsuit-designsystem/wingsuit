@@ -18,6 +18,11 @@ header:
       label: Language select
       preview:
         id: language_select
+    breadcrumb:
+      type: pattern
+      label: Breadcrumb
+      preview:
+        id: breadcrumb
   variants:
     fixed:
       label: Fixed

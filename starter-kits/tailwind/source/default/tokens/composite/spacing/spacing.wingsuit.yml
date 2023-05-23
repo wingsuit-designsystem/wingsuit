@@ -72,4 +72,4 @@ tokens_spacing:
           configuration: ''
         small:
           label: Small
-          configuration: 'max-w-6xl'
+          configuration: 'max-w-7xl'

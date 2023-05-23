@@ -1,4 +1,6 @@
 tokens_colors:
+  use: ""
+  label: Tokens colors
   settings:
     bg:
       type: colorwidget
