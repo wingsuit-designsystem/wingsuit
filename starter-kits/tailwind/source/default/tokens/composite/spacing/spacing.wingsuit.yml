@@ -1,4 +1,6 @@
 tokens_spacing:
+  use: ""
+  label: Tokens spacing
   settings:
     tab_spacing:
       label: Spacing
