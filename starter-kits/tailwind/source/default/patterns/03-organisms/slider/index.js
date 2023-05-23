@@ -1,8 +1,5 @@
-/**
- * slider
- */
+import '@splidejs/splide/css/core';
 
 import './slider.behavior';
 import './slider.wingsuit.yml';
-import '@splidejs/splide/dist/css/splide-core.min.css';
 import './slider.twig';

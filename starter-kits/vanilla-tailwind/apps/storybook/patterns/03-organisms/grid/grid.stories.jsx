@@ -1,4 +1,4 @@
-import { RenderTwig } from '@wingsuit-designsystem/storybook';
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';
 import React from 'react';
 
 export default {

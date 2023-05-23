@@ -1,6 +1,9 @@
 section_slider:
   use: "@organisms/section-slider/section-slider.twig"
   label: "Section Slider"
+  dependencies:
+    - container
+    - slider
   extends:
     - container.settings
     - slider.settings

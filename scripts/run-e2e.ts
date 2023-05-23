@@ -169,7 +169,7 @@ const runCypress = async ({ name, version }: Options, location: string, open: bo
   logger.info(`🤖 Running Cypress tests`);
   try {
     await exec(
-      `yarn cypress ${cypressCommand} --config --spec "cypress/generated/*" --env location="${location}"`,
+      `yarn cypress ${cypressCommand} --config '{"e2e":{"specPattern": ["cypress/e2e/${name}/**/*"]}}' -e location="${location}"`,
       { cwd: rootDir }
     );
     logger.info(`✅ E2E tests success`);
@@ -197,15 +197,6 @@ const runTests = async ({ name, version, ...rest }: Parameters) => {
     await generate({ ...options, cwd: siblingDir });
     logger.log();
 
-    // await initStorybook(options);
-    // logger.log();
-
-//    await setResolutions(options);
-//    logger.log();
-
-//    await addRequiredDeps(options);
-//    logger.log();
-
     await buildStorybook(options);
     logger.log();
 
@@ -225,7 +216,7 @@ const runTests = async ({ name, version, ...rest }: Parameters) => {
       message: 'Should open cypress?',
     }));
   }
-
+  console.log(options);
   await runCypress(options, 'http://localhost:4000', open);
   logger.log();
 

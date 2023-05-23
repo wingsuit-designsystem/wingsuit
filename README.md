@@ -84,7 +84,12 @@ yarn dev:drupal
 yarn dev:drupal
 ```
 
-## Wingsuit is inspired by [Particle](https://github.com/phase2/particle) from [Phase2](https://www.phase2technology.com/)
+## Running e2e tests
 
-* Package.json
-* 
+Tab 1
+yarn local-registry --port 6000 --open --publish
+
+Tab 2
+export CIRCLE_BRANCH=release-2-0
+yarn config set registry http://localhost:6000/
+yarn test:e2e-framework
