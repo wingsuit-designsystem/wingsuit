@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * search-bar
+ *
+ * See search-bar.wingsuit.yaml for documentation.
+ */
+#}
+{#
+Defaults
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{#
+Attributes
+#}
+{% set attributes = attributes.addClass(pattern_configuration('search_bar', null, 'classes')['wrapper']) %}
+{% set inner_wrapper_attributes = create_attribute().addClass(pattern_configuration('search_bar', variant, 'classes')['inner_wrapper']) %}
+{% set first_icon_attributes = create_attribute().addClass(pattern_configuration('search_bar', variant, 'classes')['first_icon']) %}
+{% set second_icon_attributes = create_attribute().addClass(pattern_configuration('search_bar', variant, 'classes')['second_icon']) %}
+
+<div {{ attributes }}>
+  <div class="hidden" :class="{'block': search, 'hidden': !search}">
+    {{ input }}
+  </div>
+  <div {{ inner_wrapper_attributes }}
+       :class="{'absolute top-0 right-0 flex-1': search}">
+    <div {{ first_icon_attributes }}
+         :class="{'hidden': search}"
+         @click="search = !search;">
+      <div class="cursor-pointer">
+        {{ pattern('icon', {icon: "search", scale: '2' }, 'spritemap' ) }}
+      </div>
+    </div>
+    <button {{ second_icon_attributes }}
+            :class="{'w-[36px] h-[36px] block': search, 'hidden': !search}">
+      <div class="cursor-pointer">
+        {{ pattern('icon', {icon: "search", scale: '2' }, 'spritemap' ) }}
+      </div>
+    </button>
+  </div>
+</div>
+
+

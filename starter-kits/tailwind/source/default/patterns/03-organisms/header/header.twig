@@ -1,10 +1,10 @@
 {#
-  Defaults
+Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
 
 {#
-  Attributes
+Attributes
 #}
 {% set attributes = attributes.addClass(pattern_configuration('header', variant, 'default')['classes']).addClass(pattern_configuration('header', variant, 'functionality')['position']) %}
 {% set wrapper_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['wrapper_classes']) %}
@@ -13,7 +13,7 @@
 {% set menu_attributes = create_attribute().addClass(pattern_configuration('header', variant, 'default')['menu_classes']) %}
 
 {#
-  TEMPLATE
+TEMPLATE
 #}
 <header {{ attributes }}>
   {% embed "@organisms/container/container.twig" with {
@@ -23,18 +23,22 @@
     wrapper_attributes: wrapper_attributes,
     logo_attributes: logo_attributes,
     hamburger_attributes: hamburger_attributes,
-    menu_attributes: menu_attributes
-  } only%}
+    menu_attributes: menu_attributes,
+    search_bar: search_bar
+  } only %}
     {% block content %}
       <div {{ wrapper_attributes }}>
         <div {{ logo_attributes }}>
           {{ pattern('logo', { }) }}
         </div>
         <div {{ hamburger_attributes }}>
-          {{ pattern('hamburger') }}
+          {{ pattern('hamburger', {size: 'default'}) }}
         </div>
-        <div {{ menu_attributes }} :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
-          {{ menu }}
+        <div class="flex items-center lg:gap-6 flex-row-reverse lg:flex-row">
+          <div {{ menu_attributes }} :class="{'block': menuIsOpen, 'hidden': !menuIsOpen}">
+            {{ menu }}
+          </div>
+          {{ search_bar }}
         </div>
       </div>
     {% endblock %}
@@ -42,13 +46,11 @@
 </header>
 {% embed "@organisms/container/container.twig" with {
   breadcrumb: breadcrumb,
-  padding_top: 'none',
-  padding_bottom: 'none',
-} only%}
+  padding_top: 'small',
+  padding_bottom: 'small',
+} only %}
   {% block content %}
-    <div class="py">
-      {{ breadcrumb }}
-    </div>
+    {{ breadcrumb }}
   {% endblock %}
 {% endembed %}
 

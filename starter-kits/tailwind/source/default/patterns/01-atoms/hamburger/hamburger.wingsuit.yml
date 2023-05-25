@@ -3,7 +3,8 @@ hamburger:
   label: Hamburger
   description: Simple animated hamburger icon.
   configuration:
-    color: 'bg-black'
+    color: 'bg-white'
+    inner_classes: 'before:'
   settings:
     size:
       type: select
@@ -16,7 +17,7 @@ hamburger:
           configuration: tham-w-4
         default:
           label: Default
-          configuration: tham-w-6
+          configuration: tham-w-5
         large:
           label: Large
           configuration: tham-w-8

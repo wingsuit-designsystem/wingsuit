@@ -23,6 +23,11 @@ header:
       label: Breadcrumb
       preview:
         id: breadcrumb
+    search_bar:
+      type: pattern
+      label: Search bar
+      preview:
+        id: search_bar
   variants:
     fixed:
       label: Fixed
@@ -37,7 +42,7 @@ header:
   configuration:
     default:
       classes: 'w-full z-30 top-0 header-offset bg-teal-800'
-      wrapper_classes: 'flex py-3 lg:py-6 justify-between md:flex-row'
+      wrapper_classes: 'flex items-center py-3 lg:py-6 justify-between md:flex-row'
       logo_classes: 'w-[132px] lg:w-[152px] max-w-xs md:max-w-7xl'
       hamburger_classes: 'flex justify-end items-center flex-1 lg:hidden'
-      menu_classes: 'w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-center lg:w-auto lg:block lg:mt-0 lg:bg-transparent'
+      menu_classes: 'w-full flex-grow hidden text-black z-20 mt-5 sm:mt-6 bg-white absolute lg:static left-0 top-11 w-full lg:flex lg:justify-end lg:items-end lg:w-auto lg:block lg:mt-0 lg:bg-transparent'

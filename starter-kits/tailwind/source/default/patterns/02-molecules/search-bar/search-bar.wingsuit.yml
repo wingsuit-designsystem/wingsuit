@@ -1,0 +1,24 @@
+search_bar:
+  use: "@molecules/search-bar/search-bar.twig"
+  label: Search Bar
+  description: Main Search bar
+  fields:
+    input:
+      type: pattern
+      label: Input
+      preview:
+        id: form_input
+        variant: search
+    submit:
+      type: pattern
+      label: Submit
+      preview:
+        id: form_submit
+        fields:
+          text: 'Search'
+  configuration:
+    classes:
+      wrapper: 'relative w-full'
+      inner_wrapper: 'flex justify-end  items-center h-full'
+      first_icon: 'block p-2 bg-neutral-200 rounded-full m-[1px]'
+      second_icon: 'flex flex-1 items-center block mr-[10px] rounded-full w-[36px] h-[36px]'
