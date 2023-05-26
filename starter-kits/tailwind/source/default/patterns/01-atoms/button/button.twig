@@ -23,7 +23,7 @@
   Attributes
 #}
 {% set attributes = attributes.addClass([
-  pattern_configuration('button', variant, 'wrapper_classes'),
+    pattern_configuration('button', variant, 'wrapper_classes'),
     pattern_configuration('button', variant, 'classes')[active_key],
     variant == 'link' ? 'px-0' : pattern_configuration('button', variant, 'size')[size]['padding'],
     pattern_configuration('button', variant, 'size')[size]['text'],

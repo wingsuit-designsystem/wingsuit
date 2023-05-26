@@ -44,19 +44,17 @@ rich_snippet:
     small:
       label: Small
       configuration:
-        headline_text: 'text-2xl font-display'
+        headline_text: 'font-display'
         text: 'text-base font-copy'
         spacing: 'mb-3'
     default:
       label: Default
       configuration:
-        headline_text: 'text-2xl lg:text-4xl'
         text: 'text-base font-copy'
         spacing: 'mb-3 lg:mb-4'
     large:
       label: Large
       configuration:
-        headline_text: 'text-4xl lg:text-6xl'
         text: 'text-base lg:text-lg font-copy'
         spacing: 'mb-4'
   configuration:
@@ -64,3 +62,21 @@ rich_snippet:
       wrapper: 'flex flex-col flex-1'
       preheadline: 'text-teal-500 text-base mb-2 font-display font-bold'
       headline: 'font-display font-bold'
+  settings:
+    headline_tag:
+      type: select
+      label: Headline Size
+      allow_expose: true
+      options:
+        h1:
+          label: H1
+          configuration:
+            size: 'text-4xl lg:text-6xl'
+        h2:
+          label: H2
+          configuration:
+            size: 'text-2xl lg:text-4xl'
+        h3:
+          label: H3
+          configuration:
+            size: 'text-2xl'

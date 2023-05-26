@@ -46,7 +46,7 @@
   {% endset %}
   {% set cell_right %}
     <div {{ cell_right_attributes}}>
-      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action,}, 'large' ) }}
+      {{ pattern('rich_snippet', {preheadline: preheadline, headline: headline, text: text, action: action, headline_tag: headline_tag}, 'large' ) }}
     </div>
   {% endset %}
   {{ pattern('grid', {
