@@ -28,4 +28,3 @@ accordion_item:
       icon: 'text-purple-600'
       content_wrapper: 'relative overflow-hidden transition-all max-h-0 duration-700'
       content: 'px-4 lg:pr-16 pb-6 bar'
-

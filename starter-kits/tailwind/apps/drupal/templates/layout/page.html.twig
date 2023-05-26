@@ -46,13 +46,19 @@
  */
 #}
 {% set content %}
-  {% block main %}{{ page.content }}{% endblock %}
+  {% block main %}
+    {{ full_top }}
+    {{ page.content }}
+    {{ full_bottom }}
+  {% endblock %}
 {% endset %}
 
 {{ page.tabs }}
 
 {% embed "@templates/site-container.twig" with {
   primary_menu: page.primary_menu,
+  search_bar: page.search_bar,
+  breadcrumb: page.breadcrumb,
   language_select: page.language_switcher,
   footer_menu: page.footer_menu,
   highlighted: page.highlighted

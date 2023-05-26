@@ -1,0 +1,146 @@
+.prose {
+  /* Font */
+  @apply [&>*:first-child]:mt-0 [&>*:last-child]:mb-0;
+  h1 {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black dark:text-white;
+    @apply text-4xl lg:text-6xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-8;
+  }
+  h2 {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black dark:text-white;
+    @apply text-3xl lg:text-5xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-6 lg:mb-10 mt-8 lg:mt-12;
+  }
+  h3 {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-2xl lg:text-4xl;
+    @apply tracking-normal lg:tracking-[0.01em];
+    @apply mb-5 lg:mb-8 mt-6 lg:mt-10;
+  }
+  h4 {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-xl lg:text-3xl;
+    @apply tracking-normal;
+    @apply mb-5 lg:mb-6 mt-5 lg:mt-8;
+  }
+  h5 {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black;
+    @apply text-xl lg:text-2xl;
+    @apply tracking-normal;
+    @apply mb-5 lg:mb-5 mt-5 lg:mt-6;
+  }
+  a {
+    @apply font-copy;
+    @apply font-bold;
+    @apply text-purple-600;
+    @apply text-base lg:text-lg;
+    @apply hover:no-underline;
+  }
+  p {
+    @apply font-copy;
+    @apply font-normal;
+    @apply text-black;
+    @apply text-base lg:text-lg;
+    @apply mb-5 lg:mb-5 mt-5 lg:mt-5;
+  }
+  p:first-child {
+    @apply mt-0;
+  }
+
+  .display1 {
+    @apply text-base lg:text-xl text-teal-300;
+  }
+
+  /*  blockquote */
+  blockquote p:after,
+  blockquote p:before {
+    content: "";
+  }
+  blockquote {
+    @apply border-0;
+    @apply pl-0;
+    p {
+      background-image: url('data:image/svg+xml;utf8,<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 8.875V7.5625C13.1406 5.82812 12.25 3.8125 11.9219 1.65625C11.8281 1.04688 11.0312 0.765625 10.6562 1.28125C9.625 2.45312 8.875 3.8125 8.35938 5.35938C9.95312 7.14062 12.1094 8.35938 14.5 8.875ZM19.75 4C17.6406 4 16 5.6875 16 7.79688V10.5625C11.125 10.2812 6.95312 7.28125 5.07812 2.96875C4.79688 2.40625 3.95312 2.35938 3.71875 2.92188C2.92188 4.5625 2.5 6.4375 2.5 8.35938C2.5 11.6875 4.09375 14.7812 6.48438 17.0781C7.09375 17.6875 7.70312 18.1562 8.3125 18.625L1.5625 20.3125C1.04688 20.4062 0.8125 21.0156 1.09375 21.4375C1.9375 22.7031 3.95312 24.8594 8.26562 25C8.64062 25.0469 9.01562 24.9062 9.29688 24.6719L12.3906 22L16 22.0469C20.125 22.0469 23.5 18.6719 23.5 14.5469V7L24.9531 4H19.75ZM19.75 8.54688C19.3281 8.54688 18.9531 8.17188 18.9531 7.79688C18.9531 7.375 19.3281 7.04688 19.75 7.04688C20.125 7.04688 20.4531 7.375 20.4531 7.79688C20.5 8.17188 20.125 8.54688 19.75 8.54688Z" fill="%239333EA"/></svg>');
+      background-size: 24px;
+      @apply text-2xl;
+      @apply text-center;
+      @apply !font-bold;
+      @apply font-display;
+      @apply italic;
+      @apply bg-no-repeat bg-center bg-top;
+      @apply pt-10 lg:pt-11;
+    }
+  }
+  /*  Image */
+  img {
+    @apply rounded-lg;
+  }
+  /*  Table */
+  table {
+    @apply border-separate border-spacing-0 border border-gray-200 border-l-0 rounded-lg text-black text-left;
+  }
+  thead {
+    @apply bg-gray-50;
+  }
+  tbody tr:nth-child(even){
+    @apply bg-gray-50;
+  }
+  th {
+    @apply font-normal;
+    @apply px-6 py-3;
+    @apply border-l border-gray-200;
+  }
+  td:first-child {
+    @apply font-semibold;
+  }
+  td {
+    @apply px-6 py-7.5;
+    @apply border-l border-t border-gray-200;
+  }
+  /* top-left */
+  thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+    @apply rounded-tl-lg;
+  }
+  /* top-right */
+  thead:first-child tr:first-child th:last-child, tbody:first-child tr:first-child td:last-child {
+    @apply rounded-tr-lg;
+  }
+  /* bottom-right */
+  thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+    @apply rounded-bl-lg;
+  }
+  /* bottom-left */
+  thead:last-child tr:last-child th:last-child, tbody:last-child tr:last-child td:last-child {
+    @apply rounded-br-lg;
+  }
+  /* Lists */
+  ol ul {
+    @apply font-copy;
+  }
+  li::marker {
+    @apply text-black;
+  }
+  li {
+    @apply text-black;
+    @apply leading-8;
+    @apply font-copy;
+  }
+}
+
+/* optional variant
+.prose.article {
+
+}
+*/

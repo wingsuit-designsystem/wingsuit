@@ -1,4 +1,6 @@
 tokens_spacing:
+  use: ""
+  label: Tokens spacing
   settings:
     tab_spacing:
       label: Spacing
@@ -70,4 +72,4 @@ tokens_spacing:
           configuration: ''
         small:
           label: Small
-          configuration: 'max-w-6xl'
+          configuration: 'max-w-7xl'

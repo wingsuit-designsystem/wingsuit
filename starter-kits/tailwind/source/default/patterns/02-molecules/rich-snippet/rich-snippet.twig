@@ -11,6 +11,7 @@
 Defaults
 #}
 {% set attributes = attributes|default(create_attribute()) %}
+{% set headline_tag = headline_tag|default('h1') %}
 
 {#
   Attributes
@@ -21,7 +22,8 @@ Defaults
   pattern_configuration('rich_snippet', variant, 'classes')['headline'],
   pattern_configuration('rich_snippet', variant, 'headline_text'),
   pattern_configuration('rich_snippet', variant, 'spacing'),
-] | sort | join(' ') | trim ) %}
+  pattern_configuration('rich_snippet', variant, 'headline_tag')[headline_tag]['size'],
+]) %}
 {% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
 
 {#

@@ -88,7 +88,7 @@ pagination:
         ellipses: 0
   settings:
     ellipses:
-      type: object
+      type: boolean
       label: Ellipses
       description: |
         If there are more pages than the quantity allows, then an
@@ -101,22 +101,22 @@ pagination:
         previous: false
         next: true
     current:
-      type: text
+      type: textfield
       label: Current
       description: The page number of the current page
       default_value: '1'
     show_actions:
-      type: text
+      type: textfield
       label: Show Actions
       description: Display 'next' and 'previous' action links
       default_value: 0
     show_pages:
-      type: text
+      type: textfield
       label: Show Pages
       description: Display the pages array.
       default_value: 1
     show_first_last:
-      type: text
+      type: textfield
       label: Show first and last
       description: Show links to jump to first or last item of the pagination
       default_value: 0

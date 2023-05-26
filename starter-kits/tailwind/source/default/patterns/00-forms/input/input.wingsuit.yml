@@ -23,6 +23,12 @@ form_input:
       label: Date
       settings:
         attributes: "type=\"date\""
+    search:
+      label: Search
+      configuration:
+        search_classes: 'rounded-full placeholder-white border-teal-700 bg-teal-700'
+      settings:
+        attributes: "type=\"date\""
   settings:
     attributes:
       type: attributes
@@ -36,5 +42,4 @@ form_input:
     classes:
       wrapper: 'form-input py-[11px] px-4 border-gray-400
                 focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
-      radius: ' rounded-md'
 

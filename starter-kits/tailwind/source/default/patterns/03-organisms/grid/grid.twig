@@ -20,12 +20,11 @@
 #}
 {% set columns_ary = variant|split('_') %}
 {% set columns = columns_ary[0]|number_format %}
-{% set layout = layout|default(columns ~ '_equal') %}
+{% set grid_layout = grid_layout|default(columns ~ '_equal') %}
 {% set gutter_classes = pattern_configuration('grid', variant, 'gutter')[gutter] %}
-{% set layout_classes = pattern_configuration('grid', variant, 'layout')[layout] %}
+{% set layout_classes = pattern_configuration('grid', variant, 'grid_layout')[grid_layout] %}
 
 {% set classes = ([
-  'grid',
   layout_classes,
   gutter_classes,
 ]) | sort | join(' ') | trim %}

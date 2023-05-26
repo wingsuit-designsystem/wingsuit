@@ -6,6 +6,7 @@ libraries:
   - wingsuit/core
 regions:
   primary_menu: Primary menu
+  search_bar: Search bar
   highlighted: Highlighted
   language_switcher: Language switcher
   breadcrumb: Breadcrumb

@@ -1,4 +1,6 @@
 tokens_colors:
+  use: ""
+  label: Tokens colors
   settings:
     bg:
       type: colorwidget
@@ -10,8 +12,11 @@ tokens_colors:
         purple-dark:
           label: Purple/#581C87
           configuration: dark bg-purple-900
+        teal:
+          label: Teal/#115e59
+          configuration: dark bg-teal-800
         teal-medium:
-          label: Teal/#14b8a6
+          label: Teal medium/#14b8a6
           configuration: dark bg-teal-500
         gray-light:
           label: Light gray/#d1d5db

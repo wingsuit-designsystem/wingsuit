@@ -5,6 +5,7 @@ hero:
   description: Hero section component, for all your presentation needs.
   extends:
     - rich_snippet.fields
+    - rich_snippet.settings
     - grid.settings.reverse
   dependencies:
     - grid
