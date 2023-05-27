@@ -44,7 +44,6 @@ rich_snippet:
     small:
       label: Small
       configuration:
-        headline_text: 'font-display'
         text: 'text-base font-copy'
         spacing: 'mb-3'
     default:

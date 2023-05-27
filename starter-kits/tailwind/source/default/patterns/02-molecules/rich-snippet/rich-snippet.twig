@@ -20,10 +20,9 @@ Defaults
 {% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'classes')['preheadline']) %}
 {% set headline_attributes = create_attribute().addClass([
   pattern_configuration('rich_snippet', variant, 'classes')['headline'],
-  pattern_configuration('rich_snippet', variant, 'headline_text'),
   pattern_configuration('rich_snippet', variant, 'spacing'),
   pattern_configuration('rich_snippet', variant, 'headline_tag')[headline_tag]['size'],
-]) %}
+] | sort | join(' ') | trim ) %}
 {% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
 
 {#

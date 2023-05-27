@@ -15,14 +15,14 @@
   ] | sort | join(' ') | trim ) %}
 
   <div class="{{ container_classes }}"
-       :class="{'block': submenuIsOpen, 'hidden lg:hover:block': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
+       :class="{'block': submenuIsOpen, 'hidden lg:block': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
        data-menu="submenu">
     <div {{ menu_level == 2 ? 'class="lg:flex"' }}>
       {% set row_numbers = items|length/2 %}
       {% for row in items|batch(menu_level == 2 ? row_numbers : 100) %}
         <ul>
           {% for item in row %}
-            <li class="relative"
+            <li class="relative group"
               {% if item.below %} x-data="Drupal.behaviors.wingsuitMenu()"
               @mouseenter="processed = true;submenuDirection=getSubmenuDirection($el);"
               @mouseleave="processed = false"
