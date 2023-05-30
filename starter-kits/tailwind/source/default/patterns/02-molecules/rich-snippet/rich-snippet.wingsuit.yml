@@ -78,4 +78,8 @@ rich_snippet:
         h3:
           label: H3
           configuration:
+            size: 'text-3xl'
+        h4:
+          label: H4
+          configuration:
             size: 'text-2xl'
