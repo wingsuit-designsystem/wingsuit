@@ -5,8 +5,8 @@
 {% macro dropdown_menu(items, menu_level) %}
   {% import _self as menus %}
   {% set container_classes = ([
-    'submenu lg:border bg-white lg:group-hover-block',
-    menu_level == 1 ? 'lg:absolute left-[-165px]' : 'lg:absolute lg:top-0',
+    'submenu lg:border bg-white',
+    menu_level == 1 ? 'lg:absolute left-[-165px] x-clock' : 'lg:absolute lg:top-0',
   ] | sort | join(' ') | trim ) %}
 
   {% set link_classes = ([
@@ -15,7 +15,7 @@
   ] | sort | join(' ') | trim ) %}
 
   <div class="{{ container_classes }}"
-       :class="{'block': submenuIsOpen, 'hidden lg:hover:block': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
+       :class="{'block': submenuIsOpen, 'hidden lg:group-hover:block': !submenuIsOpen, {% if menu_level > 1 %} 'lg:left-full': submenuDirection == 'right', 'lg:right-full': submenuDirection == 'left' {% endif %} }"
        data-menu="submenu">
     <div {{ menu_level == 2 ? 'class="lg:flex"' }}>
       {% set row_numbers = items|length/2 %}
@@ -67,10 +67,10 @@
     {% set link_classes = ([
       'font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
-    <li class="relative" {% if item.below %}
+    <li class="relative group" {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"
       data-menu-target="submenu" {% endif %} data-menu-level="{{ menu_level }}">
-      <div class="flex items-center group gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0">
+      <div class="flex items-center gap-2 border-b lg:border-0 px-5 lg:px-0 py-4 lg:py-0">
         <a href="{{ item.url }}" class="{{ link_classes }}">
           {{ item.title }}
         </a>

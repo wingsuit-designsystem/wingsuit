@@ -24,10 +24,10 @@
 {% set attributes = attributes|default(create_attribute()) %}
 {# Attributes #}
 {% set attributes = attributes.addClass([
-  pattern_configuration('form_fieldgroup', '', 'classes')['wrapper']
+  pattern_configuration('form_fieldset', '', 'classes')['wrapper']
 ])%}
 {% set legend_attributes = create_attribute().addClass ([
-  pattern_configuration('form_fieldgroup', '', 'legend')['defaults'],
+  pattern_configuration('form_fieldset', '', 'legend')['defaults'],
   required ? 'js-form-required form-required',
 ])%}
 {# Templates #}

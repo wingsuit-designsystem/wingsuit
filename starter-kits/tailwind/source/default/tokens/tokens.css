@@ -7,3 +7,7 @@
 .ui-widget-overlay {
   display: none;
 }
+
+.x-clock {
+  display: none;
+}

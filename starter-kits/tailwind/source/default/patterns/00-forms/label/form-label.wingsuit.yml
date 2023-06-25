@@ -9,4 +9,4 @@ form_label:
         faker: lorem.word
   configuration:
     classes:
-      wrapper: 'pr-4'
+      wrapper: 'pl-4'

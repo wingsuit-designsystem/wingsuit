@@ -16,4 +16,4 @@ form_textarea:
         faker: lorem.sentence
   configuration:
     classes:
-      wrapper: 'form-textarea'
+      wrapper: 'form-textarea w-full rounded-md border-gray-400 focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'

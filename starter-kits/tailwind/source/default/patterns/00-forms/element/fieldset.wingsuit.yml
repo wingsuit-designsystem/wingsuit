@@ -1,4 +1,4 @@
-form_fieldgroup:
+form_fieldset:
   use: "@forms/element/fieldset.twig"
   label: Fieldset
   description: Input forms styled with Tailwind custom forms.

@@ -44,7 +44,6 @@ rich_snippet:
     small:
       label: Small
       configuration:
-        headline_text: 'font-display'
         text: 'text-base font-copy'
         spacing: 'mb-3'
     default:
@@ -78,5 +77,9 @@ rich_snippet:
             size: 'text-2xl lg:text-4xl'
         h3:
           label: H3
+          configuration:
+            size: 'text-3xl'
+        h4:
+          label: H4
           configuration:
             size: 'text-2xl'
