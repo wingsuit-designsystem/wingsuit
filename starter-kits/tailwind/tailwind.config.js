@@ -18,16 +18,11 @@ const content = [
   ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.twig`),
   ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.yml`),
 ];
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   important: false,
   darkMode: 'class',
-  content: [
-    './apps/**/*.twig',
-    ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.twig`),
-    ...Object.values(appConfig.namespaces).map((namespace) => `${namespace}/**/*.yml`),
-  ],
+  content: ['./apps/**/*.twig', ...content],
   safelist: ['bg-black', 'form-input'],
   theme: {
     boxShadow: {

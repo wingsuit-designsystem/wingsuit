@@ -5,8 +5,9 @@ export default {
     name: '@storybook/react-webpack5',
     options: {
       builder: {
+        /** This don't work */
         lazyCompilation: false,
-        fsCache: false,
+        fsCache: true,
       },
     },
   },

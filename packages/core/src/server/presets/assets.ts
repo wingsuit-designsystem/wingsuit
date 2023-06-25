@@ -43,6 +43,13 @@ export function webpack(appConfig: AppConfig) {
           },
         },
         {
+          test: /.*[/|\\\\]icons[/|\\\\].*\.svg$/,
+          type: 'asset/resource',
+          generator: {
+            filename: `${path.join(appConfig.assetsDistFolder, 'images')}/[name][ext]`,
+          },
+        },
+        {
           test: /\.(png|jpg|gif|webp)$/,
           type: 'asset/resource',
           generator: {

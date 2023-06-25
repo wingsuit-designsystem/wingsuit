@@ -1,5 +1,4 @@
 module.exports = {
-  cacheDirectory: '.cache/jest',
   clearMocks: true,
   moduleNameMapper: {
     // non-js files
@@ -18,8 +17,6 @@ module.exports = {
     'core-js/es7/(.*)': 'core-js/proposals/$1',
     'core-js/object$/': 'core-js/es/object',
     'core-js/object/(.*)': 'core-js/es/object/$1',
-    // 'babel-runtime/core-js/(.*)': `core-js/es/$1`,
-    // 'babel-runtime/core-js/object/assign'
     'core-js/library/fn/object/assign': 'core-js/es/object/assign',
   },
   projects: ['<rootDir>'],

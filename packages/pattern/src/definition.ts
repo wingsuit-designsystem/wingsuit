@@ -3,8 +3,9 @@ export interface Faker {
   property: string;
 }
 export interface OptionsConfiguration {
-  configuration: any;
+  configuration?: any;
   label: string;
+  default?: boolean;
 }
 export interface Options {
   [key: string]: string;

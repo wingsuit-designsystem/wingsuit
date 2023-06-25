@@ -2,23 +2,43 @@
   use: "@<%= cleanPatternType %>/<%= name %>/<%= name %>.twig"
   label: <%= capitalizeName %>
   description: Example description
+<% if (hasVariants) { -%>
+  variants:
+<% variants.forEach(function(variant) { -%>
+    <%= variant.name %>:
+      label: <%= variant.label %>
+<% }); -%>
+<% } -%>
+<% if (hasFields) { -%>
   fields:
-    field_1:
-      type: text
-      label: Content
-      preview: Text
+<% fields.forEach(function(field) { -%>
+    <%= field.name %>:
+      type: <%= field.type %>
+      label: <%= field.label %>
+<% if (field.preview) { -%>
+      preview:
+        faker: lorem.word
+<% } -%>
+<% }); -%>
+<% } -%>
+<% if (hasSettings) { -%>
   settings:
-    setting_1:
-      type: select
-      label: Setting 1
-      options:
-        option_1: Value 1
-      preview: value_1<% if (useJs || useCss) { %>
+<% settings.forEach(function(setting) { -%>
+    <%= setting.name %>:
+      type: <%= setting.type %>
+      label: <%= setting.label %>
+<% }); -%>
+<% } -%>
+<% if (useJs || useCss) { -%>
   libraries:
-    - pattern_<%= underscoreName %>:<% if (useCss || useScss) { %>
+    - pattern_<%= underscoreName %>:
+<% if (useCss || useScss) { -%>
        css:
          component:
-           ../<%= name %>.css: {}<% } %><% if (useJs) { %>
+           ../<%= name %>.css: {}
+<% } -%>
+<% if (useJs) { -%>
        js:
          ../behaviors/<%= name %>.js: {}
-<% } %><% } %>
+<% } -%>
+<% } -%>

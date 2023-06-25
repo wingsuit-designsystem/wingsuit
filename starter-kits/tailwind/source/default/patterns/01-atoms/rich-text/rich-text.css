@@ -1,6 +1,7 @@
 .prose {
   /* Font */
   @apply [&>*:first-child]:mt-0 [&>*:last-child]:mb-0;
+
   h1 {
     @apply font-display;
     @apply font-bold;
@@ -110,19 +111,19 @@
     @apply border-l border-t border-gray-200;
   }
   /* top-left */
-  thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+  th:first-child, tr:first-child td:first-child {
     @apply rounded-tl-lg;
   }
   /* top-right */
-  thead:first-child tr:first-child th:last-child, tbody:first-child tr:first-child td:last-child {
+  th:last-child, tr:first-child td:last-child {
     @apply rounded-tr-lg;
   }
   /* bottom-right */
-  thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+  th:first-child, tr:last-child td:first-child {
     @apply rounded-bl-lg;
   }
   /* bottom-left */
-  thead:last-child tr:last-child th:last-child, tbody:last-child tr:last-child td:last-child {
+  th:last-child, tr:last-child td:last-child {
     @apply rounded-br-lg;
   }
   /* Lists */

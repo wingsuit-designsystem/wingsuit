@@ -50,6 +50,9 @@ export default class extends Generator {
         filter(answer) {
           return kebabCase(answer);
         },
+        validate(answer) {
+          return answer !== '';
+        },
       },
       {
         type: 'list',
@@ -106,6 +109,175 @@ export default class extends Generator {
       },
     ];
 
+    const fieldsPrompts = [
+      {
+        type: 'confirm',
+        name: 'add',
+        message: 'Do you want to add a new field?',
+        default: true,
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Field Name?',
+        filter(answer) {
+          return snakeCase(answer);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+      {
+        type: 'input',
+        name: 'label',
+        message: 'Field Label?',
+        default(answers) {
+          return startCase(answers.name);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+      {
+        type: 'list',
+        name: 'type',
+        when: (answers) => {
+          return answers.add;
+        },
+        message: 'Field Type?',
+        choices({ componentType }) {
+          const choices: any = [];
+          choices.push({ value: 'text', name: 'Text' });
+          choices.push({ value: 'pattern', name: 'Pattern' });
+          choices.push({ value: 'object', name: 'Object' });
+          return choices;
+        },
+      },
+      {
+        type: 'confirm',
+        name: 'preview',
+        message: 'Do you want to add preview content?',
+        default: true,
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+    ];
+
+    const variantPrompts = [
+      {
+        type: 'confirm',
+        name: 'add',
+        message: 'Do you want to add a variant to your pattern?',
+        default: true,
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Variant Name?',
+        filter(answer) {
+          return snakeCase(answer);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+      {
+        type: 'input',
+        name: 'label',
+        message: 'Variant Label?',
+        default(answers) {
+          return startCase(answers.name);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+    ];
+    const settingsPrompts = [
+      {
+        type: 'confirm',
+        name: 'add',
+        message: 'Do you want to add a new setting?',
+        default: true,
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Setting Name?',
+        filter(answer) {
+          return snakeCase(answer);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+      {
+        type: 'input',
+        name: 'label',
+        message: 'Setting Label?',
+        default(answers) {
+          return startCase(answers.name);
+        },
+        validate(answer) {
+          return answer !== '';
+        },
+        when: (answers) => {
+          return answers.add;
+        },
+      },
+      {
+        type: 'list',
+        name: 'type',
+        when: (answers) => {
+          return answers.add;
+        },
+        message: 'Setting Type?',
+        choices({ componentType }) {
+          const choices: any = [];
+          choices.push({ value: 'textfield', name: 'Textfield' });
+          choices.push({ value: 'select', name: 'Select' });
+          choices.push({ value: 'boolean', name: 'Boolean' });
+          choices.push({ value: 'checkboxes', name: 'Checkboxes' });
+          choices.push({ value: 'radios', name: 'Radios' });
+          choices.push({ value: 'token', name: 'Token' });
+          choices.push({ value: 'attributes', name: 'Attributes' });
+          choices.push({ value: 'media_library', name: 'Media Library' });
+          choices.push({ value: 'coloriswidget', name: 'Coloriswidget' });
+          choices.push({ value: 'colorwidget', name: 'Colorwidget' });
+          choices.push({ value: 'group', name: 'Group' });
+
+          return choices;
+        },
+      },
+    ];
+    const loop = (loopingPrompts, propName) => {
+      return this.prompt(loopingPrompts).then((props) => {
+        if (props.add) {
+          if (!this.props[propName]) {
+            this.props[propName] = [];
+          }
+          props.name = props.name.toLowerCase().replace(' ', '_').replace('-', '_');
+          this.props[propName].push(props);
+        }
+        return props.add ? loop(loopingPrompts, propName) : this.prompt([]);
+      });
+    };
     return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       const cleanPatternType = props.patternType.replace(/([0-9])\w+-/g, '');
@@ -122,6 +294,15 @@ export default class extends Generator {
         cleanPatternType,
         capitalizeCleanPatternType: startCase(cleanPatternType),
       };
+      return loop(variantPrompts, 'variants').then(() => {
+        return loop(fieldsPrompts, 'fields').then(() => {
+          return loop(settingsPrompts, 'settings').then(() => {
+            this.props.hasVariants = this.props.variants && this.props.variants.length !== 0;
+            this.props.hasSettings = this.props.settings && this.props.settings.length !== 0;
+            this.props.hasFields = this.props.fields && this.props.fields.length !== 0;
+          });
+        });
+      });
     });
   }
 
@@ -141,7 +322,6 @@ export default class extends Generator {
 
   writing() {
     const { name, useCss, useScss, useDoc, useJs, componentType } = this.props;
-
     // Convert 'patterns.twig.ejs' to 'cards.twig'. registerTransformStream is
     // a reserved method to which Yeoman provides all file streams from copyTpl()
 
@@ -246,10 +426,8 @@ export default class extends Generator {
       }
 
       this.log(`Your new component ${name} is being created.`);
-    } catch (err) {
-      if (err instanceof Error) {
-        this.log(`Error while creating component. ${err.message}`);
-      }
+    } catch (err: any) {
+      this.log(`Error while creating component. ${err.message ?? ''}`);
     }
   }
 }

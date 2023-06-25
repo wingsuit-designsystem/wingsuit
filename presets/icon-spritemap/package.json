@@ -40,9 +40,6 @@
     "@wingsuit-designsystem/core": "2.0.0-alpha.7",
     "@wingsuit-designsystem/pattern": "2.0.0-alpha.7",
     "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.7",
-    "svg-sprite-loader": "^6.0.11",
-    "svg-transform-loader": "^2.0.13",
-    "svgo": "^3.0.2",
-    "svgo-loader": "^4.0.0"
+    "svg-spritemap-webpack-plugin": "^4.5.0"
   }
 }
