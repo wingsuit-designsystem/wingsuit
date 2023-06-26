@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-icon-spritemap",
-  "version": "2.0.0-alpha.7",
+  "version": "2.0.0-alpha.8",
   "description": "Wingsuit Icon spritemap preset.",
   "repository": {
     "type": "git",
@@ -37,9 +37,9 @@
   "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
   "dependencies": {
     "@types/webpack-env": "^1.18.0",
-    "@wingsuit-designsystem/core": "2.0.0-alpha.7",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.7",
-    "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.7",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.8",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.8",
+    "@wingsuit-designsystem/preset-icon": "2.0.0-alpha.8",
     "svg-spritemap-webpack-plugin": "^4.5.0"
   }
 }
