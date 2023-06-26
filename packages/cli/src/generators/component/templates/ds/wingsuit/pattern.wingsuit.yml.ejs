@@ -27,6 +27,9 @@
     <%= setting.name %>:
       type: <%= setting.type %>
       label: <%= setting.label %>
+<% if (setting.default) { -%>
+      default: '<%= setting.default %>'
+<% } -%>
 <% }); -%>
 <% } -%>
 <% if (useJs || useCss) { -%>

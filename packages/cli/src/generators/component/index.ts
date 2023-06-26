@@ -255,6 +255,7 @@ export default class extends Generator {
           choices.push({ value: 'boolean', name: 'Boolean' });
           choices.push({ value: 'checkboxes', name: 'Checkboxes' });
           choices.push({ value: 'radios', name: 'Radios' });
+          choices.push({ value: 'radio', name: 'Radio' });
           choices.push({ value: 'token', name: 'Token' });
           choices.push({ value: 'attributes', name: 'Attributes' });
           choices.push({ value: 'media_library', name: 'Media Library' });
@@ -263,6 +264,24 @@ export default class extends Generator {
           choices.push({ value: 'group', name: 'Group' });
 
           return choices;
+        },
+      },
+      {
+        type: 'confirm',
+        name: 'configuration',
+        message: 'Should your options have configuration?',
+        default: false,
+        when: (answers) => {
+          const optionTypes = ['select', 'radio'];
+          return optionTypes.includes(answers.type);
+        },
+      },
+      {
+        type: 'input',
+        name: 'default',
+        message: 'Setting Default?',
+        when: (answers) => {
+          return answers.add;
         },
       },
     ];

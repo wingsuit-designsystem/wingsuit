@@ -10,29 +10,35 @@
 {#
   Defaults
 #}
-
-{% set attributes = attributes|default(create_attribute()) %}
-{% set setting_1 = setting_1|default('value_1') %}
+<% settings.forEach(function(setting) { -%>
+<% if (setting.default != '') { -%>
+{% set <%= setting.name %> = <%= setting.name %>|default('<%= setting.default %>') %}
+<% } -%>
+<% }); -%>
 
 {#
   Classes
 #}
-
 {% set classes = [
-  setting_1 == 'value_1' ? 'w-full',
+  'pattern-'
 ] %}
 
-{% set field_1_classes = [
-   setting_1 == 'value_1' ? 'w-full',
-] %}
-
+{#
+  Attributes
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+<% settings.forEach(function(setting) { -%>
+<% if (setting.configuration) { -%>
+{% set <%= setting.name %>_classes = create_attribute().addClass(pattern_configuration('<%= name %>', variant, '<%= setting.name %>')) %} %}
+<% } -%>
+<% }); -%>
 {#
   Template
 #}
 <div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
-  <div>New Wingsuit component</div>
-  <div{{ region_attributes.field_1|default(create_attribute()).addClass(field_1_classes | sort) }}>
-    Field variable: <code>{{ field_1 }}</code>
+<% fields.forEach(function(field) { -%>
+  <div {{ region_attributes.<%= field.name %>|default(create_attribute()) }}>
+    <%= field.name %>
   </div>
-  <div>Setting variable: <code>{{ setting_1 }}</code></div>
+<% }); -%>
 </div>
