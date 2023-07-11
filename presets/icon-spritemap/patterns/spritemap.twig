@@ -4,7 +4,8 @@
 {% set fill_color = fill_color|default('fill-current') %}
 
 {% set wrapper_classes = ([
-  padding != '' ? 'flex items-center aspect-[1/1] ' ~ padding,
+    'aspect-[1/1]',
+  padding != '' ? 'flex items-center ' ~ padding,
 ] | sort | join(' ') | trim) %}
   {%
  set classes = ([
