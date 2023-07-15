@@ -18,6 +18,7 @@ function getStorybookControlsOptions(setting, variant: PatternVariant) {
   });
   return controls;
 }
+
 export function argTypes(patternId, variantId) {
   const variant = storage.loadVariant(patternId, variantId);
   const resultArgTypes: any = {};
@@ -25,6 +26,7 @@ export function argTypes(patternId, variantId) {
   Object.keys(variant.getSettings()).forEach((key) => {
     const setting = variant.getSetting(key);
     if (
+      setting.isActive() &&
       setting.isEnable() &&
       setting.getType() !== 'group' &&
       setting.getType() !== 'media_library'

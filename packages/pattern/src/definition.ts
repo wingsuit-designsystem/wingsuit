@@ -23,6 +23,16 @@ export interface Preview {
 export interface Properties {
   [key: string]: Property;
 }
+
+export interface StateItem {
+  variant?: string;
+  setting?: string;
+  value?: string;
+}
+export interface States {
+  [key: string]: StateItem[];
+}
+
 export interface Property {
   type: string;
   id?: string;
@@ -34,6 +44,7 @@ export interface Property {
   multi_value_type?: string;
   options?: Options | OptionsWithConfiguration;
   fields?: Property;
+  states: States;
 }
 export interface Variants {
   [key: string]: Variant;

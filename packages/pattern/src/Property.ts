@@ -1,4 +1,5 @@
 import { randParagraph, randWord, randSentence, randLine, seed } from '@ngneat/falso';
+import PatternVariant from './PatternVariant';
 
 export default class Property {
   public getDescription(): string {
@@ -84,6 +85,9 @@ export default class Property {
       if (this.type === 'pattern' || this.type === 'object' || this.type === 'media_library') {
         return this.preview;
       }
+      if (this.preview?.ref != null) {
+        return this.variant.getSetting(this.preview?.ref)?.getPreview();
+      }
       return JSON.stringify(this.preview);
     }
     let value = this.preview;
@@ -133,11 +137,21 @@ export default class Property {
 
   private enable = true;
 
-  constructor(name: string, type: string, label: string, description: string, preview: any) {
+  protected variant: PatternVariant;
+
+  constructor(
+    name: string,
+    type: string,
+    label: string,
+    description: string,
+    preview: any,
+    variant: PatternVariant
+  ) {
     this.name = name;
     this.type = type;
     this.label = label;
     this.description = description;
     this.preview = preview;
+    this.variant = variant;
   }
 }

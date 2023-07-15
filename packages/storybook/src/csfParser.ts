@@ -82,8 +82,6 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
     import { args, argTypes } from '@wingsuit-designsystem/storybook';
     import '${patternClientYamlPath}';
-
-
     export default {
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       tags: ['autodocs'],
@@ -100,7 +98,6 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `
-          
           export const ${patternId}${variantName}Pattern = {
           name: '${storyLabel}',
           args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },

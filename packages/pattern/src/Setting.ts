@@ -1,5 +1,5 @@
 import Property from './Property';
-import { Options } from './definition';
+import { Options, States, StateItem } from './definition';
 
 export default class Setting extends Property {
   public getOptions(): Options {
@@ -43,9 +43,36 @@ export default class Setting extends Property {
     this.required = required;
   }
 
+  public getStates(): States {
+    return this.states;
+  }
+
+  public setStates(states: States) {
+    this.states = states;
+  }
+
+  public isActive(): boolean {
+    const states: States = this.getStates();
+    let isActive = true;
+    Object.entries(states).forEach(([visibility, stateItems]) => {
+      stateItems.forEach((stateItem: StateItem) => {
+        const match = stateItem.variant && stateItem.variant === this.variant.getId();
+        if (!match && visibility === 'visible') {
+          isActive = false;
+        }
+        if (match && visibility === 'invisible') {
+          isActive = false;
+        }
+      });
+    });
+    return isActive;
+  }
+
   private defaultValue = '';
 
   private required = false;
 
   private options: Options = {};
+
+  private states: States = {};
 }

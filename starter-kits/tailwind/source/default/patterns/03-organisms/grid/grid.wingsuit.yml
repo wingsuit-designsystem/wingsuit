@@ -14,24 +14,22 @@ grid:
       label: 4 Column
     5_column:
       label: 5 Column
-    6_column:
-      label: 6 Column
   fields:
     cells:
-      type: object
+      type: pattern
       label: Cells
       multi_value_type: items
       description: The cells of the grid.
       preview:
-        - id: card_publication
+        - id: card
           variant: default
-        - id: card_publication
+        - id: card
           variant: default
-        - id: card_publication
+        - id: card
           variant: default
-        - id: card_publication
+        - id: card
           variant: default
-        - id: card_publication
+        - id: card
           variant: default
   settings:
     equal_height:
@@ -47,106 +45,88 @@ grid:
       preview: default
       options:
         none: None
-        xsmall:
-          label: Small
-          configuration: 'gap-3 md:gap-10'
         small:
           label: Small
           configuration: 'gap-5'
         default:
           label: Default
           configuration: 'gap-7.5'
-        medium:
-          label: Medium
-          configuration: 'gap-10'
         large:
           label: Large
           configuration: 'gap-5 lg:gap-36.25'
-    grid_layout:
+    1_grid_layout:
       type: select
       label: Layout
       required: true
+      states:
+        visible:
+          - variant: 1_column
       options:
-        1_equal:
+        equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1'
-          condition:
-            variant: 1_column
-        2_equal:
+    2_grid_layout:
+      type: select
+      label: Layout
+      required: true
+      states:
+        visible:
+          - variant: 2_column
+      options:
+        equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1 md:grid-cols-2'
-          condition:
-            variant: 2_column
-        2_66x33:
+        66x33:
           label: '66%/33%'
           configuration: 'grid grid-cols-1 lg:grid-cols-66/33'
-          condition:
-            variant: 2_column
-        2_33x66:
+        33x66:
           label: '33%/66%'
           configuration: 'grid grid-cols-1 lg:grid-cols-33/66'
-          condition:
-            variant: 2_column
-        2_75x25:
+        75x25:
           label: '75%/25%'
           configuration: 'grid grid-cols-1 md:grid-cols-75/25'
-          condition:
-            variant: 2_column
-        2_25x75:
+        25x75:
           label: '25%/75%'
           configuration: 'grid grid-cols-1 md:grid-cols-66/33 lg:grid-cols-25/75'
-          condition:
-            variant: 2_column
-        3_equal:
+    3_grid_layout:
+      type: select
+      label: Layout
+      required: true
+      states:
+        visible:
+          - variant: 3_column
+      options:
+        equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1 lg:grid-cols-3'
-          condition:
-            variant: 3_column
-        '3_25x50x25':
+        '25x50x25':
           label: '25x50x25'
           configuration: 'grid grid-cols-1 lg:grid-cols-25/50/25'
-          condition:
-            variant: 3_column
-        '3_25x25x50':
+        '25x25x50':
           label: '25x25x50'
           configuration: 'grid grid-cols-1 lg:grid-cols-25/25/50'
-          condition:
-            variant: 3_column
-        3_equal_flex:
-          label: 'Equal Flex'
-          configuration: 'w-full flex flex-wrap justify-center'
-          condition:
-            variant: 3_column
-        4_equal:
+    4_grid_layout:
+      type: select
+      label: Layout
+      required: true
+      states:
+        visible:
+          - variant: 4_column
+      options:
+        equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
-          condition:
-            variant: 4_column
-        4_equal_flex:
-          label: 'Equal Flex'
-          configuration: 'w-full flex flex-wrap justify-center'
-          condition:
-            variant: 4_column
-        5_equal:
+    5_grid_layout:
+      type: select
+      label: Layout
+      required: true
+      states:
+        visible:
+          - variant: 5_column
+      options:
+        equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5'
-          condition:
-            variant: 5_column
-        5_equal_flex:
-          label: 'Equal Flex'
-          configuration: 'w-full flex flex-wrap justify-center'
-          condition:
-            variant: 5_column
-        6_equal:
-          label: 'Equal'
-          configuration: 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6'
-          condition:
-            variant: 6_column
-        6_equal_flex:
-          label: 'Equal Flex'
-          configuration: 'w-full flex flex-wrap justify-center'
-          condition:
-            variant: 6_column
     flip_mobile:
       type: boolean
       default_value: false

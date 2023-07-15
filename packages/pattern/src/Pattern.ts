@@ -173,18 +173,14 @@ export default class Pattern {
         if (setting.options) {
           const options: Options = {};
           Object.entries(setting.options).forEach(([optionName, option]) => {
-            const skipOption =
-              option?.condition?.variant && option?.condition?.variant !== variantKey;
-            if (!skipOption) {
-              if (option.configuration) {
-                if (!settingsConfiguration[name]) {
-                  settingsConfiguration[name] = {};
-                }
-                settingsConfiguration[name][optionName] = option.configuration;
-                options[optionName] = option.label;
-              } else {
-                options[optionName] = option;
+            if (option.configuration) {
+              if (!settingsConfiguration[name]) {
+                settingsConfiguration[name] = {};
               }
+              settingsConfiguration[name][optionName] = option.configuration;
+              options[optionName] = option.label;
+            } else {
+              options[optionName] = option;
             }
           });
           cleanedSettings[name] = options;
@@ -213,7 +209,7 @@ export default class Pattern {
         mergedConfiguration
       );
 
-      if (isFirst === true) {
+      if (isFirst) {
         this.defaultVariant = variant;
       }
       isFirst = false;
@@ -224,9 +220,11 @@ export default class Pattern {
           settings[key].type,
           settings[key].label,
           settings[key].description ?? '',
-          settings[key].preview
+          settings[key].preview,
+          variant
         );
-        setting.setRequired(!!settings[key].required);
+        setting.setStates(settings[key].states ?? {});
+        setting.setRequired(settings[key].required ?? false);
         setting.setOptions(cleanedSettings[key]);
         if (settings[key].default_value) {
           setting.setDefaultValue(settings[key].default_value ?? '');
@@ -235,11 +233,7 @@ export default class Pattern {
         if (settings[key].default_value) {
           setting.setPreview(settings[key].default_value ?? null);
         }
-        if (
-          !setting.getPreview() &&
-          settings[key].required === true &&
-          settings[key].type === 'select'
-        ) {
+        if (!setting.getPreview() && settings[key].required && settings[key].type === 'select') {
           const keys = Object.keys(cleanedSettings[key]);
           if (keys.length > 0) {
             const firstOption = keys[0];
@@ -255,7 +249,8 @@ export default class Pattern {
           fields[key].type,
           fields[key].label,
           fields[key].description,
-          fields[key].preview
+          fields[key].preview,
+          variant
         );
 
         field.setMultiValueType(MultiValueTypes.single_value);
