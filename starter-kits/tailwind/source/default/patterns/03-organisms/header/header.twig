@@ -44,14 +44,3 @@ TEMPLATE
     {% endblock %}
   {% endembed %}
 </header>
-{% embed "@organisms/container/container.twig" with {
-  breadcrumb: breadcrumb,
-  padding_top: 'small',
-  padding_bottom: 'small',
-} only %}
-  {% block content %}
-    {{ breadcrumb }}
-  {% endblock %}
-{% endembed %}
-
-{

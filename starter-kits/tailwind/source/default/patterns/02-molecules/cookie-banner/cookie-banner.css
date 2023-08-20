@@ -1,4 +1,4 @@
-#sliding-popup {
+.sliding-popup {
   @apply fixed;
   @apply inset-y-0;
   @apply w-full;

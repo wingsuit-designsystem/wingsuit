@@ -13,17 +13,18 @@
 {% set vertical_center = vertical_center|default(false) %}
 {% set equal_height = vertical_center == true ? true: equal_height %}
 {% set reverse = reverse|default(false) %}
-{% set variant = variant|default('1_column') %}
+{% set variant = variant|default('column_1') %}
 
 {#
   Internal logic
 #}
 {% set columns_ary = variant|split('_') %}
-{% set columns = columns_ary[0]|number_format %}
-{% set grid_layout_setting = columns ~ '_grid_layout' %}
-{% set grid_layout = _context[ grid_layout_setting ]|default('equal') %}
+{% set columns = columns_ary[1]|number_format %}
+{% set grid_layout_setting = 'grid_layout_' ~ columns %}
+{% set grid_layout = grid_layout|default(_context[ grid_layout_setting ]|default('equal')) %}
 {% set gutter_classes = pattern_configuration('grid', variant, 'gutter')[gutter] %}
 {% set layout_classes = pattern_configuration('grid', variant, grid_layout_setting)[grid_layout] %}
+
 {% set classes = ([
   layout_classes,
   gutter_classes,
@@ -47,7 +48,6 @@
         ]
         %}
         {% set cell_attributes = region_attributes[column_name]|default(create_attribute()).addClass(cell_classes | sort) %}
-
         <div{{ cell_attributes }}>
           {% block cell_inner %}
             {{ cell }}

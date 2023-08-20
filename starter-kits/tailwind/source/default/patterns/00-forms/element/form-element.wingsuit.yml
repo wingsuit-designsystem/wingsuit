@@ -82,9 +82,6 @@ form_element:
       settings:
         floating_label: false
   settings:
-    flex:
-      type: textfield
-      label: Flex configuration
     label_display:
       type: select
       label: Label display

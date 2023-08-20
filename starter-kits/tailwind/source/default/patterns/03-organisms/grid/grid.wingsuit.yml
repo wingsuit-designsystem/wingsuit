@@ -4,15 +4,15 @@ grid:
   description:
     "A flexible mobile-first flexbox grid pattern, ensuring consistency across layouts."
   variants:
-    1_column:
+    column_1:
       label: 1 Column
-    2_column:
+    column_2:
       label: 2 Column
-    3_column:
+    column_3:
       label: 3 Column
-    4_column:
+    column_4:
       label: 4 Column
-    5_column:
+    column_5:
       label: 5 Column
   fields:
     cells:
@@ -54,24 +54,29 @@ grid:
         large:
           label: Large
           configuration: 'gap-5 lg:gap-36.25'
-    1_grid_layout:
+
+    grid_layout:
+      type: value
+      label: Grid Layout
+      description: Use "grid_layout" when you embed grid direct in code.
+    grid_layout_1:
       type: select
       label: Layout
       required: true
       states:
         visible:
-          - variant: 1_column
+          - variant: hidden
       options:
         equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1'
-    2_grid_layout:
+    grid_layout_2:
       type: select
       label: Layout
       required: true
       states:
         visible:
-          - variant: 2_column
+          - variant: column_2
       options:
         equal:
           label: 'Equal'
@@ -88,13 +93,13 @@ grid:
         25x75:
           label: '25%/75%'
           configuration: 'grid grid-cols-1 md:grid-cols-66/33 lg:grid-cols-25/75'
-    3_grid_layout:
+    grid_layout_3:
       type: select
       label: Layout
       required: true
       states:
         visible:
-          - variant: 3_column
+          - variant: column_3
       options:
         equal:
           label: 'Equal'
@@ -105,24 +110,24 @@ grid:
         '25x25x50':
           label: '25x25x50'
           configuration: 'grid grid-cols-1 lg:grid-cols-25/25/50'
-    4_grid_layout:
+    grid_layout_4:
       type: select
       label: Layout
       required: true
       states:
         visible:
-          - variant: 4_column
+          - variant: column_4
       options:
         equal:
           label: 'Equal'
           configuration: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
-    5_grid_layout:
+    grid_layout_5:
       type: select
       label: Layout
       required: true
       states:
         visible:
-          - variant: 5_column
+          - variant: column_5
       options:
         equal:
           label: 'Equal'

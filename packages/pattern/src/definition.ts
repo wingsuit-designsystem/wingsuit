@@ -44,7 +44,7 @@ export interface Property {
   multi_value_type?: string;
   options?: Options | OptionsWithConfiguration;
   fields?: Property;
-  states: States;
+  states?: States;
 }
 export interface Variants {
   [key: string]: Variant;

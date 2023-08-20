@@ -13,7 +13,7 @@ page_homepage:
       label: Field content
       preview:
         - id: section
-          variant: 1_column
+          variant: column_1
           settings:
             padding_top: default
           fields:
@@ -22,7 +22,7 @@ page_homepage:
                 settings:
                   reverse: true
         - id: section
-          variant: 3_column
+          variant: column_3
           settings:
             equal_height: true
           fields:
@@ -36,12 +36,12 @@ page_homepage:
               - id: card
                 variant: default
         - id: section
-          variant: 1_column
+          variant: column_1
           fields:
             column_1:
               - id: banner
         - id: section
-          variant: 1_column
+          variant: column_1
           settings:
             width: small
           fields:
@@ -51,7 +51,7 @@ page_homepage:
               - id: accordion_item
               - id: accordion_item
         - id: section
-          variant: 3_column
+          variant: column_3
           settings:
             equal_height: true
           fields:
@@ -65,7 +65,7 @@ page_homepage:
               - id: card
                 variant: default
         - id: section
-          variant: 1_column
+          variant: column_1
           settings:
             width: small
           fields:
@@ -76,7 +76,7 @@ page_homepage:
                     <h2 class='text-center'>Section 2</h2>
                     <p class='text-center'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
         - id: section
-          variant: 4_column
+          variant: column_4
           fields:
             column_1:
               - id: avatar

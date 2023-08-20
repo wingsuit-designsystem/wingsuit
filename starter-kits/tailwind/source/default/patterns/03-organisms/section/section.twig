@@ -10,7 +10,7 @@
 {#
   Defaults
 #}
-{% set variant = variant|default('1_column') %}
+{% set variant = variant|default('column_1') %}
 {% set region_attributes = region_attributes|default({header: create_attribute()}) %}
 {%- set column_1 -%}{%- block column_1 -%}{{ _context['column_1' ] }}{% endblock %}{% endset %}
 {%- set column_2 -%}{%- block column_2 -%}{{ _context['column_2' ] }}{% endblock %}{% endset %}
@@ -23,7 +23,7 @@
 #}
 {% set header_classes = [
   pattern_configuration('section', variant, 'classes')['header']
-  ]|sort|join|trim
+  ]|sort|join|trim(' ')
 %}
 
 {#
@@ -31,7 +31,9 @@
 #}
 {%- set header -%}{{ header }}{% endset %}
 {% set columns_ary = variant|split('_') %}
-{% set columns = columns_ary[0]|number_format %}
+{% set columns = columns_ary[1]|number_format %}
+{% set grid_layout_setting = 'grid_layout_' ~ columns %}
+{% set grid_layout = grid_layout|default(_context[ grid_layout_setting ]|default('equal')) %}
 
 {#
   Header template
@@ -41,7 +43,6 @@
     <div{{ region_attributes.header.addClass(header_classes) }}>{{ header }}</div>
   {% endif %}
 {% endset %}
-
 {#
   Grid template
 #}
@@ -53,7 +54,7 @@
   {{ pattern('grid', {
     attributes: create_attribute(),
     cells: cells,
-    layout: layout,
+    grid_layout: grid_layout,
     region_attributes: region_attributes,
     gutter: gutter,
     equal_height: equal_height

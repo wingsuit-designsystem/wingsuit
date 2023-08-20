@@ -98,7 +98,8 @@ Template
 <label{{ attributes }}>
   <div>
   {% if label_display in ['before', 'invisible'] %}
-    {% if floating_label == true %}
+    {% if floating_label %}
+
     <div{{ floating_attributes }}>
         {{ children }}
       <div{{ floating_label__wrapper_attributes }}>

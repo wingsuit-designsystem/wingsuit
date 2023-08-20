@@ -47,7 +47,7 @@ section:
       weight: 30
 
   variants:
-    1_column:
+    column_1:
       label: One Column
       fields:
         column_2: ""
@@ -57,22 +57,22 @@ section:
       settings:
         gutter: default
         layout: "equal"
-    2_column:
+    column_2:
       label: Two Columns
       fields:
         column_3: ""
         column_4: ""
         column_5: ""
-    3_column:
+    column_3:
       label: Three Columns
       fields:
         column_4: ""
         column_5: ""
-    4_column:
+    column_4:
       label: Four Columns
       fields:
         column_5: ""
-    5_column:
+    column_5:
       label: Five Columns
   configuration:
     classes:

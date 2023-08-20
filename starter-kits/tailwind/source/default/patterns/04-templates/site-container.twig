@@ -10,7 +10,17 @@
     language_select: language_select
   } only %}
 {% endblock header %}
-
+{% block breadcrumb %}
+  {% embed "@organisms/container/container.twig" with {
+    breadcrumb: breadcrumb,
+    padding_top: 'small',
+    padding_bottom: 'small',
+  } only %}
+    {% block content %}
+      {{ breadcrumb }}
+    {% endblock %}
+  {% endembed %}
+{% endblock breadcrumb %}
 
 <main class="main-content flex-1">
   {% block main %}

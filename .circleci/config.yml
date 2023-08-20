@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  sb_node_16_classic:
+  sb_node_18_classic:
     parameters:
       class:
         description: The Resource class
@@ -10,7 +10,7 @@ executors:
         default: 'small'
     working_directory: /tmp/storybook
     docker:
-      - image: cimg/node:16.17.1
+      - image: cimg/node:18.17.1
         environment:
           NODE_OPTIONS: --max_old_space_size=6144
     resource_class: <<parameters.class>>
@@ -19,7 +19,7 @@ jobs:
   install:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - restore_cache:
@@ -48,7 +48,7 @@ jobs:
   build:
     executor:
       class: large
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -67,7 +67,7 @@ jobs:
   packtracker:
     executor:
       class: large
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -80,7 +80,7 @@ jobs:
   examples:
     executor:
       class: large
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     parallelism: 1
     steps:
       - checkout
@@ -97,7 +97,7 @@ jobs:
   publish:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -202,7 +202,7 @@ jobs:
   chromatic:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     working_directory: /tmp/storybook
     parallelism: 4
     steps:
@@ -217,7 +217,7 @@ jobs:
   smoke-tests:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -252,7 +252,7 @@ jobs:
   docs:
     executor:
       class: large
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -270,7 +270,7 @@ jobs:
   lint:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -281,7 +281,7 @@ jobs:
   test:
     executor:
       class: medium
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:
@@ -296,7 +296,7 @@ jobs:
   coverage:
     executor:
       class: small
-      name: sb_node_16_classic
+      name: sb_node_18_classic
     steps:
       - checkout
       - attach_workspace:

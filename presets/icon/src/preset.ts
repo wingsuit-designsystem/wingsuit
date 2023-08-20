@@ -70,7 +70,7 @@ export function hooks(appConfig: AppConfig, config: IconConfig) {
     appConfigAlter: () => {
       appConfig.namespaces['ws-icon'] = path.resolve(__dirname, '../patterns');
     },
-    patternLoaded: (patternId, patternDefinition: IPatternDefinition) => {
+    patternLoaded: (patternId: string, patternDefinition: IPatternDefinition) => {
       if (patternId === 'icon') {
         config.sources.forEach((source) => {
           const files = glob.sync(source.glob);

@@ -13,7 +13,7 @@ page_webform:
       label: Field content
       preview:
         - id: section
-          variant: 1_column
+          variant: column_1
           fields:
             column_1:
               - id: rich_text
@@ -29,7 +29,7 @@ page_webform:
             padding_bottom: small
             columns: 1
         - id: section
-          variant: 1_column
+          variant: column_1
           fields:
             column_1:
               - id: form_flex

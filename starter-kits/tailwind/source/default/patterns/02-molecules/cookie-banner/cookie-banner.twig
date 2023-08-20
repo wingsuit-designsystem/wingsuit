@@ -68,7 +68,7 @@ CLASSES
 {% endif %}
 {% if wrapper|default(0) %}
   {# wingsuit wrapper #}
-<div id="sliding-popup" {{ sliding_popup_attributes }}>
+<div id="sliding-popup" {{ sliding_popup_attributes.addClass('sliding-popup') }}>
   {% endif %}
 
   <div role="alertdialog" aria-labelledby="popup-text" {{ attributes }}>

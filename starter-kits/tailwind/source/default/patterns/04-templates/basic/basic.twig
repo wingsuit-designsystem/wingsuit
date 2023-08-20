@@ -15,24 +15,19 @@
 {#
   Internal
 #}
-{% set content %}{% block content %}{{ content }}{% endblock %}{% endset %}
 {% set headline %}{% block headline %}{{ headline }}{% endblock %}{% endset %}
+{% set content %}{% block content %}{{ content }}{% endblock %}{% endset %}
+{% set main_content %}
+  <h1>{{ headline }}</h1>
+  <div>{{ content }}</div>
+{% endset %}
 
 {#
   Template
 #}
-{% embed "@organisms/container/container.twig" with { padding_top: 'default', 'width': width } %}
-  {% block content %}
-    <div class="text-gray-dark">
-      {% embed "@atoms/rich-text/rich-text.twig" with {
-        headline: headline,
-        content: content
-      } only %}
-        {% block text %}
-          <h1>{{ headline }}</h1>
-          <div>{{ content }}</div>
-        {% endblock %}
-      {% endembed %}
-    </div>
-  {% endblock %}
-{% endembed %}
+{{
+  pattern('container', {
+    padding_top: 'small',
+    content: pattern('rich_text', {text: main_content})
+  })
+}}
