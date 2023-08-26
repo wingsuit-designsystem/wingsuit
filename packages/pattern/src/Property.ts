@@ -3,10 +3,7 @@ import PatternVariant from './PatternVariant';
 
 export default class Property {
   public getDescription(): string {
-    if (this.description === undefined) {
-      return '';
-    }
-    return this.description;
+    return this.description ?? '';
   }
 
   public isEnable(): boolean {

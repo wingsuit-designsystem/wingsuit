@@ -98,7 +98,7 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `
-          export const ${patternId}${variantName}Pattern = {
+          export const p_${patternId}${variantName}Pattern = {
           name: '${storyLabel}',
           args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },
           argTypes: argTypes('${patternId}', '${variantName}'),

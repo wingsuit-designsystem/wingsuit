@@ -28,12 +28,13 @@ export default function patternLoader(this: any, src) {
         `wingsuit/${key}.wingsuit.yml`,
         res
       );
-      if (added === true) {
+      if (added) {
+        const jsKey = `Pattern${key}`;
         if (pattern.use) {
           const twigTemplatePath = pattern.use.replace('@', '');
-          exports.push(`import ${key}Template from '${twigTemplatePath}';`);
-          exports.push(`export const ${key} = getStorage().loadPattern('${key}');`);
-          exports.push(`${key}.setTemplate(${key}Template);`);
+          exports.push(`import ${jsKey}Template from '${twigTemplatePath}';`);
+          exports.push(`export const ${jsKey} = getStorage().loadPattern('${key}');`);
+          exports.push(`${jsKey}.setTemplate(${jsKey}Template);`);
           this.addDependency(path.resolve(twigTemplatePath));
         }
         if (pattern.variants) {
@@ -41,12 +42,12 @@ export default function patternLoader(this: any, src) {
             if (variant && variant.use) {
               const twigVariantTemplatePath = variant.use.replace('@', '');
               exports.push(
-                `import ${key}${variantName}Template from '${twigVariantTemplatePath}';`
+                `import ${jsKey}${variantName}Template from '${twigVariantTemplatePath}';`
               );
               exports.push(
-                `export const ${key}${variantName} = getStorage().loadVariant('${key}', '${variantName}');`
+                `export const ${jsKey}${variantName} = getStorage().loadVariant('${key}', '${variantName}');`
               );
-              exports.push(`${key}${variantName}.setTemplate(${key}${variantName}Template);`);
+              exports.push(`${jsKey}${variantName}.setTemplate(${jsKey}${variantName}Template);`);
             }
           });
         }
