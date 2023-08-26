@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-storybook",
-  "version": "2.0.0-alpha.9",
+  "version": "2.0.0-alpha.10",
   "description": "Wingsuit Twing preset.",
   "repository": {
     "type": "git",
@@ -32,9 +32,9 @@
   },
   "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.0-alpha.9",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.9",
-    "@wingsuit-designsystem/storybook": "2.0.0-alpha.9",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.10",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.10",
+    "@wingsuit-designsystem/storybook": "2.0.0-alpha.10",
     "glob": "^8.1.0",
     "path": "^0.12.7",
     "webpack": "^5.56.1"
