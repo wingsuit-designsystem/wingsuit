@@ -111,7 +111,7 @@ jobs:
             - .verdaccio-cache
   init-e2e:
     docker:
-      - image: cypress/included:12.8.0
+      - image: included:cypress-12.8.1-node-18.14.1-chrome-111.0.5563.110-1-ff-111.0.1-edge-111.0.1661.51-1
         environment:
           TERM: xterm
     working_directory: /tmp/storybook
