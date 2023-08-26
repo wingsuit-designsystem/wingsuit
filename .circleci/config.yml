@@ -172,7 +172,7 @@ jobs:
   e2e:
     working_directory: /tmp/storybook
     docker:
-      - image: cypress/included:cypress-12.4.0-node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1
+      - image: included:cypress-12.8.1-node-18.14.1-chrome-111.0.5563.110-1-ff-111.0.1-edge-111.0.1661.51-1
         environment:
           TERM: xterm
     steps:
