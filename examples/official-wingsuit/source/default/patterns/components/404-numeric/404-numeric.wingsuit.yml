@@ -1,4 +1,4 @@
-404_numeric:
+404-numeric:
   use: "@components/404-numeric/404-numeric.twig"
   label: Numeric Test
   description: Patterns start with nummeric

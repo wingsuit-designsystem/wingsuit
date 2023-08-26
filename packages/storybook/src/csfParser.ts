@@ -7,6 +7,7 @@ import { AppConfig, invokeHook } from '@wingsuit-designsystem/core';
 const YAML = require('yaml');
 const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
+const { camelCase } = require('lodash');
 
 export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any = null): string {
   const { namespaces } = appConfig;
@@ -94,11 +95,12 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       const variants = patternDefinition[patternId].variants ?? { __default: { label: 'Default' } };
       Object.keys(variants).forEach((variantName) => {
         const variantLabel = variants[variantName].label;
+        const jsKey = camelCase(`P${patternId}${variantName}Pattern`);
         const storyLabel =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
         output.push(
           `
-          export const p_${patternId}${variantName}Pattern = {
+          export const ${jsKey} = {
           name: '${storyLabel}',
           args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },
           argTypes: argTypes('${patternId}', '${variantName}'),

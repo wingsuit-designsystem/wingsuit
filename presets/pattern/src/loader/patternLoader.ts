@@ -4,6 +4,7 @@ import { invokeHook, pathInfo } from '@wingsuit-designsystem/core';
 
 const loaderUtils = require('loader-utils');
 const YAML = require('yaml');
+const { camelCase } = require('lodash');
 
 export default function patternLoader(this: any, src) {
   const { ...options } = {
@@ -29,7 +30,7 @@ export default function patternLoader(this: any, src) {
         res
       );
       if (added) {
-        const jsKey = `Pattern${key}`;
+        const jsKey = camelCase(`Pattern${key}`);
         if (pattern.use) {
           const twigTemplatePath = pattern.use.replace('@', '');
           exports.push(`import ${jsKey}Template from '${twigTemplatePath}';`);

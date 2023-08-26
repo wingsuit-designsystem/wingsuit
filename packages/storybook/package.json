@@ -32,6 +32,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@babel/generator": "^7.21.2",
+    "lodash": "^4.17.21",
     "@storybook/addon-controls": "^7.0.2",
     "@storybook/addon-docs": "^7.0.2",
     "@storybook/builder-webpack5": "^7.0.2",

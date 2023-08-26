@@ -3,7 +3,7 @@ import { clickAddon, visit } from '../../helper';
 describe('Starterkit Tailwind', () => {
   beforeEach(() => {
     visit(
-      'official-wingsuit/?path=/story/components-ws-source-component--source-ws-component-default-pattern'
+      'official-wingsuit/?path=/story/components-ws-source-component--psource-ws-component-default-pattern'
     );
   });
 
