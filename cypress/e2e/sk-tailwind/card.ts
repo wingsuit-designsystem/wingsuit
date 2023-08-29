@@ -3,7 +3,7 @@ import { clickAddon, visit } from '../../helper';
 describe('Tailwind: Card', () => {
   beforeEach(() => {
     visit(
-      '?path=/story/molecules-card--carddefault-pattern'
+      '?path=/story/molecules-card--pcarddefault-pattern'
     );
   });
 
