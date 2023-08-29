@@ -1,4 +1,4 @@
-import { AppConfig, getApps, resolveConfig } from '@wingsuit-designsystem/core';
+import { AppConfig, getApps } from '@wingsuit-designsystem/core';
 import glob from 'glob';
 import chalk from 'chalk';
 import path from 'path';
@@ -56,7 +56,7 @@ function deleteOrphanConfigFiles(appConfig: AppConfig) {
   }
 }
 
-function replaceConfigFiles(appConfig: AppConfig = null) {
+function replaceConfigFiles(appConfig: AppConfig) {
   const copyFiles = {
     storybook: {
       'upgrade/.eslintrc.js.tpl': `${appConfig.absRootPath}/.eslintrc.js`,
