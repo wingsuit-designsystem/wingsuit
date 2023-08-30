@@ -21,24 +21,21 @@
 #}
 {%
   set attributes = attributes.addClass(
-    pattern_configuration('banner', null, 'defaults')['wrapper_classes']
-  )
-%}
-{%
-  set teaser_wrapper_attributes = create_attribute().addClass(
-    pattern_configuration('banner', null, 'defaults')['teaser_wrapper_classes']
-  )
-%}
-{%
-  set teaser_attributes = create_attribute().addClass(
-    pattern_configuration('banner', null, 'defaults')['teaser_classes']
-  )
-%}
+    pattern_configuration('banner', null, 'classes')['wrapper']
 
+  )
+%}
+{%
+  set slogan_wrapper_attributes = create_attribute().addClass([
+    pattern_configuration('banner', null, 'classes')['slogan_wrapper'],
+    teaser_dark == true ? 'dark'
+    ]
+  )
+%}
 {#
   Classes
 #}
-{% set position_classes = [
+{% set slogan_position_classes = [
   'flex-1 flex',
   pattern_configuration('banner', null, 'position')[position]['text']
 ] | sort | join(' ') | trim %}
@@ -46,30 +43,21 @@
 {#
   Render Slots
 #}
+{% set headline %}{{- headline -}}{% endset %}
 {% set teaser %}{{- teaser -}}{% endset %}
-
+{% set text %}
+  <div class="{{ slogan_position_classes }}">
+    {{ pattern('rich_text', { text: teaser }) }}
+  </div>
+{% endset %}
 {#
   Template
 #}
 <div {{ attributes }}>
-  <div>{{ image }}</div>
-  <div {{ teaser_wrapper_attributes }}>
-    {% if teaser is not empty %}
-    {% embed "@organisms/container/container.twig" with {
-      width: 'small',
-      padding_bottom: 'none',
-      region_attributes: region_attributes,
-      teaser: teaser,
-      headline: headline,
-      classes: position_classes,
-      teaser_attributes: teaser_attributes
-    }  only %}
-      {% block content %}
-        <div {{ teaser_attributes }}>
-          {{ teaser }}
-        </div>
-      {% endblock %}
-    {% endembed %}
+  <div class="[&>img]:w-full">{{ image }}</div>
+  <div {{ slogan_wrapper_attributes }}>
+    {% if teaser or headline %}
+      {{ pattern('container', {equal_height: true, content: text, classes: 'flex'}) }}
     {% endif %}
   </div>
 </div>

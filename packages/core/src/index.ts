@@ -19,7 +19,7 @@ export { default as PresetManager } from './server/PresetManager';
 const presetManager = new PresetManager();
 
 interface PresetResult {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 export interface PathInfo {
@@ -115,6 +115,20 @@ export function invokePresets(appConfig: AppConfig, funcName, config): PresetRes
   return result;
 }
 
+export function stories(
+  appConfig: AppConfig,
+  exclude: string[] = [],
+  config: any = null
+): string[] {
+  const result = invokePresets(appConfig, 'stories', config);
+  const resultStories: string[] = [];
+  Object.entries(result).forEach(([key, storiesOf]) => {
+    if (!exclude.includes(key)) {
+      resultStories.push(...storiesOf);
+    }
+  });
+  return resultStories;
+}
 export function getAppTypes(wingsuitConfig: any = null) {
   const { mergedConfig } = getConfigBase();
   const names: string[] = [];

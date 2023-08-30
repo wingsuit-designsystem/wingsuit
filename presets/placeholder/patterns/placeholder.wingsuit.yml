@@ -1,6 +1,7 @@
 placeholder:
   use: "@ws-placeholder/placeholder.twig"
   label: Placeholder
+  namespace: wingsuit
   description: "Placeholder image component."
   variants:
     image:

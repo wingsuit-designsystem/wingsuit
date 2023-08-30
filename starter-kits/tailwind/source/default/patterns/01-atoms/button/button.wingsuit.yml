@@ -63,7 +63,7 @@ button:
             padding: 'py-2 px-4'
             icon_gap: 'gap-2'
             icon_scale: 1
-            text: 'text-base tracking-[0.01em]'
+            text: 'tracking-[0.01em]'
         large:
           label: Large
           configuration:

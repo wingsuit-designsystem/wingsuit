@@ -112,3 +112,8 @@ rich_text:
           </tbody>
         </table>
 
+  libraries:
+    - pattern_rich_text:
+        css:
+          component:
+            ../rich-text.css: {}

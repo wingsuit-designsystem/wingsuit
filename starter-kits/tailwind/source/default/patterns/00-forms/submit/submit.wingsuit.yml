@@ -16,6 +16,6 @@ form_submit:
       label: Default
   configuration:
     classes:
-      wrapper: 'btn flex items-center justify-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400 py-3 px-4 text-base tracking-[0.01em] rounded-[22px] w-full'
+      wrapper: 'btn flex items-center justify-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400 py-3 px-4 tracking-[0.01em] rounded-[22px] w-full'
       active: 'bg-teal-600 dark:bg-white hover:bg-purple-800 dark:bg-white dark:hover:bg-white text-white dark:text-purple-700'
       disabled: 'bg-gray-300 text-gray-400'

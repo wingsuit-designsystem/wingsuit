@@ -7,6 +7,11 @@ interface IconScaleConfiguration {
   label: string;
   default?: boolean;
 }
+
+export function stories(appConfig: AppConfig, config: IconConfig) {
+  return [path.join(__filename, '../../patterns/icon.stories.wingsuit.jsx')];
+}
+
 interface IconScale {
   [key: string]: IconScaleConfiguration;
 }

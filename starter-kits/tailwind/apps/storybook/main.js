@@ -1,3 +1,7 @@
+import { resolveConfig, stories } from '@wingsuit-designsystem/core';
+
+const appName = 'storybook';
+const appConfig = resolveConfig(appName);
 const postCss = require('postcss');
 
 export default {
@@ -22,6 +26,7 @@ export default {
     '../../source/default/patterns/**/*.stories.jsx',
     './patterns/**/*.stories.wingsuit.jsx',
     './patterns/**/*.stories.jsx',
+    ...stories(appConfig),
   ],
   addons: [
     '@storybook/addon-links',

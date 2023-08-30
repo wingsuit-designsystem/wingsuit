@@ -13,18 +13,16 @@ banner:
         variant: image
         settings:
           style: responsive_16_9_1600w
-    headline:
-      type: text
-      label: Headline
-      description: The large headline.
-      preview:
-        faker: lorem.word
     teaser:
       type: text
       label: Teaser
-      description: Short optional teaser.
-      preview: "<div class='prose text-center text-white'><h1>Lorem ipsum dolor sit.</h1></div>"
+      description: Slogan teaser displayed on top.
+      preview: "<h1>Lorem ipsum dolor sit.</h1><p>Lorem darum itum darum</p>"
   settings:
+    teaser_dark:
+      type: boolean
+      label: Display teaser in dark mode.
+      default_value: true
     position:
       type: select
       allow_token: true
@@ -68,7 +66,6 @@ banner:
           configuration:
             text: 'text-right items-end justify-end'
   configuration:
-    defaults:
-      wrapper_classes: 'relative dark rounded-lg border border-transparent overflow-hidden'
-      teaser_wrapper_classes: 'absolute top-0 left-0 w-full h-full flex'
-      teaser_classes: 'bg-black bg-opacity-25 mix-blend-normal rounded-lg p-6 m-6 text-lg lg:text-5xl text-white font-display font-bold'
+    classes:
+      wrapper: 'overflow-hidden'
+      slogan_wrapper: 'absolute bg-opacity-25 top-0 left-0 w-full h-full flex'
