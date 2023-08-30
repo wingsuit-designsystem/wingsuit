@@ -59,7 +59,7 @@ function deleteOrphanConfigFiles(appConfig: AppConfig) {
 function replaceConfigFiles(appConfig: AppConfig) {
   const copyFiles = {
     storybook: {
-      'upgrade/.eslintrc.js.tpl': `${appConfig.absRootPath}/.eslintrc.js`,
+      'upgrade/eslintrc.js.tpl': `${appConfig.absRootPath}/.eslintrc.js`,
       'upgrade/babel.config.js.tpl': `${appConfig.absRootPath}/babel.config.js`,
       'upgrade/main.js.tpl': `${appConfig.absAppPath}/main.js`,
       'upgrade/manager.js.tpl': `${appConfig.absAppPath}/manager.js`,
