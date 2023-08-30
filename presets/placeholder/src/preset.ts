@@ -88,3 +88,7 @@ export function hooks(appConfig: AppConfig, config: PlaceholderConfig) {
     },
   };
 }
+
+export function stories(appConfig: AppConfig, config: PlaceholderConfig) {
+  return [path.join(__filename, '../../patterns/placeholder.stories.wingsuit.jsx')];
+}
