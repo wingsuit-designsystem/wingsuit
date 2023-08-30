@@ -2,7 +2,7 @@ tokens_colors:
   use: ""
   label: Tokens colors
   settings:
-    bg:
+    bg_color:
       type: colorwidget
       label: Background color
       default_value: ""

@@ -42,4 +42,4 @@ avatar:
       image: 'relative overflow-hidden flex-none w-[152px] h-[152px] lg:h-[168px] lg:w-[168px] rounded-full mx-auto aspect-[1/1]'
       content_wrapper: 'mt-4 gap-y-4 flex-1 flex justify-center items-center flex-col'
       name: 'text-xl font-bold text-center font-display'
-      title: 'text-base text-center mt-1'
+      title: 'text-center mt-1'
