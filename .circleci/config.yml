@@ -214,7 +214,7 @@ jobs:
           command: |
             cd starter-kits/tailwind
             npx chromatic --exit-zero-on-changes
-  upgrade:
+  upgrade-tests:
     executor:
       class: small
       name: sb_node_18_classic
@@ -340,6 +340,9 @@ workflows:
           requires:
             - build
       - packtracker:
+          requires:
+            - build
+      - upgrade-tests:
           requires:
             - build
       - test:
