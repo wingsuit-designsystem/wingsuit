@@ -25,6 +25,8 @@
   "scripts": {
     "dev:storybook": "yarn ws dev storybook",
     "build:storybook": "yarn ws build storybook",
+    "dev:drupal": "yarn ws dev drupal",
+    "build:drupal": "yarn ws build drupal",
     "docs:storybook": "yarn ws build storybook --docs",
     "lint:js": "eslint --ext .js ./",
     "lint:css": "stylelint '**/*.css'",

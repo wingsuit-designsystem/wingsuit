@@ -1,14 +1,24 @@
+import { resolveConfig, stories } from '@wingsuit-designsystem/core';
+
+const appName = 'storybook';
+const appConfig = resolveConfig(appName);
 const postCss = require('postcss');
 
-module.exports = {
+export default {
   framework: {
     name: '@storybook/react-webpack5',
     options: {
       builder: {
+        /** This don't work */
         lazyCompilation: false,
-        fsCache: false,
+        fsCache: true,
       },
     },
+  },
+  typescript: { reactDocgen: false },
+  docs: {
+    autodocs: 'tag',
+    defaultName: 'Docs',
   },
   stories: [
     './patterns/00-foundations/**/*.mdx',
@@ -16,30 +26,24 @@ module.exports = {
     '../../source/default/patterns/**/*.stories.jsx',
     './patterns/**/*.stories.wingsuit.jsx',
     './patterns/**/*.stories.jsx',
+    ...stories(appConfig),
   ],
-  typescript: { reactDocgen: false },
-  docs: {
-    autodocs: 'tag',
-    defaultName: 'Docs',
-  },
   addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-viewport',
     '@storybook/addon-links',
-    'storybook-addon-themes',
+    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        postCss: {
+          implementation: postCss,
+        },
+      },
+    },
+    'storybook-addon-theme-provider',
     {
       name: '@wingsuit-designsystem/storybook',
       options: {
         appName: 'storybook',
-      },
-    },
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: postCss,
-        },
       },
     },
   ],
