@@ -6,7 +6,6 @@ window.Alpine = Alpine;
 Drupal.behaviors.alpinejs = {
   isStarted: false,
   attach() {
-
     if (Drupal.behaviors.alpinejs.isStarted === false) {
       Alpine.start();
       Drupal.behaviors.alpinejs.isStarted = true;
