@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import AppConfig, { defaultAppConfig } from './AppConfig';
 import PresetManager from './server/PresetManager';
 import { invokeHook } from './index';
@@ -73,42 +74,33 @@ export function resolveConfig(
     typeOverwritten = true;
   }
   const { mergedConfig, projectConfig } = getConfigBase(wingsuitConfig);
-  if (projectConfig.apps === undefined) {
-    projectConfig.apps = {};
-  }
-
-  if (projectConfig.apps[appName] == null && mergedConfig.apps[appName] == null) {
+  projectConfig.apps = projectConfig.apps ?? {};
+  if (!projectConfig.apps[appName] && !mergedConfig.apps[appName]) {
     throw new Error(`App ${appName} not found. Check your apps section in your wingsuit.config.js`);
   }
-  if (
-    typeOverwritten === false &&
-    projectConfig.apps[appName] != null &&
-    projectConfig.apps[appName].type != null
-  ) {
-    type = projectConfig.apps[appName].type;
-  }
+  type =
+    !typeOverwritten && projectConfig.apps[appName]?.type ? projectConfig.apps[appName].type : type;
 
   const rootPath = configPath != null ? configPath : process.cwd();
   // Overrule default config with merged config.
   let appConfig = merge(defaultAppConfig(type, rootPath), mergedConfig.apps[type]);
 
   // Overrule environment config.
-  if (mergedConfig.environments[environment] != null) {
+  if (mergedConfig.environments[environment]) {
     appConfig = merge(appConfig, mergedConfig.environments[environment]);
   }
 
   // Overrule project config.
-  if (projectConfig.apps != null && projectConfig.apps[appName] != null) {
+  if (projectConfig?.apps[appName]) {
     appConfig = merge(appConfig, projectConfig.apps[appName]);
   }
 
   const overloadedFunctions = ['startup', 'generator'];
   overloadedFunctions.forEach((funcName) => {
     if (mergedConfig.apps[type]) {
-      appConfig[funcName] =
-        mergedConfig.apps[type][funcName] != null
-          ? mergedConfig.apps[type][funcName]
-          : appConfig[funcName];
+      appConfig[funcName] = mergedConfig.apps[type][funcName]
+        ? mergedConfig.apps[type][funcName]
+        : appConfig[funcName];
     }
 
     if (
@@ -121,9 +113,8 @@ export function resolveConfig(
   });
 
   // Overrule hooks.
-  appConfig.webpack = mergedConfig.webpack !== null ? mergedConfig.webpack : appConfig.webpack;
-  appConfig.webpackFinal =
-    mergedConfig.webpackFinal !== null ? mergedConfig.webpackFinal : appConfig.webpackFinal;
+  appConfig.webpack = mergedConfig.webpack ?? appConfig.webpack;
+  appConfig.webpackFinal = mergedConfig.webpackFinal ?? appConfig.webpackFinal;
 
   mergedConfig.presets.forEach((preset) => {
     appConfig.presets.push(preset);
@@ -147,6 +138,17 @@ export function resolveConfig(
       `No designSystem found: ${appConfig.designSystem}. Please check your wingsuit.config.`
     );
   }
+  Object.entries(designSystem.namespaces).forEach(([namespace, fullPath]) => {
+    if (typeof fullPath === 'string') {
+      if (!fs.existsSync(fullPath)) {
+        // eslint-disable-next-line no-console
+        console.log(
+          `Path ${fullPath} for ${namespace} doesn't exists. Please remove it from namespace configuration.`
+        );
+        delete designSystem.namespaces[namespace];
+      }
+    }
+  });
   appConfig.parameters = mergedConfig.parameters;
   appConfig.name = appName;
   appConfig.patternFolder = designSystem.patternFolder;

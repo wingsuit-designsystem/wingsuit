@@ -64,7 +64,8 @@
     "starter-kits/*",
     "presets/*",
     "presets/examples/*",
-    "examples/*"
+    "examples/*",
+    "packages/cli/test/run_upgrade/wingsuit"
   ],
   "optionalDependencies": {
     "@cypress/skip-test": "^2.6.1",
