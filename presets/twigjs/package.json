@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-twigjs",
-  "version": "2.0.0-alpha.11",
+  "version": "2.0.0-alpha.12",
   "description": "Wingsuit Twig.js preset.",
   "repository": {
     "type": "git",
@@ -34,8 +34,8 @@
   },
   "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.0-alpha.11",
-    "@wingsuit-designsystem/pattern": "2.0.0-alpha.11",
+    "@wingsuit-designsystem/core": "2.0.0-alpha.12",
+    "@wingsuit-designsystem/pattern": "2.0.0-alpha.12",
     "add-attributes-twig-extension": "^0.1.0",
     "twig-drupal-filters": "^3.1.0",
     "twig-loader": "https://github.com/fourkitchens/twig-loader"
