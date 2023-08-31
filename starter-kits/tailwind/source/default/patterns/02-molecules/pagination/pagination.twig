@@ -40,7 +40,7 @@
           <a
             href="{{ item.href }}"
             title="{{ title }}"{{ item.attributes|without('href', 'title') }}
-            class="rounded-full py-2 px-4 inline-flex items-center text-base font-semibold {{ current == key ? 'is-active bg-black text-white hover:bg-purple-600' : 'bg-gray-100 text-black hover:bg-gray-300' }}"
+            class="rounded-full py-2 px-4 inline-flex items-center font-semibold {{ current == key ? 'is-active bg-black text-white hover:bg-purple-600' : 'bg-gray-100 text-black hover:bg-gray-300' }}"
           >
             <span class="sr-only">
               {{ current == key ? 'Current page'|t : 'Page'|t }}

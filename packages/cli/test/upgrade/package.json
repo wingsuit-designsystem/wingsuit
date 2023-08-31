@@ -1,7 +1,7 @@
 {
-  "name": "@wingsuit-designsystem/starter-kit-tailwind",
+  "name": "@wingsuit-designsystem/upgrade-tailwind",
   "version": "2.0.0-alpha.11",
-  "description": "A design system with Storybook, Tailwind and Drupal",
+  "description": "A design system with Storybook and Tailwind",
   "main": "",
   "private": true,
   "license": "GPL-2.0",
@@ -10,7 +10,7 @@
     "url": "https://github.com/wingsuit-designsystem/"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=16.14.0",
     "yarn": ">=1.3.2"
   },
   "repository": {
@@ -25,16 +25,13 @@
   "scripts": {
     "dev:storybook": "yarn ws dev storybook",
     "build:storybook": "yarn ws build storybook",
-    "docs:storybook": "storybook build --docs",
-    "dev:drupal": "yarn ws dev drupal",
-    "build:drupal": "yarn ws build drupal",
-    "lint:js": "eslint --ext .js ./source",
+    "docs:storybook": "yarn ws build storybook --docs",
+    "lint:js": "eslint --ext .js ./",
     "lint:css": "stylelint '**/*.css'",
-    "lint": "yarn run lint:js; npm run lint:css;",
-    "fmt:js": "eslint --fix --ext .js,.vue ./source",
+    "lint": "npm run lint:js; npm run lint:css;",
+    "fmt:js": "eslint --fix --ext .js,.vue ./",
     "fmt:css": "npm run lint:css --fix && prettier --loglevel warn --write '**/*.{css}'",
-    "fmt": "npm run fmt:js; npm run fmt:css",
-    "ci": "npm run lint && npm run build:drupal"
+    "fmt": "npm run fmt:js; npm run fmt:css"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.2",
@@ -69,11 +66,9 @@
     "storybook-addon-theme-provider": "^0.1.10"
   },
   "dependencies": {
-    "@drupal/once": "^1.0.1",
-    "@splidejs/splide": "^4.1.4",
-    "alpinejs": "^3.12.0",
-    "svg4everybody": "^2.1.9",
-    "tailwind-hamburgers": "^1.3.4",
-    "tailwindcss": "^3.2.7"
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.0",
+    "alpinejs": "^3.12.1",
+    "tailwindcss": "^3.3.2"
   }
 }

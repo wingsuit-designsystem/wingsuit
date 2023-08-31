@@ -2,3 +2,4 @@ node_modules
 coverage
 /wingsuit
 dist
+test/run_upgrade

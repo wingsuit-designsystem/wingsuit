@@ -1,12 +1,13 @@
 {#
   Attributes
 #}
-{% set parent_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'parent_list_classes')) %}
-{% set parent_list_item_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'parent_list_item_classes')) %}
-{% set parent_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'parent_link_classes')) %}
-{% set child_list_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'child_list_classes')) %}
-{% set child_list_item_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'child_list_item_classes')) %}
-{% set child_link_attributes = create_attribute().addClass(pattern_configuration('menu', variant, 'child_link_classes')) %}
+{% set classes = pattern_configuration('menu', variant, 'footer')['classes'] %}
+{% set first_ul_attributes = create_attribute().addClass(classes['first_ul']) %}
+{% set first_li_attributes = create_attribute().addClass(classes['first_li']) %}
+{% set first_a_attributes = create_attribute().addClass(classes['first_a']) %}
+{% set descendant_ul_attributes = create_attribute().addClass(classes['descendant_ul']) %}
+{% set descendant_li_attributes = create_attribute().addClass(classes['descendant_li']) %}
+{% set descendant_a_attributes = create_attribute().addClass(classes['descendant_a']) %}
 
 {#
   Template
@@ -14,19 +15,19 @@
 {% set cells = [] %}
 {% for item in items %}
   {% set cell %}
-    <ul role="menu" {{ parent_list_attributes }}>
-      <li role="none" {{ parent_list_item_attributes }}>
+    <ul role="menu" {{ first_ul_attributes }}>
+      <li role="none" {{ first_li_attributes }}>
         {# -- Main parent item w/o link  -- #}
-        <a href="#" {{ parent_link_attributes }}>
+        <a href="#" {{ first_a_attributes }}>
           {{ item.title }}
         </a>
 
         {# -- Child items -- #}
         {% if item.below %}
-          <ul role="menu" {{ child_list_attributes }}>
+          <ul role="menu" {{ descendant_ul_attributes }}>
             {% for child in item.below %}
-              <li role="none" {{ child_list_item_attributes }}>
-                <a href="{{ child.url }}" {{ child_link_attributes }}>
+              <li role="none" {{ descendant_li_attributes }}>
+                <a href="{{ child.url }}" {{ descendant_a_attributes }}>
                   {{ child.title }}
                 </a>
               </li>

@@ -65,7 +65,7 @@
 <ul class="{{ list_classes }}">
   {% for item in items %}
     {% set link_classes = ([
-      'font-bold font-display text-base text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
+      'font-bold font-display text-black lg:text-white lg:group-hover:text-teal-200 w-full block cursor-pointer lg:inline-block',
     ] | sort | join(' ') | trim ) %}
     <li class="relative group" {% if item.below %}
       x-data="Drupal.behaviors.wingsuitMenu()"

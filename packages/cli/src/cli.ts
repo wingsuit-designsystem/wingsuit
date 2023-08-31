@@ -44,6 +44,7 @@ program
 
 program
   .command('upgrade')
+  .option('-A --appName', 'The wingsuit appName to upgrade. Default is storybook.')
   .description('Upgrade Wingsuit to Version 2.')
   .action((options) => upgrade(options));
 

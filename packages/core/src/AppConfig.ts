@@ -94,6 +94,7 @@ export interface Preset {
   webpack?(appConfig: AppConfig);
   defaultAppConfig?(): AppConfig;
   webpackFinal?(appConfig: AppConfig, config: any);
+  stories?(appConfig: AppConfig, config: any): string[];
   commands?(appConfig: AppConfig, config: any);
 }
 

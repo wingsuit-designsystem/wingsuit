@@ -23,7 +23,6 @@ module.exports = {
   important: false,
   darkMode: 'class',
   content: ['./apps/**/*.twig', ...content],
-  safelist: ['bg-black', 'form-input'],
   theme: {
     boxShadow: {
       sm: '0px 1px 2px rgba(0, 0, 0, 0.05)',

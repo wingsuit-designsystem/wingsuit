@@ -1,7 +1,3 @@
-import { resolveConfig, stories } from '@wingsuit-designsystem/core';
-
-const appName = 'storybook';
-const appConfig = resolveConfig(appName);
 const postCss = require('postcss');
 
 export default {
@@ -11,7 +7,7 @@ export default {
       builder: {
         /** This don't work */
         lazyCompilation: false,
-        fsCache: true,
+        fsCache: false,
       },
     },
   },
@@ -21,12 +17,11 @@ export default {
     defaultName: 'Docs',
   },
   stories: [
-    './patterns/00-foundations/**/*.mdx',
+    './patterns/**/*.mdx',
     '../../source/default/patterns/**/*.stories.wingsuit.jsx',
     '../../source/default/patterns/**/*.stories.jsx',
     './patterns/**/*.stories.wingsuit.jsx',
     './patterns/**/*.stories.jsx',
-    ...stories(appConfig),
   ],
   addons: [
     '@storybook/addon-links',

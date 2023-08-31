@@ -214,6 +214,21 @@ jobs:
           command: |
             cd starter-kits/tailwind
             npx chromatic --exit-zero-on-changes
+  upgrade-tests:
+    executor:
+      class: small
+      name: sb_node_18_classic
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run upgrade
+          command: |
+            cd packages/cli/test
+            ./upgrade_tests.sh
+            cd run_upgrade/wingsuit
+            yarn dev:storybook --smoke-test
   smoke-tests:
     executor:
       class: small
@@ -325,6 +340,9 @@ workflows:
           requires:
             - build
       - packtracker:
+          requires:
+            - build
+      - upgrade-tests:
           requires:
             - build
       - test:

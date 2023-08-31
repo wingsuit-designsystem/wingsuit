@@ -41,25 +41,20 @@ rich_snippet:
           icon: home
           size: large
   variants:
-    small:
-      label: Small
-      configuration:
-        text: 'text-base font-copy'
-        spacing: 'mb-3'
     default:
       label: Default
       configuration:
-        text: 'text-base font-copy'
+        text: ''
         spacing: 'mb-3 lg:mb-4'
     large:
       label: Large
       configuration:
-        text: 'text-base lg:text-lg font-copy'
+        text: 'lg:text-lg'
         spacing: 'mb-4'
   configuration:
     classes:
       wrapper: 'flex flex-col flex-1'
-      preheadline: 'text-teal-500 text-base mb-2 font-display font-bold'
+      preheadline: 'text-teal-500 mb-2 font-display font-bold'
       headline: 'font-display font-bold'
   settings:
     headline_tag:

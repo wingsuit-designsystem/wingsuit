@@ -3,7 +3,7 @@ container:
   label: Container
   description: Primary Layout Container to manage the "max-width" and padding to other layout elements.
   extends:
-    - tokens_colors.settings.bg
+    - tokens_colors.settings.bg_color
     - tokens_spacing.settings
   fields:
     content:
