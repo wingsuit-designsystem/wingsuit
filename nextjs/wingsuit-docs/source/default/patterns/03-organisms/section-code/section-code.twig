@@ -1,0 +1,124 @@
+{% embed "@organisms/container/container.twig"
+    with {
+    width: width|default('default'),
+    padding_top: padding_top|default('default'),
+    padding_bottom: padding_bottom|default('default'),
+    bg: bg
+} %}
+    {% block content %}
+
+
+                    <div class="pb-10">
+                        {% include "@atoms/rich-text/rich-text.twig" with {text: content, variant: 'large', text_align: content_align, width: content_width} only %}
+                    </div>
+                    {% if badge_headline is not empty %}
+                        <div class="pb-2">
+                            {% include "@atoms/rich-text/rich-text.twig" with {text: '<b>' ~ badge_headline ~ '</b>', variant: 'large'} only %}
+                        </div>
+                    {% endif %}
+                    <Tabs>
+                    <tab-list>
+                        {% for item in data %}
+                            <tab>
+                            {% include "@atoms/badge/badge.twig" with {
+                                text: item.title, variant: 'default',
+                                round: false,
+                                expand: true,
+                                attributes: create_attribute().setAttribute(
+                                    'x-click', 'key=\'' ~ item.key ~'\''
+                                ).setAttribute (
+                                    ':class', "{ 'bg-black text-white dark:bg-white dark:text-black': key === '" ~ item.key ~ "' }"
+                                )
+                            } only %}
+                            </tab>
+                        {% endfor %}
+                    </tab-list>
+                    {% for item in data %}
+                        {% set code_block %}
+                            {% if item.codes|length > 0 %}
+                                {% include "@molecules/code-block/code-block.twig"
+                                    with {
+                                    variant: 'dark',
+                                    hide_toolbar: item.hide_code_toolbar is defined ? item.hide_code_toolbar : false,
+                                    codes: item.codes
+                                } %}
+                            {% endif %}
+                        {% endset %}
+                        {% set content %}
+                            {% if item.contents|length > 0 %}
+                                <div>
+                                    <div {{ create_attribute().addClass([
+                                        'pb-4 flex space-x-3',
+                                        item.contents|length == 1 ? 'hidden'
+                                    ]) }}>
+                                            {% for content in item.contents %}
+
+                                                {% include "@atoms/badge/badge.twig" with {
+                                                    text: content.title, variant: 'default',
+                                                    expand: true,
+                                                    attributes: create_attribute().setAttribute(
+                                                        'x-on:click', 'key=\'' ~ content.key ~'\''
+                                                    ).setAttribute (
+                                                        ':class', "{ 'bg-black text-white': key === '" ~ content.key ~ "' }"
+                                                    )
+                                                } only %}
+                                            {% endfor %}
+                                    </div>
+
+                                    {% for content in item.contents %}
+                                        <tab-panel>
+                                            <div>
+                                                {% if content.intro is not empty %}
+                                                    <div class="pb-8 pt-4">
+                                                        {{ pattern('rich_text', { text: content.intro }, 'large') }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if content.intro_pattern.id is not empty %}
+                                                    {{ pattern_preview(content.intro_pattern.id, content.intro_pattern.data|default({}), content.intro_pattern.variant) }}
+                                                {% endif %}
+                                                {% if content.show_code_block is not defined or content.show_code_block == true %}
+                                                    {% include "@molecules/code-block/code-block.twig"
+                                                        with {
+                                                        variant: 'light',
+                                                        codes: [
+                                                            {
+                                                                image_url: content.image_url,
+                                                                content: content.content
+                                                            }
+                                                        ]
+
+                                                    } %}
+                                                {% else %}
+                                                    {{ content.content }}
+                                                {% endif %}
+                                            </div>
+                                        </tab-panel>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endset %}
+                        <tab-panel>
+                            <div>
+                                {% if item.intro is not empty %}
+                                    <div class="pb-6">
+                                        {% include "@atoms/rich-text/rich-text.twig" with {text: item.intro, variant: 'large'} only %}
+                                    </div>
+                                {% endif %}
+                                <div>
+                                    {% embed "@organisms/grid/grid.twig" with {
+                                        columns: code_block|trim and content|trim is not empty ? 2 : 1,
+                                        cells: [
+                                            content,
+                                            code_block
+                                        ]
+                                    } only %}
+                                    {% endembed %}
+                                </div>
+                            </div>
+                        </tab-panel>
+                    {% endfor %}
+                </div>
+            </Tabs>
+        {{ content_bottom }}
+    {% endblock %}
+{% endembed %}

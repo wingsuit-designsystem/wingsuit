@@ -82,6 +82,9 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
     import { storage } from '@wingsuit-designsystem/pattern';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
     import { args, argTypes } from '@wingsuit-designsystem/storybook';
+    import React from 'react';
+    import {version} from 'react-dom';
+    console.log(React.version, version);
     import '${patternClientYamlPath}';
     export default {
       title: '${defaultPatternNamespace}/${defaultPatternLabel}',

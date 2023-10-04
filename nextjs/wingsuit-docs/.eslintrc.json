@@ -1,0 +1,15 @@
+{
+  "extends": "next/core-web-vitals",
+  "ignorePatterns": ["tailwind.config.ts"],
+  "rules": {
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ]
+  }
+}

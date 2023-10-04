@@ -1,0 +1,21 @@
+<nav role="navigation" class="w-full">
+  <ul class="list-reset block lg:flex flex-row justify-between flex-1 ">
+    {% for item in items %}
+      <li>
+        <a class="pr-2 my-4 uppercase font-bold hover:underline" href="{{ item.url }}">
+          {{ item.title }}
+        </a>
+        {% if item.below is not empty %}
+          <ul class="list-reset lg:flex flex-col flex-1 mb-7">
+            {% for sub_item in item.below %}
+              <li class="mt-4">
+                <a class="py-2 text-gray-600 hover:text-gray-900 hover:underline {% if (sub_item.in_active_trail) %} is-active {% endif %}" href="{{ sub_item.url }}">{{ sub_item.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+

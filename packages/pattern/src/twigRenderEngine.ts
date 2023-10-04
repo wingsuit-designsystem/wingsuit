@@ -103,16 +103,12 @@ export async function renderPatternPreview(
             const fieldName = nameKeys[0];
             const delta: number = Number.parseInt(nameKeys[1], 10);
             if (variant.getField(fieldName).multiValueType() === MultiValueTypes.items) {
-              if (previewRenderedVariables[nameKeys[0]] === undefined) {
-                previewRenderedVariables[nameKeys[0]] = [];
-              }
+              previewRenderedVariables[nameKeys[0]] = previewRenderedVariables[nameKeys[0]] ?? [];
               previewRenderedVariables[nameKeys[0]][delta] = promisedPreviewValues[j];
             } else if (
               variant.getField(fieldName).multiValueType() === MultiValueTypes.field_items
             ) {
-              if (previewRenderedVariables[nameKeys[0]] === undefined) {
-                previewRenderedVariables[nameKeys[0]] = [];
-              }
+              previewRenderedVariables[nameKeys[0]] = previewRenderedVariables[nameKeys[0]] ?? [];
               previewRenderedVariables[nameKeys[0]][delta] = { content: promisedPreviewValues[j] };
             } else if (
               variant.getField(fieldName).multiValueType() === MultiValueTypes.single_value

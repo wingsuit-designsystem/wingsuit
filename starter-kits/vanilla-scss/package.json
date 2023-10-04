@@ -59,8 +59,8 @@
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.12",
     "autoprefixer": "^9.7.4",
     "postcss": "^8.4.23",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "storybook": "^7.0.2"
   }
 }

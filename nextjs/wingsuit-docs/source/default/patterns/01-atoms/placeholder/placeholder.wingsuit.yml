@@ -1,0 +1,131 @@
+placeholder:
+  use: "@atoms/placeholder/placeholder.twig"
+  label: Placeholder
+  description: "Placeholder image component."
+  variants:
+    image:
+      label: Image
+      description: "Placeholder images are very useful for prototyping your site.
+        You can configure your image styles in the placeholder.wingsuit.yml,
+        and select the used image style."
+      settings:
+        background_classes: ""
+    background:
+      label: Background image
+  settings:
+    placeholder_url:
+      label: Placeholder service
+      type: select
+      preview: https://satyr.io/[width]x[height]
+      required: true
+      options:
+        "https://satyr.io/[width]x[height]": https://satyr.io/
+        "https://via.placeholder.com/[width]x[height]": https://via.placeholder.com/
+        "https://fakeimg.pl/[width]x[height]": https://fakeimg.pl/
+        "https://placeimg.com/[width]/[height]/tech/grayscale": https://placeimg/
+    background_classes:
+      label: Classes
+      description: Classes applied to background image container.
+      type: textfield
+      preview: w-full h-20 bg-cover
+    style:
+      label: Image style
+      type: select
+      preview: 16x9_md_sc
+      options:
+        1x1_xxs_sc: XXSmall 1x1
+        8x7_xxs_sc: XSmall 8x7
+        8x7_xs_sc: Small 8x7
+        16x9_xxxs_sc: XXXSmall 16x9
+        16x9_xxs_sc: XXSmall 16x9
+        16x9_xs_sc: XSmall 16x9
+        16x9_sm_sc: SM 16x9
+        16x9_md_sc: LG 16x9
+        16x9_xl_sc: XL 16x9
+        16x9_xxl_sc: XXLL 16x9
+        card: Card
+        article: Article
+        banner: Banner
+  visibility: storybook
+  configuration:
+    image_config:
+      styles:
+        1x1_xxs_sc:
+          label: Small 1x1
+          width: 80
+          height: 80
+        8x7_xxs_sc:
+          label: XSmall 8x7
+          width: 460
+          height: 402
+        8x7_xs_sc:
+          label: Small 8x7
+          width: 640
+          height: 560
+        16x9_xxxs_sc:
+          label: XXXSmall 16x9 ()
+          width: 220
+          height: 124
+        16x9_xxs_sc:
+          label: XXSmall 16x9
+          width: 460
+          height: 258
+        16x9_xs_sc:
+          label: XSmall 16x9
+          width: 640
+          height: 359
+        16x9_sm_sc:
+          label: SM 16x9
+          width: 768
+          height: 432
+        16x9_md_sc:
+          label: MD 16x9
+          width: 1024
+          height: 576
+        16x9_l_sc:
+          label: L 16x9
+          width: 1280
+          height: 720
+        16x9_xl_sc:
+          label: XL 16x9
+          width: 1600
+          height: 900
+        16x9_xxl_sc:
+          label: XXL 16x9
+          width: 1900
+          height: 1068
+      styles_responsive:
+        banner:
+          style: 16x9_xs_sc
+          breakpoints:
+            xxs: 8x7_xxs_sc
+            xs: 8x7_xs_sc
+            sm: 16x9_sm_sc
+            md: 16x9_md_sc
+            lg: 16x9_l_sc
+            xl: 16x9_xxl_sc
+        card:
+          style: 16x9_xs_sc
+          breakpoints:
+            xxs: 8x7_xxs_sc
+            xs: 8x7_xs_sc
+        article:
+          style: 16x9_xl_sc
+          breakpoints:
+            xxs: 8x7_xxs_sc
+            xs: 8x7_xs_sc
+            sm: 16x9_sm_sc
+            md: 16x9_md_sc
+      breakpoints:
+        xxs:
+          mediaQuery: '(min-width: 0px) and (max-width: 459px)'
+        xs:
+          mediaQuery: '(min-width: 460px) and (max-width: 639px)'
+        sm:
+          mediaQuery: 'all and (min-width: 640px) and (max-width: 767px)'
+        md:
+          mediaQuery: 'all and (min-width: 768px) and (max-width: 1023px)'
+        lg:
+          mediaQuery: 'all and (min-width: 1024px) and (max-width: 1279px)'
+        xl:
+          mediaQuery: 'all and (min-width: 1280px)'

@@ -1,0 +1,9 @@
+{# SETTINGS #}
+{% set variant = variant|default('icon') %}
+
+{# VATIANT TEMPLATES #}
+{% if variant == 'icon' %}
+  {% include "@atoms/svg/_svg--icon.twig" %}
+{% elseif variant == 'inline-css' %}
+  {% include "@atoms/svg/_svg--inline-css.twig" %}
+{% endif %}

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Grid component
+ *
+ * See component.wingsuit.yml for usage.
+ */
+#}
+
+{% set body %}
+  {{ pattern('rich_text', {text: '<MainContent/>'}, 'default') }}
+{% endset %}
+
+{% include "@templates/site-container.twig" with {
+  menu: pattern_preview('menu', {}, 'primary'),
+  top_menu: pattern_preview('menu', {}, 'top'),
+  footer_menu: null,
+  show_hamburger: true,
+  content: body,
+  display_menu: true
+} %}
+

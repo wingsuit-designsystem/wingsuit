@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * next-links
+ *
+ * See next-links.wingsuit.yaml for documentation.
+ */
+#}
+
+{#
+  Classes
+#}
+{% set classes = [
+  'pattern-next-links'
+] %}
+
+{#
+  Attributes
+#}
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+  Template
+#}
+<div class="pt-6 md:pt-14">
+  <div class="p-2 my-2.5 uppercase font-bold">{{ heading }}</div>
+  {% for item in items %}
+    {{ pattern('next', {
+      title: item.title,
+      text: item.text,
+      button: pattern('button',{
+        text: item.link_title,
+        round: true,
+        size: 'medium',
+        url: item.href,
+      }, 'default')
+    }) }}
+  {% endfor %}
+</div>

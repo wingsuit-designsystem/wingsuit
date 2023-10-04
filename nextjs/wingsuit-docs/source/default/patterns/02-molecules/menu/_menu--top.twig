@@ -1,0 +1,9 @@
+<ul class="list-reset lg:flex justify-end flex-1 items-center pr-12">
+  {% for item in items %}
+    <li class="py-2 lg:py-0 lg:ml-3">
+      <a class="ml-5 text-black hover:text-gray-600 {% if (item.in_active_trail) %}border-b border-teal-600 {% endif %}" href="{{ item.url }}">
+        {{ item.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

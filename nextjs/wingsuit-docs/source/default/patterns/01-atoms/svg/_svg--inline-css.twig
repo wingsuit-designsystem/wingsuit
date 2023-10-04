@@ -1,0 +1,12 @@
+{# SETTINGS #}
+{% set classes = ([
+  'svg',
+  size != '' ? size,
+  'sprite-' ~ icon
+] | sort | join(' ') | trim )%}
+
+{% set attributes = attributes|default(create_attribute()).addClass(classes) %}
+
+{# TEMPLATE #}
+<div {{ attributes }}>
+</div>

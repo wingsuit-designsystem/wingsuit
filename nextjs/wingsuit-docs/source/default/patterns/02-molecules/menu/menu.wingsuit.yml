@@ -1,0 +1,150 @@
+menu:
+  use: "@molecules/menu/menu.twig"
+  label: Menu
+  description: Primary and footer menu component.
+  fields:
+    items:
+      type: object
+      label: Items
+  variants:
+    primary:
+      label: Primary
+      fields:
+        items:
+          - title: Get Started
+            url: "#"
+            below:
+              - title: Introduction
+                url: "/basics/introduction"
+          - title: GUIDES
+            url: "/guides/quick-start-guide"
+            below:
+              - title: Quickstart guide
+                url: "/guides/quick-start-guide"
+              - title: Upgrade to Wingsuit 2.
+                url: "/guides/ws2-upgrade"
+              - title: Create new component
+                url: "/guides/create-component-guide"
+              - title: Create new app
+                url: "/guides/create-app-guide"
+              - title: Showroom
+                url: "/guides/showroom"
+              - title: Twing extensions
+                url: "/guides/twing-extensions-guide"
+          - title: CONFIGURATIONS
+            url: "#"
+            below:
+              - title: Configuration
+                url: "/configurations/details"
+              - title: Custom webpack configuration
+                url: "/configurations/custom-webpack-config"
+          - title: APPS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/apps/overview"
+              - title: Drupal
+                url: "/apps/drupal"
+              - title: CMS
+                url: "/apps/cms"
+              - title: Pages
+                url: "/apps/pages"
+          - title: PRESETS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/presets/overview"
+              - title: Compression Preset
+                url: "/presets/compression"
+              - title: Imagemin Preset
+                url: "/presets/imagemin"
+              - title: Pwa Preset
+                url: "/presets/pwa"
+          - title: STARTER KITS
+            url: "#"
+            below:
+              - title: TailwindCSS + Drupal
+                url: "/starter-kits/tailwind-drupal"
+          - title: COMPONENTS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/components/overview"
+              - title: Global variables
+                url: "/components/globals"
+              - title: Wingsuit Pattern
+                url: "/components/wingsuit"
+              - title: Presentation
+                url: "/components/presentation"
+          - title: ASSETS
+            url: "#"
+            below:
+              - title: Overview
+                url: "/assets/overview"
+              - title: Images & Icons
+                url: "/assets/images"
+              - title: SVGs
+                url: "/assets/svg"
+              - title: Javascript
+                url: "/assets/javascript"
+          - title: DRUPAL
+            url: "/drupal/ui_patterns"
+            below:
+              - title: Thinking in Components!
+                url: "/drupal/overview"
+              - title: Wingsuit Kickstarter
+                url: "/drupal/ui_patterns"
+          - title: DOCUMENTATION
+            url: "#"
+            below:
+              - title: Get started
+                url: "/documentation/overview"
+              - title: MDX
+                url: "/documentation/mdx"
+          - title: TESTING
+            url: "#"
+            below:
+              - title: Visual Testing
+                url: "/testing/visual-testing"
+    top:
+      label: Top
+      fields:
+        items:
+          - title: Documentation
+            url: "/guides/quick-start-guide/"
+          - title: <b>What's new in Version 2.0 beta</b>
+            url: "/releases/twodotzero"
+    footer:
+      label: Footer
+      description: The footer menu.
+      fields:
+        items:
+          - title: BASICS
+            url: "/basics/introduction"
+            below:
+              - title: Introduction
+                url: "/basics/introduction"
+              - title: Quick setup
+                url: "/guides/quick-start-guide"
+              - title: Create new component
+                url: "/guides/create-component-guide"
+
+          - title: CONFIGURATIONS
+            url: "/configurations/details"
+            below:
+              - title: Configuration
+                url: "/configurations/details"
+              - title: Custom webpack configuration
+                url: "/configurations/custom-webpack-config"
+              - title: Presets
+                url: "/configurations/preset-webpack"
+          - title: COMPONENTS
+            url: "/components/overview"
+            below:
+              - title: Wingsuit/UI Patterns
+                url: "/components/wingsuit"
+              - title: Twig only
+                url: "/components/twig"
+              - title: Presentation
+                url: "/components/presentation"
+  visibility: storybook

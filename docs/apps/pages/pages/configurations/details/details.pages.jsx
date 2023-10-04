@@ -11,7 +11,7 @@ export default {
   MDX,
   vars: {
     meta_title: 'Overview',
-    meta_description: 'Custom webpack configuration.',
+    meta_description: 'Wingsui configuration.',
     next: [
       {
         title: 'Configure webpack',

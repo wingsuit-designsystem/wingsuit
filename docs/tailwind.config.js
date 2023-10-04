@@ -5,10 +5,11 @@ const typography = require('@tailwindcss/typography')({
 });
 
 module.exports = {
+  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
   important: false,
   mode: 'jit',
   darkMode: 'class',
-  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+
   theme: {
     colors: {
       transparent: 'transparent',

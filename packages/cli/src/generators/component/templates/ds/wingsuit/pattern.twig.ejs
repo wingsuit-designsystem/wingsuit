@@ -10,35 +10,41 @@
 {#
   Defaults
 #}
+<% if (hasSettings) { -%>
 <% settings.forEach(function(setting) { -%>
 <% if (setting.default != '') { -%>
 {% set <%= setting.name %> = <%= setting.name %>|default('<%= setting.default %>') %}
 <% } -%>
 <% }); -%>
+<% } -%>
 
 {#
   Classes
 #}
 {% set classes = [
-  'pattern-'
+  'pattern-<%= name %>'
 ] %}
 
 {#
   Attributes
 #}
 {% set attributes = attributes|default(create_attribute()) %}
+<% if (hasSettings) { -%>
 <% settings.forEach(function(setting) { -%>
 <% if (setting.configuration) { -%>
 {% set <%= setting.name %>_classes = create_attribute().addClass(pattern_configuration('<%= name %>', variant, '<%= setting.name %>')) %} %}
 <% } -%>
 <% }); -%>
+<% } -%>
 {#
   Template
 #}
 <div {{ attributes.addClass(classes | sort | join(' ') | trim) }}>
+<% if (hasFields) { -%>
 <% fields.forEach(function(field) { -%>
   <div {{ region_attributes.<%= field.name %>|default(create_attribute()) }}>
-    <%= field.name %>
+    {{ <%= field.name %> }}
   </div>
 <% }); -%>
+<% } -%>
 </div>

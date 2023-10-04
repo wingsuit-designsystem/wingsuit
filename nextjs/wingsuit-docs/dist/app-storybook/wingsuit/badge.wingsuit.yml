@@ -1,0 +1,15 @@
+badge:
+  use: "@atoms/badge/badge.twig"
+  label: Badge
+  description: Example description
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: Text
+  settings:
+    round:
+      type: boolean
+      label: Round
+      default_value: true
+  namespace: atoms

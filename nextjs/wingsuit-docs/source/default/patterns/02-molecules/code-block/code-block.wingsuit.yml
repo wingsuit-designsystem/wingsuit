@@ -1,0 +1,47 @@
+code_block:
+  use: "@molecules/code-block/code-block.twig"
+  label: Code-block
+  description: Amazing code-block component.
+  fields:
+    codes:
+      type: object
+      label: Data
+      description: The format of the code.
+      preview:
+        - key: code1
+          format: yaml
+          title: Code 1
+          code: "<code>use: @molecules/avatar/avatar.twig \n
+                  \tlabel: Avatar\n
+                  \tdescription: An avatar represents an ....\n</code><code>
+                  fields:\n
+                  <code class='highlight-feature highlight-feature--active'>\timage:\n
+                      \t\ttype: pattern\n
+                      label: Image\n
+                      preview:\n
+                        id: placeholder\n
+                        variant: image\n
+                        settings:\n
+                          style: 1x1_xs_sc\n</code></code>"
+        - key: code3
+          title: Code 2
+          format: yaml
+          image_url: images/colors_export.png
+  variants:
+    dark:
+      label: Dark
+      configuration:
+        frame: bg-code-dark
+        content: bg-dark-500
+        active_tab: bg-dark-500
+    light:
+      label: Light
+      configuration:
+        frame: bg-code-light
+        content: bg-white
+        active_tab: bg-gray-300
+  settings:
+    hide_toolbar:
+      type: boolean
+      label: Hide Toolbar
+      default_value: false

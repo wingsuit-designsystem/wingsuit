@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * banner
+ *
+ * See banner.wingsuit.yaml for documentation.
+ */
+#}
+{# DEFAULTS #}
+
+{% set position = position|default('center_center') %}
+
+{# SETTINGS #}
+{% set position_classes =  {
+  'top_left': '',
+  'top_center': 'text-center justify-center ',
+  'top_right': 'text-right justify-end ',
+  'center_left': 'items-center',
+  'center_center': 'text-center items-center justify-center',
+  'center_right': 'text-right items-center justify-end',
+  'bottom_left': 'items-end',
+  'bottom_center': 'text-center items-end justify-center',
+  'bottom_right': 'text-right items-end justify-end',
+} %}
+
+{% set teaser %}{{- teaser -}}{% endset %}
+
+{# Template #}
+<div{{ attributes|default(create_attribute()).addClass('relative') }}>
+  {{ image }}
+  <div class="absolute top-0 left-0 w-full h-full flex">
+    {% embed "@organisms/container/container.twig" with {region_attributes: region_attributes, teaser: teaser, headline: headline, classes: 'flex-1 flex ' ~ position_classes[position]}  only %}
+      {% block content %}
+        <div class="p-6 dark:text-white">
+          {% if teaser is not empty %}
+            <div{{ region_attributes.teaser|default(create_attribute()).addClass('text-xl') }}>
+              {{ teaser }}
+            </div>
+          {% endif %}
+        </div>
+      {% endblock %}
+    {% endembed %}
+  </div>
+</div>

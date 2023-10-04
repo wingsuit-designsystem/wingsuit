@@ -1,0 +1,30 @@
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 1 999;
+    font-display: swap;
+    src: local(''),
+    url('./fonts/inter/Inter.var.woff2') format('woff2');
+  }
+}
+
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.wingsuit-root {
+  height: 100%;
+  display: flex;
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
