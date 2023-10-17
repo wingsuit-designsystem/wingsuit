@@ -14,13 +14,17 @@ const next: NextLink = [
     href: '/components/wingsuit',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'Presentation templates',
+    text: 'Learn how to create storybook preview pages for your components.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/components/presentation',
   },
 ];
 
+export const metadata = {
+  title: 'Apps overview',
+  description: 'Integrate your Design System into your application or CMS.',
+};
 export default function Page() {
   return (
     <>

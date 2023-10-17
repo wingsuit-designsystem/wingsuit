@@ -1,0 +1,55 @@
+# What's new in Version 1.1
+We have added a lot of new features in Version 1.1. Additionally, we rebuild our docs page.
+We build a Static Site Generator for Wingsuit. This makes it easy to build static pages like this doc page with Wingsuit components.
+
+## Nesting inside your wingsuit.yml
+Now you can build complexe render trees inside your `wingsuit.yml`
+The following example renders a form.
+```yml
+fields:
+  children:
+    type: pattern
+    label: Children
+    multi_value_type: single_value
+    preview:
+      id: form-checkboxes
+      fields:
+        children:
+          - id: form-element
+            variant: "checkbox"
+            fields:
+              description_content: ""
+              errors: ""
+            settings:
+              type: checkbox
+          - id: form-element
+            variant: "checkbox"
+            fields:
+              description_content: ""
+              errors: ""
+            settings:
+              type: checkbox
+```
+Thanks to [jowan](https://github.com/jowan) for support on this feature.
+
+## New command line tools
+* With `yarn ws dev APP_NAME` and `yarn ws build APP_NAME` you can start apps now without adding them to your package.json.
+* With `yarn ws generate-app` you can generate a new apps.
+
+## Three new presets
+* [Compression Preset](/presets/compression/) to minify Javascript and CSS
+* [Imagemin Preset](/presets/imagemin/) to minify JPG and PNGs and additionally generating WEBP.
+* [Pwa Preset](/presets/pwa/) to generate favicons.
+
+Thanks to [iuscare](https://github.com/iuscare) for these great presets.
+
+## New App `Wingsuit Pages`
+With this new App you can build static page with Wingsuit components and feed them with MDX files.
+[Click here for more infos](/apps/pages/).
+
+## Awesome Drupal Kickstarter
+We rebuild the Drupal Kickstarter. We removed Acquia Lightning and build a Layout Builder interface which makes fun to work with.
+For that we build the [Gin Layout Builder](https://www.drupal.org/project/gin_lb) and the Wingsuit Layout Builder Module as part of the [Wingsuit companion module](https://www.drupal.org/project/wingsuit_companion) which integrates [Section Library](https://www.drupal.org/project/section_library) and [Layout Builder Browser](https://www.drupal.org/project/layout_builder_browser).
+Also, we add a lot of new features to [UI Patterns Settings](https://www.drupal.org/project/ui_patterns_settings).
+
+Check out the [Drupal Kickstarter page](/drupal/ui_patterns)

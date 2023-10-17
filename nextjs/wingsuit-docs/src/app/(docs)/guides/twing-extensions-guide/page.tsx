@@ -8,19 +8,17 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
-    link_title: 'continue',
-    href: '/components/wingsuit',
-  },
-  {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
-    link_title: 'continue',
-    href: '/components/overview',
+    title: 'Configure your app?',
+    text: 'Check the parameters under the "App details" section and extend your wingsuit.config.js',
+    link_title: 'Details',
+    href: '/configurations/details',
   },
 ];
 
+export const metadata = {
+  title: 'Twing extensions',
+  description: 'Add twing extensions.',
+};
 export default function Page() {
   return (
     <>

@@ -8,19 +8,18 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
-    link_title: 'continue',
-    href: '/components/wingsuit',
-  },
-  {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
-    link_title: 'continue',
+    title: 'Not sure which component type you need?',
+    text: 'Check the docs!',
+    link_title: 'Component types',
     href: '/components/overview',
   },
 ];
 
+export const metadata = {
+  title: 'Create new component',
+  description:
+    'The wizard will guide you through all possible pattern types, including documentation.',
+};
 export default function Page() {
   return (
     <>

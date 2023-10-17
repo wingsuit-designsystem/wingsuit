@@ -8,19 +8,23 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
+    title: 'Configure webpack',
+    text: 'Learn how to add custom webpack configuration, or alter the existing one.',
     link_title: 'continue',
-    href: '/components/wingsuit',
+    href: '/configurations/custom-webpack-config',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'Presets',
+    text: 'Learn about presets and how to use them.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/configurations/preset-webpack',
   },
 ];
 
+export const metadata = {
+  title: 'Overview',
+  description: 'Wingsui configuration.',
+};
 export default function Page() {
   return (
     <>

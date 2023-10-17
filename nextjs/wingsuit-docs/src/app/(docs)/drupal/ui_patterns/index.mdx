@@ -1,0 +1,59 @@
+## Demo
+<b>Login with:</b><br/>
+Username: demo<br/>
+Password: demo
+
+After login navigate to [layout builder](http://demo.wingsuit.dev.key-tec.de/en/node/1/layout) and start to build your page.
+
+## Prerequisites
+[Wingsuit Kickstarter](https://github.com/wingsuit-designsystem/wingsuit_kickstarter) is the fastest way to start with Wingsuit.
+The Kickstarter uses UI Patterns to map Patterns to Drupal and [Acquia Blt](https://github.com/acquia/blt) for automation.
+
+- [Node `^12`](https://nodejs.org)
+- [YARN `^1.22`](https://classic.yarnpkg.com/)
+- [PHP `^7.0.0`](https://php.net)
+
+## Installation
+```bash
+composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kickstarter --stability dev --no-interaction
+```
+```bash
+
+cd wingsuit-kickstarter
+./vendor/bin/blt source:build:settings
+./vendor/bin/blt setup
+```
+
+### First steps
+Open the page and login with:
+
+Username: admin<br/>
+Password: admin
+
+After login, edit the front page and open the layout builder to add more blocks. Each block is mapped to a pattern (mostly molecules), each section is also a pattern.
+Click on `configure` in a section to see all settings you find in storybook.
+
+## Development
+The kickstarter installs Wingsuit under `docroot/themes/custom` and generates all templates with `yarn ws build drupal` to
+`docroot/themes/custom/wingsuit/dist/app-drupal` (check `blt/blt.yml` to see the build process).
+
+You can run webpack in watch mode with `yarn ws dev drupal`. (If your changes don't appear, you probably forgot to start `yarn ws dev drupal`).
+
+The theme loads css, js and patterns from the `dist` folder, not from `source` folder.
+
+You can configure the path of your dist folder. See [Configuration details](../../configurations/details/index.md) to configure the webpack part. Open "Wingsuit settings" under Configuration in Drupal and adjust the path to the dist folder.
+
+### Storybook
+To edit your patterns, start storybook: `yarn ws dev storybook`.
+
+## Module overview
+The following modules are used to make Wingsuit patterns available to Drupal:
+
+* [components](https://www.drupal.org/project/components): Registers folders of components defined by your theme or module as Twig namespaces.
+* [ui\_patterns](https://www.drupal.org/project/ui_patterns): Does the mapping magic.
+* [ui\_patterns\_layout\_builder](https://www.drupal.org/project/ui_patterns_layout_builder): To use UI Patterns with Layout Builder.
+* [ui\_patterns_settings](https://www.drupal.org/project/ui_patterns_settings): Make patterns configurable.
+* [ui\_patterns_field_formatter](https://www.drupal.org/project/ui_patterns_field_formatters): Map Patterns to fields.
+* [wingsuit_companion](https://www.drupal.org/project/wingsuit_companion). Locate templates inside the wingsuit `dist` folder.
+
+

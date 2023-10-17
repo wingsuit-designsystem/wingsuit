@@ -8,19 +8,22 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
-    link_title: 'continue',
-    href: '/components/wingsuit',
+    title: 'Extend Wingsuit component documentation',
+    link_title: 'Continue',
+    href: '/documentation/mdx',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
-    link_title: 'continue',
-    href: '/components/overview',
+    title: 'Storybook MDX documentation',
+    link_title: 'Continue',
+    href: 'https://storybook.js.org/docs/react/api/mdx',
   },
 ];
 
+export const metadata = {
+  title: 'Build Twig Components in Storybook',
+  description:
+    'A modern way of building, maintaining and documenting your visual driven twig components in storybook.',
+};
 export default function Page() {
   return (
     <>

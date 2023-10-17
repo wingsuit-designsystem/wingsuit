@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Grid component
+ *
+ * See component.wingsuit.yml for usage.
+ */
+#}
+
+{% set body %}
+  {{ pattern('rich_text', {text: '<h1>Quickstart guide</h1>' ~  content}, 'default') }}
+
+  {{ pattern_preview('download', {width: 'full', bg: 'none', padding_top: 'none', intro: ''}) }}
+  {% if next|length > 0 %}
+    <div class="pt-6 md:pt-14">
+      <div class="p-2 my-2.5 uppercase font-bold">NEXT</div>
+      {% for item in next %}
+        {{ pattern('next', {
+          title: item.title,
+          text: item.text,
+          button: pattern('button',{
+            text: item.link_title,
+            round: true,
+            size: 'medium',
+            url: item.href,
+          }, 'default')
+        }) }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endset %}
+
+
+{% include "@templates/site-container.twig" with {
+  menu: pattern_preview('menu', {}, 'primary'),
+  top_menu: pattern_preview('menu', {}, 'top'),
+  footer_menu: null,
+  show_hamburger: true,
+  content: body,
+  display_menu: true
+} %}
+

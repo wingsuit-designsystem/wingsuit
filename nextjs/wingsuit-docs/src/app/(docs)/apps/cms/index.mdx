@@ -1,8 +1,19 @@
-# Introduction
-Wingsuit is a toolset to build CMS independent TWIG components with Storybook and integrate these components with [apps](/apps/overview/) into your CMS.
-You describe all aspects of your component in a YAML file which is used by Storybook to display all of these aspects.
-Wingsuit [presets](/presets/overview/) adds additional tools like webp, favicon generation without custom webpack configuration.
+# CMS APP
 
-With a component based architecture for TWIG you have a single point of truth for every of your template. This makes it much easier to maintain your codebase.
+Wingsuit also ships with a generic CMS APP.
 
-The Wingsuit kickstarter helps you to integrate your component without any additional mapping code.
+To install the app run:
+```bash
+yarn ws generate-app
+```
+
+Wingsuit adds a config entry to your Wingsuit YAML. Check out the [configuration page](/configurations/details) for more details.
+
+Run either `yarn ws dev cms` for dev mode or for build mode `yarn ws build cms`.
+
+After starting the app Wingsuit generates a dist folder with all assets and templates.
+
+## Template path
+For some CMS it is not possible to load TWIG templates from a different location. With `assetAtomicFolder: '../templates'` you can point your templates to folder outside the dist folder.
+The path is relative to the dist folder. The CMS preset will rename the folder structure to the configured namespace structure.
+

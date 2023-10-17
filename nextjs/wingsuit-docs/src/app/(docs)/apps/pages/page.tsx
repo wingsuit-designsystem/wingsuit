@@ -21,6 +21,10 @@ const next: NextLink = [
   },
 ];
 
+export const metadata = {
+  title: 'Wingsuit Pages',
+  description: 'Wingsuit Preset to generate static pages from patterns.',
+};
 export default function Page() {
   return (
     <>

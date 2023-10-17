@@ -14,13 +14,17 @@ const next: NextLink = [
     href: '/components/wingsuit',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'Presentation templates',
+    text: 'Learn how to create storybook preview pages for your components.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/components/presentation',
   },
 ];
 
+export const metadata = {
+  title: 'Globals',
+  description: 'global scope variables inside your twig template.',
+};
 export default function Page() {
   return (
     <>
