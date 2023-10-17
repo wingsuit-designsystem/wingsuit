@@ -15,8 +15,6 @@ import 'organisms/section';
 // eslint-disable-next-line import/no-unresolved
 import 'templates/page';
 
-// @ts-ignore
-import 'templates/page';
 import pageTemplate from 'templates/page/page.twig';
 import WingsuitPattern from '@/component/wingsuit-pattern';
 

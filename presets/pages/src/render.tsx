@@ -31,7 +31,6 @@ const render = async (ctx, locals) => {
     const props = { page: '' };
     const vars = ctx.vars || {};
     const pattern: IPatternDefinition = ctx.pattern || null;
-    console.log(ctx.path);
     storage.addGlobal('current_path', ctx.path);
     if (pattern) {
       storage.addDefinition(pattern.id, pattern);
