@@ -1,13 +1,18 @@
+import type { Config } from 'tailwindcss'
 const forms = require('@tailwindcss/forms');
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg', '2xl', 'dark'],
 });
 
-module.exports = {
-  content: ['./source/**/*.twig', './source/**/*.yml', './apps/**/*.twig'],
+const config: Config = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './source/default/**/*.{yml,twig}',
+  ],
   important: false,
-  mode: 'jit',
   darkMode: 'class',
 
   theme: {
@@ -134,3 +139,4 @@ module.exports = {
   },
   plugins: [forms, typography],
 };
+export default config

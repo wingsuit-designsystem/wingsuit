@@ -1,35 +1,35 @@
-# Compiled files
-dist/
-_icons-generated.scss
-dependencyGraph.json
-patterns.zip
-yarn-error.log
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# OS generated files
-*.swp
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-.DS_Store?
-._.DS_Store
-._.DS_Store?
+*.pem
 
-# Dependencies
-node_modules
-vendor
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Generated files
-*.sass-cache/
-.eslintcache
-*unison.*
-*.generated.json
-*.generated.css
+# local env files
+.env*.local
 
-#IDE plugins
-.idea
-https://www.symbiont360.com/de
-# Errors
-npm-debug.log
-php_errors.log
+# vercel
+.vercel
 
-package-lock.json
-
-apps/*/config/silo/
+# typescript
+*.tsbuildinfo
+next-env.d.ts

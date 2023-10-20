@@ -21,7 +21,7 @@
       {%- for code_item in codes -%}
       <li class="flex-none">
         <button type="button"
-                @click="key='{{ code_item.key }}'"
+                x-on:click="key='{{ code_item.key }}'"
                 class="border border-transparent py-2 px-4 font-medium focus:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-code-700 text-white"
               :class="{'{{ active_tab }}' : key === '{{ code_item.key }}'}">
           {{ code_item.title }}
