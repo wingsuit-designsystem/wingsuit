@@ -8,19 +8,24 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
+    title: 'Imagemin Preset',
+    text: 'Optimize your images and create webp variants of them on the fly.',
     link_title: 'continue',
-    href: '/components/wingsuit',
+    href: '/presets/imagemin',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'PWA Preset',
+    text: 'Let wingsuit generate all your favicons and a manifest.json for pwa enhancements for you.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/presets/pwa',
   },
 ];
 
+export const metadata = {
+  title: 'Compression preset',
+  description:
+    'The official Wingsuit compression preset adds support for gzip and brotli compression',
+};
 export default function Page() {
   return (
     <>

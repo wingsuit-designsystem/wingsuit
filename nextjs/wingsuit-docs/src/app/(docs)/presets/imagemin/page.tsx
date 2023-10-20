@@ -8,10 +8,10 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
+    title: 'PWA Preset',
+    text: 'Let wingsuit generate all your favicons and a manifest.json for pwa enhancements for you.',
     link_title: 'continue',
-    href: '/components/wingsuit',
+    href: '/presets/pwa',
   },
   {
     title: 'Components',
@@ -21,6 +21,10 @@ const next: NextLink = [
   },
 ];
 
+export const metadata = {
+  title: 'Imagemin Preset',
+  description: 'The official wingsuit imagemin preset optimizes your images.',
+};
 export default function Page() {
   return (
     <>

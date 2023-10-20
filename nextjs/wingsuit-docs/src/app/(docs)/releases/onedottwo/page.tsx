@@ -8,19 +8,17 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
-    link_title: 'continue',
-    href: '/components/wingsuit',
-  },
-  {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
-    link_title: 'continue',
-    href: '/components/overview',
+    title: 'Did we catch your interest?',
+    text: 'Do the 10 minute quickstart guide!',
+    href: '/guides/quick-start-guide',
+    link_title: 'Quickstart',
   },
 ];
 
+export const metadata = {
+  title: 'Wingsuit Version 1.2',
+  description: 'We have added a lot of new features in Version 1.2.',
+};
 export default function Page() {
   return (
     <>

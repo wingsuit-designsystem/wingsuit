@@ -8,10 +8,10 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
+    title: 'Presets',
+    text: 'Learn about presets and how to use them.',
     link_title: 'continue',
-    href: '/components/wingsuit',
+    href: '/presets/overview',
   },
   {
     title: 'Components',
@@ -21,6 +21,10 @@ const next: NextLink = [
   },
 ];
 
+export const metadata = {
+  title: 'Configuration2',
+  description: 'Custom webpack configuration.',
+};
 export default function Page() {
   return (
     <>

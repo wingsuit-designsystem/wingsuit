@@ -14,13 +14,17 @@ const next: NextLink = [
     href: '/components/wingsuit',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'Assets',
+    text: 'Learn how to manage your css, js and other asses with wingsuit.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/assets/overview',
   },
 ];
 
+export const metadata = {
+  title: 'Twig only',
+  description: 'Twig only component works without any wingsuit YAML file',
+};
 export default function Page() {
   return (
     <>

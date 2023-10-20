@@ -21,6 +21,10 @@ const next: NextLink = [
   },
 ];
 
+export const metadata = {
+  title: 'Drupal APP',
+  description: 'Wingsuit APP for drupal.',
+};
 export default function Page() {
   return (
     <>

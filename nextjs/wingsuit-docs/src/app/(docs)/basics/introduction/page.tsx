@@ -8,18 +8,23 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
-    link_title: 'continue',
-    href: '/components/wingsuit',
+    title: 'Did we catch your interest?',
+    text: 'Do the 10 minute quickstart guide!',
+    href: '/guides/quick-start-guide',
+    link_title: 'Quickstart',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
-    link_title: 'continue',
-    href: '/components/overview',
+    title: 'Drupal Kickstarter',
+    text: 'Drupal Kickstarter with Layout Builder',
+    href: '/drupal/ui_patterns/',
+    link_title: 'Kickstarter',
   },
 ];
+
+export const metadata = {
+  title: 'Wingsuit introduction',
+  description: 'Wingsuit is a toolset to build CMS independent TWIG components.',
+};
 
 export default function Page() {
   return (

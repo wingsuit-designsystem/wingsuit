@@ -8,19 +8,29 @@ import 'organisms/next-links';
 
 const next: NextLink = [
   {
-    title: 'UI Patterns',
-    text: 'Learn how wingsuit leverages UI patterns.',
+    title: 'Images & Icons',
+    text: 'Learn how to use images and icons in your patterns.',
     link_title: 'continue',
-    href: '/components/wingsuit',
+    href: '/assets/images',
   },
   {
-    title: 'Components',
-    text: 'Learn about creating and editing components.',
+    title: 'SVG',
+    text: 'Learn how to use svg assets in your patterns.',
     link_title: 'continue',
-    href: '/components/overview',
+    href: '/assets/svg',
+  },
+  {
+    title: 'Javascript',
+    text: 'Learn how to use javascript in your patterns.',
+    link_title: 'continue',
+    href: '/assets/javascript',
   },
 ];
 
+export const metadata = {
+  title: 'Assets overview',
+  description: 'Wingsuit will compile all assets, which are @import ed inside the design system.',
+};
 export default function Page() {
   return (
     <>

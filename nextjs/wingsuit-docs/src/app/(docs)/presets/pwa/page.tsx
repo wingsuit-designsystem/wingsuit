@@ -21,6 +21,10 @@ const next: NextLink = [
   },
 ];
 
+export const metadata = {
+  title: 'Favicon Preset',
+  description: 'Wingsuit also ships with a pwa (favicon) preset, which uses WebappWebpackPlugin.',
+};
 export default function Page() {
   return (
     <>
