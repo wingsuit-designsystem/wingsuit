@@ -122,9 +122,7 @@ export function findLinkedPatternIds(pattern: IPatternDefinition): string[] {
     walkAndCollect(preset, collectedPatternIds);
   });
 
-  const uniqueCollectedPatternIds = collectedPatternIds.filter((v, i, a) => a.indexOf(v) === i);
-
-  return uniqueCollectedPatternIds;
+  return collectedPatternIds.filter((v, i, a) => a.indexOf(v) === i);
 }
 
 function walkAndCollect(preset: Preview | Preview[], collectedPatternIds: string[]) {
@@ -139,7 +137,7 @@ function walkAndCollect(preset: Preview | Preview[], collectedPatternIds: string
         });
       }
     });
-  } else if (preset.id) {
+  } else if (preset?.id) {
     collectedPatternIds.push(preset.id);
     if (typeof preset.fields === 'object') {
       Object.values(preset.fields).forEach((field) => {

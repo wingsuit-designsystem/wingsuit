@@ -10,7 +10,7 @@
       </div>
     {% endblock %}
   {% endembed %}
-  <div class="absolute top-8 right-8 cursor-pointer" @click="$store.modal.visible = false">
+  <div class="absolute top-8 right-8 cursor-pointer" x-on:click="$store.modal.visible = false">
     {% include "@atoms/svg/svg.twig" with {
       "icon": 'close',
       "size": "w-6 h-6"

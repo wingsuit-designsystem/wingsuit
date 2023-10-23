@@ -1,0 +1,10 @@
+docs:
+  use: "@templates/docs/docs.twig"
+  label: Docs Page
+  dependencies:
+    - grid
+    - container
+    - rich_text
+  extends:
+    - page
+  namespace: templates

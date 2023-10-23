@@ -1,0 +1,88 @@
+button:
+  use: "@atoms/button/button.twig"
+  label: Button
+  description: Regular or outline buttons with different colors.
+  fields:
+    text:
+      type: text
+      label: Text
+      preview: More
+  variants:
+    default:
+      label: Default
+      configuration:
+        colors:
+          primary: border-teal-500 bg-teal-500 px-6 font-bold text-black
+            hover:shadow-button
+          secondary: border-yellow-300 bg-yellow-300 px-6 text-black hover:bg-yellow-600
+            hover:border-yellow-600
+    outline:
+      label: Outline
+      configuration:
+        colors:
+          primary: border-teal-300 text-black px-6 hover:bg-teal-600 hover:border-teal-600
+            hover:text-white
+          secondary: border-yellow-600 text-black px-6 hover:bg-yellow-600
+            hover:text-white
+      description: Inverts colors
+  configuration:
+    size:
+      padding:
+        small: py-1 px-2
+        medium: py-2 px-2
+        large: py-2 px-4 md:py-4 md:px-8
+      text:
+        small: text-xs
+        medium: text-base
+        large: text-xl md:text-3xl
+      icon:
+        small: w-4 h-4
+        medium: w-5 h-5
+        large: w-6 h-6
+  settings:
+    size:
+      type: select
+      required: true
+      label: Size
+      preview: medium
+      options:
+        small: Small
+        medium: Medium
+        large: Large
+    expanded:
+      type: boolean
+      label: Expanded
+    round:
+      type: boolean
+      label: Round
+    color:
+      type: select
+      required: true
+      label: Color
+      preview: primary
+      description: Choose your color
+      options:
+        primary: Primary
+        secondary: Secondary
+    url:
+      type: url
+      label: Url
+      description: The action url of your button
+      preview: https://github.com/wingsuit-designsystem/wingsuit
+    icon:
+      type: select
+      label: Icon
+      description: Go with an icon alongside your text.
+      options:
+        plus: Plus
+        search: Search
+        right-arrow: Right-arrow
+    icon_alignment:
+      type: select
+      label: Icon alignment
+      description: Left or right your text.
+      default_value: right
+      options:
+        left: Left
+        right: Right
+  namespace: atoms

@@ -35,9 +35,9 @@
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "@types/react": "^16 || ^18",
-    "@types/react-dom": "^16 || ^18",
-    "react": "^16 || ^18"
+    "@types/react": "^^18",
+    "@types/react-dom": "^^18",
+    "react": "^18"
   },
   "scripts": {
     "prepare": "node ../../scripts/prepare.js"

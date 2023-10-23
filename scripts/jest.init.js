@@ -2,7 +2,7 @@ import 'jest-enzyme/lib/index';
 
 // setup file
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@cfaester/enzyme-adapter-react-18';
 import regeneratorRuntime from 'regenerator-runtime';
 
 import registerRequireContextHook from 'babel-plugin-require-context-hook/register';

@@ -2,6 +2,7 @@ dist
 node_modules
 storybook-static
 built-storybooks
+/docs
 lib/cli/test
 packages/cli/test/run_upgrade
 scripts
