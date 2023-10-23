@@ -11,16 +11,14 @@
   {% include "@atoms/badge/badge.twig" with {
     text: item.title, variant: 'default',
     round: true,
-    attributes: create_attribute().setAttribute(
-      '@click', '$store.component_feature=\'' ~ item.key ~'\''
-    ).setAttribute (
-      ':class', "{ 'bg-black text-white': $store.component_feature === '" ~ item.key ~ "' }"
+    attributes: create_attribute().setAttribute (
+      'class', "{ 'bg-black text-white': $store.component_feature === '" ~ item.key ~ "' }"
     )
   } only %}
 {% endfor %}
 <div class="pb-8 pt-2">
   {% for item in tabs %}
-  <div x-show="$store.component_feature === '{{ item.key }}'">
+  <div>
     <p>{{ item.content }}</p>
   </div>
 {% endfor %}

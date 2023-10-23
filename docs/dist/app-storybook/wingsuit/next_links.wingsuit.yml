@@ -1,0 +1,16 @@
+next_links:
+  use: "@organisms/next-links/next-links.twig"
+  label: Next Links
+  description: Next Links on bottom of the page
+  dependencies:
+    - next
+  fields:
+    heading:
+      type: text
+      label: Heading
+      preview:
+        faker: lorem.word
+    items:
+      type: object
+      label: Items
+  namespace: organisms

@@ -1,0 +1,107 @@
+container:
+  use: "@organisms/container/container.twig"
+  label: Container
+  description: Primary Layout Container to manage the "max-width" and padding to
+    other layout elements.
+  fields:
+    content:
+      type: text
+      label: Content
+      preview:
+        faker: lorem.paragraphs
+  settings:
+    width:
+      type: select
+      label: Width
+      default_value: default
+      required: true
+      preview: default
+      options:
+        small: Small
+        default: Default
+        large: Large
+        xlarge: Xlarge
+        full: Full
+    tab_bg:
+      label: Background
+      type: group
+      group_type: details
+    bg:
+      type: colorwidget
+      label: Background color
+      default_value: ""
+      group: tab_bg
+      options:
+        "": Transparent
+        gray-medium: Medium gray/#6b7280
+        gray-light: Light gray/#d1d5db
+        purple-light: Light purple
+        green-light: Light green
+        blue-light: Light blue
+    tab_spacing:
+      label: Spacing
+      type: group
+      group_type: details
+    padding_x:
+      type: select
+      label: Padding left/right
+      required: true
+      group: tab_spacing
+      default_value: default
+      options:
+        default: Default
+        large: Large
+    padding_top:
+      type: select
+      label: Padding top
+      default_value: default
+      group: tab_spacing
+      options:
+        small: Small
+        default: Default
+        large: Large
+    padding_bottom:
+      type: select
+      label: Padding bottom
+      group: tab_spacing
+      options:
+        small: Small
+        default: Default
+        large: Large
+    tab_advanced:
+      label: Advanced
+      type: group
+      group_type: details
+    classes:
+      type: textfield
+      label: Additional classes
+      group: tab_advanced
+  configuration:
+    padding_x:
+      default: px-6
+      large: px-10
+    padding_top:
+      small: pt-8
+      default: pt-10 md:pt-20
+      large: pt-20 md:pt-24
+    padding_bottom:
+      small: pb-8
+      default: pb-10 md:pb-20
+      large: pb-20 md:pb-24
+    width:
+      small: max-w-3xl
+      default: max-w-6xl
+      large: max-w-7xl
+      xlarge: max-w-8xl
+    bg:
+      gray-medium: dark bg-gray-500
+      video: bg-video-500
+      gray-light: bg-gray-300
+      gray-lighter: bg-gray-100
+      purple-light: bg-purple-200
+      green-light: bg-green-200
+      green-lighter: bg-green-100
+      blue-light: bg-blue-200
+      yellow-lighter: bg-yellow-100
+      black: dark bg-black
+  namespace: organisms

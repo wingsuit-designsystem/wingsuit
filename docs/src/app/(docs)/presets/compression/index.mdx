@@ -1,0 +1,53 @@
+# Compression Preset
+
+The official wingsuit compression preset adds support for gzip and brotli compression of your css, js & html files.
+
+## Installing the compression preset
+
+We recommend using this preset if your CMS does not support aggreation and compression. In order to do so, you'll want to install the preset as a dev-dependency via `yarn` or `npm`:
+
+```js
+yarn add @wingsuit-designsystem/preset-compression -D
+```
+
+After that, you'll need wingsuit to consume the preset by loading it via your wingsuit.config.js:
+
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: [
+    '@wingsuit-designsystem/preset-compression',
+  ],
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```
+
+## Default behavior & customizations
+The default behavior compresses your css, js & html files with both gzip and brotli algorithm <b> only </b> when the build process is executed. The following properties, however, are exposed and can be
+altered by using the parameters object within your wingsuit.config.js:
+
+
+Example configuration:
+```js
+const namespaces = require('./source/default/namespaces');
+
+module.exports = {
+  presets: ['@wingsuit-designsystem/preset-compression'],
+  parameters: {
+    compression: {
+      compression: 0, // 1 for gzip
+      fileName: '[path][base][file].br',
+    },
+  },
+  designSystems: {
+    default: {
+      namespaces,
+    },
+  },
+};
+```

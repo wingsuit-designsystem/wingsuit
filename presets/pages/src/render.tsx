@@ -20,8 +20,7 @@ export const renderAll = async (pagesContext, locales, callback) => {
     const renderedPages: any = {};
     values.forEach((resultItemAry) => {
       const resultKey = Object.keys(resultItemAry)[0];
-      const resultItem = resultItemAry[resultKey];
-      renderedPages[resultKey] = resultItem;
+      renderedPages[resultKey] = resultItemAry[resultKey];
     });
     callback(null, renderedPages);
   });
@@ -45,8 +44,7 @@ const render = async (ctx, locals) => {
     const assets = Object.keys(locals.webpackStats.compilation.assets);
     const css = assets != null ? assets.filter((value) => value.match(/\.css$/)) : {};
     const js = assets != null ? assets.filter((value) => value.match(/\.js$/)) : {};
-    const markup = ctx.html ? await ctx.html({ css, js, content: props.page }) : props.page;
-    result[ctx.path] = markup;
+    result[ctx.path] = ctx.html ? await ctx.html({ css, js, content: props.page }) : props.page;
   } catch (e) {
     if (e instanceof Error) {
       result[ctx.path] = e.message;
