@@ -20,7 +20,6 @@ interface IconPadding {
   [key: string]: IconPaddingConfiguration;
 }
 interface IconPaddingConfiguration {
-  configuration: string;
   label: string;
   default?: boolean;
 }
@@ -48,7 +47,7 @@ export function defaultConfig(appConfig: AppConfig): IconConfig {
   return {
     scales: {
       '0.5': { label: '0.5' },
-      '0.75': { label: '0.5' },
+      '0.75': { label: '0.75' },
       '1': { label: '1.0', default: true },
       '1.25': { label: '1.25' },
       '1.5': { label: '1.5' },
@@ -56,8 +55,8 @@ export function defaultConfig(appConfig: AppConfig): IconConfig {
       '3': { label: '3.0' },
     },
     padding: {
-      roomy: { label: 'Roomy', configuration: 'm-2', default: true },
-      square: { label: 'Square', configuration: 'm-4' },
+      '0.25': { label: 'Roomy', default: true },
+      '0.125': { label: 'Square'},
     },
     sources: [
       {
