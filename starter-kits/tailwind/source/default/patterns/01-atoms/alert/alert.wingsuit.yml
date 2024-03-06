@@ -38,6 +38,22 @@ alert:
           - 'Eiusmod veniam laboris nostrud anim qui cupidatat dolor est.'
         info:
           - 'Consequat consequat ullamco elit do nisi deserunt nostrud amet.'
+    view_more:
+      type: pattern
+      label: View more
+      preview:
+        - id: button
+          variant: link
+          fields:
+            text: View more
+    dismiss:
+      type: pattern
+      label: Dismiss
+      preview:
+        - id: button
+          variant: link
+          fields:
+            text: Dismiss
   configuration:
     paddings: 'pt-4 px-4 pb-6 pl-12'
     status:

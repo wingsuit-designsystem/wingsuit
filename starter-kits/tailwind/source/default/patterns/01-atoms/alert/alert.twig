@@ -17,10 +17,14 @@
     {% set is_message_with_title = status_headings[type] %}
     {% set attributes = attributes|default(create_attribute()) %}
 
+    {% set button_view_classes = [
+      'font-bold',
+      pattern_configuration('alert', '', 'message_color')['message_color']
+    ] | sort | join(' ') | trim %}
     {#
     Template
     #}
-    <div role="contentinfo" aria-labelledby="{{ title_ids[type] }}"{{ attributes.addClass(classes|sort|join(' ')|trim())|without('role', 'aria-label') }}>
+    <div role="contentinfo" aria-labelledby="{{ title_ids[type] }}"{{ attributes.addClass(classes|sort|join(' ')|trim())|without('role', 'aria-label') }} x-data="{visible: true}" :class="{'hidden': !visible}">
       {% if type == 'error' %}
         <div role="alert">
       {% endif %}
@@ -34,6 +38,12 @@
               <div class="absolute -left-8 top-1/2 -translate-y-1/2">
                 {{ pattern('icon', {
                   icon: pattern_configuration('alert', '', type)['icon'],
+                  color: pattern_configuration('alert', '', type)['icon_color'],
+                }, 'spritemap' ) }}
+              </div>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2" @click="visible=false">
+                {{ pattern('icon', {
+                  icon: 'close',
                   color: pattern_configuration('alert', '', type)['icon_color'],
                 }, 'spritemap' ) }}
               </div>
@@ -53,6 +63,14 @@
         {% else %}
           {{ messages|first }}
         {% endif %}
+      </div>
+      <div class="flex items-center gap-6 mt-2">
+        <div>
+          <a href="#" class="{{ button_view_classes }}">{{ 'view more' }}</a>
+        </div>
+        <div>
+          <a href="#" class="{{ button_view_classes }}">{{ 'Dismiss' }}</a>
+        </div>
       </div>
       {% if type == 'error' %}
         </div>
