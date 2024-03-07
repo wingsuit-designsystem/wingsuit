@@ -45,6 +45,9 @@ grid:
       preview: default
       options:
         none: None
+        footer:
+          label: Footer
+          configuration: 'gap-4 lg:gap-7'
         small:
           label: Small
           configuration: 'gap-5'

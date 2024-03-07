@@ -80,3 +80,7 @@ alert:
       message_color: 'text-blue-600'
       icon: 'circle-info'
       icon_color: 'text-blue-400'
+  settings:
+    buttons:
+      type: boolean
+      label: Buttons

@@ -29,7 +29,7 @@ Attributes
 {#
   Template
 #}
-<div class="flex flex-1 flex-col group">
+<div class="flex flex-1 flex-col group hover:box-shadow">
   <{{ element }} {{ attributes }}>
     {% if image is not empty %}
       <div {{ image_attributes }}>
@@ -42,9 +42,10 @@ Attributes
       {{ pattern('rich_snippet', {
         preheadline: preheadline,
         headline: headline,
-        headline_tag: 'h3',
+        headline_tag: 'h4',
         text: text,
-        action: action
+        action: action,
+        attributes: attributes
       }, 'default' ) }}
     </div>
   </{{ element }}>

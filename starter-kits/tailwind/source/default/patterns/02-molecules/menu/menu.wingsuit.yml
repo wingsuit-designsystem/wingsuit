@@ -162,7 +162,7 @@ menu:
           classes:
             "first_ul": ""
             "first_li": ""
-            "first_a": "font-bold font-display dark:text-white text-lg font-sans"
-            "descendant_ul": ""
+            "first_a": "font-bold font-display dark:text-white text-lg block font-sans mb-2"
+            "descendant_ul": "grid gap-1 lg:gap-2"
             "descendant_li": ""
             "descendant_a": "dark:text-white hover:underline"

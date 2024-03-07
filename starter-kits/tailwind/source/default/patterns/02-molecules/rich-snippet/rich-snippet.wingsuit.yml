@@ -44,8 +44,10 @@ rich_snippet:
     default:
       label: Default
       configuration:
-        text: ''
-        spacing: 'mb-3 lg:mb-4'
+        classes:
+          wrapper: 'flex flex-col flex-1'
+        text: 'flex flex-col flex-1 h-full'
+        spacing: 'mb-3'
     large:
       label: Large
       configuration:

@@ -40,6 +40,6 @@
   {% set cells = cells|merge([cell]) %}
 {% endfor %}
 
-<nav aria-label="footer">
-  {{ pattern('grid', {cells:cells}, 'column_' ~ cells|length ) }}
+<nav aria-label="footer" class="w-full">
+  {{ pattern('grid', {cells:cells, gutter: 'footer'}, 'column_' ~ cells|length ) }}
 </nav>

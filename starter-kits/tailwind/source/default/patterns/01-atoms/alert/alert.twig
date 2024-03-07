@@ -64,14 +64,16 @@
           {{ messages|first }}
         {% endif %}
       </div>
-      <div class="flex items-center gap-6 mt-2">
-        <div>
-          <a href="#" class="{{ button_view_classes }}">{{ 'view more' }}</a>
-        </div>
-        <div>
-          <a href="#" class="{{ button_view_classes }}">{{ 'Dismiss' }}</a>
-        </div>
-      </div>
+      {% if buttons == '1' %}
+          <div class="flex items-center gap-6 mt-2">
+            <div>
+              <div class="{{ button_view_classes }}">{{ 'view more' }}</div>
+            </div>
+            <div>
+              <div class="{{ button_view_classes }}">{{ 'Dismiss' }}</div>
+            </div>
+          </div>
+      {% endif %}
       {% if type == 'error' %}
         </div>
       {% endif %}

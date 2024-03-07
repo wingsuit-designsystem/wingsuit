@@ -54,22 +54,22 @@ button:
           label: Small
           configuration:
             padding: 'py-2 px-4'
-            icon_gap: 'gap-2'
+            icon_gap: 'gap-[10PX]'
             text: 'text-sm tracking-[0.01em]'
-            icon_scale: 1
+            icon_scale: '1.25'
         medium:
           label: Medium
           configuration:
             padding: 'py-2 px-4'
-            icon_gap: 'gap-2'
-            icon_scale: 1
+            icon_gap: 'gap-[10PX]'
+            icon_scale: '1.25'
             text: 'tracking-[0.01em]'
         large:
           label: Large
           configuration:
             padding: 'py-2 px-4'
-            icon_gap: 'gap-2'
-            icon_scale: 1
+            icon_gap: 'gap-[10PX]'
+            icon_scale: '1.25'
             text: 'text-lg'
 
     icon_alignment:

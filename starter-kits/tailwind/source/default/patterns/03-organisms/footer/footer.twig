@@ -1,11 +1,11 @@
 {% set footer_content %}
-  <div class="flex gap-10 lg:gap-28 flex-col-reverse lg:flex-row ">
+  <div class="flex gap-10 lg:gap-28 flex-col-reverse lg:flex-row py-10 lg:py-16 px-[15px] lg:px-0">
     <div class="grid w-full max-w-[181px]">
       {{ pattern('logo') }}
       <div class="mt-3 dark:text-white">
         {{ "Lorem ipsum dolor sit amet consectetur. Mollis elit enim auctor."|t }}
       </div>
-      <ul class="mt-[26px] flex items-center gap-5 dark:text-purple-300">
+      <ul class="mt-3 lg:mt-6 flex items-center gap-5 dark:text-purple-300">
         <li>
           <a href="#">{{ pattern('icon', {icon: 'youtube', scale: '1.25', padding: 'roomy' }, 'spritemap' ) }}</a>
         </li>
@@ -17,7 +17,7 @@
         </li>
       </ul>
     </div>
-    <div>{{ footer_menu }}</div>
+    <div class="flex flex-1">{{ footer_menu }}</div>
   </div>
 {% endset %}
 
@@ -25,8 +25,9 @@
   {{
     pattern('container', {
       bg_color: 'purple-dark',
-      padding_top: 'small',
-      padding_bottom: 'small',
+      padding_top: 'none',
+      padding_bottom: 'none',
+      padding_x: 'none',
       content: footer_content
     })
   }}
