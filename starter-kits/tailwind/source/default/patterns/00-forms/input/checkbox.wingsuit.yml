@@ -18,6 +18,6 @@ form_checkbox:
         form-checkbox
         bg-form-checkbox-icon-unchecked checked:bg-form-checkbox-icon-checked
         dark:bg-dark-form-checkbox-icon-unchecked dark:checked:bg-dark-form-checkbox-icon-checked
-        bg-no-repeat bg-center border-0 w-5 h-5
-        focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[1px] focus:outline-yellow-500
+        bg-no-repeat bg-center hover:border-gray-600 checked:rounded-sm checked:border-2 checked:border-transparent checked:overflow-hidden border-2 rounded-sm border-transparent w-[18px] h-[18px]
+        focus:outline-transparent outline-transparent checked:focus:outline-transparent
         '
