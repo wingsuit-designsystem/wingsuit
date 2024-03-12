@@ -17,17 +17,17 @@
       <tr class="grid md:table-row">
         <th class="h-1"></th>
         {% for head in column.heads %}
-          <th class="border-b text-sm font-normal border-gray-200 text-left text-gray-500 bg-gray-50 {% if head is empty %} pb-4 pt-6 {% else %} py-3 px-6{% endif %}">{{ head }}</th>
+          <th class="border-b font-display text-sm font-normal border-gray-200 text-left text-gray-500 bg-gray-50 {% if head is empty %} pb-4 pt-6 {% else %} py-3 px-6{% endif %}">{{ head }}</th>
         {% endfor %}
       </tr>
     {% endfor %}
   </thead>
   <tbody class="flex flex-1 md:table-row-group overflow-auto">
     {% for row in rows %}
-      <tr class="grid flex-1 md:table-row even:bg-gray-50 odd:bg-white">
+      <tr class="grid flex-1 md:table-row even:bg-gray-50 odd:bg-white [&>*:nth-child(2)]:font-bold [&>*:nth-child(2)]:text-gray-900">
         <td class="{{ classes }}"></td>
         {% for cell in row.cells %}
-          <td class="font-sans text-center md:text-left px-6 py-4 text-gray-500 text-sm font-normal td-first">
+          <td class="font-display text-center md:text-left px-6 py-4 text-gray-500 text-sm font-normal">
             {{ cell }}
           </td>
         {% endfor %}

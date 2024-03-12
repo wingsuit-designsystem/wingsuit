@@ -10,13 +10,13 @@
 {#
   Defaults
 #}
-{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = create_attribute() %}
 {% set headline_tag = headline_tag|default('h1') %}
 
 {#
   Attributes
 #}
-{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', variant, 'classes')['wrapper']) %}
+{% set attributes = attributes.addClass(pattern_configuration('rich_snippet', '', 'classes')['wrapper']) %}
 {% set preheadline_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'classes')['preheadline']) %}
 {% set headline_attributes = create_attribute().addClass([
   pattern_configuration('rich_snippet', variant, 'classes')['headline'],
@@ -24,6 +24,9 @@
   pattern_configuration('rich_snippet', variant, 'headline_tag')[headline_tag]['size'],
 ] | sort | join(' ') | trim ) %}
 {% set text_attributes = create_attribute().addClass(pattern_configuration('rich_snippet', variant, 'text')) %}
+{% set action_attributes = create_attribute().addClass([
+  pattern_configuration('rich_snippet', variant, 'classes')['action'],
+] | sort | join(' ') | trim ) %}
 
 {#
   Render Slots
@@ -35,7 +38,7 @@
 {#
   Template
 #}
-<div {{ attributtes }}>
+<div {{ attributtes }} class="flex flex-col flex-1">
   {% if preheadline is not empty %}
     <div {{ preheadline_attributes }}>
       {{ preheadline }}
@@ -52,7 +55,7 @@
     </p>
   {% endif %}
   {% if action %}
-    <div class="mt-5">
+    <div class="mt-5" {{ action_attributes }}>
       {{ action }}
     </div>
   {% endif %}

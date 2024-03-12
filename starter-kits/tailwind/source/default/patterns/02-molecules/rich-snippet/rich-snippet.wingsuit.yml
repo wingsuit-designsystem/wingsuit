@@ -39,14 +39,19 @@ rich_snippet:
         variant: link
         settings:
           icon: home
-          size: large
+          size: medium
   variants:
+    small:
+      label: Small
+      settings:
+        headline_tag: h4
+      configuration:
+        text: 'flex flex-col flex-1'
+        spacing: 'mb-3'
     default:
       label: Default
       configuration:
-        classes:
-          wrapper: 'flex flex-col flex-1'
-        text: 'flex flex-col flex-1 h-full'
+        text: 'flex flex-col flex-1'
         spacing: 'mb-3'
     large:
       label: Large
