@@ -40,5 +40,5 @@ form_input:
       label: Children
   configuration:
     classes:
-      wrapper: 'form-input py-[11px] px-4 border-gray-400 focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
+      wrapper: 'form-input py-3 px-4 border-gray-400 focus:ring-0 focus:border focus:border-transparent focus:outline focus:outline-offset-[0px] focus:outline-yellow-500'
       radius: 'rounded-md'

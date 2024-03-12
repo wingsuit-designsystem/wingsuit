@@ -59,6 +59,7 @@
 {% set description_attributes = create_attribute().addClass ([
   pattern_configuration('form_element', variant, 'classes')['description'],
   description_display == 'invisible' ? 'visually-hidden',
+  description_display == 'before' ? 'font-bold font-display text-sm'
 ])%}
 
 

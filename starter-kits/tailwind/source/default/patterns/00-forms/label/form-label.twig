@@ -22,11 +22,12 @@ Attributes
 #}
 
 {% set attributes = attributes.addClass([
-  pattern_configuration('form_label', '', 'classes')['wrapper'],
   title_display == 'after' ? 'option',
+  title_display == 'before' ? 'font-bold font-display',
   title_display == 'invisible' ? 'visually-hidden',
   required ? 'js-form-required',
   required ? 'form-required',
+  pattern_configuration('form_label', variant, 'classes')['wrapper'],
 ]) %}
 {#
 Template

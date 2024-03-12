@@ -7,6 +7,3 @@ form_label:
       label: Title
       preview:
         faker: lorem.word
-  configuration:
-    classes:
-      wrapper: 'pl-3'

@@ -20,3 +20,12 @@
 [type="radio"][tabindex="0"]:focus {
   @apply outline-yellow-500 ring-0 border border-transparent outline outline-offset-[1px];
 }
+
+.ui-widget.ui-dialog.ui-dialog-off-canvas {
+  z-index: 50!important;
+}
+
+.td-first:nth-child(1) {
+  color: #111827!important;
+  font-weight: bold !important;
+}

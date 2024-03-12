@@ -137,7 +137,7 @@ form_element:
     spacings:
       margin: 'mb-6'
     default_label:
-      classes: 'mb-2'
+      classes: 'mb-[6px]'
     floating_label:
       wrapper: 'floating relative'
       floating: 'floating__label  bg-white flex w-full h-[48px] rounded-md'

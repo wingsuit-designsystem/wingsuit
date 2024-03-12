@@ -15,7 +15,7 @@ form_radio:
     classes:
       wrapper:
           '
-          form-radio
+          form-radio mr-3
           bg-form-radio-icon-unchecked checked:focus:outline-transparent checked:bg-form-radio-icon-checked
           dark:bg-dark-form-radio-icon-unchecked dark:checked:bg-dark-form-radio-icon-checked
           bg-no-repeat bg-center hover:border-gray-600 border rounded-full border-transparent w-[18px] h-[18px] focus:outline-transparent
