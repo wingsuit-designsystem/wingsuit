@@ -56,20 +56,21 @@ button:
             padding: 'py-2 px-4'
             icon_gap: 'gap-[10PX]'
             text: 'text-sm tracking-[0.01em]'
-            icon_scale: '1.25'
+            icon_scale: '1'
         medium:
           label: Medium
           configuration:
-            padding: 'py-2 px-4'
+            padding: 'py-[10px] px-4'
             icon_gap: 'gap-[10PX]'
-            icon_scale: '1.25'
+            icon_scale: '1'
             text: 'tracking-[0.01em]'
         large:
           label: Large
           configuration:
-            padding: 'py-2 px-4'
+            size:
+              icon_scale: '1.25'
+            padding: 'py-3 px-4'
             icon_gap: 'gap-[10PX]'
-            icon_scale: '1.25'
             text: 'text-lg'
 
     icon_alignment:
@@ -112,4 +113,4 @@ button:
       type: textfield
       label: Extra classes
   configuration:
-    wrapper_classes: 'btn rounded-[22px] font-display flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'
+    wrapper_classes: 'btn rounded-full font-display flex items-center inline-flex font-bold focus:outline-yellow-500 focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-yellow-400'
