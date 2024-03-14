@@ -58,6 +58,10 @@ grid:
           label: Large
           configuration: 'gap-5 lg:gap-36.25'
 
+    grid_layout:
+      type: textfield
+      label: Grid Layout
+      description: Use "grid_layout" when you embed grid direct in code.
     grid_layout_1:
       type: select
       label: Layout

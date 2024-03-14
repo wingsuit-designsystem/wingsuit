@@ -11,13 +11,13 @@ tokens_colors:
         "": Transparent
         purple-dark:
           label: Purple/#581C87
-          configuration: dark bg-purple-900
+          configuration: 'dark bg-purple-900'
         teal:
           label: Teal/#115e59
-          configuration: dark bg-teal-800
+          configuration: 'dark bg-teal-800'
         teal-medium:
           label: Teal medium/#14b8a6
-          configuration: dark bg-teal-500
+          configuration: 'dark bg-teal-500'
         gray-light:
           label: Light gray/#d1d5db
-          configuration: bg-gray-300
+          configuration: 'bg-gray-300'
