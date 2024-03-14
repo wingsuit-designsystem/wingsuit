@@ -8,7 +8,7 @@
 {% set icon_alignment = icon_alignment|default('right') %}
 {% set active_key = disabled == false ? 'active' : 'disabled' %}
 {% set icon = variant == 'icon' ? icon|default('search') : icon %}
-{% set icon_scale = pattern_configuration('button', variant, 'size')[size]['icon_scaling'] %}
+{% set icon_scale = pattern_configuration('button', variant, 'size')[size]['icon_scale'] %}
 {% set url = disabled ? null : url %}
 
 {#

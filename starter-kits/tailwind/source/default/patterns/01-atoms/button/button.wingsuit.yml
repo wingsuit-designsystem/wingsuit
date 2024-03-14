@@ -67,8 +67,7 @@ button:
         large:
           label: Large
           configuration:
-            size:
-              icon_scale: '1.25'
+            icon_scale: '1.25'
             padding: 'py-3 px-4'
             icon_gap: 'gap-[10PX]'
             text: 'text-lg'
