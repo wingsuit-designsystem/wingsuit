@@ -20,14 +20,6 @@ export default {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: postCss,
-        },
-      },
-    },
-    {
       name: '@wingsuit-designsystem/storybook',
       options: {
         appName: 'storybook',

@@ -56,7 +56,7 @@ export function defaultConfig(appConfig: AppConfig): IconConfig {
     },
     padding: {
       '0.25': { label: 'Roomy', default: true },
-      '0.125': { label: 'Square'},
+      '0.125': { label: 'Square' },
     },
     sources: [
       {

@@ -1,6 +1,6 @@
 {# SETTINGS #}
 {% set scale = scale|default(1) %}
-{% set margin = padding|default(1) * scale %}
+{% set margin = padding|default(1)|number_format * scale|number_format %}
 {% set fill_color = fill_color|default('fill-current') %}
 
 {% set wrapper_classes = ([

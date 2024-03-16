@@ -68,12 +68,6 @@ cookie_banner:
             checkbox_default_state: checked
           marketing:
             label: Marketing
-  libraries:
-    - cookie-banner:
-        css:
-          component:
-            ../cookie-banner.css: { }
-
   configuration:
     classes:
       wrapper: 'eu-cookie-compliance-banner eu-cookie-compliance-banner-info cookie-banner absolute w-[90%] h-[80%] md:h-auto overflow-auto max-w-2xl z-50 md:p-7 top-16 md:top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-0 md:-translate-y-2/4 bg-white border-2 border-gray-500'
@@ -88,3 +82,8 @@ cookie_banner:
       button_preferences: 'flex-col button__preferences cursor-pointer'
       button_agree: 'flex-col button__agree cursor-pointer'
       button_decline: 'flex-col px-3.75'
+  libraries:
+    - cookie-banner:
+        css:
+          component:
+            ../cookie-banner.css: { }
