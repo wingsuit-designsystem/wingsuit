@@ -1,6 +1,6 @@
 {
   "name": "wingsuit-docs",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -18,8 +18,8 @@
     "@types/node": "20.5.8",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@wingsuit-designsystem/core": "2.0.0-beta.0",
-    "@wingsuit-designsystem/pattern": "2.0.0-beta.0",
+    "@wingsuit-designsystem/core": "2.0.0-beta.1",
+    "@wingsuit-designsystem/pattern": "2.0.0-beta.1",
     "alpinejs": "2.7.0",
     "autoprefixer": "10.4.15",
     "eslint": "8.48.0",
