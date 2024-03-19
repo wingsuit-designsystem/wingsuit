@@ -49,6 +49,7 @@
 {% set floating_label = floating_label|default(false) %}
 {# Attributes #}
 {% set attributes = attributes.addClass([
+  pattern_configuration('form_element', variant, 'text')['style'],
   pattern_configuration('form_element', variant, 'classes')['wrapper'],
   pattern_configuration('form_element', variant, 'spacings')['margin'],
   flex
@@ -59,7 +60,6 @@
 {% set description_attributes = create_attribute().addClass ([
   pattern_configuration('form_element', variant, 'classes')['description'],
   description_display == 'invisible' ? 'visually-hidden',
-  description_display == 'before' ? 'font-bold font-display text-sm'
 ])%}
 
 

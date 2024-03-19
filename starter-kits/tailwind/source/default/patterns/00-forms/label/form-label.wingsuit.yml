@@ -7,3 +7,15 @@ form_label:
       label: Title
       preview:
         faker: lorem.word
+  variants:
+    default:
+      label: Default
+    checkbox:
+      label: Checkbox
+    checkboxes:
+      label: Checkboxes
+    textfield:
+      label: textfield
+      configuration:
+        classes:
+          text: ''

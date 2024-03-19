@@ -80,9 +80,9 @@ module.exports = {
           "url('../patterns/00-forms/images/dark-radio-icon-unchecked.svg')",
         'dark-form-radio-icon-checked':
           "url('../patterns/00-forms/images/dark-radio-icon-checked.svg')",
-        'bg-dark-form-checkbox-icon-unchecked':
+        'dark-form-checkbox-icon-unchecked':
           "url('../patterns/00-forms/images/dark-checkbox-icon-unchecked.svg')",
-        'checked:bg-dark-form-checkbox-icon-checked':
+        'dark-form-checkbox-icon-checked':
           "url('../patterns/00-forms/images/dark-checkbox-icon-checked.svg')",
         'form-checkbox-icon-checked':
           "url('../patterns/00-forms/images/checkbox-icon-checked.svg')",

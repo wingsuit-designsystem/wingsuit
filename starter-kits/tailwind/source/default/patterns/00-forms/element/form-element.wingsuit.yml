@@ -6,9 +6,15 @@ form_element:
     textfield:
       label: Textfield
       fields:
+        label:
+          id: form_label
+          variant: "textfield"
         children:
           id: form_input
           variant: "textfield"
+      configuration:
+        text:
+          style: 'font-bold font-display text-sm'
     email:
       label: Email
       fields:
@@ -42,9 +48,14 @@ form_element:
     checkbox:
       label: Checkbox
       fields:
+        label:
+          id: form_label
+          variant: "checkbox"
         children:
           id: form_checkbox
       configuration:
+        text:
+          style: 'font-bold font-display text-sm'
         spacings:
           margin: 'mb-4'
       settings:
@@ -52,6 +63,9 @@ form_element:
     checkboxes:
       label: Checkboxes
       fields:
+        label:
+          id: form_label
+          variant: "checkboxes"
         children:
           id: form_checkboxes
       settings:
