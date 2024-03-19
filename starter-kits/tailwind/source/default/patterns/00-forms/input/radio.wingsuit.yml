@@ -17,6 +17,6 @@ form_radio:
           '
           form-radio mr-2
           bg-form-radio-icon-unchecked checked:focus:outline-transparent checked:bg-form-radio-icon-checked
-          dark:bg-dark-form-radio-icon-unchecked dark:checked:bg-dark-form-radio-icon-checked
-          bg-no-repeat bg-center dark:hover:border-purple-600 hover:border-gray-600 border rounded-full border-transparent w-[18px] h-[18px] focus:outline-transparent
+          dark:bg-dark-form-radio-icon-unchecked dark:checked:bg-dark-form-radio-icon-checked dark:ring-0 dark:ring-offset-0
+          bg-no-repeat bg-center dark:hover:border-purple-600 hover:border-gray-600 border rounded-full border-transparent w-[18px] h-[18px] dark:focus:outline-transparent focus:outline-transparent
           '
