@@ -6,8 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/wingsuit-designsystem/wingsuit.git"
   },
-  "main": "./dist/preset.js",
   "browser": "./dist/client.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "bin/**/*",
     "dist/**/*",
@@ -32,6 +34,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@babel/generator": "^7.21.2",
+    "@storybook/preset-react-webpack": "^8.1.0",
     "@storybook/addon-controls": "^8.1.0",
     "@storybook/addon-docs": "^8.1.0",
     "@storybook/builder-webpack5": "^8.1.0",
@@ -39,6 +42,7 @@
     "@storybook/components": "^8.1.0",
     "@storybook/csf-tools": "^8.1.0",
     "@storybook/react": "^8.1.0",
+    "@storybook/react-webpack5": "^8.1.0",
     "@storybook/theming": "^8.1.0",
     "@types/react": "^16.9.14",
     "@types/react-dom": "^16.9.14",
