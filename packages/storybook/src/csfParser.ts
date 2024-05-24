@@ -9,7 +9,22 @@ const babylon = require('babylon');
 const traverse = require('babel-traverse').default;
 const { camelCase } = require('lodash');
 
-export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any = null): string {
+interface ParserResultItem {
+  label: string;
+  namespace: string;
+  patternId: string;
+  exportName: string;
+}
+interface ParserResult {
+  csf: string;
+  items: ParserResultItem[];
+}
+export function csfParser(
+  resourcePath,
+  src,
+  appConfig: AppConfig,
+  loader: any = null
+): ParserResult {
   const { namespaces } = appConfig;
   const ast = babylon.parse(src, {
     sourceType: 'module',
@@ -17,12 +32,9 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
 
   let absYamlPath = '';
   let patternClientYamlPath = '';
-  let wingsuit = null;
+
   traverse(ast, {
     VariableDeclaration(pathItem) {
-      if (pathItem.node.declarations[0].id.name === 'wingsuit') {
-        wingsuit = pathItem.node;
-      }
       if (pathItem.node.declarations[0].id.name === 'patternDefinition') {
         const yamlPath = pathItem.node.declarations[0].init.arguments[0].value;
         if (yamlPath.startsWith('.') || yamlPath.startsWith('/')) {
@@ -35,7 +47,9 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
       }
     },
   });
-  const generated = wingsuit ? generate(wingsuit).code : '';
+  const results: ParserResultItem[] = [];
+  const generated = src;
+  const output: string[] = [];
   if (absYamlPath !== '') {
     if (loader) {
       loader.addDependency(absYamlPath);
@@ -71,23 +85,18 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
     } else {
       namespacePath = defaultPatternNamespace;
     }
-
-    const output: string[] = [];
     if (hasIndexFile) {
       output.push("import './index';");
     }
     output.push(`
-    const patternDefinition = null;
     ${generated};
     import { storage } from '@wingsuit-designsystem/pattern';
     import { PatternPreview } from '@wingsuit-designsystem/pattern-react';
     import { args, argTypes } from '@wingsuit-designsystem/storybook';
     import React from 'react';
     import {version} from 'react-dom';
-    console.log(React.version, version);
     import '${patternClientYamlPath}';
     export default {
-      title: '${defaultPatternNamespace}/${defaultPatternLabel}',
       tags: ['autodocs'],
       component: PatternPreview
      }
@@ -101,13 +110,13 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
         const jsKey = camelCase(`P${patternId}${variantName}Pattern`);
         const storyLabel =
           label === defaultPatternLabel ? variantLabel : `${label}: ${variantLabel}`;
-        output.push(
-          `
+        output.push(`
           export const ${jsKey} = {
           name: '${storyLabel}',
           args: {patternId: '${patternId}', variantId: '${variantName}', ...args({}, '${patternId}', '${variantName}') },
           argTypes: argTypes('${patternId}', '${variantName}'),
           parameters: {
+            ... wingsuit.parameters ?? {},
             docs: { 
               description: {
                 component: \`${patternDefinition[patternId].description ?? ''}\`
@@ -120,11 +129,16 @@ export function csfParser(resourcePath, src, appConfig: AppConfig, loader: any =
                 }
               }
             }
-        }`
-        );
+        }`);
+        results.push({
+          namespace: `${defaultPatternNamespace}/${label}`,
+          label: storyLabel,
+          patternId,
+          exportName: jsKey,
+        });
       });
     });
-    return output.join('\n');
   }
-  return src;
+
+  return { items: results, csf: output.join(' ') };
 }

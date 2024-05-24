@@ -20,10 +20,11 @@ export function webpackFinal(config: Configuration, options: Options = {}): Conf
 
 export const storyIndexers = async (indexers, options: Options) => {
   const wingsuitConfig = wingsuitCore.resolveConfig(options.appName ?? 'storybook');
+
   const csfIndexer = async (fileName: string, opts) => {
     const csfParserFilename = fileName;
     const src = readFileSync(csfParserFilename, 'utf-8').toString();
-    const code = csfParser(csfParserFilename, src, wingsuitConfig);
+    const code = csfParser(csfParserFilename, src, wingsuitConfig)[0].csf;
     const result = loadCsf(code, { ...opts, csfParserFilename }).parse();
     return result;
   };

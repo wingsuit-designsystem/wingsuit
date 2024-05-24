@@ -2,6 +2,8 @@ accordion_item:
   use: "@molecules/accordion-item/accordion-item.twig"
   label: Accordion Item
   description: A collapsible accordion item without javascript.
+  dependencies:
+    - icon
   fields:
     label:
       type: text

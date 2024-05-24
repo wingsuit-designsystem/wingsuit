@@ -2,6 +2,8 @@ pagination:
   use: "@molecules/pagination/pagination.twig"
   label: Pagination
   description: Simple and functional pagination.
+  dependencies:
+    - icon
   fields:
     heading_id:
       type: text

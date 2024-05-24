@@ -11,20 +11,14 @@ export function init(pbehaviorName) {
   if (beahviorsInitialized === false) {
     if (typeof global.window !== 'undefined') {
       // @ts-ignore
-      global.window[pbehaviorName] = { behaviors: {} };
+      if (!global.window[pbehaviorName]?.behaviors) {
+        // @ts-ignore
+        global.window[pbehaviorName] = { behaviors: {} };
+      }
       behaviorName = pbehaviorName;
     }
   }
   beahviorsInitialized = true;
-}
-
-export function attachBehaviorDecorator(storyFn) {
-  console.error('attachBehaviorDecorator in your apps/storybook/preview.js is deprecated.');
-  console.error(
-    'Please replace your preview.js with https://github.com/wingsuit-designsystem/wingsuit/blob/master/starter-kits/tailwind/apps/storybook/preview.js.'
-  );
-
-  return storyFn();
 }
 
 export function attachBehaviors(context: any, settings: any) {
@@ -41,7 +35,7 @@ class BehaviorExecutor {
   }
 
   public static attachBehaviors(context: any, settings = {}) {
-    if (beahviorsInitialized === false) {
+    if (!beahviorsInitialized) {
       console.error(
         "attachBehavior is not initialized. Call initJsBehaviors('Drupal'); in your preview.js."
       );

@@ -1,8 +1,28 @@
 import { resolveConfig, stories } from '@wingsuit-designsystem/core';
+import { csfParser } from '@wingsuit-designsystem/storybook';
+import { readFileSync } from 'fs';
 
 const appName = 'storybook';
 const appConfig = resolveConfig(appName);
 const postCss = require('postcss');
+
+const combosIndexer = {
+  test: /\.stories\.wingsuit\.jsx$/,
+  createIndex: async (fileName, { makeTitle }) => {
+    // Read file and generate entries ...
+    const src = readFileSync(fileName, 'utf-8').toString();
+    const parserResults = csfParser(fileName, src, appConfig).items;
+
+    return parserResults.map((entry) => ({
+      type: 'story',
+      // 👇 Use makeTitle to format the title
+      title: `${makeTitle(entry.namespace)}`,
+      importPath: `virtual:jsonstories--${entry.exportName}`,
+      exportName: entry.exportName,
+      name: entry.label,
+    }));
+  },
+};
 
 export default {
   framework: {
@@ -11,7 +31,7 @@ export default {
       builder: {
         /** This don't work */
         lazyCompilation: false,
-        fsCache: true,
+        fsCache: false,
       },
     },
   },
@@ -28,6 +48,7 @@ export default {
     './patterns/**/*.stories.jsx',
     ...stories(appConfig),
   ],
+  experimental_indexers: async (existingIndexers) => [...existingIndexers, combosIndexer],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -39,7 +60,6 @@ export default {
         },
       },
     },
-    'storybook-addon-theme-provider',
     {
       name: '@wingsuit-designsystem/storybook',
       options: {

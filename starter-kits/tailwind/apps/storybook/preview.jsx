@@ -1,13 +1,5 @@
-import { initJsBehaviors } from '@wingsuit-designsystem/pattern-react';
-import { withThemeProvider } from 'storybook-addon-theme-provider';
-import React from 'react';
 import 'tokens';
-
-// eslint-disable-next-line react/prop-types
-export const Provider = ({ theme, children }) => {
-  // eslint-disable-next-line react/prop-types
-  return <div className={theme.classes}>{children}</div>;
-};
+import { initJsBehaviors } from '@wingsuit-designsystem/pattern-react';
 
 initJsBehaviors('Drupal');
 
@@ -32,7 +24,6 @@ export const globals = {
 };
 
 export const parameters = {
-  decorators: [withThemeProvider(Provider)],
   viewport: {
     viewports: {
       mobile_small: {
