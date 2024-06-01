@@ -8,30 +8,32 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "devDependencies": {
+    "@wingsuit-designsystem/core": "2.0.0-beta.1",
+    "@wingsuit-designsystem/pattern": "2.0.0-beta.1"
+  },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.19",
-    "@ryangjchandler/spruce": "^2.6.3",
+
     "@tailwindcss/forms": "^0.5.1",
     "@tailwindcss/typography": "^0.5.1",
     "@types/node": "20.5.8",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@wingsuit-designsystem/core": "2.0.0-beta.1",
-    "@wingsuit-designsystem/pattern": "2.0.0-beta.1",
     "alpinejs": "2.7.0",
     "autoprefixer": "10.4.15",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "eslint-import-resolver-webpack": "^0.13.7",
-    "html-react-parser": "^4.2.2",
+    "html-react-parser": "^5.1.10",
     "next": "13.4.19",
     "postcss": "8.4.29",
+    "primereact": "^10.6.6",
     "prismjs": "1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-tabs": "^6.0.2",
     "swr": "^2.2.2",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"

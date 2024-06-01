@@ -1,10 +1,10 @@
 import { Property, renderer } from '@wingsuit-designsystem/pattern';
 import WingsuitLink from '@/component/wingsuit-link';
-import parse, { domToReact, HTMLReactParserOptions, Element } from 'html-react-parser';
+import WingsuitTabView from '@/component/wingsuit-tab-view';
+import WingsuitTabPanel from '@/component/wingsuit-tab-panel';
+import parse, { domToReact, HTMLReactParserOptions, Element, DOMNode } from 'html-react-parser';
 import Pattern from '@wingsuit-designsystem/pattern/dist/Pattern';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { TabView, TabPanel } from 'primereact/tabview';
 import React from 'react';
 
 interface Components {
@@ -12,9 +12,9 @@ interface Components {
 }
 
 const components: Components = {
-  tab: Tab,
-  tabs: Tabs,
-  'tab-list': TabList,
+  tab: TabView,
+  tabs: TabView,
+  'tab-list': TabPanel,
 };
 export default async function WingsuitPattern({
   children,
@@ -29,6 +29,27 @@ export default async function WingsuitPattern({
 }) {
   const markup = await renderer.renderPatternPreview(patternId, variables, variantId);
   const options: HTMLReactParserOptions = {
+    transform(reactNode, domNode, index) {
+      // this will wrap every element in a div
+      const domName: string = domNode.name;
+      if (
+        reactNode &&
+        domNode instanceof Element &&
+        domNode.type === 'tag' &&
+        domName === 'tab-view'
+      ) {
+        return <WingsuitTabView key="test">{domNode}</WingsuitTabView>;
+      }
+      if (
+        reactNode &&
+        domNode instanceof Element &&
+        domNode.type === 'tag' &&
+        domName === 'tab-panel'
+      ) {
+        return <TabPanel header="Header" key={domNode.attribs.header}>{reactNode}</TabPanel>;
+      }
+      return reactNode;
+    },
     replace: (domNode: any) => {
       const domName: string = domNode.name;
       if (domNode instanceof Element && domNode.type === 'tag' && domNode.name === 'maincontent') {
@@ -37,21 +58,10 @@ export default async function WingsuitPattern({
       if (domNode instanceof Element && domNode.type === 'tag' && domNode.name === 'a') {
         return (
           <WingsuitLink href={domNode.attribs.href} wingsuitClassName={domNode.attribs.class}>
-            {domToReact(domNode.children)}
+            {domToReact(domNode.children as DOMNode[])}
           </WingsuitLink>
         );
       }
-      if (domNode instanceof Element && domNode.type === 'tag' && domName === 'tab-panel') {
-        return (
-          <TabPanel>
-            <div>DEMO</div>
-          </TabPanel>
-        );
-      }
-      if (domNode instanceof Element && domNode.type === 'tag' && components[domName]) {
-        return React.createElement(components[domName], {}, domToReact(domNode.children, options));
-      }
-      return domNode;
     },
   };
   return <>{parse(markup, options)}</>;
