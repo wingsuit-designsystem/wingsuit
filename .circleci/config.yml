@@ -129,7 +129,7 @@ jobs:
           command: yarn wait-on http://localhost:6000
       - run:
           name: set registry
-          command: yarn config set registry http://localhost:6000/
+          command: yarn config set registry http://localhost:6000
       - run:
           name: test local registry
           command: yarn info @wingsuit-designsystem/core
@@ -159,7 +159,7 @@ jobs:
 #          command: yarn wait-on http://localhost:6000
 #      - run:
 #          name: set registry
-#          command: yarn config set registry http://localhost:6000/
+#          command: yarn config set registry http://localhost:6000
 #      - run:
 #          name: test local registry
 #          command: yarn info @wingsuit-designsystem/core
