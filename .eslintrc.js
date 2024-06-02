@@ -10,7 +10,7 @@ module.exports = {
     {
       files: ['**/__tests__/**', '**/__testfixtures__/**', '**/*.test.*', '**/*.stories.*'],
       rules: {
-        '@typescript-eslint/no-empty-function': 'off',
+
         'import/no-extraneous-dependencies': 'off',
       },
     },

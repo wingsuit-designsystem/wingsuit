@@ -8,6 +8,10 @@
   }
 }
 
+.shiki code {
+    margin: 16px;
+    display: block;
+}
 
 html {
   height: 100%;

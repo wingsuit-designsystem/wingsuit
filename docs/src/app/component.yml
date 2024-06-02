@@ -27,7 +27,7 @@ data:
           use: "@molecules/avatar/avatar.twig"
           label: Avatar
           description: "An avatar represents an ...."
-          <div class='component-feature--fields code-block__feature' :class="{'code-block__feature--active':$store.component_feature == 'fields'}">fields:
+          fields:
             image:
               type: pattern
               label: Image
@@ -40,13 +40,15 @@ data:
               type: text
               label: Text
               preview:
-                faker: lorem.paragraph</div><div class='component-feature--settings code-block__feature' :class="{'code-block__feature--active':$store.component_feature =='settings'}">settings:
+                faker: lorem.paragraph
+          settings:
             text_align:
               type: select
               label: Text align
               options:
                 left: Left
-                center: Center</div><div class='component-feature--variants code-block__feature' :class="{'code-block__feature--active':$store.component_feature =='variants'}">variants:
+                center: Center
+          variants:
             default:
               label: Default
             horizontal:

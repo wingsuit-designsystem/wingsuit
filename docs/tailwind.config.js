@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
   modifiers: ['lg', '2xl', 'dark'],
 });
+const {nextui} = require("@nextui-org/theme");
 
 const config: Config = {
   content: [
@@ -11,6 +12,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './source/default/**/*.{yml,twig}',
+    '../node_modules/@nextui-org/theme/dist/components/(tabs|button|snippet|code|input).js'
   ],
   important: false,
   darkMode: 'class',
@@ -19,6 +21,7 @@ const config: Config = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      foreground: '#eef1f8',
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
@@ -137,6 +140,8 @@ const config: Config = {
     typography: ['responsive', 'dark'],
     boxShadow: ['active', 'hover'],
   },
-  plugins: [forms, typography],
+  plugins: [forms, typography, nextui({
+
+  })],
 };
 export default config

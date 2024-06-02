@@ -1,6 +1,5 @@
 import { getStorage, IPatternDefinition } from '@wingsuit-designsystem/pattern';
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-
+import { Providers } from './providers';
 
 // eslint-disable-next-line import/no-unresolved
 import 'protons';
@@ -68,8 +67,8 @@ storage.addDefinition('frontpage', pattern);
 
 export default function Page() {
   return (
-    <PrimeReactProvider value={{ unstyled: true }}>
+    <Providers>
       <WingsuitPattern patternId="frontpage" />
-    </PrimeReactProvider>
+    </Providers>
   );
 }

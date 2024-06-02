@@ -6,20 +6,14 @@
  * See tabs.wingsuit.yaml for documentation.
  */
 #}
-
-{% for item in tabs %}
-  {% include "@atoms/badge/badge.twig" with {
-    text: item.title, variant: 'default',
-    round: true,
-    attributes: create_attribute().setAttribute (
-      'class', "{ 'bg-black text-white': $store.component_feature === '" ~ item.key ~ "' }"
-    )
-  } only %}
-{% endfor %}
 <div class="pb-8 pt-2">
-  {% for item in tabs %}
-  <div>
-    <p>{{ item.content }}</p>
-  </div>
-{% endfor %}
+    <tab-view>
+    {% for item in tabs %}
+        <tab-panel header="{{ item.title }}">
+            <div>
+                <p>{{ item.content }}</p>
+            </div>
+        </tab-panel>
+    {% endfor %}
+    </tab-view>
 </div>

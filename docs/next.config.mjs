@@ -1,4 +1,7 @@
-const wingsuitCore = require("@wingsuit-designsystem/core");
+import {resolveConfig, getAppPack} from "@wingsuit-designsystem/core";
+import rehypeShiki from '@shikijs/rehype'
+import Mdx from '@next/mdx';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (
@@ -7,8 +10,8 @@ const nextConfig = {
   ) => {
     if (isServer) {
       // Important: return the modified config
-      const wingsuitConfig = wingsuitCore.resolveConfig('nextjs');
-      const wingsuitWebpack = wingsuitCore.getAppPack(wingsuitConfig, []);
+      const wingsuitConfig = resolveConfig('nextjs');
+      const wingsuitWebpack = getAppPack(wingsuitConfig, []);
       config.module.rules = [...config.module.rules, ...wingsuitWebpack.module.rules]
       config.module = {
         ...config.module,
@@ -18,16 +21,12 @@ const nextConfig = {
       config.resolve.alias = {...config.resolve.alias, ...wingsuitWebpack.resolve.alias}
       config.resolveLoader.alias = {...config.resolveLoader.alias, ...wingsuitWebpack.resolveLoader.alias ?? {}}
     }
-    config.module.rules.push({
-      test: [/node_modules[\\/]react-tabs[\\/.].*\.js$/], /// replace here make match your package
-      loader: require.resolve("./loaders/use-client-loader.js"),
-    });
 
     return config;
   },
 }
 
-const withMDX = require('@next/mdx')({
+const withMDX = Mdx({
   experimental: {
     mdxRs: true,
   },
@@ -37,10 +36,10 @@ const withMDX = require('@next/mdx')({
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [],
-    rehypePlugins: [],
+    rehypePlugins: [[rehypeShiki,{ theme: "github-dark"}]],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
 })
 
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);

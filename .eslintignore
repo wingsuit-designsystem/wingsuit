@@ -2,9 +2,11 @@ dist
 node_modules
 storybook-static
 built-storybooks
-/docs
+/docs/src
+/.eslintrc.js
 lib/cli/test
 packages/cli/test/run_upgrade
+tailwind.config.js
 scripts
 cypress
 *.bundle.js
