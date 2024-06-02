@@ -58,7 +58,7 @@
     "cross-spawn": "^7.0.3",
     "eslint-plugin-react": "^7.32.2",
     "git-clone": "^0.1.0",
-    "glob": "^8.1.0",
+    "glob": "^10.4.1",
     "gulp-rename": "<=1.2.2",
     "inquirer": "^8.0.0",
     "inquirer-fs-selector": "^1.2.0",

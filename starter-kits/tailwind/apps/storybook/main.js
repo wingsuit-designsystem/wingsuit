@@ -1,12 +1,10 @@
-const postCss = require('postcss');
-
 export default {
   framework: {
     name: '@wingsuit-designsystem/storybook',
     options: {
       appName: 'storybook',
       builder: {
-        fsCache: true,
+        useSWC: true,
       },
     },
   },
@@ -14,11 +12,29 @@ export default {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {
-      name: '@storybook/addon-styling',
+      name: '@storybook/addon-styling-webpack',
       options: {
-        postCss: {
-          implementation: postCss,
-        },
+        rules: [
+          {
+            test: /\.css$/,
+            sideEffects: true,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  implementation: require.resolve('postcss'),
+                },
+              },
+            ],
+          },
+        ],
       },
     },
   ],
