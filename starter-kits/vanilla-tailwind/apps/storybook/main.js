@@ -1,5 +1,3 @@
-const postCss = require('postcss');
-
 export default {
   framework: {
     name: '@wingsuit-designsystem/storybook',
@@ -12,14 +10,6 @@ export default {
   },
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/addon-styling',
-      options: {
-        postCss: {
-          implementation: postCss,
-        },
-      },
-    },
+    '@storybook/addon-essentials'
   ],
 };

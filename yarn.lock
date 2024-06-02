@@ -28538,6 +28538,11 @@ store2@^2.12.0, store2@^2.14.2:
   resolved "https://registry.npmjs.org/store2/-/store2-2.14.3.tgz#24077d7ba110711864e4f691d2af941ec533deb5"
   integrity sha512-4QcZ+yx7nzEFiV4BMLnr/pRa5HYzNITX2ri0Zh6sT9EyQHbBHacC6YigllUPU9X3D0f/22QCgfokpKs52YRrUg==
 
+storybook-addon-theme-provider@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/storybook-addon-theme-provider/-/storybook-addon-theme-provider-0.2.1.tgz#eab5318f4f1bf10cc27c98820c1654f21a7d98a0"
+  integrity sha512-yZHMSaZ6j8H6sTBCHKkR+Fm15NMq0Te3IhGrruQPydytRUlSgCBBaKFWM57wwNLeSOP2hKbLJzH0ZJnNG6d/zQ==
+
 storybook-addon-themes@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/storybook-addon-themes/-/storybook-addon-themes-6.1.0.tgz#5d7afe293cd4bc28a8f634aa466dbd8fd2f9222e"
