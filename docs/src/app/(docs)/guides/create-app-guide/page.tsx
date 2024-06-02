@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-unresolved
 import { NextLink } from '@/app/(docs)/layout';
-import Mdx from './index.mdx';
 // eslint-disable-next-line import/no-unresolved
 import 'organisms/next-links';
 // eslint-disable-next-line import/no-unresolved
 import WingsuitPattern from '@/component/wingsuit-pattern';
+import Mdx from './index.mdx';
 
 const next: NextLink = [
   {

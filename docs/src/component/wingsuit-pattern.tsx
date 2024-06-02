@@ -52,6 +52,7 @@ export default async function WingsuitPattern({
           </WingsuitLink>
         );
       }
+      return null;
     },
   };
   return <>{parse(markup, options)}</>;

@@ -1,5 +1,4 @@
 import { getStorage, IPatternDefinition } from '@wingsuit-designsystem/pattern';
-import { Providers } from './providers';
 
 // eslint-disable-next-line import/no-unresolved
 import 'protons';
@@ -15,9 +14,11 @@ import 'organisms/section-code';
 import 'organisms/section';
 // eslint-disable-next-line import/no-unresolved
 import 'templates/page';
-
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import pageTemplate from 'templates/page/page.twig';
+
 import WingsuitPattern from '@/component/wingsuit-pattern';
+import { Providers } from './providers';
 
 const tokens = require('./tokens.yml');
 const component = require('./component.yml');

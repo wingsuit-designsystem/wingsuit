@@ -281,7 +281,7 @@ jobs:
           name: Build docs
           command: |
             cd docs
-            yarn build:pages
+            yarn build
   lint:
     executor:
       class: small

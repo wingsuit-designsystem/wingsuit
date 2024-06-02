@@ -22,6 +22,7 @@ export default function WingsuitTabView({
             </Tab>
           );
         }
+        return null;
       }}
     </Tabs>
   );
