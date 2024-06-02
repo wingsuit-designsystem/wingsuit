@@ -9,11 +9,14 @@ const inter = Inter({ subsets: ['latin'] });
 
 export interface NextLink {
   title: string;
-  text: string;
+  text?: string;
   link_title: string;
   href: string;
 }
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-  return <WingsuitPattern patternId="docs">{children}</WingsuitPattern>;
+  return (
+    /* @ts-expect-error Server Component */
+    <WingsuitPattern patternId="docs">{children}</WingsuitPattern>
+  );
 }

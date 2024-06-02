@@ -6,7 +6,7 @@ import Mdx from './index.mdx';
 // eslint-disable-next-line import/no-unresolved
 import 'organisms/next-links';
 
-const next: NextLink = [
+const next: NextLink[] = [
   {
     title: 'SVG',
     text: 'Learn how to use svg assets in your patterns.',
@@ -29,6 +29,7 @@ export default function Page() {
   return (
     <>
       <Mdx />
+      {/* @ts-expect-error Server Component */}
       <WingsuitPattern patternId="next_links" variables={{ items: next }} />
     </>
   );

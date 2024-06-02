@@ -6,7 +6,7 @@ import 'organisms/next-links';
 import WingsuitPattern from '@/component/wingsuit-pattern';
 import Mdx from './index.mdx';
 
-const next: NextLink = [
+const next: NextLink[] = [
   {
     title: 'Configure your app?',
     text: 'Check the parameters under the "App details" section and extend your wingsuit.config.js',
@@ -23,6 +23,7 @@ export default function Page() {
   return (
     <>
       <Mdx />
+      {/* @ts-expect-error Server Component */}
       <WingsuitPattern patternId="next_links" variables={{ items: next }} />
     </>
   );

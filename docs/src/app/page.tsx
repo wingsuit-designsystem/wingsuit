@@ -16,7 +16,6 @@ import 'organisms/section';
 import 'templates/page';
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import pageTemplate from 'templates/page/page.twig';
-
 import WingsuitPattern from '@/component/wingsuit-pattern';
 import { Providers } from './providers';
 
@@ -69,6 +68,7 @@ storage.addDefinition('frontpage', pattern);
 export default function Page() {
   return (
     <Providers>
+      {/* @ts-expect-error Server Component */}
       <WingsuitPattern patternId="frontpage" />
     </Providers>
   );

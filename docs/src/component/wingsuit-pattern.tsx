@@ -13,7 +13,7 @@ export default async function WingsuitPattern({
 }: {
   children?: React.ReactNode;
   patternId: string;
-  variantId: string;
+  variantId?: string;
   variables?: any;
 }) {
   const markup = await renderer.renderPatternPreview(patternId, variables, variantId);

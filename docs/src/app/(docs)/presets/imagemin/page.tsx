@@ -6,7 +6,7 @@ import Mdx from './index.mdx';
 // eslint-disable-next-line import/no-unresolved
 import 'organisms/next-links';
 
-const next: NextLink = [
+const next: NextLink[] = [
   {
     title: 'PWA Preset',
     text: 'Let wingsuit generate all your favicons and a manifest.json for pwa enhancements for you.',
@@ -29,6 +29,7 @@ export default function Page() {
   return (
     <>
       <Mdx />
+      {/* @ts-expect-error Server Component */}
       <WingsuitPattern patternId="next_links" variables={{ items: next }} />
     </>
   );

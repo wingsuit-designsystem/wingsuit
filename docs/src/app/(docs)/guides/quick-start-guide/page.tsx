@@ -7,7 +7,7 @@ import Mdx from './index.mdx';
 import 'organisms/next-links';
 import './images/storybook.png';
 
-const next: NextLink = [
+const next: NextLink[] = [
   {
     title: 'Create a new component',
     text: 'Learn how to use wingsuit by building a new component.',
@@ -24,6 +24,7 @@ export default function Page() {
   return (
     <>
       <Mdx />
+      {/* @ts-expect-error Server Component */}
       <WingsuitPattern patternId="next_links" variables={{ items: next }} />
     </>
   );
