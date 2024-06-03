@@ -22,10 +22,10 @@ export function webpack(appConfig: AppConfig, config: TwingConfig) {
   if (config.mode === 'load') {
     renderer.setNamespaces(appConfig.namespaces);
 
-    let environmentPath =  require.resolve('./environment');
+    let environmentPath = require.resolve('./environment');
     try {
       environmentPath = require.resolve(`${process.cwd()}/wingsuit.twing.environment.js`);
-    } catch (e){
+    } catch (e) {
       // Take the environment
     }
 

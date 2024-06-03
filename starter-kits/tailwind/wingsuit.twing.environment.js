@@ -1,1 +1,1 @@
-module.exports = require("@wingsuit-designsystem/preset-twing/twing.environment");
+module.exports = require('@wingsuit-designsystem/preset-twing/twing.environment');

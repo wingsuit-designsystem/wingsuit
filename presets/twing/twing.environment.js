@@ -7,5 +7,5 @@ const functionName = new TwingFunction('functionName', function () {
   });
 });
 environment.addFunction(functionName);
-**/
+* */
 module.exports = environment;

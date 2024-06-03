@@ -1,5 +1,5 @@
 import { AppConfig, getApps } from '@wingsuit-designsystem/core';
-import glob from 'glob';
+import { glob } from 'glob';
 import chalk from 'chalk';
 import path from 'path';
 
