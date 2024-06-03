@@ -72,7 +72,7 @@
     "@cypress/webpack-preprocessor": "^5.9.1",
     "cypress": "^12.8.1",
     "ts-loader": "^8.0.14",
-    "verdaccio": "^5.5.2",
+    "verdaccio": "5.29.2",
     "verdaccio-auth-memory": "^9.7.2"
   },
   "devDependencies": {
