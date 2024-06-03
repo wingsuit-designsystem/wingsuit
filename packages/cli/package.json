@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/cli",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "The Wingsuit CLI",
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit",
   "author": {
@@ -45,7 +45,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "@wingsuit-designsystem/core": "2.0.0-beta.4",
+    "@wingsuit-designsystem/core": "2.0.0-beta.5",
     "assign-deep": "^1.0.1",
     "ast-query": "^2.0.0",
     "babel-generator": "^7.0.0-beta.3",
@@ -78,5 +78,5 @@
     "url": "git@github.com:wingsuit-designsystem/wingsuit.git",
     "directory": "packages/cli"
   },
-  "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425"
+  "gitHead": "b6ab0d5d04a65f648d96d8c42a314594df79e6ed"
 }

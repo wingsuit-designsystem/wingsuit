@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-lint",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "Wingsuit linting.",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.0-beta.4",
+    "@wingsuit-designsystem/core": "2.0.0-beta.5",
     "eslint": "^8.37.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -50,5 +50,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425"
+  "gitHead": "b6ab0d5d04a65f648d96d8c42a314594df79e6ed"
 }

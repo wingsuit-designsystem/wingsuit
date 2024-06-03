@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/core",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "Wingsuit Core Design System.",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "561e222489a6b2fe94efadd6bb8dd31236708425",
+  "gitHead": "b6ab0d5d04a65f648d96d8c42a314594df79e6ed",
   "dependencies": {
     "@babel/preset-env": "^7.21.5",
     "@types/node": "^16.10.2",
