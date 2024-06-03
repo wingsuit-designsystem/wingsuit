@@ -6,7 +6,7 @@ hero:
     text:
       type: text
       label: Headline
-      preview: "<h1 class='font-medium'>Build CMS independent Twig Components in Storybook</h1><p class='lead font-medium'>
+      preview: "<h1 class='font-medium'>Build Twig Components with Storybook</h1><p class='lead font-medium'>
         A modern way of building, maintaining and documenting your visual driven twig components in storybook with an automated and opinionated integration workflow for your CMS. <br>
         </p>"
 
@@ -14,6 +14,14 @@ hero:
       type: pattern
       label: Button
       preview:
+        - id: button
+          variant: default
+          fields:
+            text: Wingsuit 2 is here!
+          settings:
+            size: large
+            round: true
+            url: /releases/twodotzero
         -
           id: button
           variant: default

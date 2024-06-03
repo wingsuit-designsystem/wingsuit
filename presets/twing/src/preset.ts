@@ -1,8 +1,8 @@
 import path from 'path';
+import * as fs from 'fs';
 
 import { AppConfig, pathInfo } from '@wingsuit-designsystem/core';
 import { renderer } from '@wingsuit-designsystem/pattern';
-// import path from "path";
 
 export function name(appConfig: AppConfig) {
   return 'twing';
@@ -21,6 +21,14 @@ export function defaultConfig(appConfig: AppConfig): TwingConfig {
 export function webpack(appConfig: AppConfig, config: TwingConfig) {
   if (config.mode === 'load') {
     renderer.setNamespaces(appConfig.namespaces);
+
+    let environmentPath =  require.resolve('./environment');
+    try {
+      environmentPath = require.resolve(`${process.cwd()}/wingsuit.twing.environment.js`);
+    } catch (e){
+      // Take the environment
+    }
+
     return {
       module: {
         rules: [
@@ -30,7 +38,7 @@ export function webpack(appConfig: AppConfig, config: TwingConfig) {
               {
                 loader: 'twing-loader',
                 options: {
-                  environmentModulePath: require.resolve('./environment'),
+                  environmentModulePath: environmentPath,
                 },
               },
             ],

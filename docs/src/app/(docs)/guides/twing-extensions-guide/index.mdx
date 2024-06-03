@@ -1,6 +1,26 @@
 # Twing extensions
 You can add your own twing extensions to wingsuit.
 
+## Wingsuit 2
+1. Create a file `wingsuit.twing.environment.js`
+2. Add twing functions or filters to this environment.
+Example:
+```js
+const environment = require('./dist/environment');
+/**
+const TwingFunction = require('twing').TwingFunction;
+const functionName = new TwingFunction('functionName', function () {
+return new Promise((resolve) => {
+resolve('demo');
+});
+});
+environment.addFunction(functionName);
+**/
+module.exports = environment;
+```
+[Click here for more infos about twing extensions](https://nightlycommit.github.io/twing/advanced.html#context-aware-filters).
+
+## Wingsuit 1
 Here a sample to add a new function `apps/storybook/preview.js`:
 
 ```js
@@ -11,16 +31,5 @@ let function = new TwingFunction('function_name', function () {
 });
 twingEnvironment.addFunction(function);
 
-configure(
-  module,
-  [
-    require.context('./patterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
-    require.context('wspatterns', true, /\.stories(\.jsx|\.js|\.mdx)$/),
-  ],
-  require.context('./config', false, /\.json|\.ya?ml$/),
-  require.context('wspatterns', true, /\.twig$/),
-  namespaces,
-  renderImpl
-);
 ```
 [Click here for more infos about twing extensions](https://nightlycommit.github.io/twing/advanced.html#context-aware-filters).

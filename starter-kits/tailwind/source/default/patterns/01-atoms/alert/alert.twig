@@ -1,11 +1,10 @@
 <div>
+
   {% for type, messages in message_list %}
     {#
     Classes
     #}
     {% set classes = [] %}
-
-
     {% set attributes = {} %}
     {% set classes = classes|merge([
       pattern_configuration('alert', '', type)['bg_color'],

@@ -1,16 +1,16 @@
 # Upgrade to `Wingsuit 2`
-Upgrading `Wingsuit 1` to `Wingsuit 2` also upgrades `Storybook 6` to `Storybook 7` and `Webpack 4` to `Webpack 5`.
+Upgrading `Wingsuit 1` to `Wingsuit 2` also upgrades `Storybook 6` to `Storybook 8` and `Webpack 4` to `Webpack 5`.
 
 To make this easy and smooth follow theses steps to manage the upgrade:
 
-* Upgrade node to version 18 or higher
+* Upgrade node to version 20 or higher
 * Update wingsuit.config.js to support new presets.
 * Upgrade package.json, delete yarn.lock and run `yarn install`
 * Run Wingsuit upgrade script
 * Upgrade Drupal namespace configuration
 
-## 1. Upgrade to Node 18 or higher
-The easiest way to upgrade to node 18 or higher is nvm. Install nvm and run nvm install 18 and nvm use 18
+## 1. Upgrade to Node 20 or higher
+The easiest way to upgrade to node 20 or higher is nvm. Install nvm and run `nvm install 20` and `nvm use 20`
 
 ## 2. Update `wingsuit.config.js`
 To be more flexible `Wingsuit 2` moves most of the webpack configuration to presets. In `Wingsuit 1` these presets where part of Wingsuit core.
@@ -201,9 +201,8 @@ yarn ws upgrade
 
 ### Congratulation!
 Start now storybook and check if everything works:
-```
+```js
 yarn dev:storybook
-
 ```
 
 ## 5. Upgrade Drupal

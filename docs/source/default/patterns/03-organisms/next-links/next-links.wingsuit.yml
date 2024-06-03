@@ -8,8 +8,7 @@ next_links:
     heading:
       type: text
       label: Heading
-      preview:
-        faker: lorem.word
+      preview: Read further
     items:
       type: object
       label: Items

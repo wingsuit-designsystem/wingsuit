@@ -8,8 +8,8 @@ import 'organisms/next-links';
 
 const next: NextLink[] = [
   {
-    title: 'Configure your app?',
-    text: 'Check the parameters under the "App details" section and extend your wingsuit.config.js',
+    title: 'Configure Wingsuit?',
+    text: 'Check the wingsuit.config.js',
     link_title: 'Details',
     href: '/configurations/details',
   },

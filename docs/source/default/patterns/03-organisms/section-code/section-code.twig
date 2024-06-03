@@ -31,27 +31,10 @@
                                 {% endset %}
                                 {% set content %}
                                     {% if item.contents|length > 0 %}
-                                        <div>
-                                            <div {{ create_attribute().addClass([
-                                                'pb-4 flex space-x-3',
-                                                item.contents|length == 1 ? 'hidden'
-                                            ]) }}>
-                                                {% for content in item.contents %}
-
-                                                    {% include "@atoms/badge/badge.twig" with {
-                                                        text: content.title, variant: 'default',
-                                                        expand: true,
-                                                        attributes: create_attribute().setAttribute(
-                                                            'x-on:click', 'key=\'' ~ content.key ~'\''
-                                                        ).setAttribute (
-                                                            ':class', "{ 'bg-black text-white': key === '" ~ content.key ~ "' }"
-                                                        )
-                                                    } only %}
-                                                {% endfor %}
-                                            </div>
-
+                                        {% set tagName = item.contents|length == 1 ? 'div' : 'tab-view' %}
+                                            <{{ tagName }} variant="light">
                                             {% for content in item.contents %}
-                                                <tab-panel>
+                                                <tab-panel header="{{ content.title }}">
                                                     <div>
                                                         {% if content.intro is not empty %}
                                                             <div class="pb-8 pt-4">
@@ -79,7 +62,8 @@
                                                     </div>
                                                 </tab-panel>
                                             {% endfor %}
-                                        </div>
+                                            </{{ tagName }}>
+
                                     {% endif %}
                                 {% endset %}
                                 <div>

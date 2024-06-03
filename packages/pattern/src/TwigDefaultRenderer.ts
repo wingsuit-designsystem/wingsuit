@@ -7,7 +7,7 @@ import PatternVariant from './PatternVariant';
  *
  * Overwrite the renderer inside the twigRenderEngine.
  * Use renderer.setRenderer(new TwigCustomRenderer)
- * if you need a differnt render logic. This renderer works
+ * if you need a different render logic. This renderer works
  * with twigjs as well with twing.
  */
 export class TwigDefaultRenderer implements IRenderer {
