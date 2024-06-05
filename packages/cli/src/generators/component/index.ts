@@ -115,6 +115,9 @@ export default class extends Generator {
         name: 'add',
         message: 'Do you want to add a new field?',
         default: true,
+        when: (answers) => {
+          return this.props.useWingsuit;
+        },
       },
       {
         type: 'input',
@@ -176,11 +179,15 @@ export default class extends Generator {
         name: 'add',
         message: 'Do you want to add a variant to your pattern?',
         default: true,
+        when: (answers) => {
+          return this.props.useWingsuit;
+        },
       },
       {
         type: 'input',
         name: 'name',
         message: 'Variant Name?',
+
         filter(answer) {
           return snakeCase(answer);
         },
@@ -212,6 +219,9 @@ export default class extends Generator {
         name: 'add',
         message: 'Do you want to add a new setting?',
         default: true,
+        when: (answers) => {
+          return this.props.useWingsuit;
+        },
       },
       {
         type: 'input',
@@ -313,6 +323,8 @@ export default class extends Generator {
         cleanPatternType,
         capitalizeCleanPatternType: startCase(cleanPatternType),
       };
+
+
       return loop(variantPrompts, 'variants').then(() => {
         return loop(fieldsPrompts, 'fields').then(() => {
           return loop(settingsPrompts, 'settings').then(() => {

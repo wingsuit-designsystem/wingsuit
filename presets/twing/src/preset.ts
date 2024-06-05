@@ -1,5 +1,4 @@
 import path from 'path';
-import * as fs from 'fs';
 
 import { AppConfig, pathInfo } from '@wingsuit-designsystem/core';
 import { renderer } from '@wingsuit-designsystem/pattern';

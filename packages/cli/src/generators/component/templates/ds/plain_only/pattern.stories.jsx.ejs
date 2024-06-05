@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenderTwig } from '@wingsuit-designsystem/storybook';<% if (useDoc == 'mdx') { %>
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';<% if (useDoc == 'mdx') { %>
 import './index';
 import mdx from './<%= name %>.mdx';
 <% } %>
@@ -8,6 +8,7 @@ const template = require('./<%= name %>.twig');
 
 export default {
   title: '<%= capitalizeCleanPatternType %>/<%= capitalizeName %>',<% if (useDoc == 'mdx') { %>
+  component: RenderTwig
   parameters: {
     docs: {
       page: mdx,
@@ -15,4 +16,11 @@ export default {
   },<% } %>
 };
 
-export const <%= camelCaseName %> = () => <RenderTwig data={template} />;
+
+export const <%= camelCaseName %> = {
+  name: 'Default',
+  args: {
+    data: template
+  }
+}
+

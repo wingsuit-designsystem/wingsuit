@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenderTwig } from '@wingsuit-designsystem/storybook';<% if (useDoc == 'mdx') { %>
+import { RenderTwig } from '@wingsuit-designsystem/pattern-react';<% if (useDoc == 'mdx') { %>
 import mdx from './<%= name %>.mdx';
 <% } %>
 const template = require('./<%= name %>.twig');
@@ -13,4 +13,11 @@ export default {
   },<% } %>
 };
 
-export const Demo = () => <RenderTwig data={template} />;
+export const <%= camelCaseName %> = {
+  name: 'Default',
+  args: {
+    data: template
+  }
+}
+
+
