@@ -324,7 +324,6 @@ export default class extends Generator {
         capitalizeCleanPatternType: startCase(cleanPatternType),
       };
 
-
       return loop(variantPrompts, 'variants').then(() => {
         return loop(fieldsPrompts, 'fields').then(() => {
           return loop(settingsPrompts, 'settings').then(() => {
