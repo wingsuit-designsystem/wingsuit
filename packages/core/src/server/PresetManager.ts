@@ -7,6 +7,8 @@ import AppConfig, { PresetDefinition, Preset } from '../AppConfig';
 // Library Imports
 const merge = require('webpack-merge');
 const mergeDeep = require('merge-deep');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const css = require('./presets/css');
@@ -184,6 +186,14 @@ export default class PresetManager {
           },
           mode: this.environment,
           plugins: [
+            new RemoveEmptyScriptsPlugin({ enabled: this.environment === 'prod' }),
+            new FileManagerPlugin({
+              events: {
+                onEnd: {
+                  delete: [`${appConfig.absDistFolder}/internal`],
+                },
+              },
+            }),
             new NodePolyfillPlugin({
               excludeAliases: [
                 'console',

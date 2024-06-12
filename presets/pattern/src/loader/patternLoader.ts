@@ -13,7 +13,6 @@ export default function patternLoader(this: any, src) {
   };
   const { appConfig, fileDependencyPlugin } = options;
   const res = YAML.parse(src, options);
-
   const info = pathInfo(this.resourcePath, appConfig);
   const exports: string[] = [];
 
@@ -71,13 +70,14 @@ export default function patternLoader(this: any, src) {
       }
     });
   }
+
   const defaultPatternKey = Object.keys(res)[0];
 
   exports.push(`export default getStorage().loadPattern('${defaultPatternKey}');`);
   const json = JSON.stringify(res);
   return `import { getStorage } from '@wingsuit-designsystem/pattern'; 
-    getStorage().addDefinitions(${json}); 
-  ${exports.join(' ')}`;
+  getStorage().addDefinitions(${json}); 
+${exports.join(' ')}`;
 }
 
 export function findLinkedPatternIds(pattern: IPatternDefinition): string[] {

@@ -1,7 +1,8 @@
-.sliding-popup {
+.sliding-popup-bottom {
   @apply fixed;
   @apply inset-y-0;
   @apply w-full;
+  width: 100%;
   @apply bg-black;
   @apply h-screen !important;
   @apply text-left;

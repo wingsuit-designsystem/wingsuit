@@ -13,6 +13,33 @@ export function wingsuitConfig(): Config {
         distFolder: 'dist/app-drupal',
         twigDistFolder: 'templates',
         type: 'drupal',
+        assets: [
+          {
+            folder: '',
+            glob: '**/*.css',
+            replace: '.css',
+          },
+          {
+            folder: 'behaviors/',
+            glob: '**/*.behavior.js',
+            replace: '.behavior.js',
+          },
+          {
+            folder: 'internal/',
+            glob: '**/*.wingsuit.yml',
+            replace: '',
+          },
+          {
+            folder: 'internal/',
+            glob: '**/*.twig',
+            replace: '',
+          },
+          {
+            folder: 'vendors/',
+            glob: '**/*.vendor.js',
+            replace: '.vendor.js',
+          },
+        ],
         assetsDistFolder: '',
         designSystem: 'default',
         presets: [

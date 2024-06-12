@@ -6,6 +6,7 @@ header:
     - menu
     - logo
     - hamburger
+    - container
   fields:
     menu:
       type: pattern

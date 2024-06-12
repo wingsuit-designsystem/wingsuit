@@ -51,6 +51,8 @@ export interface AppInitConfig {
 
   assetsDistFolder: string;
 
+  assets?: Asset[];
+
   twigDistFolder?: string;
 
   features?: Feature;
@@ -102,6 +104,12 @@ export interface ComponentType {
   [key: string]: string;
 }
 
+export interface Asset {
+  folder: string;
+  glob: string;
+  replace: string;
+}
+
 export interface PresetItem {
   [key: string]: Preset;
 }
@@ -135,6 +143,7 @@ export function defaultAppConfig(
   absAppPath: string;
   internalCache: any;
   distFolder: string;
+  assets: Asset[];
   type: any;
   absRootPath: any;
   webpackFinal(appConfig: AppConfig, config?: any): any;
@@ -168,6 +177,7 @@ export function defaultAppConfig(
       wsdesignsystem: path.join(absRootPath, 'source/default'),
       wspatterns: path.join(absRootPath, 'source/default/patterns'),
     },
+    assets: [],
     cssMode: 'extract',
     designSystem: 'default',
     assetsDistFolder: '',
