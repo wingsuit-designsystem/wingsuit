@@ -44,7 +44,6 @@ export function webpack(appConfig: AppConfig) {
     {
       loader: require.resolve('resolve-url-loader'),
       options: {
-        sourceMap: true,
         root: '',
       },
     },
