@@ -4,6 +4,7 @@ import Mdx from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     typescript: {
 
         // Disable for now.
