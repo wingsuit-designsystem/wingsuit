@@ -20,12 +20,11 @@ export function defaultConfig(appConfig: AppConfig): TwingConfig {
 export function webpack(appConfig: AppConfig, config: TwingConfig) {
   if (config.mode === 'load') {
     renderer.setNamespaces(appConfig.namespaces);
-
-    let environmentPath = require.resolve('./environment');
+    let environmentPath = '';
     try {
       environmentPath = require.resolve(`${process.cwd()}/wingsuit.twing.environment.js`);
     } catch (e) {
-      // Take the environment
+      environmentPath = require.resolve('./environment');
     }
 
     return {
