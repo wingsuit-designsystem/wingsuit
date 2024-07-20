@@ -1,5 +1,4 @@
 import { initJsBehaviors } from '@wingsuit-designsystem/pattern-react';
-import 'tokens';
 
 initJsBehaviors('Drupal');
 

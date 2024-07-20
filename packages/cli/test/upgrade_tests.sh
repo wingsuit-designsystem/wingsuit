@@ -38,3 +38,11 @@ fi
 cp -R wingsuit_base wingsuit
 cd wingsuit
 yarn ws upgrade
+
+echo "Start storybook in smoke mode"
+failed=0
+yarn dev:storybook --smoke-test --quiet || failed=1
+if [ $failed -eq 1 ]
+then
+  exit 1
+fi

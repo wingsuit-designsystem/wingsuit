@@ -12,7 +12,7 @@ export default {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {
-      name: '@storybook/addon-styling-webpack'
+      name: '@storybook/addon-styling-webpack',
     },
   ],
 };

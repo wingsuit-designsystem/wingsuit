@@ -227,8 +227,6 @@ jobs:
           command: |
             cd packages/cli/test
             ./upgrade_tests.sh
-            cd run_upgrade/wingsuit
-            yarn dev:storybook --smoke-test
   smoke-tests:
     executor:
       class: small
