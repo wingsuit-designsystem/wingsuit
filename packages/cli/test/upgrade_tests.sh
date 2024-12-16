@@ -21,7 +21,7 @@ cd run_upgrade
 echo "Upgrade ws in $(pwd)"
 
 if [ ! -d "$(pwd)/wingsuit_base" ]; then
-	yarn ws init --branch "release/1.x" --folder "$(pwd)/wingsuit_base" --skip-install
+	yarn ws init --branch "1.0.x" --folder "$(pwd)/wingsuit_base" --skip-install
 	echo "Upgrade package.json"
 	cp ../upgrade/package.json wingsuit_base/package.json
 	cp ../upgrade/wingsuit.config.js wingsuit_base/wingsuit.config.js

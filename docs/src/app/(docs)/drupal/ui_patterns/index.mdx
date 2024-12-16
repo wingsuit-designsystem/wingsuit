@@ -14,14 +14,30 @@ The Kickstarter uses UI Patterns to map Patterns to Drupal and [Acquia Blt](http
 - [PHP `^7.0.0`](https://php.net)
 
 ## Installation
+
+### DDEV (recommend)
+#### Create project dir
+```bash
+mkdir project_name
+cd project_name
+ddev config --project-type=drupal10 --docroot=docroot --create-docroot --database=mariadb:10.11 --php-version=8.3
+```
+#### Install the project
+```bash
+ddev composer create wingsuit-designsystem/wingsuit-kickstarter:d11-dev --stability dev --no-interaction
+ddev init
+```
+
+### Plain PHP
 ```bash
 composer create-project wingsuit-designsystem/wingsuit-kickstarter wingsuit-kickstarter --stability dev --no-interaction
-```
-```bash
-
 cd wingsuit-kickstarter
-./vendor/bin/blt source:build:settings
-./vendor/bin/blt setup
+composer install
+
+# Import database
+drush sql:cli < dump/dump.sql
+drush cr
+drush cim
 ```
 
 ### First steps
