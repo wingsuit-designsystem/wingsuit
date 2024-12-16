@@ -20,6 +20,11 @@ export function wingsuitConfig(): Config {
             replace: '.css',
           },
           {
+            folder: 'internal/',
+            glob: '**/images/*.{svg,gif,webp,jpg,jpeg}',
+            replace: '',
+          },
+          {
             folder: 'behaviors/',
             glob: '**/*.behavior.js',
             replace: '.behavior.js',

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-stacked.svg" width="340px">
+<img src="https://github.com/wingsuit-designsystem/wingsuit/raw/2.0.x/images/wsuit-logo-stacked.svg" width="340px">
 </p>
 
 # Build bulletproof TWIG Components in Storybook

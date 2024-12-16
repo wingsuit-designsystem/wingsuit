@@ -12,5 +12,5 @@ export const theme = create({
   brandTitle: 'Wingsuit',
   brandUrl: 'https://github.com/wingsuit-designsystem/wingsuit',
   brandImage:
-    'https://github.com/wingsuit-designsystem/wingsuit/raw/master/images/wsuit-logo-inline.png',
+    'https://github.com/wingsuit-designsystem/wingsuit/raw/2.0.2/images/wsuit-logo-inline.png',
 });

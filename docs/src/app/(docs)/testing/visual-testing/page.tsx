@@ -20,7 +20,7 @@ const next: NextLink[] = [
   {
     title: 'Storybook addon storyshots',
     link_title: 'Continue',
-    href: 'https://github.com/storybookjs/storybook/tree/master/addons/storyshots',
+    href: 'https://github.com/storybookjs/storybook/tree/2.0.x/addons/storyshots',
   },
 ];
 
