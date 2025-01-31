@@ -1,0 +1,9 @@
+# Ignore any path/file using .gitignore syntax
+
+dist/
+.eslintrc.js
+tools/tests/vrt/backstop_data
+preview.js-generated-config-entry.js
+storybook-init-framework-entry.js
+storybook-config-entry.js
+node_modules

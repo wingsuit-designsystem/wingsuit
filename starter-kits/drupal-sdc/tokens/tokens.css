@@ -1,0 +1,13 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.ui-widget-overlay {
+  display: none;
+}
+
+.x-clock {
+  display: none;
+}

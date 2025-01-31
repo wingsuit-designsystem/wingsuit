@@ -1,0 +1,5 @@
+name: Wingsuit
+type: theme
+base theme: false
+description: 'Wingsuit base theme'
+core_version_requirement: ^10 || ^11

@@ -8,9 +8,12 @@ export function name(appConfig: AppConfig) {
 }
 export function webpack(appConfig: AppConfig) {
   const assets = appConfig.assets ?? [];
+
   let entries = {};
   assets.forEach((asset) => {
-    const indexItems = glob.sync(`${appConfig.absDesignSystemPath}/${asset.glob}`);
+    const indexItems = glob.sync(`${appConfig.absDesignSystemPath}/${asset.glob}`, {
+      ignore: [`${appConfig.absDesignSystemPath}./node_modules/**`],
+    });
     entries = {
       ...entries,
       ...indexItems.reduce((acc, item) => {
@@ -20,7 +23,6 @@ export function webpack(appConfig: AppConfig) {
       }, {}),
     };
   });
-
   return {
     target: 'web',
     devtool: appConfig.environment === 'development' ? 'cheap-source-map' : 'source-map',
