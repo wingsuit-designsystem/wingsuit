@@ -76,8 +76,8 @@ jobs:
       - run:
           name: examples
           command: |
-            cd examples/official-wingsuit
-            yarn build:storybook --output-dir=../../built-storybooks
+            
+            yarn build-storybooks
       - persist_to_workspace:
           root: .
           paths:

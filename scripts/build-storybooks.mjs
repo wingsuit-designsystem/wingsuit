@@ -3,10 +3,15 @@ import { promisify } from 'util';
 import { readdir as readdirRaw, writeFile as writeFileRaw, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { getDeployables } from './utils/list-examples';
+import { getDeployables } from './utils/list-examples.js';
 
 const readdir = promisify(readdirRaw);
 const writeFile = promisify(writeFileRaw);
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const p = (l) => join(__dirname, '..', ...l);
 const logger = console;
