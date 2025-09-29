@@ -76,7 +76,7 @@ jobs:
       - run:
           name: examples
           command: |
-            yarn build:storybooks
+            yarn build:storybook
       - persist_to_workspace:
           root: .
           paths:
