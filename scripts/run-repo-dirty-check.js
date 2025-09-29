@@ -1,5 +1,5 @@
-import shell from 'shelljs';
-import dedent from 'ts-dedent';
+const shell = require("shelljs");
+const dedent = require("dedent");
 
 const logger = console;
 
