@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-imagemin",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Wingsuit image optimization preset.",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
   },
   "gitHead": "adc2beecb372328b95009a30fd2801ce5862aeb2",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.4",
+    "@wingsuit-designsystem/core": "2.1.0",
     "image-minimizer-webpack-plugin": "^3.8.2",
     "sharp": "^0.32.0"
   }

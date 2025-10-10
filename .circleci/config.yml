@@ -10,7 +10,7 @@ executors:
         default: 'small'
     working_directory: /tmp/storybook
     docker:
-      - image: cimg/node:20.14.0
+      - image: cimg/node:22.20.0
         environment:
           NODE_OPTIONS: --max_old_space_size=6144
     resource_class: <<parameters.class>>
@@ -76,6 +76,7 @@ jobs:
       - run:
           name: examples
           command: |
+            
             yarn build-storybooks
       - persist_to_workspace:
           root: .
@@ -98,7 +99,7 @@ jobs:
             - .verdaccio-cache
   init-e2e:
     docker:
-      - image: cypress/included:cypress-12.17.4-node-20.5.0-chrome-114.0.5735.133-1-ff-114.0.2-edge-114.0.1823.51-1
+      - image: cypress/included:cypress-13.17.0-node-22.13.0-chrome-131.0.6778.264-1-ff-134.0-edge-131.0.2903.112-1
         environment:
           TERM: xterm
     working_directory: /tmp/storybook
@@ -159,7 +160,7 @@ jobs:
   e2e:
     working_directory: /tmp/storybook
     docker:
-      - image: cypress/included:cypress-12.17.4-node-20.5.0-chrome-114.0.5735.133-1-ff-114.0.2-edge-114.0.1823.51-1
+      - image: cypress/included:cypress-13.17.0-node-22.13.0-chrome-131.0.6778.264-1-ff-134.0-edge-131.0.2903.112-1
         environment:
           TERM: xterm
     steps:
@@ -170,16 +171,6 @@ jobs:
           name: running example
           command: yarn serve-storybooks
           background: true
-      - run:
-          name: Update apt
-          command: apt-get update
-      - run:
-          name: Install g++ build-essential
-          command: apt-get install g++ build-essential -y
-
-      - run:
-          name: install cypress
-          command: yarn install
       - run:
           name: await running examples
           command: yarn await-serve-storybooks

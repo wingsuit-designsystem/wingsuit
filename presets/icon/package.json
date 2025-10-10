@@ -1,6 +1,6 @@
 {
   "name": "@wingsuit-designsystem/preset-icon",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Wingsuit Icon preset.",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
   },
   "gitHead": "adc2beecb372328b95009a30fd2801ce5862aeb2",
   "dependencies": {
-    "@wingsuit-designsystem/core": "2.0.4",
-    "@wingsuit-designsystem/pattern": "2.0.4",
+    "@wingsuit-designsystem/core": "2.1.0",
+    "@wingsuit-designsystem/pattern": "2.1.0",
     "glob": "^8.1.0"
   }
 }
