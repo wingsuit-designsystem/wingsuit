@@ -33,6 +33,9 @@ const nextConfig = {
 }
 
 const withMDX = Mdx({
+  experimental: {
+    mdxRs: true,
+  },
   extension: /\.mdx?$/,
   options: {
     // If you use remark-gfm, you'll need to use next.config.mjs

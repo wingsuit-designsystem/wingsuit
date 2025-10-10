@@ -5,11 +5,6 @@
   "plugins": [
     "@typescript-eslint"
   ],
-  "settings": {
-    "next": {
-      "rootDir": ["./"]
-    }
-  },
   "rules": {
     "@typescript-eslint/ban-types": [
       "error",
