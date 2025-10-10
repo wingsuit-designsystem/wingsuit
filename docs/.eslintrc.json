@@ -2,9 +2,23 @@
   "root": true,
   "extends": "next/core-web-vitals",
   "ignorePatterns": ["tailwind.config.ts"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "settings": {
     "next": {
       "rootDir": ["./"]
     }
+  },
+  "rules": {
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ]
   }
 }
