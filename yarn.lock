@@ -8324,9 +8324,9 @@
     minimatch "^9.0.0"
 
 "@yeoman/types@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@yeoman/types/-/types-1.8.0.tgz#122ff50a1b966221f5652bcee7e91610e57dfd2c"
-  integrity sha512-R0QPjieF89hSuc+NNKFYnibV67eW3QSNV1akL33VFx1ld1qrobajGkp3sLe/6CTsPnH5xm+qr+hzwTCdPYMdKQ==
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@yeoman/types/-/types-1.9.1.tgz#7752af2c0e3a4cdbbc98840235a56cb36da25259"
+  integrity sha512-5BMdA/zMzLv/ahnL1ktaV46nSXorb4sU4kQPQKDhIcK8ERbx9TAbGAE+XAlCXKioNIiOrihYj6gW1d/GEfU9Zw==
 
 "@zkochan/js-yaml@0.0.6":
   version "0.0.6"
@@ -15206,7 +15206,7 @@ glob@7.1.4:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^10.0.0, glob@^10.2.2, glob@^10.3.10, glob@^10.4.1:
+glob@^10.0.0, glob@^10.2.2, glob@^10.4.1:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-10.5.0.tgz#8ec0355919cd3338c28428a23d4f24ecc5fe738c"
   integrity sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==
@@ -27955,16 +27955,16 @@ stylis@4.2.0:
   integrity sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==
 
 sucrase@^3.32.0, sucrase@^3.35.0:
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.35.0.tgz#57f17a3d7e19b36d8995f06679d121be914ae263"
-  integrity sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==
+  version "3.35.1"
+  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.35.1.tgz#4619ea50393fe8bd0ae5071c26abd9b2e346bfe1"
+  integrity sha512-DhuTmvZWux4H1UOnWMB3sk0sbaCVOoQZjv8u1rDoTV0HTdGem9hkAZtl4JZy8P2z4Bg0nT+YMeOFyVr4zcG5Tw==
   dependencies:
     "@jridgewell/gen-mapping" "^0.3.2"
     commander "^4.0.0"
-    glob "^10.3.10"
     lines-and-columns "^1.1.6"
     mz "^2.7.0"
     pirates "^4.0.1"
+    tinyglobby "^0.2.11"
     ts-interface-checker "^0.1.9"
 
 sudo-block@^1.1.0:
@@ -28568,7 +28568,7 @@ tiny-json-http@^7.1.2:
   resolved "https://registry.yarnpkg.com/tiny-json-http/-/tiny-json-http-7.5.1.tgz#82efaa190c3edf6f5f2d906a9e88f792d38f8532"
   integrity sha512-lB7qkBGpL3HR/8gidBu3MMfgfnDj2mlvK/eYXgSbO06gKphemLKGp/TgRTy/BKVD7nCbgIeCm41lMNayXO1f2w==
 
-tinyglobby@^0.2.12, tinyglobby@^0.2.13:
+tinyglobby@^0.2.11, tinyglobby@^0.2.12, tinyglobby@^0.2.13:
   version "0.2.15"
   resolved "https://registry.yarnpkg.com/tinyglobby/-/tinyglobby-0.2.15.tgz#e228dd1e638cea993d2fdb4fcd2d4602a79951c2"
   integrity sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==
@@ -31171,9 +31171,9 @@ yeoman-doctor@^4.0.0:
     user-home "^2.0.0"
 
 yeoman-environment@*:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-5.1.0.tgz#c0ff8c23ed9fe29d864e6c58379fa6012e52db59"
-  integrity sha512-NVZ1lf6EafE1ViAY6WeGq7oHeq+zUhyw3g+YJwdA2WA3w8jW2nNDkt120sJYgAtBUFat9I9eFOAgs8mFB6rr3g==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-5.1.1.tgz#b318b5d5951d8ddd253602efcdfb1537f4181710"
+  integrity sha512-g4ichW3SBdi0IZff7Fd8tWXwF0jHsNFfgYTi9/bqDaEr9OSL5OTKupFa9XikOcVhkeCMQysyRqXzgLK/VH/JgA==
   dependencies:
     "@yeoman/adapter" "^3.1.0"
     "@yeoman/conflicter" "^4.0.0"
