@@ -11,7 +11,7 @@
 
 ## Prerequisites
 
-- [Node `^8`, `^10`](https://nodejs.org)
+- [Node `>=20.19.0`](https://nodejs.org)
 - [NPM `^5`, `^6`](https://www.npmjs.com/)
 - [PHP `^7.0.0`](https://php.net)
 
@@ -34,5 +34,4 @@ To start drupal
 ```bash
 yarn dev:drupal
 ```
-
 
