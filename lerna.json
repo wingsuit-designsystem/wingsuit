@@ -1,14 +1,13 @@
 {
   "packages": [
     "docs",
-    "docs-next",
     "packages/*",
     "presets/*",
     "presets/examples/*",
     "examples/*",
-    "starter-kits/*"
+    "starter-kits/*",
+    "packages/cli/test/run_upgrade/wingsuit"
   ],
-  "useWorkspaces": true,
   "version": "2.1.0",
   "registry": "https://registry.npmjs.org",
   "useNx": true,
