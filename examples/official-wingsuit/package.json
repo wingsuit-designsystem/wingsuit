@@ -47,7 +47,7 @@
     "@wingsuit-designsystem/preset-tailwind": "2.1.0",
     "@wingsuit-designsystem/preset-twing": "2.1.0",
     "@wingsuit-designsystem/storybook": "2.1.0",
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^10.4.19",
     "core-js": "^3.29.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.37.0",

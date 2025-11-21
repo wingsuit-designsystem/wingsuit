@@ -55,7 +55,7 @@
     "@wingsuit-designsystem/preset-tailwind": "2.0.0-alpha.11",
     "@wingsuit-designsystem/preset-twing": "2.0.0-alpha.11",
     "@wingsuit-designsystem/storybook": "2.0.0-alpha.11",
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^10.4.19",
     "postcss": "^8.4.47",
     "react": "18.2.0",
     "react-dom": "^18.2.0",
