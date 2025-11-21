@@ -135,11 +135,15 @@ function run() {
           .filter((key) => key.name !== 'watch')
           .map((key) => key.suffix)
           .filter(Boolean);
+        if (packageNames.includes('pattern-react') && !packageNames.includes('pattern')) {
+          packageNames.unshift('pattern');
+        }
 
         const glob =
           packageNames.length > 1
             ? `@wingsuit-designsystem/{${packageNames.join(',')}}`
             : `@wingsuit-designsystem/${packageNames[0]}`;
+        const projects = packageNames.map((name) => `@wingsuit-designsystem/${name}`);
 
         if (watchMode) {
           const runWatchMode = () => {
@@ -171,7 +175,7 @@ function run() {
               });
           }
         } else {
-          spawn(`lerna run prepare --scope "${glob}"`);
+          spawn(`nx run-many --target=prepare --projects=${projects.join(',')} --nx-bail`);
         }
         process.stdout.write('\x07');
       }

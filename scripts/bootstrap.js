@@ -94,7 +94,11 @@ function run() {
       option: '--build',
       command: () => {
         log.info(prefix, 'prepare');
-        spawn('lerna run prepare');
+        // Build pattern first so dependent packages resolve its dist types
+        spawn('nx run @wingsuit-designsystem/pattern:prepare --nx-bail');
+        spawn(
+          'nx run-many --target=prepare --all --exclude=@wingsuit-designsystem/pattern --nx-bail'
+        );
       },
       order: 2,
     }),

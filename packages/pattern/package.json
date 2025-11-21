@@ -20,6 +20,7 @@
     "Atomic Design",
     "Tailwind"
   ],
+  "types": "./dist/index.d.ts",
   "author": "Christian Wiedemann",
   "license": "MIT",
   "bugs": {
