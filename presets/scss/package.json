@@ -28,7 +28,7 @@
   "homepage": "https://github.com/wingsuit-designsystem/wingsuit/tools#readme",
   "dependencies": {
     "@wingsuit-designsystem/core": "2.1.0",
-    "glob": "^9.3.2",
+    "glob": "^9.0.0",
     "mini-css-extract-plugin": "^2.7.5",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-loader": "^7.1.0",
