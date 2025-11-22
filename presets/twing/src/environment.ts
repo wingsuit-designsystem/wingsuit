@@ -62,7 +62,11 @@ export function init() {
     pattern_configuration: renderer.getPatternConfiguration || (() => Promise.resolve('')),
     pattern_preview: (patternId: string, variables: any = {}, variantId = '__default') => {
       return new Promise((resolve) => {
-        (renderer.renderPatternPreview || (() => Promise.resolve('')))(patternId, variables, variantId).then((output) => {
+        (renderer.renderPatternPreview || (() => Promise.resolve('')))(
+          patternId,
+          variables,
+          variantId
+        ).then((output) => {
           resolve(output);
         });
       });
