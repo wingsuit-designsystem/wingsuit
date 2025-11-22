@@ -1,4 +1,13 @@
-import { renderer, TwigAttribute } from '@wingsuit-designsystem/pattern';
+import { renderer as patternRenderer, TwigAttribute } from '@wingsuit-designsystem/pattern';
+
+const renderer =
+  patternRenderer ||
+  ({
+    getNamespaces: () => ({}),
+    renderPattern: () => Promise.resolve(''),
+    renderPatternPreview: () => Promise.resolve(''),
+    getPatternConfiguration: () => Promise.resolve(''),
+  } as any);
 
 const { TwingEnvironment, TwingFunction, TwingLoaderFilesystem, TwingFilter } = require('twing');
 
@@ -11,8 +20,8 @@ const environment = new TwingEnvironment(loader, { autoescape: false, debug: tru
 // In storybook we get this returned as an instance of
 // TWigLoaderNull, we need to avoid processing this.
 if (typeof loader.addPath === 'function') {
-  const namespaces = renderer.getNamespaces();
-  Object.keys(namespaces).forEach((namespace) => {
+  const namespaces = renderer?.getNamespaces ? renderer.getNamespaces() : {};
+  Object.keys(namespaces || {}).forEach((namespace) => {
     loader.addPath(namespaces[namespace], namespace);
   });
 }
@@ -48,12 +57,12 @@ export function init() {
 
   const functions: any = {
     file_url: twigFileUrl,
-    pattern: renderer.renderPattern,
+    pattern: renderer.renderPattern || (() => Promise.resolve('')),
     create_attribute: twigAttributeFunction,
-    pattern_configuration: renderer.getPatternConfiguration,
+    pattern_configuration: renderer.getPatternConfiguration || (() => Promise.resolve('')),
     pattern_preview: (patternId: string, variables: any = {}, variantId = '__default') => {
       return new Promise((resolve) => {
-        renderer.renderPatternPreview(patternId, variables, variantId).then((output) => {
+        (renderer.renderPatternPreview || (() => Promise.resolve('')))(patternId, variables, variantId).then((output) => {
           resolve(output);
         });
       });

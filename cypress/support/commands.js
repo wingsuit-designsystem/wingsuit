@@ -38,18 +38,19 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('getStoryElement', {}, () => {
-  return cy.get(`#storybook-preview-iframe`).then({ timeout: 20000 }, (iframe) => {
-    const content = iframe[0].contentDocument;
-    const element = content !== null ? content.documentElement : null;
+  return cy
+    .get(`#storybook-preview-iframe`, { timeout: 60000 })
+    .should(($iframe) => {
+      const doc = $iframe[0].contentDocument;
+      const element = doc ? doc.documentElement : null;
 
-    return cy
-      .get(iframe, { timeout: 20000 })
-      .should(() => {
-        expect(element).not.null;
-        expect(element.querySelector('.wingsuit-body')).not.null;
-      })
-      .then(() => {
-        return element.querySelector('.wingsuit-body');
-      });
-  });
+      expect(doc, 'storybook iframe document').to.not.be.null;
+      expect(doc?.readyState, 'storybook iframe readyState').to.eq('complete');
+      expect(element?.querySelector('.wingsuit-body'), 'wingsuit body exists').to.not.be.null;
+    })
+    .then(($iframe) => {
+      const doc = $iframe[0].contentDocument;
+      const element = doc ? doc.querySelector('.wingsuit-body') : null;
+      return cy.wrap(element);
+    });
 });
