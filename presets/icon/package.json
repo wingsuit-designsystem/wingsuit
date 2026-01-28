@@ -38,6 +38,6 @@
   "dependencies": {
     "@wingsuit-designsystem/core": "2.1.0",
     "@wingsuit-designsystem/pattern": "2.1.0",
-    "glob": "^8.1.0"
+    "glob": "^9.0.0"
   }
 }

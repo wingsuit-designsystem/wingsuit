@@ -44,7 +44,7 @@
     "css-minimizer-webpack-plugin": "^5.0.0",
     "filemanager-webpack-plugin": "^8.0.0",
     "fs-extra": "^10.0.0",
-    "glob": "^8.1.0",
+    "glob": "^9.0.0",
     "js-yaml-loader": "^1.2.2",
     "memfs": "^3.4.1",
     "merge-deep": "^3.0.3",
