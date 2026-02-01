@@ -24,7 +24,7 @@
     "@wingsuit-designsystem/core": "2.1.0",
     "@wingsuit-designsystem/pattern": "2.1.0",
     "autoprefixer": "10.4.15",
-    "eslint": "^8.57.1",
+    "eslint": "^9.26.0",
     "eslint-config-next": "^14.2.33",
     "eslint-import-resolver-webpack": "^0.13.7",
     "framer-motion": "^11.2.10",
