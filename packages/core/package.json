@@ -34,7 +34,7 @@
   "gitHead": "adc2beecb372328b95009a30fd2801ce5862aeb2",
   "dependencies": {
     "@babel/preset-env": "^7.21.5",
-    "@types/node": "^16.10.2",
+    "@types/node": "^22.0.0",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^11.0.0",
