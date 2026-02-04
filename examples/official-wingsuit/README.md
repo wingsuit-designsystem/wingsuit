@@ -11,7 +11,7 @@
 
 ## Prerequisites
 
-- [Node `>=20.19.0`](https://nodejs.org)
+- [Node `>=22.0.0`](https://nodejs.org)
 - [NPM `^5`, `^6`](https://www.npmjs.com/)
 - [PHP `^7.0.0`](https://php.net)
 
