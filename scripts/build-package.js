@@ -175,7 +175,13 @@ function run() {
               });
           }
         } else {
-          spawn(`nx run-many --target=prepare --projects=${projects.join(',')} --nx-bail`);
+          const needsSequential =
+            projects.includes('@wingsuit-designsystem/pattern-react') &&
+            projects.includes('@wingsuit-designsystem/pattern');
+          const parallelFlag = needsSequential ? ' --parallel=1' : '';
+          spawn(
+            `nx run-many --target=prepare --projects=${projects.join(',')}${parallelFlag} --nx-bail`
+          );
         }
         process.stdout.write('\x07');
       }

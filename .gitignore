@@ -17,3 +17,5 @@ cypress/videos
 cypress/screenshots
 packages/wingsuit/yarn.lock
 .fleet
+.nx
+packages/pattern/src/*.d.ts
