@@ -6,6 +6,7 @@ built-storybooks
 /.eslintrc.js
 lib/cli/test
 packages/cli/test/run_upgrade
+packages/cli/test/run/wscheckout
 tailwind.config.js
 scripts
 cypress
