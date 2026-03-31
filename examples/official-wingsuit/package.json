@@ -31,7 +31,7 @@
     "@storybook/addon-links": "^8.1.0",
     "@storybook/addon-viewport": "^8.1.0",
     "@storybook/builder-webpack5": "^8.1.0",
-    "@storybook/linter-config": "^3.1.2",
+    "@storybook/linter-config": "^4.0.0",
     "@storybook/react": "^8.1.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
