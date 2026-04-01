@@ -1,5 +1,4 @@
 import {resolveConfig, getAppPack} from "@wingsuit-designsystem/core";
-import rehypeShiki from '@shikijs/rehype'
 import Mdx from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
@@ -33,16 +32,13 @@ const nextConfig = {
 }
 
 const withMDX = Mdx({
-  experimental: {
-    mdxRs: true,
-  },
   extension: /\.mdx?$/,
   options: {
     // If you use remark-gfm, you'll need to use next.config.mjs
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [],
-    rehypePlugins: [[rehypeShiki,{ theme: "github-dark"}]],
+    rehypePlugins: [['@shikijs/rehype', { theme: 'github-dark' }]],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
