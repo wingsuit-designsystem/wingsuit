@@ -11,6 +11,7 @@ coverage/
 *.DS_Store
 docs/public
 package-lock.json
+yarn-error.log
 .nvmrc
 storybook-static
 cypress/videos

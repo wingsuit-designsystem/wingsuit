@@ -26,11 +26,12 @@ export function getRenderer(): IRenderer {
 
 export async function getPatternConfiguration(
   patternId: string,
-  variantId: string = Pattern.DEFAULT_VARIANT_NAME,
+  variantId: string | undefined,
   configuration: string
 ) {
   try {
-    const variant: PatternVariant = storage.loadVariant(patternId, variantId);
+    const resolvedVariantId = variantId ?? Pattern.DEFAULT_VARIANT_NAME;
+    const variant: PatternVariant = storage.loadVariant(patternId, resolvedVariantId);
     return await new Promise<string>((resolve) => {
       const config = variant.getConfiguration();
       resolve(config[configuration]);

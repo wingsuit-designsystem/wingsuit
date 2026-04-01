@@ -4,7 +4,8 @@
 const path = require('path');
 const fs = require('fs');
 const { spawnSync } = require('child_process');
-const httpServer = require('http-server');
+const http = require('http');
+const sirv = require('sirv');
 
 const rootDir = path.resolve(__dirname, '..');
 const buildDir = path.join(rootDir, 'built-storybooks');
@@ -24,13 +25,18 @@ const ensureBuiltStorybooks = () => {
 };
 
 const startServer = () => {
-  const server = httpServer.createServer({
-    root: buildDir,
-    cache: -1,
+  const serve = sirv(buildDir, {
+    dev: true,
+    etag: true,
+    maxAge: 0,
+    immutable: false,
+    single: false,
   });
 
-  server.server.on('error', (err) => {
-    console.error('[serve-storybooks] Failed to start http-server:', err.message);
+  const server = http.createServer((req, res) => serve(req, res));
+
+  server.on('error', (err) => {
+    console.error('[serve-storybooks] Failed to start server:', err.message);
     process.exit(1);
   });
 
