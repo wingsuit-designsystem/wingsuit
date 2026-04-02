@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import '../../source/default/tokens/tokens.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = localFont({
+  src: '../../source/default/tokens/fonts/inter/Inter.var.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',

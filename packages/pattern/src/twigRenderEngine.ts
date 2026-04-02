@@ -8,6 +8,22 @@ import { TwigDefaultRenderer } from './TwigDefaultRenderer';
 
 let rendererImpl: IRenderer = new TwigDefaultRenderer();
 let namespacesImpl = {};
+const loggedPatternConfigurationWarnings = new Set<string>();
+
+function logPatternConfigurationWarningOnce(message: string) {
+  if (process.env.NODE_ENV === 'production') {
+    return;
+  }
+
+  if (loggedPatternConfigurationWarnings.has(message)) {
+    return;
+  }
+
+  loggedPatternConfigurationWarnings.add(message);
+  // eslint-disable-next-line no-console
+  console.info(message);
+}
+
 export function setRenderer(renderer: IRenderer) {
   rendererImpl = renderer;
 }
@@ -39,8 +55,9 @@ export async function getPatternConfiguration(
   } catch (e) {
     return new Promise<string>((resolve) => {
       if (e instanceof Error) {
-        // eslint-disable-next-line no-console
-        console.info(`Cannot load pattern configuration. Message: ${e.message}`);
+        logPatternConfigurationWarningOnce(
+          `Cannot load pattern configuration. Message: ${e.message}`
+        );
       }
       resolve('');
     });

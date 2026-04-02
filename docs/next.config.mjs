@@ -1,9 +1,15 @@
+import { fileURLToPath } from 'node:url';
 import {resolveConfig, getAppPack} from "@wingsuit-designsystem/core";
 import Mdx from '@next/mdx';
+
+const localYamlLoader = fileURLToPath(new URL('./loaders/js-yaml-loader.cjs', import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    experimental: {
+      mdxRs: true,
+    },
     typescript: {
 
         // Disable for now.
@@ -24,7 +30,11 @@ const nextConfig = {
       };
       config.plugins = [...config.plugins, ...wingsuitWebpack.plugins].filter((plugin, index)=>{ return plugin.constructor.name !== 'NodePolyfillPlugin' })
       config.resolve.alias = {...config.resolve.alias, ...wingsuitWebpack.resolve.alias}
-      config.resolveLoader.alias = {...config.resolveLoader.alias, ...wingsuitWebpack.resolveLoader.alias ?? {}}
+      config.resolveLoader.alias = {
+        ...config.resolveLoader.alias,
+        ...wingsuitWebpack.resolveLoader.alias ?? {},
+        'js-yaml-loader': localYamlLoader,
+      }
     }
 
     return config;
