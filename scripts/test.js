@@ -110,9 +110,11 @@ Object.keys(tasks)
   .reduce((acc, key) => acc.option(tasks[key].option, tasks[key].name), main)
   .parse(process.argv);
 
+const rawArgs = process.argv.slice(2);
+const hasFlag = (flag) => rawArgs.includes(flag);
+
 Object.keys(tasks).forEach((key) => {
-  tasks[key].value =
-    program[tasks[key].option.replace('--', '')] || (program.all && tasks[key].projectLocation);
+  tasks[key].value = hasFlag(tasks[key].option) || Boolean(hasFlag('--all') && tasks[key].projectLocation);
 });
 
 let selection;
