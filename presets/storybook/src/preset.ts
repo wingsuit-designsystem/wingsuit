@@ -95,7 +95,7 @@ export function wingsuitConfig(): Config {
         distFolder: 'dist/app-storybook',
         assetsDistFolder: '',
         designSystem: 'default',
-        environment: 'develop',
+        environment: 'development',
         absAppPath: '',
         presets: [getDefaultPreset('assets'), '@wingsuit-designsystem/preset-pattern'],
         componentTypes: {
@@ -111,7 +111,7 @@ export function wingsuitConfig(): Config {
               : '';
             return `cross-env-shell NODE_ENV=${this.environment} storybook build --config-dir ${this.absAppPath} ${passedArgs} ${extraArgs}`;
           }
-          return `cross-env-shell NODE_ENV=${this.environment} storybook dev --config-dir ${this.absAppPath}  ${passedArgs}`;
+          return `storybook dev --config-dir ${this.absAppPath} ${passedArgs}`;
         },
       },
     },
