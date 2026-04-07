@@ -4,6 +4,9 @@
 set -e
 
 declare test_root=$PWD
+declare repo_root=$(cd "${test_root}/../../.." && pwd)
+declare test_branch=${CIRCLE_BRANCH:-master}
+export WINGSUIT_LOCAL_REPO="${repo_root}"
 
 # remove run directory before exit to prevent yarn.lock spoiling
 function cleanup {
@@ -17,8 +20,8 @@ mkdir run
 cd run
 echo "Running ws in $(pwd)"
 
-yarn ws init --folder "$(pwd)/smoketest" --smoke-test
-yarn ws init --folder "$(pwd)/wingsuit" --skip-install
+yarn ws init --branch "${test_branch}" --folder "$(pwd)/smoketest" --smoke-test
+yarn ws init --branch "${test_branch}" --folder "$(pwd)/wingsuit" --skip-install
 cd wingsuit
 
 echo "Install dependencies"

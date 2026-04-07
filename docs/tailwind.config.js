@@ -1,4 +1,3 @@
-import type { Config } from 'tailwindcss'
 const forms = require('@tailwindcss/forms');
 const colors = require('tailwindcss/colors');
 const typography = require('@tailwindcss/typography')({
@@ -6,7 +5,8 @@ const typography = require('@tailwindcss/typography')({
 });
 const {nextui} = require("@nextui-org/theme");
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -144,4 +144,5 @@ const config: Config = {
 
   })],
 };
-export default config
+
+module.exports = config;
