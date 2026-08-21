@@ -12,7 +12,6 @@ coverage/
 docs/public
 package-lock.json
 yarn-error.log
-.nvmrc
 storybook-static
 cypress/videos
 cypress/screenshots

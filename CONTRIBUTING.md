@@ -4,17 +4,14 @@ TO BE MADE — for now, this covers local setup only.
 
 ## Local setup
 
-Use the Node version CI uses. Anything else may fail `yarn install`: the repo's
+Use the Node version this repo pins. Anything else may fail `yarn install`: the
 `engines` field allows `>=22.0.0`, but some dependencies exclude odd-numbered
 (non-LTS) releases such as 23.x.
 
 ```bash
-nvm install 22.20.0 && nvm use 22.20.0   # matches CI (cimg/node:22.20.0)
+nvm install && nvm use   # reads .nvmrc (22.20.0, matching CI)
 yarn install
 ```
-
-(`.nvmrc` is currently listed in `.gitignore`, so a committed version pin is not
-available. Un-ignoring it would let `nvm use` work with no arguments.)
 
 ### Cypress binary
 

@@ -13,6 +13,7 @@ executors:
       - image: cimg/node:22.20.0
         environment:
           NODE_OPTIONS: --max_old_space_size=6144
+          CYPRESS_CACHE_FOLDER: /tmp/storybook/.cache/Cypress
     resource_class: <<parameters.class>>
 
 jobs:
@@ -31,6 +32,11 @@ jobs:
           name: Install dependencies
           command: yarn install
       - run:
+          name: Install Cypress binary
+          # `ignore-scripts true` in .yarnrc blocks Cypress's postinstall, so the
+          # binary must be fetched explicitly. Idempotent: skips if already cached.
+          command: yarn cypress install
+      - run:
           name: Check that yarn.lock is not corrupted
           command: yarn repo-dirty-check
       - save_cache:
@@ -38,6 +44,7 @@ jobs:
           key: core-dependencies-v5-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+            - .cache/Cypress
       - persist_to_workspace:
           root: .
           paths:
@@ -102,6 +109,7 @@ jobs:
       - image: cypress/included:cypress-13.17.0-node-22.13.0-chrome-131.0.6778.264-1-ff-134.0-edge-131.0.2903.112-1
         environment:
           TERM: xterm
+          CYPRESS_CACHE_FOLDER: /tmp/storybook/.cache/Cypress
     working_directory: /tmp/storybook
     parallelism: 2
     steps:
@@ -163,6 +171,7 @@ jobs:
       - image: cypress/included:cypress-13.17.0-node-22.13.0-chrome-131.0.6778.264-1-ff-134.0-edge-131.0.2903.112-1
         environment:
           TERM: xterm
+          CYPRESS_CACHE_FOLDER: /tmp/storybook/.cache/Cypress
     steps:
       - checkout
       - attach_workspace:

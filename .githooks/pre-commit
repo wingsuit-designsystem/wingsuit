@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# Pre-commit: lint staged sources.
+#
+# Enable once per clone:
+#   yarn hooks:install     # git config core.hooksPath .githooks
+#
+# This hook is version-controlled and enabled explicitly, rather than written
+# into .git/hooks by a package install script. .yarnrc sets `ignore-scripts
+# true`, and hooks planted by npm lifecycle scripts are a persistence vector
+# that setting deliberately closes -- so we do not reintroduce one here.
+
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+eslint="node_modules/.bin/eslint"
+if [ ! -x "$eslint" ]; then
+  echo "pre-commit: $eslint not found - run 'yarn install'. Skipping lint." >&2
+  exit 0
+fi
+
+# Staged files within the scope `yarn lint:js` covers. NUL-delimited so paths
+# with spaces survive; macOS ships bash 3.2, which has no `mapfile -d`.
+files=()
+while IFS= read -r -d '' file; do
+  files+=("$file")
+done < <(git diff --cached --name-only --diff-filter=ACMR -z \
+  -- 'packages/*.ts' 'packages/*.tsx' 'packages/*.mjs')
+
+if [ ${#files[@]} -eq 0 ]; then
+  exit 0
+fi
+
+if ! NODE_ENV=production "$eslint" --cache --cache-location=.cache/eslint "${files[@]}"; then
+  echo >&2
+  echo "pre-commit: lint failed. Run 'yarn fix:js' to auto-fix," >&2
+  echo "or 'git commit --no-verify' to bypass." >&2
+  exit 1
+fi

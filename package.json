@@ -4,31 +4,10 @@
     "node": ">=22.0.0",
     "yarn": ">=1.3.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.html": [
-      "yarn lint:js --fix"
-    ],
-    "*.js": [
-      "yarn lint:js --fix"
-    ],
-    "*.jsx": [
-      "yarn lint:js --fix"
-    ],
-    "*.ts": [
-      "yarn lint:js --fix"
-    ],
-    "*.tsx": [
-      "yarn lint:js --fix"
-    ]
-  },
   "private": true,
   "version": "2.0.0-alpha.0",
   "scripts": {
+    "hooks:install": "git config core.hooksPath .githooks",
     "coverage": "codecov",
     "test": "node ./scripts/test.js",
     "bootstrap": "node ./scripts/bootstrap.js",
