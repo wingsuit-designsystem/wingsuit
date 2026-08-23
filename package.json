@@ -150,6 +150,7 @@
     "pbkdf2": "^3.1.4",
     "path-to-regexp": "^0.1.12",
     "semver": "^7.6.3",
+    "serialize-javascript": "7.0.7",
     "sha.js": "^2.4.12",
     "postcss": "^8.4.47",
     "prismjs": "^1.30.0",
