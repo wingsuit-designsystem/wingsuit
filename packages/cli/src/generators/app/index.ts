@@ -3,7 +3,7 @@ import { addApp } from '../../config-parser';
 
 const { join, relative } = require('path');
 const inqfs = require('inquirer-fs-selector');
-const Generator = require('yeoman-generator');
+const { default: Generator } = require('yeoman-generator');
 
 export default class extends Generator {
   private targetFolder;

@@ -7,7 +7,7 @@ import { resolveConfig, getAppNames, supportFeature } from '@wingsuit-designsyst
 const { relative, join } = require('path');
 const { readdirSync } = require('fs');
 
-const Generator = require('yeoman-generator');
+const { default: Generator } = require('yeoman-generator');
 const { startCase, camelCase, kebabCase, snakeCase } = require('lodash');
 const rename = require('gulp-rename');
 
