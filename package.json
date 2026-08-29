@@ -148,7 +148,7 @@
     "axios": "^1.8.2",
     "braces": "^3.0.3",
     "pbkdf2": "^3.1.4",
-    "path-to-regexp": "^0.1.12",
+    "path-to-regexp": "^0.1.13",
     "semver": "^7.6.3",
     "serialize-javascript": "^7.0.7",
     "sha.js": "^2.4.12",
